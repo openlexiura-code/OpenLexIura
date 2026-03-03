@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test — Penal Económico Europeo e Internacional</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #080f1e;
+    --deep: #0d1a30;
+    --blue: #1a3a6b;
+    --gold: #c9a227;
+    --gold-light: #e8c547;
+    --cream: #f0ead8;
+    --gray: #7a8ba8;
+    --light: #c5d0e0;
+    --accent: #3a74b8;
+    --green: #1e8a50;
+    --red: #b83030;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'IBM Plex Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(160deg,#0a1628 0%,#0f2347 100%);
+    border-bottom: 1px solid rgba(201,162,39,0.25);
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content:'';
+    position:absolute;inset:0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(41,82,163,0.15) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .header-eyebrow {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:0.75rem;
+  }
+  .header h1 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.6rem,4vw,2.8rem);
+    font-weight:900;
+    color:var(--white);
+    line-height:1.15;
+  }
+  .header h1 span { color:var(--gold); }
+  .header-sub {
+    margin-top:0.75rem;
+    font-size:0.88rem;
+    color:var(--gray);
+    font-weight:300;
+  }
+
+  /* ── SCORING LEGEND ── */
+  .scoring-bar {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1.5rem;
+    flex-wrap:wrap;
+    padding:1rem 2rem;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size:0.78rem;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .score-badge {
+    display:flex;
+    align-items:center;
+    gap:0.45rem;
+    padding:0.3rem 0.75rem;
+    border-radius:2px;
+  }
+  .score-badge.correct { background:rgba(30,138,80,0.15); border:1px solid rgba(30,138,80,0.4); color:#4dca88; }
+  .score-badge.wrong   { background:rgba(184,48,48,0.15);  border:1px solid rgba(184,48,48,0.4);  color:#e06060; }
+  .score-badge.blank   { background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--gray); }
+
+  /* ── LIVE SCOREBOARD ── */
+  .scoreboard {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(8,15,30,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 0.7rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .sb-left {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+    color:var(--gray);
+    letter-spacing:0.05em;
+  }
+  .sb-left strong { color:var(--white); }
+  .sb-stats {
+    display:flex;
+    gap:1rem;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .sb-stat {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+    display:flex;
+    align-items:center;
+    gap:0.3rem;
+  }
+  .sb-stat.c { color:#4dca88; }
+  .sb-stat.w { color:#e06060; }
+  .sb-stat.b { color:var(--gray); }
+  .sb-score {
+    font-family:'Playfair Display',serif;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--gold);
+    min-width:80px;
+    text-align:right;
+  }
+  .progress-bar-wrap {
+    width:100%;
+    height:2px;
+    background:rgba(255,255,255,0.06);
+    border-radius:2px;
+    overflow:hidden;
+    margin-top:0.4rem;
+  }
+  .progress-bar-fill {
+    height:100%;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    border-radius:2px;
+    transition: width 0.4s ease;
+    width:0%;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* ── QUESTION CARD ── */
+  .q-card {
+    background: var(--deep);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .q-card.answered-correct { border-color: rgba(30,138,80,0.5); }
+  .q-card.answered-wrong   { border-color: rgba(184,48,48,0.5); }
+  .q-card.answered-blank   { border-color: rgba(100,100,100,0.3); }
+
+  .q-header {
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+    padding:1.25rem 1.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .q-num {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--gold);
+    background:rgba(201,162,39,0.1);
+    border:1px solid rgba(201,162,39,0.3);
+    border-radius:2px;
+    padding:0.25rem 0.5rem;
+    white-space:nowrap;
+    flex-shrink:0;
+    margin-top:0.1rem;
+  }
+  .q-text {
+    font-size:0.95rem;
+    font-weight:500;
+    color:var(--white);
+    line-height:1.55;
+  }
+  .q-tag {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.65rem;
+    letter-spacing:0.08em;
+    padding:0.2rem 0.5rem;
+    border-radius:2px;
+    white-space:nowrap;
+    flex-shrink:0;
+    margin-top:0.15rem;
+  }
+  .q-tag-eu   { background:rgba(58,116,184,0.15); color:#7bbae0; border:1px solid rgba(58,116,184,0.3); }
+  .q-tag-san  { background:rgba(120,80,200,0.15); color:#b490e8; border:1px solid rgba(120,80,200,0.3); }
+  .q-tag-pif  { background:rgba(30,138,80,0.15);  color:#4dca88; border:1px solid rgba(30,138,80,0.3); }
+  .q-tag-intl { background:rgba(201,162,39,0.12); color:var(--gold-light); border:1px solid rgba(201,162,39,0.3); }
+
+  /* ── OPTIONS ── */
+  .q-options {
+    padding: 0.75rem 1.5rem 1.25rem;
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+  }
+  .opt {
+    display:flex;
+    align-items:flex-start;
+    gap:0.75rem;
+    padding:0.75rem 1rem;
+    border-radius:4px;
+    border:1px solid rgba(255,255,255,0.07);
+    background:rgba(255,255,255,0.02);
+    cursor:pointer;
+    transition:all 0.2s;
+    position:relative;
+    user-select:none;
+  }
+  .opt:hover:not(.disabled) {
+    border-color: rgba(58,116,184,0.5);
+    background: rgba(58,116,184,0.07);
+  }
+  .opt.selected {
+    border-color: var(--accent);
+    background: rgba(58,116,184,0.12);
+  }
+  .opt.correct-ans {
+    border-color: var(--green) !important;
+    background: rgba(30,138,80,0.1) !important;
+  }
+  .opt.wrong-ans {
+    border-color: var(--red) !important;
+    background: rgba(184,48,48,0.1) !important;
+  }
+  .opt.disabled { cursor:default; pointer-events:none; }
+  .opt-letter {
+    width:22px;
+    height:22px;
+    border-radius:2px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    font-weight:500;
+    color:var(--gray);
+    flex-shrink:0;
+    transition:all 0.2s;
+  }
+  .opt.selected .opt-letter   { background:var(--accent); border-color:var(--accent); color:var(--white); }
+  .opt.correct-ans .opt-letter { background:var(--green); border-color:var(--green); color:var(--white); }
+  .opt.wrong-ans .opt-letter   { background:var(--red); border-color:var(--red); color:var(--white); }
+  .opt-text { font-size:0.875rem; color:var(--light); line-height:1.5; }
+
+  /* ── FEEDBACK ── */
+  .q-feedback {
+    display:none;
+    padding:0.75rem 1.5rem 1rem;
+    border-top:1px solid rgba(255,255,255,0.05);
+    font-size:0.82rem;
+    line-height:1.6;
+    gap:0.5rem;
+    align-items:flex-start;
+  }
+  .q-feedback.show { display:flex; }
+  .q-feedback .fb-icon { font-size:1rem; flex-shrink:0; margin-top:0.05rem; }
+  .q-feedback .fb-text { color:var(--gray); }
+  .q-feedback .fb-text strong { color:var(--cream); }
+
+  /* ── BLANK BUTTON ── */
+  .q-actions {
+    padding:0 1.5rem 1rem;
+    display:flex;
+    justify-content:flex-end;
+    gap:0.75rem;
+  }
+  .btn-blank {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.4rem 0.9rem;
+    border-radius:2px;
+    border:1px solid rgba(255,255,255,0.12);
+    background:transparent;
+    color:var(--gray);
+    cursor:pointer;
+    transition:all 0.2s;
+  }
+  .btn-blank:hover { border-color:rgba(255,255,255,0.3); color:var(--cream); }
+  .btn-blank.disabled { opacity:0.3; pointer-events:none; }
+  .btn-confirm {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.4rem 1rem;
+    border-radius:2px;
+    border:1px solid rgba(201,162,39,0.4);
+    background:rgba(201,162,39,0.08);
+    color:var(--gold-light);
+    cursor:pointer;
+    transition:all 0.2s;
+  }
+  .btn-confirm:hover { background:rgba(201,162,39,0.18); border-color:var(--gold); }
+  .btn-confirm.disabled { opacity:0.3; pointer-events:none; }
+
+  /* ── RESULTS PANEL ── */
+  .results {
+    display:none;
+    background: linear-gradient(160deg,#0a1628,#0f2347);
+    border:1px solid rgba(201,162,39,0.3);
+    border-radius:12px;
+    padding:2.5rem;
+    margin-top:2rem;
+    text-align:center;
+  }
+  .results.show { display:block; }
+  .results-grade {
+    font-family:'Playfair Display',serif;
+    font-size:5rem;
+    font-weight:900;
+    line-height:1;
+    margin:1rem 0;
+  }
+  .results-label {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:0.5rem;
+  }
+  .results-breakdown {
+    display:flex;
+    justify-content:center;
+    gap:2rem;
+    flex-wrap:wrap;
+    margin:2rem 0;
+  }
+  .rb-item { text-align:center; }
+  .rb-val {
+    font-family:'Playfair Display',serif;
+    font-size:2rem;
+    font-weight:700;
+  }
+  .rb-val.c { color:#4dca88; }
+  .rb-val.w { color:#e06060; }
+  .rb-val.b { color:var(--gray); }
+  .rb-val.s { color:var(--gold-light); }
+  .rb-key { font-size:0.75rem; color:var(--gray); margin-top:0.2rem; }
+  .results-msg {
+    font-size:0.9rem;
+    color:var(--gray);
+    max-width:500px;
+    margin:0 auto 1.5rem;
+    line-height:1.6;
+  }
+  .btn-restart {
+    display:inline-block;
+    margin-top:1rem;
+    padding:0.75rem 2rem;
+    background:rgba(201,162,39,0.12);
+    border:1px solid rgba(201,162,39,0.5);
+    border-radius:4px;
+    color:var(--gold-light);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.8rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:all 0.25s;
+  }
+  .btn-restart:hover { background:rgba(201,162,39,0.25); }
+
+  /* ── FINISH BAR ── */
+  .finish-bar {
+    position:sticky;
+    bottom:0;
+    z-index:50;
+    background:rgba(8,15,30,0.97);
+    backdrop-filter:blur(10px);
+    border-top:1px solid rgba(201,162,39,0.2);
+    padding:1rem 2rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .finish-info { font-size:0.82rem; color:var(--gray); font-family:'IBM Plex Mono',monospace; }
+  .finish-info strong { color:var(--cream); }
+  .btn-finish {
+    padding:0.65rem 1.75rem;
+    background:linear-gradient(135deg,rgba(201,162,39,0.2),rgba(201,162,39,0.1));
+    border:1px solid var(--gold);
+    border-radius:4px;
+    color:var(--gold-light);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:all 0.25s;
+  }
+  .btn-finish:hover { background:rgba(201,162,39,0.3); color:var(--white); }
+
+  @media(max-width:600px){
+    .q-header { flex-wrap:wrap; }
+    .q-tag { order:-1; }
+    .main { padding:1.5rem 1rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-eyebrow">Test de Repaso — Examen</div>
+  <h1>Penal Económico <span>Europeo e Internacional</span></h1>
+  <p class="header-sub">20 preguntas · Penalización: cada 3 erróneas descuenta 1 correcta · Responde todas o deja en blanco</p>
+</div>
+
+<div class="scoring-bar">
+  <div class="score-badge correct">✓ Correcta → +1 punto</div>
+  <div class="score-badge wrong">✗ Errónea → −⅓ punto</div>
+  <div class="score-badge blank">— En blanco → 0 puntos</div>
+  <div class="score-badge" style="background:rgba(201,162,39,0.08);border:1px solid rgba(201,162,39,0.3);color:var(--gold-light);">Máx. 20 pts</div>
+</div>
+
+<div class="scoreboard" id="scoreboard">
+  <div class="sb-left">Pregunta <strong id="sb-progress">0 / 20</strong> respondidas</div>
+  <div class="sb-stats">
+    <div class="sb-stat c">✓ <span id="sb-correct">0</span></div>
+    <div class="sb-stat w">✗ <span id="sb-wrong">0</span></div>
+    <div class="sb-stat b">— <span id="sb-blank">0</span></div>
+    <div class="sb-score" id="sb-score">0.00</div>
+  </div>
+  <div class="progress-bar-wrap" style="width:100%;">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+</div>
+
+<div class="main" id="quizMain"></div>
+
+<div class="finish-bar" id="finishBar">
+  <div class="finish-info">Puedes dejar preguntas <strong>en blanco</strong> (no penaliza) o confirmar tu respuesta.</div>
+  <button class="btn-finish" onclick="finishQuiz()">Ver Resultado Final →</button>
+</div>
+
+<script>
+const questions = [
+  {
+    tag: "eu", tagLabel: "Europeización",
+    text: "¿Cuál es el proceso principal que describe la Europeización del Derecho Penal Nacional?",
+    opts: [
+      "Los Estados miembros crean normas penales de forma completamente autónoma sin intervención europea.",
+      "El Derecho de la UE incide en el contenido de las normas penales nacionales.",
+      "La UE sustituye íntegramente el Derecho Penal de cada Estado miembro.",
+      "El Parlamento Europeo dicta directamente sentencias penales en los Estados miembros."
+    ],
+    correct: 1,
+    feedback: "La Europeización consiste precisamente en que el D.º de la UE <strong>incide</strong> en el contenido de las normas penales nacionales, sin sustituirlas, mediante efectos negativos y positivos."
+  },
+  {
+    tag: "eu", tagLabel: "Europeización",
+    text: "¿Qué describe el 'efecto negativo' de la primacía del Derecho Europeo sobre el Derecho Penal Nacional?",
+    opts: [
+      "La obligación de los Estados de crear nuevas normas penales más estrictas.",
+      "La armonización de los sistemas penales nacionales mediante directivas.",
+      "La desaplicación de la norma nacional contraria al Derecho Europeo.",
+      "La interpretación extensiva de las normas penales nacionales."
+    ],
+    correct: 2,
+    feedback: "El efecto negativo consiste en la <strong>desaplicación</strong> de la norma nacional por la primacía del D.º Europeo. Ejemplo: monopolios nacionales contrarios al D.º de la competencia de la UE."
+  },
+  {
+    tag: "eu", tagLabel: "Europeización",
+    text: "El Principio de Asimilación obliga a los Estados a:",
+    opts: [
+      "Unificar sus códigos penales en un único código penal europeo.",
+      "Aplicar el Derecho Europeo solo cuando beneficie al acusado.",
+      "Tutelar los intereses de la UE con la misma intensidad con que tutelan los suyos propios.",
+      "Remitir todos los procesos penales económicos al TJUE para su resolución."
+    ],
+    correct: 2,
+    feedback: "El Principio de Asimilación obliga a los Estados a proteger los intereses de la UE con <strong>normas equivalentes</strong> a las que usan para proteger sus propios intereses nacionales. Se dirige a legisladores, jueces, fiscales, policía y administración."
+  },
+  {
+    tag: "eu", tagLabel: "Europeización",
+    text: "¿Cuál es la herramienta legislativa clave que permite a las normas penales nacionales remitirse al contenido de los reglamentos europeos?",
+    opts: [
+      "Las normas penales en blanco.",
+      "Las directivas de armonización máxima.",
+      "Los reglamentos de ejecución directa.",
+      "Las decisiones marco del Consejo."
+    ],
+    correct: 0,
+    feedback: "Las <strong>normas penales en blanco</strong> son la herramienta clave: la norma penal nacional deja un espacio vacío que se completa con el contenido de los reglamentos europeos, permitiendo la actualización automática."
+  },
+  {
+    tag: "eu", tagLabel: "Armonización",
+    text: "¿Cuál es la forma más importante de influencia del Derecho de la UE sobre los sistemas penales nacionales?",
+    opts: [
+      "La adopción de reglamentos de aplicación directa en materia penal.",
+      "La armonización mediante Directivas con criterios penales comunes.",
+      "La creación de un Tribunal Penal Europeo con jurisdicción propia.",
+      "La firma de tratados bilaterales entre Estados miembros."
+    ],
+    correct: 1,
+    feedback: "La <strong>armonización mediante Directivas</strong> es la forma más relevante. Establece criterios comunes en materias como terrorismo, trata, explotación sexual, drogas, armas, blanqueo y corrupción."
+  },
+  {
+    tag: "eu", tagLabel: "Armonización",
+    text: "¿Qué problema constitucional plantea la armonización penal mediante Directivas?",
+    opts: [
+      "Vulnera el principio de igualdad entre los ciudadanos europeos.",
+      "Afecta al principio de legalidad (reserva de ley), ya que los parlamentos nacionales se limitan a transponer la norma.",
+      "Infringe la soberanía monetaria de los Estados miembros.",
+      "Prohíbe la aplicación del principio de proporcionalidad en el proceso penal."
+    ],
+    correct: 1,
+    feedback: "La armonización genera tensión con el <strong>Principio de Legalidad</strong> (reserva de ley): los parlamentos nacionales apenas deciden, limitándose a transponer una norma elaborada a nivel europeo."
+  },
+  {
+    tag: "eu", tagLabel: "Interpretación",
+    text: "Respecto a la interpretación conforme al Derecho de la UE en materia penal, ¿cuál de las siguientes afirmaciones es CORRECTA?",
+    opts: [
+      "Permite la interpretación extensiva cuando favorece los intereses europeos.",
+      "Está prohibida en todo caso en el ámbito del Derecho Penal.",
+      "No puede ser contraria al principio de legalidad ni permitir analogía.",
+      "Solo la pueden aplicar los tribunales superiores, no los juzgados de instancia."
+    ],
+    correct: 2,
+    feedback: "La interpretación conforme tiene como <strong>límite infranqueable</strong> el Principio de Legalidad: no cabe interpretación extensiva ni, en ningún caso, analogía en Derecho Penal. Este es uno de los puntos críticos del tema."
+  },
+  {
+    tag: "eu", tagLabel: "Interpretación",
+    text: "¿Por qué la cuestión prejudicial es un 'sistema imperfecto' para el Derecho Penal?",
+    opts: [
+      "Porque el TJUE carece de competencia para responder cuestiones penales.",
+      "Porque dilata los procesos penales mientras se espera la respuesta del TJUE.",
+      "Porque solo puede ser planteada por la Fiscalía, no por los jueces.",
+      "Porque sus resoluciones no son vinculantes para los órganos nacionales."
+    ],
+    correct: 1,
+    feedback: "La cuestión prejudicial es imperfecta en el ámbito penal porque <strong>dilata considerablemente los procesos</strong> mientras se espera la respuesta del TJUE, afectando garantías procesales como el plazo razonable, incluso existiendo mecanismos de prioridad."
+  },
+  {
+    tag: "eu", tagLabel: "DDFF",
+    text: "¿Cómo se incorporan los Derechos Fundamentales al Derecho de la Unión Europea?",
+    opts: [
+      "Exclusivamente mediante los Tratados constitutivos de la UE.",
+      "A través de las constituciones nacionales de los Estados miembros.",
+      "Por declaración del TJUE y la Carta de los Derechos Fundamentales de la UE.",
+      "Mediante resoluciones no vinculantes del Parlamento Europeo."
+    ],
+    correct: 2,
+    feedback: "Los DDFF forman parte del D.º de la Unión según declaración del <strong>TJUE</strong> y están recogidos en la <strong>Carta de los Derechos Fundamentales de la UE</strong>. Existe además el problema de su relación con los DDFF nacionales."
+  },
+  {
+    tag: "san", tagLabel: "D. Sancionador",
+    text: "¿Cuáles son los dos cauces del 'ius puniendi' que coexisten en el Derecho sancionador administrativo económico supranacional?",
+    opts: [
+      "Derecho Penal nacional y Derecho Penal internacional.",
+      "Derecho Penal y sanciones administrativas.",
+      "Sanciones civiles y sanciones penales europeas.",
+      "Reglamentos europeos directos y Directivas de transposición."
+    ],
+    correct: 1,
+    feedback: "Existe una <strong>doble posibilidad sancionadora</strong>: el D.º Penal (de los Estados) y las sanciones administrativas (también a nivel supranacional). Ambas vías coexisten y pueden concurrir."
+  },
+  {
+    tag: "san", tagLabel: "D. Sancionador",
+    text: "¿Qué instituciones de la UE tienen potestad para sancionar e investigar en materia económica a nivel supranacional?",
+    opts: [
+      "El Parlamento Europeo y el Consejo de la UE.",
+      "El Tribunal de Justicia de la UE y el Tribunal de Cuentas.",
+      "La Comisión Europea y el Banco Central Europeo.",
+      "El Defensor del Pueblo Europeo y el SEAE."
+    ],
+    correct: 2,
+    feedback: "La <strong>Comisión Europea</strong> y el <strong>Banco Central Europeo</strong> son los órganos de la UE con potestad sancionadora e investigadora en materia económica. El TJUE va interpretando las garantías esenciales para su ejecución."
+  },
+  {
+    tag: "pif", tagLabel: "Intereses Fin.",
+    text: "La Directiva PIF hace referencia a la protección de:",
+    opts: [
+      "Los derechos de propiedad intelectual en el mercado único.",
+      "Los intereses financieros de la Unión Europea.",
+      "Los intereses de los trabajadores en empresas transnacionales.",
+      "La privacidad de los datos financieros de los ciudadanos europeos."
+    ],
+    correct: 1,
+    feedback: "PIF significa <strong>Protección de los Intereses Financieros</strong> de la UE. La Directiva PIF establece tipos comunes para combatir el fraude al presupuesto europeo (IVA, aranceles, subvenciones...)."
+  },
+  {
+    tag: "pif", tagLabel: "Intereses Fin.",
+    text: "¿Cuántos mecanismos de lucha contra el fraude a los intereses financieros de la UE se identifican en el tema?",
+    opts: [
+      "Dos: armonización y sanciones administrativas.",
+      "Tres: principio de asimilación, armonización y Fiscalía Europea.",
+      "Cuatro: principio de asimilación, armonización, Fiscalía Europea y medidas administrativas.",
+      "Cinco: incluyendo además la cuestión prejudicial y el recurso de anulación."
+    ],
+    correct: 2,
+    feedback: "Se identifican <strong>cuatro mecanismos</strong>: (1) Principio de asimilación, (2) Armonización (convenios PIF y Directiva PIF), (3) Fiscalía Europea (EPPO) y (4) Medidas administrativas."
+  },
+  {
+    tag: "pif", tagLabel: "Fiscalía Europea",
+    text: "¿Cuál es la naturaleza y función de la Fiscalía Europea (EPPO)?",
+    opts: [
+      "Es un órgano consultivo que asesora a los Estados en materia de fraude fiscal.",
+      "Es un órgano supranacional con competencia directa para investigar y perseguir delitos contra los intereses financieros de la UE.",
+      "Es un tribunal especializado en enjuiciar delitos económicos transfronterizos.",
+      "Es una agencia de coordinación entre los servicios de inspección fiscal nacionales."
+    ],
+    correct: 1,
+    feedback: "La <strong>Fiscalía Europea (EPPO)</strong> es un órgano supranacional con competencia directa para investigar y perseguir penalmente los delitos que afecten a los intereses financieros de la UE, sin depender de las fiscalías nacionales."
+  },
+  {
+    tag: "pif", tagLabel: "Intereses Fin.",
+    text: "¿Qué tipo de fraudes son los más habituales que afectan a los intereses financieros de la UE?",
+    opts: [
+      "Fraude en marcas comerciales y patentes europeas.",
+      "IVA intracomunitario (fraude carrusel) y aranceles aduaneros.",
+      "Evasión de cotizaciones a la Seguridad Social transnacional.",
+      "Blanqueo de capitales a través del mercado inmobiliario."
+    ],
+    correct: 1,
+    feedback: "Los fraudes más habituales mencionados son los relativos al <strong>IVA</strong> (especialmente el fraude carrusel intracomunitario) y los <strong>aranceles aduaneros</strong>, aunque también subvenciones de fondos estructurales."
+  },
+  {
+    tag: "intl", tagLabel: "Internacional",
+    text: "¿Qué fenómeno describe la influencia del modelo jurídico estadounidense en materias como el mercado de valores, el blanqueo o la competencia?",
+    opts: [
+      "Globalización normativa.",
+      "Americanización del Derecho Penal Económico.",
+      "Convergencia atlántica del ius puniendi.",
+      "Extraterritorialidad regulatoria multilateral."
+    ],
+    correct: 1,
+    feedback: "El término empleado en el tema es el de <strong>\"americanización\"</strong>: el modelo jurídico de EE.UU. ha influido poderosamente en cómo se regulan penalmente el mercado de valores, el blanqueo y el derecho de la competencia a nivel global."
+  },
+  {
+    tag: "intl", tagLabel: "Internacional",
+    text: "¿Qué implica la 'aplicación extraterritorial' en el ámbito del Derecho Penal Económico Internacional?",
+    opts: [
+      "Que los delitos solo pueden ser enjuiciados en el país donde se cometieron.",
+      "Que las grandes empresas pueden ser sancionadas fuera del país donde tienen su sede.",
+      "Que los tratados internacionales tienen aplicación directa en todos los Estados firmantes.",
+      "Que los ciudadanos europeos tienen inmunidad penal en terceros países."
+    ],
+    correct: 1,
+    feedback: "La aplicación extraterritorial permite <strong>sancionar a grandes empresas fuera del país donde radican</strong>. El ejemplo paradigmático es la Foreign Corrupt Practices Act (FCPA) de EE.UU., que sanciona corrupción cometida en cualquier país."
+  },
+  {
+    tag: "intl", tagLabel: "Internacional",
+    text: "Los programas de 'compliance' o cumplimiento normativo en el ámbito internacional se relacionan con:",
+    opts: [
+      "La autorregulación empresarial y la diligencia debida en Derechos Humanos.",
+      "La supervisión directa de las empresas por parte del Tribunal Penal Internacional.",
+      "La obligación de las empresas de publicar anualmente sus cuentas auditadas.",
+      "La armonización de los convenios colectivos en el ámbito transnacional."
+    ],
+    correct: 0,
+    feedback: "Los programas de <strong>compliance</strong> (cumplimiento normativo) y la <strong>diligencia debida en DDHH</strong> son herramientas de autorregulación empresarial impulsadas internacionalmente, con referencia a la Ley de vigilancia empresarial promovida por la ONU."
+  },
+  {
+    tag: "intl", tagLabel: "Internacional",
+    text: "¿Cuál de los siguientes mecanismos utiliza la comunidad internacional como herramienta de presión para forzar el cumplimiento normativo en jurisdicciones poco cooperativas?",
+    opts: [
+      "La emisión de bonos soberanos penalizados.",
+      "La suspensión del derecho de voto en organismos internacionales.",
+      "Las listas negras de paraísos fiscales y jurisdicciones opacas.",
+      "La intervención militar humanitaria de naturaleza económica."
+    ],
+    correct: 2,
+    feedback: "Las <strong>listas negras</strong> son una herramienta de presión internacional para forzar a jurisdicciones poco cooperativas (paraísos fiscales, territorios opacos) a adoptar estándares de transparencia y cumplimiento normativo."
+  },
+  {
+    tag: "eu", tagLabel: "Tema global",
+    text: "¿Cuál de las siguientes es una afirmación INCORRECTA sobre el conjunto del sistema de Derecho Penal Económico Europeo?",
+    opts: [
+      "El Derecho de la UE puede desaplicar normas penales nacionales contrarias a él.",
+      "La cuestión prejudicial es un instrumento de diálogo entre jueces nacionales y europeos.",
+      "El TJUE puede sustituir directamente a los jueces nacionales en la resolución de causas penales.",
+      "La Comisión Europea puede imponer sanciones de naturaleza administrativa en materia económica."
+    ],
+    correct: 2,
+    feedback: "Es <strong>INCORRECTA</strong> la afirmación de que el TJUE puede sustituir a los jueces nacionales. El TJUE responde cuestiones prejudiciales pero son los <strong>jueces nacionales</strong> quienes aplican el D.º de la Unión y resuelven las causas penales."
+  }
+];
+
+// ── STATE ──
+const state = {
+  answers: Array(20).fill(null), // null=sin responder, -1=en blanco, 0-3=opción
+  confirmed: Array(20).fill(false),
+  get correct()  { return this.confirmed.reduce((a,c,i)=>a+(c&&this.answers[i]===questions[i].correct?1:0),0); },
+  get wrong()    { return this.confirmed.reduce((a,c,i)=>a+(c&&this.answers[i]!==-1&&this.answers[i]!==null&&this.answers[i]!==questions[i].correct?1:0),0); },
+  get blank()    { return this.confirmed.reduce((a,c,i)=>a+(c&&this.answers[i]===-1?1:0),0); },
+  get answered() { return this.confirmed.filter(Boolean).length; },
+  get score()    { return Math.max(0, this.correct - this.wrong/3); }
+};
+
+// ── RENDER QUESTIONS ──
+function render() {
+  const container = document.getElementById('quizMain');
+  container.innerHTML = '';
+  questions.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = `q${qi}`;
+
+    const tagClass = { eu:'q-tag-eu', san:'q-tag-san', pif:'q-tag-pif', intl:'q-tag-intl' }[q.tag];
+
+    card.innerHTML = `
+      <div class="q-header">
+        <span class="q-num">P.${String(qi+1).padStart(2,'0')}</span>
+        <span class="q-text">${q.text}</span>
+        <span class="q-tag ${tagClass}">${q.tagLabel}</span>
+      </div>
+      <div class="q-options" id="opts${qi}">
+        ${['A','B','C','D'].map((l,oi)=>`
+          <div class="opt" id="opt${qi}_${oi}" onclick="selectOpt(${qi},${oi})">
+            <div class="opt-letter">${l}</div>
+            <div class="opt-text">${q.opts[oi]}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="q-actions" id="actions${qi}">
+        <button class="btn-blank" id="blankBtn${qi}" onclick="markBlank(${qi})">Dejar en blanco</button>
+        <button class="btn-confirm disabled" id="confirmBtn${qi}" onclick="confirmAnswer(${qi})">Confirmar →</button>
+      </div>
+      <div class="q-feedback" id="feedback${qi}">
+        <div class="fb-icon"></div>
+        <div class="fb-text"></div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  const resultsDiv = document.createElement('div');
+  resultsDiv.className = 'results';
+  resultsDiv.id = 'results';
+  resultsDiv.innerHTML = `
+    <div class="results-label">Resultado Final</div>
+    <div class="results-grade" id="res-grade"></div>
+    <div style="font-size:0.9rem;color:var(--gray);margin-bottom:1rem;" id="res-sub"></div>
+    <div class="results-breakdown">
+      <div class="rb-item"><div class="rb-val c" id="res-c">0</div><div class="rb-key">Correctas</div></div>
+      <div class="rb-item"><div class="rb-val w" id="res-w">0</div><div class="rb-key">Erróneas</div></div>
+      <div class="rb-item"><div class="rb-val b" id="res-b">0</div><div class="rb-key">En blanco</div></div>
+      <div class="rb-item"><div class="rb-val s" id="res-s">—</div><div class="rb-key">Puntuación</div></div>
+    </div>
+    <p class="results-msg" id="res-msg"></p>
+    <button class="btn-restart" onclick="restartQuiz()">↺ Repetir Test</button>
+  `;
+  container.appendChild(resultsDiv);
+}
+
+// ── SELECT OPTION ──
+function selectOpt(qi, oi) {
+  if (state.confirmed[qi]) return;
+  state.answers[qi] = oi;
+  document.querySelectorAll(`#opts${qi} .opt`).forEach((el,i) => {
+    el.classList.toggle('selected', i===oi);
+  });
+  const btn = document.getElementById(`confirmBtn${qi}`);
+  btn.classList.remove('disabled');
+}
+
+// ── MARK BLANK ──
+function markBlank(qi) {
+  if (state.confirmed[qi]) return;
+  state.answers[qi] = -1;
+  confirmAnswer(qi);
+}
+
+// ── CONFIRM ANSWER ──
+function confirmAnswer(qi) {
+  if (state.confirmed[qi]) return;
+  if (state.answers[qi] === null) return;
+  state.confirmed[qi] = true;
+
+  const q = questions[qi];
+  const ans = state.answers[qi];
+  const isBlank = ans === -1;
+  const isCorrect = ans === q.correct;
+
+  // Style options
+  const opts = document.querySelectorAll(`#opts${qi} .opt`);
+  opts.forEach((el, i) => {
+    el.classList.add('disabled');
+    if (i === q.correct) el.classList.add('correct-ans');
+    if (!isBlank && i === ans && ans !== q.correct) el.classList.add('wrong-ans');
+  });
+
+  // Card class
+  const card = document.getElementById(`q${qi}`);
+  if (isBlank)    card.classList.add('answered-blank');
+  else if (isCorrect) card.classList.add('answered-correct');
+  else            card.classList.add('answered-wrong');
+
+  // Disable buttons
+  document.getElementById(`blankBtn${qi}`).classList.add('disabled');
+  document.getElementById(`confirmBtn${qi}`).classList.add('disabled');
+
+  // Feedback
+  const fb = document.getElementById(`feedback${qi}`);
+  fb.classList.add('show');
+  fb.querySelector('.fb-icon').textContent = isBlank ? '—' : isCorrect ? '✓' : '✗';
+  fb.querySelector('.fb-text').innerHTML = isBlank
+    ? '<strong>En blanco.</strong> ' + q.feedback
+    : (isCorrect ? '<strong>¡Correcto!</strong> ' : '<strong>Incorrecto.</strong> ') + q.feedback;
+
+  updateScoreboard();
+}
+
+// ── SCOREBOARD ──
+function updateScoreboard() {
+  document.getElementById('sb-progress').textContent = `${state.answered} / 20`;
+  document.getElementById('sb-correct').textContent = state.correct;
+  document.getElementById('sb-wrong').textContent = state.wrong;
+  document.getElementById('sb-blank').textContent = state.blank;
+  document.getElementById('sb-score').textContent = state.score.toFixed(2);
+  document.getElementById('progressBar').style.width = `${(state.answered/20)*100}%`;
+}
+
+// ── FINISH ──
+function finishQuiz() {
+  // Auto-confirm unconfirmed as blank
+  questions.forEach((_, qi) => {
+    if (!state.confirmed[qi]) {
+      state.answers[qi] = -1;
+      confirmAnswer(qi);
+    }
+  });
+
+  const score = state.score;
+  const pct = (score / 20) * 100;
+  const grade = score.toFixed(2);
+  const gradeColor = pct >= 70 ? '#4dca88' : pct >= 50 ? 'var(--gold-light)' : '#e06060';
+  const msg = pct >= 90
+    ? '🏆 Excelente. Dominas el tema a la perfección. ¡A por el examen!'
+    : pct >= 70
+    ? '✅ Bien. Tienes una base sólida. Repasa los errores y estarás listo.'
+    : pct >= 50
+    ? '⚠️ Aprobado justo. Dedica tiempo a los apartados donde fallaste.'
+    : '📚 Necesitas repasar más. Vuelve al esquema del tema y repite el test.';
+
+  const res = document.getElementById('results');
+  document.getElementById('res-grade').innerHTML = `<span style="color:${gradeColor}">${grade}</span>`;
+  document.getElementById('res-grade').style.fontSize = '5rem';
+  document.getElementById('res-sub').textContent = `sobre 20 puntos (${pct.toFixed(1)}%)`;
+  document.getElementById('res-c').textContent = state.correct;
+  document.getElementById('res-w').textContent = state.wrong;
+  document.getElementById('res-b').textContent = state.blank;
+  document.getElementById('res-s').textContent = grade;
+  document.getElementById('res-msg').textContent = msg;
+  res.classList.add('show');
+
+  document.getElementById('finishBar').style.display='none';
+  res.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+// ── RESTART ──
+function restartQuiz() {
+  state.answers.fill(null);
+  state.confirmed.fill(false);
+  render();
+  updateScoreboard();
+  document.getElementById('finishBar').style.display='flex';
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+// ── INIT ──
+render();
+updateScoreboard();
+</script>
+</body>
+</html>
