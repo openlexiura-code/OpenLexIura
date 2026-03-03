@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Test · Responsabilidad Penal de la Persona Jurídica</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0d0f1a;--surface:#141728;--surface2:#1c2035;--border:rgba(255,255,255,0.07);--gold:#c9a84c;--gold-light:#e8c97a;--accent:#4f8eff;--accent2:#ff6b6b;--accent3:#56cfb2;--text:#d8dde8;--muted:#7a8099;--white:#f0f2f8;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.75;overflow-x:hidden;}
+header{position:relative;padding:80px 40px 60px;text-align:center;background:radial-gradient(ellipse at 50% -10%,rgba(201,168,76,0.18) 0%,transparent 65%),linear-gradient(180deg,#1a1d30 0%,var(--bg) 100%);border-bottom:1px solid var(--border);overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.012) 40px,rgba(255,255,255,0.012) 41px),repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,0.012) 40px,rgba(255,255,255,0.012) 41px);}
+.hbadge{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.4);padding:6px 18px;border-radius:2px;margin-bottom:24px;position:relative;}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,52px);color:var(--white);letter-spacing:-1px;line-height:1.2;margin-bottom:16px;position:relative;}
+header h1 em{color:var(--gold);font-style:italic;}
+header p.subtitle{max-width:560px;margin:0 auto 0;color:var(--muted);font-size:15px;position:relative;}
+.rules-bar{display:flex;justify-content:center;flex-wrap:wrap;gap:24px;padding:18px 24px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);}
+.rule-pill{display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--muted);}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.dg{background:var(--accent3)}.dr{background:var(--accent2)}.dgold{background:var(--gold)}
+.prog-wrap{max-width:760px;margin:32px auto 0;padding:0 24px;}
+.prog-info{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:8px;}
+.prog-bg{height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(to right,var(--gold),var(--gold-light));border-radius:2px;transition:width 0.4s ease;width:0%;}
+main{max-width:760px;margin:0 auto;padding:40px 24px 120px;}
+.qcard{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:32px;margin-bottom:20px;transition:border-color .2s;opacity:0;transform:translateY(16px);animation:fadeUp 0.4s ease forwards;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.qcard.answered{border-color:rgba(201,168,76,0.2);}
+.qhdr{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px;}
+.qnum{font-family:'Playfair Display',serif;font-size:36px;color:rgba(201,168,76,0.2);line-height:1;flex-shrink:0;position:relative;top:-4px;}
+.qtxt{font-size:15px;font-weight:500;color:var(--white);line-height:1.55;}
+.artref{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);background:rgba(79,142,255,0.1);border:1px solid rgba(79,142,255,0.2);padding:1px 7px;border-radius:2px;margin-left:6px;}
+.opts{display:flex;flex-direction:column;gap:10px;}
+.opt{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border:1px solid var(--border);border-radius:3px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none;}
+.opt:hover:not(.locked){border-color:rgba(201,168,76,0.35);background:rgba(201,168,76,0.04);}
+.opt.sel:not(.locked){border-color:rgba(201,168,76,0.5);background:rgba(201,168,76,0.07);}
+.opt.correct{border-color:rgba(86,207,178,0.6)!important;background:rgba(86,207,178,0.08)!important;}
+.opt.wrong{border-color:rgba(255,107,107,0.6)!important;background:rgba(255,107,107,0.08)!important;}
+.opt.rcorrect{border-color:rgba(86,207,178,0.35)!important;background:rgba(86,207,178,0.04)!important;}
+.oletter{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--muted);flex-shrink:0;margin-top:1px;min-width:18px;transition:color .15s;}
+.opt.correct .oletter{color:var(--accent3);}.opt.wrong .oletter{color:var(--accent2);}.opt.rcorrect .oletter{color:var(--accent3);}
+.otext{font-size:14px;color:var(--text);line-height:1.55;}
+.oicon{margin-left:auto;font-size:16px;flex-shrink:0;opacity:0;transition:opacity .2s;}
+.opt.correct .oicon,.opt.wrong .oicon,.opt.rcorrect .oicon{opacity:1;}
+.expl{margin-top:16px;padding:14px 18px;background:rgba(79,142,255,0.06);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;font-size:13px;color:#a8b8d0;line-height:1.7;display:none;}
+.expl.vis{display:block;}
+.cbtn{margin-top:16px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.4);background:transparent;padding:10px 24px;border-radius:2px;cursor:pointer;transition:background .2s,color .2s;display:none;}
+.cbtn.vis{display:inline-block;}.cbtn:hover{background:var(--gold);color:var(--bg);}
+#score-panel{display:none;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:48px 40px;text-align:center;margin-top:40px;}
+#score-panel.vis{display:block;}
+.slabel{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.snum{font-family:'Playfair Display',serif;font-size:88px;line-height:1;font-weight:700;margin-bottom:4px;}
+.sdenom{font-family:'DM Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:2px;margin-bottom:32px;}
+.sbdown{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:32px;}
+.sstat{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.sstat .val{font-family:'Playfair Display',serif;font-size:28px;line-height:1;}
+.sstat .lbl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.smsg{font-size:15px;color:var(--muted);max-width:400px;margin:0 auto 12px;line-height:1.7;}
+.snote{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:28px;}
+.rbtn{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--gold);border:none;padding:12px 32px;border-radius:2px;cursor:pointer;transition:background .2s;}
+.rbtn:hover{background:var(--gold-light);}
+#sub-wrap{text-align:center;margin-top:16px;display:none;}
+#sub-wrap.vis{display:block;}
+.subbtn{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--gold);border:none;padding:14px 40px;border-radius:2px;cursor:pointer;transition:background .2s;}
+.subbtn:hover{background:var(--gold-light);}
+footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>
+<div class="hbadge">Test &middot; Tema 4</div>
+<h1>Responsabilidad Penal de la<br/><em>Persona Jur&iacute;dica</em></h1>
+<p class="subtitle">20 preguntas &middot; 4 opciones &middot; Penalizaci&oacute;n proporcional &middot; Resultado sobre 10</p>
+</header>
+
+<div class="rules-bar">
+<div class="rule-pill"><span class="dot dg"></span>CORRECTA +0.5 pts</div>
+<div class="rule-pill"><span class="dot dr"></span>INCORRECTA &minus;0.167 pts</div>
+<div class="rule-pill"><span class="dot dgold"></span>EN BLANCO 0 pts</div>
+<div class="rule-pill">3 errores = &minus;1 correcta &middot; M&aacute;x. 10</div>
+</div>
+
+<div class="prog-wrap">
+<div class="prog-info"><span id="ptxt">0 / 20 respondidas</span><span id="ppct">0%</span></div>
+<div class="prog-bg"><div class="prog-fill" id="pfill"></div></div>
+</div>
+
+<main id="qmain">
+<div id="sub-wrap"><button class="subbtn" id="subbtn">Ver resultado final</button></div>
+<div id="score-panel">
+<div class="slabel">Resultado Final</div>
+<div class="snum" id="fscore">&mdash;</div>
+<div class="sdenom">/ 10</div>
+<div class="sbdown">
+<div class="sstat"><span class="val" id="rc" style="color:var(--accent3)">&mdash;</span><span class="lbl">Correctas</span></div>
+<div class="sstat"><span class="val" id="rw" style="color:var(--accent2)">&mdash;</span><span class="lbl">Incorrectas</span></div>
+<div class="sstat"><span class="val" id="rb" style="color:var(--muted)">&mdash;</span><span class="lbl">En blanco</span></div>
+</div>
+<div class="smsg" id="smsg"></div>
+<div class="snote" id="snote"></div>
+<button class="rbtn" id="rbtn">Repetir test</button>
+</div>
+</main>
+
+<footer>TEST &middot; RESPONSABILIDAD PENAL DE LA PERSONA JUR&Iacute;DICA &middot; DERECHO PENAL ECON&Oacute;MICO</footer>
+
+<script>
+var QS=[
+{t:"&iquest;A partir de qu&eacute; a&ntilde;o pueden las personas jur&iacute;dicas ser penalmente responsables en Espa&ntilde;a?",o:["2005","2010","2015","2012"],c:1,e:"La LO 5/2010 introdujo la responsabilidad penal de las PJ en el CP espa&ntilde;ol, en vigor desde el 23 de diciembre de 2010."},
+{t:"&iquest;Cu&aacute;l es la finalidad principal del sistema de responsabilidad penal de las personas jur&iacute;dicas?",o:["Sustituir la responsabilidad de las personas f&iacute;sicas","Impedir que las empresas compitan en el mercado","Prevenci&oacute;n general e instar a las empresas a organizarse para evitar delitos en su seno","Recaudar fondos para el Estado mediante multas empresariales"],c:2,e:"El sistema busca la prevenci&oacute;n general mediante la amenaza penal e instar a las empresas a autoorganizarse para evitar que administradores y empleados delincan en su beneficio."},
+{t:"&iquest;C&oacute;mo opera la responsabilidad penal de la PJ respecto a la persona f&iacute;sica?",o:["Es alternativa: se condena a la PJ o a la PF, nunca a ambas","Es subsidiaria: solo si no se localiza a la PF","Es cumulativa: se condena a ambas simult&aacute;neamente","Sustituye completamente la responsabilidad de la PF"],c:2,e:"La responsabilidad es cumulativa (art. 31 bis 1.a CP): se condena tanto a la PJ como a la PF que cometi&oacute; el delito, incluso si esta es indeterminada."},
+{t:"&iquest;Qu&eacute; significa que el sistema sea 'numerus clausus'?",a:"Art. 31 bis CP",o:["Que hay un n&uacute;mero ilimitado de delitos que puede cometer la PJ","Que solo se aplica a empresas con un m&iacute;nimo de empleados","Que &uacute;nicamente los delitos expresamente previstos en el CP generan responsabilidad de la PJ","Que el n&uacute;mero de penas est&aacute; tasado y no puede variar"],c:2,e:"Numerus clausus significa que la responsabilidad penal de la PJ solo puede declararse por los delitos que el CP prev&eacute; expresamente para esta modalidad. No existe responsabilidad gen&eacute;rica."},
+{t:"&iquest;Cu&aacute;l es la pena OBLIGATORIA cuando se condena a una persona jur&iacute;dica?",o:["Intervenci&oacute;n judicial","Disoluci&oacute;n de la empresa","Multa","Prohibici&oacute;n de actividades"],c:2,e:"La multa es la &uacute;nica pena obligatoria: si hay condena siempre se impondr&aacute; al menos una multa. El resto de penas (disoluci&oacute;n, intervenci&oacute;n, prohibiciones) son facultativas."},
+{t:"Seg&uacute;n el art. 31 bis 1.a CP, &iquest;cu&aacute;l es la V&Iacute;A A de imputaci&oacute;n a la PJ?",a:"Art. 31 bis 1.a",o:["Delitos por empleados no supervisados","Delitos por representantes legales o m&aacute;ximos responsables en nombre y beneficio de la PJ","Delitos por terceros ajenos en perjuicio de la empresa","Delitos por accionistas sin conocimiento de los administradores"],c:1,e:"La v&iacute;a A contempla los delitos cometidos por representantes legales, administradores o quienes ostentan facultades de organizaci&oacute;n y control, actuando en nombre o por cuenta de la PJ y en su beneficio directo o indirecto."},
+{t:"&iquest;Qu&eacute; requisito adicional exige la V&Iacute;A B de imputaci&oacute;n?",a:"Art. 31 bis 1.b",o:["Que el empleado act&uacute;e con dolo directo de primer grado","Que el delito sea por subordinados y que los dirigentes hayan incumplido gravemente el deber de supervisi&oacute;n","Que la empresa tenga m&aacute;s de 50 empleados","Que el beneficio supere 50.000 euros"],c:1,e:"La v&iacute;a B requiere que el delito lo cometa alguien sometido a la autoridad de los dirigentes Y que haya sido posible porque estos incumplieron gravemente los deberes de supervisi&oacute;n, vigilancia y control."},
+{t:"&iquest;Cu&aacute;ndo puede eximirse la PJ en la V&Iacute;A A (delito por dirigentes)?",o:["Cuando el delito genera menos de 10.000 euros de beneficio","Cuando la empresa tiene menos de 5 a&ntilde;os","Cuando exist&iacute;an controles adecuados y el dirigente los eludi&oacute; activamente","Cuando la empresa colabora con la investigaci&oacute;n policial"],c:2,e:"En la v&iacute;a A, la PJ solo se exime si acredita que dispon&iacute;a de controles eficaces y que fue el propio dirigente quien los eludi&oacute; de forma activa, frustrando el sistema preventivo."},
+{t:"&iquest;Cu&aacute;ndo puede eximirse la PJ en la V&Iacute;A B (delito por subordinados)?",o:["Cuando el subordinado act&uacute;a en inter&eacute;s propio","Cuando la empresa acredita la diligencia preventiva efectiva de sus dirigentes","Cuando el subordinado es despedido inmediatamente","Cuando la empresa indemniza voluntariamente a las v&iacute;ctimas"],c:1,e:"En la v&iacute;a B, la PJ solo se exime si prueba que sus dirigentes ejercieron diligencia preventiva suficiente: supervisi&oacute;n, vigilancia y control adecuados a las circunstancias concretas del caso."},
+{t:"&iquest;Qu&eacute; ocurre si la persona f&iacute;sica autora es indeterminada o se ha sustra&iacute;do a la justicia?",o:["La PJ no puede ser condenada hasta identificar a la PF","El proceso contra la PJ se suspende indefinidamente","La PJ puede ser condenada igualmente; su responsabilidad es aut&oacute;noma","La PJ solo puede ser sancionada administrativamente"],c:2,e:"La responsabilidad de la PJ es aut&oacute;noma: incluso cuando la PF sea indeterminada o haya escapado, la condena de la PJ es posible si se acredita que el delito se cometi&oacute; en su nombre y beneficio."},
+{t:"&iquest;Qu&eacute; efecto tiene un programa de compliance penal eficaz sobre la responsabilidad de la PJ?",o:["Reduce la multa en un 50%","No tiene ning&uacute;n efecto jur&iacute;dico penal","Puede dar lugar a la exclusi&oacute;n total de la responsabilidad penal de la PJ","Solo es relevante para sanciones administrativas"],c:2,e:"Si la empresa implementa supervisi&oacute;n, vigilancia y control suficientes (compliance eficaz), puede conseguir la exclusi&oacute;n total de su responsabilidad penal. Esto no ocurre con las personas f&iacute;sicas."},
+{t:"&iquest;En qu&eacute; se diferencia el compliance de la PJ respecto a la persona f&iacute;sica?",o:["La PF tambi&eacute;n se exonera si ten&iacute;a plan preventivo personal","No hay diferencia, las mismas reglas aplican a ambas","La PF puede alegar compliance ante el juez igual que la PJ","La PJ puede excluir su responsabilidad mediante compliance; la PF NO puede lograr lo mismo con conducta preventiva previa"],c:3,e:"Diferencia estructural clave: la PJ puede excluir su responsabilidad con compliance eficaz. La persona f&iacute;sica no puede evitar su condena alegando que actu&oacute; preventivamente antes del delito."},
+{t:"&iquest;Cu&aacute;l de las siguientes entidades est&aacute; EXCLUIDA del sistema de responsabilidad penal de PJ?",o:["Una S.A. dedicada a la construcci&oacute;n","Un partido pol&iacute;tico tras la reforma de 2012","Un sindicato tras la reforma de 2012","Un ayuntamiento (entidad de Derecho P&uacute;blico)"],c:3,e:"Las entidades de Derecho P&uacute;blico (ayuntamientos, administraciones) est&aacute;n excluidas. Sancionar a la Administraci&oacute;n equivale a sancionar a los ciudadanos administrados. Se sanciona al funcionario responsable."},
+{t:"&iquest;Por qu&eacute; se excluye a las entidades de Derecho P&uacute;blico de la responsabilidad penal?",o:["Sus actos siempre son l&iacute;citos al estar sometidos a control parlamentario","Porque sancionar a la Administraci&oacute;n equivaldr&iacute;a a sancionar a los ciudadanos administrados","Porque el Derecho Administrativo ya prev&eacute; sanciones suficientes","Porque los funcionarios tienen inmunidad penal total"],c:1,e:"Las entidades p&uacute;blicas se financian con fondos p&uacute;blicos: sancionarlas penalmente repercute directamente sobre los ciudadanos, que son quienes en &uacute;ltima instancia sufren la sanci&oacute;n."},
+{t:"&iquest;Qu&eacute; son las 'sociedades pantalla' y por qu&eacute; quedan excluidas?",o:["Empresas de medios de comunicaci&oacute;n con protecci&oacute;n de la libertad de prensa","Empresas muy grandes con estructura compleja","Sociedades sin actividad real, mero instrumento del delito y alter ego de la PF","Filiales de grupos multinacionales con sede en para&iacute;sos fiscales"],c:2,e:"Las sociedades pantalla son entidades sin actividad real ni beneficio propio, creadas como instrumento del delito. Al ser un alter ego de la persona f&iacute;sica controladora, quedan excluidas del sistema del art. 31 bis CP."},
+{t:"&iquest;Desde qu&eacute; a&ntilde;o est&aacute;n sujetos partidos pol&iacute;ticos y sindicatos a la responsabilidad penal de las PJ?",o:["2005","2010","2012","2015"],c:2,e:"La LO 5/2010 los exclu&iacute;a inicialmente, pero la LO 7/2012 los incluy&oacute; expresamente, respondiendo a las demandas de igualdad ante la ley."},
+{t:"&iquest;Cu&aacute;l de las siguientes sanciones es la M&Aacute;S GRAVE que puede imponerse a una persona jur&iacute;dica?",o:["Multa de cuant&iacute;a proporcional al beneficio","Prohibici&oacute;n temporal de actividades","Intervenci&oacute;n judicial por un a&ntilde;o","Disoluci&oacute;n de la persona jur&iacute;dica"],c:3,e:"La disoluci&oacute;n (art. 33.7 CP) es la sanci&oacute;n m&aacute;s grave: implica la extinci&oacute;n definitiva de la PJ. Est&aacute; reservada para los casos m&aacute;s graves, especialmente cuando la empresa fue instrumentalizada para delinquir."},
+{t:"En la V&Iacute;A B, &iquest;qu&eacute; grado de incumplimiento del deber de supervisi&oacute;n se exige para responsabilizar a la PJ?",a:"Art. 31 bis 1.b",o:["Cualquier descuido leve es suficiente","Incumplimiento grave de los deberes de supervisi&oacute;n, vigilancia y control","Solo si el incumplimiento fue doloso e intencional","Basta con que no existiera un departamento formal de compliance"],c:1,e:"El art. 31 bis 1.b CP exige expresamente que el incumplimiento sea 'grave' y se eval&uacute;e atendidas las concretas circunstancias del caso. No cualquier descuido activa la v&iacute;a B."},
+{t:"&iquest;Cu&aacute;l es la afirmaci&oacute;n CORRECTA sobre las empresas muy peque&ntilde;as y la responsabilidad de la PJ?",o:["Las empresas con menos de 10 trabajadores tienen responsabilidad reducida a la mitad","Todas las empresas quedan sujetas al art. 31 bis CP independientemente de su tama&ntilde;o","Las empresas muy peque&ntilde;as con identidad sustancial entre PF y PJ quedan excluidas","Las empresas peque&ntilde;as solo pueden ser sancionadas con multa, nunca con disoluci&oacute;n"],c:2,e:"Cuando hay identidad sustancial entre la persona f&iacute;sica y la jur&iacute;dica &mdash;como en empresas unipersonales&mdash; la distinci&oacute;n jur&iacute;dica carece de contenido real y la empresa queda excluida del sistema."},
+{t:"&iquest;Cu&aacute;l es el tratamiento de las sociedades mercantiles estatales respecto a la responsabilidad penal de la PJ?",o:["Est&aacute;n totalmente excluidas por su car&aacute;cter p&uacute;blico","Est&aacute;n plenamente sujetas como cualquier empresa privada","Su sujeci&oacute;n es parcial: depende de si la actividad concreta es de naturaleza p&uacute;blica o privada","Solo responden por delitos econ&oacute;micos, no por otros delitos del CP"],c:2,e:"Las sociedades mercantiles estatales son un h&iacute;brido. Su sujeci&oacute;n al art. 31 bis CP depende de la finalidad concreta: si act&uacute;an en r&eacute;gimen privado con &aacute;nimo de lucro, pueden responder; si ejercen funciones p&uacute;blicas, no."}
+];
+
+var answered=new Array(QS.length).fill(null);
+var confirmed=new Array(QS.length).fill(false);
+
+function renderQuestions(){
+  var main=document.getElementById('qmain');
+  var sub=document.getElementById('sub-wrap');
+  var sp=document.getElementById('score-panel');
+  main.querySelectorAll('.qcard').forEach(function(e){e.remove();});
+  answered=new Array(QS.length).fill(null);
+  confirmed=new Array(QS.length).fill(false);
+  QS.forEach(function(q,qi){
+    var card=document.createElement('div');
+    card.className='qcard';
+    card.id='q'+qi;
+    card.style.animationDelay=qi*0.05+'s';
+    var ar=q.a?('<span class="artref">'+q.a+'</span>'):'';
+    var optsHtml=q.o.map(function(opt,oi){
+      return '<div class="opt" data-qi="'+qi+'" data-oi="'+oi+'"><span class="oletter">'+String.fromCharCode(65+oi)+'</span><span class="otext">'+opt+'</span><span class="oicon"></span></div>';
+    }).join('');
+    card.innerHTML='<div class="qhdr"><span class="qnum">'+String(qi+1).padStart(2,'0')+'</span><span class="qtxt">'+q.t+ar+'</span></div><div class="opts" id="o'+qi+'">'+optsHtml+'</div><button class="cbtn" id="cb'+qi+'" data-qi="'+qi+'">Confirmar respuesta</button><div class="expl" id="ex'+qi+'">'+q.e+'</div>';
+    main.insertBefore(card,sub);
+  });
+  document.querySelectorAll('.opt').forEach(function(opt){
+    opt.addEventListener('click',function(){
+      var qi=parseInt(opt.dataset.qi),oi=parseInt(opt.dataset.oi);
+      if(confirmed[qi])return;
+      document.querySelectorAll('#o'+qi+' .opt').forEach(function(o){o.classList.remove('sel');});
+      opt.classList.add('sel');
+      answered[qi]=oi;
+      document.getElementById('cb'+qi).classList.add('vis');
+    });
+  });
+  document.querySelectorAll('.cbtn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var qi=parseInt(btn.dataset.qi);
+      if(confirmed[qi]||answered[qi]===null)return;
+      confirmQ(qi);
+    });
+  });
+  updateProg();
+  sub.classList.remove('vis');
+  sp.classList.remove('vis');
+}
+
+function confirmQ(qi){
+  var q=QS[qi],chosen=answered[qi];
+  confirmed[qi]=true;
+  document.getElementById('q'+qi).classList.add('answered');
+  var opts=document.querySelectorAll('#o'+qi+' .opt');
+  opts.forEach(function(o){o.classList.add('locked');});
+  opts.forEach(function(o,oi){
+    var icon=o.querySelector('.oicon');
+    if(oi===chosen&&oi===q.c){o.classList.add('correct');icon.textContent='\u2713';}
+    else if(oi===chosen&&oi!==q.c){o.classList.add('wrong');icon.textContent='\u2717';opts[q.c].classList.add('rcorrect');opts[q.c].querySelector('.oicon').textContent='\u2713';}
+  });
+  document.getElementById('ex'+qi).classList.add('vis');
+  document.getElementById('cb'+qi).style.display='none';
+  updateProg();
+  if(confirmed.every(Boolean))document.getElementById('sub-wrap').classList.add('vis');
+}
+
+function updateProg(){
+  var done=confirmed.filter(Boolean).length;
+  var pct=Math.round(done/QS.length*100);
+  document.getElementById('ptxt').textContent=done+' / '+QS.length+' respondidas';
+  document.getElementById('ppct').textContent=pct+'%';
+  document.getElementById('pfill').style.width=pct+'%';
+}
+
+document.getElementById('subbtn').addEventListener('click',function(){
+  var c=0,w=0,b=0;
+  QS.forEach(function(q,qi){
+    if(!confirmed[qi]||answered[qi]===null)b++;
+    else if(answered[qi]===q.c)c++;
+    else w++;
+  });
+  var raw=Math.max(0,c-w/3);
+  var score=Math.round(raw/QS.length*10*100)/100;
+  document.getElementById('rc').textContent=c;
+  document.getElementById('rw').textContent=w;
+  document.getElementById('rb').textContent=b;
+  var se=document.getElementById('fscore');
+  se.textContent=score.toFixed(2);
+  if(score>=9){se.style.color='var(--accent3)';document.getElementById('smsg').textContent='Resultado excelente. Dominas la materia con rigor y precisi\u00f3n.';}
+  else if(score>=7){se.style.color='var(--gold-light)';document.getElementById('smsg').textContent='Buen resultado. Hay algunos conceptos que merece la pena revisar.';}
+  else if(score>=5){se.style.color='var(--gold)';document.getElementById('smsg').textContent='Resultado aprobado. Repasa los errores y refuerza los apartados fallados.';}
+  else{se.style.color='var(--accent2)';document.getElementById('smsg').textContent='Resultado insuficiente. Se recomienda repasar el tema completo antes de volver a intentarlo.';}
+  var pen=Math.round(w/3*0.5*100)/100;
+  document.getElementById('snote').textContent='Penalizaci\u00f3n aplicada: \u2212'+pen.toFixed(2)+' pts ('+w+' incorrectas \u00d7 \u22120.167)';
+  document.getElementById('score-panel').classList.add('vis');
+  document.getElementById('sub-wrap').classList.remove('vis');
+  document.getElementById('score-panel').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+document.getElementById('rbtn').addEventListener('click',function(){
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(renderQuestions,300);
+});
+
+renderQuestions();
+</script>
+</body>
+</html>
