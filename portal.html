@@ -308,4 +308,1359 @@ img { display: block; max-width: 100%; }
   color: var(--muted);
   font-size: 0.85rem;
 }
-.subject-
+.subject-card-add:hover {
+  border-color: rgba(212,168,67,0.4);
+  color: var(--gold2);
+  background: rgba(212,168,67,0.03);
+  transform: none;
+}
+.subject-card-add .add-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.subject-card-add:hover .add-icon { opacity: 1; }
+
+/* ═══════════════════════════════════════════
+   SUBJECT VIEW — TOPICS
+═══════════════════════════════════════════ */
+.subject-color-bar {
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  background: var(--subject-color, var(--gold));
+  width: 60px;
+}
+.topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.topic-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.topic-row:hover { border-color: rgba(255,255,255,0.12); }
+.topic-row-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+.topic-drag-handle {
+  color: var(--muted);
+  font-size: 0.9rem;
+  cursor: grab;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.topic-row:hover .topic-drag-handle { opacity: 0.8; }
+.topic-row-info { flex: 1; min-width: 0; }
+.topic-row-info h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topic-row-info p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topic-resource-pills {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.resource-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.pill-apuntes  { background: rgba(74,127,193,0.12); color: #7bbae0; border: 1px solid rgba(74,127,193,0.25); }
+.pill-esquema  { background: rgba(212,168,67,0.1);  color: var(--gold2); border: 1px solid rgba(212,168,67,0.25); }
+.pill-test     { background: rgba(58,158,111,0.1);  color: #5dca90; border: 1px solid rgba(58,158,111,0.25); }
+.pill-practica { background: rgba(180,100,50,0.1);  color: #e09060; border: 1px solid rgba(180,100,50,0.25); }
+.pill-video    { background: rgba(180,50,100,0.1);  color: #e08090; border: 1px solid rgba(180,50,100,0.25); }
+.pill-enlace   { background: rgba(139,111,203,0.1); color: #c0a8f0; border: 1px solid rgba(139,111,203,0.25); }
+.pill-pdf      { background: rgba(180,50,50,0.1);   color: #e09090; border: 1px solid rgba(180,50,50,0.25); }
+.topic-row-actions {
+  display: flex;
+  gap: 0.2rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.topic-row:hover .topic-row-actions { opacity: 1; }
+.topic-chevron {
+  color: var(--muted);
+  font-size: 0.75rem;
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.topic-row.expanded .topic-chevron { transform: rotate(180deg); }
+
+/* ─ Resources panel inside topic ─ */
+.topic-resources-panel {
+  display: none;
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+  background: rgba(0,0,0,0.2);
+}
+.topic-row.expanded .topic-resources-panel { display: block; }
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 0.75rem;
+}
+.resource-card {
+  background: var(--raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  position: relative;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  group: '';
+}
+.resource-card:hover {
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.03);
+}
+.resource-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.resource-type-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+}
+.resource-card-actions {
+  display: flex;
+  gap: 0.15rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.resource-card:hover .resource-card-actions { opacity: 1; }
+.resource-card h4 {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.35;
+}
+.resource-card p {
+  font-size: 0.73rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.resource-card-footer {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.status-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--muted);
+}
+.status-dot::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-available .status-dot::before { background: #3a9e6f; }
+.status-wip       .status-dot::before { background: var(--gold); }
+.status-soon      .status-dot::before { background: #444; }
+.resource-open-btn {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border2);
+  color: var(--subtle);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.resource-open-btn:hover {
+  background: rgba(212,168,67,0.1);
+  border-color: rgba(212,168,67,0.35);
+  color: var(--gold2);
+}
+.resource-open-btn.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.resources-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 0.4rem 0.75rem;
+  border-radius: 5px;
+  border: 1px dashed rgba(255,255,255,0.1);
+  transition: all 0.2s;
+  background: transparent;
+}
+.resources-add-btn:hover {
+  color: var(--gold2);
+  border-color: rgba(212,168,67,0.35);
+  background: rgba(212,168,67,0.04);
+}
+
+/* ─ Add topic row ─ */
+.topic-add-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px dashed rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+}
+.topic-add-row:hover {
+  border-color: rgba(212,168,67,0.3);
+  color: var(--gold2);
+  background: rgba(212,168,67,0.02);
+}
+
+/* ═══════════════════════════════════════════
+   MODALS
+═══════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.25s cubic-bezier(.22,1,.36,1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.modal-overlay.open .modal {
+  transform: translateY(0) scale(1);
+}
+.modal-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-header h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--white);
+}
+.modal-close {
+  width: 32px; height: 32px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  font-size: 1rem;
+  transition: all 0.15s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+.modal-body { padding: 1.25rem 1.5rem; }
+.modal-footer {
+  padding: 1rem 1.5rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════════
+   FORMS
+═══════════════════════════════════════════ */
+.form-group {
+  margin-bottom: 1.1rem;
+}
+.form-group:last-child { margin-bottom: 0; }
+.form-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--subtle);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  background: var(--raised);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 0.6rem 0.85rem;
+  color: var(--text);
+  font-size: 0.88rem;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  outline: none;
+  appearance: none;
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: rgba(212,168,67,0.5);
+  box-shadow: 0 0 0 3px rgba(212,168,67,0.08);
+}
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.55;
+}
+.form-select option { background: var(--surface); }
+
+/* Emoji + color picker row */
+.emoji-color-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.color-grid {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+.color-swatch {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.15s, transform 0.15s;
+  flex-shrink: 0;
+}
+.color-swatch:hover { transform: scale(1.15); }
+.color-swatch.active { border-color: var(--white); }
+
+/* ═══════════════════════════════════════════
+   EMPTY STATES
+═══════════════════════════════════════════ */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--muted);
+}
+.empty-state .empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+.empty-state h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.3rem;
+  color: var(--subtle);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+.empty-state p {
+  font-size: 0.85rem;
+  max-width: 320px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════
+   SEARCH
+═══════════════════════════════════════════ */
+.search-wrap {
+  position: relative;
+  max-width: 280px;
+}
+.search-input {
+  width: 100%;
+  background: var(--raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.45rem 0.85rem 0.45rem 2.2rem;
+  color: var(--text);
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.18s;
+}
+.search-input:focus { border-color: rgba(212,168,67,0.4); }
+.search-input::placeholder { color: var(--muted); }
+.search-icon {
+  position: absolute;
+  left: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+#toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--raised);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 0.7rem 1.25rem;
+  font-size: 0.83rem;
+  color: var(--text);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+}
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ═══════════════════════════════════════════
+   CONFIRM DIALOG
+═══════════════════════════════════════════ */
+#confirmDialog {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s;
+}
+#confirmDialog.open { opacity: 1; pointer-events: all; }
+.confirm-box {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 1.75rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  transform: scale(0.96);
+  transition: transform 0.2s cubic-bezier(.22,1,.36,1);
+}
+#confirmDialog.open .confirm-box { transform: scale(1); }
+.confirm-box h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.confirm-box p {
+  font-size: 0.83rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.55;
+}
+.confirm-actions { display: flex; justify-content: flex-end; gap: 0.5rem; }
+
+/* ═══════════════════════════════════════════
+   RESOURCE TYPE COLORS inline
+═══════════════════════════════════════════ */
+.rt-apuntes  { background: rgba(74,127,193,0.12); color: #7bbae0; border: 1px solid rgba(74,127,193,0.25); }
+.rt-esquema  { background: rgba(212,168,67,0.1);  color: var(--gold2); border: 1px solid rgba(212,168,67,0.25); }
+.rt-test     { background: rgba(58,158,111,0.1);  color: #5dca90; border: 1px solid rgba(58,158,111,0.25); }
+.rt-practica { background: rgba(180,100,50,0.1);  color: #e09060; border: 1px solid rgba(180,100,50,0.25); }
+.rt-video    { background: rgba(180,50,100,0.1);  color: #e08090; border: 1px solid rgba(180,50,100,0.25); }
+.rt-enlace   { background: rgba(139,111,203,0.1); color: #c0a8f0; border: 1px solid rgba(139,111,203,0.25); }
+.rt-pdf      { background: rgba(180,50,50,0.1);   color: #e09090; border: 1px solid rgba(180,50,50,0.25); }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .page-header { flex-direction: column; }
+  .page-header-right { width: 100%; justify-content: flex-end; }
+  .subjects-grid { grid-template-columns: 1fr; }
+  .resources-grid { grid-template-columns: 1fr; }
+  .topic-resource-pills { display: none; }
+  .emoji-color-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="logo-icon">📚</div>
+    StudyBase
+  </div>
+  <div class="topbar-breadcrumb" id="breadcrumb"></div>
+  <div class="topbar-actions" id="topbarActions"></div>
+</header>
+
+<div id="app">
+
+  <div class="page active" id="page-home">
+    <div class="page-inner">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Mis Asignaturas</h1>
+          <p>Selecciona una asignatura para acceder a sus temas y recursos de estudio.</p>
+        </div>
+        <div class="page-header-right">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input class="search-input" id="searchInput" placeholder="Buscar asignatura…" oninput="filterSubjects(this.value)">
+          </div>
+          <button class="btn btn-primary" onclick="openModal('subject')">
+            <span>+</span> Nueva asignatura
+          </button>
+        </div>
+      </div>
+      <div class="subjects-grid" id="subjectsGrid"></div>
+    </div>
+  </div>
+
+  <div class="page" id="page-subject">
+    <div class="page-inner">
+      <div id="subjectColorBar" class="subject-color-bar"></div>
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1 id="subjectTitle"></h1>
+          <p id="subjectDesc"></p>
+        </div>
+        <div class="page-header-right">
+          <button class="btn btn-ghost btn-sm" onclick="openModal('subject', getCurrentSubjectId())">✏️ Editar</button>
+          <button class="btn btn-primary" onclick="openModal('topic')">
+            <span>+</span> Nuevo tema
+          </button>
+        </div>
+      </div>
+      <div class="topics-list" id="topicsList"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-overlay" id="modal-subject">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-subject-title">Nueva Asignatura</h2>
+      <button class="modal-close" onclick="closeModal('subject')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="emoji-color-row">
+        <div class="form-group">
+          <label class="form-label">Icono / Emoji</label>
+          <input class="form-input" id="subject-icon" placeholder="⚖️" maxlength="4">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Color</label>
+          <div class="color-grid" id="subjectColorGrid"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nombre de la asignatura *</label>
+        <input class="form-input" id="subject-name" placeholder="Ej: Derecho Penal Económico…">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Descripción (opcional)</label>
+        <textarea class="form-textarea" id="subject-desc" placeholder="Breve descripción del contenido…"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('subject')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveSubject()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-topic">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-topic-title">Nuevo Tema</h2>
+      <button class="modal-close" onclick="closeModal('topic')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Nombre del tema / bloque *</label>
+        <input class="form-input" id="topic-name" placeholder="Ej: Tema 2 · Penal Europeo e Internacional">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Descripción (opcional)</label>
+        <textarea class="form-textarea" id="topic-desc" placeholder="Contenido que cubre este tema…" style="min-height:70px;"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('topic')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveTopic()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-resource">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-resource-title">Añadir Recurso</h2>
+      <button class="modal-close" onclick="closeModal('resource')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Tipo de recurso *</label>
+        <select class="form-select" id="resource-type">
+          <option value="apuntes">📘 Apuntes</option>
+          <option value="esquema">🗺️ Esquema visual</option>
+          <option value="test">📝 Test interactivo</option>
+          <option value="practica">✏️ Práctica / Ejercicios</option>
+          <option value="pdf">📄 PDF descargable</option>
+          <option value="video">🎬 Vídeo</option>
+          <option value="enlace">🔗 Enlace externo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nombre del recurso *</label>
+        <input class="form-input" id="resource-name" placeholder="Ej: Esquema Visual Tema 2">
+      </div>
+      <div class="form-group">
+        <label class="form-label">URL / Ruta del archivo</label>
+        <input class="form-input" id="resource-url" placeholder="Ej: tema2_esquema.html  o  https://…">
+        <p style="font-size:0.72rem;color:var(--muted);margin-top:0.35rem;">Deja en blanco si el recurso aún no está listo.</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Descripción (opcional)</label>
+        <input class="form-input" id="resource-desc" placeholder="Breve descripción…">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Estado</label>
+        <select class="form-select" id="resource-status">
+          <option value="available">✅ Disponible</option>
+          <option value="wip">🔧 En preparación</option>
+          <option value="soon">🔒 Próximamente</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('resource')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveResource()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div id="confirmDialog">
+  <div class="confirm-box">
+    <h3 id="confirmTitle">¿Eliminar?</h3>
+    <p id="confirmMsg">Esta acción no se puede deshacer.</p>
+    <div class="confirm-actions">
+      <button class="btn btn-ghost btn-sm" onclick="closeConfirm()">Cancelar</button>
+      <button class="btn btn-danger btn-sm" id="confirmOkBtn">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ─────────────────────────────────────────
+   DATA LAYER  (localStorage)
+───────────────────────────────────────── */
+const STORE_KEY = 'studybase_v1';
+
+function loadData() {
+  try {
+    return JSON.parse(localStorage.getItem(STORE_KEY)) || { subjects: [] };
+  } catch { return { subjects: [] }; }
+}
+function saveData(data) {
+  localStorage.setItem(STORE_KEY, JSON.stringify(data));
+}
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}
+
+let DB = loadData();
+
+/* ─────────────────────────────────────────
+   ROUTER STATE
+───────────────────────────────────────── */
+let currentView   = 'home';       // 'home' | 'subject'
+let currentSbjId  = null;
+let expandedTopics = new Set();
+
+function getCurrentSubjectId() { return currentSbjId; }
+function getSubject(id) { return DB.subjects.find(s => s.id === id); }
+function getTopic(sId, tId) {
+  const s = getSubject(sId);
+  return s ? s.topics.find(t => t.id === tId) : null;
+}
+
+/* ─────────────────────────────────────────
+   NAVIGATION
+───────────────────────────────────────── */
+function navigate(view, sbjId) {
+
+  // 🔴 AQUÍ ESTÁ LA MAGIA DE LA REDIRECCIÓN 🔴
+  // Si vas a abrir una asignatura, revisamos su nombre primero.
+  if (view === 'subject') {
+    const s = getSubject(sbjId);
+    if (s && s.name.toLowerCase().includes('penal')) {
+      // Si el nombre contiene "penal", te mandamos a tu carpeta real
+      window.location.href = 'penal_economico/';
+      return; 
+    }
+    // NOTA PARA EL FUTURO: Si creas otra asignatura, por ejemplo Civil, añadirías:
+    // if (s && s.name.toLowerCase().includes('civil')) { window.location.href = 'civil/'; return; }
+  }
+
+  // --- Fin de la magia ---
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  currentView = view;
+  currentSbjId = sbjId || null;
+
+  if (view === 'home') {
+    document.getElementById('page-home').classList.add('active');
+    renderHome();
+  } else if (view === 'subject') {
+    document.getElementById('page-subject').classList.add('active');
+    renderSubjectPage(sbjId);
+  }
+  renderBreadcrumb();
+  window.scrollTo(0, 0);
+}
+
+function renderBreadcrumb() {
+  const el = document.getElementById('breadcrumb');
+  const acts = document.getElementById('topbarActions');
+  if (currentView === 'home') {
+    el.innerHTML = `<span class="crumb active">Inicio</span>`;
+    acts.innerHTML = '';
+  } else if (currentView === 'subject') {
+    const s = getSubject(currentSbjId);
+    el.innerHTML = `
+      <span class="crumb" onclick="navigate('home')">Inicio</span>
+      <span class="sep">/</span>
+      <span class="crumb active">${s ? (s.icon + ' ' + s.name) : '…'}</span>
+    `;
+    acts.innerHTML = `<button class="btn btn-ghost btn-sm" onclick="navigate('home')">← Volver</button>`;
+  }
+}
+
+/* ─────────────────────────────────────────
+   COLORS
+───────────────────────────────────────── */
+const PALETTE = [
+  '#c8a84b','#4a7fc1','#3a9e6f','#c05050',
+  '#8b6fcb','#c07840','#4ab0c8','#a06090',
+  '#6a9e40','#c86080'
+];
+
+let selectedColor = PALETTE[0];
+
+function renderColorGrid(gridId) {
+  const grid = document.getElementById(gridId);
+  grid.innerHTML = PALETTE.map(c => `
+    <div class="color-swatch ${c === selectedColor ? 'active' : ''}"
+         style="background:${c}"
+         onclick="pickColor('${c}','${gridId}')"></div>
+  `).join('');
+}
+
+function pickColor(c, gridId) {
+  selectedColor = c;
+  renderColorGrid(gridId);
+}
+
+function colorBg(hex)     { return hex + '18'; }
+function colorBorder(hex) { return hex + '40'; }
+
+/* ─────────────────────────────────────────
+   HOME
+───────────────────────────────────────── */
+let searchQuery = '';
+function filterSubjects(q) {
+  searchQuery = q.toLowerCase();
+  renderSubjectsGrid();
+}
+
+function renderHome() {
+  renderSubjectsGrid();
+}
+
+function renderSubjectsGrid() {
+  const grid = document.getElementById('subjectsGrid');
+  const subjects = DB.subjects.filter(s =>
+    !searchQuery ||
+    s.name.toLowerCase().includes(searchQuery) ||
+    (s.description||'').toLowerCase().includes(searchQuery)
+  );
+
+  let html = subjects.map(s => {
+    const topicCount = (s.topics||[]).length;
+    const resCount = (s.topics||[]).reduce((a, t) => a + (t.resources||[]).length, 0);
+    const color = s.color || PALETTE[0];
+    return `
+      <div class="subject-card" onclick="navigate('subject','${s.id}')"
+           style="--subject-color:${color};--subject-color-bg:${colorBg(color)};--subject-color-border:${colorBorder(color)}">
+        <div class="subject-card-top">
+          <div class="subject-icon">${s.icon||'📚'}</div>
+          <div class="subject-card-actions" onclick="event.stopPropagation()">
+            <button class="btn btn-icon btn-sm" title="Editar" onclick="openModal('subject','${s.id}')">✏️</button>
+            <button class="btn btn-icon btn-sm" title="Eliminar" onclick="confirmDelete('subject','${s.id}')">🗑️</button>
+          </div>
+        </div>
+        <h2>${s.name}</h2>
+        ${s.description ? `<p>${s.description}</p>` : '<p style="flex:1"></p>'}
+        <div class="subject-card-stats">
+          <div class="stat-item"><strong>${topicCount}</strong>Temas</div>
+          <div class="stat-item"><strong>${resCount}</strong>Recursos</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  html += `
+    <div class="subject-card subject-card-add" onclick="openModal('subject')">
+      <div class="add-icon">+</div>
+      <span>Añadir asignatura</span>
+    </div>
+  `;
+
+  grid.innerHTML = html;
+
+  if (subjects.length === 0 && DB.subjects.length > 0) {
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1;padding:2rem 0;">
+        <div class="empty-icon">🔍</div>
+        <h3>Sin resultados</h3>
+        <p>No hay asignaturas que coincidan con "<strong>${searchQuery}</strong>"</p>
+      </div>
+    ` + html;
+  } else if (DB.subjects.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1;">
+        <div class="empty-icon">📚</div>
+        <h3>Aún no tienes asignaturas</h3>
+        <p>Crea tu primera asignatura para empezar a organizar tus apuntes, tests y recursos.</p>
+        <button class="btn btn-primary" onclick="openModal('subject')">+ Crear primera asignatura</button>
+      </div>
+    ` + `<div class="subject-card subject-card-add" onclick="openModal('subject')"><div class="add-icon">+</div><span>Añadir asignatura</span></div>`;
+  }
+}
+
+/* ─────────────────────────────────────────
+   SUBJECT PAGE
+───────────────────────────────────────── */
+function renderSubjectPage(sId) {
+  const s = getSubject(sId);
+  if (!s) { navigate('home'); return; }
+
+  const color = s.color || PALETTE[0];
+  document.getElementById('subjectColorBar').style.background = color;
+  document.getElementById('subjectTitle').innerHTML = `<span class="subject-emoji">${s.icon||''}</span>${s.name}`;
+  document.getElementById('subjectDesc').textContent = s.description || '';
+
+  renderTopicsList(sId);
+}
+
+function renderTopicsList(sId) {
+  const s = getSubject(sId);
+  const list = document.getElementById('topicsList');
+  const topics = s.topics || [];
+
+  if (topics.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📂</div>
+        <h3>Sin temas todavía</h3>
+        <p>Añade el primer tema o bloque del temario de esta asignatura.</p>
+        <button class="btn btn-primary" onclick="openModal('topic')">+ Añadir primer tema</button>
+      </div>
+    `;
+    return;
+  }
+
+  list.innerHTML = topics.map((t, idx) => {
+    const resources = t.resources || [];
+    const isExpanded = expandedTopics.has(t.id);
+
+    // pills by type
+    const types = [...new Set(resources.map(r => r.type))];
+    const pills = types.map(tp => {
+      const labels = {apuntes:'Apuntes',esquema:'Esquema',test:'Test',practica:'Práctica',pdf:'PDF',video:'Vídeo',enlace:'Enlace'};
+      return `<span class="resource-pill pill-${tp}">${labels[tp]||tp}</span>`;
+    }).join('');
+
+    // resources inside
+    const resCards = resources.map(r => renderResourceCard(sId, t.id, r)).join('');
+
+    return `
+      <div class="topic-row ${isExpanded?'expanded':''}" id="topic-${t.id}">
+        <div class="topic-row-header" onclick="toggleTopic('${t.id}')">
+          <span class="topic-drag-handle">⠿</span>
+          <div class="topic-row-info">
+            <h3>${t.name}</h3>
+            ${t.description ? `<p>${t.description}</p>` : ''}
+          </div>
+          <div class="topic-resource-pills">${pills}</div>
+          <div class="topic-row-actions" onclick="event.stopPropagation()">
+            <button class="btn btn-icon btn-sm" title="Editar tema" onclick="openModal('topic','${sId}','${t.id}')">✏️</button>
+            <button class="btn btn-icon btn-sm" title="Eliminar tema" onclick="confirmDelete('topic','${sId}','${t.id}')">🗑️</button>
+          </div>
+          <span class="topic-chevron">▼</span>
+        </div>
+        <div class="topic-resources-panel">
+          <div class="resources-grid">${resCards}</div>
+          <button class="resources-add-btn" onclick="openModal('resource','${sId}','${t.id}')">
+            + Añadir recurso
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Add topic row
+  list.innerHTML += `
+    <button class="topic-add-row" onclick="openModal('topic')">
+      <span>+</span> Añadir tema
+    </button>
+  `;
+}
+
+function renderResourceCard(sId, tId, r) {
+  const typeIcons = {apuntes:'📘',esquema:'🗺️',test:'📝',practica:'✏️',pdf:'📄',video:'🎬',enlace:'🔗'};
+  const typeLabels = {apuntes:'Apuntes',esquema:'Esquema',test:'Test',practica:'Práctica',pdf:'PDF',video:'Vídeo',enlace:'Enlace'};
+  const statusLabels = {available:'Disponible',wip:'En preparación',soon:'Próximamente'};
+  const hasUrl = r.url && r.url.trim() !== '';
+
+  return `
+    <div class="resource-card status-${r.status||'soon'}">
+      <div class="resource-card-header">
+        <span class="resource-type-badge rt-${r.type}">${typeIcons[r.type]||'📎'} ${typeLabels[r.type]||r.type}</span>
+        <div class="resource-card-actions">
+          <button class="btn btn-icon btn-sm" title="Editar" onclick="openModal('resource','${sId}','${tId}','${r.id}')">✏️</button>
+          <button class="btn btn-icon btn-sm" title="Eliminar" onclick="confirmDelete('resource','${sId}','${tId}','${r.id}')">🗑️</button>
+        </div>
+      </div>
+      <h4>${r.name}</h4>
+      ${r.description ? `<p>${r.description}</p>` : ''}
+      <div class="resource-card-footer">
+        <span class="status-dot">${statusLabels[r.status]||'Próximamente'}</span>
+        ${hasUrl
+          ? `<a href="${r.url}" target="_blank" class="resource-open-btn">Abrir →</a>`
+          : `<span class="resource-open-btn disabled">Sin URL</span>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function toggleTopic(tId) {
+  if (expandedTopics.has(tId)) expandedTopics.delete(tId);
+  else expandedTopics.add(tId);
+  const row = document.getElementById('topic-' + tId);
+  if (row) row.classList.toggle('expanded');
+}
+
+/* ─────────────────────────────────────────
+   MODALS — STATE
+───────────────────────────────────────── */
+let modalEditing = { subjectId: null, topicId: null, resourceId: null };
+
+function openModal(type, ...args) {
+  if (type === 'subject') {
+    const [editId] = args;
+    modalEditing.subjectId = editId || null;
+    selectedColor = PALETTE[0];
+
+    if (editId) {
+      const s = getSubject(editId);
+      document.getElementById('modal-subject-title').textContent = 'Editar Asignatura';
+      document.getElementById('subject-name').value = s.name;
+      document.getElementById('subject-desc').value = s.description || '';
+      document.getElementById('subject-icon').value = s.icon || '';
+      selectedColor = s.color || PALETTE[0];
+    } else {
+      document.getElementById('modal-subject-title').textContent = 'Nueva Asignatura';
+      document.getElementById('subject-name').value = '';
+      document.getElementById('subject-desc').value = '';
+      document.getElementById('subject-icon').value = '';
+      selectedColor = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+    }
+    renderColorGrid('subjectColorGrid');
+    showModal('subject');
+    setTimeout(() => document.getElementById('subject-name').focus(), 120);
+
+  } else if (type === 'topic') {
+    const [sId, editId] = args;
+    modalEditing.subjectId = sId || currentSbjId;
+    modalEditing.topicId = editId || null;
+
+    if (editId) {
+      const t = getTopic(modalEditing.subjectId, editId);
+      document.getElementById('modal-topic-title').textContent = 'Editar Tema';
+      document.getElementById('topic-name').value = t.name;
+      document.getElementById('topic-desc').value = t.description || '';
+    } else {
+      document.getElementById('modal-topic-title').textContent = 'Nuevo Tema';
+      document.getElementById('topic-name').value = '';
+      document.getElementById('topic-desc').value = '';
+    }
+    showModal('topic');
+    setTimeout(() => document.getElementById('topic-name').focus(), 120);
+
+  } else if (type === 'resource') {
+    const [sId, tId, editId] = args;
+    modalEditing.subjectId = sId;
+    modalEditing.topicId = tId;
+    modalEditing.resourceId = editId || null;
+
+    if (editId) {
+      const t = getTopic(sId, tId);
+      const r = t.resources.find(x => x.id === editId);
+      document.getElementById('modal-resource-title').textContent = 'Editar Recurso';
+      document.getElementById('resource-type').value = r.type;
+      document.getElementById('resource-name').value = r.name;
+      document.getElementById('resource-url').value = r.url || '';
+      document.getElementById('resource-desc').value = r.description || '';
+      document.getElementById('resource-status').value = r.status || 'soon';
+    } else {
+      document.getElementById('modal-resource-title').textContent = 'Añadir Recurso';
+      document.getElementById('resource-type').value = 'apuntes';
+      document.getElementById('resource-name').value = '';
+      document.getElementById('resource-url').value = '';
+      document.getElementById('resource-desc').value = '';
+      document.getElementById('resource-status').value = 'available';
+    }
+    showModal('resource');
+    setTimeout(() => document.getElementById('resource-name').focus(), 120);
+  }
+}
+
+function showModal(type) {
+  document.getElementById('modal-' + type).classList.add('open');
+}
+function closeModal(type) {
+  document.getElementById('modal-' + type).classList.remove('open');
+}
+
+/* ─────────────────────────────────────────
+   SAVE
+───────────────────────────────────────── */
+function saveSubject() {
+  const name = document.getElementById('subject-name').value.trim();
+  if (!name) { shake('subject-name'); return; }
+
+  if (modalEditing.subjectId) {
+    const s = getSubject(modalEditing.subjectId);
+    s.name = name;
+    s.description = document.getElementById('subject-desc').value.trim();
+    s.icon = document.getElementById('subject-icon').value.trim() || '📚';
+    s.color = selectedColor;
+    toast('Asignatura actualizada ✓');
+  } else {
+    DB.subjects.push({
+      id: uid(),
+      name,
+      description: document.getElementById('subject-desc').value.trim(),
+      icon: document.getElementById('subject-icon').value.trim() || '📚',
+      color: selectedColor,
+      topics: [],
+      createdAt: Date.now()
+    });
+    toast('Asignatura creada ✓');
+  }
+
+  saveData(DB);
+  closeModal('subject');
+
+  if (currentView === 'home') renderHome();
+  else renderSubjectPage(currentSbjId);
+}
+
+function saveTopic() {
+  const name = document.getElementById('topic-name').value.trim();
+  if (!name) { shake('topic-name'); return; }
+
+  const s = getSubject(modalEditing.subjectId);
+  if (!s) return;
+  if (!s.topics) s.topics = [];
+
+  if (modalEditing.topicId) {
+    const t = s.topics.find(x => x.id === modalEditing.topicId);
+    t.name = name;
+    t.description = document.getElementById('topic-desc').value.trim();
+    toast('Tema actualizado ✓');
+  } else {
+    s.topics.push({
+      id: uid(),
+      name,
+      description: document.getElementById('topic-desc').value.trim(),
+      resources: [],
+      createdAt: Date.now()
+    });
+    toast('Tema añadido ✓');
+  }
+
+  saveData(DB);
+  closeModal('topic');
+  renderSubjectPage(modalEditing.subjectId);
+}
+
+function saveResource() {
+  const name = document.getElementById('resource-name').value.trim();
+  if (!name) { shake('resource-name'); return; }
+
+  const t = getTopic(modalEditing.subjectId, modalEditing.topicId);
+  if (!t) return;
+  if (!t.resources) t.resources = [];
+
+  const data = {
+    type:        document.getElementById('resource-type').value,
+    name,
+    url:         document.getElementById('resource-url').value.trim(),
+    description: document.getElementById('resource-desc').value.trim(),
+    status:      document.getElementById('resource-status').value,
+  };
+
+  if (modalEditing.resourceId) {
+    const r = t.resources.find(x => x.id === modalEditing.resourceId);
+    Object.assign(r, data);
+    toast('Recurso actualizado ✓');
+  } else {
+    t.resources.push({ id: uid(), ...data, createdAt: Date.now() });
+    expandedTopics.add(modalEditing.topicId);
+    toast('Recurso añadido ✓');
+  }
+
+  saveData(DB);
+  closeModal('resource');
+  renderSubjectPage(modalEditing.subjectId);
+}
+
+/* ─────────────────────────────────────────
+   DELETE
+───────────────────────────────────────── */
+let pendingDelete = null;
+
+function confirmDelete(type, ...args) {
+  const messages = {
+    subject: 'Se eliminarán la asignatura y todos sus temas y recursos.',
+    topic:   'Se eliminarán el tema y todos sus recursos.',
+    resource:'El recurso será eliminado permanentemente.'
+  };
+  pendingDelete = { type, args };
+  document.getElementById('confirmTitle').textContent =
+    type === 'subject' ? '¿Eliminar asignatura?' :
+    type === 'topic'   ? '¿Eliminar tema?' : '¿Eliminar recurso?';
+  document.getElementById('confirmMsg').textContent = messages[type];
+  document.getElementById('confirmOkBtn').onclick = executeDelete;
+  document.getElementById('confirmDialog').classList.add('open');
+}
+
+function closeConfirm() {
+  document.getElementById('confirmDialog').classList.remove('open');
+  pendingDelete = null;
+}
+
+function executeDelete() {
+  if (!pendingDelete) return;
+  const { type, args } = pendingDelete;
+
+  if (type === 'subject') {
+    const [sId] = args;
+    DB.subjects = DB.subjects.filter(s => s.id !== sId);
+    toast('Asignatura eliminada');
+    saveData(DB);
+    closeConfirm();
+    if (currentView === 'subject') navigate('home');
+    else renderHome();
+
+  } else if (type === 'topic') {
+    const [sId, tId] = args;
+    const s = getSubject(sId);
+    s.topics = s.topics.filter(t => t.id !== tId);
+    expandedTopics.delete(tId);
+    toast('Tema eliminado');
+    saveData(DB);
+    closeConfirm();
+    renderSubjectPage(sId);
+
+  } else if (type === 'resource') {
+    const [sId, tId, rId] = args;
+    const t = getTopic(sId, tId);
+    t.resources = t.resources.filter(r => r.id !== rId);
+    toast('Recurso eliminado');
+    saveData(DB);
+    closeConfirm();
+    renderSubjectPage(sId);
+  }
+}
+
+/* ─────────────────────────────────────────
+   UTILS
+───────────────────────────────────────── */
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+function shake(inputId) {
+  const el = document.getElementById(inputId);
+  el.style.borderColor = '#e05050';
+  el.style.animation = 'none';
+  requestAnimationFrame(() => {
+    el.style.animation = 'shake 0.35s ease';
+  });
+  el.focus();
+  setTimeout(() => { el.style.borderColor = ''; }, 1200);
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) {
+      const type = overlay.id.replace('modal-', '');
+      closeModal(type);
+    }
+  });
+});
+
+// Keyboard: Escape closes modals
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      closeModal(m.id.replace('modal-', ''));
+    });
+    closeConfirm();
+  }
+  if ((e.key === 'Enter') && e.ctrlKey) {
+    const openModal = document.querySelector('.modal-overlay.open');
+    if (openModal) {
+      const type = openModal.id.replace('modal-', '');
+      if (type === 'subject')  saveSubject();
+      if (type === 'topic')    saveTopic();
+      if (type === 'resource') saveResource();
+    }
+  }
+});
+
+// Add shake keyframe
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes shake {
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-5px)}
+    75%{transform:translateX(5px)}
+  }
+`;
+document.head.appendChild(style);
+
+/* ─────────────────────────────────────────
+   DEMO DATA (first load)
+───────────────────────────────────────── */
+function seedDemo() {
+  if (DB.subjects.length > 0) return;
+  const sId = uid();
+  const t1Id = uid();
+  const t2Id = uid();
+  DB.subjects.push({
+    id: sId,
+    name: 'Derecho Penal Económico y de la Empresa',
+    description: 'Estudio del Derecho Penal aplicado al ámbito económico, empresarial y financiero.',
+    icon: '⚖️',
+    color: '#c8a84b',
+    topics: [
+      {
+        id: t1Id,
+        name: 'Tema 1 · Introducción al Derecho Penal Económico',
+        description: 'Concepto, características y bien jurídico protegido.',
+        resources: [],
+        createdAt: Date.now()
+      },
+      {
+        id: t2Id,
+        name: 'Tema 2 · Derecho Penal Económico Europeo e Internacional',
+        description: 'Europeización, D.º Sancionador, Protección de Intereses Financieros e Internacional.',
+        resources: [
+          { id: uid(), type: 'esquema', name: 'Esquema Visual — 4 Fenómenos', url: 'tema2_penal_economico.html', description: 'Mapa completo con métodos de estudio', status: 'available', createdAt: Date.now() },
+          { id: uid(), type: 'test', name: 'Test 20 preguntas (penalización −⅓)', url: 'test_penal_economico.html', description: 'Corrección automática, tipo examen', status: 'available', createdAt: Date.now() },
+          { id: uid(), type: 'pdf', name: 'Diapositivas originales', url: 'TEMA_2_PENAL_ECONOMICO_EU_E_INTERNACIONAL.pdf', description: 'PDF del tema proporcionado por el profesor', status: 'available', createdAt: Date.now() }
+        ],
+        createdAt: Date.now()
+      }
+    ],
+    createdAt: Date.now()
+  });
+  expandedTopics.add(t2Id);
+  saveData(DB);
+}
+
+/* ─────────────────────────────────────────
+   INIT
+───────────────────────────────────────── */
+seedDemo();
+navigate('home');
+</script>
+</body>
+</html>
