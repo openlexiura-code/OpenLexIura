@@ -869,9 +869,7 @@ img { display: block; max-width: 100%; }
             <span class="search-icon">🔍</span>
             <input class="search-input" id="searchInput" placeholder="Buscar asignatura…" oninput="filterSubjects(this.value)">
           </div>
-          <button class="btn btn-primary" onclick="openModal('subject')">
-            <span>+</span> Nueva asignatura
-          </button>
+
         </div>
       </div>
       <div class="subjects-grid" id="subjectsGrid"></div>
@@ -887,10 +885,7 @@ img { display: block; max-width: 100%; }
           <p id="subjectDesc"></p>
         </div>
         <div class="page-header-right">
-          <button class="btn btn-ghost btn-sm" onclick="openModal('subject', getCurrentSubjectId())">✏️ Editar</button>
-          <button class="btn btn-primary" onclick="openModal('topic')">
-            <span>+</span> Nuevo tema
-          </button>
+
         </div>
       </div>
       <div class="topics-list" id="topicsList"></div>
@@ -1160,10 +1155,7 @@ function renderSubjectsGrid() {
            style="--subject-color:${color};--subject-color-bg:${colorBg(color)};--subject-color-border:${colorBorder(color)}">
         <div class="subject-card-top">
           <div class="subject-icon">${s.icon||'📚'}</div>
-          <div class="subject-card-actions" onclick="event.stopPropagation()">
-            <button class="btn btn-icon btn-sm" title="Editar" onclick="openModal('subject','${s.id}')">✏️</button>
-            <button class="btn btn-icon btn-sm" title="Eliminar" onclick="confirmDelete('subject','${s.id}')">🗑️</button>
-          </div>
+
         </div>
         <h2>${s.name}</h2>
         ${s.description ? `<p>${s.description}</p>` : '<p style="flex:1"></p>'}
@@ -1175,12 +1167,7 @@ function renderSubjectsGrid() {
     `;
   }).join('');
 
-  html += `
-    <div class="subject-card subject-card-add" onclick="openModal('subject')">
-      <div class="add-icon">+</div>
-      <span>Añadir asignatura</span>
-    </div>
-  `;
+
 
   grid.innerHTML = html;
 
@@ -1198,9 +1185,8 @@ function renderSubjectsGrid() {
         <div class="empty-icon">📚</div>
         <h3>Aún no tienes asignaturas</h3>
         <p>Crea tu primera asignatura para empezar a organizar tus apuntes, tests y recursos.</p>
-        <button class="btn btn-primary" onclick="openModal('subject')">+ Crear primera asignatura</button>
       </div>
-    ` + `<div class="subject-card subject-card-add" onclick="openModal('subject')"><div class="add-icon">+</div><span>Añadir asignatura</span></div>`;
+    ` + ``;
   }
 }
 
@@ -1230,7 +1216,6 @@ function renderTopicsList(sId) {
         <div class="empty-icon">📂</div>
         <h3>Sin temas todavía</h3>
         <p>Añade el primer tema o bloque del temario de esta asignatura.</p>
-        <button class="btn btn-primary" onclick="openModal('topic')">+ Añadir primer tema</button>
       </div>
     `;
     return;
@@ -1259,28 +1244,17 @@ function renderTopicsList(sId) {
             ${t.description ? `<p>${t.description}</p>` : ''}
           </div>
           <div class="topic-resource-pills">${pills}</div>
-          <div class="topic-row-actions" onclick="event.stopPropagation()">
-            <button class="btn btn-icon btn-sm" title="Editar tema" onclick="openModal('topic','${sId}','${t.id}')">✏️</button>
-            <button class="btn btn-icon btn-sm" title="Eliminar tema" onclick="confirmDelete('topic','${sId}','${t.id}')">🗑️</button>
-          </div>
+
           <span class="topic-chevron">▼</span>
         </div>
         <div class="topic-resources-panel">
           <div class="resources-grid">${resCards}</div>
-          <button class="resources-add-btn" onclick="openModal('resource','${sId}','${t.id}')">
-            + Añadir recurso
-          </button>
         </div>
       </div>
     `;
   }).join('');
 
-  // Add topic row
-  list.innerHTML += `
-    <button class="topic-add-row" onclick="openModal('topic')">
-      <span>+</span> Añadir tema
-    </button>
-  `;
+
 }
 
 function renderResourceCard(sId, tId, r) {
@@ -1293,10 +1267,6 @@ function renderResourceCard(sId, tId, r) {
     <div class="resource-card status-${r.status||'soon'}">
       <div class="resource-card-header">
         <span class="resource-type-badge rt-${r.type}">${typeIcons[r.type]||'📎'} ${typeLabels[r.type]||r.type}</span>
-        <div class="resource-card-actions">
-          <button class="btn btn-icon btn-sm" title="Editar" onclick="openModal('resource','${sId}','${tId}','${r.id}')">✏️</button>
-          <button class="btn btn-icon btn-sm" title="Eliminar" onclick="confirmDelete('resource','${sId}','${tId}','${r.id}')">🗑️</button>
-        </div>
       </div>
       <h4>${r.name}</h4>
       ${r.description ? `<p>${r.description}</p>` : ''}
@@ -1653,6 +1623,40 @@ function seedDemo() {
     createdAt: Date.now()
   });
   expandedTopics.add(t2Id);
+
+  // Derecho Mercantil
+  DB.subjects.push({
+    id: uid(),
+    name: 'Derecho Mercantil',
+    description: 'Estudio del ordenamiento jurídico que regula la actividad empresarial, los contratos mercantiles y las sociedades.',
+    icon: '🏛️',
+    color: '#4a7fc1',
+    topics: [],
+    createdAt: Date.now()
+  });
+
+  // Seguridad Social
+  DB.subjects.push({
+    id: uid(),
+    name: 'Seguridad Social',
+    description: 'Régimen jurídico de la Seguridad Social española: afiliación, cotización, prestaciones y protección social.',
+    icon: '🛡️',
+    color: '#3a9e6f',
+    topics: [],
+    createdAt: Date.now()
+  });
+
+  // Impuesto de Sociedades
+  DB.subjects.push({
+    id: uid(),
+    name: 'Impuesto de Sociedades',
+    description: 'Normativa y práctica del Impuesto sobre Sociedades: base imponible, tipos, deducciones y declaración.',
+    icon: '📊',
+    color: '#8b6fcb',
+    topics: [],
+    createdAt: Date.now()
+  });
+
   saveData(DB);
 }
 
