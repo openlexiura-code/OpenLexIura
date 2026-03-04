@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StudyBase · Portal de Estudio</title>
+<title>StudyBase · Mis Asignaturas</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
@@ -848,6 +849,7 @@ img { display: block; max-width: 100%; }
 
 <header class="topbar">
   <div class="topbar-brand">
+    <a href="index.html" style="color: var(--muted); text-decoration: none; font-size: 1.2rem; transition: color 0.2s; margin-right: 0.5rem;" title="Volver a Inicio" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">←</a>
     <div class="logo-icon">📚</div>
     StudyBase
   </div>
@@ -1051,19 +1053,21 @@ function getTopic(sId, tId) {
 function navigate(view, sbjId) {
 
   // 🔴 AQUÍ ESTÁ LA MAGIA DE LA REDIRECCIÓN 🔴
-  // Si vas a abrir una asignatura, revisamos su nombre primero.
   if (view === 'subject') {
     const s = getSubject(sbjId);
+    
+    // Redirección para Penal Económico
     if (s && s.name.toLowerCase().includes('penal')) {
-      // Si el nombre contiene "penal", te mandamos a tu carpeta real
       window.location.href = 'penal_economico/';
       return; 
     }
-    // NOTA PARA EL FUTURO: Si creas otra asignatura, por ejemplo Civil, añadirías:
-    // if (s && s.name.toLowerCase().includes('civil')) { window.location.href = 'civil/'; return; }
-  }
 
-  // --- Fin de la magia ---
+    // Redirección para Derecho Mercantil
+    if (s && s.name.toLowerCase().includes('mercantil')) {
+      window.location.href = 'mercantil/';
+      return; 
+    }
+  }
 
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   currentView = view;
