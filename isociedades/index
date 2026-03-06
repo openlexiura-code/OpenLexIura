@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Estudio · Impuesto de Sociedades</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #0e0e12;
+    --panel:  #14141a;
+    --card:   #1c1c26;
+    --border: rgba(255,255,255,0.07);
+    --gold:   #c8a84b;
+    --gold2:  #e8cc78;
+    --silver: #a0aec0;
+    --white:  #f4f1eb;
+    --dim:    #6b7280;
+    --blue:   #4a7fc1;
+    --green:  #3a9e6f;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 0; opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(14,14,18,0.92); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+  }
+  nav.visible { transform: translateY(0); }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--gold);
+  }
+  .nav-back {
+    color: var(--dim); text-decoration: none; font-size: 1.2rem; transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 5rem 2rem 4rem;
+    overflow: hidden; z-index: 1;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 100% 70% at 20% 50%, rgba(200,168,75,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 80% at 80% 20%,  rgba(139,111,203,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 60% at 50% 100%, rgba(74,127,193,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-grid { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .hero-grid svg { width: 100%; height: 100%; opacity: 0.06; }
+
+  .hero-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    opacity: 0; animation: riseIn 0.9s cubic-bezier(.22,1,.36,1) forwards 0.2s;
+  }
+  .hero-kicker::before, .hero-kicker::after {
+    content: ''; display: block; width: 30px; height: 1px; background: var(--gold); opacity: 0.5;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 700; line-height: 1.05;
+    text-align: center; max-width: 900px; color: var(--white);
+    opacity: 0; animation: riseIn 1s cubic-bezier(.22,1,.36,1) forwards 0.4s;
+  }
+  .hero-title .accent { color: var(--gold); font-style: italic; }
+
+  .hero-desc {
+    margin-top: 1.5rem; font-size: 1rem; color: var(--silver);
+    font-weight: 300; text-align: center; max-width: 520px; line-height: 1.7;
+    opacity: 0; animation: riseIn 1s cubic-bezier(.22,1,.36,1) forwards 0.6s;
+  }
+
+  /* ── BUTTONS ── */
+  .hero-buttons {
+    display: flex; gap: 1.25rem; margin-top: 3.5rem;
+    flex-wrap: wrap; justify-content: center;
+    opacity: 0; animation: riseIn 1s cubic-bezier(.22,1,.36,1) forwards 0.8s;
+  }
+
+  .btn {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 1.1rem 2.2rem;
+    border-radius: 6px; text-decoration: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
+    transition: all 0.25s cubic-bezier(.22,1,.36,1);
+    position: relative; overflow: hidden;
+  }
+  .btn::before {
+    content: ''; position: absolute; inset: 0;
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .btn:hover { transform: translateY(-3px); }
+  .btn:hover::before { opacity: 1; }
+
+  .btn-manual {
+    background: rgba(200,168,75,0.1);
+    border: 1px solid rgba(200,168,75,0.35);
+    color: var(--gold2);
+  }
+  .btn-manual::before { background: rgba(200,168,75,0.06); }
+  .btn-manual:hover { border-color: rgba(200,168,75,0.65); box-shadow: 0 8px 32px rgba(200,168,75,0.12); }
+
+  .btn-practicas {
+    background: rgba(58,158,111,0.1);
+    border: 1px solid rgba(58,158,111,0.35);
+    color: #5dca90;
+  }
+  .btn-practicas::before { background: rgba(58,158,111,0.06); }
+  .btn-practicas:hover { border-color: rgba(58,158,111,0.65); box-shadow: 0 8px 32px rgba(58,158,111,0.12); }
+
+  .btn-icon { font-size: 1.3rem; line-height: 1; position: relative; z-index: 1; }
+  .btn-body { display: flex; flex-direction: column; position: relative; z-index: 1; }
+  .btn-label {
+    font-family: 'DM Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.15rem;
+  }
+  .btn-name { font-size: 1rem; font-weight: 600; line-height: 1; }
+
+  /* ── SCROLL CUE ── */
+  .scroll-cue {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0; animation: riseIn 1s ease forwards 1.2s;
+    pointer-events: none; transition: opacity 0.4s ease;
+  }
+  .scroll-cue.hidden { opacity: 0 !important; }
+  .scroll-cue span {
+    font-family: 'DM Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--dim);
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:0.2} 50%{opacity:0.9} }
+  @keyframes riseIn { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border); padding: 2rem;
+    text-align: center; font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; color: #2a2a35; letter-spacing: 0.1em;
+  }
+  footer span { color: var(--gold); opacity: 0.4; }
+
+  @media (max-width: 480px) {
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .btn { width: 260px; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="portal.html" class="nav-back">←</a>
+    <div class="nav-brand">💼 Impuesto de Sociedades</div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="200" x2="1200" y2="200" stroke="white" stroke-width="0.5"/>
+      <line x1="0" y1="400" x2="1200" y2="400" stroke="white" stroke-width="0.5"/>
+      <line x1="0" y1="600" x2="1200" y2="600" stroke="white" stroke-width="0.5"/>
+      <line x1="200" y1="0" x2="200" y2="800" stroke="white" stroke-width="0.5"/>
+      <line x1="400" y1="0" x2="400" y2="800" stroke="white" stroke-width="0.5"/>
+      <line x1="600" y1="0" x2="600" y2="800" stroke="white" stroke-width="0.5"/>
+      <line x1="800" y1="0" x2="800" y2="800" stroke="white" stroke-width="0.5"/>
+      <line x1="1000" y1="0" x2="1000" y2="800" stroke="white" stroke-width="0.5"/>
+      <circle cx="600" cy="400" r="300" stroke="white" stroke-width="0.5" fill="none"/>
+      <circle cx="600" cy="400" r="160" stroke="white" stroke-width="0.5" fill="none"/>
+      <polygon points="600,120 880,560 320,560" stroke="white" stroke-width="0.5" fill="none"/>
+      <rect x="350" y="200" width="500" height="400" stroke="white" stroke-width="0.4" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="hero-kicker">Portal de Estudio</div>
+
+  <h1 class="hero-title">
+    Impuesto<br>
+    <span class="accent">de Sociedades</span>
+  </h1>
+
+  <p class="hero-desc">
+    Consulta el manual teórico o accede directamente a los casos prácticos de liquidación y supuestos resueltos.
+  </p>
+
+  <div class="hero-buttons">
+    <a class="btn btn-manual" href="manual_isociedades.html">
+      <div class="btn-icon">📘</div>
+      <div class="btn-body">
+        <span class="btn-label">Teoría</span>
+        <span class="btn-name">Manual</span>
+      </div>
+    </a>
+    <a class="btn btn-practicas" href="practicas_isociedades.html">
+      <div class="btn-icon">✏️</div>
+      <div class="btn-body">
+        <span class="btn-label">Supuestos</span>
+        <span class="btn-name">Prácticas</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="scroll-cue" id="scrollCue">
+    <span>Inicio</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<footer>
+  PORTAL DE ESTUDIO · IMPUESTO DE SOCIEDADES &nbsp;·&nbsp; <span>2025</span>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  const cue = document.getElementById('scrollCue');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.7);
+    if (window.scrollY > 60) cue.classList.add('hidden');
+    else cue.classList.remove('hidden');
+  }, { passive: true });
+</script>
+</body>
+</html>
