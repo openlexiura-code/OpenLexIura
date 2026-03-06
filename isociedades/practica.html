@@ -88,6 +88,10 @@ strong{font-weight:600;}
 .reveal-wrap{margin-top:12px;}
 .solution-box{display:none;margin-top:10px;background:#fffff8;border:1px solid rgba(184,134,11,.35);padding:16px 20px;font-size:15px;}
 .solution-box.shown{display:block;}
+.solution-box p { margin-bottom:10px; font-size:15px; }
+.solution-box p:last-child { margin-bottom:0; }
+.solution-box strong { color:var(--ink); }
+
 .s-formula{background:var(--ink);color:var(--gold-pale);padding:10px 16px;margin:8px 0;font-size:15px;}
 .tabs{display:flex;gap:0;margin:24px 0 0;border-bottom:2px solid var(--gold);}
 .tab-btn{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border:none;background:transparent;color:var(--ink-light);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:.2s;}
@@ -141,7 +145,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
 <header>
   <div class="h-title">Practica Interactiva IS 2024</div>
   <nav class="h-nav">
-    <a href=index.html">Inicio</a>
+    <a href="index.html">Inicio</a>
     <a href="../portal.html">Jurisdiccion</a>
     <a href="lis.html">Ley 27/2014</a>
     <a href="manual.html">Manual IS</a>
@@ -247,9 +251,17 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-amort"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-amort">
-      <div class="s-formula">Amortizacion fiscal max. = 12% x 500.000 = <strong>60.000 euros</strong></div>
-      <div class="s-formula">Ajuste = 100.000 - 60.000 = <strong>+40.000 euros RC+ (GCNF)</strong></div>
-      <p>El exceso (40.000) revertira cuando el bien este fiscalmente amortizado pero siga en libros contablemente.</p>
+      <p><strong>&#x2460; Calculo del ajuste</strong></p>
+      <div class="s-formula">Amortizacion fiscal maxima = Coef. max. tabla x Valor adquisicion = 12% x 500.000 = <strong>60.000 euros</strong></div>
+      <div class="s-formula">Amortizacion contabilizada = 20% x 500.000 = 100.000 euros</div>
+      <div class="s-formula">Exceso no deducible = 100.000 - 60.000 = <strong>+40.000 euros &rarr; RC+ GCNF</strong></div>
+      <p><strong>&#x2461; Por que se produce este ajuste</strong></p>
+      <p>El art. 12.1 LIS establece que la amortizacion es deducible cuando responde a la <em>depreciacion efectiva</em> del bien. El sistema de coeficientes de tabla oficial (aprobado por Real Decreto 634/2015) presume que la depreciacion maxima fiscalmente admisible para esta maquinaria es del 12% anual. TECNOFAB ha amortizado al 20%, lo que supone una depreciacion contable superior a la que la norma fiscal considera razonable para este tipo de bien.</p>
+      <p>El legislador no permite que una sociedad adelante amortizaciones mas alla del ritmo que la tabla fija, porque ello anticiparia el gasto fiscal de forma no justificada. El exceso, sin embargo, <strong>no se pierde</strong>: es una diferencia temporaria que revertira en ejercicios futuros.</p>
+      <p><strong>&#x2462; Reversion futura de la diferencia</strong></p>
+      <p>La maquinaria queda amortizada fiscalmente en <strong>8,33 anos</strong> (100%/12%). Contablemente, en <strong>5 anos</strong> (100%/20%). A partir del ano 6, la maquinaria seguira en libros contablemente (aunque ya totalmente amortizada a efectos contables con 20%), pero fiscalmente aun tendra base amortizable pendiente. En ese momento se produciran <strong>ajustes negativos (GCNF)</strong> que compensan los positivos actuales, sin efecto neto final en la tributacion total del bien, solo en su distribucion temporal.</p>
+      <p><strong>&#x2463; Diferencia temporaria y DTA</strong></p>
+      <p>Este ajuste genera una <em>diferencia temporaria imponible</em> que contablemente se registra como un <strong>Pasivo por Impuesto Diferido (PID)</strong> de: 40.000 x 25% = <strong>10.000 euros</strong>. Ese pasivo representa el mayor impuesto que se pagara en el futuro cuando la diferencia revierta.</p>
     </div></div>
   </div>
 </div>
@@ -277,9 +289,18 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-leasing"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-leasing">
-      <div class="s-formula">Limite = 2 x 25% x 240.000 = <strong>120.000 euros</strong></div>
-      <div class="s-formula">Rec. coste pactada (40.000) &lt; limite (120.000) -- deducible: 40.000 euros</div>
-      <div class="s-formula">Ajuste = 40.000 - 30.000 = <strong>-10.000 euros RC- (GFNC)</strong></div>
+      <p><strong>&#x2460; Calculo del ajuste</strong></p>
+      <div class="s-formula">Limite anual = 2 x Coef. max. tabla x Valor razonable = 2 x 25% x 240.000 = <strong>120.000 euros</strong></div>
+      <div class="s-formula">Recuperacion del coste pactada (40.000) &lt; limite (120.000) &rarr; <strong>se deduce integra</strong></div>
+      <div class="s-formula">Amortizacion contable registrada = 240.000 / 8 anos = 30.000 euros</div>
+      <div class="s-formula">Ajuste = Rec. coste deducible - Amort. contable = 40.000 - 30.000 = <strong>-10.000 euros RC- GFNC</strong></div>
+      <p><strong>&#x2461; Por que el leasing recibe un tratamiento especial</strong></p>
+      <p>En un contrato de arrendamiento financiero, la sociedad actua economicamente como si hubiera comprado el bien a credito: lo usa, lo amortiza y paga cuotas que incluyen la recuperacion del coste (amortizacion financiera) y un interes. El legislador, reconociendo esta sustancia economica, permite en el art. 12.3 LIS que la <em>recuperacion del coste</em> sea fiscalmente deducible <strong>con independencia</strong> de la amortizacion contable del bien, siempre que no supere el doble del coeficiente maximo de tabla.</p>
+      <p>Esto crea un beneficio fiscal temporal: la empresa deduce mas rapido (40.000 euros de recuperacion del coste) de lo que amortiza contablemente (30.000 euros), generando un ajuste negativo RC- de 10.000 euros que anticipa la deduccion del gasto.</p>
+      <p><strong>&#x2462; La carga financiera (intereses)</strong></p>
+      <p>Los 32.000 euros de carga financiera son deducibles como gasto financiero ordinario (no generan ajuste) al ser igual su tratamiento contable y fiscal, aunque estan sujetos al limite conjunto de los gastos financieros netos del art. 16 LIS (supuesto F).</p>
+      <p><strong>&#x2463; Reversion de la diferencia</strong></p>
+      <p>Este ajuste negativo revertira en anos posteriores cuando la recuperacion del coste disminuya (al final del contrato de 6 anos) o cuando el bien se haya depreciado mas rapido fiscalmente. La diferencia temporaria generada registra un <strong>Activo por Impuesto Diferido (DTA)</strong> de 10.000 x 25% = <strong>2.500 euros</strong>.</p>
     </div></div>
   </div>
 </div>
@@ -306,8 +327,15 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-deter"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-deter">
-      <p>A (8m &gt; 6m) OK | B (concursado) OK | C (vinculado, sin concurso, 4m) NO deducible</p>
-      <div class="s-formula">Ajuste = <strong>30.000 euros RC+ (GCNF)</strong></div>
+      <p><strong>&#x2460; Analisis deudor por deudor</strong></p>
+      <p><strong>Deudor A (30.000 euros, 8 meses):</strong> Han transcurrido mas de 6 meses desde el vencimiento de la obligacion. Cumple el requisito del art. 13.1.a) LIS. <span style="color:var(--ok)">Deducible.</span></p>
+      <p><strong>Deudor B (25.000 euros, concursado):</strong> La declaracion judicial de concurso acredita por si sola la insolvencia del deudor, independientemente de la antiguedad del credito. Cumple el art. 13.1.b) LIS. <span style="color:var(--ok)">Deducible.</span></p>
+      <p><strong>Deudor C (30.000 euros, vinculado, 4 meses):</strong> Es una entidad vinculada con una participacion del 30%, por lo que el art. 13.1 LIS in fine prohibe expresamente la deduccion del deterioro de creditos frente a entidades vinculadas, salvo que hayan sido declaradas en concurso. Aqui no hay concurso. <span style="color:var(--err)">No deducible.</span></p>
+      <div class="s-formula">Ajuste = 30.000 euros RC+ (GCNF) &mdash; solo el credito del Deudor C</div>
+      <p><strong>&#x2461; Por que se excluyen los creditos con vinculadas</strong></p>
+      <p>La razon de ser de esta exclusion es <em>anti-abuso</em>: si se permitiese deducir libremente el deterioro de creditos frente a entidades del grupo, las sociedades podrian crear artificialmente perdidas fiscales otorgando prestamos a filiales que luego incumplen pagos sin consecuencias reales para el conjunto economico. El legislador presume que, dentro de un grupo de empresas, la insolvencia no es definitiva hasta que se declara judicialmente.</p>
+      <p><strong>&#x2462; Reversion y futuro del ajuste</strong></p>
+      <p>El ajuste de 30.000 euros revertira: (a) si el Deudor C finalmente paga el credito (el cobro se registra como ingreso contable y el ajuste negativo igualara las bases), o (b) si el Deudor C es declarado en concurso (en ese momento el deterioro se vuelve deducible y se practica el ajuste negativo). Esta diferencia temporaria genera un <strong>DTA de 7.500 euros</strong> (30.000 x 25%).</p>
     </div></div>
   </div>
 </div>
@@ -331,8 +359,17 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-prov"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-prov">
-      <div class="s-formula">Limite = 55.000 euros | Dotacion = 60.000 euros</div>
-      <div class="s-formula">Exceso = 60.000 - 55.000 = <strong>5.000 euros RC+ (GCNF)</strong></div>
+      <p><strong>&#x2460; Calculo del ajuste</strong></p>
+      <div class="s-formula">Limite deducible = Media gastos reales garantia ejercicios 2022 y 2023 = 55.000 euros/ano</div>
+      <div class="s-formula">Dotacion contable 2024 = 60.000 euros</div>
+      <div class="s-formula">Exceso no deducible = 60.000 - 55.000 = <strong>5.000 euros RC+ GCNF</strong></div>
+      <p><strong>&#x2461; Por que las provisiones para garantias tienen un limite fiscal</strong></p>
+      <p>Las provisiones son gastos basados en estimaciones de obligaciones futuras inciertas. El principio contable las exige cuando existe una obligacion presente, pero la LIS desconfia de estimaciones excesivas que podrian usarse para anticipar artificialmente gastos deducibles. Por ello el art. 14.7 LIS ancla la deduccion al <em>dato historico</em>: los gastos reales de garantia incurridos en los dos ejercicios anteriores son la mejor evidencia de la siniestralidad real del negocio.</p>
+      <p>Si la empresa dota mas de lo que historicamente ha necesitado, el exceso refleja una estimacion mas pesimista que la historia y la norma considera que no debe deducirse hasta que se materialice como gasto real.</p>
+      <p><strong>&#x2462; Diferencia con las provisiones no deducibles del art. 14.3 LIS</strong></p>
+      <p>No debe confundirse esta provision (para cubrir gastos de reparacion y revision derivados de garantias contractuales, que SI puede ser deducible hasta el limite) con las provisiones del art. 14.3 LIS (para obligaciones implicitas o tacitas) que son directamente <strong>no deducibles</strong> en ningun caso. La provision para garantias de TECNOFAB es de las deducibles; el problema es solo el exceso sobre el limite.</p>
+      <p><strong>&#x2463; Reversion</strong></p>
+      <p>Los 5.000 euros de exceso seran deducibles en el ejercicio en que se apliquen a cubrir gastos reales de garantia, momento en que el ajuste revertira negativamente. DTA generado: 5.000 x 25% = <strong>1.250 euros</strong>.</p>
     </div></div>
   </div>
 </div>
@@ -359,8 +396,18 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-gastos"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-gastos">
-      <p>Multa: 8.000 NO | Donativo: 12.000 NO | Representacion: 1% x 40M = 400.000 &gt; 18.000 => SI deducible (0 ajuste) | Retrib. FP: 22.000 NO</p>
-      <div class="s-formula">Total = 8.000 + 12.000 + 22.000 = <strong>42.000 euros RC+ (GCNF)</strong></div>
+      <p><strong>&#x2460; Analisis gasto por gasto</strong></p>
+      <p><strong>Multa AEAT (8.000 euros) &mdash; Art. 15.c) LIS &mdash; NO deducible.</strong><br>
+      Las multas, sanciones penales y administrativas, y el recargo de apremio son expresamente no deducibles. La razon es clara: si el Estado sanciona una conducta ilegal y luego permite deducirlo fiscalmente, el efecto sancionador se reduce automaticamente en el porcentaje del tipo impositivo (25%), desvirtuando la funcion disuasoria de la sancion. La norma fiscal cierra ese circulo negando la deduccion.</p>
+      <p><strong>Donativo ONG no acogida a Ley 49/2002 (12.000 euros) &mdash; Art. 15.e) LIS &mdash; NO deducible.</strong><br>
+      Los donativos son <em>liberalidades</em> (actos gratuitos sin contraprestacion) y el art. 15.e) los califica como no deducibles porque no son gastos necesarios para la obtencion de ingresos. Solo se exceptuan las entregas a entidades acogidas a la Ley 49/2002 (fundaciones, ONG de utilidad publica), que generan <em>deduccion en cuota</em>, no gasto deducible. En este caso la ONG no esta acogida a dicha ley, por lo que no cabe ni gasto ni deduccion en cuota.</p>
+      <p><strong>Gastos de representacion (18.000 euros) &mdash; Art. 15.e) in fine LIS &mdash; SI deducible.</strong><br>
+      Los gastos de atencion a clientes y proveedores son deducibles hasta el <strong>1% del INCN</strong>. Aqui: 1% x 40.000.000 = 400.000 euros. El gasto (18.000) esta muy por debajo del limite. Ajuste: cero.</p>
+      <p><strong>Retribucion de fondos propios (22.000 euros) &mdash; Art. 15.a) LIS &mdash; NO deducible.</strong><br>
+      El dividendo preferente retribuye al socio por su aportacion de capital: es una distribucion de beneficios, no un gasto del negocio. La empresa paga al socio como propietario, no como acreedor. El art. 15.a) prohibe deducir cualquier retribucion de los fondos propios porque el capital propio no genera coste deducible (a diferencia del capital ajeno, cuyos intereses si son deducibles, con limites).</p>
+      <div class="s-formula">Ajuste total = 8.000 + 12.000 + 0 + 22.000 = <strong>42.000 euros RC+ (GCNF)</strong></div>
+      <p><strong>&#x2461; Naturaleza permanente de estos ajustes</strong></p>
+      <p>A diferencia de los ajustes por amortizacion o provisiones, estos son <strong>diferencias permanentes</strong>: nunca revertiran. El impuesto pagado de mas por estos gastos es definitivo. No generan DTA ni PID, porque no existira un momento futuro en que la contabilidad y el fisco se reconcilien.</p>
     </div></div>
   </div>
 </div>
@@ -388,9 +435,18 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-gf"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-gf">
-      <div class="s-formula">GFN = 1.800.000 - 400.000 = <strong>1.400.000 euros</strong></div>
-      <div class="s-formula">Limite = 30% x 4.200.000 = 1.260.000 euros (&gt; 1.000.000 minimo)</div>
-      <div class="s-formula">Exceso = 1.400.000 - 1.260.000 = <strong>140.000 euros RC+ (GCNF)</strong></div>
+      <p><strong>&#x2460; Calculo paso a paso</strong></p>
+      <div class="s-formula">GFN = Gastos financieros brutos - Ingresos financieros de cesion de capitales propios = 1.800.000 - 400.000 = <strong>1.400.000 euros</strong></div>
+      <div class="s-formula">Limite del 30% = 30% x EBITDA fiscal = 30% x 4.200.000 = <strong>1.260.000 euros</strong></div>
+      <div class="s-formula">Minimo garantizado = 1.000.000 euros (siempre deducible) &lt; 1.260.000 &rarr; aplica el 30%</div>
+      <div class="s-formula">GFN no deducibles = 1.400.000 - 1.260.000 = <strong>140.000 euros RC+ GCNF</strong></div>
+      <p><strong>&#x2461; Por que existe este limite</strong></p>
+      <p>El art. 16 LIS implementa la Directiva ATAD (Anti-Tax Avoidance Directive) de la UE para combatir el <em>profit shifting</em> mediante deuda intragrupo. El mecanismo clasico de evasion era: una filial espanola se endeuda con su matriz extranjera, paga enormes intereses deducibles en Espana (erosionando la base imponible) y la matriz los recibe en una jurisdiccion de baja tributacion.</p>
+      <p>La norma limita los GFN deducibles al <strong>30% del beneficio operativo</strong> (EBITDA) porque este porcentaje refleja una ratio de apalancamiento razonable para una empresa normal. Empresas con EBITDA de 4,2 millones no deberian necesitar mas de 1,26 millones en gastos financieros netos.</p>
+      <p><strong>&#x2462; El minimo garantizado de 1.000.000 euros</strong></p>
+      <p>Esta salvaguarda protege a las empresas pequenas y medianas: aunque su EBITDA sea bajo o negativo, siempre podran deducir hasta 1 millon de euros de GFN. Esto evita que la norma anti-abuso penalice a empresas con gastos financieros ordinarios y razonables.</p>
+      <p><strong>&#x2463; Traslado del exceso</strong></p>
+      <p>Los 140.000 euros de GFN no deducidos en 2024 no se pierden: se trasladan a los <strong>10 ejercicios siguientes</strong> y podran deducirse en aquellos en que el limite del 30% del EBITDA no se agote con los GFN corrientes de ese ano. Esta es una diferencia temporaria que genera un DTA de 140.000 x 25% = <strong>35.000 euros</strong>.</p>
     </div></div>
   </div>
 </div>
@@ -414,8 +470,15 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-vinc"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-vinc">
-      <div class="s-formula">Ajuste = 180.000 - 120.000 = <strong>60.000 euros RC+ (IFNC)</strong></div>
-      <p>La filial practicara el ajuste correlativo negativo de 60.000 euros.</p>
+      <p><strong>&#x2460; Calculo del ajuste</strong></p>
+      <div class="s-formula">Ajuste = Valor de mercado - Precio facturado = 180.000 - 120.000 = <strong>60.000 euros RC+ IFNC</strong></div>
+      <p><strong>&#x2461; Por que se corrige el precio y que significa &quot;valor de mercado&quot;</strong></p>
+      <p>Las entidades vinculadas (aqui: una sociedad y su filial participada al 100%) tienen un incentivo para fijar precios artificialmente distintos a los de mercado con el fin de desplazar beneficios hacia la entidad con menor carga fiscal. El art. 18.1 LIS, en linea con las Directrices OCDE de precios de transferencia, exige que <strong>todas las operaciones entre vinculadas se valoren como si fueran partes independientes</strong> (principio arm's length).</p>
+      <p>TECNOFAB cobro 60.000 euros menos de lo que cobraria a un tercero independiente. Desde la perspectiva del IS espanol, ese ingreso infradeducido es como si se hubiera obtenido y luego se hubiera distribuido a la filial: el fisco lo recupera integrando 60.000 euros adicionales en la base imponible.</p>
+      <p><strong>&#x2462; Efecto bilateral: el ajuste correlativo</strong></p>
+      <p>La ley exige coherencia bilateral. TECNOFAB LEVANTE, S.L. habra contabilizado un gasto de 120.000 euros por el servicio recibido. Si el precio correcto es 180.000, la filial deberia haber tenido un gasto de 180.000 euros. Para evitar la doble imposicion, la filial puede solicitar (y la Administracion debe acordar) un <strong>ajuste correlativo negativo</strong> de 60.000 euros en su propia base imponible, reconociendo el mayor coste del servicio.</p>
+      <p><strong>&#x2463; Metodos de determinacion del valor de mercado (art. 18.4 LIS)</strong></p>
+      <p>La LIS recoge los metodos OCDE por orden de preferencia: (1) Precio comparable no controlado, (2) Precio de reventa, (3) Coste incrementado, (4) Distribucion del resultado, (5) Margen neto del conjunto de operaciones. En este supuesto el perito ha determinado el valor de mercado directamente, sin que sea necesario profundizar en el metodo concreto.</p>
     </div></div>
   </div>
 </div>
@@ -439,7 +502,16 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-luc"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-luc">
-      <div class="s-formula">Renta fiscal = Vm - VF = 210.000 - 90.000 = <strong>120.000 euros RC+ (IFNC)</strong></div>
+      <p><strong>&#x2460; Calculo de la renta fiscal</strong></p>
+      <div class="s-formula">Renta fiscal = Valor de mercado - Valor fiscal = 210.000 - 90.000 = <strong>120.000 euros RC+ IFNC</strong></div>
+      <p><strong>&#x2461; Por que tributa si no hay ninguna contabilizacion de beneficio</strong></p>
+      <p>Esta es una de las reglas de valoracion especiales mas importantes del IS y la que mas sorprende a quienes vienen del IRPF de personas fisicas. El art. 17.4 LIS establece que en las transmisiones lucrativas &mdash;donaciones realizadas por una sociedad&mdash; el bien se valora, a efectos fiscales, por su <strong>valor de mercado</strong>.</p>
+      <p>La logica es la siguiente: TECNOFAB tenia en su activo un solar que valia 210.000 euros pero que en libros figuraba por 90.000 euros. Habia una <em>plusvalia latente</em> (no realizada) de 120.000 euros. Al donarlo, la sociedad &quot;desprendio&quot; ese activo sin recibir nada a cambio. Si no existiera esta regla, la plusvalia latente jamas tributaria: el fisco no podria gravar nada porque no hay precio de venta, y el activo sale del patrimonio sin transmitirse onerosamente.</p>
+      <p>El legislador trata la donacion como si fuera una transmision a valor de mercado: la sociedad <em>como si hubiera obtenido</em> 210.000 euros por el solar y los hubiera entregado como donativo. De esos 210.000 euros (hipoteticos), 90.000 son la recuperacion del coste (no gravable) y 120.000 son la plusvalia que tributa.</p>
+      <p><strong>&#x2462; Doble efecto fiscal de la donacion</strong></p>
+      <p>La donacion tiene dos consecuencias fiscales: (1) La renta de 120.000 euros que se integra en la BI como si fuera una ganancia patrimonial (este ajuste). (2) El propio importe donado (90.000 euros del valor contable neto) es un <strong>gasto no deducible</strong> del art. 15.e) LIS porque es una liberalidad a entidad no acogida a la Ley 49/2002. En este supuesto, como la donacion se realiza sacando el activo a valor neto contable (sin resultado contable), el segundo efecto ya se ha tenido en cuenta al no existir gasto en la cuenta de perdidas y ganancias.</p>
+      <p><strong>&#x2463; Comparacion con persona fisica</strong></p>
+      <p>Una persona fisica que dona un bien inmueble en el IRPF tambien tributa por la ganancia patrimonial (diferencia entre valor de mercado y valor de adquisicion). La diferencia con el IS es que en el IRPF existe una posible exencion si el bien se dona a entidades de la Ley 49/2002. En el IS no existe esa exencion para las plusvalias, solo para las deducciones en cuota.</p>
     </div></div>
   </div>
 </div>
@@ -464,9 +536,20 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-divid"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-divid">
-      <div class="s-formula">ALFA: 95% x 95.000 = 90.250 euros</div>
-      <div class="s-formula">BETA: 95% x 60.000 = 57.000 euros</div>
-      <div class="s-formula">Total = -(90.250 + 57.000) = <strong>-147.250 euros RC- (ICNF)</strong></div>
+      <p><strong>&#x2460; Verificacion de requisitos (art. 21.1 LIS)</strong></p>
+      <p>Para que aplique la exencion deben cumplirse tres condiciones: (1) participacion &ge; 5% del capital o fondos propios; (2) que dicha participacion se haya poseido ininterrumpidamente durante el ano anterior al dia en que sea exigible el dividendo; (3) en caso de entidad no residente, que haya estado sujeta a un impuesto analogo al IS a un tipo nominal de al menos el 10%.</p>
+      <p><strong>ALFA S.A.:</strong> 8% (&ge;5%) y 4 anos (&ge;1 ano). Residente: no se requiere tipo minimo extranjero. <span style="color:var(--ok)">Cumple los tres requisitos.</span></p>
+      <p><strong>BETA GmbH:</strong> 6% (&ge;5%) y 2 anos (&ge;1 ano). Alemana: tipo IS aleman = 15% (&ge;10%). <span style="color:var(--ok)">Cumple los tres requisitos.</span></p>
+      <p><strong>&#x2461; Calculo de la exencion (95%)</strong></p>
+      <div class="s-formula">Exencion ALFA = 95% x 95.000 = <strong>90.250 euros</strong></div>
+      <div class="s-formula">Exencion BETA = 95% x 60.000 = <strong>57.000 euros</strong></div>
+      <div class="s-formula">Ajuste total = -(90.250 + 57.000) = <strong>-147.250 euros RC- ICNF</strong></div>
+      <p><strong>&#x2462; Por que solo el 95% y no el 100%</strong></p>
+      <p>Desde 2021, la exencion ya no es del 100% sino del <strong>95%</strong>. El 5% restante tributa en concepto de <em>gastos de gestion de las participaciones</em>: el legislador presume que toda tenencia de participaciones genera costes (gestion de la cartera, honorarios de asesores, etc.) y como es dificil identificar exactamente cuales son esos costes, establece esta regla presuntiva del 5% no exento. En nuestro caso: 5% x (95.000 + 60.000) = 5% x 155.000 = 7.750 euros que tributan en la BI.</p>
+      <p><strong>&#x2463; Objetivo de la exencion: evitar la doble imposicion economica</strong></p>
+      <p>Sin esta exencion, los mismos beneficios tributarian dos veces: primero en la sociedad que los genera (ALFA o BETA pagan su propio IS), y luego en TECNOFAB al recibir los dividendos. La exencion elimina esa doble imposicion economica en cascada dentro de grupos de sociedades. Es el mecanismo principal que hace posible la existencia de holdings empresariales sin carga fiscal adicional por la mera transmision de dividendos entre capas del grupo.</p>
+      <p><strong>&#x2464; La retencion alemana sobre BETA (9.000 euros)</strong></p>
+      <p>Alemania retiene el 15% en origen al pagar el dividendo. Esta retencion no se recupera via exencion (que solo elimina la tributacion espanola), sino mediante la <strong>Deduccion por Doble Imposicion Juridica Internacional</strong> del art. 31 LIS (supuesto O). Sin embargo, como solo el 5% del dividendo tributa en Espana, la deduccion estara muy limitada.</p>
     </div></div>
   </div>
 </div>
@@ -490,8 +573,15 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-ep"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-ep">
-      <div class="s-formula">Ajuste = <strong>-220.000 euros RC- (ICNF)</strong></div>
-      <p>Tipo IS polaco (19%) supera el umbral del 10%. No se puede aplicar ademas la DDI del art. 31 LIS sobre esta renta.</p>
+      <p><strong>&#x2460; Verificacion del requisito de tributacion minima</strong></p>
+      <p>El art. 22 LIS exige que el EP haya tributado en el extranjero por un impuesto de naturaleza identica o analoga al IS espanol a un tipo nominal de al menos el <strong>10%</strong>. El tipo del Impuesto sobre la Renta de Sociedades polaco es del 19%, muy por encima del umbral. Requisito cumplido.</p>
+      <div class="s-formula">Ajuste = -220.000 euros RC- (ICNF) &mdash; exencion integra de la renta del EP</div>
+      <p><strong>&#x2461; Razon de ser de la exencion del EP</strong></p>
+      <p>Un establecimiento permanente (EP) es una presencia estable en el extranjero que no tiene personalidad juridica propia: es la propia TECNOFAB quien actua en Polonia a traves de ese EP. Sin la exencion, la renta polaca tributaria dos veces: en Polonia (por el principio de territorialidad: el Estado donde se genera la renta tiene derecho a gravarla) y en Espana (por el principio de residencia: los residentes espanoles tributan por su renta mundial). El art. 22 LIS opta por el <em>metodo de exencion</em> para eliminar esta doble imposicion internacional.</p>
+      <p><strong>&#x2462; Exencion vs. Deduccion: incompatibilidad</strong></p>
+      <p>Hay dos metodos alternativos para eliminar la doble imposicion internacional sobre rentas de EP: (A) <strong>Exencion</strong> (art. 22 LIS): la renta no tributa en Espana, Polonia se queda con el impuesto. (B) <strong>Imputacion o deduccion</strong> (art. 31 LIS): la renta tributa en Espana y se descuenta el impuesto polaco de la cuota espanola. Son <strong>metodos incompatibles</strong> para la misma renta: si se aplica la exencion del art. 22, no cabe aplicar la DDI del art. 31 sobre esa misma renta. TECNOFAB ha optado (tacitamente) por la exencion al ser mas ventajosa: no tributa nada en Espana por esos 220.000 euros.</p>
+      <p><strong>&#x2463; Que pasa si el EP tiene perdidas</strong></p>
+      <p>La exencion tiene contrapartida: si el EP extranjero incurre en perdidas, esas perdidas tampoco son deducibles en Espana mientras se aplique la exencion (art. 22.1.b LIS). Solo se podrian integrar las perdidas del EP si, en el futuro, el EP tuviera rentas positivas que rompieran el equilibrio, o si se transmitiera o cesara el EP.</p>
     </div></div>
   </div>
 </div>
@@ -521,9 +611,19 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-patent"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-patent">
-      <div class="s-formula">Numerador = 200.000 x 1,30 = 260.000 &gt; denominador (200.000) -- se topa: numerador = 200.000</div>
-      <div class="s-formula">Coeficiente = 200.000 / 200.000 = 1,00</div>
-      <div class="s-formula">Reduccion = 60% x 1,00 x 260.000 = <strong>156.000 euros</strong></div>
+      <p><strong>&#x2460; Calculo del coeficiente nexo</strong></p>
+      <div class="s-formula">Numerador = Gastos directos de la cedente x 1,30 = 200.000 x 1,30 = 260.000</div>
+      <div class="s-formula">Pero: numerador (260.000) &gt; denominador (200.000) &rarr; se topa al denominador</div>
+      <div class="s-formula">Coeficiente nexo = 200.000 / 200.000 = <strong>1,00</strong> (maximo posible)</div>
+      <div class="s-formula">Reduccion = 60% x 1,00 x Renta positiva = 60% x 1 x 260.000 = <strong>156.000 euros</strong></div>
+      <p><strong>&#x2461; Que es el patent box y por que existe</strong></p>
+      <p>El art. 23 LIS establece una reduccion del 60% sobre las rentas positivas derivadas de la cesion de activos intangibles cualificados (patentes, modelos de utilidad, software registrado, etc.) cuando dichos activos han sido generados por la propia sociedad. El objetivo es <strong>incentivar la creacion y retencion de propiedad intelectual en Espana</strong>: si una empresa desarrolla tecnologia propia y luego la cede en licencia, solo tributa efectivamente por el 40% de esa renta (reduccion del 60%).</p>
+      <p><strong>&#x2462; El enfoque nexo: por que se pondera por el coeficiente</strong></p>
+      <p>La reduccion no se aplica automaticamente a toda la renta de cesion, sino solo a la parte proporcional a los gastos de I+D realizados directamente por la cedente. El <em>enfoque nexo</em> (OCDE, Plan BEPS Accion 5) exige que el beneficio fiscal este vinculado a la actividad real de investigacion: si la empresa subcontrato el 50% del desarrollo a terceros vinculados, solo el 50% de la renta deberia beneficiarse de la reduccion. El factor 1,30 es un &quot;uplift&quot; o bonificacion adicional que premia a las empresas que subcontratan con terceros no vinculados (p. ej., universidades), considerando que la colaboracion externa de mercado es una actividad de I+D de calidad equivalente a la interna.</p>
+      <p><strong>&#x2463; Por que el coeficiente es 1 en este caso</strong></p>
+      <p>TECNOFAB realizo el 100% del desarrollo con personal interno. El numerador (gastos propios x 1,30) excede al denominador (gastos totales = gastos propios, al no haber externalizado nada). La regla del topado al denominador impide que el coeficiente supere 1, garantizando que la reduccion no exceda la propia renta susceptible. Al ser el coeficiente maximo (1), la reduccion es maxima: el 60% de la renta.</p>
+      <p><strong>&#x2464; Efecto real: tipo efectivo sobre la renta de patente</strong></p>
+      <p>TECNOFAB tributa solo por el 40% de los 260.000 euros = 104.000 euros. Aplicando el tipo del 25%: impuesto = 26.000 euros sobre esa renta. Tipo efectivo sobre la renta del intangible = 26.000 / 260.000 = <strong>10%</strong> frente al 25% general. El IS convierte el software en un activo con tributacion casi equiparable a la de los paises con regimenes especiales de IP box europeos.</p>
     </div></div>
   </div>
 </div>
@@ -547,9 +647,18 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-capiz"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-capiz">
-      <div class="s-formula">Reduccion bruta = 15% x 600.000 = 90.000 euros</div>
-      <div class="s-formula">Limite 10% = 10% x 1.323.750 = 132.375 euros</div>
-      <div class="s-formula">90.000 &lt; 132.375 -- Reduccion aplicable: <strong>90.000 euros</strong></div>
+      <p><strong>&#x2460; Calculo</strong></p>
+      <div class="s-formula">Reduccion bruta = 15% x Incremento FP = 15% x 600.000 = <strong>90.000 euros</strong></div>
+      <div class="s-formula">Limite 10% = 10% x BI previa (tras patent box) = 10% x 1.323.750 = <strong>132.375 euros</strong></div>
+      <div class="s-formula">90.000 &lt; 132.375 &rarr; Se aplica la reduccion integra: <strong>90.000 euros</strong></div>
+      <p><strong>&#x2461; Que es la reserva de capitalizacion y por que incentiva el ahorro empresarial</strong></p>
+      <p>El art. 25 LIS permite reducir la base imponible en el 15% del incremento de los fondos propios de la sociedad (excluidos los resultados del propio ejercicio y otras partidas excluidas). El fundamento es claro: una empresa que aumenta su capital propio &mdash;reinvirtiendo beneficios de anos anteriores en vez de distribuirlos&mdash; se hace mas solida financieramente, reduce su dependencia del credito bancario y crea una base de recursos propios estables. El Estado premia esa autosuficiencia financiera con una reduccion fiscal.</p>
+      <p><strong>&#x2462; Que se entiende por &quot;incremento de fondos propios&quot;</strong></p>
+      <p>El incremento es la diferencia entre los fondos propios al cierre del ejercicio y los del inicio, excluidos: el resultado del propio ejercicio; aportaciones de socios; ampliaciones de capital por compensacion de creditos; ampliaciones por conversion de deuda; capitalizaciones de reservas; fondos propios correspondientes a emision de instrumentos financieros compuestos; y los fondos propios de entidades con reserva de nivelacion. En este caso, el incremento de 600.000 euros corresponde a la dotacion de una reserva voluntaria con los beneficios de 2023, lo que es el ejemplo clasico de autoretencion de beneficios.</p>
+      <p><strong>&#x2463; El requisito de mantenimiento (5 anos) y la reserva indisponible</strong></p>
+      <p>Para que la reduccion se consolide, la sociedad debe mantener el incremento de fondos propios durante los <strong>5 anos siguientes</strong> y dotar una reserva indisponible equivalente a la reduccion practicada (90.000 euros). Si en ese plazo los fondos propios disminuyen (por distribucion de dividendos que consuman la reserva), la reduccion debe reintegrarse en la base imponible del ejercicio en que se produzca la disminucion, con los intereses de demora correspondientes.</p>
+      <p><strong>&#x2464; Limite del 10% de la BI: por que existe</strong></p>
+      <p>El legislador limita la reduccion al 10% de la BI positiva previa para evitar que empresas muy solidas financieramente anulen totalmente su base imponible mediante esta via. Se garantiza que siempre tribute al menos el 90% de la base imponible ordinaria (sin perjuicio de otras reducciones como las BINs).</p>
     </div></div>
   </div>
 </div>
@@ -573,8 +682,20 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-bins"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-bins">
-      <div class="s-formula">Limite 70% = 70% x 1.233.750 = 863.625 euros</div>
-      <div class="s-formula">BINs (180.000) &lt; limite (863.625) -- compensacion integra: <strong>180.000 euros</strong></div>
+      <p><strong>&#x2460; Calculo</strong></p>
+      <div class="s-formula">Limite 70% = 70% x BI previa (1.233.750) = <strong>863.625 euros</strong></div>
+      <div class="s-formula">BINs pendientes (180.000) &lt; limite 70% (863.625) &rarr; compensacion integra</div>
+      <div class="s-formula">Ademas: 180.000 &lt; minimo garantizado (1.000.000) &rarr; tambien confirmado</div>
+      <div class="s-formula">BINs compensadas en 2024: <strong>180.000 euros</strong></div>
+      <p><strong>&#x2461; Por que existen las BINs y cual es su fundamento</strong></p>
+      <p>Las Bases Imponibles Negativas (BINs) representan el exceso de gastos sobre ingresos en un ejercicio con resultado fiscal negativo. El art. 26 LIS permite trasladar esas perdidas a ejercicios futuros para compensarlas con bases positivas: es el principio de <em>compensacion interanual de perdidas</em>. Su fundamento es la capacidad economica: una empresa no debe tributar mas que otra que ha tenido la misma renta acumulada a lo largo del tiempo, aunque distribuida en ejercicios distintos.</p>
+      <p><strong>&#x2462; El limite del 70%: por que y cuando importa</strong></p>
+      <p>Hasta 2015, la compensacion era libre (sin limite porcentual). La reforma introdujo el limite del 70% para garantizar que las empresas con grandes BINs acumuladas (<em>BIN shelters</em>) no puedan anular indefinidamente su base imponible en los anos buenos. El Estado quiere recaudar algo en anos de beneficios, aunque la empresa tenga pendiente grandes perdidas pasadas. El 30% restante de la BI siempre tributa, garantizando un flujo minimo de recaudacion.</p>
+      <p>En este caso el limite del 70% no es un obstaculo porque las BINs de TECNOFAB (180.000 euros) son muy pequenas en relacion con su BI previa (1.233.750 euros). La empresa podria compensar hasta 863.625 euros y solo tiene 180.000, por lo que se compensan integras.</p>
+      <p><strong>&#x2463; El minimo garantizado de 1.000.000 euros</strong></p>
+      <p>Si la BI previa fuera inferior a 1.428.571 euros (caso limite donde 70% = 1.000.000), el minimo garantizado de 1.000.000 euros prevalece sobre el limite del 70%. Esto protege a las empresas con BINs elevadas en relacion con su BI positiva: aunque el 70% de su BI sea inferior a 1 millon, siempre pueden compensar al menos ese millon.</p>
+      <p><strong>&#x2464; Sin limite temporal: las BINs no caducan</strong></p>
+      <p>La LIS 27/2014 elimino el limite temporal de 18 anos que tenia la legislacion anterior. Hoy las BINs son compensables <strong>indefinidamente</strong> hacia el futuro, aunque la Administracion puede verificar su procedencia durante los 10 anos siguientes a la presentacion de la declaracion del ejercicio en que se generaron (art. 26.5 LIS).</p>
     </div></div>
   </div>
 </div>
@@ -603,7 +724,12 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-ci"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-ci">
-      <div class="s-formula">CI = 25% x 1.053.750 = <strong>263.437,50 euros</strong></div>
+      <div class="s-formula">CI = Tipo de gravamen x Base imponible = 25% x 1.053.750 = <strong>263.437,50 euros</strong></div>
+      <p><strong>Por que TECNOFAB tributa al 25% y no a otro tipo</strong></p>
+      <p>El art. 29.1 LIS establece el tipo general del 25% para todas las entidades sin regimen especial. TECNOFAB no encaja en ninguno de los tipos reducidos porque: su INCN supera el umbral de 1 millon de euros (tipo reducido del 23% para empresas con INCN inferior), no es una entidad de nueva creacion (15% durante los dos primeros anos con base positiva), no es una cooperativa ni una entidad sin animo de lucro. Por tanto, tipo general del 25%.</p>
+      <p>La cuota integra es el resultado de aplicar el tipo al conjunto de la base imponible, sin ningun tipo de progresividad (el IS espanol es un impuesto <em>proporcional</em>, no progresivo como el IRPF). Esto significa que el tipo marginal y el tipo medio son identicos.</p>
+      <p><strong>La cuota integra como punto de partida de las deducciones</strong></p>
+      <p>La cuota integra de 263.437,50 euros no es lo que se paga: es el punto de partida para aplicar las deducciones en cuota (DDI, bonificaciones, I+D, empleo), que reduciran este importe hasta llegar a la cuota liquida. El orden de aplicacion es relevante porque la DDI no tiene limite de cuota (se aplica primera), mientras que las deducciones por incentivacion estan limitadas al 25% o 50% de la cuota integra bonificada.</p>
     </div></div>
   </div>
 </div>
@@ -632,9 +758,17 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-ddi"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-ddi">
-      <div class="s-formula">Renta integrada = 5% x 60.000 = 3.000 euros</div>
-      <div class="s-formula">(a) Impuesto pagado: 9.000 euros | (b) 25% x 3.000 = 750 euros</div>
-      <div class="s-formula">DDI = min(9.000; 750) = <strong>750 euros</strong></div>
+      <p><strong>&#x2460; Calculo paso a paso</strong></p>
+      <div class="s-formula">Renta de BETA integrada en la BI espanola = 5% x 60.000 = <strong>3.000 euros</strong></div>
+      <div class="s-formula">(a) Impuesto efectivamente pagado en Alemania = 9.000 euros</div>
+      <div class="s-formula">(b) Limite espanol = Tipo espanol x Renta integrada = 25% x 3.000 = <strong>750 euros</strong></div>
+      <div class="s-formula">DDI = min (a, b) = min (9.000; 750) = <strong>750 euros</strong></div>
+      <p><strong>&#x2461; Por que se aplica la DDI solo al 5% del dividendo</strong></p>
+      <p>El art. 31 LIS solo permite deducir el impuesto extranjero en la proporcion que corresponde a la renta efectivamente integrada en la base imponible espanola. Como el 95% del dividendo de BETA esta exento via art. 21 LIS, la renta que &quot;entra&quot; en la BI espanola es unicamente el 5% (3.000 euros). No tendria sentido deducir el impuesto aleman sobre una renta que Espana ya ha declarado exenta: aplicar la deduccion sobre la renta exenta equivaldria a beneficiarse dos veces.</p>
+      <p><strong>&#x2462; Por que la DDI queda reducida a 750 euros (y no a 9.000)</strong></p>
+      <p>La DDI del art. 31 LIS tiene como techo el importe que Espana gravaria sobre esa misma renta (limite b). El razonamiento es: si Espana solo habria recaudado 750 euros por los 3.000 euros de renta integrada, devolver o acreditar 9.000 euros supondria un beneficio neto para el contribuyente de 8.250 euros a cargo del Tesoro espanol por impuestos pagados a Alemania. Espana no puede subvencionar la tributacion en el extranjero mas alla de lo que ella misma habria recaudado.</p>
+      <p><strong>&#x2463; El exceso de impuesto aleman no deducido (8.250 euros)</strong></p>
+      <p>Los 8.250 euros de retencion alemana que no pueden deducirse como DDI no se pierden del todo: el art. 31.2 LIS permite (a) incluirlos como <strong>gasto deducible</strong> en la base imponible (si el contribuyente opta por ello, con la limitacion de que reduce la renta exenta), o (b) trasladarlos a los <strong>10 ejercicios siguientes</strong> si en el futuro TECNOFAB tiene renta de BETA que no quede exenta (p.ej. si la participacion cae por debajo del 5% o la antiguedad no alcanza el ano). En la practica, el exceso de retencion alemana suele ser un coste definitivo para el contribuyente espanol cuando casi toda la renta esta exenta.</p>
     </div></div>
   </div>
 </div>
@@ -662,13 +796,24 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-idi"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-idi">
-      <div class="s-formula">Base: 25% x 380.000 = 95.000 euros</div>
-      <div class="s-formula">Exceso: 42% x (500.000-380.000) = 42% x 120.000 = 50.400 euros</div>
-      <div class="s-formula">Subcontratacion: 8% x 70.000 = 5.600 euros</div>
+      <p><strong>&#x2460; Calculo de la deduccion bruta</strong></p>
+      <div class="s-formula">Media gastos I+D ejercicios anteriores = 380.000 euros</div>
+      <div class="s-formula">Gastos I+D 2024 = 500.000 euros &rarr; Exceso sobre media = 500.000 - 380.000 = 120.000 euros</div>
+      <div class="s-formula">Deduccion base (25%): 25% x 380.000 = <strong>95.000 euros</strong></div>
+      <div class="s-formula">Deduccion exceso (42%): 42% x 120.000 = <strong>50.400 euros</strong></div>
+      <div class="s-formula">Deduccion adicional subcontratacion universidad (8%): 8% x 70.000 = <strong>5.600 euros</strong></div>
       <div class="s-formula">Total bruto = 95.000 + 50.400 + 5.600 = <strong>151.000 euros</strong></div>
-      <div class="s-formula">151.000 / 262.687,50 = 57,4% &gt; 10% -- limite sube al 50%</div>
+      <p><strong>&#x2461; Por que hay dos tipos: 25% y 42%</strong></p>
+      <p>El art. 35.1 LIS establece el tipo del 25% para los gastos ordinarios de I+D. Pero cuando el esfuerzo innovador crece respecto a anos anteriores (los gastos superan la media de los dos anos previos), el exceso recibe el tipo aumentado del 42%. Esto es un incentivo al incremento del gasto en I+D: la norma no solo premia investigar, sino <em>investigar cada vez mas</em>. El tipo del 42% sobre el exceso hace que para una empresa que dobla su presupuesto de I+D respecto a anos anteriores, casi la mitad del incremento se recupera via deduccion fiscal.</p>
+      <p><strong>&#x2462; El 8% adicional por subcontratacion con universidades</strong></p>
+      <p>La deduccion adicional del 8% sobre los gastos de subcontratacion con universidades publicas y OPIs (Organismos Publicos de Investigacion) fomenta la colaboracion publico-privada en I+D. El legislador considera que esta colaboracion tiene externalidades positivas especialmente valiosas (transferencia de conocimiento, formacion de investigadores, etc.) y la premia con un incentivo adicional que se acumula al 25% o 42% base.</p>
+      <p><strong>&#x2463; El limite conjunto del art. 39.1 LIS y el umbral del 10%</strong></p>
+      <p>El art. 39.1 LIS limita el conjunto de deducciones incentivadoras al <strong>25% de la cuota integra bonificada</strong>. Sin embargo, si la deduccion por I+D supera el 10% de la cuota integra, el limite se eleva al <strong>50%</strong>. Aqui: 151.000 / 263.437,50 = 57,3% &gt; 10%, por lo que el limite es el 50%.</p>
       <div class="s-formula">Limite 50% = 50% x 263.437,50 = 131.718,75 euros</div>
-      <div class="s-formula">Aplicada = <strong>131.718,75 euros</strong> | Pendiente futuros: 19.281,25 euros</div>
+      <div class="s-formula">Deduccion aplicada en 2024 = <strong>131.718,75 euros</strong></div>
+      <div class="s-formula">Deduccion pendiente (traslado a futuros ejercicios, 15 anos) = 151.000 - 131.718,75 = <strong>19.281,25 euros</strong></div>
+      <p><strong>&#x2464; Opcion de monetizacion (art. 39.2 LIS)</strong></p>
+      <p>Las empresas con deduccion por I+D no aplicada por insuficiencia de cuota pueden, bajo ciertas condiciones, solicitar su <em>abono en efectivo</em> a la AEAT (monetizacion), con un descuento del 20%. TECNOFAB no aplica esta opcion aqui, pero es relevante saber que la deduccion pendiente de 19.281,25 euros tiene un valor economico real que puede recuperarse en el futuro.</p>
     </div></div>
   </div>
 </div>
@@ -692,7 +837,13 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     </div>
     <div class="feedback" id="fb-emp"></div>
     <div class="reveal-wrap"><div class="solution-box" id="sol-emp">
-      <div class="s-formula">Deduccion = 3 x 9.000 = <strong>27.000 euros</strong></div>
+      <div class="s-formula">Deduccion = Numero trabajadores x 9.000 euros = 3 x 9.000 = <strong>27.000 euros</strong></div>
+      <p><strong>Por que no esta sujeta al limite del art. 39.1 LIS</strong></p>
+      <p>La deduccion del art. 38 LIS por creacion de empleo para trabajadores con discapacidad tiene un caracter <em>social</em> distinto al de las deducciones por actividades economicas (I+D, produccion audiovisual). El legislador quiso que su aplicacion no compitiera con el resto de deducciones por el cupo del 25%/50% de la cuota: es una deduccion de orden de preferencia independiente que se aplica despues de las demas y que no consume el limite conjunto. Esto garantiza que la empresa pueda aprovechar simultaneamente el beneficio de contratar personas con discapacidad y las deducciones por inversion, sin que uno desplace al otro.</p>
+      <p><strong>Requisitos precisos del art. 38 LIS</strong></p>
+      <p>Para que opere la deduccion es necesario que: (1) el trabajador tenga un grado de discapacidad <strong>reconocido oficialmente</strong> de al menos el 33%; (2) el contrato sea <strong>indefinido</strong> y a tiempo completo (en este caso); (3) la contratacion suponga un <strong>incremento neto</strong> de la plantilla total de trabajadores con discapacidad respecto al ejercicio anterior (no basta mantener la misma cifra). Si el trabajador causa baja y no es sustituido por otro con discapacidad equivalente, la deduccion debe reintegrarse.</p>
+      <p><strong>Escala de deducciones por discapacidad</strong></p>
+      <p>El importe de 9.000 euros/trabajador corresponde al tramo de discapacidad entre el 33% y el 65%. Para trabajadores con discapacidad <strong>igual o superior al 65%</strong>, la deduccion se eleva a <strong>12.000 euros/trabajador</strong>. Si en este supuesto todos los trabajadores tuvieran discapacidad &ge;65%, la deduccion seria 3 x 12.000 = 36.000 euros.</p>
     </div></div>
   </div>
 </div>
