@@ -1067,6 +1067,12 @@ function navigate(view, sbjId) {
       window.location.href = 'mercantil/';
       return; 
     }
+
+    // Redirección para Impuesto de Sociedades
+    if (s && s.name.toLowerCase().includes('sociedades')) {
+      window.location.href = 'isociedades/';
+      return; 
+    }
   }
 
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
