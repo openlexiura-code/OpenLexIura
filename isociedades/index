@@ -128,6 +128,7 @@
   .btn:hover { transform: translateY(-3px); }
   .btn:hover::before { opacity: 1; }
 
+  /* Estilo Botón Manual (Dorado) */
   .btn-manual {
     background: rgba(200,168,75,0.1);
     border: 1px solid rgba(200,168,75,0.35);
@@ -136,6 +137,7 @@
   .btn-manual::before { background: rgba(200,168,75,0.06); }
   .btn-manual:hover { border-color: rgba(200,168,75,0.65); box-shadow: 0 8px 32px rgba(200,168,75,0.12); }
 
+  /* Estilo Botón Prácticas (Verde) */
   .btn-practicas {
     background: rgba(58,158,111,0.1);
     border: 1px solid rgba(58,158,111,0.35);
@@ -143,6 +145,15 @@
   }
   .btn-practicas::before { background: rgba(58,158,111,0.06); }
   .btn-practicas:hover { border-color: rgba(58,158,111,0.65); box-shadow: 0 8px 32px rgba(58,158,111,0.12); }
+
+  /* Estilo Botón Ley (Azul) */
+  .btn-ley {
+    background: rgba(74,127,193,0.1);
+    border: 1px solid rgba(74,127,193,0.35);
+    color: #7eb4e0;
+  }
+  .btn-ley::before { background: rgba(74,127,193,0.06); }
+  .btn-ley:hover { border-color: rgba(74,127,193,0.65); box-shadow: 0 8px 32px rgba(74,127,193,0.12); }
 
   .btn-icon { font-size: 1.3rem; line-height: 1; position: relative; z-index: 1; }
   .btn-body { display: flex; flex-direction: column; position: relative; z-index: 1; }
@@ -223,22 +234,29 @@
   </h1>
 
   <p class="hero-desc">
-    Consulta el manual teórico o accede directamente a los casos prácticos de liquidación y supuestos resueltos.
+    Consulta el manual teórico, accede a los casos prácticos de liquidación y repasa la normativa vigente.
   </p>
 
   <div class="hero-buttons">
-    <a class="btn btn-manual" href="manual_isociedades.html">
+    <a class="btn btn-manual" href="manual.html">
       <div class="btn-icon">📘</div>
       <div class="btn-body">
         <span class="btn-label">Teoría</span>
         <span class="btn-name">Manual</span>
       </div>
     </a>
-    <a class="btn btn-practicas" href="practicas_isociedades.html">
+    <a class="btn btn-practicas" href="practicas.html">
       <div class="btn-icon">✏️</div>
       <div class="btn-body">
         <span class="btn-label">Supuestos</span>
         <span class="btn-name">Prácticas</span>
+      </div>
+    </a>
+    <a class="btn btn-ley" href="lis.html">
+      <div class="btn-icon">⚖️</div>
+      <div class="btn-body">
+        <span class="btn-label">Normativa</span>
+        <span class="btn-name">Ley 27/2014</span>
       </div>
     </a>
   </div>
