@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Impuesto sobre Sociedades — OpenLexIura</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1c1710;
+  --ink-light: #3a3020;
+  --parchment: #faf6ee;
+  --parchment-dark: #f0e9d8;
+  --gold: #b8860b;
+  --gold-light: #d4a017;
+  --gold-pale: #f5e6b0;
+  --red-accent: #8b2020;
+  --sidebar-w: 280px;
+  --example-bg: #fffbf0;
+  --example-border: #c8a840;
+  --formula-bg: #1c1710;
+  --formula-text: #f5e6b0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--ink);
+  border-bottom: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 54px;
+}
+
+.header-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--parchment-dark);
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+.header-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+}
+
+.header-brand span {
+  color: var(--parchment);
+  font-weight: 400;
+}
+
+/* ── LAYOUT ── */
+.layout {
+  display: flex;
+  margin-top: 54px;
+  min-height: calc(100vh - 54px);
+}
+
+/* ── SIDEBAR ── */
+aside {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  background: #18140d;
+  border-right: 1px solid rgba(184,134,11,0.25);
+  position: sticky;
+  top: 54px;
+  height: calc(100vh - 54px);
+  overflow-y: auto;
+  padding: 24px 0;
+}
+
+aside::-webkit-scrollbar { width: 4px; }
+aside::-webkit-scrollbar-track { background: transparent; }
+aside::-webkit-scrollbar-thumb { background: rgba(184,134,11,0.3); border-radius: 2px; }
+
+.toc-header {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding: 0 20px 12px;
+  border-bottom: 1px solid rgba(184,134,11,0.2);
+  margin-bottom: 8px;
+}
+
+.toc-item {
+  display: block;
+  padding: 6px 20px;
+  color: rgba(240,233,216,0.7);
+  text-decoration: none;
+  font-size: 13px;
+  font-family: 'Crimson Pro', serif;
+  line-height: 1.4;
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+
+.toc-item:hover {
+  color: var(--gold-light);
+  border-left-color: var(--gold);
+  background: rgba(184,134,11,0.08);
+}
+
+.toc-item.main {
+  font-size: 12px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.06em;
+  color: var(--parchment-dark);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(184,134,11,0.15);
+}
+
+.toc-item.sub {
+  padding-left: 32px;
+  font-size: 12.5px;
+  color: rgba(240,233,216,0.55);
+}
+
+.toc-item.subsub {
+  padding-left: 44px;
+  font-size: 12px;
+  color: rgba(240,233,216,0.4);
+}
+
+/* ── MAIN CONTENT ── */
+main {
+  flex: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 60px 56px 100px;
+}
+
+/* ── HEADINGS ── */
+.chapter-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.chapter-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 48px;
+}
+
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 8px;
+  margin: 52px 0 20px;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--ink-light);
+  margin: 36px 0 14px;
+}
+
+h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 24px 0 10px;
+  border-left: 3px solid var(--gold);
+  padding-left: 12px;
+}
+
+p { margin-bottom: 14px; }
+
+ul, ol {
+  margin: 12px 0 16px 0;
+  padding-left: 24px;
+}
+
+ul li, ol li {
+  margin-bottom: 6px;
+  line-height: 1.65;
+}
+
+ul { list-style: none; }
+ul li::before {
+  content: "—";
+  color: var(--gold);
+  font-weight: 600;
+  margin-right: 8px;
+  margin-left: -20px;
+}
+
+strong { font-weight: 600; color: var(--ink); }
+
+/* ── SUMARIO ── */
+.sumario {
+  background: var(--ink);
+  border: 1px solid rgba(184,134,11,0.4);
+  margin: 36px 0 60px;
+  padding: 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+.sumario-header {
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 11px 24px;
+}
+
+.sumario-list {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.sumario-list li {
+  border-bottom: 1px solid rgba(184,134,11,0.12);
+  margin: 0;
+}
+
+.sumario-list li:last-child { border-bottom: none; }
+
+.sumario-list li a {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 13px 24px;
+  text-decoration: none;
+  color: var(--parchment-dark);
+  transition: background 0.15s, color 0.15s;
+}
+
+.sumario-list li a:hover {
+  background: rgba(184,134,11,0.1);
+  color: var(--gold-light);
+}
+
+.sumario-list li a:hover .sumario-num {
+  background: var(--gold-light);
+  color: var(--ink);
+}
+
+.sumario-num {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  background: rgba(184,134,11,0.2);
+  border: 1px solid rgba(184,134,11,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold-light);
+  transition: all 0.15s;
+  margin-top: 2px;
+}
+
+.sumario-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sumario-text strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--parchment-dark);
+  line-height: 1.3;
+}
+
+.sumario-list li a:hover .sumario-text strong {
+  color: var(--gold-light);
+}
+
+.sumario-text em {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(240,233,216,0.5);
+  line-height: 1.4;
+}
+
+@media (max-width: 860px) {
+  aside { display: none; }
+  main { padding: 30px 20px 60px; }
+  .chapter-title { font-size: 28px; }
+}
+
+/* ── FORMULA BOX ── */
+.formula {
+  background: var(--formula-bg);
+  color: var(--formula-text);
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+  padding: 16px 24px;
+  margin: 20px 0;
+  border-left: 4px solid var(--gold);
+  letter-spacing: 0.03em;
+}
+
+/* ── EXAMPLE BOXES ── */
+.ejemplo {
+  background: var(--example-bg);
+  border: 1px solid var(--example-border);
+  border-top: 3px solid var(--gold);
+  margin: 28px 0;
+  padding: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  page-break-inside: avoid;
+}
+
+.ejemplo-header {
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ejemplo-header::before {
+  content: "⚖";
+  font-size: 13px;
+}
+
+.ejemplo-body {
+  padding: 18px 20px;
+  font-size: 15.5px;
+}
+
+.ejemplo-body p { margin-bottom: 10px; }
+.ejemplo-body p:last-child { margin-bottom: 0; }
+
+/* ── SOLUTION BOXES ── */
+.solucion {
+  background: rgba(28,23,16,0.04);
+  border: 1px solid rgba(184,134,11,0.3);
+  border-radius: 2px;
+  padding: 12px 16px;
+  margin: 12px 0 0;
+  font-size: 15px;
+}
+
+.solucion strong {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+/* ── TABLES ── */
+.tabla-wrap {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+thead tr {
+  background: var(--ink);
+  color: var(--parchment);
+}
+
+thead th {
+  padding: 9px 13px;
+  font-family: 'Cinzel', serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+tbody tr { border-bottom: 1px solid rgba(184,134,11,0.15); }
+tbody tr:nth-child(even) { background: rgba(184,134,11,0.05); }
+
+tbody td {
+  padding: 8px 13px;
+  vertical-align: top;
+}
+
+tfoot tr {
+  background: var(--gold-pale);
+  font-weight: 600;
+}
+
+tfoot td { padding: 8px 13px; }
+
+/* ── SCHEMA / CUOTA TABLE ── */
+.schema-table {
+  width: 100%;
+  border: 1px solid var(--gold);
+  margin: 20px 0;
+  border-collapse: collapse;
+}
+
+.schema-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(184,134,11,0.2);
+  font-size: 15px;
+}
+
+.schema-table .schema-minus { color: var(--red-accent); padding-left: 28px; }
+.schema-table .schema-result {
+  font-weight: 700;
+  background: var(--gold-pale);
+  font-family: 'Playfair Display', serif;
+}
+.schema-table .schema-igual {
+  font-weight: 700;
+  background: var(--ink);
+  color: var(--formula-text);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+/* ── TAX RATES TABLE ── */
+.tipo-table td:last-child {
+  font-weight: 700;
+  color: var(--red-accent);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── HIGHLIGHT NOTE ── */
+.nota {
+  background: rgba(184,134,11,0.08);
+  border-left: 4px solid var(--gold);
+  padding: 13px 18px;
+  margin: 18px 0;
+  font-size: 15.5px;
+  font-style: italic;
+}
+
+.nota-warning {
+  background: rgba(139,32,32,0.06);
+  border-left: 4px solid var(--red-accent);
+}
+
+/* ── DIVIDER ── */
+hr {
+  border: none;
+  border-top: 1px solid rgba(184,134,11,0.2);
+  margin: 40px 0;
+}
+
+/* ── FOOTNOTE ── */
+.footnote {
+  font-size: 13.5px;
+  color: rgba(60,50,30,0.65);
+  font-style: italic;
+  border-top: 1px solid rgba(184,134,11,0.15);
+  margin-top: 48px;
+  padding-top: 14px;
+}
+
+/* ── BACK TO TOP ── */
+#backtop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--ink);
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  width: 40px; height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 99;
+}
+
+#backtop.visible { opacity: 1; }
+#backtop:hover { background: var(--gold); color: var(--ink); }
+
+/* ── AJUSTE CODES ── */
+code {
+  font-family: 'Crimson Pro', monospace;
+  font-size: 14px;
+  background: rgba(184,134,11,0.1);
+  border: 1px solid rgba(184,134,11,0.2);
+  padding: 1px 6px;
+  color: var(--red-accent);
+}
+
+@media (max-width: 860px) {
+  aside { display: none; }
+  main { padding: 30px 20px 60px; }
+  .chapter-title { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-title">Manual · Impuesto sobre Sociedades</div>
+  <div class="header-brand">Open<span>Lex</span>Iura</div>
+</header>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside>
+  <div class="toc-header">Índice</div>
+
+  <a href="#s1" class="toc-item main">1. Aspectos Generales</a>
+  <a href="#s1-1" class="toc-item sub">1.1 Normativa aplicable</a>
+  <a href="#s1-2" class="toc-item sub">1.2 Naturaleza y ámbito</a>
+
+  <a href="#s2" class="toc-item main">2. Contribuyente</a>
+  <a href="#s2-1" class="toc-item sub">2.1 Contribuyente</a>
+  <a href="#s2-2" class="toc-item sub">2.2 Domicilio fiscal</a>
+  <a href="#s2-3" class="toc-item sub">2.3 Exenciones</a>
+  <a href="#s2-4" class="toc-item sub">2.4 Entidades reducida dimensión</a>
+
+  <a href="#s3" class="toc-item main">3. Hecho Imponible</a>
+  <a href="#s3-1" class="toc-item sub">3.1 Concepto</a>
+  <a href="#s3-2" class="toc-item sub">3.2 Actividad económica</a>
+  <a href="#s3-3" class="toc-item sub">3.3 Presunciones de renta</a>
+
+  <a href="#s4" class="toc-item main">4. Período Impositivo</a>
+
+  <a href="#s5" class="toc-item main">5. Base Imponible</a>
+  <a href="#s5-1" class="toc-item sub">5.1 Resultado contable y ajustes</a>
+  <a href="#s5-2" class="toc-item sub">5.2 Imputación temporal</a>
+  <a href="#s5-3" class="toc-item sub">5.3 Amortizaciones</a>
+  <a href="#s5-4" class="toc-item sub">5.4 Libertad de amortización</a>
+  <a href="#s5-5" class="toc-item sub">5.5 Arrendamiento financiero</a>
+  <a href="#s5-6" class="toc-item sub">5.6 Deterioro de valor</a>
+  <a href="#s5-7" class="toc-item sub">5.7 Provisiones</a>
+  <a href="#s5-8" class="toc-item sub">5.8 Gastos no deducibles</a>
+  <a href="#s5-9" class="toc-item sub">5.9 Asimetrías híbridas</a>
+  <a href="#s5-10" class="toc-item sub">5.10 Gastos financieros</a>
+  <a href="#s5-11" class="toc-item sub">5.11 Reglas de valoración</a>
+
+  <a href="#s6" class="toc-item main">6. Tipos de Gravamen</a>
+
+  <a href="#s7" class="toc-item main">7. Deuda Tributaria</a>
+  <a href="#s7-1" class="toc-item sub">7.1 DDI jurídica internacional</a>
+  <a href="#s7-2" class="toc-item sub">7.2 DDI económica internacional</a>
+  <a href="#s7-3" class="toc-item sub">7.3 Bonificaciones</a>
+  <a href="#s7-4" class="toc-item sub">7.4 Deducciones incentivadoras</a>
+  <a href="#s7-5" class="toc-item sub">7.5 Pagos a cuenta</a>
+
+  <a href="#s8" class="toc-item main">8. Obligación de Declarar</a>
+</aside>
+
+<!-- MAIN -->
+<main>
+
+  <h1 class="chapter-title">El Impuesto sobre Sociedades</h1>
+
+  <!-- ═══════ SUMARIO ═══════ -->
+  <nav class="sumario" id="sumario">
+    <div class="sumario-header">Sumario</div>
+    <ol class="sumario-list">
+      <li><a href="#s1">
+        <span class="sumario-num">1</span>
+        <span class="sumario-text">
+          <strong>Aspectos Generales</strong>
+          <em>Normativa aplicable · Naturaleza · Ámbito de aplicación</em>
+        </span>
+      </a></li>
+      <li><a href="#s2">
+        <span class="sumario-num">2</span>
+        <span class="sumario-text">
+          <strong>Contribuyente y Otros Elementos Personales del Impuesto</strong>
+          <em>Contribuyente · Domicilio fiscal · Exenciones · Entidades de reducida dimensión</em>
+        </span>
+      </a></li>
+      <li><a href="#s3">
+        <span class="sumario-num">3</span>
+        <span class="sumario-text">
+          <strong>Hecho Imponible</strong>
+          <em>Concepto · Actividad económica · Entidad patrimonial · Presunciones de renta</em>
+        </span>
+      </a></li>
+      <li><a href="#s4">
+        <span class="sumario-num">4</span>
+        <span class="sumario-text">
+          <strong>Período Impositivo y Devengo</strong>
+          <em>Coincidencia con el ejercicio económico · Cierre anticipado · Devengo</em>
+        </span>
+      </a></li>
+      <li><a href="#s5">
+        <span class="sumario-num">5</span>
+        <span class="sumario-text">
+          <strong>Base Imponible</strong>
+          <em>Resultado contable y ajustes fiscales · Imputación temporal · Amortizaciones · Libertad de amortización · Leasing · Deterioro de valor · Provisiones · Gastos no deducibles · Asimetrías híbridas · Limitación gastos financieros · Reglas de valoración</em>
+        </span>
+      </a></li>
+      <li><a href="#s6">
+        <span class="sumario-num">6</span>
+        <span class="sumario-text">
+          <strong>Tipos de Gravamen y Cuota Íntegra</strong>
+          <em>Tipo general (25%) · Tipos reducidos · Cooperativas · Entidades sin fin lucrativo · Fórmula CI = Tg × BI</em>
+        </span>
+      </a></li>
+      <li><a href="#s7">
+        <span class="sumario-num">7</span>
+        <span class="sumario-text">
+          <strong>Deuda Tributaria</strong>
+          <em>Deducción doble imposición jurídica y económica · Bonificaciones · Deducciones incentivadoras (I+D+i, cine, discapacidad, previsión social) · Tributación mínima · Pagos a cuenta</em>
+        </span>
+      </a></li>
+      <li><a href="#s8">
+        <span class="sumario-num">8</span>
+        <span class="sumario-text">
+          <strong>Obligación de Declarar</strong>
+          <em>Autoliquidación · Plazos de presentación</em>
+        </span>
+      </a></li>
+    </ol>
+  </nav>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h2 id="s1">1. Aspectos Generales</h2>
+
+  <h3 id="s1-1">1.1 Normativa aplicable</h3>
+
+  <p>El Impuesto sobre Sociedades (IS) se encuentra regulado en la <strong>Ley 27/2014, del Impuesto sobre Sociedades (LIS)</strong>, y en el <strong>Reglamento del Impuesto sobre Sociedades aprobado por Real Decreto 634/2015 (RIS)</strong>. En dichas normas se contiene la regulación del régimen general del Impuesto y de la gran mayoría de los regímenes especiales existentes.</p>
+
+  <p>Sin embargo, algunos regímenes especiales se encuentran recogidos fuera de dichas normas como, por ejemplo, el <strong>régimen especial de cooperativas</strong> (Ley 20/1990), el régimen especial de las entidades sin fines lucrativos (Ley 49/2002 y Real Decreto 1270/2003), el régimen especial de los partidos políticos (Ley 8/2007) y el régimen especial de las sociedades anónimas cotizadas de inversión en el mercado inmobiliario (Ley 11/2009).</p>
+
+  <h3 id="s1-2">1.2 Naturaleza y ámbito de aplicación</h3>
+
+  <p>El artículo 1 de la LIS define el IS como un tributo <strong>directo</strong> y de naturaleza <strong>personal</strong> que grava la renta de las sociedades y demás entidades jurídicas. Ciertamente, dicho tributo es directo tanto en sentido jurídico —<em>no se prevé la repercusión de la cuota tributaria</em>— como en sentido económico, ya que la renta es, junto con el patrimonio, uno de los principales índices directos de capacidad económica.</p>
+
+  <p>El IS es también un tributo <strong>periódico</strong> (se devenga periódicamente, normalmente por períodos anuales) y <strong>proporcional</strong> (la base imponible es gravada por igual mediante un tipo de gravamen proporcional).</p>
+
+  <p>En cuanto a su <strong>ámbito de aplicación</strong>, el IS se exige en la totalidad del territorio español y es uno de los pocos impuestos estatales que actualmente no es objeto de cesión a las Comunidades Autónomas de régimen común. En el marco de los regímenes forales de Concierto Económico con el País Vasco y de Convenio Económico con Navarra, los territorios históricos aprueban su propia regulación del IS.</p>
+
+  <p>Finalmente, la aplicación de la LIS debe efectuarse siempre respetando la regulación contenida en los Tratados y Convenios Internacionales firmados por España que formen parte de nuestro Ordenamiento interno de acuerdo con lo establecido en el artículo 96 de nuestra Constitución.</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h2 id="s2">2. Contribuyente y Otros Elementos Personales del Impuesto</h2>
+
+  <h3 id="s2-1">2.1 Contribuyente</h3>
+
+  <p>Del artículo 7 de la LIS se deduce que, como regla general, es contribuyente del IS toda persona jurídica residente en territorio español. Para ser contribuyente del IS deben cumplirse dos requisitos:</p>
+
+  <h4>A) Ser persona jurídica</h4>
+  <p>De conformidad con dicho requisito, será contribuyente del IS todo ente (distinto de las personas físicas) al que el Ordenamiento jurídico le atribuya personalidad jurídica propia. Serán contribuyentes todas las sociedades mercantiles (anónimas, limitadas, comanditarias o colectivas), las cooperativas, las sociedades agrarias de transformación, las fundaciones, las asociaciones, etc.</p>
+
+  <p>Esta regla general tiene dos excepciones:</p>
+  <ul>
+    <li><strong>Por exclusión</strong>: las sociedades civiles que no tengan objeto mercantil no son contribuyentes del IS, aunque pudieran tener personalidad jurídica propia.</li>
+    <li><strong>Por inclusión</strong>: determinados entes colectivos que, de conformidad con el Derecho mercantil, no tienen personalidad jurídica propia sí son contribuyentes del IS. Por ejemplo, las Uniones Temporales de Empresas (UTE), los fondos de inversión, fondos de capital-riesgo, fondos de pensiones, fondos de titulación, etc.</li>
+  </ul>
+
+  <p>No serán nunca contribuyentes del IS las comunidades de bienes y las herencias yacentes, ya que son entes que carecen de personalidad jurídica propia. La renta obtenida por estos entes se atribuirá a los comuneros y herederos y, en consecuencia, tributará a través de los impuestos personales sobre la renta de estos últimos (IRPF, IS o IRNR).</p>
+
+  <h4>B) Ser residente en territorio español</h4>
+  <p>El artículo 8.1 de la LIS dispone que una entidad será residente en territorio español cuando se verifique, al menos, una de las siguientes circunstancias:</p>
+  <ul>
+    <li>Que se hubiera constituido conforme a las leyes españolas.</li>
+    <li>Que tenga su domicilio social en España.</li>
+    <li>Que tenga su sede de dirección efectiva en territorio español (la dirección y control del conjunto de las actividades de la entidad).</li>
+  </ul>
+
+  <div class="nota">
+    <strong>Transparencia internacional:</strong> Las sociedades no residentes en territorio español deben tributar por el Impuesto sobre la Renta de no Residentes (IRNR), que sólo grava las rentas generadas dentro del territorio español. Para evitar que sociedades traten de localizarse artificialmente fuera del territorio español, la LIS prevé que podrá presumirse que una entidad radicada en un paraíso fiscal tiene su residencia en España cuando los activos principales de dicha entidad consistan en bienes situados en España.
+  </div>
+
+  <h3 id="s2-2">2.2 Domicilio fiscal</h3>
+
+  <p>El domicilio fiscal es el lugar de localización de las sociedades en sus relaciones con la Administración tributaria. El artículo 8.2 de la LIS dispone que el domicilio fiscal de una sociedad será el domicilio social siempre que en el esté efectivamente centralizada la gestión administrativa y la dirección de sus negocios. Si no fuera así, entonces el domicilio fiscal será el lugar en el que efectivamente esté centralizada dicha gestión y dirección.</p>
+
+  <p>Ni la LIS ni el RIS delimitan expresamente cuáles son las actividades de gestión administrativa y de dirección de los negocios que nos permiten identificar el domicilio fiscal de la sociedad, aunque parece razonable atender, entre otros, al lugar en el que se lleve la contabilidad principal, al lugar en el que se realice la contratación principal, al lugar en el que se encuentren domiciliados los administradores o gerentes, etc.</p>
+
+  <p>Por último, cuando sea imposible localizar el lugar exacto en el que se encuentra la gestión administrativa y la dirección de los negocios de una sociedad, la LIS prevé que en estos supuestos el domicilio fiscal será el lugar en el que radique el mayor valor del inmovilizado de dicha sociedad.</p>
+
+  <h3 id="s2-3">2.3 Exenciones</h3>
+
+  <p>La LIS establece dos niveles de exención del IS: la <strong>exención total</strong> y la <strong>exención parcial</strong>, disponiendo, a su vez, dos modalidades diferentes de exención parcial que se corresponden cada una de ellas con un régimen especial del IS.</p>
+
+  <h4>2.3.1 Exención total</h4>
+  <p>El artículo 7.1 de la LIS dispone que estarán totalmente exentos los siguientes entes públicos: el Estado, las Comunidades Autónomas, las entidades locales, los organismos autónomos de los entes públicos anteriormente citados, el Banco de España, el Fondo de Garantía de Depósitos de Entidades de Crédito y los Fondos de garantía de inversiones, las Entidades Gestoras y Servicios Comunes de la Seguridad Social, el Instituto de España y las Reales Academias oficiales, la Comisión Nacional del Mercado de Valores, el Consejo de Seguridad Nuclear, la Agencia de Protección de Datos, etc.</p>
+
+  <p>La exención total tiene como consecuencia fundamental que estas entidades públicas no tienen que contribuir por el IS, pero tiene también dos consecuencias accesorias muy importantes: no tienen la obligación de realizar una declaración del IS, y no están sujetas a retención o ingreso a cuenta por las rentas obtenidas.</p>
+
+  <h4>2.3.2 Régimen especial de las entidades sin fin lucrativo</h4>
+  <p>El artículo 9.2 de la LIS dispone la exención parcial de las fundaciones y asociaciones sin ánimo de lucro que cumplan los requisitos establecidos en la Ley 49/2002 de régimen especial de las entidades sin fin lucrativo y de los incentivos al mecenazgo y que soliciten la aplicación del citado régimen especial. Ello conlleva la exención de una gran parte de las rentas obtenidas por dichas entidades como, por ejemplo, los donativos y donaciones recibidos, las cuotas abonadas por los asociados, las subvenciones obtenidas para la realización de su fin no lucrativo, los ingresos derivados de los convenios de colaboración, las rentas procedentes de su patrimonio mobiliario e inmobiliario, las rentas derivadas de la transmisión o adquisición de bienes e, incluso, las rentas derivadas de determinadas explotaciones económicas.</p>
+
+  <p>No obstante, sí deben tributar (aunque lo hacen a un tipo reducido del 10%) por el resto de rentas obtenidas, fundamentalmente las derivadas de las explotaciones económicas no exentas, y deben realizar declaración del IS que comprenda la totalidad de sus rentas (exentas y no exentas).</p>
+
+  <h4>2.3.3 Régimen especial de las entidades parcialmente exentas</h4>
+  <p>Por otra parte, el artículo 9.3 de la LIS dispone también la exención parcial en el IS de las siguientes entidades: las asociaciones sin ánimo de lucro y fundaciones que no apliquen el régimen especial de la Ley 49/2002 citado anteriormente, las uniones, federaciones y confederaciones de cooperativas, los colegios profesionales, las asociaciones empresariales, las cámaras oficiales, los sindicatos de trabajadores, los fondos de promoción de empleo, las Mutuas Colaboradoras de la Seguridad Social y las entidades públicas Puertos del Estado y las respectivas de las Comunidades Autónomas.</p>
+
+  <p>En este caso, el régimen especial contenido en los artículos 109 y siguientes de la LIS es mucho menos generoso que el régimen de las entidades sin fin lucrativo, ya que, por un lado, dispone la exención exclusivamente de las rentas que procedan de la realización de actividades que constituyan su objeto social o finalidad específica, y por otro lado, las rentas no exentas deben tributar al tipo general, superior al tipo de gravamen aplicable en el otro régimen parcialmente exento (10%).</p>
+
+  <p>Finalmente, el artículo 9.4 de la LIS establece también la exención parcial de los partidos políticos, pero se aplicará en los términos específicos establecidos en el artículo 10 de la Ley Orgánica 8/2007 sobre financiación de los partidos políticos.</p>
+
+  <h3 id="s2-4">2.4 Entidades de reducida dimensión</h3>
+
+  <p>Los artículos 101 y siguientes recogen una serie de incentivos fiscales que son aplicables exclusivamente a las entidades de reducida dimensión y que se configuran legalmente como un régimen especial del IS. Como tendremos ocasión de ver en los apartados correspondientes, dichos incentivos existen actualmente en materia de amortizaciones, operaciones de leasing, pérdidas por deterioro de créditos y reducciones de la base imponible.</p>
+
+  <p>De conformidad con el artículo 101 de la LIS, una sociedad puede calificarse como una entidad de reducida dimensión cuando el importe neto de su cifra de negocios, calculada respecto del período impositivo inmediatamente anterior, es inferior a <strong>10.000.000 de euros</strong>. No obstante, los incentivos fiscales citados no se aplicarán cuando dicha entidad sea calificada como entidad patrimonial.</p>
+
+  <div class="nota">
+    <strong>Reglas especiales para delimitar la cifra de negocios:</strong>
+    <ul style="margin-top:8px;">
+      <li>Si la sociedad es de nueva creación, se computará durante su primer período de actividad.</li>
+      <li>Si el período inmediato anterior fuera inferior al año, la cifra de negocios se elevará al año.</li>
+      <li>Cuando la sociedad forme parte de un grupo de sociedades (art. 42 Código de Comercio), el importe neto de la cifra de negocios se referirá al conjunto de las entidades pertenecientes al grupo.</li>
+      <li>Cuando una sociedad supere la cifra de 10.000.000 €, podrá seguir aplicando los incentivos durante los tres períodos impositivos siguientes, siempre que haya cumplido las condiciones para ser considerada entidad de reducida dimensión durante el período impositivo en que supera dicha cifra y en los dos períodos anteriores.</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h2 id="s3">3. Hecho Imponible</h2>
+
+  <h3 id="s3-1">3.1 Concepto de hecho imponible</h3>
+
+  <p>El artículo 4 de la LIS dispone que el hecho imponible del IS consiste en la <strong>obtención de renta por parte del contribuyente, cualquiera que fuera su fuente u origen</strong>. Además, a diferencia del IRPF, la LIS no regula diferentes categorías de renta con carácter general (aunque sí lo hace en algunos regímenes especiales), sino que la delimitación de los distintos componentes de la renta (ingresos y gastos, beneficios y pérdidas) queda remitida a la normativa contable, sin perjuicio de la existencia de normas fiscales específicas relativas a algunos de estos componentes contenidas en la regulación de la base imponible del impuesto.</p>
+
+  <p>No obstante, el mismo artículo 4 de la LIS considera que existe también obtención de renta a efectos del IS en el supuesto de imputación de bases imponibles derivadas del régimen especial de agrupaciones de interés económico y de uniones temporales de empresas y en el supuesto de cumplirse las circunstancias para la imputación de rentas positivas previstas en el régimen especial de transparencia fiscal internacional.</p>
+
+  <h3 id="s3-2">3.2 Concepto de actividad económica y entidad patrimonial</h3>
+
+  <p>El artículo 5 de la LIS introduce dos conceptos nuevos en el IS. Por un lado, establece que se entenderá por <strong>actividad económica</strong> la ordenación por cuenta propia de los medios de producción y de recursos humanos o de uno de ambos con la finalidad de intervenir en la producción o distribución de bienes o servicios. Específicamente, en el caso de arrendamiento de inmuebles, se entenderá que existe actividad económica únicamente cuando para dicha ordenación se utilice, al menos, una persona empleada con contrato laboral y jornada completa.</p>
+
+  <p>Por otro lado, se define como <strong>entidad patrimonial</strong> —y por ello, que no realiza una actividad económica— a aquellas entidades en la que más de la mitad de su activo esté constituido por valores o no esté afecto, en los términos del apartado anterior, a una actividad económica. Para efectuar los cálculos correspondientes, el valor del activo, de los valores y de los elementos patrimoniales no afectos a una actividad económica será el que se deduzca de la media de los balances trimestrales del ejercicio de la entidad o, en caso de que sea dominante de un grupo según los criterios establecidos en el artículo 42 del Código de Comercio, de la medida del balance consolidado.</p>
+
+  <p>A estos efectos, no se computarán:</p>
+  <ul>
+    <li>El dinero o derechos de crédito procedentes de la transmisión de elementos patrimoniales afectos a actividades económicas o valores a los que se refieren los siguientes guiones, que se haya realizado en el período impositivo o en los dos períodos impositivos anteriores.</li>
+    <li>Los valores poseídos para dar cumplimiento a obligaciones legales y reglamentarias.</li>
+    <li>Los valores que otorguen, al menos, el 5% del capital de una entidad y se posean durante un plazo mínimo de un año, con la finalidad de dirigir y gestionar la participación, siempre que se disponga de la correspondiente organización de medios materiales y personales, y la entidad participada no sea, a su vez, una entidad patrimonial.</li>
+  </ul>
+
+  <h3 id="s3-3">3.3 Presunciones de obtención de renta</h3>
+
+  <p>El artículo 121 de la LIS también contiene varias presunciones de obtención de renta como respuesta a determinados incumplimientos formales por parte del contribuyente. Así, se presumirá como renta no declarada y se imputará al período impositivo más antiguo de entre los no prescritos, excepto que el contribuyente pruebe que corresponde a otro u otros, los siguientes importes:</p>
+  <ul>
+    <li>El valor de adquisición de los bienes o derechos propiedad del contribuyente que no se hallen registrados en sus libros de contabilidad (se presumirá que son propiedad del contribuyente aquellos bienes sobre los que ostente su posesión).</li>
+    <li>El valor de las deudas inexistentes que hayan sido registradas en los libros de contabilidad.</li>
+  </ul>
+  <p>A ellas habría que añadir la presunción del artículo 123 de la LIS, que dispone que cuando la base imponible se determine a través del método de estimación indirecta, las cesiones de bienes y derechos y las prestaciones de servicios, en sus distintas modalidades, se presumirán retribuidas por su valor de mercado.</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h2 id="s4">4. Período Impositivo y Devengo</h2>
+
+  <p>El artículo 27 de la LIS dispone que el período impositivo en el IS coincidirá con el ejercicio económico de la entidad, sin que pueda exceder de 12 meses. De este modo, la LIS hace coincidir el período impositivo y el ejercicio contable, lo que resulta lógico si tenemos en cuenta que la misma Ley remite el cálculo de la base imponible del IS al resultado contable del ejercicio. En la práctica nos encontraremos en la mayoría de los casos con períodos impositivos anuales, que unas veces coincidirán con el año natural (por ejemplo, del 1 de enero de 2024 hasta el 31 de diciembre de 2024) y otras veces consistirán en períodos impositivos "quebrados" (por ejemplo, desde el 1 de mayo de 2024 hasta el 30 de abril de 2025).</p>
+
+  <p>Sin embargo, el período impositivo concluirá, y ello dará lugar normalmente a un período impositivo "corto" (inferior a 12 meses), en los siguientes supuestos:</p>
+  <ul>
+    <li>Cuando la sociedad se extinga.</li>
+    <li>Cuando tenga lugar un cambio de residencia de la sociedad residente en territorio español al extranjero.</li>
+    <li>Cuando se produzca la transformación de la forma jurídica de la entidad y ello determine la no sujeción al IS (por ejemplo, una sociedad mercantil que se transforma en una sociedad civil que no tenga objeto mercantil).</li>
+    <li>Cuando se produzca la transformación de la forma jurídica de la entidad, o la modificación de su estatuto o de su régimen jurídico, y ello determine la modificación de su tipo de gravamen o la aplicación de un régimen tributario distinto.</li>
+  </ul>
+
+  <p>Finalmente, el artículo 28 de la LIS dispone que el devengo del IS se producirá el último día del período impositivo. Por ejemplo, el 31 de diciembre en las sociedades que posean un período impositivo coincidente con el año natural.</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h2 id="s5">5. Base Imponible</h2>
+
+  <h3 id="s5-1">5.1 Resultado contable y ajustes fiscales</h3>
+
+  <p>Del artículo 10 de la LIS se deduce que el cálculo de la base imponible del IS debe efectuarse partiendo del resultado contable del ejercicio obtenido por la sociedad y realizando las correcciones (ajustes extracontables o fiscales) que se deriven de lo dispuesto en el resto del articulado de la LIS.</p>
+
+  <div class="formula">BI = RC ± ajustes fiscales</div>
+
+  <p>De este modo, nuestra LIS opta por no realizar una descripción propia y detallada de los ingresos y gastos que conforman la base imponible del IS, sino que aprovecha la existencia de una normativa contable que regula cuáles son los ingresos y gastos de una empresa, y que es de obligada aplicación para todas las sociedades, para remitirse a ella con carácter general y regular únicamente algunas cuestiones puntuales relativas a determinados ingresos y gastos.</p>
+
+  <p>Por lo tanto, el punto de partida para el cálculo de la base imponible es el <strong>resultado contable del ejercicio</strong> que se obtiene de la regulación mercantil contenida fundamentalmente en el Código de Comercio, en otras leyes que contengan disposiciones contables, el PGC y los planes sectoriales de contabilidad.</p>
+
+  <p>El PGC define los <strong>ingresos</strong> como los incrementos en el patrimonio neto de la empresa durante el ejercicio (entradas o aumentos en el valor de los activos, o de disminución de los pasivos, siempre que no tengan su origen en las aportaciones, monetarias o no, de los socios). Son ingresos contables (en principio también tributarios):</p>
+
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>Ingresos contables y tributarios</th></tr></thead>
+      <tbody>
+        <tr><td>Ventas de bienes y servicios</td></tr>
+        <tr><td>La variación de existencias</td></tr>
+        <tr><td>Los trabajos realizados por la empresa para su inmovilizado</td></tr>
+        <tr><td>Subvenciones, donaciones y legados</td></tr>
+        <tr><td>Otros ingresos de gestión (arrendamiento, propiedad industrial, comisiones, cuenta en participación, etc.)</td></tr>
+        <tr><td>Ingresos financieros</td></tr>
+        <tr><td>Beneficios procedentes de la venta de activos no corrientes e ingresos excepcionales</td></tr>
+        <tr><td>Excesos y aplicaciones de las provisiones y de pérdidas por deterioro</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Del mismo modo, el PGC define los <strong>gastos</strong> como los decrementos en el patrimonio neto de la empresa durante el ejercicio (salidas o disminuciones en el valor de los activos, o de reconocimiento o aumento del valor de los pasivos, siempre que no tengan su origen en distribuciones, monetarias o no, a los socios). Son gastos contables (en principio también tributarios):</p>
+
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>Gastos contables y tributarios</th></tr></thead>
+      <tbody>
+        <tr><td>Compras de bienes</td></tr>
+        <tr><td>La variación de existencias</td></tr>
+        <tr><td>Servicios exteriores (I+D, arrendamientos y cánones, reparaciones, servicios profesionales, transportes, primas de seguros, servicios bancarios, publicidad, suministros, etc.)</td></tr>
+        <tr><td>Tributos</td></tr>
+        <tr><td>Gastos de personal</td></tr>
+        <tr><td>Otros gastos de gestión (pérdidas por créditos comerciales incobrables, cuenta en participación, etc.)</td></tr>
+        <tr><td>Gastos financieros</td></tr>
+        <tr><td>Pérdidas procedentes de la venta de activos no corrientes y gastos excepcionales</td></tr>
+        <tr><td>Dotaciones para amortizaciones</td></tr>
+        <tr><td>Pérdidas por deterioro y otras dotaciones</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>El resultado contable del ejercicio (cuenta de pérdidas y ganancias) reflejará la diferencia existente entre los ingresos y gastos contables anteriormente mencionados, de modo que si los primeros son superiores a los segundos existirá un resultado positivo (<strong>beneficio contable</strong>), mientras que si los gastos son superiores a los ingresos se producirá un resultado negativo (<strong>pérdida contable</strong>). En ambos casos, la formación de la base imponible del IS exigirá practicar siempre los ajustes fiscales positivos o negativos derivados de la normativa del impuesto.</p>
+
+  <p>Podemos efectuar una primera clasificación de los ajustes <strong>en función del signo</strong>:</p>
+  <ul>
+    <li><strong>Ajustes positivos (aumentan la base imponible):</strong>
+      <ul style="margin-top:6px; list-style:none; padding-left:20px;">
+        <li style="margin-bottom:4px;">— <em>IFNC</em>: Ingresos que deben tributar en el IS pero que no han sido contabilizados.</li>
+        <li style="margin-bottom:4px;">— <em>GCNF</em>: Gastos que han sido contabilizados pero que no son deducibles en el IS.</li>
+      </ul>
+    </li>
+    <li><strong>Ajustes negativos (disminuyen la base imponible):</strong>
+      <ul style="margin-top:6px; list-style:none; padding-left:20px;">
+        <li style="margin-bottom:4px;">— <em>ICNF</em>: Ingresos que han sido contabilizados pero que no deben tributar en el IS.</li>
+        <li style="margin-bottom:4px;">— <em>GFNC</em>: Gastos que son deducibles en el IS pero que no han sido contabilizados.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>También cabría efectuar una segunda clasificación de los ajustes <strong>en función de la naturaleza de la discrepancia</strong>:</p>
+  <ul>
+    <li><strong>Ajustes permanentes</strong>: cuando existe una discrepancia entre ambas normativas en relación a la existencia misma del ingreso o del gasto o en relación a la valoración de los mismos. Se practica un único ajuste de signo positivo o negativo, y no es objeto de reversión en los períodos impositivos siguientes. <em>Ejemplo: una multa, que es siempre gasto contable pero nunca es gasto fiscal.</em></li>
+    <li><strong>Ajustes temporales</strong>: cuando la discrepancia hace referencia únicamente al momento en que debe computarse el ingreso o el gasto. El ingreso o gasto se debe registrar contablemente en un determinado ejercicio económico, pero debe imputarse fiscalmente en un período impositivo diferente. <em>Ejemplo: los ajustes derivados de las amortizaciones y de las provisiones son generalmente ajustes temporales.</em></li>
+  </ul>
+
+  <h3 id="s5-2">5.2 Imputación temporal de ingresos y gastos</h3>
+
+  <p>El artículo 11 de la LIS establece como <strong>regla general</strong> que los ingresos y gastos derivados de las transacciones o hechos económicos se imputarán al período impositivo en que se produzca su <strong>devengo</strong>, con arreglo a la normativa contable, con independencia de la fecha de su pago o de su cobro, respetando la debida correlación entre unos y otros. Por lo tanto, la regla general de imputación temporal es el <strong>criterio del devengo</strong>, que consiste en que los ingresos y gastos deben imputarse en el momento en que se produce la corriente real de bienes y servicios. Dicho criterio es diferente:</p>
+  <ul>
+    <li>Del momento en que se produce el pago de los gastos o el cobro de los ingresos.</li>
+    <li>Del momento de exigibilidad de la renta, que constituye un criterio de imputación temporal en el IRPF en relación con los rendimientos del trabajo y los rendimientos del capital.</li>
+  </ul>
+
+  <p>De manera también general, se recoge como requisito de deducibilidad de los gastos el <strong>principio de inscripción contable</strong>: los gastos sólo serán deducibles si han sido previamente contabilizados en la cuenta de pérdidas y ganancias o en una cuenta de reservas cuando así lo disponga la normativa contable.</p>
+
+  <h4>Criterios especiales de imputación temporal</h4>
+
+  <p><strong>1) Gastos e ingresos contabilizados erróneamente.</strong> El artículo 19.3.1º de la LIS dispone cómo deben imputarse fiscalmente los ingresos y gastos que son contabilizados erróneamente en un ejercicio contable diferente del ejercicio en que se devengan. En los supuestos en los que se <em>anticipen gastos o se retrasen ingresos</em> —lo que conlleva que el error siempre perjudique a la Hacienda Pública, ya que se difiere el pago del impuesto— dichos gastos e ingresos deben imputarse fiscalmente en el período impositivo en que se devengaron, debiéndose realizar los ajustes correspondientes.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 1 — Contabilización errónea de ingresos</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad realiza una venta por 1.000 euros durante diciembre de 2024, pero la contabiliza en enero de 2025. Se ha cometido un error contable, ya que se ha registrado el ingreso en un ejercicio posterior (2025) al ejercicio del devengo de la operación (2024).</p>
+      <div class="solucion">
+        <strong>Solución</strong>
+        <p>En consecuencia, hay que imputar el ingreso en el período impositivo de su devengo, lo que obliga a realizar:</p>
+        <ul>
+          <li>Un ajuste positivo <code>RC + 1.000 IFNC</code> en el período impositivo <strong>2024</strong></li>
+          <li>Un ajuste negativo <code>RC – 1.000 ICNF</code> en el período impositivo <strong>2025</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 2 — Anticipo de gastos</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad incurre en un gasto de 1.000 euros por un servicio recibido durante diciembre de 2024, pero lo contabiliza en enero de 2025. Se ha cometido un error contable, ya que se ha registrado el gasto en un ejercicio posterior (2025) al ejercicio del devengo del servicio (2024).</p>
+      <div class="solucion">
+        <strong>Solución</strong>
+        <p>Sin embargo, la norma fiscal entiende que en este caso, en el que en realidad se anticipa el pago del IS, el gasto debe imputarse fiscalmente en el mismo ejercicio en que se ha contabilizado erróneamente, por lo que <strong>no habrá que hacer ajuste fiscal</strong>.</p>
+        <p>Excepcionalmente, si en el período impositivo 2025 el tipo de gravamen fuese superior al de 2024, entonces sí habría que efectuar:</p>
+        <ul>
+          <li>Ajuste negativo <code>RC – 1.000 GFNC</code> en el período impositivo 2024</li>
+          <li>Ajuste positivo <code>RC + 1.000 GCNF</code> en el período impositivo 2025</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p><strong>2) Cambios de criterios contables.</strong> El artículo 11.3.2º dispone que los cargos o abonos de reservas, registrados como consecuencia de cambios de criterios contables, se integrarán en la base imponible del período impositivo en que los mismos se realicen. Sin embargo, no se efectuará dicha integración cuando dichos cargos o abonos estén relacionados con ingresos o gastos, respectivamente, devengados y contabilizados de acuerdo con los criterios contables existentes en los períodos impositivos anteriores y que fueron integrados en la base imponible de dichos períodos.</p>
+
+  <p><strong>3) Operaciones a plazos.</strong> En las operaciones en las que el precio se cobra aplazado en uno o varios pagos, siempre que entre el momento del devengo y el vencimiento del último o único plazo haya transcurrido más de un año, el contribuyente podrá optar por imputar la renta generada proporcionalmente a medida que efectúe el cobro del precio, o bien podrá hacerlo de acuerdo con la regla general del devengo.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 3 — Operación a plazos</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad vende en 2024 un bien del activo fijo por 25.000 euros siendo su valor contable de 13.000 euros. Se cobra 10.000 euros (40% del precio) en el momento de la entrega en 2024 y se pactan cobros de 5.000 euros anuales (20% del precio) durante los tres años siguientes.</p>
+      <p>La renta contable (IC) y fiscal (IF) generada por la operación = 25.000 – 13.000 = 12.000 €</p>
+      <div class="solucion">
+        <strong>Solución — Criterio de proporción al cobro del precio</strong>
+        <div class="tabla-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>Período</th><th>Renta contable (devengo)</th><th>Renta fiscal (proporción al cobro)</th><th>Ajustes</th></tr></thead>
+            <tbody>
+              <tr><td>2024</td><td>12.000 €</td><td>40% × 12.000 = 4.800 €</td><td><code>RC – 7.200 ICNF</code></td></tr>
+              <tr><td>2025</td><td>0 €</td><td>20% × 12.000 = 2.400 €</td><td><code>RC + 2.400 IFNC</code></td></tr>
+              <tr><td>2026</td><td>0 €</td><td>20% × 12.000 = 2.400 €</td><td><code>RC + 2.400 IFNC</code></td></tr>
+              <tr><td>2027</td><td>0 €</td><td>20% × 12.000 = 2.400 €</td><td><code>RC + 2.400 IFNC</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p><strong>4) Rentas negativas por transmisiones intragrupo.</strong> Las rentas negativas derivadas de la transmisión de elementos de inmovilizado material, inversiones inmobiliarias, inmovilizado intangible y valores representativos de deuda, cuando las sociedades transmitente y adquirente pertenezcan al mismo grupo de sociedades según el artículo 42 del Código de Comercio, se imputarán en el período impositivo en que dichos elementos patrimoniales sean dados de baja en el balance, sean transmitidos a terceros ajenos al referido grupo de sociedades, o bien en el período impositivo en que dichas entidades dejen de formar parte del mismo grupo.</p>
+
+  <p><strong>5) Quitas o esperas.</strong> El ingreso derivado de las quitas o esperas sobre deudas del contribuyente en el marco de un proceso concursal se imputará fiscalmente según se registren contablemente los gastos financieros derivados de la misma deuda y hasta el límite del ingreso. No obstante, cuando el ingreso derivado de la quita o espera fuera superior al gasto financiero pendiente de registrar, su imputación fiscal se realizará proporcionalmente a los gastos financieros registrados en cada período impositivo respecto del total de gastos financieros pendientes de registrar.</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-3">5.3 Amortizaciones: requisitos y sistemas</h3>
+
+  <p>Las amortizaciones recogen el gasto por la depreciación sistemática que sufren los bienes del inmovilizado material, intangible y de las inversiones inmobiliarias por el mero funcionamiento o uso de dichos bienes en la empresa, así como por su obsolescencia técnica o comercial. Desde el punto de vista tributario, el gasto por amortización es deducible cuando se cumplan dos requisitos: que esté <strong>contabilizado</strong> y que su cuantía responda a la <strong>depreciación efectiva</strong> del bien. La mayor dificultad de las amortizaciones consiste en determinar cuál es el importe que responde a la depreciación efectiva del bien. Por ello, el artículo 11 de la LIS entiende que dicho requisito se cumple cuando el gasto por amortización se calcula siguiendo alguno de los sistemas previstos por la propia Ley.</p>
+
+  <h4>5.3.1 Sistema de coeficientes oficiales</h4>
+  <p>El artículo 12.1.a) de la LIS contiene una tabla que recoge las categorías de bienes de inmovilizado utilizados habitualmente por las empresas y asigna a cada categoría un <strong>coeficiente lineal máximo (CM)</strong> y un <strong>período de años máximo de amortización (PM)</strong>. A su vez, dichos coeficientes y períodos máximos nos permiten calcular un coeficiente lineal mínimo (100/PM) y un período mínimo de años de amortización (100/CM). De este modo, la amortización será correcta fiscalmente cuando la dotación contabilizada durante el ejercicio se encuentre dentro del intervalo comprendido entre el coeficiente lineal máximo y el coeficiente lineal mínimo.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 4 — Sistema de coeficientes oficiales</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad adquiere el 1 de enero de 2024 un bien del inmovilizado material por importe de 1.000 euros que tiene asignado en la tabla oficial un CM = 25% y un PM = 8 años.</p>
+      <div class="solucion">
+        <strong>Solución</strong>
+        <p>Cm = 100/PM = 100/8 = 12,5% &nbsp;&nbsp;|&nbsp;&nbsp; Pm = 100/CM = 100/25 = 4 años</p>
+        <p>Será fiscalmente deducible la amortización contabilizada entre el <strong>[25% - 12,5%]</strong>:</p>
+        <p>1.000 € → gasto anual entre <strong>[250 € - 125 €]</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 5 — Ajuste temporal por exceso de amortización</div>
+    <div class="ejemplo-body">
+      <p>Siguiendo con los datos del ejemplo nº 4 (intervalo [250 € - 125 €]), pensemos que la sociedad contabiliza las siguientes amortizaciones:</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Período</th><th>Gasto contabilizado</th><th>Gasto deducible</th><th>Ajuste</th></tr></thead>
+          <tbody>
+            <tr><td>2024</td><td>125 €</td><td>125 €</td><td>—</td></tr>
+            <tr><td>2025</td><td>350 €</td><td>250 €</td><td><code>RC + 100 GCNF</code></td></tr>
+            <tr><td>2026</td><td>200 €</td><td>250 €</td><td><code>RC – 50 GFNC</code></td></tr>
+            <tr><td>2027</td><td>200 €</td><td>250 €</td><td><code>RC – 50 GFNC</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 6 — Déficit de amortización y recuperación</div>
+    <div class="ejemplo-body">
+      <p>Siguiendo con los datos del ejemplo nº 4 (intervalo [250 € - 125 €]):</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Período</th><th>Gasto contabilizado</th><th>Déficit/Exceso</th><th>Gasto deducible</th><th>Ajuste</th></tr></thead>
+          <tbody>
+            <tr><td>2024</td><td>25 €</td><td>Déficit 100 €</td><td>25 €</td><td>—</td></tr>
+            <tr><td>2025</td><td>300 €</td><td>Exceso 50 €</td><td>300 € (250 + 50 recuperados)</td><td>—</td></tr>
+            <tr><td>2026</td><td>300 €</td><td>Exceso 50 €</td><td>300 € (250 + 50 recuperados)</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:10px; font-style:italic; font-size:14.5px;">No se precisa la realización de ajustes fiscales ya que el exceso de gasto sobre el coeficiente máximo permite la recuperación del déficit de gasto generado en ejercicios anteriores.</p>
+    </div>
+  </div>
+
+  <p><strong>Regla bienes usados:</strong> Los bienes adquiridos usados podrán amortizarse por un importe mayor, calculándose a elección del contribuyente duplicando el coeficiente máximo asignado en tablas, o bien utilizando como base de amortización el precio originario del bien.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 7 — Bien utilizado en dos turnos de trabajo</div>
+    <div class="ejemplo-body">
+      <p>Siguiendo con los datos del ejemplo nº 4 (CM = 25%, PM = 8 años), pero supongamos que el bien es utilizado diariamente durante 2 turnos completos de trabajo (16 horas).</p>
+      <div class="solucion">
+        <strong>Cálculo del coeficiente máximo ajustado</strong>
+        <p>CM' = Cm + (CM – Cm) × nº horas/8 = 12,5 + (25 – 12,5) × 16/8 = 12,5 + 25 = <strong>37,5%</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 8 — Bien adquirido usado</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad adquiere el 1 de enero de 2024 un bien del inmovilizado material <strong>usado</strong> por importe de 1.000 euros (CM = 25%, PM = 8 años). El primer adquiriente del bien lo compró por 4.000 euros (valor originario).</p>
+      <div class="solucion">
+        <strong>Opciones de amortización máxima</strong>
+        <ul>
+          <li>(2 × CM) × precio adquisición = 2 × 25% × 1.000 = <strong>500 €/año</strong></li>
+          <li>CM × valor originario = 25% × 4.000 = <strong>1.000 €/año</strong></li>
+        </ul>
+        <p>La sociedad podrá elegir la mayor de las dos: <strong>1.000 €/año</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.3.2 Sistema degresivo del porcentaje constante</h4>
+  <p>Este sistema es aplicable a todos los bienes, menos a los edificios y al mobiliario y enseres. Requiere elegir un período de vida de amortización entre las posibilidades que ofrece la tabla del artículo 12.1.a) de la LIS. Después se calcula el porcentaje lineal (% lineal = 100/período elegido) y el <strong>porcentaje constante (Pc = % lineal × coeficiente)</strong>, que no podrá ser inferior al 11%. Los coeficientes para calcular el porcentaje constante son:</p>
+
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>Período de vida elegido</th><th>Coeficiente</th></tr></thead>
+      <tbody>
+        <tr><td>Inferior a 5 años</td><td>1,5</td></tr>
+        <tr><td>5, 6 ó 7 años</td><td>2</td></tr>
+        <tr><td>Igual o superior a 8 años</td><td>2,5</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 9 — Sistema degresivo del porcentaje constante</div>
+    <div class="ejemplo-body">
+      <p>Mismo bien del ejemplo nº 4 (1.000 €, CM = 25%, PM = 8 años). Elegimos un período de vida útil de 4 años.</p>
+      <div class="solucion">
+        <strong>Cálculo</strong>
+        <p>% lineal = 100/4 = 25% &nbsp;&nbsp;|&nbsp;&nbsp; Pc = 25% × 1,5 = <strong>37,5%</strong></p>
+        <div class="tabla-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>Período</th><th>Valor pendiente</th><th>Amortización</th></tr></thead>
+            <tbody>
+              <tr><td>2024</td><td>1.000 €</td><td>37,5% × 1.000 = <strong>375,00 €</strong></td></tr>
+              <tr><td>2025</td><td>625 €</td><td>37,5% × 625 = <strong>234,38 €</strong></td></tr>
+              <tr><td>2026</td><td>390,63 €</td><td>37,5% × 390,63 = <strong>146,48 €</strong></td></tr>
+              <tr><td>2027</td><td>244,14 €</td><td>100% × 244,14 = <strong>244,14 €</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.3.3 Sistema de números dígitos decreciente</h4>
+  <p>Aplicable a todos los bienes excepto edificios y mobiliario y enseres. Se elige un período de vida útil, se asigna al primer año el número correspondiente a los años elegidos y se va asignando números de manera decreciente a los años siguientes, de modo que al último año le corresponda el número 1.</p>
+  <div class="formula">Cuota anual = (dígito año / suma de todos los dígitos) × valor de adquisición</div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 10 — Sistema de dígitos decreciente</div>
+    <div class="ejemplo-body">
+      <p>Mismo bien del ejemplo nº 4. Elegimos 4 años. Suma de dígitos = 4 + 3 + 2 + 1 = <strong>10</strong>.</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Período</th><th>Amortización</th></tr></thead>
+          <tbody>
+            <tr><td>2024</td><td>4/10 × 1.000 = <strong>400 €</strong></td></tr>
+            <tr><td>2025</td><td>3/10 × 1.000 = <strong>300 €</strong></td></tr>
+            <tr><td>2026</td><td>2/10 × 1.000 = <strong>200 €</strong></td></tr>
+            <tr><td>2027</td><td>1/10 × 1.000 = <strong>100 €</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.3.4 Sistema de números dígitos creciente</h4>
+  <p>Se aplica a los mismos bienes que el sistema anterior y su forma de calcular la amortización es también la misma, con la única diferencia de que la asignación de dígitos se efectúa de manera inversa (de forma creciente).</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 11 — Sistema de dígitos creciente</div>
+    <div class="ejemplo-body">
+      <p>Mismo caso que el ejemplo anterior. Suma de dígitos = 1 + 2 + 3 + 4 = <strong>10</strong>.</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Período</th><th>Amortización</th></tr></thead>
+          <tbody>
+            <tr><td>2024</td><td>1/10 × 1.000 = <strong>100 €</strong></td></tr>
+            <tr><td>2025</td><td>2/10 × 1.000 = <strong>200 €</strong></td></tr>
+            <tr><td>2026</td><td>3/10 × 1.000 = <strong>300 €</strong></td></tr>
+            <tr><td>2027</td><td>4/10 × 1.000 = <strong>400 €</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.3.5 Otras formas de probar la depreciación efectiva del bien</h4>
+  <p>El artículo 12 de la LIS prevé la posibilidad de que el contribuyente formule un <strong>plan específico de amortización</strong> y lo presente para su aprobación a la Administración tributaria. En la práctica, esta opción es útil cuando se trate de bienes que no se encuentren en la tabla oficial de amortización o cuando podamos probar que nuestros bienes sufren una depreciación superior a las cantidades resultantes de los sistemas de amortización anteriores.</p>
+
+  <p>Finalmente, la LIS también prevé que el contribuyente pueda deducirse en cada período impositivo la depreciación efectiva sufrida por los bienes de su inmovilizado siempre que pueda justificar el importe real de dicha depreciación (informes periciales).</p>
+
+  <h4>5.3.6 Amortización del inmovilizado intangible</h4>
+  <p>Como regla específica, el artículo 12.2 de la LIS dispone que el inmovilizado intangible se amortizará atendiendo a la duración de la vida útil del activo. No obstante, cuando la vida útil del activo intangible no pueda estimarse de forma fiable (por ejemplo, en el caso de adquisición de una marca), podrá amortizarse el citado activo hasta el límite anual máximo de la veinteava parte (5%) de su importe de adquisición. Esta última regla se aplicará también a la amortización del fondo de comercio.</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-4">5.4 Libertad de amortización</h3>
+
+  <p>La libertad de amortización constituye un incentivo fiscal que permite que la sociedad pueda deducir en el IS el gasto derivado de la amortización del bien como estime por conveniente, aunque el mismo no esté contabilizado y su distribución temporal no responda a la depreciación efectiva del bien.</p>
+
+  <h4>5.4.1 Libertad de amortización de bienes de escaso valor</h4>
+  <p>El artículo 12.3.c) de la LIS dispone, para cualquier contribuyente, que se podrán amortizar libremente los elementos nuevos del inmovilizado material cuyo valor unitario no supere los <strong>300 euros</strong>, sin que pueda superarse el límite de <strong>25.000 euros</strong> por cada período impositivo anual.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 12 — Libertad de amortización, bienes de escaso valor</div>
+    <div class="ejemplo-body">
+      <p>El 1 de enero de 2024 una sociedad adquiere una maquinaria nueva por importe de 200 euros, que es amortizada contablemente de forma lineal en un 25%. La sociedad decide amortizar libremente el citado bien.</p>
+      <div class="solucion">
+        <strong>Resultado: el bien se puede amortizar íntegramente en el primer período impositivo</strong>
+        <div class="tabla-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>Período</th><th>Gasto contable</th><th>Gasto fiscal</th><th>Ajuste</th></tr></thead>
+            <tbody>
+              <tr><td>2024</td><td>50 €</td><td>200 €</td><td><code>RC – 150 GFNC</code></td></tr>
+              <tr><td>2025</td><td>50 €</td><td>—</td><td><code>RC + 50 GCNF</code></td></tr>
+              <tr><td>2026</td><td>50 €</td><td>—</td><td><code>RC + 50 GCNF</code></td></tr>
+              <tr><td>2027</td><td>50 €</td><td>—</td><td><code>RC + 50 GCNF</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.4.2 Libertad de amortización de las inversiones y gastos en I+D</h4>
+  <p>Para cualquier contribuyente, el artículo 12.3 de la LIS establece la libertad de amortización de los elementos del inmovilizado material e intangible, excluidos los edificios, afectos a las actividades de investigación y desarrollo. Los edificios afectos a estas actividades se podrán amortizar de forma lineal durante un período de 10 años. Asimismo, podrán amortizarse libremente los gastos de investigación y desarrollo activados como inmovilizado intangible.</p>
+
+  <h4>5.4.3 Libertad de amortización por generación de empleo — ERD</h4>
+  <p>El artículo 102 de la LIS dispone que los elementos nuevos del inmovilizado material y de las inversiones inmobiliarias, afectos a actividades económicas, podrán amortizarse libremente si durante los veinticuatro meses siguientes al inicio del período impositivo en el que los bienes adquiridos entran en funcionamiento se incrementa la plantilla media total de la empresa respecto de la plantilla existente durante los doce meses anteriores y, además, el incremento creado se mantiene durante veinticuatro meses adicionales.</p>
+
+  <p>La cuantía de la inversión que podrá beneficiarse de este incentivo será el resultado de multiplicar <strong>120.000 euros por el incremento de plantilla logrado</strong>, calculado con dos decimales.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 13 — Libertad de amortización ERD por generación de empleo</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad tenía el 1/1/23 una plantilla de 3 trabajadores (contrato indefinido y tiempo completo). El 1/4/24 se jubila un trabajador y el 01/01/25 se han contratado dos trabajadores con contrato indefinido y tiempo completo. La sociedad no sufre alteraciones de plantilla durante los cuatro años siguientes.</p>
+      <div class="solucion">
+        <strong>Cálculo</strong>
+        <p>Pm 24,25 = (3×91 + 2×275 + 4×365) / 731 = <strong>3,12</strong></p>
+        <p>Pm 23 = (3×365) / 365 = <strong>3</strong></p>
+        <p>Incremento plantilla = Pm 24,25 – Pm 23 = 3,12 – 3 = <strong>0,12</strong></p>
+        <p>Cuantía máxima de libertad de amortización = 120.000 × 0,12 = <strong>14.400 €</strong></p>
+        <p>Se cumple el requisito de mantenimiento del empleo creado durante veinticuatro meses más, ya que Pm 26,27 = 4 &gt; Pm 24,25 = 3,12.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.4.4 Aceleración de la amortización — ERD</h4>
+  <p>También de manera exclusiva para las entidades de reducida dimensión, el artículo 103 de la LIS dispone que los elementos nuevos del inmovilizado material, de las inversiones inmobiliarias y del inmovilizado intangible, afectos todos ellos a actividades económicas, podrán amortizarse en el doble del coeficiente lineal máximo establecido en la tabla oficial de amortización.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 14 — Aceleración de la amortización ERD</div>
+    <div class="ejemplo-body">
+      <p>El 1 de enero de 2024 una sociedad ERD adquiere una maquinaria nueva por importe de 2.000 euros, amortizada contablemente de forma lineal en un 25%. La sociedad decide amortizar aceleradamente el citado bien.</p>
+      <div class="solucion">
+        <strong>La sociedad podrá amortizar al 2 × CM = 2 × 25% = 50%</strong>
+        <div class="tabla-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>Período</th><th>Gasto contable</th><th>Gasto fiscal</th><th>Ajuste</th></tr></thead>
+            <tbody>
+              <tr><td>2024</td><td>500 €</td><td>1.000 €</td><td><code>RC – 500 GFNC</code></td></tr>
+              <tr><td>2025</td><td>500 €</td><td>1.000 €</td><td><code>RC – 500 GFNC</code></td></tr>
+              <tr><td>2026</td><td>500 €</td><td>—</td><td><code>RC + 500 GCNF</code></td></tr>
+              <tr><td>2027</td><td>500 €</td><td>—</td><td><code>RC + 500 GCNF</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-5">5.5 Operaciones de arrendamiento financiero (leasing)</h3>
+
+  <p>El artículo 106 de la LIS regula, como un régimen especial del IS, la deducción de las cuotas pagadas por la cesión de bienes a través de un contrato de <strong>arrendamiento financiero o leasing</strong>. Para aplicar este régimen especial deben cumplirse los siguientes requisitos:</p>
+  <ul>
+    <li>El arrendador debe ser una entidad de crédito o un establecimiento financiero de crédito.</li>
+    <li>El contrato debe tener una duración mínima de dos años cuando se trate de bienes muebles y de diez años cuando se trate de bienes inmuebles o establecimientos industriales.</li>
+    <li>El contrato deberá distinguir en las cuotas de leasing la parte correspondiente a la recuperación del bien, excluido el importe de la opción de compra, y la parte correspondiente a la carga financiera de la operación.</li>
+    <li>El importe anual de la parte de cuota correspondiente a la recuperación de bien deberá permanecer igual o tener carácter creciente durante todo el período contractual.</li>
+  </ul>
+
+  <p>La aplicación de este régimen fiscal supone para el arrendatario financiero las siguientes consecuencias:</p>
+  <ul>
+    <li>La parte de cuota correspondiente a la <strong>carga financiera</strong> (intereses) de la operación es un gasto deducible en su totalidad.</li>
+    <li>La parte de cuota correspondiente a la <strong>recuperación del bien</strong> es deducible (salvo que se trate de terrenos, solares u otros activos no amortizables), aunque no esté contabilizada, con el límite del <strong>doble del coeficiente lineal máximo</strong> asignado al bien. En el caso de una entidad de reducida dimensión, el límite se amplía hasta el <strong>triple</strong> del citado coeficiente lineal máximo.</li>
+  </ul>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 15 — Arrendamiento financiero (leasing)</div>
+    <div class="ejemplo-body">
+      <p>El 1 de enero de 2024 una sociedad adquiere una maquinaria a través de una operación de arrendamiento financiero, pactando la operación a tres años, al final de los cuales la sociedad ejerce la opción de compra pactada. El valor al contado del bien asciende a 16.000 euros. Es amortizado contablemente de forma lineal en 5 años (CM = 20%).</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th></th><th>2024</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+          <tbody>
+            <tr><td>Carga financiera</td><td>1.650 €</td><td>950 €</td><td>150 €</td><td>—</td></tr>
+            <tr><td>Recuperación del bien</td><td>5.000 €</td><td>5.000 €</td><td>5.000 €</td><td>—</td></tr>
+            <tr><td>Opción de compra</td><td>—</td><td>—</td><td>—</td><td>1.000 €</td></tr>
+            <tr><td>Cuota total anual</td><td>6.650 €</td><td>5.950 €</td><td>5.150 €</td><td>1.000 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="solucion">
+        <strong>Cálculo: Límite deducible recuperación = 2 × 20% × 16.000 = 6.400 €/año</strong>
+        <p>Las cuotas de recuperación del bien (5.000 €) son íntegramente deducibles (no superan 6.400 €).</p>
+        <div class="tabla-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>Período</th><th>Amortización contable</th><th>Recuperación bien/opción</th><th>Ajuste</th></tr></thead>
+            <tbody>
+              <tr><td>2024</td><td>20% × 16.000 = 3.200 €</td><td>5.000 €</td><td><code>RC – 1.800 GFNC</code></td></tr>
+              <tr><td>2025</td><td>3.200 €</td><td>5.000 €</td><td><code>RC – 1.800 GFNC</code></td></tr>
+              <tr><td>2026</td><td>3.200 €</td><td>5.000 €</td><td><code>RC – 1.800 GFNC</code></td></tr>
+              <tr><td>2027</td><td>3.200 €</td><td>1.000 €</td><td><code>RC + 2.200 GCNF</code></td></tr>
+              <tr><td>2028</td><td>3.200 €</td><td>—</td><td><code>RC + 3.200 GCNF</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-6">5.6 Pérdidas por deterioro de valor de los elementos patrimoniales</h3>
+
+  <p>El artículo 13.2 de la LIS establece que <strong>no serán deducibles</strong> las siguientes pérdidas por deterioro:</p>
+  <ul>
+    <li>Las pérdidas por deterioro del inmovilizado material, de las inversiones inmobiliarias y del inmovilizado intangible, incluido el fondo de comercio.</li>
+    <li>Las pérdidas por deterioro de los valores representativos de la participación en el capital o en los fondos propios de entidades respecto de los que den las dos circunstancias siguientes: (a) que en el período impositivo en que se registre el deterioro, el contribuyente no participe en, al menos, el 5% del capital o los fondos propios de la entidad, y (b) en el caso de participación en el capital o en los fondos propios de una entidad no residente, que esta entidad no residente esté sujeta a un tipo de gravamen nominal del IS de, al menos, el 10%.</li>
+    <li>Las pérdidas por deterioro de los valores representativos de deuda.</li>
+  </ul>
+
+  <p>La LIS permite únicamente la deducción de las pérdidas por deterioro de dos tipos de bienes de la sociedad:</p>
+  <ul>
+    <li><strong>Pérdidas por deterioro de las existencias:</strong> siguiendo íntegramente la normativa contable.</li>
+    <li><strong>Pérdidas por deterioro de los créditos derivadas de las posibles insolvencias de deudores.</strong> Para ello, será necesario que, a la fecha del devengo del IS, concurra alguna de las siguientes circunstancias (artículo 13.1):
+      <ol>
+        <li>Que haya transcurrido el plazo de seis meses desde el vencimiento de la obligación.</li>
+        <li>Que el deudor esté declarado en situación de concurso.</li>
+        <li>Que el deudor esté procesado por el delito de alzamiento de bienes.</li>
+        <li>Que las obligaciones hayan sido reclamadas judicialmente o sean objeto de un litigio judicial o procedimiento arbitral de cuya solución dependa su cobro.</li>
+      </ol>
+    </li>
+  </ul>
+
+  <p>Sin embargo, pese a concurrir las circunstancias anteriores, <strong>no serán deducibles</strong> las pérdidas por deterioro de los siguientes créditos:</p>
+  <ul>
+    <li>Los adeudados por entidades de derecho público, salvo procedimiento arbitral o judicial.</li>
+    <li>Los adeudados por personas o entidades vinculadas, salvo que estén en situación de concurso y se haya producido la apertura de la fase de liquidación por el juez.</li>
+    <li>Las pérdidas basadas en estimaciones globales del riesgo de insolvencias de clientes y deudores.</li>
+  </ul>
+
+  <p>Como beneficio fiscal exclusivo para las ERD, el artículo 104 de la LIS permite deducirse adicionalmente un importe equivalente al <strong>1%</strong> sobre los deudores existentes a la conclusión del período impositivo (excluidos los créditos ya deducidos totalmente y los créditos cuyo deterioro no es deducible).</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-7">5.7 Provisiones</h3>
+
+  <p>Contablemente, las provisiones recogen el importe de los pasivos (obligaciones) de la empresa que en el momento del cierre del ejercicio resultan indeterminados respecto a su importe exacto o a la fecha en que se cancelarán.</p>
+
+  <h4>5.7.1 Provisiones no deducibles</h4>
+  <p>No serán deducibles los gastos destinados a dotar las siguientes provisiones (artículo 14 de la LIS):</p>
+  <ul>
+    <li>Las provisiones destinadas a la cobertura de obligaciones implícitas o tácitas.</li>
+    <li>Las provisiones y fondos internos para la cobertura de contingencias idénticas o análogas a los planes de pensiones (sí serán deducibles en el período impositivo en que se abonen las prestaciones).</li>
+    <li>Las provisiones destinadas a la cobertura de las retribuciones a largo plazo al personal mediante sistemas de aportación definida o prestación definida (salvo contribuciones a planes de pensiones y a planes de previsión social empresarial).</li>
+    <li>Las provisiones destinadas a cubrir los costes de cumplimiento de contratos que excedan a los beneficios económicos que se esperan recibir de los mismos.</li>
+    <li>Las provisiones destinadas a cubrir los costes de reestructuraciones, excepto si se refieren a obligaciones legales o contractuales.</li>
+    <li>Las provisiones destinadas a cubrir el riesgo de devoluciones de ventas.</li>
+    <li>Las provisiones destinadas a la cobertura de los pagos al personal basados en instrumentos de patrimonio, utilizados como fórmula de retribución a los empleados, si se satisfacen en efectivo.</li>
+  </ul>
+
+  <p>En cualquier caso, los gastos destinados a cualquier provisión que no hubieran sido fiscalmente deducibles en el momento de su dotación, se integrarán en la base imponible del período impositivo en que se aplique la provisión o se destine el gasto a su finalidad.</p>
+
+  <h4>5.7.2 Provisiones deducibles</h4>
+  <p>Por el contrario, sí serán deducibles los gastos destinados a dotar las siguientes provisiones:</p>
+  <ul>
+    <li>Las provisiones destinadas a la cobertura de obligaciones legales o contractuales, salvo que la LIS haya declarado expresamente que no son deducibles.</li>
+    <li>Las provisiones destinadas a cubrir los gastos correspondientes a actuaciones medioambientales cuando se correspondan con un plan formulado por el contribuyente y aprobado por la Administración tributaria.</li>
+    <li>Las provisiones técnicas dotadas por las entidades aseguradoras en las cuantías mínimas que exige la normativa específica que regula la actividad de dichas entidades.</li>
+    <li>El fondo de provisiones técnicas efectuadas por las sociedades de garantía recíproca hasta que el mencionado fondo alcance la cuantía mínima obligatoria. Las dotaciones que excedan de las cuantías obligatorias serán deducibles en un 75%.</li>
+    <li>Las provisiones para la cobertura de las garantías de reparación y revisión y para la cobertura de los gastos accesorios por devoluciones de ventas.</li>
+  </ul>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 16 — Provisión para garantías de reparación</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad concede garantías de reparación sobre sus productos. Datos de ventas con garantías y gastos de reparación durante el período impositivo y los dos inmediatos anteriores:</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th></th><th>2022</th><th>2023</th><th>2024</th></tr></thead>
+          <tbody>
+            <tr><td>Ventas con garantía de reparación</td><td>300.000 €</td><td>350.000 €</td><td>380.000 €</td></tr>
+            <tr><td>Gastos de reparación</td><td>10.000 €</td><td>5.000 €</td><td>12.000 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:10px;">Ventas con garantías vivas al cierre del ejercicio 2024: <strong>400.000 €</strong></p>
+      <div class="solucion">
+        <strong>Cálculo del porcentaje deducible</strong>
+        <p>% = Σ gastos reparaciones (2024, 2023, 2022) / Σ ventas con garantía (2024, 2023, 2022) × 100</p>
+        <p>% = (12.000 + 5.000 + 10.000) / (380.000 + 350.000 + 300.000) × 100 = <strong>2,62136%</strong></p>
+        <p>Importe deducible en 2024 = 2,62136% × 400.000 = <strong>10.485,44 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-8">5.8 Gastos no deducibles</h3>
+
+  <p>La LIS no establece expresamente un requisito de deducibilidad del gasto que atienda a la obligatoriedad o necesidad del mismo para la empresa. Por lo tanto, cualquier partida que tenga la condición de gasto de conformidad con el PGC debe considerarse, en principio, un gasto deducible en el IS. Sin embargo, para restringir la deducibilidad de determinados gastos, el artículo 15 de la LIS establece una relación de <strong>gastos no deducibles</strong>:</p>
+
+  <ol>
+    <li><strong>Los que representen una retribución de los fondos propios</strong>: dividendos, distribución de beneficios, retornos cooperativos, o cualquier otra participación en los beneficios que la sociedad entregue a sus socios cuando dicho pago no suponga la contraprestación por la entrega de un bien o por la prestación de un servicio por parte del socio.</li>
+    <li><strong>Los gastos derivados de la contabilización del Impuesto sobre Sociedades</strong>: la LIS entiende que el citado IS no es un gasto fiscal, evitando que la propia cuota del impuesto integre la base imponible.</li>
+    <li><strong>Las multas y sanciones penales y administrativas</strong>: la finalidad de este precepto se encuentra en el deseo del legislador de reforzar el efecto disuasorio de las multas y sanciones. También son no deducibles los recargos del período ejecutivo y el recargo por declaración extemporánea sin requerimiento previo. Sin embargo, sí son deducibles los intereses de demora por el retraso en el pago de los tributos.</li>
+    <li><strong>Las pérdidas del juego</strong>: no serán deducibles estas pérdidas en la medida en que las sociedades no desarrollen como actividad económica propia la organización de juegos.</li>
+    <li><strong>Los donativos y liberalidades</strong>: aunque sí serán deducibles: los gastos por atenciones a clientes o proveedores (con el límite del 1% del importe neto de la cifra de negocios), los gastos con arreglo a los usos y costumbres efectuados con respecto al personal (por ejemplo, la comida de navidad), los gastos realizados para promocionar la venta de bienes y prestación de servicios, las retribuciones a los administradores por funciones de alta dirección u otras derivadas de un contrato laboral.</li>
+    <li><strong>Los gastos derivados de actuaciones contrarias al ordenamiento jurídico</strong> (por ejemplo, un soborno).</li>
+    <li><strong>Los gastos de servicios correspondientes a operaciones realizadas con personas o entidades residentes en paraísos fiscales</strong>, excepto que el contribuyente pruebe que el gasto devengado responde a una operación o transacción efectivamente realizada.</li>
+    <li><strong>Los gastos financieros derivados de deudas con entidades del grupo</strong> (criterio artículo 42 del Código de Comercio) cuando se hayan contraído para la adquisición, a otras entidades también del grupo, de participaciones en el capital o en los fondos propios de cualquier tipo de entidad, o bien para la realización de aportaciones en el capital o fondos propios de otras entidades del grupo, salvo que el contribuyente acredite que existen motivos económicos válidos para la realización de dichas operaciones.</li>
+    <li><strong>Los gastos derivados de la extinción de la relación laboral</strong> que excedan, en ambos casos y para cada perceptor, de la mayor de las dos cantidades siguientes: 1.000.000 € o el importe establecido con carácter obligatorio en el Estatuto de los Trabajadores.</li>
+    <li><strong>Las pérdidas por deterioro de los valores representativos de la participación en el capital</strong> o en los fondos propios de entidades que cumplan los requisitos para aplicar la exención del artículo 21 de la LIS.</li>
+    <li>Las <strong>disminuciones de valor originadas por aplicación del criterio de valor razonable</strong> a valores representativos de entidades, salvo que previamente se haya integrado en la base imponible un incremento de valor correspondiente a valores homogéneos del mismo importe.</li>
+    <li>La <strong>deuda tributaria del Impuesto sobre Transmisiones Patrimoniales y Actos Jurídicos Documentados</strong>, modalidad Actos Jurídicos Documentados, documentos notariales, resultante de la formalización de escrituras públicas de préstamo con garantía hipotecaria que le corresponde al prestamista.</li>
+    <li>Los gastos que sean objeto de la deducción en la cuota regulada en favor de las Autoridades Portuarias en el artículo 38 bis de la LIS.</li>
+  </ol>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-9">5.9 Asimetrías híbridas</h3>
+
+  <p>El artículo 15 bis de la LIS recoge un conjunto de normas anti-elusión destinadas a combatir que determinadas personas o entidades vinculadas que operan en varios Estados realicen operaciones o se encuentren en situaciones en las que, por las diferencias existentes en las calificaciones jurídicas de las distintas legislaciones fiscales implicadas, consiguen bien deducir un mismo gasto dos veces en jurisdicciones distintas (<strong>supuestos de doble deducción</strong>), o bien consiguen deducir un gasto en una jurisdicción sin la incorporación correlativa de un ingreso en la otra jurisdicción (<strong>deducción sin inclusión</strong>).</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 17 — Asimetría híbrida por instrumento financiero híbrido</div>
+    <div class="ejemplo-body">
+      <p>La sociedad residente A emite unas obligaciones calificadas como "subordinadas especiales" que le generan durante el período impositivo un gasto financiero de 5.000 €. Dichas obligaciones son adquiridas por una sociedad B residente en Panamá, vinculada a la sociedad A. Según la legislación fiscal de Panamá, estas obligaciones "subordinadas especiales" deben considerarse como fondos propios y, por lo tanto, el ingreso de 5.000 € se equipara a un dividendo exento en el Impuesto sobre Sociedades panameño que grava a la sociedad B.</p>
+      <div class="solucion">
+        <strong>Resultado</strong>
+        <p>Se trataría de una asimetría híbrida, dado que las legislaciones de los países implicados califican fiscalmente de manera diferente el instrumento financiero mencionado:</p>
+        <ul>
+          <li>La LIS considera que se trata de un pasivo → el gasto de 5.000 € sería inicialmente deducible en España.</li>
+          <li>La legislación fiscal panameña considera que se trata de fondos propios → el ingreso es un "dividendo" exento en Panamá.</li>
+        </ul>
+        <p>Por lo tanto, la norma del artículo 15 bis será aplicable y el gasto de 5.000 € <strong>no será deducible</strong> en la base imponible de la sociedad A: <code>RC + 5.000 GCNF</code></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-10">5.10 Limitación en la deducibilidad de gastos financieros</h3>
+
+  <p>El artículo 16 de la LIS dispone que los <strong>gastos financieros netos</strong> serán deducibles con el límite del <strong>30% del beneficio operativo del ejercicio</strong>. No obstante, la norma garantiza expresamente que la sociedad podrá deducirse siempre gastos financieros netos del período impositivo por importe de <strong>1.000.000 de euros</strong>.</p>
+
+  <p>Los conceptos clave para aplicar la norma:</p>
+  <ul>
+    <li><strong>Gastos financieros netos:</strong> el exceso de gastos financieros sobre los ingresos obtenidos por el contribuyente derivados de la cesión a terceros de capitales propios.</li>
+    <li><strong>Beneficio operativo:</strong> se determina a partir del resultado de explotación de la cuenta de pérdidas y ganancias del ejercicio, eliminando la amortización del inmovilizado, la imputación de subvenciones de inmovilizado no financiero, el deterioro y resultado por enajenaciones de inmovilizado, y adicionando los ingresos financieros de participaciones en instrumentos de patrimonio que consistan en dividendos y participaciones en beneficios repartidos por entidades en las que se participe en al menos el 5%.</li>
+  </ul>
+
+  <p>El exceso de gastos financieros no supone su consideración como gastos no deducibles en sentido absoluto, sino su <strong>imputación temporal a períodos impositivos futuros</strong>. Por otra parte, en los períodos impositivos en los que los gastos financieros netos no superen el límite del 30%, la diferencia entre dicho límite y los citados gastos financieros netos se adicionará al límite de deducibilidad de los gastos financieros en los períodos impositivos que concluyan en los cinco años siguientes.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 18 — Limitación deducibilidad gastos financieros</div>
+    <div class="ejemplo-body">
+      <div class="tabla-wrap">
+        <table>
+          <thead><tr><th>Período</th><th>Gastos financieros netos</th><th>Beneficio operativo</th><th>Límite 30%</th></tr></thead>
+          <tbody>
+            <tr><td>2024</td><td>2.500.000 €</td><td>10.000.000 €</td><td>3.000.000 €</td></tr>
+            <tr><td>2025</td><td>2.700.000 €</td><td>6.000.000 €</td><td>1.800.000 €</td></tr>
+            <tr><td>2026</td><td>2.000.000 €</td><td>9.000.000 €</td><td>2.700.000 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="solucion">
+        <strong>Aplicación artículo 16 LIS</strong>
+        <p><strong>2024:</strong> 2.500.000 € &lt; 3.000.000 € → gasto totalmente deducible. Diferencia (500.000 €) se añade al límite de los 5 años siguientes.</p>
+        <p><strong>2025:</strong> 2.700.000 € supera el límite (1.800.000 € + 500.000 € del año anterior = 2.300.000 €). Exceso no deducible: 400.000 €. Ajuste positivo: <code>RC + 400.000 GCNF</code>. El exceso se podrá deducir en períodos impositivos siguientes.</p>
+        <p><strong>2026:</strong> 2.000.000 € &lt; 2.700.000 €. Gasto deducible. Además, los 400.000 € pendientes del ejercicio anterior, sumados a los gastos de este período (2.400.000 €), no superan el 30% del beneficio operativo (2.700.000 €), por lo que la sociedad podrá realizar un ajuste negativo <code>RC – 400.000 GFNC</code> para deducir los citados gastos financieros pendientes del ejercicio anterior.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Por último, se prevé que esta restricción a la deducibilidad de los gastos financieros no será aplicable a las entidades de crédito y aseguradoras, ni tampoco a cualquier entidad en el período impositivo en que se produzca su extinción, salvo que la misma sea consecuencia de una operación de reestructuración (por ejemplo, una fusión).</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-11">5.11 Reglas de valoración de los elementos patrimoniales</h3>
+
+  <h4>5.11.1 Regla general</h4>
+  <p>El artículo 17.1 de la LIS dispone que los elementos patrimoniales se valorarán de acuerdo con los criterios establecidos por el Código de Comercio, corregidos por la aplicación de los preceptos de la LIS. De este modo, con carácter general, el valor fiscal de los bienes coincidirá con su valor contable. Las revaloraciones contables llevadas a cabo voluntariamente por la sociedad no se integrarán en la base imponible del IS, salvo que se realicen en virtud de una norma legal o reglamentaria que obligue a incluir su importe en la cuenta de pérdidas y ganancias.</p>
+
+  <p>En la práctica, esta regla general de valoración tiene como consecuencia que la renta derivada de las transmisiones del inmovilizado de la empresa que debe ser objeto de tributación en el IS coincidirá, con carácter general, con el beneficio o la pérdida registrados contablemente. Por lo tanto, no será necesario realizar ningún ajuste fiscal como consecuencia de dichas transmisiones.</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h2 id="s6">6. Tipos de Gravamen y Cuota Íntegra</h2>
+
+  <div class="formula">CI = Tg × BI</div>
+
+  <p>El artículo 29 de la LIS regula los diferentes tipos de gravamen del IS. Los principales son:</p>
+
+  <div class="tabla-wrap">
+    <table class="tipo-table">
+      <thead><tr><th>Entidad</th><th>Tipo</th></tr></thead>
+      <tbody>
+        <tr><td>Tipo general de gravamen</td><td>25%</td></tr>
+        <tr><td>Tipo general para entidades cuya cifra de negocios sea inferior a 1.000.000 € durante el período impositivo anterior</td><td>23%</td></tr>
+        <tr><td>Sociedades de nueva creación (primer período impositivo con base imponible positiva y el siguiente). <em>No aplicable a entidades patrimoniales</em></td><td>15%</td></tr>
+        <tr><td>Sociedades calificadas como empresas emergentes (primer período impositivo con BI positiva y los tres siguientes)</td><td>15%</td></tr>
+        <tr><td>Cooperativas (BI cooperativa / BI extracooperativa)</td><td>20% / 25%</td></tr>
+        <tr><td>Entidades sin fin lucrativo (Ley 49/2002)</td><td>10%</td></tr>
+        <tr><td>Sociedades de capital variable, fondos de inversión, SICAVs (que cumplan determinados requisitos)</td><td>1%</td></tr>
+        <tr><td>Fondos de Pensiones</td><td>0%</td></tr>
+        <tr><td>Entidades de crédito y dedicadas a la exploración, investigación y explotación de yacimientos y almacenamientos subterráneos de hidrocarburos</td><td>30%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h2 id="s7">7. Deuda Tributaria</h2>
+
+  <p>El cálculo de la deuda tributaria del IS requiere minorar la cuota íntegra anterior en una serie de deducciones, bonificaciones y pagos a cuenta que podemos resumir en el siguiente esquema:</p>
+
+  <table class="schema-table">
+    <tbody>
+      <tr><td class="schema-result">Cuota íntegra</td></tr>
+      <tr><td class="schema-minus">– Deducción para evitar la doble imposición internacional</td></tr>
+      <tr><td class="schema-minus">– Deducción para evitar la doble imposición económica internacional</td></tr>
+      <tr><td class="schema-minus">– Bonificaciones del IS</td></tr>
+      <tr><td class="schema-igual">= CUOTA ÍNTEGRA BONIFICADA</td></tr>
+      <tr><td class="schema-minus">– Deducciones para incentivar la realización de determinadas actividades</td></tr>
+      <tr><td class="schema-igual">= CUOTA LÍQUIDA</td></tr>
+      <tr><td class="schema-minus">– Retenciones e ingresos a cuenta</td></tr>
+      <tr><td class="schema-minus">– Pagos fraccionados</td></tr>
+      <tr><td class="schema-igual">= CUOTA A INGRESAR O A DEVOLVER</td></tr>
+    </tbody>
+  </table>
+
+  <p>Todas las cuotas del IS deberán ser positivas o cero (nunca negativas), salvo la última de ellas cuyo resultado pueden ser tanto positivo como negativo. Si esta última cuota es positiva, entonces la sociedad está obligada a ingresar su importe en la Hacienda Pública, mientras que si es negativa, entonces la Administración tributaria deberá devolver su importe dentro de los seis meses siguientes a la finalización del plazo de presentación de la correspondiente autoliquidación.</p>
+
+  <h3 id="s7-1">7.1 Deducción para evitar la doble imposición jurídica internacional</h3>
+
+  <p>El artículo 31 de la LIS permite aplicar una <strong>deducción para evitar la doble imposición jurídica</strong> que se genera cuando el contribuyente obtiene rentas en el extranjero y es gravado por dicha renta en dos Estados diferentes: en el Estado en el que obtiene la renta (Estado de la fuente) y en España (Estado de residencia). La deducción consistirá en la menor de las dos cantidades siguientes:</p>
+
+  <div class="tabla-wrap">
+    <table>
+      <tbody>
+        <tr><td>– Impuesto efectivamente pagado en el extranjero por razón de un gravamen de naturaleza idéntica o análoga al IS</td></tr>
+        <tr><td>– Tg × Renta íntegra obtenida en el extranjero</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Además, el importe del impuesto satisfecho en el extranjero que no sea plenamente deducible por aplicación de esta deducción, la norma prevé que podrá considerarse gasto deducible del IS la parte del impuesto extranjero que no sea objeto de deducción por doble imposición internacional, siempre que se corresponda con la realización de actividades económicas en el extranjero. Las cantidades no deducidas por insuficiencia de cuota íntegra, podrán deducirse en los períodos impositivos siguientes. El artículo 31.7 de la LIS extiende hasta diez años la prescripción del derecho de la Administración tributaria para comprobar las deducciones por doble imposición pendientes.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 29 — Deducción por doble imposición jurídica internacional</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A, cuyo tipo de gravamen es del 25%, obtiene las siguientes rentas íntegras gravadas en el extranjero:</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>País</th><th>Tipo de renta</th><th>Renta íntegra</th><th>IS extranjero</th></tr></thead>
+          <tbody>
+            <tr><td>Holanda</td><td>Renta sin establecimiento permanente</td><td>2.400,00 €</td><td>400 €</td></tr>
+            <tr><td>Holanda</td><td>Renta sin establecimiento permanente</td><td>7.000,00 €</td><td>2.000 €</td></tr>
+            <tr><td>Marruecos</td><td>Renta con establecimiento permanente</td><td>48.000,00 €</td><td>8.000 €</td></tr>
+            <tr><td>Marruecos</td><td>Renta sin establecimiento permanente</td><td>6.000,00 €</td><td>2.500 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="solucion">
+        <strong>Cálculo DDI internacional (la menor de dos cantidades)</strong>
+        <p><strong>Por renta con EP en Marruecos (8.000 €) → la menor de:</strong><br>
+        — Impuesto pagado en extranjero: <strong>8.000 €</strong><br>
+        — Tg × Renta: 25% × 48.000 = <strong>12.000 €</strong><br>
+        ✓ Deducible: <strong>8.000 €</strong></p>
+        <p><strong>Por renta sin EP en Marruecos → la menor de:</strong><br>
+        — Impuesto pagado: <strong>2.500 €</strong><br>
+        — 25% × 6.000 = <strong>1.500 €</strong><br>
+        ✓ Deducible: <strong>1.500 €</strong></p>
+        <p><strong>Por rentas sin EP en Holanda → la menor de:</strong><br>
+        — Impuesto pagado: 400 + 2.000 = <strong>2.400 €</strong><br>
+        — 25% × (2.400 + 7.000) = 25% × 9.400 = <strong>2.350 €</strong><br>
+        ✓ Deducible: <strong>2.350 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="s7-2">7.2 Deducción para evitar la doble imposición económica internacional</h3>
+
+  <p>El artículo 32 de la LIS permite al contribuyente deducir el Impuesto sobre Sociedades subyacente pagado por una filial no residente correspondiente a los dividendos o participaciones en beneficios incluidos en su base imponible del IS, siempre que el contribuyente participe en, al menos, el <strong>5% del capital</strong> o de los fondos propios de dicha filial y que dicha participación se haya mantenido ininterrumpidamente durante el año anterior al reparto de los dividendos.</p>
+
+  <p>Para poder aplicar esta deducción, el contribuyente deberá incluir el citado impuesto subyacente en la base imponible del IS (ajuste positivo IFNC). El importe de esta deducción sumado al importe de la deducción por doble imposición internacional del apartado anterior en relación con los dividendos percibidos no podrá superar la tributación en España del importe de la renta incorporada a la base imponible del IS, minorada dicha renta al efecto del cálculo del citado límite en el 5% de los dividendos percibidos en concepto de gastos de gestión referidos a la participación (95% dividendos + impuesto subyacente).</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 30 — Deducción por doble imposición económica internacional</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A (tipo gravamen 25%) obtiene dividendos íntegros de 10.000 euros de una sociedad extranjera E, en la que participa en el 10% de su capital social. La sociedad A soporta una tributación del 5% (500 euros) por los dividendos percibidos en el Estado de residencia de E. El tipo de gravamen del IS de la sociedad E fue del 9%.</p>
+      <div class="solucion">
+        <strong>Paso 1: DDI jurídica (la menor de):</strong>
+        <p>— Impuesto pagado en extranjero: <strong>500 €</strong><br>
+        — Tg × Renta íntegra: 25% × 10.000 = <strong>2.500 €</strong> → Deducción DDI jurídica: <strong>500 €</strong></p>
+        <strong>Paso 2: DDI económica (impuesto subyacente):</strong>
+        <p>Beneficios previos sociedad E = 10.000 / (1 – 0,09) = 10.000 / 0,91 = <strong>10.989,01 €</strong></p>
+        <p>Impuesto subyacente = 10.989,01 – 10.000 = <strong>989,01 €</strong></p>
+        <p>Para practicar la deducción habrá que realizar un ajuste positivo en la BI del IS por 989,01 € (IFNC).</p>
+        <p>DDI económica = 989,01 € ya que no supera el límite:<br>
+        (DDI jurídica + DDI económica) ≤ Tg × Renta incorporada BI<br>
+        500 + 989,01 = 1.489,01 ≤ 25% × (10.000 + 989,01) = 25% × 10.489,01 = <strong>2.622,25 €</strong> ✓</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="s7-3">7.3 Bonificaciones del IS</h3>
+
+  <h4>7.3.1 Bonificación por rentas obtenidas en Ceuta o Melilla</h4>
+  <p>El artículo 33 de la LIS establece una bonificación del <strong>50%</strong> de la parte de cuota íntegra correspondiente a las rentas obtenidas en Ceuta y Melilla por las siguientes entidades que operen efectiva y materialmente en dichas ciudades: (a) entidades españolas domiciliadas fiscalmente en dichos territorios, (b) entidades españolas domiciliadas fiscalmente fuera de dichos territorios pero que operen en ellos mediante establecimiento o sucursal, y (c) entidades extranjeras no residentes en España que operen en dichos territorios mediante establecimiento permanente.</p>
+
+  <h4>7.3.2 Bonificación por prestación de servicios públicos locales</h4>
+  <p>El artículo 34 de la LIS establece una bonificación del <strong>99%</strong> de la parte de cuota íntegra correspondiente a las rentas derivadas de la prestación de los servicios públicos locales (municipales o provinciales) previstos en los artículos 25.2 y 36.1, apartados a), b) y c) de la Ley 7/1985 Reguladora de las Bases del Régimen Local, excepto cuando se exploten por el sistema de empresa mixta o de capital íntegramente privado.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 31 — Bonificación por prestación de servicios públicos locales</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A está participada al 100% por el Ayuntamiento de Alicante y ha obtenido una renta de 500.000 euros derivada del ejercicio de una actividad incluida como servicio municipal obligatorio en el artículo 25.2 de la Ley 7/1985. Tipo de gravamen: 25%.</p>
+      <div class="solucion">
+        <strong>Cálculo</strong>
+        <p>Bonificación = % bonificación × Tg × Renta bonificada</p>
+        <p>= 99% × 25% × 500.000 = <strong>123.750 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="s7-4">7.4 Deducciones para incentivar la realización de determinadas actividades</h3>
+
+  <h4>7.4.1 Deducción por actividades de I+D+i (artículo 35 LIS)</h4>
+  <p>El artículo 35 de la LIS regula dos deducciones diferentes:</p>
+  <ul>
+    <li><strong>Investigación y Desarrollo (I+D):</strong> la base de la deducción estará constituida por el importe de los gastos de investigación y desarrollo y, en su caso, por las inversiones en elementos de inmovilizado material e intangible excluidos los edificios y terrenos. El cálculo de la deducción se efectuará de la siguiente manera:
+      <ul style="margin-top:6px;">
+        <li>El 25% de los gastos de I+D efectuados durante el período impositivo hasta el importe del valor medio de los gastos de I+D realizados durante los dos años anteriores.</li>
+        <li>El 42% de los gastos de I+D efectuados durante el período impositivo que superen el valor medio citado en el párrafo anterior.</li>
+        <li>Adicionalmente, el 17% del importe de los gastos de personal de los investigadores cualificados adscritos en exclusiva a actividades de I+D.</li>
+        <li>El 8% de las inversiones en elementos del inmovilizado material e intangible, excluidos los edificios y terrenos.</li>
+      </ul>
+    </li>
+    <li><strong>Innovación Tecnológica (IT):</strong> la base de la deducción estará constituida por el importe de los gastos del período en actividades de innovación tecnológica (actividades de diagnóstico tecnológico, diseño industrial e ingeniería de procesos, adquisición de tecnología avanzada, obtención de certificados ISO 9000, GMP, etc.). La deducción por actividades de innovación tecnológica se calculará aplicando el <strong>12%</strong> a la base de la deducción.</li>
+  </ul>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 32 — Deducción por I+D</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A ha realizado durante el período impositivo 2024 gastos de I+D por importe de 900.000 € (de los cuales 200.000 € se corresponden con los gastos de personal de los investigadores) y ha adquirido bienes del inmovilizado material afectos a las actividades de I+D por importe de 100.000 €. Los gastos de I+D de los dos períodos impositivos anteriores han sido 400.000 € (2022) y 800.000 € (2023).</p>
+      <div class="solucion">
+        <strong>Cálculo</strong>
+        <p>Valor medio gastos I+D 2022, 2023 = (400.000 + 800.000) / 2 = <strong>600.000 €</strong></p>
+        <ul>
+          <li>Deducción por gastos I+D<sub>2024</sub> = 25% × 600.000 + 42% × 300.000 = <strong>276.000 €</strong></li>
+          <li>Deducción adicional por gastos de personal = 17% × 200.000 = <strong>34.000 €</strong></li>
+          <li>Deducción por inversión en inmovilizado I+D = 8% × 100.000 = <strong>8.000 €</strong></li>
+        </ul>
+        <p>Suma deducción I+D<sub>2024</sub> = 276.000 + 34.000 + 8.000 = <strong>318.000 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <h4>7.4.2 Deducción por inversiones en producciones cinematográficas (artículo 36 LIS)</h4>
+  <p>El artículo 36 de la LIS regula tres modalidades diferentes:</p>
+  <ul>
+    <li><strong>a) Producciones cinematográficas españolas:</strong> la base de la deducción consistirá en el coste total de la producción, al que podrá sumarse los gastos para la obtención de copias y los gastos de publicidad y promoción a cargo del productor hasta el límite máximo del 40% del citado coste de producción. Tipos de deducción: 30% al primer millón de base, y el 25% al exceso, sin que la deducción resultante pueda superar los 20.000.000 €.</li>
+    <li><strong>b) Producciones extranjeras de largometrajes:</strong> la base de la deducción consistirá exclusivamente en los gastos realizados en territorio español (gastos de personal creativo, gastos derivados de la utilización de industrias técnicas y otros proveedores). Los gastos realizados en territorio español deben ser, al menos, de 1.000.000 € (200.000 € para producciones de animación). Los tipos y límites son los mismos que para las producciones españolas.</li>
+    <li><strong>c) Producción y exhibición de espectáculos en vivo de artes escénicas y musicales:</strong> la base de la deducción estará constituida por los costes directos de carácter artístico, técnico y promocional incurridos en las referidas actividades. Tipo de deducción: 20%, con el límite máximo de 500.000 € por contribuyente y período impositivo.</li>
+  </ul>
+
+  <h4>7.4.3 Deducción por creación de empleo para trabajadores con discapacidad (artículo 38 LIS)</h4>
+  <p>El artículo 38 de la LIS dispone que el contribuyente podrá deducir de la cuota íntegra:</p>
+  <ul>
+    <li><strong>9.000 €</strong> por cada persona/año de incremento del promedio de plantilla de trabajadores con discapacidad en un grado igual o superior al 33% e inferior al 65%, experimentado durante el período impositivo, respecto a la plantilla media de trabajadores de la misma naturaleza del período inmediato anterior.</li>
+    <li><strong>12.000 €</strong> por cada persona/año de incremento del promedio de plantilla de trabajadores con discapacidad en un grado igual o superior al 65%, experimentado durante el período impositivo.</li>
+  </ul>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 33 — Deducción por creación de empleo para trabajadores con discapacidad</div>
+    <div class="ejemplo-body">
+      <p>El 1 de enero de 2023 la sociedad A tenía contratados a dos trabajadores con una discapacidad comprendida entre el 33% y el 65%. El 1 de octubre de 2023 se jubila uno de ellos y el 1 de mayo de 2024 se contratan dos nuevos empleados con una discapacidad comprendida entre el 33% y el 65%. Se pide calcular la deducción para el período impositivo 2024.</p>
+      <div class="solucion">
+        <strong>Cálculo</strong>
+        <p>Plantilla media<sub>2023</sub> = (2×273 + 1×92) / 365 = <strong>1,747945205</strong> trabajadores</p>
+        <p>Plantilla media<sub>2024</sub> = (1×121 + 3×245) / 366 = <strong>2,338797814</strong> trabajadores</p>
+        <p>Incremento medio plantilla (ΔmP) = 2,338797814 – 1,747945205 = <strong>0,590852609</strong></p>
+        <p>Deducción 2024 = ΔmP × 9.000 = 0,590852609 × 9.000 = <strong>5.317,67 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <h4>7.4.4 Deducción por contribuciones empresariales a sistemas de previsión social empresarial (artículo 38 ter LIS)</h4>
+  <p>El artículo 38 ter de la LIS dispone que el contribuyente podrá deducir de la cuota íntegra el <strong>10%</strong> de las contribuciones empresariales imputadas a favor de los trabajadores con retribuciones brutas anuales inferiores a 27.000 €, siempre que tales contribuciones se realicen a planes de pensiones de empleo, planes de previsión social empresarial y otros sistemas de previsión social regulados en la Directiva (UE) 2016/2341 en los que el contribuyente sea el promotor.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 34 — Deducción por contribuciones empresariales a previsión social</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A realiza una contribución de 5.000 euros al plan de pensiones de empleo de cada uno de los 10 trabajadores de su plantilla. Conocemos que 8 de dichos trabajadores tienen un salario bruto anual de 22.000 € y que los otros dos trabajadores restantes tienen salarios brutos de 30.000 € y 40.000 € respectivamente.</p>
+      <div class="solucion">
+        <strong>Cálculo de la base de la deducción</strong>
+        <p>Base = (5.000 × 8) + 5.000 × (27.000/30.000) + 5.000 × (27.000/40.000)</p>
+        <p>= 40.000 + 4.500 + 3.375 = <strong>47.875 €</strong></p>
+        <p>Deducción = 10% × 47.875 = <strong>4.787,50 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <h4>7.4.5 Límite conjunto de las deducciones</h4>
+  <p>El artículo 39.1 de la LIS dispone, con carácter general, que la suma de todas las deducciones anteriores no podrá superar el <strong>25%</strong> de la cuota íntegra bonificada. No obstante, cuando la suma del importe de la deducción de I+D+i y las deducciones por inversiones en producciones cinematográficas, series audiovisuales y espectáculos en vivo de artes escénicas y musicales supere el 10% de la cuota íntegra bonificada, entonces el límite anterior será del <strong>50%</strong> de la cuota íntegra bonificada.</p>
+
+  <p>Las cantidades que no hayan podido deducirse durante el período impositivo por superar los límites señalados podrán deducirse durante los 15 años siguientes (18 años en el caso de las deducciones de I+D+i). De manera opcional, el artículo 39.2 de la LIS dispone que el contribuyente podrá aplicar la deducción de I+D+i sin sujeción a los límites de la cuota íntegra señalados e, incluso, obtener su abono anticipado en caso de insuficiencia de cuota.</p>
+
+  <h4>7.4.6 Deducción por donativos efectuados a entidades sin fines lucrativos (Ley 49/2002)</h4>
+  <p>La ley 49/2002 prevé una deducción del <strong>40%</strong> del importe de las donaciones efectuadas por los contribuyentes del IS a las entidades sin fines lucrativos, con el límite de que la base de esta deducción no puede superar el 15% de la base imponible del período impositivo. Cuando en los dos períodos impositivos inmediatos anteriores se hubieran realizado donaciones a favor de una misma entidad y se cumpla que tanto la donación efectuada en el período impositivo actual como la del período impositivo anterior sean iguales o superiores a las donaciones realizadas en sus respectivos períodos impositivos anteriores, entonces se aplicará el tipo de deducción del <strong>50%</strong>.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 35 — Deducción por donativos</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A donó 5.000 euros a la fundación DELA y 7.000 euros a la fundación LUCA durante el período impositivo 2024, obteniendo en dicho período una base imponible de 100.000 €. Durante los períodos impositivos anteriores, la sociedad A efectuó donaciones a la fundación DELA por los siguientes importes: 2.500 euros (2022) y 4.000 euros (2023). Y a la fundación LUCA la primera vez que realiza donaciones es a la fundación LUCA.</p>
+      <div class="solucion">
+        <strong>Cálculo</strong>
+        <p>La base de la deducción no puede superar el 15% de la base imponible del ejercicio: 5.000 + 7.000 = 12.000 € &lt; 15% × 100.000 = 15.000 €. OK.</p>
+        <p><strong>Fundación DELA:</strong> donación 2024 (5.000 €) &gt; donativo 2023 (4.000 €) &gt; donativo 2022 (2.500 €) → se aplica el tipo del 50%<br>
+        Deducción donación DELA = 50% × 5.000 = <strong>2.500 €</strong></p>
+        <p><strong>Fundación LUCA:</strong> primera donación → tipo general 40%<br>
+        Deducción donación LUCA = 40% × 7.000 = <strong>2.800 €</strong></p>
+        <p><strong>Deducción total = 2.500 + 2.800 = 5.300 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <h4>7.4.7 Tributación mínima (artículo 30 ter LIS)</h4>
+  <p>El artículo 30 ter de la LIS dispone una tributación mínima que es aplicable exclusivamente a dos tipos de contribuyentes: (a) a las sociedades cuya cifra de negocios sea, al menos, de 20.000.000 € durante los 12 meses anteriores a la fecha en que se inicie el período impositivo, y (b) a las sociedades integradas en un grupo de sociedades que tribute en consolidación fiscal.</p>
+
+  <p>Para estos contribuyentes, la cuota líquida resultante no podrá ser inferior al <strong>15%</strong> de la base imponible. No obstante, el citado límite será del 18% de la base imponible, en el caso de las sociedades que apliquen el tipo de gravamen incrementado del 30%, y del 10% de dicha base, en el supuesto de las entidades de nueva creación que apliquen el tipo de gravamen reducido del 15%.</p>
+
+  <h3 id="s7-5">7.5 Pagos a cuenta</h3>
+
+  <p>Los pagos a cuenta constituyen un anticipo del IS que los contribuyentes efectúan a la Hacienda Pública durante el transcurso del propio período impositivo. El artículo 41 de la LIS dispone que los pagos a cuenta minorarán la cuota íntegra del IS.</p>
+
+  <h4>7.5.1 Retenciones e ingresos a cuenta</h4>
+  <p>Según los artículos 60 y 62 del RIS, las personas jurídicas, las entidades en régimen de atribución de rentas, las personas físicas que abonen rentas en el desarrollo de una actividad económica, y las personas o entidades no residentes que actúen en España mediante establecimiento permanente deberán practicar una retención sobre las rentas dinerarias abonadas a los contribuyentes del IS cuando se trate de las siguientes rentas:</p>
+  <ul>
+    <li>Las rentas derivadas de la participación en los fondos propios de cualquier tipo de entidad (por ejemplo, los dividendos).</li>
+    <li>Las rentas derivadas de la cesión a terceros de capitales propios (por ejemplo, intereses de préstamos o valores de renta fija).</li>
+    <li>Los premios derivados de la participación en juegos, concursos, rifas o combinaciones aleatorias.</li>
+    <li>Los premios sujetos y no exentos al gravamen especial sobre los premios de determinadas loterías y apuestas.</li>
+    <li>Las contraprestaciones obtenidas como consecuencia de la atribución de cargos de administrador o consejero en otras sociedades.</li>
+    <li>Las rentas procedentes de la cesión del derecho a la explotación de la imagen.</li>
+    <li>Las rentas derivadas del arrendamiento o subarrendamiento de inmuebles urbanos.</li>
+    <li>Las rentas obtenidas como consecuencia de las transmisiones o reembolso de acciones o participaciones representativas del capital o patrimonio de las instituciones de inversión colectiva.</li>
+  </ul>
+
+  <p>El importe de la retención consistirá en el <strong>19%</strong> de la renta íntegra exigible o satisfecha, salvo en los supuestos de las rentas procedentes de la cesión del derecho a la explotación de la imagen (24%), y de los premios sometidos al gravamen especial de determinadas loterías y apuestas (20%).</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 36 — Ingreso a cuenta</div>
+    <div class="ejemplo-body">
+      <p>Un banco entrega un ordenador a la sociedad A como retribución por la constitución de un depósito a plazo fijo de 10.000 €. Conocemos que el banco adquirió el citado ordenador por 400 euros.</p>
+      <div class="solucion">
+        <strong>Cálculo</strong>
+        <p>Valor de mercado a efectos del ingreso a cuenta = 1,20 × 400 = <strong>480 €</strong></p>
+        <p>Ingreso a cuenta que debe realizar el banco = 19% × 480 = <strong>91,20 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <h4>7.5.2 Pagos fraccionados</h4>
+  <p>Los contribuyentes del IS deben realizar <strong>tres pagos fraccionados</strong> durante los veinte primeros días de los meses de abril, octubre y diciembre. Para calcular el importe de los pagos fraccionados existen dos sistemas:</p>
+
+  <p><strong>a) Sistema general</strong> (para contribuyentes cuyo importe neto de la cifra de negocios no haya superado la cantidad de 6.000.000 € durante los doce meses anteriores): cada pago fraccionado consistirá en un <strong>18%</strong> de la cuota líquida del período impositivo inmediato anterior menos retenciones e ingresos a cuenta declarados durante el período impositivo anterior.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 37 — Pagos fraccionados sistema general</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad tiene su período impositivo coincidente con el año natural y debe realizar los pagos fraccionados correspondientes al período 2024 mediante el sistema general. Datos conocidos:</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th></th><th>2022</th><th>2023</th></tr></thead>
+          <tbody>
+            <tr><td>Cuota líquida</td><td>50.000 €</td><td>30.000 €</td></tr>
+            <tr><td>Retenciones (no hay ingresos a cuenta)</td><td>1.200 €</td><td>1.500 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="solucion">
+        <strong>Cálculo de los pagos fraccionados de 2024</strong>
+        <p>En el primer pago fraccionado (1 al 20 de abril de 2024) se deben usar los datos de 2022 porque el 1 de abril de 2024 no ha finalizado el plazo para presentar la declaración del IS del año 2023 (25 julio 2025).</p>
+        <p>1er PF (1 al 20 de abril de 2024) = 18% × (CL<sub>22</sub> – Ret<sub>22</sub>) = 18% × (50.000 – 1.200) = <strong>8.784 €</strong></p>
+        <p>2º PF (1 al 20 de octubre de 2024) = 18% × (CL<sub>23</sub> – Ret<sub>23</sub>) = 18% × (30.000 – 1.500) = <strong>5.130 €</strong></p>
+        <p>3er PF (1 al 20 de diciembre de 2024) = 18% × (CL<sub>23</sub> – Ret<sub>23</sub>) = 18% × (30.000 – 1.500) = <strong>5.130 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <p><strong>b) Sistema alternativo</strong> (obligatorio para contribuyentes cuyo importe neto de la cifra de negocios haya superado la cantidad de 6.000.000 € durante los doce meses anteriores): el importe de cada pago fraccionado se obtendrá aplicando el porcentaje que resulte de multiplicar <strong>5/7</strong> por el tipo de gravamen del IS, redondeado por defecto, a la base imponible generada desde el inicio del período impositivo hasta el día anterior al inicio del plazo para el contribuyente para efectuar cada pago fraccionado. De este resultado se restarán las bonificaciones y las retenciones e ingresos a cuenta aplicables, así como los pagos fraccionados ya realizados.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 38 — Pagos fraccionados sistema alternativo</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad (tipo de gravamen 25%) tiene su período impositivo coincidente con el año natural y debe realizar los pagos fraccionados correspondientes al período 2024 mediante el sistema alternativo. Datos conocidos:</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th></th><th>Desde 1 enero hasta 31 marzo 2024</th><th>Desde 1 enero hasta 30 sept 2024</th><th>Desde 1 enero hasta 30 noviembre 2024</th></tr></thead>
+          <tbody>
+            <tr><td>Base imponible</td><td>150.000 €</td><td>290.000 €</td><td>400.000 €</td></tr>
+            <tr><td>Bonificaciones del IS</td><td>0 €</td><td>0 €</td><td>0 €</td></tr>
+            <tr><td>Retenciones</td><td>2.500 €</td><td>5.000 €</td><td>10.000 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="solucion">
+        <strong>Tipo de pago fraccionado = 5/7 × 25% = 17% (redondeado por defecto)</strong>
+        <p>1er PF = 17% × BI<sub>1</sub> – Bonif<sub>1</sub> – Ret<sub>1</sub> = 17% × 150.000 – 2.500 = <strong>23.000 €</strong></p>
+        <p>2º PF = 17% × BI<sub>2</sub> – Bonif<sub>2</sub> – Ret<sub>2</sub> – PF<sub>1</sub> = 17% × 290.000 – 5.000 – 23.000 = <strong>21.300 €</strong></p>
+        <p>3er PF = 17% × BI<sub>3</sub> – Bonif<sub>3</sub> – Ret<sub>3</sub> – PF<sub>1</sub> – PF<sub>2</sub> = 17% × 400.000 – 10.000 – 23.000 – 21.300 = <strong>13.700 €</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h2 id="s8">8. Obligación de Declarar</h2>
+
+  <p>El artículo 124 de la LIS dispone que todos los contribuyentes tienen la obligación de presentar la declaración del IS, salvo las entidades exentas y algunas entidades parcialmente exentas. Dicha declaración del IS deberá efectuarse mediante la presentación de una autoliquidación del impuesto en el modelo aprobado reglamentariamente que deberá llevarse a cabo durante los veinticinco días siguientes a los seis meses posteriores a la conclusión del período impositivo.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 39 — Plazos de declaración</div>
+    <div class="ejemplo-body">
+      <p><strong>Caso 1:</strong> Las sociedades cuyo período impositivo coincida con el año natural deberán presentar la declaración del IS del año 2024 durante el plazo que va desde el 1 hasta el 25 de julio de 2025 (cierra el período impositivo el 31 de diciembre de 2024 y el plazo de 6 meses posteriores finaliza el 30 de junio de 2025).</p>
+      <p><strong>Caso 2:</strong> Una sociedad cuyo período impositivo transcurra desde el 20 de marzo de 2024 hasta el 19 de marzo de 2025 tendrá que efectuar los siguientes cálculos: cierra el período impositivo el 19 de marzo de 2025, finaliza el plazo de 6 meses posteriores el 19 de septiembre de 2025, y el plazo para presentar la declaración del período 2024/2025 irá desde el 20 de septiembre hasta el 14 de octubre de 2025.</p>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <p>Manual académico sobre el régimen general del Impuesto sobre Sociedades y el régimen especial de entidades de reducida dimensión. Con el objetivo de adecuarse al tiempo disponible en los estudios de Grado, el manual recoge únicamente el régimen general y el régimen especial de entidades de reducida dimensión del IS, sin perjuicio de que pueda incluir puntualmente alguna referencia a otros regímenes especiales del IS.</p>
+  </div>
+
+</main>
+
+</div>
+
+<div id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backtop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// Highlight active TOC item
+const sections = document.querySelectorAll('h2[id], h3[id]');
+const tocLinks = document.querySelectorAll('aside a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(link => {
+        link.style.color = '';
+        link.style.borderLeftColor = '';
+      });
+      const id = entry.target.id;
+      const active = document.querySelector(`aside a[href="#${id}"]`);
+      if (active) {
+        active.style.color = '#d4a017';
+        active.style.borderLeftColor = '#d4a017';
+      }
+    }
+  });
+}, { rootMargin: '-15% 0px -75% 0px' });
+
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
