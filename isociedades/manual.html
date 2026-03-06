@@ -73,6 +73,32 @@ header {
   font-weight: 400;
 }
 
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-nav a {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  text-decoration: none;
+  padding: 5px 14px;
+  border: 1px solid rgba(184,134,11,0.4);
+  border-radius: 2px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.header-nav a:hover {
+  background: rgba(184,134,11,0.15);
+  border-color: var(--gold);
+  color: #fff;
+}
+
 /* ── LAYOUT ── */
 .layout {
   display: flex;
@@ -557,6 +583,11 @@ code {
 
 <header>
   <div class="header-title">Manual · Impuesto sobre Sociedades</div>
+  <nav class="header-nav">
+    <a href="https://openlexiura.github.io/isociedades/index.html">Inicio</a>
+    <a href="https://openlexiura.github.io/isociedades/index.html#jurisdiccion">Jurisdicción</a>
+    <a href="https://openlexiura.github.io/isociedades/lis.html">Ley 27/2014</a>
+  </nav>
   <div class="header-brand">Open<span>Lex</span>Iura</div>
 </header>
 
