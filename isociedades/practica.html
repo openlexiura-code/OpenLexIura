@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practica Interactiva IS · OpenLexIura</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c1710;--ink-light:#3a3020;--parchment:#faf6ee;--parchment-dark:#f0e9d8;--gold:#b8860b;--gold-light:#d4a017;--gold-pale:#f5e6b0;--red:#8b2020;--green:#2a6a2a;--sidebar-w:280px;--ok:#2e7d32;--ok-bg:#e8f5e9;--err:#c62828;--err-bg:#ffebee;--warn:#e65100;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--parchment);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:16px;line-height:1.7;display:flex;flex-direction:column;min-height:100vh;}
+header{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--ink);border-bottom:2px solid var(--gold);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;}
+.h-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.18em;color:var(--parchment-dark);text-transform:uppercase;opacity:.85;}
+.h-brand{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--gold-light);}
+.h-brand span{color:var(--parchment);font-weight:400;}
+.h-nav{display:flex;gap:7px;}
+.h-nav a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);text-decoration:none;padding:4px 12px;border:1px solid rgba(184,134,11,.4);border-radius:2px;transition:.2s;}
+.h-nav a:hover{background:rgba(184,134,11,.15);color:#fff;border-color:var(--gold);}
+#progress-bar{position:fixed;top:52px;left:0;right:0;z-index:199;height:4px;background:rgba(184,134,11,.15);}
+#progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));width:0%;transition:width .5s ease;}
+.layout{display:flex;margin-top:56px;min-height:calc(100vh - 56px);}
+aside{width:var(--sidebar-w);min-width:var(--sidebar-w);background:#18140d;border-right:1px solid rgba(184,134,11,.2);position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;padding:20px 0;}
+aside::-webkit-scrollbar{width:3px;}
+aside::-webkit-scrollbar-thumb{background:rgba(184,134,11,.3);border-radius:2px;}
+.toc-hdr{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);padding:0 18px 10px;border-bottom:1px solid rgba(184,134,11,.2);margin-bottom:10px;}
+.toc-a{display:flex;align-items:center;gap:8px;padding:5px 18px;color:rgba(240,233,216,.6);text-decoration:none;font-size:13px;line-height:1.35;transition:.15s;border-left:2px solid transparent;}
+.toc-a:hover{color:var(--gold-pale);background:rgba(184,134,11,.08);border-left-color:var(--gold);}
+.toc-a.main{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-light);padding-top:9px;margin-top:3px;}
+.toc-a.sub{padding-left:30px;font-size:12.5px;}
+.toc-dot{width:7px;height:7px;border-radius:50%;background:rgba(184,134,11,.25);flex-shrink:0;transition:.3s;}
+.toc-a.done .toc-dot{background:var(--ok);}
+.score-panel{margin:16px 14px 0;background:rgba(184,134,11,.1);border:1px solid rgba(184,134,11,.25);padding:14px 16px;border-radius:3px;}
+.score-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.score-val{font-size:26px;font-weight:700;color:var(--gold-light);font-variant-numeric:tabular-nums;}
+.score-max{font-size:13px;color:rgba(240,233,216,.5);}
+.score-bar-wrap{height:5px;background:rgba(255,255,255,.1);border-radius:3px;margin-top:8px;}
+.score-bar{height:100%;border-radius:3px;background:var(--gold-light);width:0%;transition:.5s;}
+main{flex:1;padding:44px 60px 80px;max-width:920px;}
+.portada{border:2px solid var(--gold);background:linear-gradient(135deg,#fffbf2,#faf0d8);padding:40px 48px;margin-bottom:48px;position:relative;}
+.portada::before{content:'';position:absolute;top:6px;left:6px;right:6px;bottom:6px;border:1px solid rgba(184,134,11,.3);pointer-events:none;}
+.portada-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.portada h1{font-family:'Playfair Display',serif;font-size:29px;font-weight:700;line-height:1.2;margin-bottom:10px;}
+.portada-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:var(--ink-light);margin-bottom:24px;}
+.portada-chips{display:flex;gap:12px;flex-wrap:wrap;padding-top:16px;border-top:1px solid rgba(184,134,11,.25);}
+.chip{background:var(--ink);color:var(--gold-pale);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;padding:5px 12px;border-radius:2px;}
+h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:8px;margin:48px 0 18px;}
+h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;margin:32px 0 12px;padding-left:12px;border-left:3px solid var(--gold);}
+h4{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:24px 0 8px;}
+p{margin-bottom:12px;}
+ul,ol{margin:8px 0 12px 20px;}
+li{margin-bottom:5px;}
+strong{font-weight:600;}
+.enunciado{background:#fffff8;border:2px solid var(--gold);padding:24px 32px;margin:20px 0 28px;position:relative;}
+.enunciado::before{content:'ENUNCIADO';position:absolute;top:-11px;left:20px;background:var(--gold);color:var(--ink);font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:.2em;padding:2px 10px;}
+.enunciado p{margin-bottom:8px;font-size:15.5px;}
+.box{padding:16px 20px;margin:12px 0;font-size:15px;}
+.box-title{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+.box.concepto{background:#f0f0fa;border-left:4px solid #4a4a8c;}
+.box.concepto .box-title{color:#4a4a8c;}
+.box.alerta{background:#fff5f0;border-left:4px solid var(--warn);}
+.box.alerta .box-title{color:var(--warn);}
+.box.formula{background:var(--ink);color:var(--gold-pale);border-left:3px solid var(--gold);font-size:15.5px;}
+.istep{border:1px solid #ddd;margin:18px 0;overflow:hidden;}
+.istep-header{background:var(--ink);color:var(--parchment);display:flex;align-items:center;gap:12px;padding:12px 18px;cursor:pointer;user-select:none;transition:background .2s;}
+.istep-header:hover{background:#2c2418;}
+.istep-num{background:var(--gold);color:var(--ink);font-family:'Cinzel',serif;font-size:11px;font-weight:600;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.istep-title{font-family:'Playfair Display',serif;font-size:15px;flex:1;}
+.istep-arrow{color:var(--gold-light);font-size:18px;transition:transform .3s;}
+.istep.open .istep-arrow{transform:rotate(90deg);}
+.istep-body{display:none;padding:20px 22px;background:#fff;border-top:1px solid rgba(184,134,11,.2);}
+.istep.open .istep-body{display:block;}
+.input-zone{margin:16px 0;}
+.input-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;display:block;}
+.input-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.calc-input{font-family:'Crimson Pro',serif;font-size:16px;border:2px solid #ccc;padding:8px 14px;width:200px;background:#fafafa;transition:border-color .2s,background .2s;-moz-appearance:textfield;}
+.calc-input:focus{outline:none;border-color:var(--gold);background:#fffbf0;}
+.calc-input.ok{border-color:var(--ok);background:var(--ok-bg);}
+.calc-input.err{border-color:var(--err);background:var(--err-bg);}
+.input-unit{font-size:15px;color:var(--ink-light);}
+.btn-check{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--gold-pale);border:1px solid var(--gold);padding:9px 20px;cursor:pointer;transition:.2s;}
+.btn-check:hover{background:var(--gold);color:var(--ink);}
+.btn-reveal{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--ink-light);border:1px solid #bbb;padding:9px 18px;cursor:pointer;transition:.2s;}
+.btn-reveal:hover{border-color:var(--ink);color:var(--ink);}
+.feedback{margin-top:10px;padding:10px 16px;font-size:14.5px;display:none;}
+.feedback.ok{background:var(--ok-bg);border-left:4px solid var(--ok);color:#1b5e20;display:block;}
+.feedback.err{background:var(--err-bg);border-left:4px solid var(--err);color:#b71c1c;display:block;}
+.reveal-wrap{margin-top:12px;}
+.solution-box{display:none;margin-top:10px;background:#fffff8;border:1px solid rgba(184,134,11,.35);padding:16px 20px;font-size:15px;}
+.solution-box.shown{display:block;}
+.s-formula{background:var(--ink);color:var(--gold-pale);padding:10px 16px;margin:8px 0;font-size:15px;}
+.tabs{display:flex;gap:0;margin:24px 0 0;border-bottom:2px solid var(--gold);}
+.tab-btn{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border:none;background:transparent;color:var(--ink-light);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:.2s;}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600;}
+.tab-btn:hover:not(.active){color:var(--ink);background:rgba(184,134,11,.07);}
+.tab-panel{display:none;padding:20px 0;}
+.tab-panel.active{display:block;}
+.company-card{background:var(--ink);color:var(--parchment);border:1px solid var(--gold);padding:28px 32px;margin:20px 0;}
+.company-card h3{border-left-color:var(--gold-light);color:var(--gold-light);font-size:16px;margin-top:0;}
+.company-card p{color:rgba(240,233,216,.8);margin-bottom:8px;font-size:15px;}
+.cd-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(184,134,11,.25);}
+.cd-item .cd-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);}
+.cd-item .cd-val{font-size:14.5px;color:var(--parchment);}
+.liq{margin:20px 0;border:1px solid rgba(184,134,11,.3);}
+.liq-row{display:flex;align-items:center;padding:9px 16px;border-bottom:1px solid rgba(184,134,11,.12);gap:10px;font-size:15.5px;}
+.liq-row:last-child{border-bottom:none;}
+.liq-op{font-family:'Cinzel',serif;font-size:16px;font-weight:700;width:22px;text-align:center;flex-shrink:0;}
+.liq-op.sum{color:var(--green);}
+.liq-op.rest{color:var(--red);}
+.liq-op.eq{color:var(--gold);}
+.liq-label{flex:1;}
+.liq-label em{font-style:italic;font-size:13px;color:var(--ink-light);}
+.liq-val{font-variant-numeric:tabular-nums;font-weight:600;text-align:right;min-width:130px;}
+.liq-row.sub{background:rgba(184,134,11,.08);font-weight:700;}
+.liq-row.final{background:var(--ink);color:var(--gold-pale);font-weight:700;font-size:16px;}
+.liq-row.final .liq-op{color:var(--gold-light);}
+.liq-val.live{color:var(--gold);transition:.3s;}
+.liq-val.pos-result{color:#a5d6a7;}
+.liq-val.neg-result{color:#ef9a9a;}
+.adj-table{width:100%;border-collapse:collapse;font-size:14.5px;margin:16px 0;}
+.adj-table th{background:var(--ink);color:var(--gold-pale);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:9px 12px;text-align:left;}
+.adj-table td{padding:8px 12px;border-bottom:1px solid rgba(184,134,11,.12);}
+.adj-table tr:nth-child(even) td{background:rgba(184,134,11,.04);}
+.adj-table tr.total td{background:var(--ink);color:var(--gold-pale);font-weight:700;}
+.sign-pos{color:var(--green);font-weight:700;}
+.sign-neg{color:var(--red);font-weight:700;}
+.result-card{background:var(--ink);color:var(--gold-pale);border:2px solid var(--gold);padding:32px 36px;margin:24px 0;text-align:center;}
+.result-card .rc-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.result-card .rc-val{font-size:42px;font-weight:700;font-variant-numeric:tabular-nums;margin-bottom:8px;}
+.result-card .rc-desc{font-size:15px;color:rgba(240,233,216,.7);}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.fadeIn{animation:fadeIn .35s ease forwards;}
+.section-id{position:relative;top:-70px;visibility:hidden;display:block;}
+hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
+[data-tip]{position:relative;cursor:help;border-bottom:1px dotted var(--gold);}
+[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--ink);color:var(--gold-pale);font-family:'Crimson Pro',serif;font-size:13px;padding:6px 12px;white-space:nowrap;z-index:300;border:1px solid var(--gold);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-title">Practica Interactiva IS 2024</div>
+  <nav class="h-nav">
+    <a href=index.html">Inicio</a>
+    <a href="../portal.html#jurisdiccion">Jurisdiccion</a>
+    <a href="lis.html">Ley 27/2014</a>
+    <a href="manual.html">Manual IS</a>
+  </nav>
+  <div class="h-brand">Open<span>Lex</span>Iura</div>
+</header>
+
+<div id="progress-bar"><div id="progress-fill"></div></div>
+
+<div class="layout">
+<aside>
+  <div class="toc-hdr">Indice</div>
+  <div class="score-panel">
+    <div class="score-label">Puntuacion</div>
+    <div><span class="score-val" id="score-val">0</span><span class="score-max"> / 13 pts</span></div>
+    <div class="score-bar-wrap"><div class="score-bar" id="score-bar"></div></div>
+  </div>
+  <a href="#sec-empresa" class="toc-a main"><span class="toc-dot"></span>Empresa</a>
+  <a href="#sec-ajustes" class="toc-a main"><span class="toc-dot"></span>Ajustes RC</a>
+  <a href="#sec-amort" class="toc-a sub" id="nav-amort"><span class="toc-dot"></span>A · Amortizacion</a>
+  <a href="#sec-leasing" class="toc-a sub" id="nav-leasing"><span class="toc-dot"></span>B · Leasing</a>
+  <a href="#sec-deter" class="toc-a sub" id="nav-deter"><span class="toc-dot"></span>C · Deterioro</a>
+  <a href="#sec-prov" class="toc-a sub" id="nav-prov"><span class="toc-dot"></span>D · Provisiones</a>
+  <a href="#sec-gastos" class="toc-a sub" id="nav-gastos"><span class="toc-dot"></span>E · Gastos no ded.</a>
+  <a href="#sec-gf" class="toc-a sub" id="nav-gf"><span class="toc-dot"></span>F · Gastos financieros</a>
+  <a href="#sec-vinc" class="toc-a sub" id="nav-vinc"><span class="toc-dot"></span>G · Op. vinculada</a>
+  <a href="#sec-luc" class="toc-a sub" id="nav-luc"><span class="toc-dot"></span>H · Transmision lucrativa</a>
+  <a href="#sec-divid" class="toc-a sub" id="nav-divid"><span class="toc-dot"></span>I · Dividendos</a>
+  <a href="#sec-ep" class="toc-a sub" id="nav-ep"><span class="toc-dot"></span>J · EP extranjero</a>
+  <a href="#sec-reduc" class="toc-a main"><span class="toc-dot"></span>Reducciones BI</a>
+  <a href="#sec-patent" class="toc-a sub" id="nav-patent"><span class="toc-dot"></span>K · Patent box</a>
+  <a href="#sec-capiz" class="toc-a sub" id="nav-capiz"><span class="toc-dot"></span>L · Reserva capitaliz.</a>
+  <a href="#sec-bins" class="toc-a sub" id="nav-bins"><span class="toc-dot"></span>M · Comp. BINs</a>
+  <a href="#sec-cuota" class="toc-a main"><span class="toc-dot"></span>Cuota y Deducciones</a>
+  <a href="#sec-ci" class="toc-a sub" id="nav-ci"><span class="toc-dot"></span>N · Cuota integra</a>
+  <a href="#sec-ddi" class="toc-a sub" id="nav-ddi"><span class="toc-dot"></span>O · DDI juridica</a>
+  <a href="#sec-idi" class="toc-a sub" id="nav-idi"><span class="toc-dot"></span>P · Deduccion I+D</a>
+  <a href="#sec-emp" class="toc-a sub" id="nav-emp"><span class="toc-dot"></span>Q · Empleo discap.</a>
+  <a href="#sec-liq" class="toc-a main"><span class="toc-dot"></span>Liquidacion Final</a>
+</aside>
+
+<main>
+
+<div class="portada">
+  <div class="portada-label">OpenLexIura · Impuesto sobre Sociedades 2024</div>
+  <h1>Practica Interactiva Integradora</h1>
+  <div class="portada-sub">Resuelve cada caso, comprueba tu respuesta y observa como se actualiza la liquidacion en tiempo real</div>
+  <div class="portada-chips">
+    <span class="chip">17 casos practicos</span>
+    <span class="chip">Calculo automatico</span>
+    <span class="chip">Correccion instantanea</span>
+    <span class="chip">Liquidacion en vivo</span>
+  </div>
+</div>
+
+<span class="section-id" id="sec-empresa"></span>
+<h2>La Empresa — TECNOFAB, S.A.</h2>
+<div class="company-card">
+  <h3>Datos del contribuyente</h3>
+  <p>Sociedad anonima residente en Espana. Fabricacion de componentes electronicos industriales y cesion de licencias de software propio. Periodo impositivo coincide con el ano natural.</p>
+  <div class="cd-grid">
+    <div class="cd-item"><div class="cd-lbl">Tipo de gravamen</div><div class="cd-val">25% (tipo general art. 29 LIS)</div></div>
+    <div class="cd-item"><div class="cd-lbl">INCN ejercicio 2023</div><div class="cd-val">38.000.000 euros - NO es ERD</div></div>
+    <div class="cd-item"><div class="cd-lbl">BINs pendientes</div><div class="cd-val">180.000 euros (ejercicio 2022)</div></div>
+    <div class="cd-item"><div class="cd-lbl">Resultado contable 2024</div><div class="cd-val">1.420.000 euros (antes IS)</div></div>
+  </div>
+</div>
+
+<hr>
+<span class="section-id" id="sec-ajustes"></span>
+<h2>Ajustes sobre el Resultado Contable</h2>
+<p>El IS parte del resultado contable (art. 10.3 LIS) y lo corrige con ajustes. Resuelve cada caso: la liquidacion de abajo se actualiza automaticamente.</p>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab(event,'tab-aj')">Ajustes A-J</button>
+  <button class="tab-btn" onclick="showTab(event,'tab-red')">Reducciones K-M</button>
+  <button class="tab-btn" onclick="showTab(event,'tab-cuota')">Cuota N-Q</button>
+</div>
+
+<!-- TAB AJUSTES -->
+<div class="tab-panel active" id="tab-aj">
+
+<span class="section-id" id="sec-amort"></span>
+<h3>A &middot; Amortizacion de maquinaria (art. 12.1 LIS)</h3>
+<div class="enunciado">
+  <p>TECNOFAB amortizo contablemente una maquinaria adquirida el 1/1/2023 por <strong>500.000 euros</strong> aplicando un <strong>coeficiente del 20% anual</strong> (cuota contable 2024: <strong>100.000 euros</strong>). Coeficiente maximo tabla oficial: <strong>12%</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 12.1 LIS)</div>La amortizacion es deducible hasta el coeficiente maximo de tabla. El exceso genera ajuste positivo (GCNF) que revertira en anos futuros.</div>
+<div class="istep" id="step-amort">
+  <div class="istep-header" onclick="toggleStep('step-amort')"><div class="istep-num">1</div><div class="istep-title">Calcula el ajuste fiscal por exceso de amortizacion</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Amortizacion fiscal maxima (euros)</label>
+      <div class="input-row"><input type="number" class="calc-input" id="in-amort-max" placeholder="ej. 60000"><span class="input-unit">euros</span></div>
+    </div>
+    <div class="input-zone">
+      <label class="input-label">Ajuste positivo RC+ (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-amort-aj" placeholder="ej. 40000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkAmort()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-amort')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-amort"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-amort">
+      <div class="s-formula">Amortizacion fiscal max. = 12% x 500.000 = <strong>60.000 euros</strong></div>
+      <div class="s-formula">Ajuste = 100.000 - 60.000 = <strong>+40.000 euros RC+ (GCNF)</strong></div>
+      <p>El exceso (40.000) revertira cuando el bien este fiscalmente amortizado pero siga en libros contablemente.</p>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-leasing"></span>
+<h3>B &middot; Arrendamiento financiero - Leasing (art. 12.3 LIS)</h3>
+<div class="enunciado">
+  <p>Leasing sobre equipo informatico (valor razonable <strong>240.000 euros</strong>). Cuota anual: <strong>72.000 euros</strong> (recuperacion coste: <strong>40.000 euros</strong> + carga financiera: <strong>32.000 euros</strong>). Amortizacion contable: <strong>30.000 euros/ano</strong> (vida util 8 anos). Coef. max. tabla equipos informaticos: <strong>25%</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 12.3 LIS)</div>Recuperacion del coste deducible con limite = 2 x coef.max. x valor. Si la recuperacion del coste &gt; amortizacion contable, el exceso genera ajuste negativo (GFNC).</div>
+<div class="istep" id="step-leasing">
+  <div class="istep-header" onclick="toggleStep('step-leasing')"><div class="istep-num">1</div><div class="istep-title">Limite fiscal y ajuste resultante</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Limite anual deducible recuperacion del coste (euros)</label>
+      <div class="input-row"><input type="number" class="calc-input" id="in-leas-lim" placeholder=""><span class="input-unit">euros</span></div>
+    </div>
+    <div class="input-zone">
+      <label class="input-label">Ajuste RC- (ahorro fiscal, euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-leas-aj" placeholder="ej. 10000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkLeasing()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-leasing')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-leasing"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-leasing">
+      <div class="s-formula">Limite = 2 x 25% x 240.000 = <strong>120.000 euros</strong></div>
+      <div class="s-formula">Rec. coste pactada (40.000) &lt; limite (120.000) -- deducible: 40.000 euros</div>
+      <div class="s-formula">Ajuste = 40.000 - 30.000 = <strong>-10.000 euros RC- (GFNC)</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-deter"></span>
+<h3>C &middot; Deterioro de creditos comerciales (art. 13.1 LIS)</h3>
+<div class="enunciado">
+  <p>Deterioro total: <strong>85.000 euros</strong>.<br>
+  - <strong>Deudor A:</strong> 30.000 euros, 8 meses desde vencimiento.<br>
+  - <strong>Deudor B:</strong> 25.000 euros, <span data-tip="Procedimiento concursal abierto judicialmente">en concurso</span>.<br>
+  - <strong>Deudor C:</strong> 30.000 euros, 4 meses, <span data-tip="TECNOFAB participa en el 30% del capital">entidad vinculada</span>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 13.1 LIS)</div>Deducible si +6 meses desde vencimiento o hay concurso. <strong>No deducible</strong> si deudor vinculado (salvo concurso judicial).</div>
+<div class="istep" id="step-deter">
+  <div class="istep-header" onclick="toggleStep('step-deter')"><div class="istep-num">1</div><div class="istep-title">Importe del deterioro NO deducible</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Ajuste positivo total (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-deter-aj" placeholder="ej. 30000"><span class="input-unit">euros RC+</span>
+        <button class="btn-check" onclick="checkDeter()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-deter')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-deter"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-deter">
+      <p>A (8m &gt; 6m) OK | B (concursado) OK | C (vinculado, sin concurso, 4m) NO deducible</p>
+      <div class="s-formula">Ajuste = <strong>30.000 euros RC+ (GCNF)</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-prov"></span>
+<h3>D &middot; Provision para garantias (art. 14.7 LIS)</h3>
+<div class="enunciado">
+  <p>Dotacion nueva provision garantias: <strong>60.000 euros</strong>. Media gastos reales de garantia ultimos 2 anos: <strong>55.000 euros/ano</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 14.7 LIS)</div>Deducible hasta el importe de los gastos reales de garantia producidos en los dos ejercicios anteriores. El exceso no es deducible.</div>
+<div class="istep" id="step-prov">
+  <div class="istep-header" onclick="toggleStep('step-prov')"><div class="istep-num">1</div><div class="istep-title">Exceso de dotacion no deducible</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Ajuste positivo (euros RC+)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-prov-aj" placeholder="ej. 5000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkProv()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-prov')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-prov"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-prov">
+      <div class="s-formula">Limite = 55.000 euros | Dotacion = 60.000 euros</div>
+      <div class="s-formula">Exceso = 60.000 - 55.000 = <strong>5.000 euros RC+ (GCNF)</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-gastos"></span>
+<h3>E &middot; Gastos no deducibles (art. 15 LIS)</h3>
+<div class="enunciado">
+  <p>- Multa AEAT: <strong>8.000 euros</strong><br>
+  - Donativo ONG (no Ley 49/2002): <strong>12.000 euros</strong><br>
+  - Gastos representacion clientes: <strong>18.000 euros</strong> (INCN = 40.000.000 euros)<br>
+  - Retribucion fondos propios (dividendo preferente): <strong>22.000 euros</strong></p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 15 LIS)</div>No deducibles: multas (15.c), donativos a entidades sin Ley 49/2002 (15.e), retribucion FP (15.a). Gastos representacion: deducibles hasta 1% del INCN.</div>
+<div class="istep" id="step-gastos">
+  <div class="istep-header" onclick="toggleStep('step-gastos')"><div class="istep-num">1</div><div class="istep-title">Ajuste total por gastos no deducibles</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Ajuste positivo total (euros RC+)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-gas-aj" placeholder="ej. 42000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkGastos()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-gastos')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-gastos"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-gastos">
+      <p>Multa: 8.000 NO | Donativo: 12.000 NO | Representacion: 1% x 40M = 400.000 &gt; 18.000 => SI deducible (0 ajuste) | Retrib. FP: 22.000 NO</p>
+      <div class="s-formula">Total = 8.000 + 12.000 + 22.000 = <strong>42.000 euros RC+ (GCNF)</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-gf"></span>
+<h3>F &middot; Limitacion gastos financieros netos (art. 16 LIS)</h3>
+<div class="enunciado">
+  <p>Gastos financieros brutos: <strong>1.800.000 euros</strong>. Ingresos financieros de cesion de capitales: <strong>400.000 euros</strong>. EBITDA fiscal: <strong>4.200.000 euros</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 16 LIS)</div>GFN deducibles con limite del 30% del EBITDA fiscal. Minimo garantizado: 1.000.000 euros. Exceso trasladable 10 anos.</div>
+<div class="istep" id="step-gf">
+  <div class="istep-header" onclick="toggleStep('step-gf')"><div class="istep-num">1</div><div class="istep-title">GFN totales y exceso no deducible</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Gastos financieros netos GFN (euros)</label>
+      <div class="input-row"><input type="number" class="calc-input" id="in-gf-net" placeholder="ej. 1400000"><span class="input-unit">euros</span></div>
+    </div>
+    <div class="input-zone">
+      <label class="input-label">GFN no deducibles - ajuste RC+ (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-gf-aj" placeholder="ej. 140000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkGF()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-gf')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-gf"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-gf">
+      <div class="s-formula">GFN = 1.800.000 - 400.000 = <strong>1.400.000 euros</strong></div>
+      <div class="s-formula">Limite = 30% x 4.200.000 = 1.260.000 euros (&gt; 1.000.000 minimo)</div>
+      <div class="s-formula">Exceso = 1.400.000 - 1.260.000 = <strong>140.000 euros RC+ (GCNF)</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-vinc"></span>
+<h3>G &middot; Operacion vinculada - infravaloración (art. 18 LIS)</h3>
+<div class="enunciado">
+  <p>TECNOFAB presto servicios a su filial (participacion 100%) por <strong>120.000 euros</strong>. Valor de mercado: <strong>180.000 euros</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 18.1 LIS)</div>Las operaciones vinculadas se valoran a precio de mercado. Si se facturo por debajo, la diferencia es un ingreso fiscal no registrado (ajuste IFNC).</div>
+<div class="istep" id="step-vinc">
+  <div class="istep-header" onclick="toggleStep('step-vinc')"><div class="istep-num">1</div><div class="istep-title">Ajuste por diferencia a valor de mercado</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Ajuste positivo RC+ (euros IFNC)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-vinc-aj" placeholder="ej. 60000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkVinc()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-vinc')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-vinc"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-vinc">
+      <div class="s-formula">Ajuste = 180.000 - 120.000 = <strong>60.000 euros RC+ (IFNC)</strong></div>
+      <p>La filial practicara el ajuste correlativo negativo de 60.000 euros.</p>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-luc"></span>
+<h3>H &middot; Transmision lucrativa - donacion solar (art. 17.4 LIS)</h3>
+<div class="enunciado">
+  <p>TECNOFAB dono un solar: <strong>valor fiscal 90.000 euros</strong>, <strong>valor de mercado 210.000 euros</strong>. Contablemente no se registro ningun beneficio.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 17.4 LIS)</div>En transmisiones lucrativas (donaciones), el donante integra en su BI la diferencia Vm - VF, aunque no haya ingreso contable.</div>
+<div class="istep" id="step-luc">
+  <div class="istep-header" onclick="toggleStep('step-luc')"><div class="istep-num">1</div><div class="istep-title">Renta fiscal de la donacion</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Ajuste positivo RC+ (euros IFNC)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-luc-aj" placeholder="ej. 120000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkLuc()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-luc')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-luc"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-luc">
+      <div class="s-formula">Renta fiscal = Vm - VF = 210.000 - 90.000 = <strong>120.000 euros RC+ (IFNC)</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-divid"></span>
+<h3>I &middot; Exencion de dividendos (art. 21 LIS)</h3>
+<div class="enunciado">
+  <p><strong>ALFA, S.A.</strong> (residente): dividendo <strong>95.000 euros</strong>, 8%, 4 anos.<br>
+  <strong>BETA GmbH</strong> (Alemania, IS 15%): dividendo <strong>60.000 euros</strong>, 6%, 2 anos. Retencion alemana: <strong>9.000 euros</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 21 LIS)</div>Exencion si participacion &ge;5%, antiguedad &ge;1 ano, y en no residentes tipo IS &ge;10%. El <strong>95%</strong> del dividendo queda exento (5% tributa como gasto de gestion).</div>
+<div class="istep" id="step-divid">
+  <div class="istep-header" onclick="toggleStep('step-divid')"><div class="istep-num">1</div><div class="istep-title">Ajuste negativo total por exencion (95% de ambos dividendos)</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Ajuste negativo RC- (euros ICNF)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-div-aj" placeholder="ej. 147250"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkDivid()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-divid')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-divid"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-divid">
+      <div class="s-formula">ALFA: 95% x 95.000 = 90.250 euros</div>
+      <div class="s-formula">BETA: 95% x 60.000 = 57.000 euros</div>
+      <div class="s-formula">Total = -(90.250 + 57.000) = <strong>-147.250 euros RC- (ICNF)</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-ep"></span>
+<h3>J &middot; Exencion EP en el extranjero - Polonia (art. 22 LIS)</h3>
+<div class="enunciado">
+  <p>Renta positiva del EP en Polonia: <strong>220.000 euros</strong>. Tipo IS polaco: <strong>19%</strong> (&gt; 10%).</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 22 LIS)</div>Rentas positivas del EP en el extranjero exentas si el tipo nominal alli es &ge;10%. Incompatible con la deduccion DDI del art. 31 LIS sobre la misma renta.</div>
+<div class="istep" id="step-ep">
+  <div class="istep-header" onclick="toggleStep('step-ep')"><div class="istep-num">1</div><div class="istep-title">Ajuste negativo por exencion del EP</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Ajuste negativo RC- (euros ICNF)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-ep-aj" placeholder="ej. 220000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkEP()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-ep')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-ep"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-ep">
+      <div class="s-formula">Ajuste = <strong>-220.000 euros RC- (ICNF)</strong></div>
+      <p>Tipo IS polaco (19%) supera el umbral del 10%. No se puede aplicar ademas la DDI del art. 31 LIS sobre esta renta.</p>
+    </div></div>
+  </div>
+</div>
+
+</div><!-- /tab-aj -->
+
+<!-- TAB REDUCCIONES -->
+<div class="tab-panel" id="tab-red">
+
+<span class="section-id" id="sec-reduc"></span>
+<span class="section-id" id="sec-patent"></span>
+<h3>K &middot; Patent box - cesion de software (art. 23 LIS)</h3>
+<div class="enunciado">
+  <p>Renta positiva susceptible de reduccion: <strong>260.000 euros</strong>. Gastos de creacion soportados integramente por TECNOFAB (sin subcontratacion vinculada): <strong>200.000 euros</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 23 LIS)</div>Reduccion = 60% x coeficiente x renta. Coef. = gastos cedente (x1,30) / gastos totales. El numerador no puede superar el denominador. Si todo el gasto es propio, coef. = 1.</div>
+<div class="istep" id="step-patent">
+  <div class="istep-header" onclick="toggleStep('step-patent')"><div class="istep-num">1</div><div class="istep-title">Calcula la reduccion del patent box</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Reduccion patent box (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-patent" placeholder="ej. 156000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkPatent()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-patent')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-patent"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-patent">
+      <div class="s-formula">Numerador = 200.000 x 1,30 = 260.000 &gt; denominador (200.000) -- se topa: numerador = 200.000</div>
+      <div class="s-formula">Coeficiente = 200.000 / 200.000 = 1,00</div>
+      <div class="s-formula">Reduccion = 60% x 1,00 x 260.000 = <strong>156.000 euros</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-capiz"></span>
+<h3>L &middot; Reserva de capitalizacion (art. 25 LIS)</h3>
+<div class="enunciado">
+  <p>Incremento de fondos propios (excluidos resultados): <strong>600.000 euros</strong>. Base imponible previa a esta reduccion y a las BINs: <strong>1.323.750 euros</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 25 LIS)</div>Reduccion = 15% del incremento de FP. Limite: 10% de la BI positiva previa a esta reduccion y a las BINs.</div>
+<div class="istep" id="step-capiz">
+  <div class="istep-header" onclick="toggleStep('step-capiz')"><div class="istep-num">1</div><div class="istep-title">Reduccion aplicable tras verificar el limite del 10%</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Reduccion efectivamente aplicada (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-capiz" placeholder="ej. 90000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkCapiz()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-capiz')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-capiz"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-capiz">
+      <div class="s-formula">Reduccion bruta = 15% x 600.000 = 90.000 euros</div>
+      <div class="s-formula">Limite 10% = 10% x 1.323.750 = 132.375 euros</div>
+      <div class="s-formula">90.000 &lt; 132.375 -- Reduccion aplicable: <strong>90.000 euros</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-bins"></span>
+<h3>M &middot; Compensacion de BINs (art. 26 LIS)</h3>
+<div class="enunciado">
+  <p>BINs pendientes de 2022: <strong>180.000 euros</strong>. Base imponible previa a la compensacion de BINs: <strong>1.233.750 euros</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 26 LIS)</div>BINs compensables con limite del 70% de la BI positiva previa. Siempre cabe compensar al menos 1.000.000 euros.</div>
+<div class="istep" id="step-bins">
+  <div class="istep-header" onclick="toggleStep('step-bins')"><div class="istep-num">1</div><div class="istep-title">BINs efectivamente compensadas en 2024</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">BINs compensadas (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-bins" placeholder="ej. 180000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkBINs()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-bins')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-bins"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-bins">
+      <div class="s-formula">Limite 70% = 70% x 1.233.750 = 863.625 euros</div>
+      <div class="s-formula">BINs (180.000) &lt; limite (863.625) -- compensacion integra: <strong>180.000 euros</strong></div>
+    </div></div>
+  </div>
+</div>
+
+</div><!-- /tab-red -->
+
+<!-- TAB CUOTA -->
+<div class="tab-panel" id="tab-cuota">
+
+<span class="section-id" id="sec-cuota"></span>
+<span class="section-id" id="sec-ci"></span>
+<h3>N &middot; Cuota integra (art. 29 LIS)</h3>
+<div class="enunciado">
+  <p>Base imponible final: <strong id="bi-live">1.053.750 euros</strong> (se actualiza con tus respuestas). Tipo de gravamen: <strong>25%</strong>.</p>
+</div>
+<div class="istep" id="step-ci">
+  <div class="istep-header" onclick="toggleStep('step-ci')"><div class="istep-num">1</div><div class="istep-title">Calcula la cuota integra</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Cuota integra (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-ci" placeholder="ej. 263437.50"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkCI()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-ci')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-ci"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-ci">
+      <div class="s-formula">CI = 25% x 1.053.750 = <strong>263.437,50 euros</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-ddi"></span>
+<h3>O &middot; Deduccion DDI juridica - BETA GmbH (art. 31 LIS)</h3>
+<div class="enunciado">
+  <p>Dividendo BETA GmbH: <strong>60.000 euros</strong>. Retencion alemana: <strong>9.000 euros</strong> (15%). Solo el <strong>5% del dividendo</strong> tributa en Espana (el 95% quedo exento). Tg = 25%.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 31 LIS)</div>DDI = la menor de: (a) impuesto pagado en el extranjero; (b) Tg x renta integrada en la BI espanola.</div>
+<div class="box alerta"><div class="box-title">Atencion</div>Para la renta del EP polaco se aplico la exencion del art. 22 LIS, que es incompatible con la DDI del art. 31 LIS sobre la misma renta. Por tanto, la DDI solo aplica al dividendo de BETA.</div>
+<div class="istep" id="step-ddi">
+  <div class="istep-header" onclick="toggleStep('step-ddi')"><div class="istep-num">1</div><div class="istep-title">Deduccion DDI aplicable (la menor de dos)</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Renta de BETA integrada en la BI (euros)</label>
+      <div class="input-row"><input type="number" class="calc-input" id="in-ddi-renta" placeholder="ej. 3000"><span class="input-unit">euros</span></div>
+    </div>
+    <div class="input-zone">
+      <label class="input-label">Deduccion DDI aplicable (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-ddi" placeholder="ej. 750"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkDDI()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-ddi')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-ddi"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-ddi">
+      <div class="s-formula">Renta integrada = 5% x 60.000 = 3.000 euros</div>
+      <div class="s-formula">(a) Impuesto pagado: 9.000 euros | (b) 25% x 3.000 = 750 euros</div>
+      <div class="s-formula">DDI = min(9.000; 750) = <strong>750 euros</strong></div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-idi"></span>
+<h3>P &middot; Deduccion por I+D+i (art. 35 LIS)</h3>
+<div class="enunciado">
+  <p>Gastos I+D 2024: personal <strong>350.000</strong> + materiales <strong>80.000</strong> + subcontratacion universidad publica <strong>70.000</strong> = total <strong>500.000 euros</strong>. Media anos anteriores: <strong>380.000 euros</strong>. CI bonificada: <strong>262.687,50 euros</strong>.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 35.1 LIS)</div>25% sobre gastos hasta la media. 42% sobre el exceso. +8% adicional por subcontratacion a universidades. Limite: 25% CI bonificada (o 50% si I+D &gt; 10% CI).</div>
+<div class="istep" id="step-idi">
+  <div class="istep-header" onclick="toggleStep('step-idi')"><div class="istep-num">1</div><div class="istep-title">Deduccion I+D bruta y con limite</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Deduccion I+D bruta antes del limite (euros)</label>
+      <div class="input-row"><input type="number" class="calc-input" id="in-idi-bruta" placeholder="ej. 151000"><span class="input-unit">euros</span></div>
+    </div>
+    <div class="input-zone">
+      <label class="input-label">Deduccion I+D aplicada en 2024 con limite (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-idi" placeholder="ej. 131718.75"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkIDI()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-idi')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-idi"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-idi">
+      <div class="s-formula">Base: 25% x 380.000 = 95.000 euros</div>
+      <div class="s-formula">Exceso: 42% x (500.000-380.000) = 42% x 120.000 = 50.400 euros</div>
+      <div class="s-formula">Subcontratacion: 8% x 70.000 = 5.600 euros</div>
+      <div class="s-formula">Total bruto = 95.000 + 50.400 + 5.600 = <strong>151.000 euros</strong></div>
+      <div class="s-formula">151.000 / 262.687,50 = 57,4% &gt; 10% -- limite sube al 50%</div>
+      <div class="s-formula">Limite 50% = 50% x 263.437,50 = 131.718,75 euros</div>
+      <div class="s-formula">Aplicada = <strong>131.718,75 euros</strong> | Pendiente futuros: 19.281,25 euros</div>
+    </div></div>
+  </div>
+</div>
+
+<span class="section-id" id="sec-emp"></span>
+<h3>Q &middot; Deduccion por empleo de discapacitados (art. 38 LIS)</h3>
+<div class="enunciado">
+  <p>TECNOFAB contrato a <strong>3 trabajadores con discapacidad entre 33% y 65%</strong> con contrato indefinido, suponiendo incremento de plantilla.</p>
+</div>
+<div class="box concepto"><div class="box-title">Regla (art. 38 LIS)</div>9.000 euros por trabajador con discapacidad &ge;33% y &lt;65%, contrato indefinido, con incremento de plantilla. Esta deduccion NO esta sujeta al limite conjunto del art. 39.1 LIS.</div>
+<div class="istep" id="step-emp">
+  <div class="istep-header" onclick="toggleStep('step-emp')"><div class="istep-num">1</div><div class="istep-title">Deduccion total por empleo de discapacitados</div><span class="istep-arrow">&#9654;</span></div>
+  <div class="istep-body">
+    <div class="input-zone">
+      <label class="input-label">Deduccion total (euros)</label>
+      <div class="input-row">
+        <input type="number" class="calc-input" id="in-emp" placeholder="ej. 27000"><span class="input-unit">euros</span>
+        <button class="btn-check" onclick="checkEmp()">Comprobar</button>
+        <button class="btn-reveal" onclick="toggleSol('sol-emp')">Ver solucion</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb-emp"></div>
+    <div class="reveal-wrap"><div class="solution-box" id="sol-emp">
+      <div class="s-formula">Deduccion = 3 x 9.000 = <strong>27.000 euros</strong></div>
+    </div></div>
+  </div>
+</div>
+
+</div><!-- /tab-cuota -->
+
+<hr>
+
+<!-- LIQUIDACION DINAMICA -->
+<span class="section-id" id="sec-liq"></span>
+<h2>Liquidacion Final en Tiempo Real</h2>
+<p>Esta liquidacion se actualiza automaticamente con los valores que introduces correctamente.</p>
+
+<div class="liq" id="liq-final">
+  <div class="liq-row"><div class="liq-op eq">=</div><div class="liq-label">Resultado contable antes del IS</div><div class="liq-val">1.420.000,00 euros</div></div>
+  <div class="liq-row"><div class="liq-op" style="color:var(--gold);font-size:13px;width:22px;">+/-</div><div class="liq-label">Ajustes fiscales netos (A-J)</div><div class="liq-val live" id="lv-aj">--</div></div>
+  <div class="liq-row sub"><div class="liq-op eq">=</div><div class="liq-label">Base imponible previa a reducciones</div><div class="liq-val live" id="lv-bip">--</div></div>
+  <div class="liq-row"><div class="liq-op rest">-</div><div class="liq-label">Reduccion patent box (K)</div><div class="liq-val live" id="lv-pat">--</div></div>
+  <div class="liq-row"><div class="liq-op rest">-</div><div class="liq-label">Reserva capitalizacion (L)</div><div class="liq-val live" id="lv-cap">--</div></div>
+  <div class="liq-row"><div class="liq-op rest">-</div><div class="liq-label">Compensacion BINs (M)</div><div class="liq-val live" id="lv-bin">--</div></div>
+  <div class="liq-row sub"><div class="liq-op eq">=</div><div class="liq-label"><strong>Base imponible final</strong></div><div class="liq-val live" id="lv-bi"><strong>--</strong></div></div>
+  <div class="liq-row"><div class="liq-op" style="color:var(--gold);width:22px;">x</div><div class="liq-label">Tipo de gravamen 25%</div><div class="liq-val">25%</div></div>
+  <div class="liq-row sub"><div class="liq-op eq">=</div><div class="liq-label">Cuota integra</div><div class="liq-val live" id="lv-ci">--</div></div>
+  <div class="liq-row"><div class="liq-op rest">-</div><div class="liq-label">DDI juridica internacional (O)</div><div class="liq-val live" id="lv-ddi">--</div></div>
+  <div class="liq-row sub"><div class="liq-op eq">=</div><div class="liq-label">Cuota integra bonificada</div><div class="liq-val live" id="lv-cib">--</div></div>
+  <div class="liq-row"><div class="liq-op rest">-</div><div class="liq-label">Deduccion I+D+i limitada (P)</div><div class="liq-val live" id="lv-idi">--</div></div>
+  <div class="liq-row"><div class="liq-op rest">-</div><div class="liq-label">Deduccion empleo discapacitados (Q)</div><div class="liq-val live" id="lv-emp">--</div></div>
+  <div class="liq-row sub"><div class="liq-op eq">=</div><div class="liq-label"><strong>Cuota liquida</strong></div><div class="liq-val live" id="lv-cl"><strong>--</strong></div></div>
+  <div class="liq-row"><div class="liq-op rest">-</div><div class="liq-label">Retenciones e ingresos a cuenta</div><div class="liq-val">- 28.500,00 euros</div></div>
+  <div class="liq-row"><div class="liq-op rest">-</div><div class="liq-label">Pagos fraccionados (3 x 28.440)</div><div class="liq-val">- 85.320,00 euros</div></div>
+  <div class="liq-row final"><div class="liq-op eq">=</div><div class="liq-label"><strong>CUOTA A INGRESAR / (DEVOLVER)</strong></div><div class="liq-val live" id="lv-final"><strong>--</strong></div></div>
+</div>
+
+<div class="result-card" id="result-card" style="display:none;">
+  <div class="rc-label">Resultado de la liquidacion</div>
+  <div class="rc-val" id="rc-val">--</div>
+  <div class="rc-desc" id="rc-desc">--</div>
+</div>
+
+<!-- RESUMEN AJUSTES -->
+<h3 style="margin-top:40px;">Resumen de Ajustes (se actualiza al resolver cada caso)</h3>
+<table class="adj-table">
+  <thead><tr><th>#</th><th>Concepto</th><th>Precepto</th><th>Tipo</th><th style="text-align:right">Importe</th><th>Signo</th></tr></thead>
+  <tbody id="adj-tbody"><tr><td colspan="6" style="text-align:center;color:#999;padding:20px">Resuelve los casos para ver el resumen de ajustes.</td></tr></tbody>
+</table>
+
+</main>
+</div>
+
+<script>
+const S={RC:1420000,amort:null,leasing:null,deter:null,prov:null,gastos:null,gf:null,vinc:null,luc:null,divid:null,ep:null,patent:null,capiz:null,bins:null,ddi:null,idi:null,emp:null,score:0,solved:{}};
+const RET=28500,PF=85320;
+function fmt(n){if(n===null||isNaN(n))return'--';const a=Math.abs(n),s=a.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2});return(n<0?'- ':'')+s+' euros';}
+function near(a,b,t=2){return Math.abs(a-b)<=t;}
+function setFB(id,t,m){const e=document.getElementById(id);e.className='feedback '+t;e.innerHTML=m;}
+function markI(id,ok){const e=document.getElementById(id);if(e)e.className='calc-input '+(ok?'ok':'err');}
+function toggleSol(id){document.getElementById(id).classList.toggle('shown');}
+function toggleStep(id){document.getElementById(id).classList.toggle('open');}
+function showTab(ev,id){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');ev.target.classList.add('active');}
+function addScore(k){if(!S.solved[k]){S.solved[k]=true;S.score++;const e=document.getElementById('score-val');e.textContent=S.score;const p=(S.score/13)*100;document.getElementById('score-bar').style.width=p+'%';document.getElementById('progress-fill').style.width=p+'%';}}
+function navDone(id){const e=document.getElementById(id);if(e){e.classList.add('done');const d=e.querySelector('.toc-dot');if(d)d.style.background='var(--ok)';}}
+function updateLiq(){
+  const aj=[S.amort||0,-(S.leasing||0),S.deter||0,S.prov||0,S.gastos||0,S.gf||0,S.vinc||0,S.luc||0,-(S.divid||0),-(S.ep||0)];
+  const anyAj=[S.amort,S.leasing,S.deter,S.prov,S.gastos,S.gf,S.vinc,S.luc,S.divid,S.ep].some(x=>x!==null);
+  const net=aj.reduce((a,b)=>a+b,0);
+  const bip=S.RC+net;
+  const pat=S.patent||0,cap=S.capiz||0,bin=S.bins||0;
+  const bi=bip-pat-cap-bin;
+  const ci=bi*0.25;
+  const ddi=S.ddi||0;
+  const cib=ci-ddi;
+  const idi=S.idi||0,emp=S.emp||0;
+  const cl=cib-idi-emp;
+  const fin=cl-RET-PF;
+  const set=(id,v,fn)=>{const e=document.getElementById(id);if(e)e.innerHTML=fn?fn(v):fmt(v);};
+  if(anyAj){set('lv-aj',net,v=>(v>=0?'+ ':'')+fmt(Math.abs(v)));set('lv-bip',bip);}
+  if(S.patent!==null)set('lv-pat',pat,v=>'- '+fmt(v));
+  if(S.capiz!==null)set('lv-cap',cap,v=>'- '+fmt(v));
+  if(S.bins!==null)set('lv-bin',bin,v=>'- '+fmt(v));
+  if(anyAj||S.patent!==null||S.capiz!==null||S.bins!==null){
+    set('lv-bi',bi,v=>'<strong>'+fmt(v)+'</strong>');
+    const bl=document.getElementById('bi-live');if(bl)bl.textContent=fmt(bi).replace(' euros','') + ' euros';
+  }
+  if(anyAj||S.patent!==null)set('lv-ci',ci);
+  if(S.ddi!==null){set('lv-ddi',ddi,v=>'- '+fmt(v));set('lv-cib',cib);}
+  if(S.idi!==null)set('lv-idi',idi,v=>'- '+fmt(v));
+  if(S.emp!==null)set('lv-emp',emp,v=>'- '+fmt(v));
+  if(S.idi!==null||S.emp!==null){set('lv-cl',cl,v=>'<strong>'+fmt(v)+'</strong>');}
+  if((S.idi!==null||S.emp!==null)&&anyAj){
+    const fe=document.getElementById('lv-final');
+    fe.innerHTML='<strong>'+fmt(fin)+'</strong>';
+    fe.className='liq-val live '+(fin<0?'pos-result':'neg-result');
+    const card=document.getElementById('result-card');
+    card.style.display='block';card.classList.add('fadeIn');
+    document.getElementById('rc-val').textContent=fmt(fin);
+    document.getElementById('rc-val').style.color=fin<0?'#a5d6a7':'#ef9a9a';
+    document.getElementById('rc-desc').textContent=fin<0
+      ?'La Hacienda Publica devolvera '+fmt(Math.abs(fin))+' a TECNOFAB, S.A.'
+      :'TECNOFAB, S.A. debe ingresar '+fmt(fin)+' en la Hacienda Publica.';
+  }
+  updateAdj();
+}
+const ADJS=[['A','Exc. amortizacion maquinaria','Art.12.1 LIS','GCNF','amort',1],['B','Deduccion especial leasing','Art.12.3 LIS','GFNC','leasing',-1],['C','Deterioro credito vinculado','Art.13.1 LIS','GCNF','deter',1],['D','Exceso provision garantias','Art.14.7 LIS','GCNF','prov',1],['E','Gastos no deducibles','Art.15 LIS','GCNF','gastos',1],['F','GFN no deducibles','Art.16 LIS','GCNF','gf',1],['G','Op. vinculada: ingreso a Vm','Art.18.1 LIS','IFNC','vinc',1],['H','Transmision lucrativa solar','Art.17.4 LIS','IFNC','luc',1],['I','Exencion dividendos (95%)','Art.21 LIS','ICNF','divid',-1],['J','Exencion renta EP Polonia','Art.22 LIS','ICNF','ep',-1]];
+function updateAdj(){
+  let rows='',pos=0,neg=0,any=false;
+  ADJS.forEach(([c,l,p,t,k,sg])=>{
+    const v=S[k];if(v===null)return;any=true;
+    const a=v*sg;
+    if(a>0)pos+=a;else neg+=a;
+    const sgH=a>0?'<span class="sign-pos">RC +</span>':'<span class="sign-neg">RC -</span>';
+    rows+=`<tr><td>${c}</td><td>${l}</td><td style="font-size:13px">${p}</td><td style="font-family:Cinzel,serif;font-size:11px">${t}</td><td style="text-align:right;font-variant-numeric:tabular-nums">${fmt(Math.abs(a))}</td><td>${sgH}</td></tr>`;
+  });
+  if(!any){document.getElementById('adj-tbody').innerHTML='<tr><td colspan="6" style="text-align:center;color:#999;padding:20px">Resuelve los casos para ver el resumen.</td></tr>';return;}
+  const net=pos+neg;
+  rows+=`<tr style="background:rgba(184,134,11,.06);font-weight:600"><td colspan="4">Suma positivos</td><td style="text-align:right;color:var(--green)">${fmt(pos)}</td><td></td></tr>`;
+  rows+=`<tr style="background:rgba(184,134,11,.06);font-weight:600"><td colspan="4">Suma negativos</td><td style="text-align:right;color:var(--red)">${fmt(Math.abs(neg))}</td><td><span class="sign-neg">RC -</span></td></tr>`;
+  rows+=`<tr class="total"><td colspan="4">Ajuste neto</td><td style="text-align:right">${fmt(Math.abs(net))}</td><td>${net>=0?'<span class="sign-pos">RC +</span>':'<span class="sign-neg">RC -</span>'}</td></tr>`;
+  document.getElementById('adj-tbody').innerHTML=rows;
+}
+function checkAmort(){const mx=parseFloat(document.getElementById('in-amort-max').value),aj=parseFloat(document.getElementById('in-amort-aj').value);const om=near(mx,60000),oa=near(aj,40000);markI('in-amort-max',om);markI('in-amort-aj',oa);if(om&&oa){S.amort=40000;setFB('fb-amort','ok','Correcto! Amort. max. = 12% x 500.000 = 60.000. Ajuste = +40.000 euros RC+ GCNF.');addScore('amort');navDone('nav-amort');}else setFB('fb-amort','err','Revisa: amort. fiscal max. = 12% x 500.000 = 60.000; ajuste = 100.000 - 60.000.');updateLiq();}
+function checkLeasing(){const lm=parseFloat(document.getElementById('in-leas-lim').value),aj=parseFloat(document.getElementById('in-leas-aj').value);const ol=near(lm,120000),oa=near(aj,10000);markI('in-leas-lim',ol);markI('in-leas-aj',oa);if(ol&&oa){S.leasing=10000;setFB('fb-leasing','ok','Correcto! Limite = 120.000 euros. Ajuste = 40.000 - 30.000 = -10.000 euros RC- GFNC.');addScore('leasing');navDone('nav-leasing');}else setFB('fb-leasing','err','Limite = 2 x 25% x 240.000. Ajuste = recuperacion deducible - amort. contable.');updateLiq();}
+function checkDeter(){const aj=parseFloat(document.getElementById('in-deter-aj').value);const ok=near(aj,30000);markI('in-deter-aj',ok);if(ok){S.deter=30000;setFB('fb-deter','ok','Correcto! Solo el Deudor C (vinculado) no es deducible: 30.000 euros RC+.');addScore('deter');navDone('nav-deter');}else setFB('fb-deter','err','A (8m>6m OK), B (concurso OK), C (vinculado, sin concurso NO). Solo el C.');updateLiq();}
+function checkProv(){const aj=parseFloat(document.getElementById('in-prov-aj').value);const ok=near(aj,5000);markI('in-prov-aj',ok);if(ok){S.prov=5000;setFB('fb-prov','ok','Correcto! Limite = 55.000. Exceso = 60.000 - 55.000 = 5.000 euros RC+.');addScore('prov');navDone('nav-prov');}else setFB('fb-prov','err','Limite = media 2 anos anteriores = 55.000. Ajuste = dotacion - limite.');updateLiq();}
+function checkGastos(){const aj=parseFloat(document.getElementById('in-gas-aj').value);const ok=near(aj,42000);markI('in-gas-aj',ok);if(ok){S.gastos=42000;setFB('fb-gastos','ok','Correcto! Multa (8.000) + Donativo (12.000) + Retrib. FP (22.000) = 42.000 euros RC+. Representacion dentro del limite 1% INCN.');addScore('gastos');navDone('nav-gastos');}else setFB('fb-gastos','err','Representacion (18.000) cabe en 1% x 40M = 400.000. Suma los 3 no deducibles.');updateLiq();}
+function checkGF(){const n=parseFloat(document.getElementById('in-gf-net').value),aj=parseFloat(document.getElementById('in-gf-aj').value);const on=near(n,1400000,100),oa=near(aj,140000,100);markI('in-gf-net',on);markI('in-gf-aj',oa);if(on&&oa){S.gf=140000;setFB('fb-gf','ok','Correcto! GFN = 1.400.000. Limite = 30% x 4.200.000 = 1.260.000. Exceso = 140.000 euros RC+.');addScore('gf');navDone('nav-gf');}else setFB('fb-gf','err','GFN = brutos - ingresos cesion capitales. Limite = 30% x EBITDA.');updateLiq();}
+function checkVinc(){const aj=parseFloat(document.getElementById('in-vinc-aj').value);const ok=near(aj,60000);markI('in-vinc-aj',ok);if(ok){S.vinc=60000;setFB('fb-vinc','ok','Correcto! Vm - Precio = 180.000 - 120.000 = 60.000 euros RC+ IFNC.');addScore('vinc');navDone('nav-vinc');}else setFB('fb-vinc','err','Ajuste = Vm - precio facturado = 180.000 - 120.000.');updateLiq();}
+function checkLuc(){const aj=parseFloat(document.getElementById('in-luc-aj').value);const ok=near(aj,120000);markI('in-luc-aj',ok);if(ok){S.luc=120000;setFB('fb-luc','ok','Correcto! Renta fiscal = 210.000 - 90.000 = 120.000 euros RC+ IFNC.');addScore('luc');navDone('nav-luc');}else setFB('fb-luc','err','Renta fiscal = Vm - VF = 210.000 - 90.000.');updateLiq();}
+function checkDivid(){const aj=parseFloat(document.getElementById('in-div-aj').value);const ok=near(aj,147250,5);markI('in-div-aj',ok);if(ok){S.divid=147250;setFB('fb-divid','ok','Correcto! ALFA: 95% x 95.000 = 90.250. BETA: 95% x 60.000 = 57.000. Total = 147.250 euros RC- ICNF.');addScore('divid');navDone('nav-divid');}else setFB('fb-divid','err','Ambas cumplen requisitos. Exencion = 95% de cada dividendo.');updateLiq();}
+function checkEP(){const aj=parseFloat(document.getElementById('in-ep-aj').value);const ok=near(aj,220000);markI('in-ep-aj',ok);if(ok){S.ep=220000;setFB('fb-ep','ok','Correcto! Exencion integra: -220.000 euros RC- ICNF. Tipo IS polaco (19%) > 10%.');addScore('ep');navDone('nav-ep');}else setFB('fb-ep','err','La renta cumple el requisito de tributacion minima (19% > 10%). Ajuste = renta EP completa.');updateLiq();}
+function checkPatent(){const v=parseFloat(document.getElementById('in-patent').value);const ok=near(v,156000);markI('in-patent',ok);if(ok){S.patent=156000;setFB('fb-patent','ok','Correcto! Coef. = 1,00. Reduccion = 60% x 1 x 260.000 = 156.000 euros.');addScore('patent');navDone('nav-patent');}else setFB('fb-patent','err','Coef. = num. (200.000 x 1,30 = 260.000 topado a 200.000) / denom. (200.000) = 1. Reduccion = 60% x 1 x 260.000.');updateLiq();}
+function checkCapiz(){const v=parseFloat(document.getElementById('in-capiz').value);const ok=near(v,90000);markI('in-capiz',ok);if(ok){S.capiz=90000;setFB('fb-capiz','ok','Correcto! Reduccion bruta 90.000 < limite 10% (132.375). Se aplica integra.');addScore('capiz');navDone('nav-capiz');}else setFB('fb-capiz','err','Reduccion bruta = 15% x 600.000. Limite = 10% x BI previa (1.323.750).');updateLiq();}
+function checkBINs(){const v=parseFloat(document.getElementById('in-bins').value);const ok=near(v,180000);markI('in-bins',ok);if(ok){S.bins=180000;setFB('fb-bins','ok','Correcto! BINs (180.000) < limite 70% (863.625). Compensacion integra.');addScore('bins');navDone('nav-bins');}else setFB('fb-bins','err','Limite = 70% x BI previa (1.233.750). Las BINs (180.000) superan ese limite?');updateLiq();}
+function checkCI(){const v=parseFloat(document.getElementById('in-ci').value);const ok=near(v,263437.5,5);markI('in-ci',ok);if(ok){setFB('fb-ci','ok','Correcto! CI = 25% x 1.053.750 = 263.437,50 euros.');addScore('ci');navDone('nav-ci');}else setFB('fb-ci','err','CI = 25% x BI final (1.053.750 euros).');}
+function checkDDI(){const r=parseFloat(document.getElementById('in-ddi-renta').value),d=parseFloat(document.getElementById('in-ddi').value);const or=near(r,3000),od=near(d,750);markI('in-ddi-renta',or);markI('in-ddi',od);if(or&&od){S.ddi=750;setFB('fb-ddi','ok','Correcto! Renta integrada = 5% x 60.000 = 3.000. DDI = min(9.000; 750) = 750 euros.');addScore('ddi');navDone('nav-ddi');}else setFB('fb-ddi','err','Renta integrada = 5% del dividendo BETA. DDI = min(impuesto pagado; Tg x renta integrada).');updateLiq();}
+function checkIDI(){const b=parseFloat(document.getElementById('in-idi-bruta').value),a=parseFloat(document.getElementById('in-idi').value);const ob=near(b,151000,5),oa=near(a,131718.75,10);markI('in-idi-bruta',ob);markI('in-idi',oa);if(ob&&oa){S.idi=131718.75;setFB('fb-idi','ok','Correcto! Bruto = 151.000. Limite 50% = 131.718,75. Pendiente: 19.281,25 euros trasladable.');addScore('idi');navDone('nav-idi');}else setFB('fb-idi','err','Suma: 25% x media + 42% x exceso + 8% subcontratacion. Limite = 50% CI bonificada (57% > 10%).');updateLiq();}
+function checkEmp(){const v=parseFloat(document.getElementById('in-emp').value);const ok=near(v,27000);markI('in-emp',ok);if(ok){S.emp=27000;setFB('fb-emp','ok','Correcto! 3 x 9.000 = 27.000 euros. Sin limite conjunto del art. 39.1 LIS.');addScore('emp');navDone('nav-emp');}else setFB('fb-emp','err','Deduccion = n trabajadores x 9.000 euros. Aqui son 3 trabajadores con discapacidad 33-65%.');updateLiq();}
+document.querySelectorAll('.calc-input').forEach(i=>{i.addEventListener('keydown',e=>{if(e.key==='Enter'){const b=i.closest('.input-row')?.querySelector('.btn-check');if(b)b.click();}});});
+</script>
+</body>
+</html>
