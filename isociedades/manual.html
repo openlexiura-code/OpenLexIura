@@ -584,9 +584,9 @@ code {
 <header>
   <div class="header-title">Manual · Impuesto sobre Sociedades</div>
   <nav class="header-nav">
-    <a href="index.html">Inicio</a>
-    <a href="../portal.html#jurisdiccion">Jurisdicción</a>
-    <a href="lis.html">Ley 27/2014</a>
+    <a href="https://openlexiura.github.io/isociedades/index.html">Inicio</a>
+    <a href="https://openlexiura.github.io/isociedades/index.html#jurisdiccion">Jurisdicción</a>
+    <a href="https://openlexiura.github.io/isociedades/lis.html">Ley 27/2014</a>
   </nav>
   <div class="header-brand">Open<span>Lex</span>Iura</div>
 </header>
@@ -626,6 +626,13 @@ code {
   <a href="#s5-9" class="toc-item sub">5.9 Asimetrías híbridas</a>
   <a href="#s5-10" class="toc-item sub">5.10 Gastos financieros</a>
   <a href="#s5-11" class="toc-item sub">5.11 Reglas de valoración</a>
+  <a href="#s5-12" class="toc-item sub">5.12 Operaciones vinculadas</a>
+  <a href="#s5-13" class="toc-item sub">5.13 Rentas de participaciones</a>
+  <a href="#s5-14" class="toc-item sub">5.14 Establecimientos permanentes</a>
+  <a href="#s5-15" class="toc-item sub">5.15 Cesión de activos intangibles</a>
+  <a href="#s5-16" class="toc-item sub">5.16 Reserva de capitalización</a>
+  <a href="#s5-17" class="toc-item sub">5.17 Compensación de BINs</a>
+  <a href="#s5-18" class="toc-item sub">5.18 Reserva de nivelación (ERD)</a>
 
   <a href="#s6" class="toc-item main">6. Tipos de Gravamen</a>
 
@@ -1466,6 +1473,335 @@ code {
   <p>El artículo 17.1 de la LIS dispone que los elementos patrimoniales se valorarán de acuerdo con los criterios establecidos por el Código de Comercio, corregidos por la aplicación de los preceptos de la LIS. De este modo, con carácter general, el valor fiscal de los bienes coincidirá con su valor contable. Las revaloraciones contables llevadas a cabo voluntariamente por la sociedad no se integrarán en la base imponible del IS, salvo que se realicen en virtud de una norma legal o reglamentaria que obligue a incluir su importe en la cuenta de pérdidas y ganancias.</p>
 
   <p>En la práctica, esta regla general de valoración tiene como consecuencia que la renta derivada de las transmisiones del inmovilizado de la empresa que debe ser objeto de tributación en el IS coincidirá, con carácter general, con el beneficio o la pérdida registrados contablemente. Por lo tanto, no será necesario realizar ningún ajuste fiscal como consecuencia de dichas transmisiones.</p>
+
+  <h4>5.11.2 Regla especial aplicable a las transmisiones lucrativas</h4>
+  <p>En las transmisiones lucrativas (donaciones realizadas), la sociedad transmitente integrará en la base imponible del período impositivo en que se realice la operación la diferencia entre el valor de mercado del elemento patrimonial transmitido y su valor fiscal.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 19 — Transmisión lucrativa: donación de bien</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad dona un bien que había sido adquirido por 4.000 euros y que había sido amortizado correctamente por importe de 3.000 euros. Conocemos que el valor de mercado del bien en el momento de la donación asciende a 2.500 euros. Contablemente no se ha registrado ningún beneficio derivado de esta operación.</p>
+      <div class="solucion">
+        <p>Renta fiscal = Vm – VC = 2.500 – (4.000 – 3.000) = 2.500 – 1.000 = <strong>1.500 €</strong></p>
+        <p>Como no se ha registrado ningún beneficio contable, debe realizarse un ajuste fiscal <strong>RC + 1.500 IFNC</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.11.3 Regla especial aplicable a las adquisiciones lucrativas</h4>
+  <p>En las adquisiciones lucrativas (herencias o donaciones recibidas), la sociedad adquirente integrará en la base imponible del período impositivo en que se realice la adquisición el valor de mercado del elemento patrimonial adquirido.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 20 — Adquisición lucrativa: bien recibido por donación</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad adquiere un bien por donación, el 1 de enero de 2024, cuyo valor de mercado es de 5.000 euros. El bien es amortizado cada año en el 25% de su valor. Dicha renta es del período 2024. Contablemente, la sociedad registra cada ejercicio un ingreso del 25% de 5.000 €, ya que según el PGC el ingreso por donaciones debe computarse en proporción a su amortización.</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Período impositivo</th><th>Renta contable</th><th>Renta Fiscal</th><th>Ajustes</th></tr></thead>
+          <tbody>
+            <tr><td>2024</td><td>25% × 5.000 = 1.250 €</td><td>5.000 €</td><td>RC + 3.750 IFNC</td></tr>
+            <tr><td>2025</td><td>25% × 5.000 = 1.250 €</td><td>—</td><td>RC – 1.250 ICNF</td></tr>
+            <tr><td>2026</td><td>25% × 5.000 = 1.250 €</td><td>—</td><td>RC – 1.250 ICNF</td></tr>
+            <tr><td>2027</td><td>25% × 5.000 = 1.250 €</td><td>—</td><td>RC – 1.250 ICNF</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.11.4 Regla especial aplicable a las aportaciones no dinerarias</h4>
+  <p>En las aportaciones no dinerarias, la sociedad transmitente integrará en la base imponible del período impositivo en que se realice la operación la diferencia entre el valor de mercado del elemento patrimonial aportado y su valor fiscal. De igual modo, se establece que los valores recibidos en contraprestación se valorarán por su valor de mercado.</p>
+
+  <h4>5.11.5 Regla especial aplicable a los elementos patrimoniales transmitidos a los socios por causa de disolución de la sociedad, separación de socios, reducción de capital con devolución de aportaciones, reparto de la prima de emisión y distribución de beneficios</h4>
+  <p>En todos estos supuestos, la sociedad transmitente deberá integrar en la base imponible del período en el que se realice la operación la diferencia entre el valor de mercado del elemento patrimonial transmitido y su valor fiscal.</p>
+  <p>Por su parte, los socios adquirentes de los elementos patrimoniales integrarán en su base imponible las siguientes rentas:</p>
+  <ul>
+    <li>En la disolución de sociedades y separación de socios, la diferencia entre el valor de mercado de los elementos patrimoniales recibidos y el valor fiscal de la participación anulada.</li>
+    <li>En la reducción de capital con devolución de aportaciones y en la distribución de la prima de emisión de acciones, el exceso del valor de mercado de los elementos patrimoniales recibidos sobre el valor fiscal de la participación. La LIS aclara que no habrá rentas, ni positivas ni negativas, para el socio cuando la reducción de capital no conlleve devolución de aportaciones (por ejemplo, reducciones de capital para compensar pérdidas). Sin embargo, en el caso de que estas operaciones sean efectuadas por SICAVs, se deberá integrar el importe total percibido, con el límite del aumento del valor liquidativo de las acciones durante el tiempo de tenencia de la participación.</li>
+    <li>En la distribución de beneficios, el valor de mercado de los elementos patrimoniales recibidos.</li>
+  </ul>
+
+  <h4>5.11.6 Regla especial aplicable a los elementos patrimoniales transmitidos en virtud de fusión, absorción y escisión total o parcial</h4>
+  <p>En las transmisiones de elementos patrimoniales producidas en virtud de fusión, absorción y escisión total o parcial, la sociedad transmitente integrará en la base imponible del período impositivo en que se realice la operación la diferencia entre el valor de mercado de los elementos patrimoniales transmitidos y su valor fiscal, salvo que dicha renta quede diferida al momento de la transmisión posterior de dichos elementos por la aplicación del régimen especial de reestructuración empresarial de la LIS.</p>
+  <p>Por su parte, los socios integrarán en su base imponible la diferencia entre el valor de mercado de la participación recibida y el valor fiscal de la participación anulada, salvo que dicha renta quede diferida al momento de la transmisión posterior de la participación por la aplicación del régimen especial de reestructuración empresarial de la LIS.</p>
+
+  <h4>5.11.7 Regla especial aplicable a las permutas y a los valores objeto de canje o conversión</h4>
+  <p>En estas operaciones, cada sociedad transmitente integrará en la base imponible del período impositivo en que se realice la operación la diferencia entre el valor de mercado del elemento patrimonial adquirido y el valor fiscal del elemento patrimonial transmitido.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 21 — Permuta de vehículo por maquinaria</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad permuta un vehículo cuyo valor fiscal es de 6.000 euros por una maquinaria. El valor de mercado del vehículo entregado es de 9.000 euros, mientras que el valor de mercado de la maquinaria adquirida es de 10.000 euros. Conocemos que contablemente la sociedad no ha recogido ningún beneficio derivado de esta operación.</p>
+      <div class="solucion">
+        <p>Renta fiscal = Vm bien adquirido – VF bien transmitido = 10.000 – 6.000 = <strong>4.000 €</strong></p>
+        <p>Como la Renta contabilizada = 0 €, entonces hay que hacer un ajuste <strong>RC + 4.000 IFNC</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.11.8 Regla especial aplicable a los traslados de residencia de la sociedad</h4>
+  <p>El artículo 19.1 de la LIS dispone que se integrará en la base imponible del IS la diferencia entre el valor de mercado y el valor fiscal de los elementos patrimoniales que sean propiedad de una sociedad residente en España cuando dicha sociedad traslade su residencia fuera del territorio español, salvo que dichos elementos queden afectos a un establecimiento permanente situado en España.</p>
+  <p>No obstante, cuando los elementos patrimoniales sean transferidos a otro Estado miembro de la UE o del EEE que haya celebrado un acuerdo con España sobre asistencia mutua en materia de cobro de créditos tributarios, la sociedad podrá fraccionar la deuda resultante en cinco partes anuales iguales, devengándose intereses de demora, pero sin necesidad de constituir garantías, salvo que la Administración tributaria justifique la existencia de indicios racionales de que el cobro de la deuda se podría ver frustrado o gravemente dificultado.</p>
+  <p>El fraccionamiento perderá su vigencia cuando: (a) los elementos patrimoniales sean transmitidos a terceros; (b) se trasladen con posterioridad a un tercer Estado distinto de los señalados; (c) el contribuyente traslade su residencia fiscal a un tercer Estado; (d) el contribuyente se encuentre en liquidación o esté incurso en un procedimiento de ejecución colectiva; o (e) el contribuyente no efectúe el ingreso en el plazo previsto.</p>
+
+  <h4>5.11.9 Regla especial aplicable a las operaciones realizadas con paraísos fiscales</h4>
+  <p>El artículo 19.2 de la LIS dispone que las operaciones realizadas con personas o entidades residentes en paraísos fiscales se valorarán por su valor de mercado. Además, el contribuyente está obligado a documentar el valor de mercado de estas operaciones de manera análoga a lo establecido para las operaciones vinculadas en el RIS.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 22 — Operación con entidad residente en paraíso fiscal</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad residente en España adquiere un bien por importe de 1.000 euros a una entidad residente en un paraíso fiscal, siendo su valor de mercado de 800 euros.</p>
+      <div class="solucion">
+        <p>La sociedad residente computa en el resultado contable un gasto por 1.000 euros, cuando sólo debería computar fiscalmente 800 euros, que es su valor de mercado. Por consiguiente, debe efectuarse un ajuste <strong>RC + 200 GCNF</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.11.10 Regla especial aplicable a los ingresos percibidos sujetos a retención</h4>
+  <p>El artículo 19.3 de la LIS dispone que los ingresos que deban ser objeto de retención a cuenta (por ejemplo, dividendos, intereses, etc.) serán computados fiscalmente por su importe íntegro. Contablemente también deben registrarse los ingresos por su importe íntegro, por lo que normalmente no deberá realizarse ningún tipo de ajuste.</p>
+  <p>De igual modo, el citado precepto legal regula las consecuencias en el IS cuando indebidamente no se haya retenido a cuenta:</p>
+  <ul>
+    <li>Cuando la retención no se hubiera practicado o lo hubiera sido por un importe inferior al debido, por causa imputable exclusivamente al retenedor, la sociedad perceptora podrá deducir de la cuota del IS la cantidad que debió ser retenida. No se practica ningún ajuste porque la norma presupone que el ingreso se contabilizó en su importe íntegro.</li>
+    <li>Cuando no pudiera probarse la contraprestación íntegra devengada, la Administración podrá computar como importe íntegro aquel que, una vez restada de ella la retención procedente, arroje la efectivamente percibida.</li>
+  </ul>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 23 — Ingreso sujeto a retención no practicada</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad ha contabilizado como intereses un importe de 810 euros que deberían haber estado sometidos a una retención del 19%. La sociedad no fue objeto de retención y no puede probar el importe de la contraprestación íntegra devengada.</p>
+      <div class="solucion">
+        <p>Ingreso íntegro = 810 / (1 – 0,19) = 810 / 0,81 = <strong>1.000 €</strong></p>
+        <p>Retención = 19% × 1.000 = <strong>190 €</strong></p>
+        <p>La Administración le practicará un ajuste positivo por la diferencia entre el ingreso íntegro y el ingreso contabilizado (<strong>RC + 190 IFNC</strong>) y deberá minorar la cuota líquida del IS en el importe de la teórica retención (190 €), todo ello sin perjuicio de la responsabilidad jurídica del retenedor por su incumplimiento del deber de retener.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-12">5.12 Operaciones vinculadas</h3>
+
+  <p>El artículo 18 de la LIS contiene una regulación sobre las operaciones vinculadas que, con una finalidad antibuso, trata de evitar que el contribuyente que realiza operaciones con personas o entidades con las que se encuentra estrechamente relacionado pueda pactar precios diferentes de su valor de mercado con la intención de minorar o diferir artificiosamente su tributación en el IS.</p>
+
+  <h4>5.12.1 Caracterización de entidades vinculadas</h4>
+  <p>El artículo 18.2 de la LIS considera que dos personas o entidades están vinculadas en los siguientes casos:</p>
+  <ul>
+    <li>Una entidad y sus socios o partícipes. Para que la condición de socio o partícipe sea relevante en éste y en los demás supuestos de operaciones vinculadas será necesario que la participación en la entidad sea, al menos, del 25%.</li>
+    <li>Una entidad y sus consejeros o administradores, salvo en lo correspondiente a la retribución recibida por el ejercicio de las funciones de administrador o consejero. A efectos de la caracterización de las operaciones vinculadas, la mención de los administradores incluye tanto a los de derecho como a los de hecho.</li>
+    <li>Una entidad y los cónyuges o personas unidas por relaciones de parentesco, en línea directa o colateral, por consanguinidad o afinidad hasta el tercer grado de los socios, partícipes, consejeros o administradores.</li>
+    <li>Dos entidades que pertenezcan a un mismo grupo, cuando una entidad ostente o pueda ostentar el control de otra u otras según los criterios del artículo 42 del Código de Comercio.</li>
+    <li>Una entidad y los consejeros o administradores de otra entidad, cuando ambas entidades pertenezcan al mismo grupo.</li>
+    <li>Dos entidades cuando una participa indirectamente en, al menos, el 25% del capital social o de los fondos propios de la otra.</li>
+    <li>Dos entidades en las cuales los mismos socios, partícipes o sus cónyuges, o personas unidas por relaciones de parentesco, en línea directa o colateral, por consanguinidad o afinidad hasta el tercer grado, participen directa o indirectamente en, al menos, el 25% del capital social o de los fondos propios.</li>
+    <li>Una entidad residente en territorio español y sus establecimientos permanentes en el extranjero.</li>
+  </ul>
+
+  <h4>5.12.2 Regla de valoración de las operaciones vinculadas</h4>
+  <p>El artículo 18.1 de la LIS dispone que las operaciones realizadas por las entidades vinculadas se valorarán por su valor de mercado, que será aquel valor que se habría acordado por personas o entidades independientes en condiciones que respeten el principio de libre competencia. Se trata de una regla imperativa de valoración que afecta a todas las entidades implicadas (efecto bilateral de la valoración).</p>
+  <p>La determinación del valor normal de mercado deberá efectuarse siguiendo los métodos recogidos en las Directrices de la OCDE sobre precios de transferencia (método del precio libre comparable, método del coste incrementado, método del precio de reventa, etc.) o, ante la imposibilidad de aplicar los anteriores, podrá utilizarse también otros métodos o técnicas de valoración generalmente aceptados que respeten el principio de libre competencia. La LIS no establece una jerarquía entre los diferentes métodos de valoración, sino que dispone que su elección deberá efectuarse teniendo en cuenta la naturaleza de la operación vinculada, la información fiable y el grado de comparabilidad entre las operaciones vinculadas y no vinculadas.</p>
+  <p>Las personas o entidades vinculadas deberán elaborar y mantener a disposición de la Administración tributaria, de acuerdo con los principios de proporcionalidad y suficiencia, la documentación que justifique el cálculo del valor de mercado de las operaciones vinculadas en los términos regulados en el RIS. No obstante, las personas o entidades cuyo importe neto de la cifra de negocios sea inferior a 45 millones de euros podrán elaborar la citada documentación con un contenido simplificado.</p>
+  <p>Sin embargo, determinadas operaciones no podrán beneficiarse de la documentación simplificada, como son las operaciones de transmisión de negocios, las operaciones de transmisión de participaciones representativas de la participación en los fondos propios de entidades que no coticen en mercados regulados o lo hagan en mercados regulados situados en paraísos fiscales, las operaciones sobre bienes inmuebles, las operaciones sobre activos intangibles y determinadas operaciones de una sociedad con personas que tributen en el IRPF en régimen de estimación objetiva cuando dicha sociedad y su entorno familiar controlen, al menos, el 25% de los fondos propios de la sociedad vinculada.</p>
+  <p>Además, no será exigible la documentación a las operaciones realizadas con la misma persona o entidad vinculada, siempre que el importe de la contraprestación del conjunto de las operaciones no supere los 250.000 euros, de acuerdo con el valor de mercado.</p>
+  <p>El incumplimiento de los deberes de información señalados constituye infracciones tributarias graves sancionadas en el artículo 18.13 de la LIS. La comprobación del valor de mercado de las operaciones vinculadas se llevará a cabo en el seno del procedimiento iniciado respecto del obligado tributario cuya situación sea objeto de comprobación, notificándose a las otras entidades vinculadas el valor comprobado para que puedan personarse en el posible recurso interpuesto por el primer obligado tributario.</p>
+  <p>Sin embargo, el artículo 18.14 de la LIS dispone que el valor de mercado de las operaciones vinculadas a efectos de la imposición directa no tendrá efectos respecto de otros impuestos (por ejemplo, a efectos de la imposición indirecta o aduanera), del mismo modo en que el valor a efectos de estos otros impuestos no tendrá efectos en relación con la determinación del valor de mercado de las operaciones vinculadas en el IS, IRPF e IRNR.</p>
+  <p>Las entidades vinculadas podrán solicitar, en los términos desarrollados por el RIS, la realización de un acuerdo previo de valoración (APA) con la Administración tributaria que permita fijar un procedimiento para determinar la valoración de las operaciones vinculadas con carácter previo a su realización por parte de los contribuyentes. El APA podrá tener una vigencia de hasta cuatro años e, incluso, podrá acordarse su aplicación a períodos impositivos anteriores no prescritos y cuyas liquidaciones no sean firmes. La LIS prevé también la posibilidad de llegar a acuerdos de valoración con las Administraciones tributarias de otros Estados (APA internacionales).</p>
+
+  <h4>5.12.3 Regla de deducibilidad de los gastos por prestaciones de servicios entre entidades vinculadas</h4>
+  <p>El artículo 18.5 de la LIS viene a establecer que sólo serán deducibles los gastos por prestaciones de servicios entre entidades vinculadas cuando se pruebe que los citados servicios han producido o pueden producir una ventaja o utilidad a su destinatario. El importe del gasto deducible se determinará de conformidad con la regla general de valor de mercado.</p>
+  <p>No obstante, cuando se trate de servicios prestados conjuntamente a favor de varias personas o entidades vinculadas y siempre que no fuera posible su individualización para cuantificar el citado valor de mercado, será posible distribuir la contraprestación total del servicio entre todas las personas o entidades beneficiarias mediante unas reglas de reparto que atiendan a criterios de racionalidad.</p>
+
+  <h4>5.12.4 Acuerdos de reparto de costes suscritos por entidades vinculadas</h4>
+  <p>El artículo 18.7 de la LIS permite deducir los gastos derivados de un acuerdo de reparto de costes de bienes o servicios suscritos entre personas o entidades vinculadas cuando se cumplan los siguientes requisitos: que las personas o entidades participantes suscriban el acuerdo debiendo acceder a la propiedad u otro derecho sobre los activos o derechos que en su caso sean objeto de adquisición, producción o desarrollo como resultado del acuerdo; que la aportación de cada persona o entidad participante tenga en cuenta la previsión de utilidades o ventajas que cada uno de ellos espere obtener del acuerdo en atención a criterios de racionalidad; y que el acuerdo contemple la variación de sus circunstancias o de las personas o entidades participantes, estableciendo los pagos compensatorios y ajustes que se estimen necesarios.</p>
+
+  <h4>5.12.5 Regla especial de valoración para las operaciones vinculadas realizadas por socios profesionales</h4>
+  <p>El artículo 18.6 de la LIS dispone una regla especial aplicable exclusivamente en la valoración de las prestaciones de servicios efectuadas por socios profesionales con la entidad vinculada en la que participen, que supone una enorme simplificación de la valoración de estas operaciones vinculadas. Esta regla consiste en que el contribuyente podrá considerar que el valor convenido o precio pactado en dichas prestaciones de servicios profesionales coincide siempre con el valor de mercado si se cumplen los siguientes requisitos:</p>
+  <ul>
+    <li>Que más del 75% de los ingresos de la entidad vinculada procedan del ejercicio de actividades profesionales y que dicha entidad cuente con los medios materiales y humanos adecuados para el desarrollo de la actividad.</li>
+    <li>Que la cuantía de las retribuciones correspondientes a la totalidad de los socios-profesionales por la prestación de sus servicios a la entidad no sea inferior al 75% del resultado previo a la deducción de las retribuciones correspondientes a la totalidad de los socios-profesionales por la prestación de sus servicios.</li>
+    <li>Que la cuantía de las retribuciones correspondientes a cada uno de los socios profesionales cumpla, a su vez, los siguientes requisitos: (i) que dicha cuantía se determine en función de la contribución efectuada por cada socio a la buena marcha de la entidad, siendo necesario que conste por escrito los criterios cualitativos y/o cuantitativos aplicables; (ii) que dicha cuantía no sea inferior a 1,5 veces el salario medio de los asalariados de la entidad que cumplan funciones análogas a las de los socios-profesionales de la entidad. En ausencia de los citados asalariados, la cuantía de las citadas retribuciones no podrá ser inferior a 5 veces el IPREM. La apreciación de este último requisito se efectuará individualmente para cada socio-profesional, de modo que su incumplimiento respecto de alguno de los socios no impedirá lógicamente aplicar la regla especial de valoración respecto de las operaciones efectuadas con dicho socio, pero sí podrá aplicarse dicha regla respecto de las operaciones realizadas con el resto de socios que sí cumplan con este requisito.</li>
+  </ul>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-13">5.13 Rentas derivadas de los valores representativos de la participación en los fondos propios de otras entidades</h3>
+
+  <h4>5.13.1 Exención de los dividendos o de la participación en beneficios de entidades</h4>
+  <p>El artículo 21.1 de la LIS establece que estarán exentos los dividendos o participaciones en beneficios de entidades, tanto residentes como no residentes, cuando se cumplan los siguientes requisitos:</p>
+  <p><strong>a)</strong> Que el contribuyente participe en, al menos, el 5% del capital o de los fondos propios de la entidad y que dicha participación se haya mantenido ininterrumpidamente durante el año anterior al reparto de los dividendos. No obstante, si en el momento del reparto de dichos dividendos, la participación no se poseyera durante un año, podrá completarse dicho plazo con posterioridad. De igual modo, para el cómputo del plazo de un año, se tendrá en cuenta el tiempo de permanencia ininterrumpida de la participación en otras sociedades del mismo grupo, según los criterios establecidos en el artículo 42 del Código de Comercio.</p>
+  <p><strong>b)</strong> En el caso exclusivamente de que se participe en una entidad no residente, que dicha entidad haya estado sujeta y no exenta por un impuesto extranjero de naturaleza idéntica o análoga al IS a un tipo nominal de, al menos, el 10% en el ejercicio en que se hayan obtenido los beneficios que se reparten, con independencia de la aplicación de algún tipo de exención, bonificación, reducción o deducción sobre aquéllos. A estos efectos, la LIS dispone que se tendrán en cuenta aquellos tributos extranjeros que hayan tenido por finalidad la imposición de la renta obtenida por la entidad participada.</p>
+  <p>En ningún caso, se entenderá cumplido este requisito cuando la entidad participada resida en un paraíso fiscal, salvo que resida en la Unión Europea y el contribuyente acredite que su constitución y operativa responde a motivos económicos válidos y que realiza actividades económicas.</p>
+  <p>Para la cuantificación de la exención, el artículo 21.10 de la LIS dispone que el importe de los dividendos exentos se reducirá en un 5% en concepto de gastos de gestión referidos a la participación, lo cual supone en la práctica que quedarán exentos el 95% de los dividendos percibidos.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 24 — Exención de dividendos</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A participa en el 15% de la sociedad residente B, desde hace siete años. Durante el período 2024, la sociedad A ha percibido y contabilizado 25.000 € de dividendos distribuidos por la sociedad B.</p>
+      <div class="solucion">
+        <p>La sociedad A podrá aplicar la exención de dividendos del artículo 21 de la LIS por un importe de 23.750 € (95% × 25.000), realizando el siguiente ajuste: <strong>RC – 23.750 ICNF</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Por último, y para evitar situaciones de doble no imposición fundamentalmente en el ámbito internacional, no se aplicará esta exención a los dividendos o participaciones en beneficios cuya distribución genere un gasto fiscalmente deducible en la entidad participada.</p>
+
+  <h4>5.13.2 Exención de las rentas positivas obtenidas por la transmisión de los valores representativos de los fondos propios de entidades</h4>
+  <p>El artículo 21.3 de la LIS establece que también estarán exentas las rentas positivas obtenidas por la transmisión de los valores representativos de los fondos propios de entidades, tanto residentes como no residentes, cuando se cumplan los requisitos a) y b) señalados en el apartado anterior. El requisito relativo al porcentaje de participación deberá cumplirse el día en que se produzca la transmisión, mientras que el requisito de tributación mínima en el extranjero deberá cumplirse durante todos y cada uno de los ejercicios de tenencia de la participación, sin perjuicio de la posibilidad de aplicar la exención parcialmente.</p>
+  <p>De igual modo que ocurrirá en relación con la exención de los dividendos, el artículo 20.10 de la LIS dispone que el importe de la renta positiva exenta se reducirá en un 5% en concepto de gastos de gestión referidos a la participación, lo cual supone en la práctica que quedará exenta el 95% de la renta positiva derivada de la transmisión de los valores.</p>
+  <p>Por otra parte, se prevé que la misma exención se aplicará a las rentas positivas obtenidas en los supuestos de liquidación de la entidad, separación del socio, fusión, escisión total o parcial, aportación no dineraria o cesión global de activo y pasivo.</p>
+  <p>Además, el artículo 21.3 permite también la exención parcial de la renta positiva derivada de la transmisión de la participación cuando, cumpliéndose el requisito a), el requisito b) de tributación mínima en el extranjero haya sido cumplido únicamente durante alguno o algunos de los ejercicios de tenencia de la participación, pero no en todos. Para ello, se distinguirán dos partes diferenciadas de la renta obtenida en la transmisión a efectos de aplicar la exención.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 25 — Exención parcial en transmisión de participación</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A adquirió, el 1 de enero de 2021, una participación del 100% de una sociedad no residente por importe de 1.000.000 € y, el 31 de diciembre de 2024, vendió dicha participación por importe de 1.400.000 €. Conocemos que, durante todo el tiempo que tuvo la participación, la sociedad no residente tributó por un impuesto análogo a nuestro IS en su Estado de residencia. Los beneficios no distribuidos generados por la entidad participada han sido los siguientes:</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Período impositivo</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>Base imponible</td><td>50.000 €</td><td>80.000 €</td><td>70.000 €</td><td>40.000 €</td><td>240.000 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="solucion">
+        <p><strong>Caso a):</strong> Calcula la exención si la sociedad participada ha tributado a un tipo nominal del 15% en su IS durante los cuatro años de tenencia de la participación.</p>
+        <p>La sociedad A obtiene una renta de 400.000 € (1.400.000 – 1.000.000) derivada de la transmisión de la participación. La totalidad de la renta puede beneficiarse de la exención del artículo 21 de la LIS durante los cuatro años. La sociedad podrá eximir 380.000 euros (95% × 400.000), lo que hará efectuando un ajuste de <strong>RC – 380.000 ICNF</strong>.</p>
+        <p><strong>Caso b):</strong> La sociedad cumple los dos requisitos durante los ejercicios 2021, 2022 y 2024, pero tributó sólo a un tipo nominal del 5% durante el ejercicio 2023.</p>
+        <p>La LIS obliga a fraccionar la exención de forma parcial de la siguiente manera:</p>
+        <ul>
+          <li>Parte correspondiente a los beneficios no distribuidos: 240.000 €. Sólo podrá aplicarse la exención a la renta que se corresponda con los periodos 2021 (50.000 €), 2022 (80.000 €) y 2024 (40.000 €). Por lo tanto, sólo podrá aplicarse la exención a la cantidad de 170.000 €.</li>
+          <li>Parte que no se corresponde con los beneficios no distribuidos: 400.000 – 240.000 = 160.000 €. Como la participación se ha tenido cuatro años, hay que entender que a cada año le corresponde 40.000 € (160.000 / 4). Por lo tanto, como los dos requisitos del artículo 21 sólo se cumplen durante tres años, sólo podrá aplicarse la exención a la cantidad de 120.000 € (40.000 × 3).</li>
+          <li>Importe total de la renta a la que es aplicable la exención: 170.000 + 120.000 = 290.000 €. Teniendo en cuenta el descuento del 5% en concepto de gastos de gestión, la sociedad podrá eximir 275.500 euros (95% × 290.000), lo que hará efectuando un ajuste de <strong>RC – 275.500 ICNF</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h4>5.13.3 Tratamiento de las rentas negativas obtenidas por la transmisión de los valores representativos de los fondos propios de entidades</h4>
+  <p>El artículo 21.6 de la LIS dispone que no se integrarán las rentas negativas derivadas de la transmisión de la participación en una entidad, respecto de la que se dé alguna de las circunstancias siguientes:</p>
+  <p><strong>a)</strong> Que se cumplan los requisitos para que una hipotética renta positiva de dicha transmisión hubiera podido beneficiarse de la exención del artículo 21 de la LIS. Para ello, es suficiente que el requisito de participación se cumpla en algún momento del año anterior a la transmisión.</p>
+  <p><strong>b)</strong> En el caso de participación en el capital o en los fondos propios de una entidad no residente, que esta entidad no residente no esté sujeta a un tipo de gravamen nominal del IS de, al menos, el 10%.</p>
+  <p>De igual modo, el artículo 21.7 de la LIS dispone que las rentas negativas derivadas de la transmisión de la participación en una entidad diferente de la señalada en los apartados anteriores podrán integrarse en la base imponible del IS, pero solo aplicando las siguientes reglas:</p>
+  <ul>
+    <li>Con carácter general, la citada renta negativa se minorará en el importe de los dividendos o participaciones en beneficios recibidos de la entidad participada a partir del período impositivo que se haya iniciado en el año 2009, siempre que los referidos dividendos o participaciones en beneficios no hayan minorado el valor de adquisición y hayan tenido derecho a la aplicación de la exención prevista en el artículo 21 de la LIS.</li>
+    <li>Específicamente, cuando la participación haya sido transmitida en un momento anterior por otra sociedad perteneciente al mismo grupo de sociedades del contribuyente en el sentido del artículo 42 del Código de Comercio, la renta negativa se minorará en la renta positiva obtenida en la transmisión anterior que se hubiera beneficiado de la exención o de la deducción para la eliminación de la doble imposición.</li>
+  </ul>
+  <p>Finalmente, el artículo 21.8 de la LIS dispone que sí serán deducibles las rentas negativas generadas en caso de extinción de la entidad participada, salvo que la misma sea consecuencia de una operación de reestructuración. En este caso, las rentas negativas se minorarán en el importe de los dividendos o participaciones en beneficios de la entidad participada en los diez años anteriores a la fecha de la extinción, siempre que los mismos no hayan minorado el valor de adquisición de la participación correspondiente y hayan tenido derecho a una exención o deducción por doble imposición.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 26 — Renta negativa por extinción de entidad participada</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A adquirió el 10% de la sociedad X por importe de 100.000 euros en el año 2019. Durante los cuatro años siguientes ha recibido dividendos por importe de: 10.000 euros, 8.000 euros, 5.000 euros y 7.000 euros respectivamente, que no han sido incorporados a la base imponible del IS porque han disfrutado de la exención por doble imposición del artículo 21 de la LIS. Finalmente, en 2024 se procede a la disolución de la sociedad X, de manera que la sociedad A recibe una cuota de liquidación de 60.000 euros correspondiente a la amortización de su participación.</p>
+      <div class="solucion">
+        <p>La sociedad A contabiliza una pérdida (GC) por importe de 40.000 euros (60.000 – 100.000). Sin embargo, fiscalmente debe minorarse dicha pérdida en el importe de los dividendos percibidos en los últimos diez años que han disfrutado de la exención por doble imposición (10.000 + 8.000 + 5.000 + 7.000 = 30.000), por lo tanto la pérdida fiscal será sólo de 10.000 euros (40.000 – 30.000).</p>
+        <p>En definitiva, si el GC = 40.000 y el GF = 10.000, entonces deberá efectuarse un ajuste de <strong>RC + 30.000 GCNF</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-14">5.14 Rentas obtenidas en el extranjero a través de establecimientos permanentes</h3>
+
+  <h4>5.14.1 Exención de las rentas positivas obtenidas en el extranjero a través de establecimientos permanentes</h4>
+  <p>El artículo 22 de la LIS dispone la exención de las rentas positivas obtenidas por los establecimientos permanentes situados en el extranjero cuando dichos establecimientos hayan estado sujetos y no exentos a un impuesto extranjero de naturaleza idéntica o análoga al IS con un tipo nominal de, al menos, el 10% en el ejercicio en que se hayan obtenido las citadas rentas, con independencia de la aplicación de algún tipo de exención, bonificación, reducción o deducción sobre aquéllas. De igual modo, se aplicará la exención a las rentas positivas derivadas del cese o transmisión del citado establecimiento permanente.</p>
+  <p>A efectos de la LIS, el artículo 22.3 considerará que una entidad opera mediante un establecimiento permanente cuando, por cualquier título, disponga fuera del territorio español, de forma continuada o habitual, de instalaciones o lugares de trabajo en los que realice toda o parte de su actividad, o actúe en él por medio de un agente autorizado para contratar, en nombre y por cuenta del contribuyente, que ejerza con habitualidad dichos poderes. En particular, se entenderá que constituyen establecimiento permanente las sedes de dirección, las sucursales, las oficinas, las fábricas, los talleres, los almacenes, tiendas u otros establecimientos, las minas, los pozos de petróleo o de gas, las canteras, las explotaciones agrícolas, forestales o pecuarias o cualquier otro lugar de exploración o de extracción de recursos naturales, y las obras de construcción, instalación o montaje cuya duración exceda de 6 meses.</p>
+  <p>De igual forma, el artículo 22.4 de la LIS considerará que un contribuyente opera mediante establecimientos permanentes distintos en un determinado país, cuando concurran las siguientes circunstancias: que realicen actividades claramente diferenciables, y que la gestión de estas se lleve de modo separado.</p>
+  <p>A efectos de cuantificar la renta, el artículo 22.5 de la LIS dispone que se considerarán rentas del establecimiento permanente aquellas que el mismo hubiera podido obtener si fuera una entidad distinta e independiente, teniendo en cuenta las funciones desarrolladas, los activos utilizados y los riesgos asumidos por la entidad a través del establecimiento permanente.</p>
+  <p>De manera similar a como vimos en el epígrafe anterior, la aplicación de esta exención será incompatible con la aplicación de la deducción por doble imposición internacional prevista en el artículo 31 de la LIS respecto de la misma renta. En este sentido, si la sociedad tuviera varios establecimientos permanentes en el extranjero, podrá optar por aplicar la exención o la deducción en relación con la renta de cada establecimiento permanente, incluso en el caso de que existieran varios establecimientos en el mismo país.</p>
+
+  <h4>5.14.2 Tratamiento de las rentas negativas derivadas de la transmisión de establecimientos permanentes</h4>
+  <p>El artículo 22.2 de la LIS dispone que no se integrarán las rentas negativas obtenidas en el extranjero a través de un establecimiento permanente, ni tampoco la renta negativa derivada de su transmisión.</p>
+  <p>No obstante, sí podrá integrarse la renta negativa derivada del cese de un establecimiento permanente, aunque únicamente en el importe en que dicha renta negativa haya superado las rentas positivas obtenidas en períodos impositivos anteriores que hayan disfrutado de la exención o de la deducción para la eliminación de la doble imposición.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 27 — Renta negativa de cese de establecimiento permanente</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A creó un establecimiento permanente en el extranjero durante el año 2021. Durante los períodos impositivos 2021, 2022 y 2023 obtuvo rentas positivas por importe de 80.000 euros, 60.000 euros y 30.000 euros, respectivamente. Conocemos que durante 2021 y 2022 las rentas positivas quedaron exentas por cumplirse las condiciones del artículo 22 de la LIS y que durante 2023 la renta positiva obtenida permitió aplicar la deducción por doble imposición internacional del artículo 31 de la LIS. Finalmente, durante 2024 cesa el establecimiento permanente, contabilizándose una pérdida de 100.000 euros.</p>
+      <div class="solucion">
+        <p>La LIS obliga a minorar la renta negativa obtenida (–100.000 €) en el importe de las rentas positivas anteriores que hayan disfrutado de la exención (80.000 + 60.000 = 140.000 €) o de la deducción por doble imposición internacional (30.000 €). En consecuencia, en este supuesto la renta negativa se minorará hasta que llegue a ser cero, dado que dicha renta negativa es inferior a las rentas positivas que anteriormente han disfrutado de las citadas exención y deducción. Por lo tanto, y dado que el contribuyente habrá contabilizado la pérdida de –100.000 €, deberá realizar un ajuste positivo de <strong>RC + 100.000 GCNF</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-15">5.15 Reducción de las rentas procedentes de la cesión de determinados activos intangibles</h3>
+
+  <p>Con el objetivo extrafiscal de fomentar la realización de actividades de investigación y desarrollo en España, el artículo 23.1 de la LIS dispone que las rentas positivas procedentes de la cesión del derecho de uso o de explotación de patentes, modelos de utilidad, certificados complementarios de protección de medicamentos y de productos fitosanitarios, dibujos y modelos legalmente protegidos, que deriven de actividades de investigación y desarrollo e innovación tecnológica, y software avanzado registrado que derive de actividades de investigación y desarrollo, tendrán derecho a una reducción en la base imponible en el porcentaje que resulte de multiplicar por un 60 por ciento el resultado del siguiente coeficiente:</p>
+  <ul>
+    <li>En el numerador, los gastos incurridos por la entidad cedente directamente relacionados con la creación del activo, incluidos los derivados de la subcontratación con terceros no vinculados con aquella. Estos gastos se incrementarán en un 30% ciento, sin que, en ningún caso, el numerador pueda superar el importe del denominador.</li>
+    <li>En el denominador, los gastos incurridos por la entidad cedente directamente relacionados con la creación del activo, incluidos los derivados de la subcontratación tanto con terceros no vinculados como con personas o entidades vinculadas, y de la adquisición del activo.</li>
+  </ul>
+  <p>En ningún caso se incluirán en el coeficiente anterior gastos financieros, amortizaciones de inmuebles u otros gastos no relacionados directamente con la creación del activo.</p>
+  <p>Además, el artículo 23.1 de la LIS dispone que la reducción será también aplicable a la renta derivada de la transmisión de los citados activos intangibles, siempre que dicha transmisión se realice entre entidades que no tengan la condición de vinculadas.</p>
+  <p>Para poder aplicar la reducción, el artículo 23.2 de la LIS exige también que se cumplan los siguientes requisitos: que el cesionario utilice los derechos de uso o de explotación en el desarrollo de una actividad económica; que el cesionario no resida en un país o territorio de nula tributación o considerado como paraíso fiscal; que cuando en el mismo contrato de cesión de los activos intangibles se incluya prestaciones accesorias de bienes y servicios, deberá diferenciarse en dicho contrato la contraprestación correspondiente a los mismos; y que la entidad disponga de los registros contables necesarios para poder determinar cada uno de los ingresos y gastos directos correspondientes a los activos objeto de cesión.</p>
+  <p>Con la finalidad de cuantificar la renta positiva que podrá beneficiarse de la reducción, el artículo 23.2 de la LIS dispone que la renta positiva susceptible de reducción consistirá en los ingresos derivados de la cesión o uso del activo intangible y, en su caso, la renta positiva procedente de su transmisión que superen la suma de los gastos incurridos por la entidad directamente relacionados con la creación de los activos que no hubieran sido incorporados al valor de los activos, de las cantidades deducidas por la amortización de dichos activos, de conformidad con el artículo 12.2 de la LIS, y de aquellos gastos directamente relacionados con los activos que se hubieran integrado en la base imponible.</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-16">5.16 Reserva de capitalización</h3>
+
+  <p>Con la finalidad de incrementar la capitalización de las empresas, el artículo 25 de la LIS permite que los contribuyentes que apliquen los tipos de gravamen general o incrementado del IS puedan aplicar una reducción del 15% del importe del incremento de los fondos propios de la sociedad habida durante el ejercicio, siempre que se cumplan los siguientes requisitos:</p>
+  <ul>
+    <li>Que el importe del citado incremento de los fondos propios de la entidad se mantenga durante el plazo de tres años, contados desde el cierre del período impositivo al que corresponda la reducción, salvo por la existencia de pérdidas contables en la entidad.</li>
+    <li>Que se dote una reserva por el importe de la reducción, que deberá figurar en el balance con absoluta separación y título apropiado y que será indisponible durante el citado plazo de tres años. No se entenderá incumplido este requisito cuando se disponga de la reserva como consecuencia de la separación de socios, la realización de operaciones de reestructuración a las que sea aplicable el régimen especial de la LIS o cuando se efectúe dicha disposición en virtud de una obligación legal.</li>
+  </ul>
+  <p>La base de la reducción vendrá determinada por la diferencia positiva entre los fondos propios existentes al cierre del ejercicio, sin incluir los resultados del mismo, y los fondos propios existentes al inicio del mismo, sin incluir los resultados del ejercicio anterior. Sin embargo, no se tendrán en cuenta para efectuar dicho cálculo en los fondos propios existentes, tanto al cierre como al inicio del ejercicio, determinadas partidas como las aportaciones de los socios, las ampliaciones de capital para compensar créditos, las ampliaciones de fondos propios por operaciones con acciones propias o de reestructuración, las reservas de carácter legal o estatutario, etc.</p>
+  <p>De igual modo, se establece que la reducción que puede practicarse durante el período impositivo no podrá superar el 10% de la base imponible positiva previa a esta misma reducción y a la compensación de bases imponibles negativas. No obstante, la cantidad no reducida por aplicación del límite anterior podrá ser objeto de aplicación en los períodos impositivos que finalicen en los dos años siguientes, conjuntamente con la reducción por capitalización del período impositivo correspondiente y con el mismo límite del 10%.</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-17">5.17 Compensación de bases imponibles negativas</h3>
+
+  <p>El artículo 26 de la LIS dispone que cuando el contribuyente obtenga una base imponible negativa, podrá compensarla con las rentas positivas que obtenga durante los períodos impositivos siguientes, con el límite del 70% de la base imponible positiva previa a la reducción derivada de la reserva de capitalización y a la propia compensación de bases imponibles negativas. No obstante, la norma establece que, en todo caso, la sociedad podrá compensar siempre un mínimo de 1.000.000 de euros de bases imponibles negativas, por lo que habrá que entender que el límite del 70% no resultará relevante si las bases imponibles negativas pendientes de compensar no superan el millón de euros. Además, para períodos impositivos inferiores al año, la norma obliga a prorratear el citado mínimo en función de la duración del período impositivo.</p>
+  <p>Sin embargo, la LIS establece que las limitaciones a la compensación de bases imponibles citadas anteriormente no se aplicarán:</p>
+  <ul>
+    <li>A las entidades de nueva creación que apliquen el tipo de gravamen reducido del 15%, durante los tres primeros períodos impositivos en que se genere una base imponible positiva previa.</li>
+    <li>En relación con las rentas positivas correspondientes a quitas o esperas consecuencia de un acuerdo con los acreedores del contribuyente. Además, las bases imponibles negativas compensadas con dichas rentas no se tendrán en cuenta a efectos del mínimo de 1.000.000 de euros.</li>
+    <li>En el período impositivo en que se produzca la extinción de la entidad, salvo que la misma sea consecuencia de una operación de reestructuración empresarial a la que resulte de aplicación el régimen especial de la LIS.</li>
+  </ul>
+  <p>Por otra parte, el artículo 26.4 de la LIS contiene una medida anti-abuso para evitar la compra artificiosa de sociedades con pérdidas fiscales. Para ello, prohíbe la compensación de las bases imponibles negativas generadas por ciertas sociedades (sociedades inactivas, sociedades patrimoniales, etc.) con anterioridad a su adquisición, cuando se cumplen determinados requisitos contenidos en el citado precepto y que evidencian que dicha adquisición se ha efectuado con la finalidad fundamental de beneficiarse de la citada compensación.</p>
+  <p>Por último, el artículo 26.5 de la LIS extiende hasta diez años (frente a los cuatro que establece la LGT con carácter general) la prescripción del derecho de la Administración tributaria para comprobar e investigar las bases imponibles negativas pendientes de compensación.</p>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h3 id="s5-18">5.18 Reserva de nivelación de bases imponibles (ERD)</h3>
+
+  <p>El artículo 105 de la LIS dispone que las ERD que apliquen el tipo general de gravamen del IS, podrán practicar una reducción del 10% de la base imponible positiva del período impositivo, con el límite máximo de 1.000.000 de euros anuales. El objetivo de este incentivo fiscal consiste únicamente en permitir el diferimiento de la tributación del contribuyente, por lo que la cantidad reducida deberá ser posteriormente adicionada a las bases imponibles de la sociedad en períodos impositivos futuros del siguiente modo:</p>
+  <ul>
+    <li>Se adicionará un importe equivalente a la base imponible negativa que, en su caso, el contribuyente obtenga en cada período impositivo que concluya durante los cinco años siguientes a la finalización del período impositivo en que se efectuó la reducción.</li>
+    <li>En el último período impositivo en que finalice el citado plazo de cinco años, se adicionará la cantidad pendiente, es decir, la cantidad que fue objeto de minoración y que todavía no hubiese sido adicionada por no haber tenido el contribuyente bases imponibles negativas suficientes para ello en períodos impositivos anteriores.</li>
+  </ul>
+  <p>Además, como requisito para poder practicar esta reducción, el artículo 105.3 de la LIS exige que el contribuyente dote una reserva indisponible por el importe de la reducción con los resultados positivos obtenidos durante el ejercicio y, si no fuera posible, la reducción quedará condicionada a que se dote dicha reserva con los primeros resultados positivos obtenidos durante los ejercicios siguientes con los que sea posible efectuar dicha dotación.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 28 — Reserva de nivelación</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A (ERD) decide dotar la reserva de nivelación, en su nivel máximo, durante el período impositivo 2024. Conocemos que obtiene las siguientes bases imponibles durante los períodos impositivos anuales transcurridos desde 2024 a 2029:</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Período impositivo</th><th>2024</th><th>2025</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th></tr></thead>
+          <tbody>
+            <tr><td>Base imponible</td><td>150.000 €</td><td>0 €</td><td>–8.000 €</td><td>5.000 €</td><td>–4.000 €</td><td>15.000 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="solucion">
+        <p>La reducción por la reserva de nivelación correspondiente a 2024 y las adiciones que deben efectuarse en los períodos impositivos futuros serán las siguientes:</p>
+        <div class="tabla-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>Período impositivo</th><th>2024</th><th>2025</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th></tr></thead>
+            <tbody>
+              <tr><td>Base imponible</td><td>150.000 €</td><td>0 €</td><td>–8.000 €</td><td>5.000 €</td><td>–4.000 €</td><td>15.000 €</td></tr>
+              <tr><td>Reducción/adición</td><td>–15.000 €</td><td>0 €</td><td>8.000 €</td><td>—</td><td>4.000</td><td>3.000 €</td></tr>
+              <tr><td>Base imponible incrementada o reducida</td><td>135.000 €</td><td>0 €</td><td>0 €</td><td>5.000 €</td><td>0 €</td><td>18.000 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li><strong>Período 2024:</strong> La sociedad ha dotado la reserva de nivelación en su nivel máximo (10% × 150.000 = 15.000).</li>
+          <li><strong>Período 2025:</strong> Como no hay base imponible negativa, no se adiciona ninguna cantidad.</li>
+          <li><strong>Período 2026:</strong> Debe adicionarse una cantidad equivalente a la base imponible negativa del período (8.000 €), con el límite de la minoración efectuada (8.000 &lt; 15.000 €).</li>
+          <li><strong>Período 2027:</strong> Como la base imponible es positiva, no se adiciona ninguna cantidad. Podría haberse dotado, aunque no lo dice así el ejemplo, una nueva reserva de nivelación por importe de 500 € (10% × 5.000), que debería adicionarse durante los períodos impositivos correspondientes a los años 2028–2032.</li>
+          <li><strong>Período 2028:</strong> Debe adicionarse una cantidad equivalente a la base imponible negativa del período (4.000 €), con el límite de la minoración pendiente (4.000 = 15.000 – 8.000 – 4.000 ≤ 15.000 €).</li>
+          <li><strong>Período 2029:</strong> Como este es el último período impositivo dentro del plazo de cinco años a contar desde el cierre del período en que se dotó la reducción, debe adicionarse la cantidad pendiente (15.000 – 8.000 – 4.000 = 3.000 €). Por otra parte, como la base imponible del período es positiva, podría haberse dotado, aunque no lo dice así el ejemplo, una nueva reserva de nivelación por importe de 1.500 € (10% × 15.000), que debería adicionarse durante los períodos impositivos correspondientes a los años 2030–2034.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════ -->
   <h2 id="s6">6. Tipos de Gravamen y Cuota Íntegra</h2>
