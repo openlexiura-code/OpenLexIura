@@ -145,8 +145,8 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
 <header>
   <div class="h-title">Practica Interactiva IS 2024</div>
   <nav class="h-nav">
-    <a href="index.html">Inicio</a>
-    <a href="../portal.html">Jurisdiccion</a>
+    <a href="https://openlexiura-code.github.io/OpenLexIura/index.html">Inicio</a>
+    <a href="https://openlexiura-code.github.io/OpenLexIura/portal.html#jurisdiccion">Jurisdiccion</a>
     <a href="lis.html">Ley 27/2014</a>
     <a href="manual.html">Manual IS</a>
   </nav>
@@ -225,7 +225,6 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
   <button class="tab-btn" onclick="showTab(event,'tab-cuota')">Cuota N-Q</button>
 </div>
 
-<!-- TAB AJUSTES -->
 <div class="tab-panel active" id="tab-aj">
 
 <span class="section-id" id="sec-amort"></span>
@@ -239,12 +238,12 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
   <div class="istep-body">
     <div class="input-zone">
       <label class="input-label">Amortizacion fiscal maxima (euros)</label>
-      <div class="input-row"><input type="number" class="calc-input" id="in-amort-max" placeholder="ej. 60000"><span class="input-unit">euros</span></div>
+      <div class="input-row"><input type="number" class="calc-input" id="in-amort-max" placeholder=""><span class="input-unit">euros</span></div>
     </div>
     <div class="input-zone">
       <label class="input-label">Ajuste positivo RC+ (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-amort-aj" placeholder="ej. 40000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-amort-aj" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkAmort()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-amort')">Ver solucion</button>
       </div>
@@ -282,7 +281,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Ajuste RC- (ahorro fiscal, euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-leas-aj" placeholder="ej. 10000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-leas-aj" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkLeasing()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-leasing')">Ver solucion</button>
       </div>
@@ -320,7 +319,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Ajuste positivo total (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-deter-aj" placeholder="ej. 30000"><span class="input-unit">euros RC+</span>
+        <input type="number" class="calc-input" id="in-deter-aj" placeholder=""><span class="input-unit">euros RC+</span>
         <button class="btn-check" onclick="checkDeter()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-deter')">Ver solucion</button>
       </div>
@@ -352,7 +351,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Ajuste positivo (euros RC+)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-prov-aj" placeholder="ej. 5000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-prov-aj" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkProv()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-prov')">Ver solucion</button>
       </div>
@@ -389,7 +388,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Ajuste positivo total (euros RC+)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-gas-aj" placeholder="ej. 42000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-gas-aj" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkGastos()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-gastos')">Ver solucion</button>
       </div>
@@ -423,12 +422,12 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
   <div class="istep-body">
     <div class="input-zone">
       <label class="input-label">Gastos financieros netos GFN (euros)</label>
-      <div class="input-row"><input type="number" class="calc-input" id="in-gf-net" placeholder="ej. 1400000"><span class="input-unit">euros</span></div>
+      <div class="input-row"><input type="number" class="calc-input" id="in-gf-net" placeholder=""><span class="input-unit">euros</span></div>
     </div>
     <div class="input-zone">
       <label class="input-label">GFN no deducibles - ajuste RC+ (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-gf-aj" placeholder="ej. 140000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-gf-aj" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkGF()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-gf')">Ver solucion</button>
       </div>
@@ -463,7 +462,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Ajuste positivo RC+ (euros IFNC)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-vinc-aj" placeholder="ej. 60000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-vinc-aj" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkVinc()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-vinc')">Ver solucion</button>
       </div>
@@ -495,7 +494,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Ajuste positivo RC+ (euros IFNC)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-luc-aj" placeholder="ej. 120000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-luc-aj" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkLuc()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-luc')">Ver solucion</button>
       </div>
@@ -529,7 +528,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Ajuste negativo RC- (euros ICNF)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-div-aj" placeholder="ej. 147250"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-div-aj" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkDivid()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-divid')">Ver solucion</button>
       </div>
@@ -566,7 +565,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Ajuste negativo RC- (euros ICNF)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-ep-aj" placeholder="ej. 220000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-ep-aj" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkEP()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-ep')">Ver solucion</button>
       </div>
@@ -586,10 +585,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
   </div>
 </div>
 
-</div><!-- /tab-aj -->
-
-<!-- TAB REDUCCIONES -->
-<div class="tab-panel" id="tab-red">
+</div><div class="tab-panel" id="tab-red">
 
 <span class="section-id" id="sec-reduc"></span>
 <span class="section-id" id="sec-patent"></span>
@@ -604,7 +600,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Reduccion patent box (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-patent" placeholder="ej. 156000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-patent" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkPatent()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-patent')">Ver solucion</button>
       </div>
@@ -640,7 +636,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Reduccion efectivamente aplicada (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-capiz" placeholder="ej. 90000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-capiz" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkCapiz()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-capiz')">Ver solucion</button>
       </div>
@@ -675,7 +671,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">BINs compensadas (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-bins" placeholder="ej. 180000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-bins" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkBINs()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-bins')">Ver solucion</button>
       </div>
@@ -700,10 +696,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
   </div>
 </div>
 
-</div><!-- /tab-red -->
-
-<!-- TAB CUOTA -->
-<div class="tab-panel" id="tab-cuota">
+</div><div class="tab-panel" id="tab-cuota">
 
 <span class="section-id" id="sec-cuota"></span>
 <span class="section-id" id="sec-ci"></span>
@@ -717,7 +710,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Cuota integra (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-ci" placeholder="ej. 263437.50"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-ci" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkCI()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-ci')">Ver solucion</button>
       </div>
@@ -746,12 +739,12 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
   <div class="istep-body">
     <div class="input-zone">
       <label class="input-label">Renta de BETA integrada en la BI (euros)</label>
-      <div class="input-row"><input type="number" class="calc-input" id="in-ddi-renta" placeholder="ej. 3000"><span class="input-unit">euros</span></div>
+      <div class="input-row"><input type="number" class="calc-input" id="in-ddi-renta" placeholder=""><span class="input-unit">euros</span></div>
     </div>
     <div class="input-zone">
       <label class="input-label">Deduccion DDI aplicable (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-ddi" placeholder="ej. 750"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-ddi" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkDDI()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-ddi')">Ver solucion</button>
       </div>
@@ -784,12 +777,12 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
   <div class="istep-body">
     <div class="input-zone">
       <label class="input-label">Deduccion I+D bruta antes del limite (euros)</label>
-      <div class="input-row"><input type="number" class="calc-input" id="in-idi-bruta" placeholder="ej. 151000"><span class="input-unit">euros</span></div>
+      <div class="input-row"><input type="number" class="calc-input" id="in-idi-bruta" placeholder=""><span class="input-unit">euros</span></div>
     </div>
     <div class="input-zone">
       <label class="input-label">Deduccion I+D aplicada en 2024 con limite (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-idi" placeholder="ej. 131718.75"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-idi" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkIDI()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-idi')">Ver solucion</button>
       </div>
@@ -830,7 +823,7 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
     <div class="input-zone">
       <label class="input-label">Deduccion total (euros)</label>
       <div class="input-row">
-        <input type="number" class="calc-input" id="in-emp" placeholder="ej. 27000"><span class="input-unit">euros</span>
+        <input type="number" class="calc-input" id="in-emp" placeholder=""><span class="input-unit">euros</span>
         <button class="btn-check" onclick="checkEmp()">Comprobar</button>
         <button class="btn-reveal" onclick="toggleSol('sol-emp')">Ver solucion</button>
       </div>
@@ -848,11 +841,8 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
   </div>
 </div>
 
-</div><!-- /tab-cuota -->
+</div><hr>
 
-<hr>
-
-<!-- LIQUIDACION DINAMICA -->
 <span class="section-id" id="sec-liq"></span>
 <h2>Liquidacion Final en Tiempo Real</h2>
 <p>Esta liquidacion se actualiza automaticamente con los valores que introduces correctamente.</p>
@@ -883,7 +873,6 @@ hr{border:none;border-top:1px solid rgba(184,134,11,.22);margin:44px 0;}
   <div class="rc-desc" id="rc-desc">--</div>
 </div>
 
-<!-- RESUMEN AJUSTES -->
 <h3 style="margin-top:40px;">Resumen de Ajustes (se actualiza al resolver cada caso)</h3>
 <table class="adj-table">
   <thead><tr><th>#</th><th>Concepto</th><th>Precepto</th><th>Tipo</th><th style="text-align:right">Importe</th><th>Signo</th></tr></thead>
