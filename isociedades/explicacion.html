@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vídeo Explicativo · IS 2024 · TECNOFAB S.A.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#0f0d09;--gold:#c9a227;--gold2:#e8c547;--cream:#faf6ee;
+  --dim:#1a160e;--red:#c0392b;--green:#27ae60;--blue:#2980b9;
+  --slide-dur:12000;
+}
+html,body{height:100%;background:#000;}
+body{font-family:'Crimson Pro',Georgia,serif;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
+
+/* ── PLAYER SHELL ── */
+.player{width:100%;max-width:960px;background:#0f0d09;border:2px solid var(--gold);box-shadow:0 0 80px rgba(201,162,39,.18),0 0 200px rgba(0,0,0,.9);position:relative;}
+.player-top{background:linear-gradient(90deg,#1a160e,#0f0d09);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,162,39,.2);}
+.player-brand{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;}
+.player-title{font-family:'Playfair Display',serif;font-size:12px;color:rgba(250,246,238,.5);font-style:italic;}
+.slide-counter{font-family:'Cinzel',serif;font-size:11px;color:rgba(201,162,39,.6);letter-spacing:.1em;}
+
+/* ── SLIDE STAGE ── */
+.stage{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#0f0d09;}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 60px;opacity:0;pointer-events:none;transition:opacity .6s ease;}
+.slide.active{opacity:1;pointer-events:auto;}
+
+/* ── BG PATTERNS ── */
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+.bg-lines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(201,162,39,.04) 28px,rgba(201,162,39,.04) 29px);pointer-events:none;}
+.corner{position:absolute;width:40px;height:40px;border-color:rgba(201,162,39,.4);border-style:solid;pointer-events:none;}
+.corner.tl{top:16px;left:16px;border-width:2px 0 0 2px;}
+.corner.tr{top:16px;right:16px;border-width:2px 2px 0 0;}
+.corner.bl{bottom:16px;left:16px;border-width:0 0 2px 2px;}
+.corner.br{bottom:16px;right:16px;border-width:0 2px 2px 0;}
+
+/* ── SLIDE TYPOGRAPHY ── */
+.slide-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;opacity:0;transform:translateY(-10px);transition:all .5s .2s;}
+.slide.active .slide-label{opacity:1;transform:translateY(0);}
+.slide-h1{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,44px);font-weight:700;color:var(--cream);text-align:center;line-height:1.15;margin-bottom:12px;opacity:0;transform:translateY(14px);transition:all .5s .35s;}
+.slide.active .slide-h1{opacity:1;transform:translateY(0);}
+.slide-h2{font-family:'Playfair Display',serif;font-size:clamp(20px,2.8vw,34px);font-weight:700;color:var(--cream);text-align:center;line-height:1.2;margin-bottom:10px;opacity:0;transform:translateY(14px);transition:all .5s .3s;}
+.slide.active .slide-h2{opacity:1;transform:translateY(0);}
+.slide-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(13px,1.6vw,19px);color:rgba(250,246,238,.65);text-align:center;line-height:1.5;margin-bottom:20px;opacity:0;transition:opacity .5s .55s;}
+.slide.active .slide-sub{opacity:1;}
+.slide-body{font-size:clamp(12px,1.45vw,16px);color:rgba(250,246,238,.8);text-align:center;line-height:1.65;max-width:700px;opacity:0;transition:opacity .5s .6s;}
+.slide.active .slide-body{opacity:1;}
+.gold-text{color:var(--gold2);}
+.red-text{color:#e74c3c;}
+.green-text{color:#2ecc71;}
+
+/* ── FORMULA BOX ── */
+.formula{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);padding:12px 20px;margin:12px 0;font-size:clamp(12px,1.4vw,15px);color:var(--cream);font-family:'Crimson Pro',serif;text-align:left;width:100%;max-width:680px;opacity:0;transform:translateX(-12px);transition:all .45s;}
+.slide.active .formula{opacity:1;transform:translateX(0);}
+.formula:nth-child(1){transition-delay:.5s;}
+.formula:nth-child(2){transition-delay:.65s;}
+.formula:nth-child(3){transition-delay:.8s;}
+.formula:nth-child(4){transition-delay:.95s;}
+.formula:nth-child(5){transition-delay:1.1s;}
+.formula strong{color:var(--gold2);}
+
+/* ── RULE BOX ── */
+.rule-box{background:rgba(41,128,185,.08);border-left:3px solid var(--blue);padding:12px 18px;margin:10px 0;font-size:clamp(11px,1.35vw,14.5px);color:rgba(250,246,238,.75);max-width:680px;width:100%;opacity:0;transition:opacity .5s .7s;}
+.slide.active .rule-box{opacity:1;}
+.rule-box .rule-art{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(41,128,185,.9);margin-bottom:4px;}
+
+/* ── ADJUSTMENT BADGE ── */
+.adj-badge{display:inline-flex;align-items:center;gap:14px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.35);padding:14px 28px;margin:16px 0;opacity:0;transform:scale(.9);transition:all .45s .8s;}
+.slide.active .adj-badge{opacity:1;transform:scale(1);}
+.adj-letter{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--gold);width:36px;text-align:center;}
+.adj-divider{width:1px;height:40px;background:rgba(201,162,39,.3);}
+.adj-info{text-align:left;}
+.adj-name{font-family:'Playfair Display',serif;font-size:clamp(13px,1.6vw,17px);color:var(--cream);}
+.adj-art{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,162,39,.6);margin-top:2px;}
+.adj-amount{font-family:'Cinzel',serif;font-size:clamp(18px,2.5vw,28px);font-weight:700;margin-left:10px;}
+.adj-amount.pos{color:#e74c3c;}
+.adj-amount.neg{color:#2ecc71;}
+
+/* ── CHIPS ROW ── */
+.chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:14px 0;opacity:0;transition:opacity .5s .75s;}
+.slide.active .chips{opacity:1;}
+.chip{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border:1px solid;border-radius:1px;}
+.chip.gold{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.08);}
+.chip.red{border-color:#e74c3c;color:#e74c3c;background:rgba(231,76,60,.08);}
+.chip.green{border-color:#2ecc71;color:#2ecc71;background:rgba(46,204,113,.08);}
+.chip.blue{border-color:var(--blue);color:var(--blue);background:rgba(41,128,185,.08);}
+
+/* ── COMPANY GRID ── */
+.company-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:640px;margin:16px 0;opacity:0;transition:opacity .5s .6s;}
+.slide.active .company-grid{opacity:1;}
+.cg-item{background:rgba(201,162,39,.06);border:1px solid rgba(201,162,39,.2);padding:12px 16px;}
+.cg-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,162,39,.7);margin-bottom:4px;}
+.cg-val{font-size:clamp(12px,1.5vw,15px);color:var(--cream);}
+
+/* ── LIQ TABLE ── */
+.liq-mini{width:100%;max-width:600px;border-collapse:collapse;margin:14px 0;opacity:0;transition:opacity .5s .55s;}
+.slide.active .liq-mini{opacity:1;}
+.liq-mini td{padding:7px 14px;font-size:clamp(11px,1.3vw,14px);border-bottom:1px solid rgba(201,162,39,.1);}
+.liq-mini .op{font-family:'Cinzel',serif;font-size:14px;font-weight:700;width:26px;text-align:center;}
+.liq-mini .op.p{color:#2ecc71;}
+.liq-mini .op.m{color:#e74c3c;}
+.liq-mini .op.e{color:var(--gold);}
+.liq-mini .label{color:rgba(250,246,238,.7);flex:1;}
+.liq-mini .val{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--gold2);}
+.liq-mini .sub td{background:rgba(201,162,39,.07);font-weight:700;}
+.liq-mini .total td{background:rgba(201,162,39,.12);font-weight:700;color:var(--cream);}
+
+/* ── PROGRESS BAR (slide timer) ── */
+.slide-timer{position:absolute;bottom:0;left:0;height:3px;background:var(--gold);width:0%;transition:width linear;}
+.slide-timer.running{transition:width var(--dur,12s) linear;}
+
+/* ── CONTROLS ── */
+.controls{background:#0a0805;border-top:1px solid rgba(201,162,39,.15);padding:12px 20px;display:flex;align-items:center;gap:14px;}
+.progress-track{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:2px;cursor:pointer;position:relative;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;transition:width .3s;}
+.dot-track{display:flex;gap:5px;align-items:center;flex-wrap:wrap;max-width:480px;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:.2s;flex-shrink:0;}
+.dot.seen{background:rgba(201,162,39,.4);}
+.dot.curr{background:var(--gold);transform:scale(1.4);}
+.ctrl-btn{background:none;border:1px solid rgba(201,162,39,.3);color:rgba(201,162,39,.8);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;cursor:pointer;transition:.2s;white-space:nowrap;}
+.ctrl-btn:hover{background:rgba(201,162,39,.12);border-color:var(--gold);color:var(--gold);}
+.ctrl-btn.play-btn{font-size:16px;padding:6px 14px;letter-spacing:0;}
+.speed-btn{font-size:10px;padding:5px 10px;}
+.bottom-info{color:rgba(201,162,39,.4);font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;text-align:center;padding-top:4px;}
+
+/* ── PORTADA SPECIFIC ── */
+.portada-ornament{font-size:42px;opacity:.15;margin-bottom:8px;opacity:0;transition:opacity .5s .1s;}
+.slide.active .portada-ornament{opacity:.18;}
+.portada-divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto;opacity:0;transition:opacity .5s .5s;}
+.slide.active .portada-divider{opacity:1;}
+
+/* ── SUMMARY SLIDE ── */
+.sum-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(201,162,39,.08);width:100%;max-width:620px;font-size:clamp(10px,1.25vw,13.5px);opacity:0;transition:opacity .3s;}
+.slide.active .sum-row:nth-child(1){opacity:1;transition-delay:.3s;}
+.slide.active .sum-row:nth-child(2){opacity:1;transition-delay:.38s;}
+.slide.active .sum-row:nth-child(3){opacity:1;transition-delay:.46s;}
+.slide.active .sum-row:nth-child(4){opacity:1;transition-delay:.54s;}
+.slide.active .sum-row:nth-child(5){opacity:1;transition-delay:.62s;}
+.slide.active .sum-row:nth-child(6){opacity:1;transition-delay:.70s;}
+.slide.active .sum-row:nth-child(7){opacity:1;transition-delay:.78s;}
+.slide.active .sum-row:nth-child(8){opacity:1;transition-delay:.86s;}
+.slide.active .sum-row:nth-child(9){opacity:1;transition-delay:.94s;}
+.slide.active .sum-row:nth-child(10){opacity:1;transition-delay:1.02s;}
+.slide.active .sum-row:nth-child(11){opacity:1;transition-delay:1.1s;}
+.slide.active .sum-row:nth-child(12){opacity:1;transition-delay:1.18s;}
+.slide.active .sum-row:nth-child(13){opacity:1;transition-delay:1.26s;}
+.sum-row .sr-let{font-family:'Cinzel',serif;font-size:11px;font-weight:700;color:var(--gold);width:22px;}
+.sum-row .sr-name{flex:1;color:rgba(250,246,238,.7);padding:0 8px;}
+.sum-row .sr-art{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.08em;color:rgba(201,162,39,.4);width:100px;text-align:right;}
+.sum-row .sr-val{font-family:'Crimson Pro',serif;font-weight:600;font-size:clamp(11px,1.3vw,14px);width:90px;text-align:right;font-variant-numeric:tabular-nums;}
+.sum-row .sr-val.p{color:#e74c3c;}
+.sum-row .sr-val.n{color:#2ecc71;}
+.sum-total{background:rgba(201,162,39,.1);border-top:2px solid rgba(201,162,39,.4)!important;font-weight:700;color:var(--cream)!important;}
+
+/* ── FINAL RESULT ── */
+.final-amount{font-family:'Cinzel',serif;font-size:clamp(36px,5vw,68px);font-weight:700;color:#e74c3c;font-variant-numeric:tabular-nums;opacity:0;transform:scale(.8);transition:all .6s .9s;}
+.slide.active .final-amount{opacity:1;transform:scale(1);}
+.final-amount.refund{color:#2ecc71;}
+.final-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,246,238,.5);margin-top:8px;opacity:0;transition:opacity .5s 1.2s;}
+.slide.active .final-label{opacity:1;}
+
+/* ── STEP LIST ── */
+.step-list{list-style:none;width:100%;max-width:660px;margin:10px 0;}
+.step-list li{display:flex;align-items:flex-start;gap:12px;padding:7px 0;border-bottom:1px solid rgba(201,162,39,.08);font-size:clamp(11px,1.3vw,14px);color:rgba(250,246,238,.75);opacity:0;transition:opacity .35s;}
+.step-list li .sn{font-family:'Cinzel',serif;font-size:10px;font-weight:700;color:var(--gold);min-width:20px;margin-top:2px;}
+.slide.active .step-list li:nth-child(1){opacity:1;transition-delay:.4s;}
+.slide.active .step-list li:nth-child(2){opacity:1;transition-delay:.55s;}
+.slide.active .step-list li:nth-child(3){opacity:1;transition-delay:.7s;}
+.slide.active .step-list li:nth-child(4){opacity:1;transition-delay:.85s;}
+.slide.active .step-list li:nth-child(5){opacity:1;transition-delay:1s;}
+
+/* Slide-specific backgrounds */
+.s-portada{background:radial-gradient(ellipse at 50% 30%,rgba(201,162,39,.07) 0%,transparent 60%),#0f0d09;}
+.s-empresa{background:radial-gradient(ellipse at 70% 50%,rgba(41,128,185,.06) 0%,transparent 60%),#0f0d09;}
+.s-ajustes{background:#0f0d09;}
+.s-reduc{background:radial-gradient(ellipse at 30% 60%,rgba(46,204,113,.05) 0%,transparent 60%),#0f0d09;}
+.s-cuota{background:radial-gradient(ellipse at 60% 40%,rgba(201,162,39,.05) 0%,transparent 60%),#0f0d09;}
+.s-final{background:radial-gradient(ellipse at 50% 50%,rgba(231,76,60,.06) 0%,transparent 60%),#0f0d09;}
+
+@keyframes pulse-gold{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,0);}50%{box-shadow:0 0 20px 4px rgba(201,162,39,.12);}}
+.slide.active .adj-badge{animation:pulse-gold 3s ease-in-out 1.2s infinite;}
+</style>
+</head>
+<body>
+
+<div class="player">
+
+  <!-- TOP BAR -->
+  <div class="player-top">
+    <div class="player-brand">OpenLexIura · IS 2024</div>
+    <div class="player-title">Vídeo Explicativo Interactivo</div>
+    <div class="slide-counter"><span id="curr-n">1</span> / <span id="total-n">21</span></div>
+  </div>
+
+  <!-- STAGE -->
+  <div class="stage" id="stage">
+
+    <!-- 1. PORTADA -->
+    <div class="slide s-portada active" data-dur="10">
+      <div class="bg-grid"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="portada-ornament">⚖</div>
+      <div class="slide-label">Práctica Integradora</div>
+      <div class="slide-h1">Impuesto sobre Sociedades<br><span class="gold-text">TECNOFAB, S.A. · 2024</span></div>
+      <div class="portada-divider"></div>
+      <div class="slide-sub">Liquidación completa del IS · 17 casos prácticos</div>
+      <div class="chips">
+        <span class="chip gold">Ley 27/2014 LIS</span>
+        <span class="chip blue">10 Ajustes RC</span>
+        <span class="chip green">3 Reducciones BI</span>
+        <span class="chip gold">4 Deducciones cuota</span>
+      </div>
+      <div class="slide-timer" id="timer-0"></div>
+    </div>
+
+    <!-- 2. ESTRUCTURA IS -->
+    <div class="slide s-empresa" data-dur="13">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Estructura del impuesto</div>
+      <div class="slide-h2">¿Cómo se calcula el IS?</div>
+      <div class="slide-sub">Art. 10.3 LIS: partimos del resultado contable y aplicamos ajustes</div>
+      <ul class="step-list">
+        <li><span class="sn">①</span><span><strong style="color:var(--gold2)">Resultado Contable</strong> — beneficio o pérdida del ejercicio según PGC</span></li>
+        <li><span class="sn">②</span><span><strong style="color:#e74c3c">± Ajustes fiscales</strong> — diferencias entre criterio contable y fiscal (arts. 12–18 LIS)</span></li>
+        <li><span class="sn">③</span><span><strong style="color:var(--gold2)">Base Imponible Previa</strong> — después de ajustes, patent box y reserva capitalización</span></li>
+        <li><span class="sn">④</span><span><strong style="color:#e74c3c">− Compensación BINs</strong> — pérdidas fiscales de ejercicios anteriores (art. 26 LIS)</span></li>
+        <li><span class="sn">⑤</span><span><strong style="color:var(--gold2)">Cuota íntegra × Tipo → Cuota líquida</strong> — menos deducciones → <strong>Cuota diferencial</strong></span></li>
+      </ul>
+      <div class="slide-timer" id="timer-1"></div>
+    </div>
+
+    <!-- 3. EMPRESA -->
+    <div class="slide s-empresa" data-dur="11">
+      <div class="bg-grid"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">El contribuyente</div>
+      <div class="slide-h2">TECNOFAB, S.A.</div>
+      <div class="slide-sub">Fabricación componentes electrónicos · Cesión licencias software</div>
+      <div class="company-grid">
+        <div class="cg-item"><div class="cg-label">Resultado contable 2024</div><div class="cg-val" style="color:var(--gold2);font-size:18px;font-weight:700">1.420.000 €</div></div>
+        <div class="cg-item"><div class="cg-label">Tipo de gravamen</div><div class="cg-val">25% · Art. 29 LIS (tipo general)</div></div>
+        <div class="cg-item"><div class="cg-label">INCN 2023</div><div class="cg-val">38.000.000 € — NO es ERD</div></div>
+        <div class="cg-item"><div class="cg-label">BINs pendientes (2022)</div><div class="cg-val" style="color:#e74c3c;">180.000 €</div></div>
+      </div>
+      <div class="slide-timer" id="timer-2"></div>
+    </div>
+
+    <!-- 4. A - AMORTIZACIÓN -->
+    <div class="slide s-ajustes" data-dur="14">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste A · Art. 12.1 LIS</div>
+      <div class="slide-h2">Exceso de Amortización</div>
+      <div class="rule-box"><div class="rule-art">Art. 12.1 LIS</div>Deducible hasta el coeficiente máximo de tabla. El exceso genera diferencia temporaria imponible (RC+).</div>
+      <div class="formula">Amort. fiscal máx. = <strong>12% × 500.000 = 60.000 €</strong></div>
+      <div class="formula">Amort. contabilizada = 20% × 500.000 = <strong>100.000 €</strong></div>
+      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = 100.000 − 60.000 = <span style="color:#e74c3c">+40.000 € RC+</span></strong> (GCNF)</div>
+      <div class="adj-badge"><div class="adj-letter">A</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Amortización maquinaria</div><div class="adj-art">Art. 12.1 LIS · GCNF</div></div><div class="adj-amount pos">+40.000 €</div></div>
+      <div class="slide-timer" id="timer-3"></div>
+    </div>
+
+    <!-- 5. B - LEASING -->
+    <div class="slide s-ajustes" data-dur="14">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste B · Art. 12.3 LIS</div>
+      <div class="slide-h2">Leasing — Deducción Especial</div>
+      <div class="rule-box"><div class="rule-art">Art. 12.3 LIS</div>La recuperación del coste es deducible con límite = 2 × coef.máx. × valor razonable. Si recuperación &gt; amort. contable → ajuste negativo.</div>
+      <div class="formula">Límite = 2 × 25% × 240.000 = <strong>120.000 €</strong> · Recuperación (40.000) &lt; límite ✓</div>
+      <div class="formula">Amort. contable = 240.000 ÷ 8 años = <strong>30.000 €</strong></div>
+      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = 40.000 − 30.000 = <span style="color:#2ecc71">−10.000 € RC−</span></strong> (GFNC)</div>
+      <div class="adj-badge"><div class="adj-letter">B</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Deducción especial leasing</div><div class="adj-art">Art. 12.3 LIS · GFNC</div></div><div class="adj-amount neg">−10.000 €</div></div>
+      <div class="slide-timer" id="timer-4"></div>
+    </div>
+
+    <!-- 6. C - DETERIORO -->
+    <div class="slide s-ajustes" data-dur="14">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste C · Art. 13.1 LIS</div>
+      <div class="slide-h2">Deterioro de Créditos Comerciales</div>
+      <div class="rule-box"><div class="rule-art">Art. 13.1 LIS</div>Deducible si +6 meses desde vencimiento o concurso. <strong style="color:#e74c3c">No deducible</strong> si deudor vinculado (salvo concurso).</div>
+      <div class="formula">Deudor A (30.000€, 8 meses) → <strong style="color:#2ecc71">DEDUCIBLE</strong> · supera 6 meses</div>
+      <div class="formula">Deudor B (25.000€, concurso) → <strong style="color:#2ecc71">DEDUCIBLE</strong> · concurso judicial</div>
+      <div class="formula" style="transition-delay:.8s">Deudor C (30.000€, vinculado, 4 meses) → <strong style="color:#e74c3c">NO DEDUCIBLE</strong> · anti-abuso</div>
+      <div class="adj-badge"><div class="adj-letter">C</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Deterioro crédito vinculado</div><div class="adj-art">Art. 13.1 LIS · GCNF</div></div><div class="adj-amount pos">+30.000 €</div></div>
+      <div class="slide-timer" id="timer-5"></div>
+    </div>
+
+    <!-- 7. D - PROVISIÓN -->
+    <div class="slide s-ajustes" data-dur="12">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste D · Art. 14.7 LIS</div>
+      <div class="slide-h2">Exceso Provisión para Garantías</div>
+      <div class="rule-box"><div class="rule-art">Art. 14.7 LIS</div>Deducible hasta la media de gastos reales de garantía de los 2 ejercicios anteriores. El exceso no es deducible.</div>
+      <div class="formula">Límite deducible = media 2022-2023 = <strong>55.000 €</strong></div>
+      <div class="formula">Dotación 2024 = <strong>60.000 €</strong></div>
+      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = 60.000 − 55.000 = <span style="color:#e74c3c">+5.000 € RC+</span></strong> (GCNF)</div>
+      <div class="adj-badge"><div class="adj-letter">D</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Exceso provisión garantías</div><div class="adj-art">Art. 14.7 LIS · GCNF</div></div><div class="adj-amount pos">+5.000 €</div></div>
+      <div class="slide-timer" id="timer-6"></div>
+    </div>
+
+    <!-- 8. E - GASTOS NO DEDUCIBLES -->
+    <div class="slide s-ajustes" data-dur="14">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste E · Art. 15 LIS</div>
+      <div class="slide-h2">Gastos No Deducibles</div>
+      <div class="rule-box"><div class="rule-art">Art. 15 LIS</div>Multas (15.c), donativos sin Ley 49/2002 (15.e), retribución FP (15.a). Representación: deducible hasta 1% INCN.</div>
+      <div class="formula">Multa AEAT (art.15.c) = <strong style="color:#e74c3c">8.000 €</strong></div>
+      <div class="formula">Donativo ONG sin Ley 49/2002 (art.15.e) = <strong style="color:#e74c3c">12.000 €</strong></div>
+      <div class="formula" style="transition-delay:.8s">Representación: 18.000 &lt; 1%×40M = 400.000 → <strong style="color:#2ecc71">DEDUCIBLE</strong> · Retrib. FP = <strong style="color:#e74c3c">22.000 €</strong></div>
+      <div class="adj-badge"><div class="adj-letter">E</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Gastos no deducibles</div><div class="adj-art">Art. 15 LIS · GCNF</div></div><div class="adj-amount pos">+42.000 €</div></div>
+      <div class="slide-timer" id="timer-7"></div>
+    </div>
+
+    <!-- 9. F - GFN -->
+    <div class="slide s-ajustes" data-dur="14">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste F · Art. 16 LIS</div>
+      <div class="slide-h2">Gastos Financieros Netos</div>
+      <div class="rule-box"><div class="rule-art">Art. 16 LIS</div>GFN deducibles hasta el mayor de: 1.000.000 € ó 30% del EBITDA fiscal. El exceso no es deducible en el ejercicio.</div>
+      <div class="formula">GFN = 1.432.000 − 32.000 (leasing) = <strong>1.400.000 €</strong></div>
+      <div class="formula">Límite = 30% × EBITDA (4.200.000) = <strong>1.260.000 €</strong></div>
+      <div class="formula" style="transition-delay:.8s"><strong>Exceso = 1.400.000 − 1.260.000 = <span style="color:#e74c3c">+140.000 € RC+</span></strong> (GCNF)</div>
+      <div class="adj-badge"><div class="adj-letter">F</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">GFN no deducibles</div><div class="adj-art">Art. 16 LIS · GCNF</div></div><div class="adj-amount pos">+140.000 €</div></div>
+      <div class="slide-timer" id="timer-8"></div>
+    </div>
+
+    <!-- 10. G - OPERACIÓN VINCULADA -->
+    <div class="slide s-ajustes" data-dur="13">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste G · Art. 18.1 LIS</div>
+      <div class="slide-h2">Operación Vinculada — Valor de Mercado</div>
+      <div class="rule-box"><div class="rule-art">Art. 18.1 LIS</div>Las operaciones entre partes vinculadas se valoran a valor de mercado (Vm). Si el precio facturado &lt; Vm → ingreso adicional RC+.</div>
+      <div class="formula">Precio facturado = <strong>120.000 €</strong> · Valor de mercado (Vm) = <strong>180.000 €</strong></div>
+      <div class="formula"><strong>Ajuste = Vm − Precio = 180.000 − 120.000 = <span style="color:#e74c3c">+60.000 € RC+</span></strong> (IFNC)</div>
+      <div class="adj-badge"><div class="adj-letter">G</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Op. vinculada: ingreso a Vm</div><div class="adj-art">Art. 18.1 LIS · IFNC</div></div><div class="adj-amount pos">+60.000 €</div></div>
+      <div class="slide-timer" id="timer-9"></div>
+    </div>
+
+    <!-- 11. H - TRANSMISIÓN LUCRATIVA -->
+    <div class="slide s-ajustes" data-dur="13">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste H · Art. 17.4 LIS</div>
+      <div class="slide-h2">Transmisión Lucrativa — Solar</div>
+      <div class="rule-box"><div class="rule-art">Art. 17.4 LIS</div>En transmisiones lucrativas (donaciones), la renta se determina por diferencia entre Vm del bien y su valor fiscal (VF), independientemente del precio escriturado.</div>
+      <div class="formula">Valor de mercado (Vm) del solar = <strong>210.000 €</strong></div>
+      <div class="formula">Valor fiscal (VF) del solar = <strong>90.000 €</strong></div>
+      <div class="formula" style="transition-delay:.8s"><strong>Renta fiscal = 210.000 − 90.000 = <span style="color:#e74c3c">+120.000 € RC+</span></strong> (IFNC)</div>
+      <div class="adj-badge"><div class="adj-letter">H</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Transmisión lucrativa solar</div><div class="adj-art">Art. 17.4 LIS · IFNC</div></div><div class="adj-amount pos">+120.000 €</div></div>
+      <div class="slide-timer" id="timer-10"></div>
+    </div>
+
+    <!-- 12. I - DIVIDENDOS -->
+    <div class="slide s-ajustes" data-dur="13">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste I · Art. 21 LIS</div>
+      <div class="slide-h2">Exención de Dividendos (95%)</div>
+      <div class="rule-box"><div class="rule-art">Art. 21 LIS</div>El 95% de los dividendos de participadas está exento si se posee ≥5% durante ≥1 año. Ambas (ALFA y BETA) cumplen requisitos.</div>
+      <div class="formula">ALFA: 95% × 95.000 = <strong>90.250 €</strong> exento</div>
+      <div class="formula">BETA: 95% × 60.000 = <strong>57.000 €</strong> exento</div>
+      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = −(90.250 + 57.000) = <span style="color:#2ecc71">−147.250 € RC−</span></strong> (ICNF)</div>
+      <div class="adj-badge"><div class="adj-letter">I</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Exención dividendos 95%</div><div class="adj-art">Art. 21 LIS · ICNF</div></div><div class="adj-amount neg">−147.250 €</div></div>
+      <div class="slide-timer" id="timer-11"></div>
+    </div>
+
+    <!-- 13. J - EP POLONIA -->
+    <div class="slide s-ajustes" data-dur="12">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Ajuste J · Art. 22 LIS</div>
+      <div class="slide-h2">Exención Rentas EP Extranjero — Polonia</div>
+      <div class="rule-box"><div class="rule-art">Art. 22 LIS</div>Rentas del EP exentas si tributa por un impuesto análogo al IS con tipo ≥10%. Polonia: tipo IS 19% &gt; 10% ✓</div>
+      <div class="formula">Renta del establecimiento permanente en Polonia = <strong>220.000 €</strong></div>
+      <div class="formula">Tipo IS polaco (19%) &gt; umbral mínimo (10%) → <strong style="color:#2ecc71">EXENTO ÍNTEGRO</strong></div>
+      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = <span style="color:#2ecc71">−220.000 € RC−</span></strong> (ICNF)</div>
+      <div class="adj-badge"><div class="adj-letter">J</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Exención renta EP Polonia</div><div class="adj-art">Art. 22 LIS · ICNF</div></div><div class="adj-amount neg">−220.000 €</div></div>
+      <div class="slide-timer" id="timer-12"></div>
+    </div>
+
+    <!-- 14. K - PATENT BOX -->
+    <div class="slide s-reduc" data-dur="13">
+      <div class="bg-grid"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Reducción K · Art. 23 LIS</div>
+      <div class="slide-h2">Patent Box — Reducción BI</div>
+      <div class="rule-box"><div class="rule-art">Art. 23 LIS</div>Reducción del 60% sobre los ingresos de cesión de software × coeficiente Nexo (max. 1). Gastos I+D propios × 1,30, topados al denominador.</div>
+      <div class="formula">Coef. Nexo = min(1, (200.000×1,30)/200.000) = <strong>1,00</strong></div>
+      <div class="formula">Base reducción = ingresos netos cesión = <strong>260.000 €</strong></div>
+      <div class="formula" style="transition-delay:.8s"><strong>Reducción = 60% × 1,00 × 260.000 = <span style="color:#2ecc71">−156.000 €</span></strong></div>
+      <div class="adj-badge"><div class="adj-letter">K</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Patent Box — software</div><div class="adj-art">Art. 23 LIS</div></div><div class="adj-amount neg">−156.000 €</div></div>
+      <div class="slide-timer" id="timer-13"></div>
+    </div>
+
+    <!-- 15. L - RESERVA CAPITALIZACIÓN -->
+    <div class="slide s-reduc" data-dur="12">
+      <div class="bg-grid"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Reducción L · Art. 25 LIS</div>
+      <div class="slide-h2">Reserva de Capitalización</div>
+      <div class="rule-box"><div class="rule-art">Art. 25 LIS</div>Reducción del 15% sobre el incremento de fondos propios, con límite del 10% de la BI previa positiva (antes de esta reducción y de BINs).</div>
+      <div class="formula">Reducción bruta = 15% × 600.000 = <strong>90.000 €</strong></div>
+      <div class="formula">Límite = 10% × 1.323.750 (BI previa) = <strong>132.375 €</strong></div>
+      <div class="formula" style="transition-delay:.8s">90.000 &lt; 132.375 → <strong>Reducción íntegra = <span style="color:#2ecc71">−90.000 €</span></strong></div>
+      <div class="adj-badge"><div class="adj-letter">L</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Reserva de capitalización</div><div class="adj-art">Art. 25 LIS</div></div><div class="adj-amount neg">−90.000 €</div></div>
+      <div class="slide-timer" id="timer-14"></div>
+    </div>
+
+    <!-- 16. M - BINS -->
+    <div class="slide s-reduc" data-dur="12">
+      <div class="bg-grid"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Reducción M · Art. 26 LIS</div>
+      <div class="slide-h2">Compensación de BINs</div>
+      <div class="rule-box"><div class="rule-art">Art. 26 LIS</div>Las BINs pendientes son compensables con límite del 70% de la BI positiva previa (empresas con INCN &gt;20M). Sin límite temporal de años.</div>
+      <div class="formula">Límite = 70% × 1.233.750 (BI previa) = <strong>863.625 €</strong></div>
+      <div class="formula">BINs pendientes = <strong>180.000 €</strong></div>
+      <div class="formula" style="transition-delay:.8s">180.000 &lt; 863.625 → <strong>Compensación íntegra = <span style="color:#2ecc71">−180.000 €</span></strong></div>
+      <div class="adj-badge"><div class="adj-letter">M</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Compensación BINs 2022</div><div class="adj-art">Art. 26 LIS</div></div><div class="adj-amount neg">−180.000 €</div></div>
+      <div class="slide-timer" id="timer-15"></div>
+    </div>
+
+    <!-- 17. CUOTA + DEDUCCIONES -->
+    <div class="slide s-cuota" data-dur="15">
+      <div class="bg-grid"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Cuota Íntegra y Deducciones · N–Q</div>
+      <div class="slide-h2">Del BI Final a la Cuota Diferencial</div>
+      <table class="liq-mini">
+        <tr><td class="op e">=</td><td class="label">BI Final (tras BINs)</td><td class="val">1.053.750 €</td></tr>
+        <tr><td class="op p">×</td><td class="label">Tipo general (art. 29 LIS)</td><td class="val">25%</td></tr>
+        <tr class="sub"><td class="op e">=</td><td class="label"><strong>Cuota Íntegra (N)</strong></td><td class="val" style="color:var(--gold2)">263.437,50 €</td></tr>
+        <tr><td class="op m">−</td><td class="label">DDI jurídica BETA — art. 31 LIS (O)</td><td class="val" style="color:#2ecc71">−750 €</td></tr>
+        <tr><td class="op m">−</td><td class="label">Deducción I+D — art. 35 LIS, lím. 50% CI (P)</td><td class="val" style="color:#2ecc71">−131.718,75 €</td></tr>
+        <tr><td class="op m">−</td><td class="label">Empleo discapacitados — art. 38 LIS (Q)</td><td class="val" style="color:#2ecc71">−27.000 €</td></tr>
+        <tr class="total"><td class="op e">=</td><td class="label"><strong>Cuota Líquida</strong></td><td class="val" style="color:var(--gold2)">103.968,75 €</td></tr>
+      </table>
+      <div class="slide-body" style="font-size:12px;margin-top:6px">P: I+D bruta 151.000 € — límite 50% CI bonificada (57% &gt; 10%) = <strong>131.718,75 €</strong> · Pendiente 19.281,25 € trasladable · Q: 3 trabajadores × 9.000 € = 27.000 €</div>
+      <div class="slide-timer" id="timer-16"></div>
+    </div>
+
+    <!-- 18. RESUMEN AJUSTES -->
+    <div class="slide s-cuota" data-dur="16">
+      <div class="bg-lines"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Resumen completo de ajustes</div>
+      <div class="slide-h2" style="font-size:20px;margin-bottom:10px">Tabla de Ajustes Extracontables A–J</div>
+      <div class="sum-row"><span class="sr-let">A</span><span class="sr-name">Exceso amortización maquinaria</span><span class="sr-art">Art.12.1 LIS</span><span class="sr-val p">+40.000 €</span></div>
+      <div class="sum-row"><span class="sr-let">B</span><span class="sr-name">Deducción especial leasing</span><span class="sr-art">Art.12.3 LIS</span><span class="sr-val n">−10.000 €</span></div>
+      <div class="sum-row"><span class="sr-let">C</span><span class="sr-name">Deterioro crédito vinculado</span><span class="sr-art">Art.13.1 LIS</span><span class="sr-val p">+30.000 €</span></div>
+      <div class="sum-row"><span class="sr-let">D</span><span class="sr-name">Exceso provisión garantías</span><span class="sr-art">Art.14.7 LIS</span><span class="sr-val p">+5.000 €</span></div>
+      <div class="sum-row"><span class="sr-let">E</span><span class="sr-name">Gastos no deducibles</span><span class="sr-art">Art.15 LIS</span><span class="sr-val p">+42.000 €</span></div>
+      <div class="sum-row"><span class="sr-let">F</span><span class="sr-name">GFN no deducibles</span><span class="sr-art">Art.16 LIS</span><span class="sr-val p">+140.000 €</span></div>
+      <div class="sum-row"><span class="sr-let">G</span><span class="sr-name">Op. vinculada: ingreso a Vm</span><span class="sr-art">Art.18.1 LIS</span><span class="sr-val p">+60.000 €</span></div>
+      <div class="sum-row"><span class="sr-let">H</span><span class="sr-name">Transmisión lucrativa solar</span><span class="sr-art">Art.17.4 LIS</span><span class="sr-val p">+120.000 €</span></div>
+      <div class="sum-row"><span class="sr-let">I</span><span class="sr-name">Exención dividendos (95%)</span><span class="sr-art">Art.21 LIS</span><span class="sr-val n">−147.250 €</span></div>
+      <div class="sum-row"><span class="sr-let">J</span><span class="sr-name">Exención renta EP Polonia</span><span class="sr-art">Art.22 LIS</span><span class="sr-val n">−220.000 €</span></div>
+      <div class="sum-row sum-total"><span class="sr-let">Σ</span><span class="sr-name" style="color:var(--cream)"><strong>Ajuste neto total</strong></span><span class="sr-art"></span><span class="sr-val p" style="font-size:16px"><strong>+19.750 €</strong></span></div>
+      <div class="slide-timer" id="timer-17"></div>
+    </div>
+
+    <!-- 19. LIQUIDACIÓN COMPLETA -->
+    <div class="slide s-final" data-dur="16">
+      <div class="bg-grid"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Liquidación completa</div>
+      <div class="slide-h2" style="font-size:20px;margin-bottom:10px">Escala de la BI al Resultado a Ingresar</div>
+      <table class="liq-mini">
+        <tr><td class="op e">=</td><td class="label">Resultado contable</td><td class="val">1.420.000 €</td></tr>
+        <tr><td class="op p">+</td><td class="label">Ajustes positivos (RC+)</td><td class="val" style="color:#e74c3c">+397.000 €</td></tr>
+        <tr><td class="op m">−</td><td class="label">Ajustes negativos (RC−)</td><td class="val" style="color:#2ecc71">−377.250 €</td></tr>
+        <tr class="sub"><td class="op e">=</td><td class="label"><strong>Base Imponible Previa ajustes</strong></td><td class="val">1.439.750 €</td></tr>
+        <tr><td class="op m">−</td><td class="label">Patent Box (K)</td><td class="val" style="color:#2ecc71">−156.000 €</td></tr>
+        <tr><td class="op m">−</td><td class="label">Reserva capitalización (L)</td><td class="val" style="color:#2ecc71">−90.000 €</td></tr>
+        <tr><td class="op m">−</td><td class="label">Compensación BINs (M)</td><td class="val" style="color:#2ecc71">−180.000 €</td></tr>
+        <tr class="sub"><td class="op e">=</td><td class="label"><strong>Base Imponible Final</strong></td><td class="val">1.053.750 €</td></tr>
+        <tr><td class="op p">×</td><td class="label">Tipo 25%</td><td class="val"></td></tr>
+        <tr class="sub"><td class="op e">=</td><td class="label"><strong>Cuota Íntegra</strong></td><td class="val">263.437,50 €</td></tr>
+        <tr><td class="op m">−</td><td class="label">DDI + I+D + Empleo discap.</td><td class="val" style="color:#2ecc71">−159.468,75 €</td></tr>
+        <tr class="total"><td class="op e">=</td><td class="label"><strong>Cuota Líquida / A Ingresar</strong></td><td class="val" style="color:#e74c3c;font-size:16px"><strong>103.968,75 €</strong></td></tr>
+      </table>
+      <div class="slide-timer" id="timer-18"></div>
+    </div>
+
+    <!-- 20. RESULTADO FINAL -->
+    <div class="slide s-final" data-dur="12">
+      <div class="bg-grid"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="slide-label">Resultado de la liquidación</div>
+      <div class="slide-h2">TECNOFAB debe ingresar a Hacienda</div>
+      <div class="final-amount">103.968,75 €</div>
+      <div class="final-label">Cuota diferencial a ingresar — IS 2024</div>
+      <div class="chips" style="margin-top:20px">
+        <span class="chip gold">BI Final: 1.053.750 €</span>
+        <span class="chip red">Cuota: 263.437,50 €</span>
+        <span class="chip green">Deducciones: −159.468,75 €</span>
+      </div>
+      <div class="slide-body" style="margin-top:14px">Pendiente traslado: <strong style="color:var(--gold2)">19.281,25 €</strong> de deducción I+D no aplicada por límite art. 39.1 LIS (trasladable con incremento del 20%)</div>
+      <div class="slide-timer" id="timer-19"></div>
+    </div>
+
+    <!-- 21. CIERRE -->
+    <div class="slide s-portada" data-dur="10">
+      <div class="bg-grid"></div>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="portada-ornament" style="font-size:36px;opacity:.2">✦</div>
+      <div class="slide-label">OpenLexIura · IS 2024</div>
+      <div class="slide-h1">Práctica completada</div>
+      <div class="portada-divider"></div>
+      <div class="slide-sub">Todos los ajustes explicados · Base Imponible calculada · Cuota determinada</div>
+      <ul class="step-list" style="max-width:520px;margin-top:10px">
+        <li><span class="sn">10</span><span>Ajustes extracontables sobre el resultado contable (A–J)</span></li>
+        <li><span class="sn">3</span><span>Reducciones de la Base Imponible (K Patent Box, L Capitaliz., M BINs)</span></li>
+        <li><span class="sn">4</span><span>Deducciones en la cuota (N CI, O DDI, P I+D, Q Discapacidad)</span></li>
+        <li><span class="sn">1</span><span>Resultado final: <strong style="color:var(--gold2)">103.968,75 € a ingresar</strong></span></li>
+      </ul>
+      <div class="slide-timer" id="timer-20"></div>
+    </div>
+
+  </div><!-- /stage -->
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button class="ctrl-btn play-btn" id="play-btn" onclick="togglePlay()">⏸</button>
+    <button class="ctrl-btn" onclick="prevSlide()">◀ Ant.</button>
+    <button class="ctrl-btn" onclick="nextSlide()">Sig. ▶</button>
+    <div class="dot-track" id="dot-track"></div>
+    <div style="flex:1"></div>
+    <button class="ctrl-btn speed-btn" id="speed-btn" onclick="cycleSpeed()">1×</button>
+  </div>
+  <div class="bottom-info" id="bottom-info">Diapositiva 1 de 21 · Reproducción automática activa</div>
+
+</div><!-- /player -->
+
+<script>
+const SLIDES = document.querySelectorAll('.slide');
+const N = SLIDES.length;
+let current = 0;
+let playing = true;
+let timer = null;
+let speed = 1;
+const speeds = [0.5, 1, 1.5, 2];
+let speedIdx = 1;
+
+// Build dot track
+const dotTrack = document.getElementById('dot-track');
+for(let i=0;i<N;i++){
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===0?' curr':'');
+  d.title = 'Diapositiva '+(i+1);
+  d.onclick = (()=>{const n=i;return()=>goTo(n);})();
+  dotTrack.appendChild(d);
+}
+
+function getDur(idx){
+  return (parseInt(SLIDES[idx].dataset.dur)||12) * 1000 / speed;
+}
+
+function goTo(idx){
+  SLIDES[current].classList.remove('active');
+  // Reset timer bar
+  const oldTimer = document.getElementById('timer-'+(current));
+  if(oldTimer){oldTimer.style.transition='none';oldTimer.style.width='0%';}
+  current = (idx + N) % N;
+  SLIDES[current].classList.add('active');
+  updateDots();
+  updateInfo();
+  if(playing) startTimer();
+}
+
+function startTimer(){
+  clearTimeout(timer);
+  const bar = document.getElementById('timer-'+current);
+  if(bar){
+    bar.style.transition='none';bar.style.width='0%';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      const dur = getDur(current);
+      bar.style.transition=`width ${dur}ms linear`;
+      bar.style.width='100%';
+    }));
+  }
+  timer = setTimeout(()=>nextSlide(), getDur(current));
+}
+
+function stopTimer(){
+  clearTimeout(timer);
+  const bar = document.getElementById('timer-'+current);
+  if(bar){bar.style.transition='none';}
+}
+
+function togglePlay(){
+  playing=!playing;
+  document.getElementById('play-btn').textContent = playing ? '⏸' : '▶';
+  if(playing) startTimer(); else stopTimer();
+  updateInfo();
+}
+
+function nextSlide(){ goTo((current+1)%N); }
+function prevSlide(){ goTo((current-1+N)%N); }
+
+function cycleSpeed(){
+  speedIdx=(speedIdx+1)%speeds.length;
+  speed=speeds[speedIdx];
+  document.getElementById('speed-btn').textContent=speed+'×';
+  if(playing){stopTimer();startTimer();}
+}
+
+function updateDots(){
+  const dots=dotTrack.querySelectorAll('.dot');
+  dots.forEach((d,i)=>{
+    d.className='dot'+(i<current?' seen':i===current?' curr':'');
+  });
+  document.getElementById('curr-n').textContent=current+1;
+}
+
+function updateInfo(){
+  const names=['Portada','Estructura IS','TECNOFAB S.A.','A · Amortización','B · Leasing','C · Deterioro créditos','D · Provisión garantías','E · Gastos no deducibles','F · GFN','G · Op. vinculada','H · Transmisión lucrativa','I · Exención dividendos','J · EP Polonia','K · Patent Box','L · Reserva capitaliz.','M · Compensación BINs','N-Q · Cuota y deducciones','Resumen ajustes A-J','Liquidación completa','Resultado final','Cierre'];
+  document.getElementById('bottom-info').textContent = `Diapositiva ${current+1} de ${N} · ${names[current]||''} · ${playing?'Reproduciendo':'Pausado'} · ${speed}×`;
+}
+
+// keyboard
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown') nextSlide();
+  else if(e.key==='ArrowLeft'||e.key==='ArrowUp') prevSlide();
+  else if(e.key===' '){e.preventDefault();togglePlay();}
+});
+
+// init
+updateDots();
+updateInfo();
+startTimer();
+</script>
+</body>
+</html>
