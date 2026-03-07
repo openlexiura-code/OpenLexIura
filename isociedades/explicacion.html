@@ -3,631 +3,1106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vídeo Explicativo · IS 2024 · TECNOFAB S.A.</title>
+<title>Explicación IS 2024 · OpenLexIura</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --ink:#0f0d09;--gold:#c9a227;--gold2:#e8c547;--cream:#faf6ee;
-  --dim:#1a160e;--red:#c0392b;--green:#27ae60;--blue:#2980b9;
-  --slide-dur:12000;
-}
-html,body{height:100%;background:#000;}
-body{font-family:'Crimson Pro',Georgia,serif;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
+:root{--ink:#0f0d09;--gold:#c9a227;--gold2:#e8c547;--cream:#faf6ee;--dim:#1a160e;--red:#e74c3c;--green:#2ecc71;--blue:#3498db;--purple:#9b59b6;--orange:#e67e22;}
+html,body{background:#050402;min-height:100vh;}
+body{font-family:'Crimson Pro',Georgia,serif;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 16px 40px;}
 
-/* ── PLAYER SHELL ── */
-.player{width:100%;max-width:960px;background:#0f0d09;border:2px solid var(--gold);box-shadow:0 0 80px rgba(201,162,39,.18),0 0 200px rgba(0,0,0,.9);position:relative;}
-.player-top{background:linear-gradient(90deg,#1a160e,#0f0d09);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,162,39,.2);}
-.player-brand{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;}
-.player-title{font-family:'Playfair Display',serif;font-size:12px;color:rgba(250,246,238,.5);font-style:italic;}
-.slide-counter{font-family:'Cinzel',serif;font-size:11px;color:rgba(201,162,39,.6);letter-spacing:.1em;}
+/* PLAYER */
+.player{width:100%;max-width:1000px;background:#0f0d09;border:2px solid var(--gold);box-shadow:0 0 60px rgba(201,162,39,.15),0 0 120px rgba(0,0,0,.8);}
+.player-top{background:linear-gradient(90deg,#1c170d,#0f0d09);padding:9px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,162,39,.2);gap:12px;}
+.p-brand{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;white-space:nowrap;}
+.p-chapter{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:rgba(250,246,238,.45);flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.p-counter{font-family:'Cinzel',serif;font-size:11px;color:rgba(201,162,39,.55);letter-spacing:.1em;white-space:nowrap;}
 
-/* ── SLIDE STAGE ── */
+/* STAGE */
 .stage{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#0f0d09;}
-.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 60px;opacity:0;pointer-events:none;transition:opacity .6s ease;}
+.slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .55s ease;display:flex;flex-direction:column;padding:0;}
 .slide.active{opacity:1;pointer-events:auto;}
 
-/* ── BG PATTERNS ── */
-.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
-.bg-lines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(201,162,39,.04) 28px,rgba(201,162,39,.04) 29px);pointer-events:none;}
-.corner{position:absolute;width:40px;height:40px;border-color:rgba(201,162,39,.4);border-style:solid;pointer-events:none;}
-.corner.tl{top:16px;left:16px;border-width:2px 0 0 2px;}
-.corner.tr{top:16px;right:16px;border-width:2px 2px 0 0;}
-.corner.bl{bottom:16px;left:16px;border-width:0 0 2px 2px;}
-.corner.br{bottom:16px;right:16px;border-width:0 2px 2px 0;}
+/* BG */
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.025) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;}
+.bg-lines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 30px,rgba(201,162,39,.03) 30px,rgba(201,162,39,.03) 31px);pointer-events:none;}
+.bg-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(201,162,39,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+.corner{position:absolute;width:36px;height:36px;border-color:rgba(201,162,39,.35);border-style:solid;pointer-events:none;}
+.corner.tl{top:14px;left:14px;border-width:2px 0 0 2px;}
+.corner.tr{top:14px;right:14px;border-width:2px 2px 0 0;}
+.corner.bl{bottom:14px;left:14px;border-width:0 0 2px 2px;}
+.corner.br{bottom:14px;right:14px;border-width:0 2px 2px 0;}
 
-/* ── SLIDE TYPOGRAPHY ── */
-.slide-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;opacity:0;transform:translateY(-10px);transition:all .5s .2s;}
-.slide.active .slide-label{opacity:1;transform:translateY(0);}
-.slide-h1{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,44px);font-weight:700;color:var(--cream);text-align:center;line-height:1.15;margin-bottom:12px;opacity:0;transform:translateY(14px);transition:all .5s .35s;}
-.slide.active .slide-h1{opacity:1;transform:translateY(0);}
-.slide-h2{font-family:'Playfair Display',serif;font-size:clamp(20px,2.8vw,34px);font-weight:700;color:var(--cream);text-align:center;line-height:1.2;margin-bottom:10px;opacity:0;transform:translateY(14px);transition:all .5s .3s;}
-.slide.active .slide-h2{opacity:1;transform:translateY(0);}
-.slide-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(13px,1.6vw,19px);color:rgba(250,246,238,.65);text-align:center;line-height:1.5;margin-bottom:20px;opacity:0;transition:opacity .5s .55s;}
-.slide.active .slide-sub{opacity:1;}
-.slide-body{font-size:clamp(12px,1.45vw,16px);color:rgba(250,246,238,.8);text-align:center;line-height:1.65;max-width:700px;opacity:0;transition:opacity .5s .6s;}
-.slide.active .slide-body{opacity:1;}
-.gold-text{color:var(--gold2);}
-.red-text{color:#e74c3c;}
-.green-text{color:#2ecc71;}
+/* SLIDE HEADER BAR */
+.s-topbar{display:flex;align-items:center;gap:0;border-bottom:1px solid rgba(201,162,39,.18);flex-shrink:0;}
+.s-tag{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:7px 18px;border-right:1px solid rgba(201,162,39,.18);}
+.s-tag.theory{color:var(--blue);background:rgba(52,152,219,.08);}
+.s-tag.ratio{color:var(--purple);background:rgba(155,89,182,.08);}
+.s-tag.apply{color:var(--green);background:rgba(46,204,113,.08);}
+.s-tag.intro{color:var(--gold);background:rgba(201,162,39,.08);}
+.s-tag.summary{color:var(--orange);background:rgba(230,126,34,.08);}
+.s-tag.result{color:var(--red);background:rgba(231,76,60,.08);}
+.s-chapter{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,162,39,.4);padding:7px 16px;}
 
-/* ── FORMULA BOX ── */
-.formula{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-left:3px solid var(--gold);padding:12px 20px;margin:12px 0;font-size:clamp(12px,1.4vw,15px);color:var(--cream);font-family:'Crimson Pro',serif;text-align:left;width:100%;max-width:680px;opacity:0;transform:translateX(-12px);transition:all .45s;}
-.slide.active .formula{opacity:1;transform:translateX(0);}
-.formula:nth-child(1){transition-delay:.5s;}
-.formula:nth-child(2){transition-delay:.65s;}
-.formula:nth-child(3){transition-delay:.8s;}
-.formula:nth-child(4){transition-delay:.95s;}
-.formula:nth-child(5){transition-delay:1.1s;}
-.formula strong{color:var(--gold2);}
+/* MAIN CONTENT AREA */
+.s-body{flex:1;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 48px 18px;}
+.s-body.left{align-items:flex-start;}
+.s-body.two-col{flex-direction:row;gap:24px;align-items:stretch;padding:18px 32px;}
 
-/* ── RULE BOX ── */
-.rule-box{background:rgba(41,128,185,.08);border-left:3px solid var(--blue);padding:12px 18px;margin:10px 0;font-size:clamp(11px,1.35vw,14.5px);color:rgba(250,246,238,.75);max-width:680px;width:100%;opacity:0;transition:opacity .5s .7s;}
-.slide.active .rule-box{opacity:1;}
-.rule-box .rule-art{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(41,128,185,.9);margin-bottom:4px;}
+/* TITLES */
+.s-h1{font-family:'Playfair Display',serif;font-size:clamp(24px,3.2vw,42px);font-weight:700;color:var(--cream);text-align:center;line-height:1.15;opacity:0;transform:translateY(12px);transition:all .5s .3s;}
+.slide.active .s-h1{opacity:1;transform:translateY(0);}
+.s-h2{font-family:'Playfair Display',serif;font-size:clamp(18px,2.4vw,30px);font-weight:700;color:var(--cream);line-height:1.2;opacity:0;transform:translateY(10px);transition:all .48s .28s;}
+.slide.active .s-h2{opacity:1;transform:translateY(0);}
+.s-h2.center{text-align:center;}
+.s-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(12px,1.5vw,17px);color:rgba(250,246,238,.58);line-height:1.5;margin-top:6px;opacity:0;transition:opacity .5s .48s;}
+.slide.active .s-sub{opacity:1;}
+.s-sub.center{text-align:center;}
 
-/* ── ADJUSTMENT BADGE ── */
-.adj-badge{display:inline-flex;align-items:center;gap:14px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.35);padding:14px 28px;margin:16px 0;opacity:0;transform:scale(.9);transition:all .45s .8s;}
-.slide.active .adj-badge{opacity:1;transform:scale(1);}
-.adj-letter{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--gold);width:36px;text-align:center;}
-.adj-divider{width:1px;height:40px;background:rgba(201,162,39,.3);}
-.adj-info{text-align:left;}
-.adj-name{font-family:'Playfair Display',serif;font-size:clamp(13px,1.6vw,17px);color:var(--cream);}
-.adj-art{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,162,39,.6);margin-top:2px;}
-.adj-amount{font-family:'Cinzel',serif;font-size:clamp(18px,2.5vw,28px);font-weight:700;margin-left:10px;}
-.adj-amount.pos{color:#e74c3c;}
-.adj-amount.neg{color:#2ecc71;}
+/* TEXT BLOCKS */
+.s-p{font-size:clamp(11px,1.35vw,14.5px);color:rgba(250,246,238,.78);line-height:1.7;margin-top:10px;opacity:0;transition:opacity .45s;}
+.slide.active .s-p{opacity:1;}
+.s-p.d1{transition-delay:.45s;}
+.s-p.d2{transition-delay:.6s;}
+.s-p.d3{transition-delay:.75s;}
+.s-p.center{text-align:center;}
+.s-p strong{color:var(--gold2);}
+.s-p em{color:rgba(250,246,238,.9);font-style:italic;}
 
-/* ── CHIPS ROW ── */
-.chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:14px 0;opacity:0;transition:opacity .5s .75s;}
+/* NORMA CARD — the legal text box */
+.norma{background:rgba(52,152,219,.07);border:1px solid rgba(52,152,219,.3);border-left:3px solid var(--blue);padding:14px 18px;margin-top:12px;max-width:800px;width:100%;opacity:0;transform:translateX(-10px);transition:all .5s .4s;}
+.slide.active .norma{opacity:1;transform:translateX(0);}
+.norma-art{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.norma-text{font-size:clamp(11px,1.3vw,14px);color:rgba(250,246,238,.82);line-height:1.65;}
+.norma-text strong{color:#7fc8f8;}
+
+/* RATIO CARD — why the rule exists */
+.ratio{background:rgba(155,89,182,.07);border:1px solid rgba(155,89,182,.3);border-left:3px solid var(--purple);padding:14px 18px;margin-top:12px;max-width:800px;width:100%;opacity:0;transform:translateX(-10px);transition:all .5s .5s;}
+.slide.active .ratio{opacity:1;transform:translateX(0);}
+.ratio-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin-bottom:6px;}
+.ratio-text{font-size:clamp(11px,1.3vw,14px);color:rgba(250,246,238,.8);line-height:1.65;}
+.ratio-text strong{color:#c39bd3;}
+
+/* APPLY CARD */
+.apply{background:rgba(46,204,113,.06);border:1px solid rgba(46,204,113,.25);border-left:3px solid var(--green);padding:14px 18px;margin-top:10px;max-width:800px;width:100%;opacity:0;transform:translateX(-10px);transition:all .5s .5s;}
+.slide.active .apply{opacity:1;transform:translateX(0);}
+.apply-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+.apply-text{font-size:clamp(11px,1.3vw,14px);color:rgba(250,246,238,.8);line-height:1.65;}
+
+/* FORMULA LINE */
+.fml{background:rgba(201,162,39,.07);border-left:3px solid rgba(201,162,39,.5);padding:9px 16px;margin:6px 0;font-size:clamp(11px,1.3vw,14.5px);color:var(--cream);font-family:'Crimson Pro',serif;width:100%;max-width:800px;opacity:0;transform:translateX(-10px);transition:all .42s;}
+.slide.active .fml{opacity:1;transform:translateX(0);}
+.fml.d1{transition-delay:.45s;}.fml.d2{transition-delay:.58s;}.fml.d3{transition-delay:.71s;}.fml.d4{transition-delay:.84s;}.fml.d5{transition-delay:.97s;}
+.fml strong{color:var(--gold2);}
+.fml.result-line{background:rgba(201,162,39,.14);border-left-color:var(--gold);border-left-width:4px;}
+.fml.pos{border-left-color:var(--red);}
+.fml.neg{border-left-color:var(--green);}
+
+/* CONCEPT LIST */
+.clist{list-style:none;width:100%;max-width:800px;margin-top:10px;}
+.clist li{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid rgba(201,162,39,.08);font-size:clamp(11px,1.3vw,14px);color:rgba(250,246,238,.78);opacity:0;transition:opacity .38s;}
+.clist li .ci{font-family:'Cinzel',serif;font-size:10px;font-weight:700;min-width:22px;margin-top:1px;}
+.clist li .ci.gold{color:var(--gold);}
+.clist li .ci.blue{color:var(--blue);}
+.clist li .ci.green{color:var(--green);}
+.clist li .ci.red{color:var(--red);}
+.clist li strong{color:var(--gold2);}
+.slide.active .clist li:nth-child(1){opacity:1;transition-delay:.38s;}
+.slide.active .clist li:nth-child(2){opacity:1;transition-delay:.50s;}
+.slide.active .clist li:nth-child(3){opacity:1;transition-delay:.62s;}
+.slide.active .clist li:nth-child(4){opacity:1;transition-delay:.74s;}
+.slide.active .clist li:nth-child(5){opacity:1;transition-delay:.86s;}
+.slide.active .clist li:nth-child(6){opacity:1;transition-delay:.98s;}
+
+/* TWO-COLUMN */
+.col{flex:1;display:flex;flex-direction:column;justify-content:center;}
+.col-divider{width:1px;background:rgba(201,162,39,.18);flex-shrink:0;align-self:stretch;}
+
+/* BADGE */
+.badge-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:14px;opacity:0;transition:opacity .5s .8s;}
+.slide.active .badge-row{opacity:1;}
+.badge{display:inline-flex;align-items:center;gap:10px;background:rgba(201,162,39,.09);border:1px solid rgba(201,162,39,.3);padding:10px 20px;}
+.badge-let{font-family:'Cinzel',serif;font-size:18px;font-weight:700;color:var(--gold);}
+.badge-sep{width:1px;height:32px;background:rgba(201,162,39,.3);}
+.badge-info .badge-name{font-family:'Playfair Display',serif;font-size:clamp(12px,1.5vw,15px);color:var(--cream);}
+.badge-info .badge-art{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,162,39,.55);margin-top:2px;}
+.badge-amt{font-family:'Cinzel',serif;font-size:clamp(16px,2vw,24px);font-weight:700;margin-left:6px;}
+.badge-amt.pos{color:var(--red);}
+.badge-amt.neg{color:var(--green);}
+
+/* DIFFERENCE TAG */
+.diff-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid;padding:5px 14px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;text-transform:uppercase;margin-top:10px;opacity:0;transition:opacity .5s .9s;}
+.slide.active .diff-tag{opacity:1;}
+.diff-tag.temp{border-color:rgba(230,126,34,.5);color:var(--orange);background:rgba(230,126,34,.07);}
+.diff-tag.perm{border-color:rgba(231,76,60,.5);color:var(--red);background:rgba(231,76,60,.07);}
+
+/* CHIPS */
+.chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:12px;opacity:0;transition:opacity .5s .65s;}
 .slide.active .chips{opacity:1;}
-.chip{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border:1px solid;border-radius:1px;}
-.chip.gold{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.08);}
-.chip.red{border-color:#e74c3c;color:#e74c3c;background:rgba(231,76,60,.08);}
-.chip.green{border-color:#2ecc71;color:#2ecc71;background:rgba(46,204,113,.08);}
-.chip.blue{border-color:var(--blue);color:var(--blue);background:rgba(41,128,185,.08);}
+.chip{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border:1px solid;border-radius:1px;}
+.chip.gold{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.07);}
+.chip.blue{border-color:var(--blue);color:var(--blue);background:rgba(52,152,219,.07);}
+.chip.green{border-color:var(--green);color:var(--green);background:rgba(46,204,113,.07);}
+.chip.red{border-color:var(--red);color:var(--red);background:rgba(231,76,60,.07);}
+.chip.purple{border-color:var(--purple);color:var(--purple);background:rgba(155,89,182,.07);}
 
-/* ── COMPANY GRID ── */
-.company-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:640px;margin:16px 0;opacity:0;transition:opacity .5s .6s;}
-.slide.active .company-grid{opacity:1;}
-.cg-item{background:rgba(201,162,39,.06);border:1px solid rgba(201,162,39,.2);padding:12px 16px;}
-.cg-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,162,39,.7);margin-bottom:4px;}
-.cg-val{font-size:clamp(12px,1.5vw,15px);color:var(--cream);}
+/* ORNAMENT */
+.ornament{font-size:38px;opacity:.12;margin-bottom:8px;opacity:0;transition:opacity .5s .1s;}
+.slide.active .ornament{opacity:.13;}
+.divider{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto;opacity:0;transition:opacity .5s .45s;}
+.slide.active .divider{opacity:1;}
 
-/* ── LIQ TABLE ── */
-.liq-mini{width:100%;max-width:600px;border-collapse:collapse;margin:14px 0;opacity:0;transition:opacity .5s .55s;}
-.slide.active .liq-mini{opacity:1;}
-.liq-mini td{padding:7px 14px;font-size:clamp(11px,1.3vw,14px);border-bottom:1px solid rgba(201,162,39,.1);}
-.liq-mini .op{font-family:'Cinzel',serif;font-size:14px;font-weight:700;width:26px;text-align:center;}
-.liq-mini .op.p{color:#2ecc71;}
-.liq-mini .op.m{color:#e74c3c;}
-.liq-mini .op.e{color:var(--gold);}
-.liq-mini .label{color:rgba(250,246,238,.7);flex:1;}
-.liq-mini .val{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--gold2);}
-.liq-mini .sub td{background:rgba(201,162,39,.07);font-weight:700;}
-.liq-mini .total td{background:rgba(201,162,39,.12);font-weight:700;color:var(--cream);}
+/* PORTADA specific */
+.portada-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;}
 
-/* ── PROGRESS BAR (slide timer) ── */
-.slide-timer{position:absolute;bottom:0;left:0;height:3px;background:var(--gold);width:0%;transition:width linear;}
-.slide-timer.running{transition:width var(--dur,12s) linear;}
+/* SUMMARY TABLE */
+.sum-tbl{width:100%;max-width:780px;border-collapse:collapse;margin-top:10px;}
+.sum-tbl th{background:rgba(201,162,39,.12);font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding:7px 12px;text-align:left;border-bottom:1px solid rgba(201,162,39,.3);}
+.sum-tbl td{padding:6px 12px;font-size:clamp(10px,1.2vw,13px);border-bottom:1px solid rgba(201,162,39,.07);color:rgba(250,246,238,.75);}
+.sum-tbl tr:hover td{background:rgba(201,162,39,.04);}
+.sum-tbl .tot td{background:rgba(201,162,39,.1);font-weight:700;color:var(--cream);border-top:1px solid rgba(201,162,39,.35);}
+.sum-tbl .r-pos{color:var(--red);font-weight:600;}
+.sum-tbl .r-neg{color:var(--green);font-weight:600;}
+.sum-tbl td:first-child{font-family:'Cinzel',serif;font-size:10px;font-weight:700;color:var(--gold);}
 
-/* ── CONTROLS ── */
-.controls{background:#0a0805;border-top:1px solid rgba(201,162,39,.15);padding:12px 20px;display:flex;align-items:center;gap:14px;}
-.progress-track{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:2px;cursor:pointer;position:relative;}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;transition:width .3s;}
-.dot-track{display:flex;gap:5px;align-items:center;flex-wrap:wrap;max-width:480px;}
-.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:.2s;flex-shrink:0;}
-.dot.seen{background:rgba(201,162,39,.4);}
-.dot.curr{background:var(--gold);transform:scale(1.4);}
-.ctrl-btn{background:none;border:1px solid rgba(201,162,39,.3);color:rgba(201,162,39,.8);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;cursor:pointer;transition:.2s;white-space:nowrap;}
-.ctrl-btn:hover{background:rgba(201,162,39,.12);border-color:var(--gold);color:var(--gold);}
-.ctrl-btn.play-btn{font-size:16px;padding:6px 14px;letter-spacing:0;}
-.speed-btn{font-size:10px;padding:5px 10px;}
-.bottom-info{color:rgba(201,162,39,.4);font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;text-align:center;padding-top:4px;}
+/* LIQ TABLE */
+.liq-tbl{width:100%;max-width:720px;border-collapse:collapse;margin-top:8px;}
+.liq-tbl td{padding:7px 14px;font-size:clamp(10.5px,1.25vw,13.5px);border-bottom:1px solid rgba(201,162,39,.08);color:rgba(250,246,238,.75);}
+.liq-tbl .op{font-family:'Cinzel',serif;font-size:13px;font-weight:700;width:22px;text-align:center;}
+.liq-tbl .op.p{color:var(--green);}
+.liq-tbl .op.m{color:var(--red);}
+.liq-tbl .op.e{color:var(--gold);}
+.liq-tbl .sub td{background:rgba(201,162,39,.08);font-weight:700;color:var(--cream);}
+.liq-tbl .total td{background:rgba(201,162,39,.14);font-weight:700;color:var(--cream);font-size:clamp(12px,1.4vw,15px);border-top:1px solid rgba(201,162,39,.4);}
+.liq-tbl .r-pos{color:var(--red);}
+.liq-tbl .r-neg{color:var(--green);}
 
-/* ── PORTADA SPECIFIC ── */
-.portada-ornament{font-size:42px;opacity:.15;margin-bottom:8px;opacity:0;transition:opacity .5s .1s;}
-.slide.active .portada-ornament{opacity:.18;}
-.portada-divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto;opacity:0;transition:opacity .5s .5s;}
-.slide.active .portada-divider{opacity:1;}
+/* FINAL AMOUNT */
+.final-big{font-family:'Cinzel',serif;font-size:clamp(32px,5vw,64px);font-weight:700;color:var(--red);font-variant-numeric:tabular-nums;opacity:0;transform:scale(.85);transition:all .6s .8s;}
+.slide.active .final-big{opacity:1;transform:scale(1);}
 
-/* ── SUMMARY SLIDE ── */
-.sum-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(201,162,39,.08);width:100%;max-width:620px;font-size:clamp(10px,1.25vw,13.5px);opacity:0;transition:opacity .3s;}
-.slide.active .sum-row:nth-child(1){opacity:1;transition-delay:.3s;}
-.slide.active .sum-row:nth-child(2){opacity:1;transition-delay:.38s;}
-.slide.active .sum-row:nth-child(3){opacity:1;transition-delay:.46s;}
-.slide.active .sum-row:nth-child(4){opacity:1;transition-delay:.54s;}
-.slide.active .sum-row:nth-child(5){opacity:1;transition-delay:.62s;}
-.slide.active .sum-row:nth-child(6){opacity:1;transition-delay:.70s;}
-.slide.active .sum-row:nth-child(7){opacity:1;transition-delay:.78s;}
-.slide.active .sum-row:nth-child(8){opacity:1;transition-delay:.86s;}
-.slide.active .sum-row:nth-child(9){opacity:1;transition-delay:.94s;}
-.slide.active .sum-row:nth-child(10){opacity:1;transition-delay:1.02s;}
-.slide.active .sum-row:nth-child(11){opacity:1;transition-delay:1.1s;}
-.slide.active .sum-row:nth-child(12){opacity:1;transition-delay:1.18s;}
-.slide.active .sum-row:nth-child(13){opacity:1;transition-delay:1.26s;}
-.sum-row .sr-let{font-family:'Cinzel',serif;font-size:11px;font-weight:700;color:var(--gold);width:22px;}
-.sum-row .sr-name{flex:1;color:rgba(250,246,238,.7);padding:0 8px;}
-.sum-row .sr-art{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.08em;color:rgba(201,162,39,.4);width:100px;text-align:right;}
-.sum-row .sr-val{font-family:'Crimson Pro',serif;font-weight:600;font-size:clamp(11px,1.3vw,14px);width:90px;text-align:right;font-variant-numeric:tabular-nums;}
-.sum-row .sr-val.p{color:#e74c3c;}
-.sum-row .sr-val.n{color:#2ecc71;}
-.sum-total{background:rgba(201,162,39,.1);border-top:2px solid rgba(201,162,39,.4)!important;font-weight:700;color:var(--cream)!important;}
+/* PROGRESS TIMER */
+.slide-timer{position:absolute;bottom:0;left:0;height:3px;background:var(--gold);width:0;transition:width linear;}
 
-/* ── FINAL RESULT ── */
-.final-amount{font-family:'Cinzel',serif;font-size:clamp(36px,5vw,68px);font-weight:700;color:#e74c3c;font-variant-numeric:tabular-nums;opacity:0;transform:scale(.8);transition:all .6s .9s;}
-.slide.active .final-amount{opacity:1;transform:scale(1);}
-.final-amount.refund{color:#2ecc71;}
-.final-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,246,238,.5);margin-top:8px;opacity:0;transition:opacity .5s 1.2s;}
-.slide.active .final-label{opacity:1;}
-
-/* ── STEP LIST ── */
-.step-list{list-style:none;width:100%;max-width:660px;margin:10px 0;}
-.step-list li{display:flex;align-items:flex-start;gap:12px;padding:7px 0;border-bottom:1px solid rgba(201,162,39,.08);font-size:clamp(11px,1.3vw,14px);color:rgba(250,246,238,.75);opacity:0;transition:opacity .35s;}
-.step-list li .sn{font-family:'Cinzel',serif;font-size:10px;font-weight:700;color:var(--gold);min-width:20px;margin-top:2px;}
-.slide.active .step-list li:nth-child(1){opacity:1;transition-delay:.4s;}
-.slide.active .step-list li:nth-child(2){opacity:1;transition-delay:.55s;}
-.slide.active .step-list li:nth-child(3){opacity:1;transition-delay:.7s;}
-.slide.active .step-list li:nth-child(4){opacity:1;transition-delay:.85s;}
-.slide.active .step-list li:nth-child(5){opacity:1;transition-delay:1s;}
-
-/* Slide-specific backgrounds */
-.s-portada{background:radial-gradient(ellipse at 50% 30%,rgba(201,162,39,.07) 0%,transparent 60%),#0f0d09;}
-.s-empresa{background:radial-gradient(ellipse at 70% 50%,rgba(41,128,185,.06) 0%,transparent 60%),#0f0d09;}
-.s-ajustes{background:#0f0d09;}
-.s-reduc{background:radial-gradient(ellipse at 30% 60%,rgba(46,204,113,.05) 0%,transparent 60%),#0f0d09;}
-.s-cuota{background:radial-gradient(ellipse at 60% 40%,rgba(201,162,39,.05) 0%,transparent 60%),#0f0d09;}
-.s-final{background:radial-gradient(ellipse at 50% 50%,rgba(231,76,60,.06) 0%,transparent 60%),#0f0d09;}
-
-@keyframes pulse-gold{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,0);}50%{box-shadow:0 0 20px 4px rgba(201,162,39,.12);}}
-.slide.active .adj-badge{animation:pulse-gold 3s ease-in-out 1.2s infinite;}
+/* CONTROLS */
+.controls{background:#080604;border-top:1px solid rgba(201,162,39,.14);padding:10px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.dot-wrap{display:flex;gap:4px;align-items:center;flex-wrap:wrap;flex:1;}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12);cursor:pointer;transition:.2s;flex-shrink:0;}
+.dot.seen{background:rgba(201,162,39,.38);}
+.dot.curr{background:var(--gold);transform:scale(1.5);}
+.ctrl{background:none;border:1px solid rgba(201,162,39,.28);color:rgba(201,162,39,.75);font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;cursor:pointer;transition:.2s;white-space:nowrap;}
+.ctrl:hover{background:rgba(201,162,39,.1);border-color:var(--gold);color:var(--gold);}
+.ctrl.big{font-size:15px;padding:5px 13px;letter-spacing:0;}
+.info-bar{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.1em;color:rgba(201,162,39,.35);text-align:center;padding:4px 0 6px;border-top:1px solid rgba(201,162,39,.06);}
 </style>
 </head>
 <body>
-
 <div class="player">
 
-  <!-- TOP BAR -->
-  <div class="player-top">
-    <div class="player-brand">OpenLexIura · IS 2024</div>
-    <div class="player-title">Vídeo Explicativo Interactivo</div>
-    <div class="slide-counter"><span id="curr-n">1</span> / <span id="total-n">21</span></div>
-  </div>
+<div class="player-top">
+  <div class="p-brand">OpenLexIura · IS 2024</div>
+  <div class="p-chapter" id="p-chapter">Introducción</div>
+  <div class="p-counter"><span id="curr-n">1</span> / <span id="tot-n">0</span></div>
+</div>
 
-  <!-- STAGE -->
-  <div class="stage" id="stage">
+<div class="stage" id="stage">
 
-    <!-- 1. PORTADA -->
-    <div class="slide s-portada active" data-dur="10">
-      <div class="bg-grid"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="portada-ornament">⚖</div>
-      <div class="slide-label">Práctica Integradora</div>
-      <div class="slide-h1">Impuesto sobre Sociedades<br><span class="gold-text">TECNOFAB, S.A. · 2024</span></div>
-      <div class="portada-divider"></div>
-      <div class="slide-sub">Liquidación completa del IS · 17 casos prácticos</div>
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE 0 – INTRO
+═══════════════════════════════════════════════════════ -->
+
+<!-- 0. PORTADA -->
+<div class="slide" data-chapter="Introducción" data-dur="11">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-body" style="height:100%">
+    <div class="portada-wrap">
+      <div class="ornament">⚖</div>
+      <div class="s-tag intro" style="margin-bottom:14px;align-self:center">Impuesto sobre Sociedades · Ley 27/2014</div>
+      <div class="s-h1">Impuesto sobre Sociedades<br><span style="color:var(--gold2)">Explicación teórica completa</span></div>
+      <div class="divider"></div>
+      <div class="s-sub center">Aprende cada norma fiscal desde su fundamento jurídico hasta su aplicación práctica</div>
       <div class="chips">
-        <span class="chip gold">Ley 27/2014 LIS</span>
-        <span class="chip blue">10 Ajustes RC</span>
-        <span class="chip green">3 Reducciones BI</span>
-        <span class="chip gold">4 Deducciones cuota</span>
+        <span class="chip gold">17 supuestos prácticos</span>
+        <span class="chip blue">Fundamento jurídico de cada norma</span>
+        <span class="chip purple">Ratio legis explicada</span>
+        <span class="chip green">Diferencias temporarias y permanentes</span>
       </div>
-      <div class="slide-timer" id="timer-0"></div>
     </div>
-
-    <!-- 2. ESTRUCTURA IS -->
-    <div class="slide s-empresa" data-dur="13">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Estructura del impuesto</div>
-      <div class="slide-h2">¿Cómo se calcula el IS?</div>
-      <div class="slide-sub">Art. 10.3 LIS: partimos del resultado contable y aplicamos ajustes</div>
-      <ul class="step-list">
-        <li><span class="sn">①</span><span><strong style="color:var(--gold2)">Resultado Contable</strong> — beneficio o pérdida del ejercicio según PGC</span></li>
-        <li><span class="sn">②</span><span><strong style="color:#e74c3c">± Ajustes fiscales</strong> — diferencias entre criterio contable y fiscal (arts. 12–18 LIS)</span></li>
-        <li><span class="sn">③</span><span><strong style="color:var(--gold2)">Base Imponible Previa</strong> — después de ajustes, patent box y reserva capitalización</span></li>
-        <li><span class="sn">④</span><span><strong style="color:#e74c3c">− Compensación BINs</strong> — pérdidas fiscales de ejercicios anteriores (art. 26 LIS)</span></li>
-        <li><span class="sn">⑤</span><span><strong style="color:var(--gold2)">Cuota íntegra × Tipo → Cuota líquida</strong> — menos deducciones → <strong>Cuota diferencial</strong></span></li>
-      </ul>
-      <div class="slide-timer" id="timer-1"></div>
-    </div>
-
-    <!-- 3. EMPRESA -->
-    <div class="slide s-empresa" data-dur="11">
-      <div class="bg-grid"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">El contribuyente</div>
-      <div class="slide-h2">TECNOFAB, S.A.</div>
-      <div class="slide-sub">Fabricación componentes electrónicos · Cesión licencias software</div>
-      <div class="company-grid">
-        <div class="cg-item"><div class="cg-label">Resultado contable 2024</div><div class="cg-val" style="color:var(--gold2);font-size:18px;font-weight:700">1.420.000 €</div></div>
-        <div class="cg-item"><div class="cg-label">Tipo de gravamen</div><div class="cg-val">25% · Art. 29 LIS (tipo general)</div></div>
-        <div class="cg-item"><div class="cg-label">INCN 2023</div><div class="cg-val">38.000.000 € — NO es ERD</div></div>
-        <div class="cg-item"><div class="cg-label">BINs pendientes (2022)</div><div class="cg-val" style="color:#e74c3c;">180.000 €</div></div>
-      </div>
-      <div class="slide-timer" id="timer-2"></div>
-    </div>
-
-    <!-- 4. A - AMORTIZACIÓN -->
-    <div class="slide s-ajustes" data-dur="14">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste A · Art. 12.1 LIS</div>
-      <div class="slide-h2">Exceso de Amortización</div>
-      <div class="rule-box"><div class="rule-art">Art. 12.1 LIS</div>Deducible hasta el coeficiente máximo de tabla. El exceso genera diferencia temporaria imponible (RC+).</div>
-      <div class="formula">Amort. fiscal máx. = <strong>12% × 500.000 = 60.000 €</strong></div>
-      <div class="formula">Amort. contabilizada = 20% × 500.000 = <strong>100.000 €</strong></div>
-      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = 100.000 − 60.000 = <span style="color:#e74c3c">+40.000 € RC+</span></strong> (GCNF)</div>
-      <div class="adj-badge"><div class="adj-letter">A</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Amortización maquinaria</div><div class="adj-art">Art. 12.1 LIS · GCNF</div></div><div class="adj-amount pos">+40.000 €</div></div>
-      <div class="slide-timer" id="timer-3"></div>
-    </div>
-
-    <!-- 5. B - LEASING -->
-    <div class="slide s-ajustes" data-dur="14">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste B · Art. 12.3 LIS</div>
-      <div class="slide-h2">Leasing — Deducción Especial</div>
-      <div class="rule-box"><div class="rule-art">Art. 12.3 LIS</div>La recuperación del coste es deducible con límite = 2 × coef.máx. × valor razonable. Si recuperación &gt; amort. contable → ajuste negativo.</div>
-      <div class="formula">Límite = 2 × 25% × 240.000 = <strong>120.000 €</strong> · Recuperación (40.000) &lt; límite ✓</div>
-      <div class="formula">Amort. contable = 240.000 ÷ 8 años = <strong>30.000 €</strong></div>
-      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = 40.000 − 30.000 = <span style="color:#2ecc71">−10.000 € RC−</span></strong> (GFNC)</div>
-      <div class="adj-badge"><div class="adj-letter">B</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Deducción especial leasing</div><div class="adj-art">Art. 12.3 LIS · GFNC</div></div><div class="adj-amount neg">−10.000 €</div></div>
-      <div class="slide-timer" id="timer-4"></div>
-    </div>
-
-    <!-- 6. C - DETERIORO -->
-    <div class="slide s-ajustes" data-dur="14">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste C · Art. 13.1 LIS</div>
-      <div class="slide-h2">Deterioro de Créditos Comerciales</div>
-      <div class="rule-box"><div class="rule-art">Art. 13.1 LIS</div>Deducible si +6 meses desde vencimiento o concurso. <strong style="color:#e74c3c">No deducible</strong> si deudor vinculado (salvo concurso).</div>
-      <div class="formula">Deudor A (30.000€, 8 meses) → <strong style="color:#2ecc71">DEDUCIBLE</strong> · supera 6 meses</div>
-      <div class="formula">Deudor B (25.000€, concurso) → <strong style="color:#2ecc71">DEDUCIBLE</strong> · concurso judicial</div>
-      <div class="formula" style="transition-delay:.8s">Deudor C (30.000€, vinculado, 4 meses) → <strong style="color:#e74c3c">NO DEDUCIBLE</strong> · anti-abuso</div>
-      <div class="adj-badge"><div class="adj-letter">C</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Deterioro crédito vinculado</div><div class="adj-art">Art. 13.1 LIS · GCNF</div></div><div class="adj-amount pos">+30.000 €</div></div>
-      <div class="slide-timer" id="timer-5"></div>
-    </div>
-
-    <!-- 7. D - PROVISIÓN -->
-    <div class="slide s-ajustes" data-dur="12">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste D · Art. 14.7 LIS</div>
-      <div class="slide-h2">Exceso Provisión para Garantías</div>
-      <div class="rule-box"><div class="rule-art">Art. 14.7 LIS</div>Deducible hasta la media de gastos reales de garantía de los 2 ejercicios anteriores. El exceso no es deducible.</div>
-      <div class="formula">Límite deducible = media 2022-2023 = <strong>55.000 €</strong></div>
-      <div class="formula">Dotación 2024 = <strong>60.000 €</strong></div>
-      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = 60.000 − 55.000 = <span style="color:#e74c3c">+5.000 € RC+</span></strong> (GCNF)</div>
-      <div class="adj-badge"><div class="adj-letter">D</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Exceso provisión garantías</div><div class="adj-art">Art. 14.7 LIS · GCNF</div></div><div class="adj-amount pos">+5.000 €</div></div>
-      <div class="slide-timer" id="timer-6"></div>
-    </div>
-
-    <!-- 8. E - GASTOS NO DEDUCIBLES -->
-    <div class="slide s-ajustes" data-dur="14">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste E · Art. 15 LIS</div>
-      <div class="slide-h2">Gastos No Deducibles</div>
-      <div class="rule-box"><div class="rule-art">Art. 15 LIS</div>Multas (15.c), donativos sin Ley 49/2002 (15.e), retribución FP (15.a). Representación: deducible hasta 1% INCN.</div>
-      <div class="formula">Multa AEAT (art.15.c) = <strong style="color:#e74c3c">8.000 €</strong></div>
-      <div class="formula">Donativo ONG sin Ley 49/2002 (art.15.e) = <strong style="color:#e74c3c">12.000 €</strong></div>
-      <div class="formula" style="transition-delay:.8s">Representación: 18.000 &lt; 1%×40M = 400.000 → <strong style="color:#2ecc71">DEDUCIBLE</strong> · Retrib. FP = <strong style="color:#e74c3c">22.000 €</strong></div>
-      <div class="adj-badge"><div class="adj-letter">E</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Gastos no deducibles</div><div class="adj-art">Art. 15 LIS · GCNF</div></div><div class="adj-amount pos">+42.000 €</div></div>
-      <div class="slide-timer" id="timer-7"></div>
-    </div>
-
-    <!-- 9. F - GFN -->
-    <div class="slide s-ajustes" data-dur="14">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste F · Art. 16 LIS</div>
-      <div class="slide-h2">Gastos Financieros Netos</div>
-      <div class="rule-box"><div class="rule-art">Art. 16 LIS</div>GFN deducibles hasta el mayor de: 1.000.000 € ó 30% del EBITDA fiscal. El exceso no es deducible en el ejercicio.</div>
-      <div class="formula">GFN = 1.432.000 − 32.000 (leasing) = <strong>1.400.000 €</strong></div>
-      <div class="formula">Límite = 30% × EBITDA (4.200.000) = <strong>1.260.000 €</strong></div>
-      <div class="formula" style="transition-delay:.8s"><strong>Exceso = 1.400.000 − 1.260.000 = <span style="color:#e74c3c">+140.000 € RC+</span></strong> (GCNF)</div>
-      <div class="adj-badge"><div class="adj-letter">F</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">GFN no deducibles</div><div class="adj-art">Art. 16 LIS · GCNF</div></div><div class="adj-amount pos">+140.000 €</div></div>
-      <div class="slide-timer" id="timer-8"></div>
-    </div>
-
-    <!-- 10. G - OPERACIÓN VINCULADA -->
-    <div class="slide s-ajustes" data-dur="13">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste G · Art. 18.1 LIS</div>
-      <div class="slide-h2">Operación Vinculada — Valor de Mercado</div>
-      <div class="rule-box"><div class="rule-art">Art. 18.1 LIS</div>Las operaciones entre partes vinculadas se valoran a valor de mercado (Vm). Si el precio facturado &lt; Vm → ingreso adicional RC+.</div>
-      <div class="formula">Precio facturado = <strong>120.000 €</strong> · Valor de mercado (Vm) = <strong>180.000 €</strong></div>
-      <div class="formula"><strong>Ajuste = Vm − Precio = 180.000 − 120.000 = <span style="color:#e74c3c">+60.000 € RC+</span></strong> (IFNC)</div>
-      <div class="adj-badge"><div class="adj-letter">G</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Op. vinculada: ingreso a Vm</div><div class="adj-art">Art. 18.1 LIS · IFNC</div></div><div class="adj-amount pos">+60.000 €</div></div>
-      <div class="slide-timer" id="timer-9"></div>
-    </div>
-
-    <!-- 11. H - TRANSMISIÓN LUCRATIVA -->
-    <div class="slide s-ajustes" data-dur="13">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste H · Art. 17.4 LIS</div>
-      <div class="slide-h2">Transmisión Lucrativa — Solar</div>
-      <div class="rule-box"><div class="rule-art">Art. 17.4 LIS</div>En transmisiones lucrativas (donaciones), la renta se determina por diferencia entre Vm del bien y su valor fiscal (VF), independientemente del precio escriturado.</div>
-      <div class="formula">Valor de mercado (Vm) del solar = <strong>210.000 €</strong></div>
-      <div class="formula">Valor fiscal (VF) del solar = <strong>90.000 €</strong></div>
-      <div class="formula" style="transition-delay:.8s"><strong>Renta fiscal = 210.000 − 90.000 = <span style="color:#e74c3c">+120.000 € RC+</span></strong> (IFNC)</div>
-      <div class="adj-badge"><div class="adj-letter">H</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Transmisión lucrativa solar</div><div class="adj-art">Art. 17.4 LIS · IFNC</div></div><div class="adj-amount pos">+120.000 €</div></div>
-      <div class="slide-timer" id="timer-10"></div>
-    </div>
-
-    <!-- 12. I - DIVIDENDOS -->
-    <div class="slide s-ajustes" data-dur="13">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste I · Art. 21 LIS</div>
-      <div class="slide-h2">Exención de Dividendos (95%)</div>
-      <div class="rule-box"><div class="rule-art">Art. 21 LIS</div>El 95% de los dividendos de participadas está exento si se posee ≥5% durante ≥1 año. Ambas (ALFA y BETA) cumplen requisitos.</div>
-      <div class="formula">ALFA: 95% × 95.000 = <strong>90.250 €</strong> exento</div>
-      <div class="formula">BETA: 95% × 60.000 = <strong>57.000 €</strong> exento</div>
-      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = −(90.250 + 57.000) = <span style="color:#2ecc71">−147.250 € RC−</span></strong> (ICNF)</div>
-      <div class="adj-badge"><div class="adj-letter">I</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Exención dividendos 95%</div><div class="adj-art">Art. 21 LIS · ICNF</div></div><div class="adj-amount neg">−147.250 €</div></div>
-      <div class="slide-timer" id="timer-11"></div>
-    </div>
-
-    <!-- 13. J - EP POLONIA -->
-    <div class="slide s-ajustes" data-dur="12">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Ajuste J · Art. 22 LIS</div>
-      <div class="slide-h2">Exención Rentas EP Extranjero — Polonia</div>
-      <div class="rule-box"><div class="rule-art">Art. 22 LIS</div>Rentas del EP exentas si tributa por un impuesto análogo al IS con tipo ≥10%. Polonia: tipo IS 19% &gt; 10% ✓</div>
-      <div class="formula">Renta del establecimiento permanente en Polonia = <strong>220.000 €</strong></div>
-      <div class="formula">Tipo IS polaco (19%) &gt; umbral mínimo (10%) → <strong style="color:#2ecc71">EXENTO ÍNTEGRO</strong></div>
-      <div class="formula" style="transition-delay:.8s"><strong>Ajuste = <span style="color:#2ecc71">−220.000 € RC−</span></strong> (ICNF)</div>
-      <div class="adj-badge"><div class="adj-letter">J</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Exención renta EP Polonia</div><div class="adj-art">Art. 22 LIS · ICNF</div></div><div class="adj-amount neg">−220.000 €</div></div>
-      <div class="slide-timer" id="timer-12"></div>
-    </div>
-
-    <!-- 14. K - PATENT BOX -->
-    <div class="slide s-reduc" data-dur="13">
-      <div class="bg-grid"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Reducción K · Art. 23 LIS</div>
-      <div class="slide-h2">Patent Box — Reducción BI</div>
-      <div class="rule-box"><div class="rule-art">Art. 23 LIS</div>Reducción del 60% sobre los ingresos de cesión de software × coeficiente Nexo (max. 1). Gastos I+D propios × 1,30, topados al denominador.</div>
-      <div class="formula">Coef. Nexo = min(1, (200.000×1,30)/200.000) = <strong>1,00</strong></div>
-      <div class="formula">Base reducción = ingresos netos cesión = <strong>260.000 €</strong></div>
-      <div class="formula" style="transition-delay:.8s"><strong>Reducción = 60% × 1,00 × 260.000 = <span style="color:#2ecc71">−156.000 €</span></strong></div>
-      <div class="adj-badge"><div class="adj-letter">K</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Patent Box — software</div><div class="adj-art">Art. 23 LIS</div></div><div class="adj-amount neg">−156.000 €</div></div>
-      <div class="slide-timer" id="timer-13"></div>
-    </div>
-
-    <!-- 15. L - RESERVA CAPITALIZACIÓN -->
-    <div class="slide s-reduc" data-dur="12">
-      <div class="bg-grid"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Reducción L · Art. 25 LIS</div>
-      <div class="slide-h2">Reserva de Capitalización</div>
-      <div class="rule-box"><div class="rule-art">Art. 25 LIS</div>Reducción del 15% sobre el incremento de fondos propios, con límite del 10% de la BI previa positiva (antes de esta reducción y de BINs).</div>
-      <div class="formula">Reducción bruta = 15% × 600.000 = <strong>90.000 €</strong></div>
-      <div class="formula">Límite = 10% × 1.323.750 (BI previa) = <strong>132.375 €</strong></div>
-      <div class="formula" style="transition-delay:.8s">90.000 &lt; 132.375 → <strong>Reducción íntegra = <span style="color:#2ecc71">−90.000 €</span></strong></div>
-      <div class="adj-badge"><div class="adj-letter">L</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Reserva de capitalización</div><div class="adj-art">Art. 25 LIS</div></div><div class="adj-amount neg">−90.000 €</div></div>
-      <div class="slide-timer" id="timer-14"></div>
-    </div>
-
-    <!-- 16. M - BINS -->
-    <div class="slide s-reduc" data-dur="12">
-      <div class="bg-grid"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Reducción M · Art. 26 LIS</div>
-      <div class="slide-h2">Compensación de BINs</div>
-      <div class="rule-box"><div class="rule-art">Art. 26 LIS</div>Las BINs pendientes son compensables con límite del 70% de la BI positiva previa (empresas con INCN &gt;20M). Sin límite temporal de años.</div>
-      <div class="formula">Límite = 70% × 1.233.750 (BI previa) = <strong>863.625 €</strong></div>
-      <div class="formula">BINs pendientes = <strong>180.000 €</strong></div>
-      <div class="formula" style="transition-delay:.8s">180.000 &lt; 863.625 → <strong>Compensación íntegra = <span style="color:#2ecc71">−180.000 €</span></strong></div>
-      <div class="adj-badge"><div class="adj-letter">M</div><div class="adj-divider"></div><div class="adj-info"><div class="adj-name">Compensación BINs 2022</div><div class="adj-art">Art. 26 LIS</div></div><div class="adj-amount neg">−180.000 €</div></div>
-      <div class="slide-timer" id="timer-15"></div>
-    </div>
-
-    <!-- 17. CUOTA + DEDUCCIONES -->
-    <div class="slide s-cuota" data-dur="15">
-      <div class="bg-grid"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Cuota Íntegra y Deducciones · N–Q</div>
-      <div class="slide-h2">Del BI Final a la Cuota Diferencial</div>
-      <table class="liq-mini">
-        <tr><td class="op e">=</td><td class="label">BI Final (tras BINs)</td><td class="val">1.053.750 €</td></tr>
-        <tr><td class="op p">×</td><td class="label">Tipo general (art. 29 LIS)</td><td class="val">25%</td></tr>
-        <tr class="sub"><td class="op e">=</td><td class="label"><strong>Cuota Íntegra (N)</strong></td><td class="val" style="color:var(--gold2)">263.437,50 €</td></tr>
-        <tr><td class="op m">−</td><td class="label">DDI jurídica BETA — art. 31 LIS (O)</td><td class="val" style="color:#2ecc71">−750 €</td></tr>
-        <tr><td class="op m">−</td><td class="label">Deducción I+D — art. 35 LIS, lím. 50% CI (P)</td><td class="val" style="color:#2ecc71">−131.718,75 €</td></tr>
-        <tr><td class="op m">−</td><td class="label">Empleo discapacitados — art. 38 LIS (Q)</td><td class="val" style="color:#2ecc71">−27.000 €</td></tr>
-        <tr class="total"><td class="op e">=</td><td class="label"><strong>Cuota Líquida</strong></td><td class="val" style="color:var(--gold2)">103.968,75 €</td></tr>
-      </table>
-      <div class="slide-body" style="font-size:12px;margin-top:6px">P: I+D bruta 151.000 € — límite 50% CI bonificada (57% &gt; 10%) = <strong>131.718,75 €</strong> · Pendiente 19.281,25 € trasladable · Q: 3 trabajadores × 9.000 € = 27.000 €</div>
-      <div class="slide-timer" id="timer-16"></div>
-    </div>
-
-    <!-- 18. RESUMEN AJUSTES -->
-    <div class="slide s-cuota" data-dur="16">
-      <div class="bg-lines"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Resumen completo de ajustes</div>
-      <div class="slide-h2" style="font-size:20px;margin-bottom:10px">Tabla de Ajustes Extracontables A–J</div>
-      <div class="sum-row"><span class="sr-let">A</span><span class="sr-name">Exceso amortización maquinaria</span><span class="sr-art">Art.12.1 LIS</span><span class="sr-val p">+40.000 €</span></div>
-      <div class="sum-row"><span class="sr-let">B</span><span class="sr-name">Deducción especial leasing</span><span class="sr-art">Art.12.3 LIS</span><span class="sr-val n">−10.000 €</span></div>
-      <div class="sum-row"><span class="sr-let">C</span><span class="sr-name">Deterioro crédito vinculado</span><span class="sr-art">Art.13.1 LIS</span><span class="sr-val p">+30.000 €</span></div>
-      <div class="sum-row"><span class="sr-let">D</span><span class="sr-name">Exceso provisión garantías</span><span class="sr-art">Art.14.7 LIS</span><span class="sr-val p">+5.000 €</span></div>
-      <div class="sum-row"><span class="sr-let">E</span><span class="sr-name">Gastos no deducibles</span><span class="sr-art">Art.15 LIS</span><span class="sr-val p">+42.000 €</span></div>
-      <div class="sum-row"><span class="sr-let">F</span><span class="sr-name">GFN no deducibles</span><span class="sr-art">Art.16 LIS</span><span class="sr-val p">+140.000 €</span></div>
-      <div class="sum-row"><span class="sr-let">G</span><span class="sr-name">Op. vinculada: ingreso a Vm</span><span class="sr-art">Art.18.1 LIS</span><span class="sr-val p">+60.000 €</span></div>
-      <div class="sum-row"><span class="sr-let">H</span><span class="sr-name">Transmisión lucrativa solar</span><span class="sr-art">Art.17.4 LIS</span><span class="sr-val p">+120.000 €</span></div>
-      <div class="sum-row"><span class="sr-let">I</span><span class="sr-name">Exención dividendos (95%)</span><span class="sr-art">Art.21 LIS</span><span class="sr-val n">−147.250 €</span></div>
-      <div class="sum-row"><span class="sr-let">J</span><span class="sr-name">Exención renta EP Polonia</span><span class="sr-art">Art.22 LIS</span><span class="sr-val n">−220.000 €</span></div>
-      <div class="sum-row sum-total"><span class="sr-let">Σ</span><span class="sr-name" style="color:var(--cream)"><strong>Ajuste neto total</strong></span><span class="sr-art"></span><span class="sr-val p" style="font-size:16px"><strong>+19.750 €</strong></span></div>
-      <div class="slide-timer" id="timer-17"></div>
-    </div>
-
-    <!-- 19. LIQUIDACIÓN COMPLETA -->
-    <div class="slide s-final" data-dur="16">
-      <div class="bg-grid"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Liquidación completa</div>
-      <div class="slide-h2" style="font-size:20px;margin-bottom:10px">Escala de la BI al Resultado a Ingresar</div>
-      <table class="liq-mini">
-        <tr><td class="op e">=</td><td class="label">Resultado contable</td><td class="val">1.420.000 €</td></tr>
-        <tr><td class="op p">+</td><td class="label">Ajustes positivos (RC+)</td><td class="val" style="color:#e74c3c">+397.000 €</td></tr>
-        <tr><td class="op m">−</td><td class="label">Ajustes negativos (RC−)</td><td class="val" style="color:#2ecc71">−377.250 €</td></tr>
-        <tr class="sub"><td class="op e">=</td><td class="label"><strong>Base Imponible Previa ajustes</strong></td><td class="val">1.439.750 €</td></tr>
-        <tr><td class="op m">−</td><td class="label">Patent Box (K)</td><td class="val" style="color:#2ecc71">−156.000 €</td></tr>
-        <tr><td class="op m">−</td><td class="label">Reserva capitalización (L)</td><td class="val" style="color:#2ecc71">−90.000 €</td></tr>
-        <tr><td class="op m">−</td><td class="label">Compensación BINs (M)</td><td class="val" style="color:#2ecc71">−180.000 €</td></tr>
-        <tr class="sub"><td class="op e">=</td><td class="label"><strong>Base Imponible Final</strong></td><td class="val">1.053.750 €</td></tr>
-        <tr><td class="op p">×</td><td class="label">Tipo 25%</td><td class="val"></td></tr>
-        <tr class="sub"><td class="op e">=</td><td class="label"><strong>Cuota Íntegra</strong></td><td class="val">263.437,50 €</td></tr>
-        <tr><td class="op m">−</td><td class="label">DDI + I+D + Empleo discap.</td><td class="val" style="color:#2ecc71">−159.468,75 €</td></tr>
-        <tr class="total"><td class="op e">=</td><td class="label"><strong>Cuota Líquida / A Ingresar</strong></td><td class="val" style="color:#e74c3c;font-size:16px"><strong>103.968,75 €</strong></td></tr>
-      </table>
-      <div class="slide-timer" id="timer-18"></div>
-    </div>
-
-    <!-- 20. RESULTADO FINAL -->
-    <div class="slide s-final" data-dur="12">
-      <div class="bg-grid"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="slide-label">Resultado de la liquidación</div>
-      <div class="slide-h2">TECNOFAB debe ingresar a Hacienda</div>
-      <div class="final-amount">103.968,75 €</div>
-      <div class="final-label">Cuota diferencial a ingresar — IS 2024</div>
-      <div class="chips" style="margin-top:20px">
-        <span class="chip gold">BI Final: 1.053.750 €</span>
-        <span class="chip red">Cuota: 263.437,50 €</span>
-        <span class="chip green">Deducciones: −159.468,75 €</span>
-      </div>
-      <div class="slide-body" style="margin-top:14px">Pendiente traslado: <strong style="color:var(--gold2)">19.281,25 €</strong> de deducción I+D no aplicada por límite art. 39.1 LIS (trasladable con incremento del 20%)</div>
-      <div class="slide-timer" id="timer-19"></div>
-    </div>
-
-    <!-- 21. CIERRE -->
-    <div class="slide s-portada" data-dur="10">
-      <div class="bg-grid"></div>
-      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      <div class="portada-ornament" style="font-size:36px;opacity:.2">✦</div>
-      <div class="slide-label">OpenLexIura · IS 2024</div>
-      <div class="slide-h1">Práctica completada</div>
-      <div class="portada-divider"></div>
-      <div class="slide-sub">Todos los ajustes explicados · Base Imponible calculada · Cuota determinada</div>
-      <ul class="step-list" style="max-width:520px;margin-top:10px">
-        <li><span class="sn">10</span><span>Ajustes extracontables sobre el resultado contable (A–J)</span></li>
-        <li><span class="sn">3</span><span>Reducciones de la Base Imponible (K Patent Box, L Capitaliz., M BINs)</span></li>
-        <li><span class="sn">4</span><span>Deducciones en la cuota (N CI, O DDI, P I+D, Q Discapacidad)</span></li>
-        <li><span class="sn">1</span><span>Resultado final: <strong style="color:var(--gold2)">103.968,75 € a ingresar</strong></span></li>
-      </ul>
-      <div class="slide-timer" id="timer-20"></div>
-    </div>
-
-  </div><!-- /stage -->
-
-  <!-- CONTROLS -->
-  <div class="controls">
-    <button class="ctrl-btn play-btn" id="play-btn" onclick="togglePlay()">⏸</button>
-    <button class="ctrl-btn" onclick="prevSlide()">◀ Ant.</button>
-    <button class="ctrl-btn" onclick="nextSlide()">Sig. ▶</button>
-    <div class="dot-track" id="dot-track"></div>
-    <div style="flex:1"></div>
-    <button class="ctrl-btn speed-btn" id="speed-btn" onclick="cycleSpeed()">1×</button>
   </div>
-  <div class="bottom-info" id="bottom-info">Diapositiva 1 de 21 · Reproducción automática activa</div>
+  <div class="slide-timer" id="t0"></div>
+</div>
+
+<!-- 1. NATURALEZA JURÍDICA DEL IS -->
+<div class="slide" data-chapter="Introducción" data-dur="15">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag intro">Concepto y naturaleza</span><span class="s-chapter">IS · Art. 1 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">¿Qué es el Impuesto sobre Sociedades?</div>
+    <div class="norma" style="transition-delay:.3s">
+      <div class="norma-art">Art. 1 LIS — Naturaleza</div>
+      <div class="norma-text">El IS es un <strong>tributo de carácter directo y naturaleza personal</strong> que grava la renta de las sociedades y demás entidades jurídicas de acuerdo con las normas de la Ley 27/2014. Es un impuesto <strong>periódico</strong> (devenga el último día del período impositivo) y <strong>proporcional</strong> (tipo fijo, no progresivo).</div>
+    </div>
+    <ul class="clist" style="margin-top:8px">
+      <li><span class="ci gold">①</span><span><strong>Directo:</strong> grava directamente la capacidad económica (la renta), sin traslado a terceros.</span></li>
+      <li><span class="ci gold">②</span><span><strong>Personal:</strong> se tienen en cuenta las circunstancias del sujeto pasivo (residencia, tipo de entidad).</span></li>
+      <li><span class="ci gold">③</span><span><strong>Periódico:</strong> el hecho imponible se repite en el tiempo; normalmente el año natural.</span></li>
+      <li><span class="ci gold">④</span><span><strong>Proporcional:</strong> tipo general del 25% igual para todas las bases, a diferencia del IRPF que es progresivo.</span></li>
+    </ul>
+  </div>
+  <div class="slide-timer" id="t1"></div>
+</div>
+
+<!-- 2. DETERMINACIÓN DE LA BI — ART. 10.3 -->
+<div class="slide" data-chapter="Introducción" data-dur="16">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag intro">Determinación de la BI</span><span class="s-chapter">Art. 10.3 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">El método de estimación directa</div>
+    <div class="norma">
+      <div class="norma-art">Art. 10.3 LIS — Método de determinación</div>
+      <div class="norma-text">La Base Imponible se calculará <strong>corrigiendo, mediante la aplicación de los preceptos de esta Ley</strong>, el resultado contable determinado de acuerdo con las normas del Código de Comercio y del Plan General Contable. La contabilidad es el <em>punto de partida</em>; la LIS introduce las correcciones necesarias.</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci blue">RC</span><span><strong>Resultado Contable</strong> (PGC) como punto de partida obligatorio.</span></li>
+      <li><span class="ci blue">±</span><span><strong>Ajustes fiscales</strong> — correcciones positivas (RC+) o negativas (RC−) por diferencias entre contabilidad y LIS.</span></li>
+      <li><span class="ci blue">−</span><span><strong>Reducciones</strong> — Patent Box (art. 23), Reserva Capitalización (art. 25), Compensación BINs (art. 26).</span></li>
+      <li><span class="ci blue">×</span><span><strong>Tipo de gravamen</strong> (art. 29 LIS): 25% tipo general. Genera la Cuota Íntegra.</span></li>
+      <li><span class="ci blue">−</span><span><strong>Deducciones en cuota</strong> — DDI (art. 31), I+D (art. 35), empleo (art. 38).</span></li>
+    </ul>
+  </div>
+  <div class="slide-timer" id="t2"></div>
+</div>
+
+<!-- 3. DIFERENCIAS TEMPORARIAS Y PERMANENTES -->
+<div class="slide" data-chapter="Introducción" data-dur="16">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag intro">Tipos de ajuste</span><span class="s-chapter">Diferencias contable-fiscal</span></div>
+  <div class="s-body two-col">
+    <div class="col">
+      <div class="s-h2" style="font-size:clamp(14px,1.8vw,22px)">Diferencias <span style="color:var(--orange)">temporarias</span></div>
+      <div class="s-p d1">Se producen cuando un ingreso o gasto se reconoce en un ejercicio distinto en contabilidad y en fiscalidad. <strong>Revierten en el futuro</strong>: lo que hoy no se puede deducir, se deducirá mañana (y viceversa).</div>
+      <div class="s-p d2">Generan activos o pasivos por impuesto diferido (DTA/DTL). <strong>Ejemplos:</strong> exceso de amortización (A), leasing (B), deterioro crédito vinculado (C).</div>
+      <div class="chip orange" style="margin-top:10px;border-color:var(--orange);color:var(--orange);background:rgba(230,126,34,.08);font-family:Cinzel,serif;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border:1px solid;display:inline-block">⟳ Se revierten · DTA o DTL</div>
+    </div>
+    <div class="col-divider"></div>
+    <div class="col">
+      <div class="s-h2" style="font-size:clamp(14px,1.8vw,22px)">Diferencias <span style="color:var(--red)">permanentes</span></div>
+      <div class="s-p d1">Se producen cuando un ingreso o gasto nunca tendrá el mismo tratamiento contable y fiscal. <strong>No revierten:</strong> la diferencia es definitiva para siempre.</div>
+      <div class="s-p d2">No generan impuesto diferido. <strong>Ejemplos:</strong> multas (E · RC+), donaciones no cualificadas (E · RC+), exención dividendos (I · RC−), exención EP extranjero (J · RC−).</div>
+      <div class="chip red" style="margin-top:10px;border-color:var(--red);color:var(--red);background:rgba(231,76,60,.08);font-family:Cinzel,serif;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border:1px solid;display:inline-block">✕ Definitivas · Sin impuesto diferido</div>
+    </div>
+  </div>
+  <div class="slide-timer" id="t3"></div>
+</div>
+
+<!-- 4. LA EMPRESA -->
+<div class="slide" data-chapter="Introducción" data-dur="11">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag intro">El contribuyente</span><span class="s-chapter">Datos de la empresa</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">TECNOFAB, S.A.</div>
+    <div class="s-sub center">Fabricación de componentes electrónicos · Cesión de licencias de software propio</div>
+    <ul class="clist" style="margin-top:10px">
+      <li><span class="ci gold">RC</span><span>Resultado contable 2024 (antes IS): <strong>1.420.000 €</strong></span></li>
+      <li><span class="ci gold">Tg</span><span>Tipo de gravamen: <strong>25%</strong> (art. 29 LIS — tipo general; no es ERD)</span></li>
+      <li><span class="ci gold">INCN</span><span>Importe Neto Cifra Negocios 2023: <strong>38.000.000 €</strong> → NO es Entidad de Reducida Dimensión</span></li>
+      <li><span class="ci gold">BINs</span><span>Bases Imponibles Negativas pendientes de compensar del ejercicio 2022: <strong>180.000 €</strong></span></li>
+    </ul>
+  </div>
+  <div class="slide-timer" id="t4"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE A – AMORTIZACIÓN
+═══════════════════════════════════════════════════════ -->
+
+<!-- 5. A — NORMA -->
+<div class="slide" data-chapter="A · Amortización — Norma" data-dur="17">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">A · Amortización · Art. 12.1 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Amortización del inmovilizado material</div>
+    <div class="norma">
+      <div class="norma-art">Art. 12.1 LIS — Criterio fiscal de amortización</div>
+      <div class="norma-text">Serán deducibles las cantidades que, en concepto de amortización del inmovilizado material, intangible y de las inversiones inmobiliarias, correspondan a la <strong>depreciación efectiva que sufran los distintos elementos por su funcionamiento, uso, disfrute u obsolescencia.</strong> Se considerará que la depreciación es efectiva cuando sea el resultado de aplicar los métodos del <strong>RD 634/2015 (tablas oficiales)</strong>, porcentaje constante, números dígitos o según plan aprobado.</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci blue">①</span><span><strong>Coeficiente máximo de tabla:</strong> límite superior de amortización anual deducible según el tipo de bien.</span></li>
+      <li><span class="ci blue">②</span><span><strong>Período máximo:</strong> número máximo de años para amortizar (límite inferior de porcentaje).</span></li>
+      <li><span class="ci blue">③</span><span><strong>Exceso:</strong> lo que se amortiza contablemente por encima del coeficiente máximo <em>no es deducible</em> ese año → ajuste RC+.</span></li>
+      <li><span class="ci blue">④</span><span><strong>Reversión:</strong> cuando la contabilidad ya ha agotado el valor, el fisco aún tiene base → ajustes RC− futuros.</span></li>
+    </ul>
+    <div class="diff-tag temp">⟳ Diferencia Temporaria Imponible → genera Pasivo por Impuesto Diferido (DTL)</div>
+  </div>
+  <div class="slide-timer" id="t5"></div>
+</div>
+
+<!-- 6. A — RATIO LEGIS -->
+<div class="slide" data-chapter="A · Amortización — Por qué" data-dur="14">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag ratio">Ratio legis</span><span class="s-chapter">A · Art. 12.1 LIS — Fundamento</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">¿Por qué limitar la amortización fiscal?</div>
+    <div class="ratio">
+      <div class="ratio-lbl">Fundamento de la norma</div>
+      <div class="ratio-text">La amortización es la expresión contable del envejecimiento económico del bien. El PGC permite libertad de criterio dentro de la vida útil estimada; la LIS, sin embargo, exige que esa estimación sea <strong>objetiva y verificable</strong>. Si no hubiera límite, una empresa podría amortizar un bien en 2 años para reducir artificialmente su base imponible, difiriendo impuestos sin justificación económica real. Las <strong>tablas del RD 634/2015</strong> establecen, para cada categoría de bien, el ritmo de depreciación que la Administración considera admisible como reflejo de la realidad económica del sector.</div>
+    </div>
+    <div class="ratio" style="transition-delay:.65s">
+      <div class="ratio-lbl">Carácter temporal de la diferencia</div>
+      <div class="ratio-text">La norma <strong>no niega definitivamente el gasto</strong>: simplemente lo difiere. La empresa deducirá esos 40.000 € extra en ejercicios futuros cuando el bien esté agotado contablemente pero no fiscalmente. El efecto neto final sobre la tributación total del bien es <strong>cero</strong> — solo cambia la distribución en el tiempo.</div>
+    </div>
+  </div>
+  <div class="slide-timer" id="t6"></div>
+</div>
+
+<!-- 7. A — APLICACIÓN -->
+<div class="slide" data-chapter="A · Amortización — Aplicación" data-dur="13">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag apply">Aplicación práctica</span><span class="s-chapter">A · TECNOFAB · Maquinaria 500.000 €</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Cálculo del ajuste fiscal</div>
+    <div class="apply"><div class="apply-lbl">Datos del caso</div><div class="apply-text">Maquinaria adquirida el 1/1/2023 por <strong>500.000 €</strong>. TECNOFAB aplica un coeficiente contable del <strong>20%</strong>. El coeficiente máximo de tabla (RD 634/2015) para este tipo de bien es del <strong>12%</strong>.</div></div>
+    <div class="fml d1">Amort. fiscal máx. = <strong>12% × 500.000 = 60.000 €</strong></div>
+    <div class="fml d2">Amort. contabilizada = 20% × 500.000 = <strong>100.000 €</strong></div>
+    <div class="fml d3 result-line pos">Exceso no deducible = 100.000 − 60.000 = <strong>+40.000 € → RC+ GCNF</strong></div>
+    <div class="badge-row"><div class="badge"><div class="badge-let">A</div><div class="badge-sep"></div><div class="badge-info"><div class="badge-name">Exceso amortización</div><div class="badge-art">Art. 12.1 LIS · GCNF · Diferencia temporaria</div></div><div class="badge-amt pos">+40.000 €</div></div></div>
+  </div>
+  <div class="slide-timer" id="t7"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE B – LEASING
+═══════════════════════════════════════════════════════ -->
+
+<!-- 8. B — NORMA -->
+<div class="slide" data-chapter="B · Leasing — Norma" data-dur="17">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">B · Arrendamiento financiero · Art. 12.3 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Régimen fiscal del leasing</div>
+    <div class="norma">
+      <div class="norma-art">Art. 12.3 LIS — Arrendamiento financiero</div>
+      <div class="norma-text">En los contratos de arrendamiento financiero (leasing), la parte de las cuotas correspondiente a la <strong>recuperación del coste del bien</strong> será deducible, con el límite del <strong>duplo del coeficiente máximo de amortización de tablas</strong> multiplicado por el valor del bien. El exceso sobre dicho límite será deducible en los períodos impositivos sucesivos. La <strong>carga financiera</strong> (intereses) siempre es deducible como gasto financiero ordinario.</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci blue">①</span><span><strong>Cuota leasing = recuperación del coste + carga financiera.</strong> Solo la primera está sujeta al límite del art. 12.3.</span></li>
+      <li><span class="ci blue">②</span><span><strong>Límite anual:</strong> 2 × coef.máx.tabla × valor razonable del bien.</span></li>
+      <li><span class="ci blue">③</span><span>Si recuperación del coste &gt; amortización contable → la diferencia genera un <strong>ajuste negativo RC−</strong> (se deduce más de lo que se amortiza: beneficio fiscal temporal).</span></li>
+      <li><span class="ci blue">④</span><span>Este beneficio fiscal <strong>anticipa la deducción</strong>: es una diferencia temporaria deducible (DTA).</span></li>
+    </ul>
+    <div class="diff-tag temp">⟳ Diferencia Temporaria Deducible → genera Activo por Impuesto Diferido (DTA)</div>
+  </div>
+  <div class="slide-timer" id="t8"></div>
+</div>
+
+<!-- 9. B — RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="B · Leasing — Aplicación" data-dur="15">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag ratio">Ratio + Aplicación</span><span class="s-chapter">B · Art. 12.3 LIS · TECNOFAB</span></div>
+  <div class="s-body">
+    <div class="ratio" style="transition-delay:.28s">
+      <div class="ratio-lbl">¿Por qué un beneficio fiscal para el leasing?</div>
+      <div class="ratio-text">El leasing tiene sustancia económica de compra a crédito. El legislador reconoce que la empresa ya soporta la pérdida de valor económica del bien (aunque formalmente el arrendador sigue siendo propietario), y permite que la <strong>recuperación del coste</strong> sea deducible con más rapidez que la amortización contable. Es un incentivo fiscal para financiar inversiones mediante esta modalidad.</div>
+    </div>
+    <div class="apply" style="transition-delay:.48s"><div class="apply-lbl">Datos · Equipo informático VR = 240.000 €</div><div class="apply-text">Cuota anual 72.000 € (recuperación 40.000 + financiera 32.000). Amort. contable: 30.000 €/año. Coef.máx. equipos informáticos: 25%.</div></div>
+    <div class="fml d2">Límite = 2 × 25% × 240.000 = <strong>120.000 €</strong> · Recuperación (40.000) &lt; límite ✓ → se deduce íntegra</div>
+    <div class="fml d3 result-line neg">Ajuste = Rec. coste (40.000) − Amort. contable (30.000) = <strong>−10.000 € RC− GFNC</strong></div>
+    <div class="badge-row"><div class="badge"><div class="badge-let">B</div><div class="badge-sep"></div><div class="badge-info"><div class="badge-name">Deducción especial leasing</div><div class="badge-art">Art. 12.3 LIS · GFNC · Diferencia temporaria</div></div><div class="badge-amt neg">−10.000 €</div></div></div>
+  </div>
+  <div class="slide-timer" id="t9"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE C – DETERIORO
+═══════════════════════════════════════════════════════ -->
+
+<!-- 10. C — NORMA -->
+<div class="slide" data-chapter="C · Deterioro créditos — Norma" data-dur="17">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">C · Deterioro créditos · Art. 13.1 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Deducibilidad del deterioro de créditos comerciales</div>
+    <div class="norma">
+      <div class="norma-art">Art. 13.1 LIS — Causas de deducibilidad</div>
+      <div class="norma-text">Las dotaciones por deterioro de créditos serán deducibles cuando concurra alguna de las siguientes circunstancias: <strong>(a) hayan transcurrido 6 meses desde el vencimiento</strong> de la obligación; <strong>(b) el deudor esté declarado en concurso;</strong> (c) el deudor esté procesado por delito de alzamiento de bienes; (d) las obligaciones hayan sido reclamadas judicialmente. <strong>Quedan excluidos:</strong> créditos adeudados por entidades de derecho público y por personas o entidades <strong>vinculadas</strong>, salvo que estén en concurso con créditos vencidos +18 meses.</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci red">✕</span><span><strong>Vinculadas (art. 18 LIS):</strong> participación ≥25% u otro vínculo de dominio. No se admite deterioro salvo concurso judicial.</span></li>
+      <li><span class="ci green">✓</span><span><strong>+6 meses:</strong> plazo contado desde el vencimiento pactado de la obligación, no desde la fecha de la deuda.</span></li>
+      <li><span class="ci green">✓</span><span><strong>Concurso:</strong> la declaración judicial de concurso acredita la insolvencia con independencia de la antigüedad.</span></li>
+    </ul>
+    <div class="diff-tag temp">⟳ Diferencia Temporaria — revertirá cuando el deudor pague o entre en concurso</div>
+  </div>
+  <div class="slide-timer" id="t10"></div>
+</div>
+
+<!-- 11. C — RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="C · Deterioro créditos — Aplicación" data-dur="15">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag ratio">Ratio + Aplicación</span><span class="s-chapter">C · Art. 13.1 LIS · TECNOFAB</span></div>
+  <div class="s-body">
+    <div class="ratio" style="transition-delay:.28s">
+      <div class="ratio-lbl">¿Por qué se excluyen los créditos con vinculadas?</div>
+      <div class="ratio-text">La <strong>razón anti-abuso:</strong> si se permitiera deducir el deterioro de créditos frente a filiales o matrices, los grupos de empresas podrían <em>crear artificialmente pérdidas</em> concediendo préstamos a entidades del grupo que luego incumplen pagos sin consecuencias económicas reales para el conjunto. La LIS presume que dentro de un grupo la insolvencia no es definitiva hasta que se declara judicialmente.</div>
+    </div>
+    <div class="apply" style="transition-delay:.5s"><div class="apply-lbl">Análisis deudor por deudor</div><div class="apply-text">
+      Deudor A (30.000 €, 8 meses) → <strong style="color:var(--green)">Deducible</strong> · supera 6 meses desde vencimiento ·
+      Deudor B (25.000 €, en concurso) → <strong style="color:var(--green)">Deducible</strong> · declaración judicial ·
+      Deudor C (30.000 €, vinculada 30%, 4 meses) → <strong style="color:var(--red)">NO Deducible</strong> · vinculada sin concurso
+    </div></div>
+    <div class="fml d3 result-line pos">Ajuste = solo Deudor C = <strong>+30.000 € RC+ GCNF</strong></div>
+    <div class="badge-row"><div class="badge"><div class="badge-let">C</div><div class="badge-sep"></div><div class="badge-info"><div class="badge-name">Deterioro crédito vinculado</div><div class="badge-art">Art. 13.1 LIS · GCNF · Diferencia temporaria</div></div><div class="badge-amt pos">+30.000 €</div></div></div>
+  </div>
+  <div class="slide-timer" id="t11"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE D – PROVISIÓN GARANTÍAS
+═══════════════════════════════════════════════════════ -->
+
+<!-- 12. D — NORMA + RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="D · Provisión garantías" data-dur="17">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma + Ratio + Aplicación</span><span class="s-chapter">D · Provisiones · Art. 14.7 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Provisión para garantías — Límite fiscal</div>
+    <div class="norma">
+      <div class="norma-art">Art. 14.7 LIS — Provisiones para garantías de reparación y revisión</div>
+      <div class="norma-text">Serán deducibles las dotaciones a provisiones técnicas realizadas por las empresas que cubran garantías de reparación y revisión, con el límite del <strong>importe de los gastos reales incurridos en los dos períodos impositivos anteriores.</strong> Se trata de la media histórica como proxy de la siniestralidad real esperada.</div>
+    </div>
+    <div class="ratio" style="transition-delay:.45s">
+      <div class="ratio-lbl">Ratio legis</div>
+      <div class="ratio-text">La LIS desconfía de estimaciones excesivas que anticipen artificialmente gastos futuros inciertos. La <strong>historia real de siniestralidad</strong> es la mejor evidencia objetiva del coste futuro de garantías. El exceso sobre ese dato histórico refleja una estimación más pesimista que la realidad soportada y no es admisible fiscalmente hasta que se materialice.</div>
+    </div>
+    <div class="fml d3">Límite = media gastos reales 2022-2023 = <strong>55.000 €</strong> · Dotación 2024 = 60.000 €</div>
+    <div class="fml d4 result-line pos">Ajuste = 60.000 − 55.000 = <strong>+5.000 € RC+ GCNF</strong></div>
+    <div class="diff-tag temp" style="transition-delay:.95s">⟳ Diferencia Temporaria — revertirá cuando se aplique a cubrir gastos reales de garantía</div>
+  </div>
+  <div class="slide-timer" id="t12"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE E – GASTOS NO DEDUCIBLES
+═══════════════════════════════════════════════════════ -->
+
+<!-- 13. E — NORMA -->
+<div class="slide" data-chapter="E · Gastos no deducibles — Norma" data-dur="17">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">E · Gastos no deducibles · Art. 15 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Catálogo de gastos no deducibles</div>
+    <div class="norma">
+      <div class="norma-art">Art. 15 LIS — Gastos no deducibles (selección)</div>
+      <div class="norma-text"><strong>15.a)</strong> Retribución de fondos propios (dividendos, retribución de préstamos de socios vinculados calificados como fondos propios). <strong>15.c)</strong> Multas, sanciones penales y administrativas, recargo de apremio y recargo por declaración extemporánea. <strong>15.e)</strong> Donativos y liberalidades (excepto los acogidos a Ley 49/2002 o los contemplados en el propio precepto). <strong>15.h)</strong> Gastos derivados de operaciones con paraísos fiscales.</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci red">15.a</span><span><strong>Retribución FP:</strong> los dividendos no son gasto deducible — son distribución de la renta ya gravada.</span></li>
+      <li><span class="ci red">15.c</span><span><strong>Multas:</strong> si se admitiera la deducción, el efecto sancionador quedaría minorado en un 25% (el tipo del IS), pervirtiendo la función disuasoria.</span></li>
+      <li><span class="ci red">15.e</span><span><strong>Donativos:</strong> no son gastos de la actividad. Si la ONG cumple la Ley 49/2002, existe una <em>deducción en cuota</em> alternativa.</span></li>
+      <li><span class="ci green">OK</span><span><strong>Gastos de representación:</strong> deducibles hasta el <strong>1% del INCN</strong>. El exceso no es deducible.</span></li>
+    </ul>
+    <div class="diff-tag perm">✕ Diferencia Permanente — no revertirá nunca · no genera impuesto diferido</div>
+  </div>
+  <div class="slide-timer" id="t13"></div>
+</div>
+
+<!-- 14. E — APLICACIÓN -->
+<div class="slide" data-chapter="E · Gastos no deducibles — Aplicación" data-dur="13">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag apply">Aplicación práctica</span><span class="s-chapter">E · Art. 15 LIS · TECNOFAB</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Análisis gasto por gasto</div>
+    <div class="fml d1 pos">Multa AEAT (art.15.c) = <strong>8.000 €</strong> → RC+</div>
+    <div class="fml d2 pos">Donativo ONG sin Ley 49/2002 (art.15.e) = <strong>12.000 €</strong> → RC+</div>
+    <div class="fml d3 neg">Gastos representación: 18.000 € &lt; límite (1% × 40.000.000 = 400.000 €) → <strong>DEDUCIBLE · 0 € ajuste</strong></div>
+    <div class="fml d4 pos">Retribución fondos propios — dividendo preferente (art.15.a) = <strong>22.000 €</strong> → RC+</div>
+    <div class="fml d5 result-line pos">Ajuste total = 8.000 + 12.000 + 22.000 = <strong>+42.000 € RC+ GCNF</strong></div>
+    <div class="badge-row"><div class="badge"><div class="badge-let">E</div><div class="badge-sep"></div><div class="badge-info"><div class="badge-name">Gastos no deducibles</div><div class="badge-art">Art. 15 LIS · GCNF · Diferencia permanente</div></div><div class="badge-amt pos">+42.000 €</div></div></div>
+  </div>
+  <div class="slide-timer" id="t14"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE F – GFN
+═══════════════════════════════════════════════════════ -->
+
+<!-- 15. F — NORMA -->
+<div class="slide" data-chapter="F · Gastos financieros — Norma" data-dur="17">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">F · Gastos Financieros Netos · Art. 16 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Limitación de gastos financieros netos</div>
+    <div class="norma">
+      <div class="norma-art">Art. 16 LIS — Limitación en la deducibilidad de GFN</div>
+      <div class="norma-text">Los <strong>gastos financieros netos</strong> (GFN = gastos financieros − ingresos financieros de cesión de capitales propios) serán deducibles con el límite del <strong>mayor de los siguientes importes:</strong> (1) el 30% del <em>beneficio operativo</em> del ejercicio (EBITDA fiscal), o (2) <strong>1.000.000 €</strong> (mínimo garantizado). Los GFN no deducibles en un período podrán deducirse en los períodos siguientes, con los mismos límites.</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci blue">GFN</span><span><strong>GFN = gastos financieros brutos − ingresos financieros</strong> derivados de la cesión a terceros de capitales propios.</span></li>
+      <li><span class="ci blue">EBITDA</span><span><strong>Beneficio operativo (EBITDA fiscal):</strong> RC + GFN + amort. + deterioros deterioro de valor + provisiones operativas.</span></li>
+      <li><span class="ci blue">Min</span><span><strong>1.000.000 €</strong> mínimo garantizado: siempre se pueden deducir al menos un millón de GFN, independientemente del EBITDA.</span></li>
+      <li><span class="ci blue">∞</span><span><strong>Sin límite temporal:</strong> los GFN no deducidos se arrastran indefinidamente a ejercicios futuros.</span></li>
+    </ul>
+    <div class="diff-tag temp">⟳ Diferencia Temporaria — el exceso se deducirá en ejercicios futuros</div>
+  </div>
+  <div class="slide-timer" id="t15"></div>
+</div>
+
+<!-- 16. F — RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="F · Gastos financieros — Aplicación" data-dur="14">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag ratio">Ratio + Aplicación</span><span class="s-chapter">F · Art. 16 LIS · TECNOFAB</span></div>
+  <div class="s-body">
+    <div class="ratio" style="transition-delay:.28s">
+      <div class="ratio-lbl">¿Por qué limitar los gastos financieros? Directiva ATAD (UE 2016/1164)</div>
+      <div class="ratio-text">El art. 16 LIS transpone la Directiva ATAD de la UE. La preocupación es la <em>subcapitalización</em>: los grupos multinacionales podían financiar sus filiales mediante préstamos intragrupo a tipos elevados, erosionando la base imponible local. Al limitar la deducción al <strong>30% del EBITDA</strong>, se asegura que los GFN sean proporcionales a la capacidad económica real de generación de resultados operativos.</div>
+    </div>
+    <div class="fml d2">GFN = GF brutos (1.432.000) − ingresos fin. cesión capitales (32.000 leasing) = <strong>1.400.000 €</strong></div>
+    <div class="fml d3">Límite = mayor de: 30% × EBITDA (4.200.000) = <strong>1.260.000 €</strong> vs 1.000.000 → aplica 1.260.000 €</div>
+    <div class="fml d4 result-line pos">Exceso = 1.400.000 − 1.260.000 = <strong>+140.000 € RC+ GCNF</strong> (trasladable a futuros ejercicios)</div>
+    <div class="badge-row"><div class="badge"><div class="badge-let">F</div><div class="badge-sep"></div><div class="badge-info"><div class="badge-name">GFN no deducibles</div><div class="badge-art">Art. 16 LIS · GCNF · Diferencia temporaria</div></div><div class="badge-amt pos">+140.000 €</div></div></div>
+  </div>
+  <div class="slide-timer" id="t16"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE G – OP. VINCULADA
+═══════════════════════════════════════════════════════ -->
+
+<!-- 17. G — NORMA -->
+<div class="slide" data-chapter="G · Operaciones vinculadas — Norma" data-dur="17">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">G · Operaciones vinculadas · Art. 18 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Principio de plena competencia (arm's length)</div>
+    <div class="norma">
+      <div class="norma-art">Art. 18.1 LIS — Valoración a precio de mercado</div>
+      <div class="norma-text">Las operaciones efectuadas entre personas o entidades vinculadas se valorarán por su <strong>valor de mercado (Vm)</strong>, entendiéndose por tal el que se habría acordado por personas o entidades independientes en condiciones de libre competencia. Se presume que son vinculadas cuando existe una participación, directa o indirecta, de al menos el <strong>25%</strong> en el capital o en los fondos propios.</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci blue">Vm</span><span><strong>Valor de mercado:</strong> precio que se habría pactado entre terceros independientes. Se acredita mediante métodos del precio libre comparable, precio de reventa, coste incrementado, etc.</span></li>
+      <li><span class="ci blue">RC+</span><span>Si precio facturado &lt; Vm → ajuste positivo RC+ (la sociedad ha cobrado de menos a la vinculada).</span></li>
+      <li><span class="ci blue">RC−</span><span>Si precio facturado &gt; Vm → ajuste negativo RC− (la sociedad ha pagado de más a la vinculada).</span></li>
+      <li><span class="ci blue">Sym</span><span><strong>Ajuste bilateral:</strong> el ajuste en una entidad debe tener correlato en la otra parte vinculada.</span></li>
+    </ul>
+    <div class="diff-tag perm">✕ Diferencia Permanente (en este caso) — el ingreso omitido nunca revertirá</div>
+  </div>
+  <div class="slide-timer" id="t17"></div>
+</div>
+
+<!-- 18. G — RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="G · Operaciones vinculadas — Aplicación" data-dur="13">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag ratio">Ratio + Aplicación</span><span class="s-chapter">G · Art. 18.1 LIS · TECNOFAB</span></div>
+  <div class="s-body">
+    <div class="ratio" style="transition-delay:.28s">
+      <div class="ratio-lbl">Fundamento del principio arm's length</div>
+      <div class="ratio-text">Las partes vinculadas pueden acordar precios que no reflejen la realidad del mercado para <em>transferir beneficios</em> hacia jurisdicciones de baja tributación o para compensar pérdidas del grupo. La valoración a precio de mercado protege la <strong>integridad de la base imponible</strong> española y garantiza que cada entidad tribute por la renta que realmente le corresponde por su actividad económica.</div>
+    </div>
+    <div class="apply" style="transition-delay:.5s"><div class="apply-lbl">Datos del caso</div><div class="apply-text">TECNOFAB presta un servicio a una entidad vinculada (participación &gt;25%) facturando <strong>120.000 €</strong>. El valor de mercado del servicio es <strong>180.000 €</strong>.</div></div>
+    <div class="fml d3 result-line pos">Ajuste = Vm (180.000) − precio facturado (120.000) = <strong>+60.000 € RC+ IFNC</strong></div>
+    <div class="badge-row"><div class="badge"><div class="badge-let">G</div><div class="badge-sep"></div><div class="badge-info"><div class="badge-name">Op. vinculada: ingreso a Vm</div><div class="badge-art">Art. 18.1 LIS · IFNC · Diferencia permanente</div></div><div class="badge-amt pos">+60.000 €</div></div></div>
+  </div>
+  <div class="slide-timer" id="t18"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE H – TRANSMISIÓN LUCRATIVA
+═══════════════════════════════════════════════════════ -->
+
+<!-- 19. H — NORMA + RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="H · Transmisión lucrativa" data-dur="17">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma + Ratio + Aplicación</span><span class="s-chapter">H · Transmisiones lucrativas · Art. 17.4 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Transmisiones lucrativas — Donación de activos</div>
+    <div class="norma">
+      <div class="norma-art">Art. 17.4 LIS — Valoración en transmisiones a título lucrativo</div>
+      <div class="norma-text">Las transmisiones de elementos patrimoniales a título lucrativo (sin contraprestación) se valoran, tanto para el transmitente como para el adquirente, por el <strong>valor de mercado</strong>. En consecuencia, el transmitente integra en su BI la diferencia entre el Vm del bien transmitido y su <strong>valor fiscal (coste de adquisición menos amortizaciones)</strong>, con independencia de que el precio escriturado sea cero.</div>
+    </div>
+    <div class="ratio" style="transition-delay:.45s">
+      <div class="ratio-lbl">Ratio legis — ¿Por qué gravar una donación?</div>
+      <div class="ratio-text">Sin esta regla, una empresa podría transmitir bienes revalorizados a terceros sin tributar, eliminando plusvalías latentes mediante donaciones. El legislador equipara la donación a una venta a precio de mercado: la <strong>renta se ha generado económicamente</strong> (el bien vale más de lo que costó) y debe tributar en el momento de salir del patrimonio.</div>
+    </div>
+    <div class="fml d3">Renta fiscal = Vm solar (210.000) − Valor fiscal (90.000) = <strong>+120.000 €</strong></div>
+    <div class="fml d4 result-line pos">Ajuste = <strong>+120.000 € RC+ IFNC</strong> · Diferencia permanente</div>
+  </div>
+  <div class="slide-timer" id="t19"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE I – EXENCIÓN DIVIDENDOS
+═══════════════════════════════════════════════════════ -->
+
+<!-- 20. I — NORMA -->
+<div class="slide" data-chapter="I · Exención dividendos — Norma" data-dur="17">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">I · Exención dividendos · Art. 21 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Régimen de exención para dividendos de participadas</div>
+    <div class="norma">
+      <div class="norma-art">Art. 21 LIS — Exención sobre dividendos y plusvalías de fuente interna y externa</div>
+      <div class="norma-text">Estarán exentos los dividendos o participaciones en beneficios de entidades residentes o no residentes cuando: <strong>(a) la participación sea directa o indirecta de al menos el 5%</strong> del capital o de los fondos propios, o bien el valor de adquisición sea &gt;20M€; y <strong>(b) se haya poseído de manera ininterrumpida durante el año anterior.</strong> La exención alcanza al <strong>95%</strong> de los dividendos. El 5% restante se integra en la BI como compensación de gastos de gestión.</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci blue">5%</span><span><strong>Umbral mínimo de participación:</strong> evita que los pequeños accionistas (inversores de cartera) apliquen la exención.</span></li>
+      <li><span class="ci blue">1 año</span><span><strong>Antigüedad:</strong> previene la compra de acciones para cobrar el dividendo y vender inmediatamente (dividend stripping).</span></li>
+      <li><span class="ci blue">95%</span><span><strong>Exención parcial (95%):</strong> el 5% restante compensa los gastos de gestión de la participación (costes indirectos no deducibles).</span></li>
+      <li><span class="ci blue">Obj.</span><span><strong>Objetivo:</strong> evitar la doble imposición económica. El beneficio ya tributó en la filial; no debe tributar de nuevo en la matriz.</span></li>
+    </ul>
+    <div class="diff-tag perm">✕ Diferencia Permanente — exención definitiva · no genera impuesto diferido</div>
+  </div>
+  <div class="slide-timer" id="t20"></div>
+</div>
+
+<!-- 21. I — RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="I · Exención dividendos — Aplicación" data-dur="13">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag ratio">Ratio + Aplicación</span><span class="s-chapter">I · Art. 21 LIS · TECNOFAB</span></div>
+  <div class="s-body">
+    <div class="ratio" style="transition-delay:.28s">
+      <div class="ratio-lbl">¿Por qué el 95% y no el 100%?</div>
+      <div class="ratio-text">El 5% restante representa una <strong>presunción iure et de iure de gastos de gestión</strong>: la empresa matriz habrá incurrido en costes para administrar su participación (gestión de la cartera, auditorías, recursos humanos dedicados) que contablemente se dedujeron. Para compensar esa deducción ya tomada, se integra un 5% del dividendo que supone la "devolución" de esos gastos.</div>
+    </div>
+    <div class="apply" style="transition-delay:.5s"><div class="apply-lbl">Datos: ALFA (participación &gt;5%, &gt;1 año) y BETA (ídem)</div></div>
+    <div class="fml d2 neg">ALFA: 95% × 95.000 = <strong>90.250 €</strong> exentos → RC−</div>
+    <div class="fml d3 neg">BETA: 95% × 60.000 = <strong>57.000 €</strong> exentos → RC−</div>
+    <div class="fml d4 result-line neg">Ajuste total = −(90.250 + 57.000) = <strong>−147.250 € RC− ICNF</strong></div>
+    <div class="badge-row"><div class="badge"><div class="badge-let">I</div><div class="badge-sep"></div><div class="badge-info"><div class="badge-name">Exención dividendos 95%</div><div class="badge-art">Art. 21 LIS · ICNF · Diferencia permanente</div></div><div class="badge-amt neg">−147.250 €</div></div></div>
+  </div>
+  <div class="slide-timer" id="t21"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE J – EP EXTRANJERO
+═══════════════════════════════════════════════════════ -->
+
+<!-- 22. J — NORMA + RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="J · EP extranjero — Polonia" data-dur="17">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma + Ratio + Aplicación</span><span class="s-chapter">J · Establecimiento Permanente Extranjero · Art. 22 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Exención de rentas del EP en el extranjero</div>
+    <div class="norma">
+      <div class="norma-art">Art. 22 LIS — Exención de rentas obtenidas a través de EP extranjero</div>
+      <div class="norma-text">Estarán exentas las rentas positivas obtenidas a través de un <strong>establecimiento permanente</strong> situado en el extranjero cuando: <strong>(a) el EP esté sujeto a un impuesto análogo al IS</strong> con tipo nominal de <strong>al menos el 10%</strong>, y <strong>(b) las rentas procedan de actividades empresariales.</strong> La exención es íntegra (100%) si se cumplen estos requisitos. Las rentas negativas del EP <em>no son deducibles</em> (simetría).</div>
+    </div>
+    <div class="ratio" style="transition-delay:.45s">
+      <div class="ratio-lbl">Ratio legis — ¿Por qué el umbral del 10%?</div>
+      <div class="ratio-text">El umbral del <strong>10% de tributación mínima</strong> pretende evitar que la exención beneficie a EP situados en territorios de baja o nula tributación (paraísos fiscales o regímenes privilegiados). Si el EP no tributa en origen, la exención española equivaldría a una <em>doble no imposición</em>, contraria al principio de equidad fiscal internacional. Polonia (IS 19%) supera ampliamente el umbral.</div>
+    </div>
+    <div class="fml d3">EP Polonia: renta = 220.000 € · Tipo IS polaco = 19% &gt; 10% ✓ → exención íntegra</div>
+    <div class="fml d4 result-line neg">Ajuste = <strong>−220.000 € RC− ICNF</strong> · Diferencia permanente</div>
+  </div>
+  <div class="slide-timer" id="t22"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE K – PATENT BOX
+═══════════════════════════════════════════════════════ -->
+
+<!-- 23. K — NORMA -->
+<div class="slide" data-chapter="K · Patent Box — Norma" data-dur="17">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">K · Patent Box · Art. 23 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Reducción por cesión de activos intangibles (Patent Box)</div>
+    <div class="norma">
+      <div class="norma-art">Art. 23 LIS — Reducción de rentas procedentes de activos intangibles</div>
+      <div class="norma-text">Las rentas positivas procedentes de la cesión de <strong>patentes, modelos de utilidad, know-how, diseños industriales y programas de software</strong> se integrarán en la BI con una <strong>reducción del 60%</strong>. La reducción se aplica sobre la renta neta del activo multiplicada por el <strong>coeficiente Nexo</strong> (que mide qué proporción del I+D fue realizada directamente por la empresa o mediante contratos no vinculados).</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci gold">Nexo</span><span><strong>Coeficiente Nexo = (gastos I+D propios × 1,30) / gastos I+D totales.</strong> Máximo 1. Multiplicador 1,30 premia la subcontratación a no vinculadas.</span></li>
+      <li><span class="ci gold">60%</span><span><strong>Reducción del 60%</strong> sobre la renta neta × Nexo: solo tributa el 40% de esa renta (tipo efectivo: 25% × 40% = 10%).</span></li>
+      <li><span class="ci gold">Obj.</span><span>Incentivo para que las empresas desarrollen y exploten intangibles desde España. Inspirado en el <em>Modified Nexus Approach</em> de la OCDE (BEPS Acción 5).</span></li>
+    </ul>
+  </div>
+  <div class="slide-timer" id="t23"></div>
+</div>
+
+<!-- 24. K — RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="K · Patent Box — Aplicación" data-dur="13">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag ratio">Ratio + Aplicación</span><span class="s-chapter">K · Art. 23 LIS · Software TECNOFAB</span></div>
+  <div class="s-body">
+    <div class="ratio" style="transition-delay:.28s">
+      <div class="ratio-lbl">¿Por qué el coeficiente Nexo?</div>
+      <div class="ratio-text">El coeficiente Nexo garantiza que el beneficio fiscal esté <strong>vinculado a I+D real realizado en España</strong>. Sin este requisito, una empresa podría adquirir un intangible ya desarrollado por terceros y aplicar la reducción sobre sus rentas, aunque no haya contribuido al desarrollo. La OCDE, a través del enfoque Nexo, exige <em>sustancia económica</em>: solo se premia el I+D genuino.</div>
+    </div>
+    <div class="apply" style="transition-delay:.5s"><div class="apply-lbl">Datos · Software propio · I+D propios = I+D totales = 200.000 €</div></div>
+    <div class="fml d2">Nexo = min(1, (200.000 × 1,30) / 200.000) = min(1, 1,30) = <strong>1,00</strong></div>
+    <div class="fml d3">Renta neta cesión software = <strong>260.000 €</strong></div>
+    <div class="fml d4 result-line neg">Reducción = 60% × 1,00 × 260.000 = <strong>−156.000 €</strong> sobre la BI</div>
+    <div class="badge-row"><div class="badge"><div class="badge-let">K</div><div class="badge-sep"></div><div class="badge-info"><div class="badge-name">Patent Box — software</div><div class="badge-art">Art. 23 LIS · Reducción BI</div></div><div class="badge-amt neg">−156.000 €</div></div></div>
+  </div>
+  <div class="slide-timer" id="t24"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE L – RESERVA CAPITALIZACIÓN
+═══════════════════════════════════════════════════════ -->
+
+<!-- 25. L — NORMA + RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="L · Reserva capitalización" data-dur="17">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma + Ratio + Aplicación</span><span class="s-chapter">L · Reserva de capitalización · Art. 25 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Reserva de capitalización</div>
+    <div class="norma">
+      <div class="norma-art">Art. 25 LIS — Reducción por dotación a la reserva de capitalización</div>
+      <div class="norma-text">Los contribuyentes del IS que tributen al tipo general podrán reducir la BI en el <strong>15% del importe del incremento de fondos propios</strong> del ejercicio (diferencia entre FP al inicio y al final, excluyendo el resultado). Esta reducción no puede superar el <strong>10% de la BI positiva previa</strong> a esta reducción y a la compensación de BINs. El exceso podrá aplicarse en los <strong>2 ejercicios siguientes.</strong> Requisito: mantener la reserva <strong>5 años</strong> sin distribuirla.</div>
+    </div>
+    <div class="ratio" style="transition-delay:.45s">
+      <div class="ratio-lbl">Ratio legis — Capitalización vs. endeudamiento</div>
+      <div class="ratio-text">Históricamente, la normativa fiscal favorecía la financiación mediante deuda (los intereses eran deducibles) frente a los fondos propios (los dividendos no lo son). La reserva de capitalización corrige ese <strong>sesgo hacia el endeudamiento</strong>: premia a las empresas que se autofinancian reteniendo beneficios, mejorando su solvencia sin recurrir al crédito.</div>
+    </div>
+    <div class="fml d3">Reducción bruta = 15% × ΔFP (600.000) = <strong>90.000 €</strong> · Límite = 10% × BI previa (1.323.750) = 132.375 €</div>
+    <div class="fml d4 result-line neg">90.000 &lt; 132.375 → reducción íntegra = <strong>−90.000 €</strong></div>
+  </div>
+  <div class="slide-timer" id="t25"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE M – BINS
+═══════════════════════════════════════════════════════ -->
+
+<!-- 26. M — NORMA + RATIO + APLICACIÓN -->
+<div class="slide" data-chapter="M · Compensación BINs" data-dur="17">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma + Ratio + Aplicación</span><span class="s-chapter">M · Compensación BINs · Art. 26 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Compensación de Bases Imponibles Negativas</div>
+    <div class="norma">
+      <div class="norma-art">Art. 26 LIS — Compensación de BINs</div>
+      <div class="norma-text">Las bases imponibles negativas que hayan sido objeto de liquidación o autoliquidación podrán ser compensadas con las <strong>rentas positivas de los períodos impositivos siguientes</strong> con el límite del <strong>70% de la BI previa</strong> a esta compensación (para empresas con INCN ≥ 20M€). Siempre se podrá compensar hasta <strong>1.000.000 €</strong> (mínimo garantizado). <strong>Sin límite temporal</strong> para compensar.</div>
+    </div>
+    <div class="ratio" style="transition-delay:.45s">
+      <div class="ratio-lbl">Ratio legis — ¿Por qué el límite del 70%?</div>
+      <div class="ratio-text">El legislador quiere que, incluso en ejercicios con BINs acumuladas, las grandes empresas con beneficios <strong>siempre contribuyan mínimamente</strong> al sostenimiento del gasto público (al menos tributen sobre el 30% de su BI). La medida fue introducida en 2016 para garantizar ingresos al Estado en un contexto de elevadas BINs acumuladas durante la crisis. Las PYMES tienen el límite más reducido del 70%.</div>
+    </div>
+    <div class="fml d3">Límite = 70% × 1.233.750 (BI previa) = <strong>863.625 €</strong> · BINs = <strong>180.000 €</strong></div>
+    <div class="fml d4 result-line neg">180.000 &lt; 863.625 → compensación íntegra = <strong>−180.000 €</strong></div>
+  </div>
+  <div class="slide-timer" id="t26"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE N–Q – CUOTA Y DEDUCCIONES
+═══════════════════════════════════════════════════════ -->
+
+<!-- 27. N — CUOTA ÍNTEGRA -->
+<div class="slide" data-chapter="N · Cuota Íntegra" data-dur="13">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">N · Cuota Íntegra · Art. 29 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">De la Base Imponible a la Cuota Íntegra</div>
+    <div class="norma">
+      <div class="norma-art">Art. 29 LIS — Tipos de gravamen</div>
+      <div class="norma-text">El <strong>tipo general</strong> de gravamen es el <strong>25%</strong>. Existen tipos reducidos para PYMES (23% si INCN &lt;1M€), entidades de nueva creación (15% los dos primeros ejercicios con BI positiva), cooperativas fiscalmente protegidas (20%), etc. La cuota íntegra es el resultado de aplicar el tipo de gravamen a la base imponible.</div>
+    </div>
+    <div class="fml d1">Base Imponible Final = 1.053.750 €</div>
+    <div class="fml d2">Tipo de gravamen (art. 29 LIS) = <strong>25%</strong> (TECNOFAB: tipo general, INCN &gt;1M€)</div>
+    <div class="fml d3 result-line">Cuota Íntegra = 25% × 1.053.750 = <strong>263.437,50 €</strong></div>
+    <div class="chips" style="margin-top:12px">
+      <span class="chip gold">25% Tipo general</span>
+      <span class="chip blue">No es ERD (INCN 38M€)</span>
+      <span class="chip green">No es entidad de nueva creación</span>
+    </div>
+  </div>
+  <div class="slide-timer" id="t27"></div>
+</div>
+
+<!-- 28. O — DDI JURÍDICA -->
+<div class="slide" data-chapter="O · Deducción por doble imposición" data-dur="16">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">O · DDI Jurídica Internacional · Art. 31 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Deducción por doble imposición jurídica</div>
+    <div class="norma">
+      <div class="norma-art">Art. 31 LIS — Deducción por doble imposición jurídica internacional</div>
+      <div class="norma-text">Cuando en la BI se integren rentas obtenidas y gravadas en el extranjero, se deducirá de la cuota íntegra el <strong>menor de los dos importes siguientes:</strong> (a) el impuesto efectivamente satisfecho en el extranjero, y (b) el importe de la cuota íntegra que en España correspondería pagar por esas mismas rentas (tipo de gravamen español × renta integrada). La deducción elimina la doble imposición jurídica: el mismo contribuyente tributa dos veces por la misma renta.</div>
+    </div>
+    <div class="ratio" style="transition-delay:.45s">
+      <div class="ratio-lbl">DDI jurídica vs. Exención (art. 21 y 22 LIS)</div>
+      <div class="ratio-text">La <strong>exención</strong> (método de exención) elimina directamente la renta de la BI española: no se integra, no se tributa. La <strong>DDI jurídica</strong> (método de imputación) sí integra la renta en la BI española, pero deduce en cuota el impuesto pagado en el extranjero. Ambos métodos buscan el mismo fin (evitar la doble imposición) pero con mecanismos distintos. La DDI jurídica se aplica cuando no cabe la exención (ej.: solo el 5% del dividendo de BETA que no fue exento).</div>
+    </div>
+    <div class="fml d3">Renta integrada del dividendo BETA (5% no exento) = 5% × 60.000 = <strong>3.000 €</strong></div>
+    <div class="fml d4">DDI = min(impuesto extranjero 9.000; tipo ES × renta: 25%×3.000 = 750) = <strong>750 €</strong></div>
+  </div>
+  <div class="slide-timer" id="t28"></div>
+</div>
+
+<!-- 29. P — I+D+i -->
+<div class="slide" data-chapter="P · Deducción I+D+i" data-dur="17">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma jurídica</span><span class="s-chapter">P · Deducción I+D+i · Art. 35 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Deducción por actividades de I+D+i</div>
+    <div class="norma">
+      <div class="norma-art">Art. 35 LIS — Porcentajes y límites</div>
+      <div class="norma-text"><strong>I+D (art. 35.1):</strong> 25% de los gastos del ejercicio; si superan la media de los 2 anteriores, el exceso deduce al 42%. Personal investigador exclusivo: 17% adicional. Subcontratación a universidades/OPIs: 8% adicional. <strong>IT (art. 35.2):</strong> 12% de los gastos. <strong>Límite conjunto:</strong> la deducción no puede superar el <strong>50% de la cuota íntegra minorada</strong> (o el 25% si la deducción de I+D+IT no supera el 10% de la CI). El exceso se aplica en los 15 ejercicios siguientes (o se puede pedir el abono con descuento del 20% si han pasado un año sin poder aplicarla).</div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci blue">25%</span><span><strong>Deducción base:</strong> 25% sobre gastos corrientes de I+D.</span></li>
+      <li><span class="ci blue">42%</span><span><strong>Deducción incremento:</strong> 42% sobre la parte que supera la media de los 2 ejercicios anteriores.</span></li>
+      <li><span class="ci blue">8%</span><span><strong>Subcontratación</strong> a universidades u OPIs no vinculadas: 8% adicional sobre esos gastos.</span></li>
+      <li><span class="ci blue">50%</span><span><strong>Límite:</strong> 50% de la CI minorada en DDI, cuando la deducción I+D exceda el 10% de CI.</span></li>
+    </ul>
+  </div>
+  <div class="slide-timer" id="t29"></div>
+</div>
+
+<!-- 30. P — APLICACIÓN I+D -->
+<div class="slide" data-chapter="P · Deducción I+D+i — Aplicación" data-dur="14">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag apply">Aplicación práctica</span><span class="s-chapter">P · Art. 35 LIS · TECNOFAB I+D</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Cálculo de la deducción I+D con límite</div>
+    <div class="apply"><div class="apply-lbl">Gastos I+D: media años anteriores 200.000 € · gasto 2024: 280.000 € · subcontratación universidades: 50.000 €</div></div>
+    <div class="fml d1">25% × 200.000 (hasta media) = <strong>50.000 €</strong></div>
+    <div class="fml d2">42% × 80.000 (exceso sobre media) = <strong>33.600 €</strong></div>
+    <div class="fml d3">8% × 50.000 (subcontratación) = <strong>4.000 €</strong></div>
+    <div class="fml d4">17% × 80.000 (personal investigador exclusivo) = <strong>13.600 €</strong></div>
+    <div class="fml d5 result-line">Deducción bruta = <strong>101.200 €</strong></div>
+    <div class="s-p d3" style="font-size:12px;margin-top:6px;text-align:center">Límite 50% CI bonificada (I+D &gt;10% CI) = 50% × 263.437,50 = <strong>131.718,75 €</strong> · bruta (101.200) &lt; límite ✓ → se aplica íntegra</div>
+  </div>
+  <div class="slide-timer" id="t30"></div>
+</div>
+
+<!-- 31. Q — EMPLEO DISCAPACITADOS -->
+<div class="slide" data-chapter="Q · Empleo discapacitados" data-dur="14">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag theory">Norma + Aplicación</span><span class="s-chapter">Q · Empleo discapacitados · Art. 38 LIS</span></div>
+  <div class="s-body">
+    <div class="s-h2 center">Deducción por creación de empleo para discapacitados</div>
+    <div class="norma">
+      <div class="norma-art">Art. 38 LIS — Deducción por creación de empleo para trabajadores discapacitados</div>
+      <div class="norma-text">Se deducirá de la cuota íntegra la cantidad de <strong>9.000 €</strong> por cada persona/año de incremento del promedio de plantilla de trabajadores con discapacidad en grado igual o superior al <strong>33% e inferior al 65%</strong>, contratados con carácter indefinido. Si la discapacidad es igual o superior al <strong>65%</strong>, la deducción es de <strong>12.000 €</strong> por persona/año.</div>
+    </div>
+    <div class="ratio" style="transition-delay:.45s">
+      <div class="ratio-lbl">Objetivo de la norma</div>
+      <div class="ratio-text">Esta deducción es un instrumento de <strong>política social</strong> integrada en el sistema fiscal. Incentiva la contratación indefinida de colectivos con especial dificultad de inserción laboral, reduciendo la cuota directamente (y no la BI), lo que garantiza su efectividad independientemente del resultado del ejercicio. No está sujeta al límite conjunto del art. 39.1 LIS.</div>
+    </div>
+    <div class="fml d3">3 trabajadores discapacitados (grado 33-65%) × 9.000 € = <strong>27.000 €</strong> de deducción en cuota</div>
+  </div>
+  <div class="slide-timer" id="t31"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOQUE RESÚMENES
+═══════════════════════════════════════════════════════ -->
+
+<!-- 32. RESUMEN AJUSTES -->
+<div class="slide" data-chapter="Resumen ajustes A–J" data-dur="17">
+  <div class="bg-lines"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag summary">Resumen</span><span class="s-chapter">Tabla de ajustes extracontables</span></div>
+  <div class="s-body" style="padding:16px 32px">
+    <div class="s-h2 center" style="margin-bottom:10px">Ajustes A–J al Resultado Contable</div>
+    <table class="sum-tbl">
+      <tr><th>Aj.</th><th>Concepto</th><th>Artículo</th><th>Tipo diferencia</th><th>Importe</th></tr>
+      <tr><td>A</td><td>Exceso amortización maquinaria</td><td>Art. 12.1</td><td>Temporaria imponible</td><td class="r-pos">+40.000 €</td></tr>
+      <tr><td>B</td><td>Deducción especial leasing</td><td>Art. 12.3</td><td>Temporaria deducible</td><td class="r-neg">−10.000 €</td></tr>
+      <tr><td>C</td><td>Deterioro crédito vinculado (C)</td><td>Art. 13.1</td><td>Temporaria deducible</td><td class="r-pos">+30.000 €</td></tr>
+      <tr><td>D</td><td>Exceso provisión garantías</td><td>Art. 14.7</td><td>Temporaria deducible</td><td class="r-pos">+5.000 €</td></tr>
+      <tr><td>E</td><td>Gastos no deducibles (multa+donativo+FP)</td><td>Art. 15</td><td>Permanente</td><td class="r-pos">+42.000 €</td></tr>
+      <tr><td>F</td><td>GFN no deducibles</td><td>Art. 16</td><td>Temporaria imponible</td><td class="r-pos">+140.000 €</td></tr>
+      <tr><td>G</td><td>Operación vinculada — ingreso a Vm</td><td>Art. 18.1</td><td>Permanente</td><td class="r-pos">+60.000 €</td></tr>
+      <tr><td>H</td><td>Transmisión lucrativa solar</td><td>Art. 17.4</td><td>Permanente</td><td class="r-pos">+120.000 €</td></tr>
+      <tr><td>I</td><td>Exención dividendos 95% (ALFA + BETA)</td><td>Art. 21</td><td>Permanente</td><td class="r-neg">−147.250 €</td></tr>
+      <tr><td>J</td><td>Exención renta EP Polonia</td><td>Art. 22</td><td>Permanente</td><td class="r-neg">−220.000 €</td></tr>
+      <tr class="tot"><td>Σ</td><td colspan="3">Ajuste neto total sobre RC</td><td class="r-pos">+19.750 €</td></tr>
+    </table>
+  </div>
+  <div class="slide-timer" id="t32"></div>
+</div>
+
+<!-- 33. LIQUIDACIÓN COMPLETA -->
+<div class="slide" data-chapter="Liquidación completa" data-dur="17">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag summary">Liquidación</span><span class="s-chapter">Escala completa del IS · TECNOFAB 2024</span></div>
+  <div class="s-body" style="padding:16px 36px">
+    <div class="s-h2 center" style="margin-bottom:10px">De RC a Cuota Diferencial</div>
+    <table class="liq-tbl">
+      <tr><td class="op e">=</td><td>Resultado Contable 2024</td><td style="text-align:right;color:rgba(250,246,238,.8)">1.420.000 €</td></tr>
+      <tr><td class="op p">+</td><td>Ajustes positivos (A+C+D+E+F+G+H)</td><td style="text-align:right" class="r-pos">+397.000 €</td></tr>
+      <tr><td class="op m">−</td><td>Ajustes negativos (B+I+J)</td><td style="text-align:right" class="r-neg">−377.250 €</td></tr>
+      <tr class="sub"><td class="op e">=</td><td><strong>Base Imponible previa ajustes</strong></td><td style="text-align:right">1.439.750 €</td></tr>
+      <tr><td class="op m">−</td><td>Patent Box — K (art. 23 LIS)</td><td style="text-align:right" class="r-neg">−156.000 €</td></tr>
+      <tr><td class="op m">−</td><td>Reserva capitalización — L (art. 25 LIS)</td><td style="text-align:right" class="r-neg">−90.000 €</td></tr>
+      <tr><td class="op m">−</td><td>Compensación BINs — M (art. 26 LIS)</td><td style="text-align:right" class="r-neg">−180.000 €</td></tr>
+      <tr class="sub"><td class="op e">=</td><td><strong>Base Imponible Final</strong></td><td style="text-align:right">1.053.750 €</td></tr>
+      <tr><td class="op p">×</td><td>Tipo gravamen 25% (art. 29 LIS)</td><td></td></tr>
+      <tr class="sub"><td class="op e">=</td><td><strong>Cuota Íntegra — N</strong></td><td style="text-align:right">263.437,50 €</td></tr>
+      <tr><td class="op m">−</td><td>DDI jurídica — O (art. 31 LIS)</td><td style="text-align:right" class="r-neg">−750 €</td></tr>
+      <tr><td class="op m">−</td><td>Deducción I+D — P (art. 35 LIS)</td><td style="text-align:right" class="r-neg">−101.200 €</td></tr>
+      <tr><td class="op m">−</td><td>Empleo discapacitados — Q (art. 38 LIS)</td><td style="text-align:right" class="r-neg">−27.000 €</td></tr>
+      <tr class="total"><td class="op e">=</td><td><strong>Cuota Diferencial · A INGRESAR</strong></td><td style="text-align:right;color:var(--red);font-size:16px"><strong>134.487,50 €</strong></td></tr>
+    </table>
+  </div>
+  <div class="slide-timer" id="t33"></div>
+</div>
+
+<!-- 34. RESULTADO FINAL -->
+<div class="slide" data-chapter="Resultado final" data-dur="11">
+  <div class="bg-dots"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-topbar"><span class="s-tag result">Resultado</span><span class="s-chapter">IS 2024 · TECNOFAB S.A.</span></div>
+  <div class="s-body">
+    <div class="portada-wrap">
+      <div class="s-h2 center" style="margin-bottom:16px">TECNOFAB debe ingresar a Hacienda</div>
+      <div class="final-big">134.487,50 €</div>
+      <div class="s-sub center" style="margin-top:10px">Cuota diferencial · Impuesto sobre Sociedades 2024</div>
+      <div class="chips">
+        <span class="chip gold">BI Final: 1.053.750 €</span>
+        <span class="chip red">CI: 263.437,50 €</span>
+        <span class="chip green">Deducciones: −128.950 €</span>
+        <span class="chip blue">Tipo efectivo: ~9,5% s/ RC</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-timer" id="t34"></div>
+</div>
+
+<!-- 35. CIERRE -->
+<div class="slide" data-chapter="Fin" data-dur="10">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="s-body">
+    <div class="portada-wrap">
+      <div class="ornament">✦</div>
+      <div class="s-tag intro" style="align-self:center;margin-bottom:14px">OpenLexIura · Ley 27/2014 LIS</div>
+      <div class="s-h1" style="font-size:clamp(20px,2.8vw,34px)">Práctica completada</div>
+      <div class="divider"></div>
+      <ul class="clist" style="max-width:560px">
+        <li><span class="ci gold">10</span><span>Ajustes extracontables estudiados con fundamento jurídico y ratio legis</span></li>
+        <li><span class="ci gold">3</span><span>Reducciones de BI: Patent Box · Reserva capitalización · BINs</span></li>
+        <li><span class="ci gold">4</span><span>Deducciones en cuota: DDI · I+D+i · Empleo discapacitados · Cuota íntegra</span></li>
+        <li><span class="ci gold">2</span><span>Tipos de diferencias: temporarias (DTA/DTL) y permanentes</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-timer" id="t35"></div>
+</div>
+
+</div><!-- /stage -->
+
+<!-- CONTROLS -->
+<div class="controls">
+  <button class="ctrl big" id="play-btn" onclick="togglePlay()">⏸</button>
+  <button class="ctrl" onclick="prevSlide()">◀ Ant.</button>
+  <button class="ctrl" onclick="nextSlide()">Sig. ▶</button>
+  <div class="dot-wrap" id="dot-wrap"></div>
+  <div style="flex:1;min-width:8px"></div>
+  <button class="ctrl" id="spd-btn" onclick="cycleSpeed()" style="font-size:9.5px;padding:6px 10px;">1×</button>
+</div>
+<div class="info-bar" id="info-bar">Diapositiva 1</div>
 
 </div><!-- /player -->
 
 <script>
-const SLIDES = document.querySelectorAll('.slide');
+const SLIDES = Array.from(document.querySelectorAll('.slide'));
 const N = SLIDES.length;
-let current = 0;
-let playing = true;
-let timer = null;
-let speed = 1;
-const speeds = [0.5, 1, 1.5, 2];
-let speedIdx = 1;
+document.getElementById('tot-n').textContent = N;
+let cur = 0, playing = true, tmr = null;
+const SPEEDS = [0.5,1,1.5,2]; let si = 1;
 
-// Build dot track
-const dotTrack = document.getElementById('dot-track');
-for(let i=0;i<N;i++){
+// Build dots
+const dw = document.getElementById('dot-wrap');
+SLIDES.forEach((_,i)=>{
   const d = document.createElement('div');
-  d.className = 'dot' + (i===0?' curr':'');
+  d.className = 'dot';
   d.title = 'Diapositiva '+(i+1);
-  d.onclick = (()=>{const n=i;return()=>goTo(n);})();
-  dotTrack.appendChild(d);
-}
+  d.onclick = ()=>goTo(i);
+  dw.appendChild(d);
+});
 
-function getDur(idx){
-  return (parseInt(SLIDES[idx].dataset.dur)||12) * 1000 / speed;
-}
+function getDur(i){ return (parseInt(SLIDES[i].dataset.dur)||13)*1000/SPEEDS[si]; }
 
 function goTo(idx){
-  SLIDES[current].classList.remove('active');
-  // Reset timer bar
-  const oldTimer = document.getElementById('timer-'+(current));
-  if(oldTimer){oldTimer.style.transition='none';oldTimer.style.width='0%';}
-  current = (idx + N) % N;
-  SLIDES[current].classList.add('active');
-  updateDots();
-  updateInfo();
+  const bar = document.getElementById('t'+cur);
+  if(bar){bar.style.transition='none';bar.style.width='0';}
+  SLIDES[cur].classList.remove('active');
+  cur=(idx+N)%N;
+  SLIDES[cur].classList.add('active');
+  updateUI();
   if(playing) startTimer();
 }
 
 function startTimer(){
-  clearTimeout(timer);
-  const bar = document.getElementById('timer-'+current);
+  clearTimeout(tmr);
+  const bar = document.getElementById('t'+cur);
   if(bar){
-    bar.style.transition='none';bar.style.width='0%';
+    bar.style.transition='none';bar.style.width='0';
     requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      const dur = getDur(current);
-      bar.style.transition=`width ${dur}ms linear`;
+      const d=getDur(cur);
+      bar.style.transition=`width ${d}ms linear`;
       bar.style.width='100%';
     }));
   }
-  timer = setTimeout(()=>nextSlide(), getDur(current));
+  tmr = setTimeout(()=>nextSlide(), getDur(cur));
 }
 
 function stopTimer(){
-  clearTimeout(timer);
-  const bar = document.getElementById('timer-'+current);
-  if(bar){bar.style.transition='none';}
+  clearTimeout(tmr);
+  const bar = document.getElementById('t'+cur);
+  if(bar) bar.style.transition='none';
 }
 
 function togglePlay(){
   playing=!playing;
-  document.getElementById('play-btn').textContent = playing ? '⏸' : '▶';
+  document.getElementById('play-btn').textContent=playing?'⏸':'▶';
   if(playing) startTimer(); else stopTimer();
-  updateInfo();
+  updateUI();
 }
-
-function nextSlide(){ goTo((current+1)%N); }
-function prevSlide(){ goTo((current-1+N)%N); }
-
+function nextSlide(){ goTo((cur+1)%N); }
+function prevSlide(){ goTo((cur-1+N)%N); }
 function cycleSpeed(){
-  speedIdx=(speedIdx+1)%speeds.length;
-  speed=speeds[speedIdx];
-  document.getElementById('speed-btn').textContent=speed+'×';
+  si=(si+1)%SPEEDS.length;
+  document.getElementById('spd-btn').textContent=SPEEDS[si]+'×';
   if(playing){stopTimer();startTimer();}
 }
 
-function updateDots(){
-  const dots=dotTrack.querySelectorAll('.dot');
-  dots.forEach((d,i)=>{
-    d.className='dot'+(i<current?' seen':i===current?' curr':'');
-  });
-  document.getElementById('curr-n').textContent=current+1;
+function updateUI(){
+  document.getElementById('curr-n').textContent=cur+1;
+  document.getElementById('p-chapter').textContent=SLIDES[cur].dataset.chapter||'';
+  document.getElementById('info-bar').textContent=`Diapositiva ${cur+1} de ${N} · ${SLIDES[cur].dataset.chapter||''} · ${playing?'Reproduciendo':'Pausado'} · ${SPEEDS[si]}×`;
+  const dots=dw.querySelectorAll('.dot');
+  dots.forEach((d,i)=>{ d.className='dot'+(i<cur?' seen':i===cur?' curr':''); });
 }
 
-function updateInfo(){
-  const names=['Portada','Estructura IS','TECNOFAB S.A.','A · Amortización','B · Leasing','C · Deterioro créditos','D · Provisión garantías','E · Gastos no deducibles','F · GFN','G · Op. vinculada','H · Transmisión lucrativa','I · Exención dividendos','J · EP Polonia','K · Patent Box','L · Reserva capitaliz.','M · Compensación BINs','N-Q · Cuota y deducciones','Resumen ajustes A-J','Liquidación completa','Resultado final','Cierre'];
-  document.getElementById('bottom-info').textContent = `Diapositiva ${current+1} de ${N} · ${names[current]||''} · ${playing?'Reproduciendo':'Pausado'} · ${speed}×`;
-}
-
-// keyboard
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown') nextSlide();
   else if(e.key==='ArrowLeft'||e.key==='ArrowUp') prevSlide();
@@ -635,8 +1110,8 @@ document.addEventListener('keydown',e=>{
 });
 
 // init
-updateDots();
-updateInfo();
+SLIDES[0].classList.add('active');
+updateUI();
 startTimer();
 </script>
 </body>
