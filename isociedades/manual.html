@@ -421,7 +421,7 @@ strong { font-weight: 600; color: var(--ink); }
   font-size: 15px;
 }
 
-.solucion strong {
+.solucion > strong {
   display: block;
   font-family: 'Cinzel', serif;
   font-size: 10px;
@@ -429,6 +429,12 @@ strong { font-weight: 600; color: var(--ink); }
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.solucion > strong + strong,
+.solucion > p + strong {
+  margin-top: 14px;
 }
 
 /* ── TABLES ── */
@@ -810,6 +816,110 @@ code {
     </ul>
   </div>
 
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo ERD — Determinación anual del estatus (caso estándar)</div>
+    <div class="ejemplo-body">
+      <p>Recuérdese que la cifra de negocios de referencia para un período impositivo es la del <em>período impositivo inmediatamente anterior</em>. Así, para calificar el ejercicio 2027 se mira la cifra de 2026:</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead>
+            <tr><th>Año</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cifra de negocios (€)</td><td>8.000.000</td><td>10.500.000</td><td>11.000.000</td><td>9.500.000</td><td>10.300.000</td></tr>
+            <tr><td>Calificación</td><td><strong>ERD</strong></td><td><strong>ERD</strong></td><td><strong>No ERD</strong></td><td><strong>No ERD</strong></td><td><strong>ERD</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:8px; font-style:italic; font-size:14.5px;">En 2027 la cifra de referencia es la de 2026 (8.000.000 &lt; 10.000.000 → ERD). En 2028 la cifra de referencia es la de 2027 (10.500.000 &gt; 10.000.000 → No ERD). En 2030 la cifra de referencia es la de 2029 (9.500.000 &lt; 10.000.000 → ERD).</p>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo ERD — Elevación al año (período anterior inferior a 12 meses)</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad se constituye el <strong>1 de octubre de 2026</strong> y sus períodos impositivos siguen el año natural. La cifra de negocios obtenida desde el 1/10/2026 hasta el 31/12/2026 fue de <strong>3.000.000 €</strong>.</p>
+      <div class="solucion">
+        <strong>Elevación al año</strong>
+        <p>Cifra de referencia 2026 = 3.000.000 × 365/92 = <strong>11.902.173,91 €</strong></p>
+        <p>Como esa cifra elevada supera los 10.000.000 €, la sociedad <strong>no</strong> tendrá la condición de ERD en 2027.</p>
+      </div>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead>
+            <tr><th>Año</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cifra de negocios (€)</td><td>3.000.000 <em>(real)</em></td><td>9.500.000</td><td>11.000.000</td><td>9.500.000</td><td>10.300.000</td></tr>
+            <tr><td>Calificación</td><td><strong>No ERD</strong></td><td><strong>No ERD</strong></td><td><strong>ERD</strong></td><td><strong>No ERD</strong></td><td><strong>ERD</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:8px; font-style:italic; font-size:14.5px;">Para 2027 se usa la cifra elevada de 2026 (11.902.173,91 € &gt; 10M → No ERD). Para 2028 se usa la cifra real de 2027 (9.500.000 &lt; 10M → ERD).</p>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo ERD — Regla de prórroga (art. 101.3 LIS)</div>
+    <div class="ejemplo-body">
+      <p>Cuando una sociedad supera por primera vez los 10.000.000 €, pero venía siendo ERD durante ese ejercicio <strong>y los dos anteriores</strong>, puede seguir aplicando los incentivos de ERD durante los <strong>tres períodos impositivos siguientes</strong> (prórroga).</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead>
+            <tr><th>Año</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cifra de negocios (€)</td><td>7.000.000</td><td>8.000.000</td><td>9.000.000</td><td>10.500.000</td><td>11.300.000</td></tr>
+            <tr><td>Calificación</td><td>ERD</td><td>ERD</td><td>ERD</td><td>ERD</td><td><strong>ERD (prórroga)</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tabla-wrap" style="margin-top:12px;">
+        <table>
+          <thead>
+            <tr><th>Año</th><th>2031</th><th>2032</th><th>2033</th><th>2034</th><th>2035</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cifra de negocios (€)</td><td>12.000.000</td><td>13.000.000</td><td>11.000.000</td><td>9.500.000</td><td>10.800.000</td></tr>
+            <tr><td>Calificación</td><td><strong>ERD (prórroga)</strong></td><td><strong>ERD (prórroga)</strong></td><td><strong>No ERD</strong></td><td><strong>No ERD</strong></td><td><strong>ERD</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:8px; font-style:italic; font-size:14.5px;">La prórroga de 2029 cubre los ejercicios 2030, 2031 y 2032 (tres períodos). A partir de 2033, la cifra de 2032 supera los 10M y no hay nueva prórroga, por lo que la sociedad pierde el estatus de ERD. Lo recupera en 2035 porque la cifra de 2034 vuelve a ser inferior a 10M.</p>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo ERD — Regla de prórroga tras fusión de sociedades</div>
+    <div class="ejemplo-body">
+      <p>Cuando la superación de los 10.000.000 € se deba a una <strong>operación de reestructuración empresarial acogida al régimen especial de la LIS</strong> (p. ej., fusión), la sociedad resultante podrá aplicar la prórroga siempre que todas las entidades partícipes fueran ERD en el período de la operación <strong>y en los dos anteriores</strong>. <em>Ejemplo: fusión a 31 de diciembre de 2028.</em></p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead>
+            <tr><th></th><th>2026</th><th>2027</th><th>2028</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sociedad A</td><td>3.000.000</td><td>4.000.000</td><td>5.000.000</td></tr>
+            <tr><td>Sociedad B</td><td>4.000.000</td><td>5.000.000</td><td>6.000.000</td></tr>
+            <tr><td>Calificación</td><td>A, B son ERD</td><td>A, B son ERD</td><td>A, B son ERD → <strong>FUSIÓN</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tabla-wrap" style="margin-top:12px;">
+        <table>
+          <thead>
+            <tr><th></th><th>2029</th><th>2030</th><th>2031</th><th>2032</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sociedad AB</td><td>12.000.000</td><td>13.000.000</td><td>15.000.000</td><td>16.000.000</td></tr>
+            <tr><td>Calificación</td><td><strong>ERD (prórroga)</strong></td><td><strong>ERD (prórroga)</strong></td><td><strong>ERD (prórroga)</strong></td><td><strong>No ERD</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:8px; font-style:italic; font-size:14.5px;">La sociedad resultante de la fusión (AB) puede aplicar los incentivos de ERD en los tres períodos siguientes a la fusión (2029, 2030 y 2031), aunque su cifra de negocios supere los 10M en todos ellos. En 2032 agota la prórroga y pierde el estatus.</p>
+    </div>
+  </div>
+
   <!-- ═══════════════════════════════════════ -->
   <h2 id="s3">3. Hecho Imponible</h2>
 
@@ -946,32 +1056,41 @@ code {
   <p><strong>1) Gastos e ingresos contabilizados erróneamente.</strong> El artículo 19.3.1º de la LIS dispone cómo deben imputarse fiscalmente los ingresos y gastos que son contabilizados erróneamente en un ejercicio contable diferente del ejercicio en que se devengan. En los supuestos en los que se <em>anticipen gastos o se retrasen ingresos</em> —lo que conlleva que el error siempre perjudique a la Hacienda Pública, ya que se difiere el pago del impuesto— dichos gastos e ingresos deben imputarse fiscalmente en el período impositivo en que se devengaron, debiéndose realizar los ajustes correspondientes.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 1 — Contabilización errónea de ingresos</div>
+    <div class="ejemplo-header">Ejemplo Nº 1 — Contabilización errónea de ingresos (dos escenarios)</div>
     <div class="ejemplo-body">
-      <p>Una sociedad realiza una venta por 1.000 euros durante diciembre de 2024, pero la contabiliza en enero de 2025. Se ha cometido un error contable, ya que se ha registrado el ingreso en un ejercicio posterior (2025) al ejercicio del devengo de la operación (2024).</p>
+      <p>Una sociedad liquida el período impositivo <strong>2026</strong>. Se conocen dos situaciones:</p>
+      <ul>
+        <li>Un ingreso de <strong>2.000 €</strong> se devengó en 2026 pero se contabilizó en <strong>2025</strong> (anticipación del ingreso).</li>
+        <li>Otro ingreso de <strong>4.000 €</strong> se devengó también en 2026 pero se contabilizó en <strong>2027</strong> (retraso del ingreso).</li>
+      </ul>
       <div class="solucion">
-        <strong>Solución</strong>
-        <p>En consecuencia, hay que imputar el ingreso en el período impositivo de su devengo, lo que obliga a realizar:</p>
+        <strong>Análisis</strong>
+        <p>✓ La contabilización <em>anticipada</em> del ingreso de 2.000 € en 2025 <strong>no perjudica</strong> a la Hacienda Pública (el impuesto se adelanta). No se hacen ajustes.</p>
+        <p>✓ La contabilización <em>retrasada</em> del ingreso de 4.000 € en 2027 <strong>sí perjudica</strong> a la Hacienda Pública (el impuesto se difiere). Se deben hacer los siguientes ajustes:</p>
         <ul>
-          <li>Un ajuste positivo <code>RC + 1.000 IFNC</code> en el período impositivo <strong>2024</strong></li>
-          <li>Un ajuste negativo <code>RC – 1.000 ICNF</code> en el período impositivo <strong>2025</strong></li>
+          <li>Período <strong>2026</strong>: <code>RC + 4.000 IFNC</code> (el ingreso debe tributar en el año de su devengo)</li>
+          <li>Período <strong>2027</strong>: <code>RC – 4.000 ICNF</code> (reversión del ajuste anterior)</li>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 2 — Anticipo de gastos</div>
+    <div class="ejemplo-header">Ejemplo Nº 2 — Contabilización errónea de gastos (dos escenarios)</div>
     <div class="ejemplo-body">
-      <p>Una sociedad incurre en un gasto de 1.000 euros por un servicio recibido durante diciembre de 2024, pero lo contabiliza en enero de 2025. Se ha cometido un error contable, ya que se ha registrado el gasto en un ejercicio posterior (2025) al ejercicio del devengo del servicio (2024).</p>
+      <p>Una sociedad liquida el período impositivo <strong>2026</strong>. Se conocen dos situaciones:</p>
+      <ul>
+        <li>Un gasto de <strong>3.000 €</strong> se devengó en 2026 pero se contabilizó en <strong>2025</strong> (anticipación del gasto).</li>
+        <li>Otro gasto de <strong>5.000 €</strong> se devengó también en 2026 pero se contabilizó en <strong>2027</strong> (retraso del gasto).</li>
+      </ul>
       <div class="solucion">
-        <strong>Solución</strong>
-        <p>Sin embargo, la norma fiscal entiende que en este caso, en el que en realidad se anticipa el pago del IS, el gasto debe imputarse fiscalmente en el mismo ejercicio en que se ha contabilizado erróneamente, por lo que <strong>no habrá que hacer ajuste fiscal</strong>.</p>
-        <p>Excepcionalmente, si en el período impositivo 2025 el tipo de gravamen fuese superior al de 2024, entonces sí habría que efectuar:</p>
+        <strong>Análisis</strong>
+        <p>✓ La contabilización <em>anticipada</em> del gasto de 3.000 € en 2025 <strong>sí perjudica</strong> a la Hacienda Pública (el gasto se deduce antes de tiempo). Se deben hacer los siguientes ajustes:</p>
         <ul>
-          <li>Ajuste negativo <code>RC – 1.000 GFNC</code> en el período impositivo 2024</li>
-          <li>Ajuste positivo <code>RC + 1.000 GCNF</code> en el período impositivo 2025</li>
+          <li>Período <strong>2025</strong>: <code>RC + 3.000 GCNF</code> (el gasto no es deducible en 2025, ejercicio anterior al devengo)</li>
+          <li>Período <strong>2026</strong>: <code>RC – 3.000 GFNC</code> (el gasto es deducible en 2026, año del devengo)</li>
         </ul>
+        <p>✓ La contabilización <em>retrasada</em> del gasto de 5.000 € en 2027 <strong>no perjudica</strong> a la Hacienda Pública (el gasto se deduce más tarde de lo que correspondería). No se hacen ajustes.</p>
       </div>
     </div>
   </div>
@@ -981,30 +1100,122 @@ code {
   <p><strong>3) Operaciones a plazos.</strong> En las operaciones en las que el precio se cobra aplazado en uno o varios pagos, siempre que entre el momento del devengo y el vencimiento del último o único plazo haya transcurrido más de un año, el contribuyente podrá optar por imputar la renta generada proporcionalmente a medida que efectúe el cobro del precio, o bien podrá hacerlo de acuerdo con la regla general del devengo.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 3 — Operación a plazos</div>
+    <div class="ejemplo-header">Ejemplo Nº 3 — Operación a plazos (criterio de proporción al cobro)</div>
     <div class="ejemplo-body">
-      <p>Una sociedad vende en 2024 un bien del activo fijo por 25.000 euros siendo su valor contable de 13.000 euros. Se cobra 10.000 euros (40% del precio) en el momento de la entrega en 2024 y se pactan cobros de 5.000 euros anuales (20% del precio) durante los tres años siguientes.</p>
-      <p>La renta contable (IC) y fiscal (IF) generada por la operación = 25.000 – 13.000 = 12.000 €</p>
+      <p>La sociedad vende en <strong>2026</strong> un bien por <strong>6.000 €</strong> (valor contable = 4.000 €). Se pacta que el comprador pague el precio en los siguientes plazos: <strong>10%</strong> en 2026, <strong>20%</strong> en 2027, <strong>30%</strong> en 2028 y <strong>40%</strong> en 2029. Como entre el devengo (2026) y el último plazo (2029) transcurren más de un año, se trata de una operación a plazos.</p>
+      <p>Renta obtenida: 6.000 – 4.000 = <strong>2.000 € (IF = IC)</strong></p>
       <div class="solucion">
-        <strong>Solución — Criterio de proporción al cobro del precio</strong>
+        <strong>Opción A — Criterio general del devengo</strong>
+        <p>Los 2.000 € son renta fiscal y renta contable en 2026. No hay ajustes.</p>
+        <strong>Opción B — Renta proporcionalmente al cobro del precio</strong>
         <div class="tabla-wrap" style="margin-top:10px;">
           <table>
-            <thead><tr><th>Período</th><th>Renta contable (devengo)</th><th>Renta fiscal (proporción al cobro)</th><th>Ajustes</th></tr></thead>
+            <thead><tr><th>Año</th><th>IC (renta contable)</th><th>IF (renta fiscal)</th><th>Ajustes</th></tr></thead>
             <tbody>
-              <tr><td>2024</td><td>12.000 €</td><td>40% × 12.000 = 4.800 €</td><td><code>RC – 7.200 ICNF</code></td></tr>
-              <tr><td>2025</td><td>0 €</td><td>20% × 12.000 = 2.400 €</td><td><code>RC + 2.400 IFNC</code></td></tr>
-              <tr><td>2026</td><td>0 €</td><td>20% × 12.000 = 2.400 €</td><td><code>RC + 2.400 IFNC</code></td></tr>
-              <tr><td>2027</td><td>0 €</td><td>20% × 12.000 = 2.400 €</td><td><code>RC + 2.400 IFNC</code></td></tr>
+              <tr><td>2026</td><td>2.000</td><td>10% × 2.000 = <strong>200</strong></td><td><code>RC – 1.800 ICNF</code></td></tr>
+              <tr><td>2027</td><td>—</td><td>20% × 2.000 = <strong>400</strong></td><td><code>RC + 400 IFNC</code></td></tr>
+              <tr><td>2028</td><td>—</td><td>30% × 2.000 = <strong>600</strong></td><td><code>RC + 600 IFNC</code></td></tr>
+              <tr><td>2029</td><td>—</td><td>40% × 2.000 = <strong>800</strong></td><td><code>RC + 800 IFNC</code></td></tr>
             </tbody>
+            <tfoot><tr><td><strong>Total</strong></td><td><strong>2.000</strong></td><td><strong>2.000</strong></td><td><em>Suma = 0</em></td></tr></tfoot>
           </table>
         </div>
+        <p style="margin-top:8px; font-style:italic; font-size:14.5px;">El ajuste negativo de 2026 se va revirtiendo progresivamente en los años de cobro posteriores. La suma de todos los ajustes es siempre cero.</p>
       </div>
     </div>
   </div>
 
   <p><strong>4) Rentas negativas por transmisiones intragrupo.</strong> Las rentas negativas derivadas de la transmisión de elementos de inmovilizado material, inversiones inmobiliarias, inmovilizado intangible y valores representativos de deuda, cuando las sociedades transmitente y adquirente pertenezcan al mismo grupo de sociedades según el artículo 42 del Código de Comercio, se imputarán en el período impositivo en que dichos elementos patrimoniales sean dados de baja en el balance, sean transmitidos a terceros ajenos al referido grupo de sociedades, o bien en el período impositivo en que dichas entidades dejen de formar parte del mismo grupo.</p>
 
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 3b — Renta negativa intragrupo: bien no amortizable (terreno)</div>
+    <div class="ejemplo-body">
+      <p>La sociedad <strong>A</strong> vende en <strong>2026</strong> un terreno (no amortizable) a la sociedad <strong>B</strong> del mismo grupo mercantil por <strong>6.000 €</strong>, siendo su valor contable (VC) = <strong>10.000 €</strong>. En 2030, la sociedad B transmite dicho terreno a la sociedad X, ajena al grupo.</p>
+      <div class="solucion">
+        <p><strong>2026</strong> — Venta A → B (mismo grupo): La sociedad A tiene una pérdida contable GC = 6.000 – 10.000 = –4.000 €. Sin embargo, esta pérdida <em>no es fiscalmente deducible</em> en 2026 porque el adquirente pertenece al mismo grupo. GF = 0.</p>
+        <ul>
+          <li>Ajuste 2026: <code>RC + 4.000 GCNF</code></li>
+        </ul>
+        <p><strong>2030</strong> — Venta B → X (tercero ajeno al grupo): La sociedad A puede incorporar la pérdida diferida.</p>
+        <ul>
+          <li>Ajuste 2030: <code>RC – 4.000 GFNC</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 3c — Renta negativa intragrupo: bien amortizable (vehículo)</div>
+    <div class="ejemplo-body">
+      <p>La sociedad <strong>A</strong> vende a finales de <strong>2026</strong> un vehículo (amortizable) a la sociedad <strong>B</strong> del mismo grupo por <strong>6.000 €</strong>, siendo su VC = <strong>10.000 €</strong>. La sociedad B lo amortiza durante los años 2027 a 2030 al <strong>25%</strong> de su valor de adquisición (6.000 €). La pérdida contable de A = GC = –4.000 €.</p>
+      <div class="solucion">
+        <div class="tabla-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>Año</th><th>GC (A)</th><th>GF (A)</th><th>Ajustes (A)</th></tr></thead>
+            <tbody>
+              <tr><td>2026</td><td>4.000</td><td>—</td><td><code>RC + 4.000 GCNF</code></td></tr>
+              <tr><td>2027</td><td>—</td><td>25% × 4.000 = 1.000</td><td><code>RC – 1.000 GFNC</code></td></tr>
+              <tr><td>2028</td><td>—</td><td>25% × 4.000 = 1.000</td><td><code>RC – 1.000 GFNC</code></td></tr>
+              <tr><td>2029</td><td>—</td><td>25% × 4.000 = 1.000</td><td><code>RC – 1.000 GFNC</code></td></tr>
+              <tr><td>2030</td><td>—</td><td>25% × 4.000 = 1.000</td><td><code>RC – 1.000 GFNC</code></td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2"><strong>Total</strong></td><td colspan="2"><em>Suma = 0</em></td></tr></tfoot>
+          </table>
+        </div>
+        <p style="margin-top:8px; font-style:italic; font-size:14.5px;">En los bienes amortizables, la pérdida diferida se imputa en la proporción en que la sociedad adquirente (B) amortiza el bien, de modo que la deducción de A se distribuye a lo largo de la vida útil del activo.</p>
+      </div>
+    </div>
+  </div>
+
   <p><strong>5) Quitas o esperas.</strong> El ingreso derivado de las quitas o esperas sobre deudas del contribuyente en el marco de un proceso concursal se imputará fiscalmente según se registren contablemente los gastos financieros derivados de la misma deuda y hasta el límite del ingreso. No obstante, cuando el ingreso derivado de la quita o espera fuera superior al gasto financiero pendiente de registrar, su imputación fiscal se realizará proporcionalmente a los gastos financieros registrados en cada período impositivo respecto del total de gastos financieros pendientes de registrar.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 3d — Quitas y esperas: ingreso ≤ gastos financieros (quita del 20%)</div>
+    <div class="ejemplo-body">
+      <p>La sociedad <strong>A</strong> tiene una deuda inicial de <strong>40.000 €</strong>. Tras un proceso concursal le conceden una <strong>quita del 20%</strong> (= 8.000 €) a finales de <strong>2026</strong>. Se pacta que el resto de la deuda devengará un interés del <strong>10% nominal</strong> durante los tres años siguientes. Al final del tercer año se debe cancelar la deuda.</p>
+      <div class="solucion">
+        <p>Ingreso de la quita = <strong>8.000 €</strong> | Deuda pendiente tras la quita = 40.000 – 8.000 = 32.000 € | Gastos financieros anuales 2027-2029 = 10% × 32.000 = <strong>3.200 €</strong></p>
+        <p>Como el ingreso (8.000) ≤ gastos financieros totales (3.200 × 3 = 9.600), se aplica la <em>regla general</em>: el ingreso se imputa conforme se van registrando los gastos financieros.</p>
+        <div class="tabla-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>Año</th><th>IC</th><th>IF</th><th>Ajustes</th></tr></thead>
+            <tbody>
+              <tr><td>2026</td><td>8.000</td><td>—</td><td><code>RC – 8.000 ICNF</code></td></tr>
+              <tr><td>2027</td><td>—</td><td>3.200</td><td><code>RC + 3.200 IFNC</code></td></tr>
+              <tr><td>2028</td><td>—</td><td>3.200</td><td><code>RC + 3.200 IFNC</code></td></tr>
+              <tr><td>2029</td><td>—</td><td>1.600</td><td><code>RC + 1.600 IFNC</code></td></tr>
+            </tbody>
+            <tfoot><tr><td><strong>Total</strong></td><td><strong>8.000</strong></td><td><strong>8.000</strong></td><td><em>Suma = 0</em></td></tr></tfoot>
+          </table>
+        </div>
+        <p style="margin-top:8px; font-style:italic; font-size:14.5px;">El ingreso de 8.000 € se "absorbe" con los primeros gastos financieros (3.200 + 3.200 = 6.400 en 2027-2028) y el resto en 2029 (1.600), hasta agotar el ingreso diferido.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 3e — Quitas y esperas: ingreso > gastos financieros (quita del 50%)</div>
+    <div class="ejemplo-body">
+      <p>La sociedad <strong>A</strong> tiene una deuda inicial de <strong>40.000 €</strong>. Tras un proceso concursal le conceden una <strong>quita del 50%</strong> (= 20.000 €) a finales de <strong>2026</strong>. Se pacta que el resto de la deuda devengará un interés del <strong>10% nominal</strong> durante tres años y al final del tercer año se cancela la deuda.</p>
+      <div class="solucion">
+        <p>Ingreso de la quita = <strong>20.000 €</strong> | Deuda pendiente = 40.000 – 20.000 = 20.000 € | Gastos financieros anuales = 10% × 20.000 = <strong>2.000 €</strong> | Total gastos financieros = 2.000 × 3 = <strong>6.000 €</strong></p>
+        <p>Como el ingreso (20.000) &gt; gastos financieros totales (6.000), se aplica la <em>regla de proporcionalidad</em>: el ingreso se distribuye en proporción a los gastos financieros de cada año.</p>
+        <div class="tabla-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>Año</th><th>IC</th><th>IF</th><th>Ajustes</th></tr></thead>
+            <tbody>
+              <tr><td>2026</td><td>20.000</td><td>—</td><td><code>RC – 20.000 ICNF</code></td></tr>
+              <tr><td>2027</td><td>—</td><td>2.000/6.000 × 20.000 = <strong>6.666,67</strong></td><td><code>RC + 6.666,67 IFNC</code></td></tr>
+              <tr><td>2028</td><td>—</td><td>2.000/6.000 × 20.000 = <strong>6.666,67</strong></td><td><code>RC + 6.666,67 IFNC</code></td></tr>
+              <tr><td>2029</td><td>—</td><td>2.000/6.000 × 20.000 = <strong>6.666,67</strong></td><td><code>RC + 6.666,67 IFNC</code></td></tr>
+            </tbody>
+            <tfoot><tr><td><strong>Total</strong></td><td><strong>20.000</strong></td><td><strong>20.000</strong></td><td><em>Suma = 0</em></td></tr></tfoot>
+          </table>
+        </div>
+        <p style="margin-top:8px; font-style:italic; font-size:14.5px;">Al ser el ingreso mayor que los gastos financieros, la regla de proporcionalidad obliga a repartir el ingreso de forma uniforme entre los tres ejercicios, con independencia de cuánto represente el gasto financiero de cada año.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════ -->
   <h3 id="s5-3">5.3 Amortizaciones: requisitos y sistemas</h3>
@@ -1015,78 +1226,104 @@ code {
   <p>El artículo 12.1.a) de la LIS contiene una tabla que recoge las categorías de bienes de inmovilizado utilizados habitualmente por las empresas y asigna a cada categoría un <strong>coeficiente lineal máximo (CM)</strong> y un <strong>período de años máximo de amortización (PM)</strong>. A su vez, dichos coeficientes y períodos máximos nos permiten calcular un coeficiente lineal mínimo (100/PM) y un período mínimo de años de amortización (100/CM). De este modo, la amortización será correcta fiscalmente cuando la dotación contabilizada durante el ejercicio se encuentre dentro del intervalo comprendido entre el coeficiente lineal máximo y el coeficiente lineal mínimo.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 4 — Sistema de coeficientes oficiales</div>
+    <div class="ejemplo-header">Ejemplo Nº 4 — Sistema de coeficientes oficiales (amortización correcta)</div>
     <div class="ejemplo-body">
-      <p>Una sociedad adquiere el 1 de enero de 2024 un bien del inmovilizado material por importe de 1.000 euros que tiene asignado en la tabla oficial un CM = 25% y un PM = 8 años.</p>
-      <div class="solucion">
-        <strong>Solución</strong>
-        <p>Cm = 100/PM = 100/8 = 12,5% &nbsp;&nbsp;|&nbsp;&nbsp; Pm = 100/CM = 100/25 = 4 años</p>
-        <p>Será fiscalmente deducible la amortización contabilizada entre el <strong>[25% - 12,5%]</strong>:</p>
-        <p>1.000 € → gasto anual entre <strong>[250 € - 125 €]</strong></p>
+      <p>Adquisición el 1/1/2026 de un bien por <strong>8.000 €</strong>. CM = 20%, PM = 10 años.</p>
+      <p>Cm = 100/10 = <strong>10%</strong> &nbsp;|&nbsp; Pm = 100/20 = <strong>5 años</strong><br>
+      Amortización correcta: entre el 20% y el 10% → entre <strong>1.600 €</strong> y <strong>800 €</strong> anuales.<br>
+      Período de tiempo admisible: entre 5 y 10 años.</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Año</th><th>CM = 20% (máx.)</th><th>C = 15% (intermedio)</th><th>Cm = 10% (mín.)</th></tr></thead>
+          <tbody>
+            <tr><td>2026</td><td>1.600</td><td>1.200</td><td>800</td></tr>
+            <tr><td>2027</td><td>1.600</td><td>1.200</td><td>800</td></tr>
+            <tr><td>2028</td><td>1.600</td><td>1.200</td><td>800</td></tr>
+            <tr><td>2029</td><td>1.600</td><td>1.200</td><td>800</td></tr>
+            <tr><td>2030</td><td>1.600</td><td>1.200</td><td>800</td></tr>
+            <tr><td>2031</td><td>—</td><td>1.200</td><td>800</td></tr>
+            <tr><td>2032</td><td>—</td><td>600</td><td>800</td></tr>
+            <tr><td>2033</td><td>—</td><td>—</td><td>800</td></tr>
+            <tr><td>2034</td><td>—</td><td>—</td><td>800</td></tr>
+            <tr><td>2035</td><td>—</td><td>—</td><td>800</td></tr>
+          </tbody>
+          <tfoot><tr><td><strong>Total</strong></td><td><strong>8.000</strong></td><td><strong>8.000</strong></td><td><strong>8.000</strong></td></tr></tfoot>
+        </table>
       </div>
+      <p style="margin-top:8px; font-style:italic; font-size:14.5px;">Las tres columnas representan distintas opciones de amortización correcta: la columna CM agota la vida útil en 5 años; la columna Cm la distribuye en 10 años.</p>
     </div>
   </div>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 5 — Ajuste temporal por exceso de amortización</div>
+    <div class="ejemplo-header">Ejemplo Nº 5 — Amortización incorrecta por exceder el CM</div>
     <div class="ejemplo-body">
-      <p>Siguiendo con los datos del ejemplo nº 4 (intervalo [250 € - 125 €]), pensemos que la sociedad contabiliza las siguientes amortizaciones:</p>
+      <p>Mismos datos (bien 8.000 €, CM = 20%, Pm = 5 años, Pm = 10 años). La sociedad contabiliza las siguientes amortizaciones, que en 2027 superan el máximo de 1.600 €:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
         <table>
-          <thead><tr><th>Período</th><th>Gasto contabilizado</th><th>Gasto deducible</th><th>Ajuste</th></tr></thead>
+          <thead><tr><th>Año</th><th>GC (Gasto contable)</th><th>GF (Gasto fiscal)</th><th>Ajuste</th></tr></thead>
           <tbody>
-            <tr><td>2024</td><td>125 €</td><td>125 €</td><td>—</td></tr>
-            <tr><td>2025</td><td>350 €</td><td>250 €</td><td><code>RC + 100 GCNF</code></td></tr>
-            <tr><td>2026</td><td>200 €</td><td>250 €</td><td><code>RC – 50 GFNC</code></td></tr>
-            <tr><td>2027</td><td>200 €</td><td>250 €</td><td><code>RC – 50 GFNC</code></td></tr>
+            <tr><td>2026</td><td>800</td><td>800</td><td>—</td></tr>
+            <tr><td>2027</td><td>2.000</td><td>1.600</td><td><code>RC + 400 GCNF</code></td></tr>
+            <tr><td>2028</td><td>1.500</td><td>1.600</td><td><code>RC – 100 GFNC</code></td></tr>
+            <tr><td>2029</td><td>1.500</td><td>1.600</td><td><code>RC – 100 GFNC</code></td></tr>
+            <tr><td>2030</td><td>1.400</td><td>1.600</td><td><code>RC – 200 GFNC</code></td></tr>
+            <tr><td>2031</td><td>800</td><td>800</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
+      <div class="nota nota-warning" style="margin-top:10px;">No pueden anticiparse gastos: el exceso contabilizado en 2027 (400 €) es un gasto no fiscalmente computable en ese período, que se recupera en ejercicios posteriores cuando el gasto contable queda por debajo del coeficiente máximo.</div>
     </div>
   </div>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 6 — Déficit de amortización y recuperación</div>
+    <div class="ejemplo-header">Ejemplo Nº 6 — Amortización incorrecta por dotarse por debajo del mínimo</div>
     <div class="ejemplo-body">
-      <p>Siguiendo con los datos del ejemplo nº 4 (intervalo [250 € - 125 €]):</p>
+      <p>Mismos datos (bien 8.000 €, CM = 20%, Cm = 10%). En 2027 la sociedad contabiliza sólo 500 €, por debajo del mínimo de 800 €:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
         <table>
-          <thead><tr><th>Período</th><th>Gasto contabilizado</th><th>Déficit/Exceso</th><th>Gasto deducible</th><th>Ajuste</th></tr></thead>
+          <thead><tr><th>Año</th><th>GC</th><th>GF</th><th>Ajuste / nota</th></tr></thead>
           <tbody>
-            <tr><td>2024</td><td>25 €</td><td>Déficit 100 €</td><td>25 €</td><td>—</td></tr>
-            <tr><td>2025</td><td>300 €</td><td>Exceso 50 €</td><td>300 € (250 + 50 recuperados)</td><td>—</td></tr>
-            <tr><td>2026</td><td>300 €</td><td>Exceso 50 €</td><td>300 € (250 + 50 recuperados)</td><td>—</td></tr>
+            <tr><td>2026</td><td>800</td><td>800</td><td>—</td></tr>
+            <tr><td>2027</td><td>500</td><td>500</td><td>Gasto devengado (mín.) = 800; gasto pendiente = 300</td></tr>
+            <tr><td>2028</td><td>1.000</td><td>1.000</td><td>—</td></tr>
+            <tr><td>2029</td><td>1.200</td><td>1.200</td><td>—</td></tr>
+            <tr><td>2030</td><td>1.700</td><td>1.700 = 1.600 + 100</td><td>Recupera 100 procedentes de 2027</td></tr>
+            <tr><td>2031</td><td>1.800</td><td>1.800 = 1.600 + 200</td><td>Recupera 200 procedentes de 2027</td></tr>
+            <tr><td>2032</td><td>1.000</td><td>—</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
-      <p style="margin-top:10px; font-style:italic; font-size:14.5px;">No se precisa la realización de ajustes fiscales ya que el exceso de gasto sobre el coeficiente máximo permite la recuperación del déficit de gasto generado en ejercicios anteriores.</p>
+      <p style="margin-top:8px; font-style:italic; font-size:14.5px;">El gasto no deducido por estar por debajo del mínimo puede recuperarse en ejercicios posteriores aplicándolo en la medida en que el gasto contable supere el coeficiente máximo.</p>
     </div>
   </div>
 
-  <p><strong>Regla bienes usados:</strong> Los bienes adquiridos usados podrán amortizarse por un importe mayor, calculándose a elección del contribuyente duplicando el coeficiente máximo asignado en tablas, o bien utilizando como base de amortización el precio originario del bien.</p>
+  <p><strong>Regla de uso intensivo:</strong> Cuando un bien se utilice durante más de un turno de trabajo (8 horas), el coeficiente máximo se ajusta con la fórmula: <strong>CM' = Cm + (CM – Cm) × (nº horas / 8)</strong>.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 7 — Bien utilizado en dos turnos de trabajo</div>
+    <div class="ejemplo-header">Ejemplo Nº 7 — Bien utilizado durante más de un turno de trabajo</div>
     <div class="ejemplo-body">
-      <p>Siguiendo con los datos del ejemplo nº 4 (CM = 25%, PM = 8 años), pero supongamos que el bien es utilizado diariamente durante 2 turnos completos de trabajo (16 horas).</p>
+      <p>Adquisición el 1/1/2026 de un bien por 8.000 €. CM = 20%, PM = 10 años. El bien se utiliza <strong>12 horas diarias</strong>.</p>
       <div class="solucion">
         <strong>Cálculo del coeficiente máximo ajustado</strong>
-        <p>CM' = Cm + (CM – Cm) × nº horas/8 = 12,5 + (25 – 12,5) × 16/8 = 12,5 + 25 = <strong>37,5%</strong></p>
+        <p>CM' = Cm + (CM – Cm) × (nº horas / 8) = 10% + (20 – 10) × (12/8) = 10% + 15% = <strong>25%</strong></p>
+        <p>Amortización correcta: entre el 25% y el 10% → entre <strong>2.000 €</strong> y <strong>800 €</strong> anuales.</p>
       </div>
     </div>
   </div>
+
+  <p><strong>Regla de bienes adquiridos usados:</strong> Los bienes adquiridos usados podrán amortizarse a elección del contribuyente por alguna de estas dos opciones: (a) <strong>2 × CM</strong> sobre el precio de adquisición, o (b) <strong>CM × valor originario</strong> del bien.</p>
 
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 8 — Bien adquirido usado</div>
     <div class="ejemplo-body">
-      <p>Una sociedad adquiere el 1 de enero de 2024 un bien del inmovilizado material <strong>usado</strong> por importe de 1.000 euros (CM = 25%, PM = 8 años). El primer adquiriente del bien lo compró por 4.000 euros (valor originario).</p>
+      <p>Adquisición el 1/1/2026 de un bien <strong>usado</strong> por <strong>800 €</strong>. Se conoce que el valor originario del bien era <strong>2.000 €</strong>. CM = 20%, Cm = 10%.</p>
       <div class="solucion">
         <strong>Opciones de amortización máxima</strong>
         <ul>
-          <li>(2 × CM) × precio adquisición = 2 × 25% × 1.000 = <strong>500 €/año</strong></li>
-          <li>CM × valor originario = 25% × 4.000 = <strong>1.000 €/año</strong></li>
+          <li>(2 × CM) × valor adquisición = 2 × 20% × 800 = <strong>320 €/año</strong></li>
+          <li>CM × valor originario = 20% × 2.000 = <strong>400 €/año</strong></li>
         </ul>
-        <p>La sociedad podrá elegir la mayor de las dos: <strong>1.000 €/año</strong>.</p>
+        <p>La sociedad puede optar por la opción más favorable: <strong>400 €/año</strong>.</p>
       </div>
     </div>
   </div>
@@ -1108,21 +1345,24 @@ code {
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 9 — Sistema degresivo del porcentaje constante</div>
     <div class="ejemplo-body">
-      <p>Mismo bien del ejemplo nº 4 (1.000 €, CM = 25%, PM = 8 años). Elegimos un período de vida útil de 4 años.</p>
+      <p>Adquisición el 1/1/2026 de un bien por <strong>8.000 €</strong>. CM = 20%, PM = 10 años. Cm = 10%, Pm = 5 años. Se elige un período de vida útil de <strong>5 años</strong> (dentro del intervalo admisible).</p>
       <div class="solucion">
-        <strong>Cálculo</strong>
-        <p>% lineal = 100/4 = 25% &nbsp;&nbsp;|&nbsp;&nbsp; Pc = 25% × 1,5 = <strong>37,5%</strong></p>
+        <strong>Cálculo del porcentaje constante</strong>
+        <p>% lineal = 100/5 = 20% &nbsp;&nbsp;|&nbsp;&nbsp; Coeficiente para 5-7 años = 2 &nbsp;&nbsp;|&nbsp;&nbsp; Pc = 20% × 2 = <strong>40%</strong></p>
         <div class="tabla-wrap" style="margin-top:10px;">
           <table>
-            <thead><tr><th>Período</th><th>Valor pendiente</th><th>Amortización</th></tr></thead>
+            <thead><tr><th>Año</th><th>Pc × Valor pendiente de amortizar</th><th>Amortización</th></tr></thead>
             <tbody>
-              <tr><td>2024</td><td>1.000 €</td><td>37,5% × 1.000 = <strong>375,00 €</strong></td></tr>
-              <tr><td>2025</td><td>625 €</td><td>37,5% × 625 = <strong>234,38 €</strong></td></tr>
-              <tr><td>2026</td><td>390,63 €</td><td>37,5% × 390,63 = <strong>146,48 €</strong></td></tr>
-              <tr><td>2027</td><td>244,14 €</td><td>100% × 244,14 = <strong>244,14 €</strong></td></tr>
+              <tr><td>2026</td><td>40% × 8.000</td><td><strong>3.200</strong></td></tr>
+              <tr><td>2027</td><td>40% × 4.800</td><td><strong>1.920</strong></td></tr>
+              <tr><td>2028</td><td>40% × 2.880</td><td><strong>1.152</strong></td></tr>
+              <tr><td>2029</td><td>40% × 1.728</td><td><strong>691,20</strong></td></tr>
+              <tr><td>2030</td><td>100% × 1.036,80</td><td><strong>1.036,80</strong></td></tr>
             </tbody>
+            <tfoot><tr><td colspan="2"><strong>Total</strong></td><td><strong>8.000</strong></td></tr></tfoot>
           </table>
         </div>
+        <p style="margin-top:8px; font-style:italic; font-size:14.5px;">En el último año se aplica el 100% al valor pendiente para garantizar la amortización completa del bien.</p>
       </div>
     </div>
   </div>
@@ -1134,16 +1374,19 @@ code {
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 10 — Sistema de dígitos decreciente</div>
     <div class="ejemplo-body">
-      <p>Mismo bien del ejemplo nº 4. Elegimos 4 años. Suma de dígitos = 4 + 3 + 2 + 1 = <strong>10</strong>.</p>
+      <p>Adquisición el 1/1/2026 de un bien por <strong>8.000 €</strong>. CM = 20%, PM = 10 años. Se elige un período de vida útil de <strong>5 años</strong>.</p>
+      <p>Asignación de dígitos: 5, 4, 3, 2, 1 &nbsp;&nbsp;|&nbsp;&nbsp; Suma de dígitos = 5+4+3+2+1 = <strong>15</strong></p>
       <div class="tabla-wrap" style="margin-top:10px;">
         <table>
-          <thead><tr><th>Período</th><th>Amortización</th></tr></thead>
+          <thead><tr><th>Año</th><th>Cálculo</th><th>Amortización</th></tr></thead>
           <tbody>
-            <tr><td>2024</td><td>4/10 × 1.000 = <strong>400 €</strong></td></tr>
-            <tr><td>2025</td><td>3/10 × 1.000 = <strong>300 €</strong></td></tr>
-            <tr><td>2026</td><td>2/10 × 1.000 = <strong>200 €</strong></td></tr>
-            <tr><td>2027</td><td>1/10 × 1.000 = <strong>100 €</strong></td></tr>
+            <tr><td>2026</td><td>5/15 × 8.000</td><td><strong>2.666,67</strong></td></tr>
+            <tr><td>2027</td><td>4/15 × 8.000</td><td><strong>2.133,33</strong></td></tr>
+            <tr><td>2028</td><td>3/15 × 8.000</td><td><strong>1.600</strong></td></tr>
+            <tr><td>2029</td><td>2/15 × 8.000</td><td><strong>1.066,67</strong></td></tr>
+            <tr><td>2030</td><td>1/15 × 8.000</td><td><strong>533,33</strong></td></tr>
           </tbody>
+          <tfoot><tr><td colspan="2"><strong>Total</strong></td><td><strong>8.000</strong></td></tr></tfoot>
         </table>
       </div>
     </div>
@@ -1155,16 +1398,18 @@ code {
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 11 — Sistema de dígitos creciente</div>
     <div class="ejemplo-body">
-      <p>Mismo caso que el ejemplo anterior. Suma de dígitos = 1 + 2 + 3 + 4 = <strong>10</strong>.</p>
+      <p>Mismos datos que el ejemplo anterior (bien 8.000 €, 5 años). La asignación de dígitos se invierte: 1, 2, 3, 4, 5 &nbsp;&nbsp;|&nbsp;&nbsp; Suma = <strong>15</strong>.</p>
       <div class="tabla-wrap" style="margin-top:10px;">
         <table>
-          <thead><tr><th>Período</th><th>Amortización</th></tr></thead>
+          <thead><tr><th>Año</th><th>Cálculo</th><th>Amortización</th></tr></thead>
           <tbody>
-            <tr><td>2024</td><td>1/10 × 1.000 = <strong>100 €</strong></td></tr>
-            <tr><td>2025</td><td>2/10 × 1.000 = <strong>200 €</strong></td></tr>
-            <tr><td>2026</td><td>3/10 × 1.000 = <strong>300 €</strong></td></tr>
-            <tr><td>2027</td><td>4/10 × 1.000 = <strong>400 €</strong></td></tr>
+            <tr><td>2026</td><td>1/15 × 8.000</td><td><strong>533,33</strong></td></tr>
+            <tr><td>2027</td><td>2/15 × 8.000</td><td><strong>1.066,67</strong></td></tr>
+            <tr><td>2028</td><td>3/15 × 8.000</td><td><strong>1.600</strong></td></tr>
+            <tr><td>2029</td><td>4/15 × 8.000</td><td><strong>2.133,33</strong></td></tr>
+            <tr><td>2030</td><td>5/15 × 8.000</td><td><strong>2.666,67</strong></td></tr>
           </tbody>
+          <tfoot><tr><td colspan="2"><strong>Total</strong></td><td><strong>8.000</strong></td></tr></tfoot>
         </table>
       </div>
     </div>
@@ -1178,6 +1423,57 @@ code {
   <h4>5.3.6 Amortización del inmovilizado intangible</h4>
   <p>Como regla específica, el artículo 12.2 de la LIS dispone que el inmovilizado intangible se amortizará atendiendo a la duración de la vida útil del activo. No obstante, cuando la vida útil del activo intangible no pueda estimarse de forma fiable (por ejemplo, en el caso de adquisición de una marca), podrá amortizarse el citado activo hasta el límite anual máximo de la veinteava parte (5%) de su importe de adquisición. Esta última regla se aplicará también a la amortización del fondo de comercio.</p>
 
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 11b — Amortización de inmovilizado intangible con vida útil definida (patente)</div>
+    <div class="ejemplo-body">
+      <p>Adquisición el 1/1/2026 de una <strong>patente</strong> por <strong>9.000 €</strong>. Se conoce que su vida útil será de <strong>6 años</strong>. La amortización lineal será: 9.000 / 6 = <strong>1.500 €/año</strong>.</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Año</th><th>GC</th><th>GF</th><th>Ajuste</th></tr></thead>
+          <tbody>
+            <tr><td>2026</td><td>1.500</td><td>1.500</td><td>—</td></tr>
+            <tr><td>2027</td><td>1.500</td><td>1.500</td><td>—</td></tr>
+            <tr><td>2028</td><td>1.500</td><td>1.500</td><td>—</td></tr>
+            <tr><td>2029</td><td>1.500</td><td>1.500</td><td>—</td></tr>
+            <tr><td>2030</td><td>1.500</td><td>1.500</td><td>—</td></tr>
+            <tr><td>2031</td><td>1.500</td><td>1.500</td><td>—</td></tr>
+          </tbody>
+          <tfoot><tr><td><strong>Total</strong></td><td><strong>9.000</strong></td><td><strong>9.000</strong></td><td></td></tr></tfoot>
+        </table>
+      </div>
+      <p style="margin-top:8px; font-style:italic; font-size:14.5px;">Al coincidir GC y GF en cada período, no se generan ajustes extracontables.</p>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 11c — Amortización de inmovilizado intangible con vida útil indefinida (marca)</div>
+    <div class="ejemplo-body">
+      <p>Adquisición el 1/1/2026 de una <strong>marca</strong> por <strong>9.000 €</strong>. Al no poder estimarse su vida útil con fiabilidad:</p>
+      <ul>
+        <li><strong>Contablemente</strong> se amortiza en 10 años: 9.000 / 10 = <strong>900 €/año</strong></li>
+        <li><strong>Fiscalmente</strong> el límite máximo es 1/20 = 5%: 9.000 / 20 = <strong>450 €/año</strong></li>
+      </ul>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Año</th><th>GC</th><th>GF</th><th>Ajuste</th><th>Año</th><th>GC</th><th>GF</th><th>Ajuste</th></tr></thead>
+          <tbody>
+            <tr><td>2026</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2036</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+            <tr><td>2027</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2037</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+            <tr><td>2028</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2038</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+            <tr><td>2029</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2039</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+            <tr><td>2030</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2040</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+            <tr><td>2031</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2041</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+            <tr><td>2032</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2042</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+            <tr><td>2033</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2043</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+            <tr><td>2034</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2044</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+            <tr><td>2035</td><td>900</td><td>450</td><td><code>RC + 450 GCNF</code></td><td>2045</td><td>—</td><td>450</td><td><code>RC – 450 GFNC</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:8px; font-style:italic; font-size:14.5px;">Durante los 10 años de amortización contable, el GC (900 €) supera el GF (450 €), por lo que se realizan ajustes positivos (GCNF). Una vez agotada la vida contable (2035), la marca sigue amortizándose fiscalmente durante 10 años más, generando ajustes negativos (GFNC) al no existir gasto contable.</p>
+    </div>
+  </div>
+
   <!-- ═══════════════════════════════════════ -->
   <h3 id="s5-4">5.4 Libertad de amortización</h3>
 
@@ -1189,18 +1485,20 @@ code {
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 12 — Libertad de amortización, bienes de escaso valor</div>
     <div class="ejemplo-body">
-      <p>El 1 de enero de 2024 una sociedad adquiere una maquinaria nueva por importe de 200 euros, que es amortizada contablemente de forma lineal en un 25%. La sociedad decide amortizar libremente el citado bien.</p>
+      <p>Adquisición el 1/1/2026 de una <strong>maquinaria nueva</strong> por <strong>180 €</strong>. CM = 20%, Cm = 10%. Contablemente se amortiza linealmente en 5 años: 180 / 5 = <strong>36 €/año</strong>. La sociedad decide amortizar libremente el citado bien.</p>
       <div class="solucion">
         <strong>Resultado: el bien se puede amortizar íntegramente en el primer período impositivo</strong>
         <div class="tabla-wrap" style="margin-top:10px;">
           <table>
-            <thead><tr><th>Período</th><th>Gasto contable</th><th>Gasto fiscal</th><th>Ajuste</th></tr></thead>
+            <thead><tr><th>Año</th><th>GC (Gasto contable)</th><th>GF (Gasto fiscal)</th><th>Ajuste</th></tr></thead>
             <tbody>
-              <tr><td>2024</td><td>50 €</td><td>200 €</td><td><code>RC – 150 GFNC</code></td></tr>
-              <tr><td>2025</td><td>50 €</td><td>—</td><td><code>RC + 50 GCNF</code></td></tr>
-              <tr><td>2026</td><td>50 €</td><td>—</td><td><code>RC + 50 GCNF</code></td></tr>
-              <tr><td>2027</td><td>50 €</td><td>—</td><td><code>RC + 50 GCNF</code></td></tr>
+              <tr><td>2026</td><td>36</td><td>180</td><td><code>RC – 144 GFNC</code></td></tr>
+              <tr><td>2027</td><td>36</td><td>—</td><td><code>RC + 36 GCNF</code></td></tr>
+              <tr><td>2028</td><td>36</td><td>—</td><td><code>RC + 36 GCNF</code></td></tr>
+              <tr><td>2029</td><td>36</td><td>—</td><td><code>RC + 36 GCNF</code></td></tr>
+              <tr><td>2030</td><td>36</td><td>—</td><td><code>RC + 36 GCNF</code></td></tr>
             </tbody>
+            <tfoot><tr><td><strong>Total</strong></td><td><strong>180</strong></td><td><strong>180</strong></td><td>Suma = 0</td></tr></tfoot>
           </table>
         </div>
       </div>
@@ -1218,14 +1516,22 @@ code {
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 13 — Libertad de amortización ERD por generación de empleo</div>
     <div class="ejemplo-body">
-      <p>Una sociedad tenía el 1/1/23 una plantilla de 3 trabajadores (contrato indefinido y tiempo completo). El 1/4/24 se jubila un trabajador y el 01/01/25 se han contratado dos trabajadores con contrato indefinido y tiempo completo. La sociedad no sufre alteraciones de plantilla durante los cuatro años siguientes.</p>
+      <p>La sociedad A tiene la siguiente evolución de plantilla:</p>
+      <ul>
+        <li>1/1/2025: 5 trabajadores a tiempo completo.</li>
+        <li>1/4/2025: Se contratan 2 trabajadores a tiempo completo.</li>
+        <li>1/12/2026: Se despide a 1 trabajador a tiempo completo.</li>
+        <li>1/2/2027: Se contratan 3 trabajadores a tiempo completo.</li>
+        <li>No hay cambios de plantilla durante los años siguientes.</li>
+      </ul>
       <div class="solucion">
-        <strong>Cálculo</strong>
-        <p>Pm 24,25 = (3×91 + 2×275 + 4×365) / 731 = <strong>3,12</strong></p>
-        <p>Pm 23 = (3×365) / 365 = <strong>3</strong></p>
-        <p>Incremento plantilla = Pm 24,25 – Pm 23 = 3,12 – 3 = <strong>0,12</strong></p>
-        <p>Cuantía máxima de libertad de amortización = 120.000 × 0,12 = <strong>14.400 €</strong></p>
-        <p>Se cumple el requisito de mantenimiento del empleo creado durante veinticuatro meses más, ya que Pm 26,27 = 4 &gt; Pm 24,25 = 3,12.</p>
+        <strong>Comprobación del requisito de incremento de plantilla (Pm 2026,2027 &gt; Pm 2025)</strong>
+        <p>Pm 2025 = (5 × 90 + 7 × 275) / 365 = (450 + 1.925) / 365 = <strong>6,50</strong></p>
+        <p>Pm 2026,2027 = (7 × 334 + 6 × 62 + 9 × 334) / 730 = (2.338 + 372 + 3.006) / 730 = <strong>7,83</strong></p>
+        <p>Incremento de plantilla = 7,83 – 6,50 = <strong>1,33</strong></p>
+        <p>Libertad de amortización = 1,33 × 120.000 = <strong>159.600 €</strong></p>
+        <strong>Comprobación del requisito de mantenimiento de plantilla (Pm 2028,2029 ≥ Pm 2026,2027)</strong>
+        <p>Pm 2028,2029 = (9 × 731) / 731 = <strong>9</strong> &gt; 7,83 → Se mantiene la plantilla. ✓</p>
       </div>
     </div>
   </div>
@@ -1236,18 +1542,20 @@ code {
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 14 — Aceleración de la amortización ERD</div>
     <div class="ejemplo-body">
-      <p>El 1 de enero de 2024 una sociedad ERD adquiere una maquinaria nueva por importe de 2.000 euros, amortizada contablemente de forma lineal en un 25%. La sociedad decide amortizar aceleradamente el citado bien.</p>
+      <p>Adquisición el 1/1/2026 de una <strong>maquinaria nueva</strong> por <strong>1.500 €</strong>. CM = 20%, Cm = 10%. Contablemente se amortiza linealmente en 5 años: 1.500 / 5 = <strong>300 €/año</strong>. La sociedad (ERD) decide amortizar aceleradamente.</p>
       <div class="solucion">
-        <strong>La sociedad podrá amortizar al 2 × CM = 2 × 25% = 50%</strong>
+        <strong>Fiscalmente: 2 × CM = 2 × 20% = 40% → 40% × 1.500 = 600 €/año</strong>
         <div class="tabla-wrap" style="margin-top:10px;">
           <table>
-            <thead><tr><th>Período</th><th>Gasto contable</th><th>Gasto fiscal</th><th>Ajuste</th></tr></thead>
+            <thead><tr><th>Año</th><th>GC</th><th>GF</th><th>Ajuste</th></tr></thead>
             <tbody>
-              <tr><td>2024</td><td>500 €</td><td>1.000 €</td><td><code>RC – 500 GFNC</code></td></tr>
-              <tr><td>2025</td><td>500 €</td><td>1.000 €</td><td><code>RC – 500 GFNC</code></td></tr>
-              <tr><td>2026</td><td>500 €</td><td>—</td><td><code>RC + 500 GCNF</code></td></tr>
-              <tr><td>2027</td><td>500 €</td><td>—</td><td><code>RC + 500 GCNF</code></td></tr>
+              <tr><td>2026</td><td>300</td><td>600</td><td><code>RC – 300 GFNC</code></td></tr>
+              <tr><td>2027</td><td>300</td><td>600</td><td><code>RC – 300 GFNC</code></td></tr>
+              <tr><td>2028</td><td>300</td><td>300</td><td>—</td></tr>
+              <tr><td>2029</td><td>300</td><td>—</td><td><code>RC + 300 GCNF</code></td></tr>
+              <tr><td>2030</td><td>300</td><td>—</td><td><code>RC + 300 GCNF</code></td></tr>
             </tbody>
+            <tfoot><tr><td><strong>Total</strong></td><td><strong>1.500</strong></td><td><strong>1.500</strong></td><td>Suma = 0</td></tr></tfoot>
           </table>
         </div>
       </div>
@@ -1274,30 +1582,30 @@ code {
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 15 — Arrendamiento financiero (leasing)</div>
     <div class="ejemplo-body">
-      <p>El 1 de enero de 2024 una sociedad adquiere una maquinaria a través de una operación de arrendamiento financiero, pactando la operación a tres años, al final de los cuales la sociedad ejerce la opción de compra pactada. El valor al contado del bien asciende a 16.000 euros. Es amortizado contablemente de forma lineal en 5 años (CM = 20%).</p>
+      <p>Una maquinaria (valor de adquisición = <strong>30.000 €</strong>; CM = 10%) es adquirida el 1/1/2026 por la sociedad A mediante un contrato de arrendamiento financiero con una entidad financiera. La amortización contable se realiza de forma lineal en 10 años (GC = 3.000 €/año). Las cuotas de leasing pactadas son las siguientes:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
         <table>
-          <thead><tr><th></th><th>2024</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+          <thead><tr><th></th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th></tr></thead>
           <tbody>
-            <tr><td>Carga financiera</td><td>1.650 €</td><td>950 €</td><td>150 €</td><td>—</td></tr>
-            <tr><td>Recuperación del bien</td><td>5.000 €</td><td>5.000 €</td><td>5.000 €</td><td>—</td></tr>
-            <tr><td>Opción de compra</td><td>—</td><td>—</td><td>—</td><td>1.000 €</td></tr>
-            <tr><td>Cuota total anual</td><td>6.650 €</td><td>5.950 €</td><td>5.150 €</td><td>1.000 €</td></tr>
+            <tr><td>Recuperación del bien</td><td>5.900</td><td>5.900</td><td>5.900</td><td>5.900</td><td>5.900</td><td>—</td></tr>
+            <tr><td>Carga financiera</td><td>1.800</td><td>1.400</td><td>1.000</td><td>800</td><td>200</td><td>—</td></tr>
+            <tr><td>Opción de compra</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>500</td></tr>
           </tbody>
         </table>
       </div>
       <div class="solucion">
-        <strong>Cálculo: Límite deducible recuperación = 2 × 20% × 16.000 = 6.400 €/año</strong>
-        <p>Las cuotas de recuperación del bien (5.000 €) son íntegramente deducibles (no superan 6.400 €).</p>
+        <strong>Límite deducible de la recuperación del bien: 2 × CM = 2 × 10% = 20% → 20% × 30.000 = 6.000 €/año</strong>
+        <p>Los gastos financieros son íntegramente deducibles (sin ajustes).</p>
+        <p>La recuperación del bien (5.900 €) no supera el límite (6.000 €), por lo que es completamente deducible cada año.</p>
         <div class="tabla-wrap" style="margin-top:10px;">
           <table>
-            <thead><tr><th>Período</th><th>Amortización contable</th><th>Recuperación bien/opción</th><th>Ajuste</th></tr></thead>
+            <thead><tr><th>Año</th><th>GC</th><th>GF</th><th>Ajuste</th><th>Año</th><th>GC</th><th>GF</th><th>Ajuste</th></tr></thead>
             <tbody>
-              <tr><td>2024</td><td>20% × 16.000 = 3.200 €</td><td>5.000 €</td><td><code>RC – 1.800 GFNC</code></td></tr>
-              <tr><td>2025</td><td>3.200 €</td><td>5.000 €</td><td><code>RC – 1.800 GFNC</code></td></tr>
-              <tr><td>2026</td><td>3.200 €</td><td>5.000 €</td><td><code>RC – 1.800 GFNC</code></td></tr>
-              <tr><td>2027</td><td>3.200 €</td><td>1.000 €</td><td><code>RC + 2.200 GCNF</code></td></tr>
-              <tr><td>2028</td><td>3.200 €</td><td>—</td><td><code>RC + 3.200 GCNF</code></td></tr>
+              <tr><td>2026</td><td>3.000</td><td>5.900</td><td><code>RC – 2.900 GFNC</code></td><td>2031</td><td>3.000</td><td>500</td><td><code>RC + 2.500 GCNF</code></td></tr>
+              <tr><td>2027</td><td>3.000</td><td>5.900</td><td><code>RC – 2.900 GFNC</code></td><td>2032</td><td>3.000</td><td>—</td><td><code>RC + 3.000 GCNF</code></td></tr>
+              <tr><td>2028</td><td>3.000</td><td>5.900</td><td><code>RC – 2.900 GFNC</code></td><td>2033</td><td>3.000</td><td>—</td><td><code>RC + 3.000 GCNF</code></td></tr>
+              <tr><td>2029</td><td>3.000</td><td>5.900</td><td><code>RC – 2.900 GFNC</code></td><td>2034</td><td>3.000</td><td>—</td><td><code>RC + 3.000 GCNF</code></td></tr>
+              <tr><td>2030</td><td>3.000</td><td>5.900</td><td><code>RC – 2.900 GFNC</code></td><td>2035</td><td>3.000</td><td>—</td><td><code>RC + 3.000 GCNF</code></td></tr>
             </tbody>
           </table>
         </div>
@@ -1369,22 +1677,21 @@ code {
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 16 — Provisión para garantías de reparación</div>
     <div class="ejemplo-body">
-      <p>Una sociedad concede garantías de reparación sobre sus productos. Datos de ventas con garantías y gastos de reparación durante el período impositivo y los dos inmediatos anteriores:</p>
+      <p>Una sociedad quiere dotar la provisión para garantías de reparación y tiene al cierre del ejercicio 2026 <strong>ventas con garantías vivas por importe de 2.200.000 €</strong>. Datos de los tres últimos ejercicios:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
         <table>
-          <thead><tr><th></th><th>2022</th><th>2023</th><th>2024</th></tr></thead>
+          <thead><tr><th></th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
           <tbody>
-            <tr><td>Ventas con garantía de reparación</td><td>300.000 €</td><td>350.000 €</td><td>380.000 €</td></tr>
-            <tr><td>Gastos de reparación</td><td>10.000 €</td><td>5.000 €</td><td>12.000 €</td></tr>
+            <tr><td>Ventas con garantías de reparación</td><td>810.000 €</td><td>960.000 €</td><td>1.080.000 €</td></tr>
+            <tr><td>Gastos de reparación</td><td>5.000 €</td><td>8.000 €</td><td>9.000 €</td></tr>
           </tbody>
         </table>
       </div>
-      <p style="margin-top:10px;">Ventas con garantías vivas al cierre del ejercicio 2024: <strong>400.000 €</strong></p>
       <div class="solucion">
         <strong>Cálculo del porcentaje deducible</strong>
-        <p>% = Σ gastos reparaciones (2024, 2023, 2022) / Σ ventas con garantía (2024, 2023, 2022) × 100</p>
-        <p>% = (12.000 + 5.000 + 10.000) / (380.000 + 350.000 + 300.000) × 100 = <strong>2,62136%</strong></p>
-        <p>Importe deducible en 2024 = 2,62136% × 400.000 = <strong>10.485,44 €</strong></p>
+        <p>% = (5.000 + 8.000 + 9.000) / (810.000 + 960.000 + 1.080.000) × 100 = 22.000 / 2.850.000 × 100 = <strong>0,771929825 %</strong></p>
+        <p>Gasto deducible = 0,771929825% × 2.200.000 = <strong>16.982,46 €</strong></p>
+        <p style="font-style:italic; font-size:14.5px;">Nota: cuando la sociedad sea de nueva creación, el porcentaje se calculará durante los dos primeros períodos impositivos utilizando únicamente los datos de ventas y gastos correspondientes a los períodos transcurridos desde su creación.</p>
       </div>
     </div>
   </div>
@@ -1480,12 +1787,13 @@ code {
   <p>En las transmisiones lucrativas (donaciones realizadas), la sociedad transmitente integrará en la base imponible del período impositivo en que se realice la operación la diferencia entre el valor de mercado del elemento patrimonial transmitido y su valor fiscal.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 19 — Transmisión lucrativa: donación de bien</div>
+    <div class="ejemplo-header">Ejemplo Nº 19 — Transmisión lucrativa: donación de maquinaria</div>
     <div class="ejemplo-body">
-      <p>Una sociedad dona un bien que había sido adquirido por 4.000 euros y que había sido amortizado correctamente por importe de 3.000 euros. Conocemos que el valor de mercado del bien en el momento de la donación asciende a 2.500 euros. Contablemente no se ha registrado ningún beneficio derivado de esta operación.</p>
+      <p>La sociedad A dona una maquinaria a la sociedad B cuyo Vm = 36.000 € y su VC = 20.000 €. Además, conocemos que dicha maquinaria será amortizada por la sociedad B al 10% anual. La sociedad A (donante) deberá realizar el siguiente ajuste:</p>
       <div class="solucion">
-        <p>Renta fiscal = Vm – VC = 2.500 – (4.000 – 3.000) = 2.500 – 1.000 = <strong>1.500 €</strong></p>
-        <p>Como no se ha registrado ningún beneficio contable, debe realizarse un ajuste fiscal <strong>RC + 1.500 IFNC</strong>.</p>
+        <p>Renta fiscal = IF = Vm – VF = 36.000 – 20.000 = <strong>16.000 €</strong></p>
+        <p>Renta contable = IC = 0</p>
+        <p>Ajuste: <strong>RC + 16.000 € (IFNC)</strong></p>
       </div>
     </div>
   </div>
@@ -1496,15 +1804,22 @@ code {
   <div class="ejemplo">
     <div class="ejemplo-header">Ejemplo Nº 20 — Adquisición lucrativa: bien recibido por donación</div>
     <div class="ejemplo-body">
-      <p>Una sociedad adquiere un bien por donación, el 1 de enero de 2024, cuyo valor de mercado es de 5.000 euros. El bien es amortizado cada año en el 25% de su valor. Dicha renta es del período 2024. Contablemente, la sociedad registra cada ejercicio un ingreso del 25% de 5.000 €, ya que según el PGC el ingreso por donaciones debe computarse en proporción a su amortización.</p>
+      <p>La sociedad A dona el 1/1/2026 una maquinaria a la sociedad B cuyo Vm = 36.000 € y su VC = 20.000 €. La maquinaria será amortizada por la sociedad B al 10% anual. La sociedad B (donatario) deberá realizar los siguientes ajustes:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
         <table>
-          <thead><tr><th>Período impositivo</th><th>Renta contable</th><th>Renta Fiscal</th><th>Ajustes</th></tr></thead>
+          <thead><tr><th>Años</th><th>Renta contable</th><th>Renta Fiscal</th><th>Ajustes</th></tr></thead>
           <tbody>
-            <tr><td>2024</td><td>25% × 5.000 = 1.250 €</td><td>5.000 €</td><td>RC + 3.750 IFNC</td></tr>
-            <tr><td>2025</td><td>25% × 5.000 = 1.250 €</td><td>—</td><td>RC – 1.250 ICNF</td></tr>
-            <tr><td>2026</td><td>25% × 5.000 = 1.250 €</td><td>—</td><td>RC – 1.250 ICNF</td></tr>
-            <tr><td>2027</td><td>25% × 5.000 = 1.250 €</td><td>—</td><td>RC – 1.250 ICNF</td></tr>
+            <tr><td>2026</td><td>3.600</td><td>36.000</td><td>RC + 32.400 IFNC</td></tr>
+            <tr><td>2027</td><td>3.600</td><td>—</td><td>RC – 3.600 ICNF</td></tr>
+            <tr><td>2028</td><td>3.600</td><td>—</td><td>RC – 3.600 ICNF</td></tr>
+            <tr><td>2029</td><td>3.600</td><td>—</td><td>RC – 3.600 ICNF</td></tr>
+            <tr><td>2030</td><td>3.600</td><td>—</td><td>RC – 3.600 ICNF</td></tr>
+            <tr><td>2031</td><td>3.600</td><td>—</td><td>RC – 3.600 ICNF</td></tr>
+            <tr><td>2032</td><td>3.600</td><td>—</td><td>RC – 3.600 ICNF</td></tr>
+            <tr><td>2033</td><td>3.600</td><td>—</td><td>RC – 3.600 ICNF</td></tr>
+            <tr><td>2034</td><td>3.600</td><td>—</td><td>RC – 3.600 ICNF</td></tr>
+            <tr><td>2035</td><td>3.600</td><td>—</td><td>RC – 3.600 ICNF</td></tr>
+            <tr><td><strong>Total renta</strong></td><td><strong>36.000</strong></td><td><strong>36.000</strong></td><td><strong>Suma 0</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -1513,6 +1828,18 @@ code {
 
   <h4>5.11.4 Regla especial aplicable a las aportaciones no dinerarias</h4>
   <p>En las aportaciones no dinerarias, la sociedad transmitente integrará en la base imponible del período impositivo en que se realice la operación la diferencia entre el valor de mercado del elemento patrimonial aportado y su valor fiscal. De igual modo, se establece que los valores recibidos en contraprestación se valorarán por su valor de mercado.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 21 — Aportación no dineraria: terreno a cambio de acciones</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A aporta un terreno para la constitución de la sociedad B. La sociedad A tenía contabilizado dicho terreno en 10.000 €, siendo 30.000 € su valor de mercado en el momento de la aportación. A cambio recibe 1.000 acciones de la sociedad B.</p>
+      <div class="solucion">
+        <p>Por la transmisión del terreno: IF = Vm – VF = 30.000 – 10.000 = <strong>20.000 €</strong></p>
+        <p>Si contablemente ha recogido un IC = 20.000 €, <strong>no será necesario hacer ajuste fiscal</strong>.</p>
+        <p>Las 1.000 acciones de la sociedad B tendrán un <strong>valor fiscal de 30.000 €</strong> a los efectos de sus futuras transmisiones.</p>
+      </div>
+    </div>
+  </div>
 
   <h4>5.11.5 Regla especial aplicable a los elementos patrimoniales transmitidos a los socios por causa de disolución de la sociedad, separación de socios, reducción de capital con devolución de aportaciones, reparto de la prima de emisión y distribución de beneficios</h4>
   <p>En todos estos supuestos, la sociedad transmitente deberá integrar en la base imponible del período en el que se realice la operación la diferencia entre el valor de mercado del elemento patrimonial transmitido y su valor fiscal.</p>
@@ -1530,13 +1857,40 @@ code {
   <h4>5.11.7 Regla especial aplicable a las permutas y a los valores objeto de canje o conversión</h4>
   <p>En estas operaciones, cada sociedad transmitente integrará en la base imponible del período impositivo en que se realice la operación la diferencia entre el valor de mercado del elemento patrimonial adquirido y el valor fiscal del elemento patrimonial transmitido.</p>
 
+  <p><strong>1) Permuta comercial:</strong> Se valora en la contabilidad el bien recibido por el Vm del bien entregado (IC = Vm bien transmitido – VC bien transmitido), salvo que el Vm del bien recibido sea más claro y con el límite máximo de éste último.</p>
+
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 21 — Permuta de vehículo por maquinaria</div>
+    <div class="ejemplo-header">Ejemplo Nº 22 — Permuta comercial</div>
     <div class="ejemplo-body">
-      <p>Una sociedad permuta un vehículo cuyo valor fiscal es de 6.000 euros por una maquinaria. El valor de mercado del vehículo entregado es de 9.000 euros, mientras que el valor de mercado de la maquinaria adquirida es de 10.000 euros. Conocemos que contablemente la sociedad no ha recogido ningún beneficio derivado de esta operación.</p>
-      <div class="solucion">
-        <p>Renta fiscal = Vm bien adquirido – VF bien transmitido = 10.000 – 6.000 = <strong>4.000 €</strong></p>
-        <p>Como la Renta contabilizada = 0 €, entonces hay que hacer un ajuste <strong>RC + 4.000 IFNC</strong>.</p>
+      <p>La sociedad A permuta (comercial) un bien con la sociedad B. El bien que entrega A: maquinaria con Vm = 9.000 € y VF = VC = 5.000 €. El bien que entrega B: terreno con Vm = 10.000 € y VF = VC = 8.000 €.</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Sociedad A</th><th>Sociedad B</th></tr></thead>
+          <tbody>
+            <tr><td>IF = 10.000 – 5.000 = 5.000 €</td><td>IF = 9.000 – 8.000 = 1.000 €</td></tr>
+            <tr><td>IC = 9.000 – 5.000 = 4.000 €</td><td>IC = 9.000 – 8.000 = 1.000 €</td></tr>
+            <tr><td>Ajuste = RC + 1.000 €</td><td>No habrá ajuste</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <p><strong>2) Permuta no comercial:</strong> Se valora en la contabilidad el bien recibido por el VC del bien entregado (IC = 0), con el límite del Vm del bien recibido si éste fuera menor que el VC del bien entregado.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 23 — Permuta no comercial</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A permuta (no comercial) un bien con la sociedad B. El bien que entrega A: maquinaria con Vm = 9.000 € y VF = VC = 5.000 €. El bien que entrega B: terreno con Vm = 10.000 € y VF = VC = 8.000 €.</p>
+      <div class="tabla-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Sociedad A</th><th>Sociedad B</th></tr></thead>
+          <tbody>
+            <tr><td>IF = 10.000 – 5.000 = 5.000 €</td><td>IF = 9.000 – 8.000 = 1.000 €</td></tr>
+            <tr><td>IC = 0 €</td><td>IC = 0 €</td></tr>
+            <tr><td>Ajuste = RC + 5.000 IFNC</td><td>Ajuste = RC + 1.000 IFNC</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -1550,11 +1904,21 @@ code {
   <p>El artículo 19.2 de la LIS dispone que las operaciones realizadas con personas o entidades residentes en paraísos fiscales se valorarán por su valor de mercado. Además, el contribuyente está obligado a documentar el valor de mercado de estas operaciones de manera análoga a lo establecido para las operaciones vinculadas en el RIS.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 22 — Operación con entidad residente en paraíso fiscal</div>
+    <div class="ejemplo-header">Ejemplo Nº 24 — Compra a entidad residente en paraíso fiscal</div>
     <div class="ejemplo-body">
-      <p>Una sociedad residente en España adquiere un bien por importe de 1.000 euros a una entidad residente en un paraíso fiscal, siendo su valor de mercado de 800 euros.</p>
+      <p>La sociedad A compra por 10.000 € mercancías cuyo Vm = 8.000 €.</p>
       <div class="solucion">
-        <p>La sociedad residente computa en el resultado contable un gasto por 1.000 euros, cuando sólo debería computar fiscalmente 800 euros, que es su valor de mercado. Por consiguiente, debe efectuarse un ajuste <strong>RC + 200 GCNF</strong>.</p>
+        <p>GC = 10.000 €, pero GF = 8.000 €. <strong>Ajuste RC + 2.000 GCNF</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 25 — Venta a entidad residente en paraíso fiscal</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A vende por 10.000 € mercancías cuyo Vm = 15.000 €.</p>
+      <div class="solucion">
+        <p>IC = 10.000 €, pero IF = 15.000 €. <strong>Ajuste RC + 5.000 IFNC</strong>.</p>
       </div>
     </div>
   </div>
@@ -1568,13 +1932,12 @@ code {
   </ul>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 23 — Ingreso sujeto a retención no practicada</div>
+    <div class="ejemplo-header">Ejemplo Nº 26 — Ingreso sujeto a retención no practicada</div>
     <div class="ejemplo-body">
-      <p>Una sociedad ha contabilizado como intereses un importe de 810 euros que deberían haber estado sometidos a una retención del 19%. La sociedad no fue objeto de retención y no puede probar el importe de la contraprestación íntegra devengada.</p>
+      <p>Se contabiliza una cantidad percibida como intereses (sujetos a retención del 19%) por importe de 1.000 €. No se ha retenido y no se puede probar la contraprestación íntegra devengada.</p>
       <div class="solucion">
-        <p>Ingreso íntegro = 810 / (1 – 0,19) = 810 / 0,81 = <strong>1.000 €</strong></p>
-        <p>Retención = 19% × 1.000 = <strong>190 €</strong></p>
-        <p>La Administración le practicará un ajuste positivo por la diferencia entre el ingreso íntegro y el ingreso contabilizado (<strong>RC + 190 IFNC</strong>) y deberá minorar la cuota líquida del IS en el importe de la teórica retención (190 €), todo ello sin perjuicio de la responsabilidad jurídica del retenedor por su incumplimiento del deber de retener.</p>
+        <p>Ingreso íntegro = 1.000 / (1 – 0,19) = 1.000 / 0,81 = <strong>1.234,57 € = IF</strong></p>
+        <p>Como el IC = 1.000 €, hay que hacer ajuste <strong>RC + 234,57 IFNC</strong>.</p>
       </div>
     </div>
   </div>
@@ -1633,11 +1996,23 @@ code {
   <p>Para la cuantificación de la exención, el artículo 21.10 de la LIS dispone que el importe de los dividendos exentos se reducirá en un 5% en concepto de gastos de gestión referidos a la participación, lo cual supone en la práctica que quedarán exentos el 95% de los dividendos percibidos.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 24 — Exención de dividendos</div>
+    <div class="ejemplo-header">Ejemplo Nº 27 — Exención de dividendos (regla general, 95%)</div>
     <div class="ejemplo-body">
-      <p>La sociedad A participa en el 15% de la sociedad residente B, desde hace siete años. Durante el período 2024, la sociedad A ha percibido y contabilizado 25.000 € de dividendos distribuidos por la sociedad B.</p>
+      <p>La sociedad A obtiene 10.000 € de dividendos distribuidos por la sociedad B residente en España, en la que participa en el 20% de su capital desde hace 4 años.</p>
       <div class="solucion">
-        <p>La sociedad A podrá aplicar la exención de dividendos del artículo 21 de la LIS por un importe de 23.750 € (95% × 25.000), realizando el siguiente ajuste: <strong>RC – 23.750 ICNF</strong>.</p>
+        <p>Se cumplen los requisitos para aplicar la exención. La sociedad A podrá practicar un ajuste de <strong>RC – 9.500 (95% × 10.000) ICNF</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Como <strong>regla especial</strong>, el importe de la exención será del <strong>100%</strong> de los dividendos íntegros percibidos cuando concurran las siguientes circunstancias: (i) los dividendos sean percibidos por una entidad cuyo importe neto de la cifra de negocios en el período impositivo inmediato anterior sea inferior a 40 millones de euros, que no sea sociedad patrimonial ni forme parte de un grupo de sociedades; (ii) los dividendos procedan de una entidad constituida con posterioridad al 1 de enero de 2021 en la que se ostente, desde su constitución, la totalidad del capital; y (iii) los dividendos se perciban en los períodos impositivos que concluyan en los 3 años inmediatos y sucesivos al año de constitución de la entidad que los distribuya.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 28 — Exención de dividendos (regla especial, 100%)</div>
+    <div class="ejemplo-body">
+      <p>La sociedad M obtiene 10.000 € de dividendos distribuidos por la sociedad N residente en España, en la que participa en el 100% de su capital desde hace 2 años. Se cumplen las tres circunstancias para aplicar la regla especial.</p>
+      <div class="solucion">
+        <p>Se cumplen los requisitos para aplicar la exención al 100%. La sociedad M podrá practicar un ajuste de <strong>RC – 10.000 ICNF</strong>.</p>
       </div>
     </div>
   </div>
@@ -1651,7 +2026,17 @@ code {
   <p>Además, el artículo 21.3 permite también la exención parcial de la renta positiva derivada de la transmisión de la participación cuando, cumpliéndose el requisito a), el requisito b) de tributación mínima en el extranjero haya sido cumplido únicamente durante alguno o algunos de los ejercicios de tenencia de la participación, pero no en todos. Para ello, se distinguirán dos partes diferenciadas de la renta obtenida en la transmisión a efectos de aplicar la exención.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 25 — Exención parcial en transmisión de participación</div>
+    <div class="ejemplo-header">Ejemplo Nº 29 — Exención en transmisión de participación (regla general, 95%)</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A vende las acciones que posee de la sociedad B residente en España por 100.000 €. Dichas acciones las adquirió hace tres años por 40.000 € y suponían una participación del 10%.</p>
+      <div class="solucion">
+        <p>La renta obtenida es de 60.000 € (100.000 – 40.000). Como se cumplen los requisitos para aplicar la exención, la sociedad A podrá practicar un ajuste de <strong>RC – 57.000 (95% × 60.000) ICNF</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 30 — Exención parcial en transmisión de participación</div>
     <div class="ejemplo-body">
       <p>La sociedad A adquirió, el 1 de enero de 2021, una participación del 100% de una sociedad no residente por importe de 1.000.000 € y, el 31 de diciembre de 2024, vendió dicha participación por importe de 1.400.000 €. Conocemos que, durante todo el tiempo que tuvo la participación, la sociedad no residente tributó por un impuesto análogo a nuestro IS en su Estado de residencia. Los beneficios no distribuidos generados por la entidad participada han sido los siguientes:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
@@ -1688,7 +2073,7 @@ code {
   <p>Finalmente, el artículo 21.8 de la LIS dispone que sí serán deducibles las rentas negativas generadas en caso de extinción de la entidad participada, salvo que la misma sea consecuencia de una operación de reestructuración. En este caso, las rentas negativas se minorarán en el importe de los dividendos o participaciones en beneficios de la entidad participada en los diez años anteriores a la fecha de la extinción, siempre que los mismos no hayan minorado el valor de adquisición de la participación correspondiente y hayan tenido derecho a una exención o deducción por doble imposición.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 26 — Renta negativa por extinción de entidad participada</div>
+    <div class="ejemplo-header">Ejemplo Nº 31 — Renta negativa por extinción de entidad participada</div>
     <div class="ejemplo-body">
       <p>La sociedad A adquirió el 10% de la sociedad X por importe de 100.000 euros en el año 2019. Durante los cuatro años siguientes ha recibido dividendos por importe de: 10.000 euros, 8.000 euros, 5.000 euros y 7.000 euros respectivamente, que no han sido incorporados a la base imponible del IS porque han disfrutado de la exención por doble imposición del artículo 21 de la LIS. Finalmente, en 2024 se procede a la disolución de la sociedad X, de manera que la sociedad A recibe una cuota de liquidación de 60.000 euros correspondiente a la amortización de su participación.</p>
       <div class="solucion">
@@ -1708,16 +2093,41 @@ code {
   <p>A efectos de cuantificar la renta, el artículo 22.5 de la LIS dispone que se considerarán rentas del establecimiento permanente aquellas que el mismo hubiera podido obtener si fuera una entidad distinta e independiente, teniendo en cuenta las funciones desarrolladas, los activos utilizados y los riesgos asumidos por la entidad a través del establecimiento permanente.</p>
   <p>De manera similar a como vimos en el epígrafe anterior, la aplicación de esta exención será incompatible con la aplicación de la deducción por doble imposición internacional prevista en el artículo 31 de la LIS respecto de la misma renta. En este sentido, si la sociedad tuviera varios establecimientos permanentes en el extranjero, podrá optar por aplicar la exención o la deducción en relación con la renta de cada establecimiento permanente, incluso en el caso de que existieran varios establecimientos en el mismo país.</p>
 
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 32 — Renta positiva de establecimiento permanente en el extranjero</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A tiene un EP en Canadá (Tg. Canadá = 15%). Conocemos que ha contabilizado una renta positiva de 35.000 € obtenida por dicho EP.</p>
+      <div class="solucion">
+        <p>La renta obtenida por el EP en Canadá está exenta. Ajuste: <strong>RC – 35.000 ICNF</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 33 — Renta positiva por transmisión de establecimiento permanente</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A vende el EP en Canadá por 400.000 € (Tg. Canadá = 15%). El valor contable de los bienes afectos a dicho EP es de 100.000 €.</p>
+      <div class="solucion">
+        <p>Renta contable = IC = 400.000 – 100.000 = 300.000 €. La operación está exenta (IF = 0). Ajuste: <strong>RC – 300.000 €</strong>.</p>
+      </div>
+    </div>
+  </div>
+
   <h4>5.14.2 Tratamiento de las rentas negativas derivadas de la transmisión de establecimientos permanentes</h4>
   <p>El artículo 22.2 de la LIS dispone que no se integrarán las rentas negativas obtenidas en el extranjero a través de un establecimiento permanente, ni tampoco la renta negativa derivada de su transmisión.</p>
   <p>No obstante, sí podrá integrarse la renta negativa derivada del cese de un establecimiento permanente, aunque únicamente en el importe en que dicha renta negativa haya superado las rentas positivas obtenidas en períodos impositivos anteriores que hayan disfrutado de la exención o de la deducción para la eliminación de la doble imposición.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 27 — Renta negativa de cese de establecimiento permanente</div>
+    <div class="ejemplo-header">Ejemplo Nº 34 — Rentas negativas de transmisión y cese de establecimiento permanente</div>
     <div class="ejemplo-body">
-      <p>La sociedad A creó un establecimiento permanente en el extranjero durante el año 2021. Durante los períodos impositivos 2021, 2022 y 2023 obtuvo rentas positivas por importe de 80.000 euros, 60.000 euros y 30.000 euros, respectivamente. Conocemos que durante 2021 y 2022 las rentas positivas quedaron exentas por cumplirse las condiciones del artículo 22 de la LIS y que durante 2023 la renta positiva obtenida permitió aplicar la deducción por doble imposición internacional del artículo 31 de la LIS. Finalmente, durante 2024 cesa el establecimiento permanente, contabilizándose una pérdida de 100.000 euros.</p>
+      <p>Se crea un EP en 2026 y obtiene rentas positivas exentas por importe de 30.000 € (2026), 20.000 € (2027) y 40.000 € (2028). Su valor contable es de 120.000 €.</p>
+      <p><strong>Supuesto A — Transmisión:</strong> Se vende el EP por importe de 100.000 €.</p>
       <div class="solucion">
-        <p>La LIS obliga a minorar la renta negativa obtenida (–100.000 €) en el importe de las rentas positivas anteriores que hayan disfrutado de la exención (80.000 + 60.000 = 140.000 €) o de la deducción por doble imposición internacional (30.000 €). En consecuencia, en este supuesto la renta negativa se minorará hasta que llegue a ser cero, dado que dicha renta negativa es inferior a las rentas positivas que anteriormente han disfrutado de las citadas exención y deducción. Por lo tanto, y dado que el contribuyente habrá contabilizado la pérdida de –100.000 €, deberá realizar un ajuste positivo de <strong>RC + 100.000 GCNF</strong>.</p>
+        <p>Renta negativa = GC = 100.000 – 120.000 = <strong>–20.000 €</strong>. Nunca se integra en la BI (GF = 0). Ajuste: <strong>RC + 20.000 GCNF</strong>.</p>
+      </div>
+      <p><strong>Supuesto B — Cese:</strong> Cesa la actividad del EP. Valor contable = 120.000 € y valor de mercado = 0 €.</p>
+      <div class="solucion">
+        <p>Renta negativa = GC = 0 – 120.000 = <strong>–120.000 €</strong>. La renta negativa puede integrarse en la base imponible, pero minorada en las rentas positivas exentas: 120.000 – 30.000 – 20.000 – 40.000 = <strong>30.000 € = GF</strong>. Ajuste: <strong>RC + 90.000 GCNF</strong>.</p>
       </div>
     </div>
   </div>
@@ -1735,21 +2145,74 @@ code {
   <p>Para poder aplicar la reducción, el artículo 23.2 de la LIS exige también que se cumplan los siguientes requisitos: que el cesionario utilice los derechos de uso o de explotación en el desarrollo de una actividad económica; que el cesionario no resida en un país o territorio de nula tributación o considerado como paraíso fiscal; que cuando en el mismo contrato de cesión de los activos intangibles se incluya prestaciones accesorias de bienes y servicios, deberá diferenciarse en dicho contrato la contraprestación correspondiente a los mismos; y que la entidad disponga de los registros contables necesarios para poder determinar cada uno de los ingresos y gastos directos correspondientes a los activos objeto de cesión.</p>
   <p>Con la finalidad de cuantificar la renta positiva que podrá beneficiarse de la reducción, el artículo 23.2 de la LIS dispone que la renta positiva susceptible de reducción consistirá en los ingresos derivados de la cesión o uso del activo intangible y, en su caso, la renta positiva procedente de su transmisión que superen la suma de los gastos incurridos por la entidad directamente relacionados con la creación de los activos que no hubieran sido incorporados al valor de los activos, de las cantidades deducidas por la amortización de dichos activos, de conformidad con el artículo 12.2 de la LIS, y de aquellos gastos directamente relacionados con los activos que se hubieran integrado en la base imponible.</p>
 
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 35 — Reducción por cesión de activos intangibles (patent box)</div>
+    <div class="ejemplo-body">
+      <p>Una sociedad D obtiene una renta de 200.000 € derivada de la cesión de una patente. Los gastos propios incurridos por la sociedad D para conseguir el activo intangible han sido de 1.000.000 €, y además pagó 1.000.000 € a una entidad vinculada F por la adquisición de I+D necesario para la obtención de dicho activo.</p>
+      <div class="solucion">
+        <p>Numerador = gastos propios × 1,30 = 1.000.000 × 1,30 = 1.300.000 € (≤ denominador)</p>
+        <p>Denominador = 1.000.000 + 1.000.000 = 2.000.000 €</p>
+        <p>Porcentaje de reducción = 60% × (1.300.000 / 2.000.000) = 60% × 0,65 = <strong>39%</strong></p>
+        <p>Importe de la reducción = 39% × 200.000 = <strong>78.000 €</strong>. Ajuste: <strong>RC – 78.000 ICNF</strong>.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══════════════════════════════════════ -->
   <h3 id="s5-16">5.16 Reserva de capitalización</h3>
 
-  <p>Con la finalidad de incrementar la capitalización de las empresas, el artículo 25 de la LIS permite que los contribuyentes que apliquen los tipos de gravamen general o incrementado del IS puedan aplicar una reducción del 15% del importe del incremento de los fondos propios de la sociedad habida durante el ejercicio, siempre que se cumplan los siguientes requisitos:</p>
+  <p>Con la finalidad de incrementar la capitalización de las empresas, el artículo 25 de la LIS permite que los contribuyentes que apliquen el tipo de gravamen general (25%) o el tipo de gravamen incrementado (30%) puedan aplicar esta reducción. También es aplicable a las ERD y a las microempresas que apliquen los tipos generales reducidos del artículo 29.1 de la LIS (desde el 24% al 17%, según el año), y a las sociedades de nueva creación que apliquen el tipo reducido del 15%) durante el primer período impositivo en que la BI resulte positiva y el siguiente.</p>
+
+  <p><strong>A partir del 1 de enero de 2025</strong>, la reducción consiste, con carácter general, en una <strong>reducción del 20%</strong> del incremento de los fondos propios de la sociedad habido durante el ejercicio, siempre que se cumplan los siguientes requisitos:</p>
   <ul>
-    <li>Que el importe del citado incremento de los fondos propios de la entidad se mantenga durante el plazo de tres años, contados desde el cierre del período impositivo al que corresponda la reducción, salvo por la existencia de pérdidas contables en la entidad.</li>
-    <li>Que se dote una reserva por el importe de la reducción, que deberá figurar en el balance con absoluta separación y título apropiado y que será indisponible durante el citado plazo de tres años. No se entenderá incumplido este requisito cuando se disponga de la reserva como consecuencia de la separación de socios, la realización de operaciones de reestructuración a las que sea aplicable el régimen especial de la LIS o cuando se efectúe dicha disposición en virtud de una obligación legal.</li>
+    <li>Que se mantenga el incremento de fondos propios durante tres años, contados desde el cierre del período impositivo al que corresponda la reducción, salvo por la existencia de pérdidas contables en la entidad.</li>
+    <li>Que se dote una reserva por el importe de la reducción, que deberá figurar en el balance con absoluta separación y título apropiado (por ejemplo, «Reserva de capitalización 2025») y sea indisponible durante tres años. No se entenderá incumplido este requisito cuando se disponga de la reserva como consecuencia de la separación de socios, la realización de operaciones de reestructuración a las que sea aplicable el régimen especial de la LIS o cuando se efectúe dicha disposición en virtud de una obligación legal.</li>
   </ul>
-  <p>La base de la reducción vendrá determinada por la diferencia positiva entre los fondos propios existentes al cierre del ejercicio, sin incluir los resultados del mismo, y los fondos propios existentes al inicio del mismo, sin incluir los resultados del ejercicio anterior. Sin embargo, no se tendrán en cuenta para efectuar dicho cálculo en los fondos propios existentes, tanto al cierre como al inicio del ejercicio, determinadas partidas como las aportaciones de los socios, las ampliaciones de capital para compensar créditos, las ampliaciones de fondos propios por operaciones con acciones propias o de reestructuración, las reservas de carácter legal o estatutario, etc.</p>
-  <p>De igual modo, se establece que la reducción que puede practicarse durante el período impositivo no podrá superar el 10% de la base imponible positiva previa a esta misma reducción y a la compensación de bases imponibles negativas. No obstante, la cantidad no reducida por aplicación del límite anterior podrá ser objeto de aplicación en los períodos impositivos que finalicen en los dos años siguientes, conjuntamente con la reducción por capitalización del período impositivo correspondiente y con el mismo límite del 10%.</p>
+
+  <p><strong>Tipos de reducción incrementados (desde 2025):</strong> si el contribuyente acredita un incremento de su plantilla media total en el período en que aplica la reducción respecto del período impositivo anterior, se aplicarán los siguientes tipos:</p>
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>Incremento de plantilla</th><th>Tipo de reducción</th></tr></thead>
+      <tbody>
+        <tr><td>≥ 2% y &lt; 5%</td><td>23%</td></tr>
+        <tr><td>&gt; 5% y ≤ 10%</td><td>26,5%</td></tr>
+        <tr><td>&gt; 10%</td><td>30%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Para aplicar dichos tipos incrementados se requiere que el citado incremento de plantilla se mantenga también durante los tres años siguientes.</p>
+
+  <p><strong>Base de la reducción:</strong> la diferencia positiva entre los fondos propios existentes al cierre del ejercicio, sin incluir los resultados del mismo, y los fondos propios existentes al inicio del mismo, sin incluir los resultados del ejercicio anterior. No se computan determinadas partidas: aportaciones de los socios, ampliaciones de capital para compensar créditos, ampliaciones de fondos propios por operaciones con acciones propias o de reestructuración, reservas de carácter legal o estatutario, la reserva por inversiones en Canarias, etc.</p>
+
+  <p><strong>Límite de la reducción (desde 2025):</strong> con carácter general, el importe de la reducción no podrá superar el <strong>20%</strong> de la base imponible positiva previa a la aplicación de la propia reserva de capitalización y a la compensación de bases imponibles negativas. Para <strong>microempresas</strong> (contribuyentes cuyo importe neto de la cifra de negocios sea inferior a 1 millón de euros durante los 12 meses anteriores al inicio del período), el límite se amplía al <strong>25%</strong>. La parte no deducida por aplicación de dichos límites podrá deducirse en los períodos impositivos que concluyan durante los dos años siguientes, conjuntamente con la reducción por capitalización de esos años y con los mismos límites.</p>
+
+  <div class="ejemplo">
+    <div class="ejemplo-header">Ejemplo Nº 36 — Reserva de capitalización (ejemplo plurianual)</div>
+    <div class="ejemplo-body">
+      <p>La sociedad A se constituye en 2026 con un capital social de 100.000 €.</p>
+      <p><strong>Ejercicio 2026:</strong> La cuenta PyG cierra con un saldo positivo de 20.000 €.</p>
+      <p>Balance final 2026: CS = 100.000 | PyG = 20.000</p>
+      <p>FP Final = 0 y FP Inicio = 0 €, <strong>no se puede dotar la RC</strong>.</p>
+      <p><strong>Ejercicio 2027:</strong> Se aprueba el ejercicio anterior y se dota la reserva legal (10% × 20.000 = 2.000 €). Se reparten dividendos por 8.000 €. Al finalizar 2027, PyG = 30.000 €.</p>
+      <p>Como teníamos 20.000 € de PyG 2026 y hemos utilizado 2.000 (RL) + 8.000 (dividendos), quedan 10.000 € para reserva voluntaria y en su caso capitalización.</p>
+      <div class="solucion">
+        <p>FPF = 10.000 € y FPI = 0 €. Diferencia FP = 10.000 €. <strong>Reducción = 20% × 10.000 = 2.000 €</strong>. Hay que mantener ese incremento de fondos propios 2028–2030.</p>
+        <p>Balance final 2027: CS=100.000 | RL=2.000 | Reserva capitalización 2026=2.000 | RV=8.000 | PyG=30.000</p>
+      </div>
+      <p><strong>Ejercicio 2028:</strong> Se aprueba el ejercicio anterior y se dota la RL (10% × 30.000 = 3.000 €). No hay reparto de dividendos. Al finalizar 2028, PyG = 8.000 €.</p>
+      <p>Como teníamos 30.000 € de PyG 2027 y solo hemos utilizado 3.000 (RL), quedan 27.000 € para reserva voluntaria y en su caso capitalización.</p>
+      <div class="solucion">
+        <p>FPF = 37.000 € y FPI = 10.000 €. Diferencia FP = 27.000 €. <strong>Reducción = 20% × 27.000 = 5.400 €</strong>. Hay que mantener ese incremento de fondos propios 2029–2031.</p>
+        <p>Balance final 2028: CS=100.000 | RL=5.000 | Reserva capitalización 2026=2.000 | Reserva capitalización 2027=5.400 | RV=29.600 | PyG=8.000</p>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════ -->
   <h3 id="s5-17">5.17 Compensación de bases imponibles negativas</h3>
 
-  <p>El artículo 26 de la LIS dispone que cuando el contribuyente obtenga una base imponible negativa, podrá compensarla con las rentas positivas que obtenga durante los períodos impositivos siguientes, con el límite del 70% de la base imponible positiva previa a la reducción derivada de la reserva de capitalización y a la propia compensación de bases imponibles negativas. No obstante, la norma establece que, en todo caso, la sociedad podrá compensar siempre un mínimo de 1.000.000 de euros de bases imponibles negativas, por lo que habrá que entender que el límite del 70% no resultará relevante si las bases imponibles negativas pendientes de compensar no superan el millón de euros. Además, para períodos impositivos inferiores al año, la norma obliga a prorratear el citado mínimo en función de la duración del período impositivo.</p>
+  <p>El artículo 26 de la LIS dispone que cuando el contribuyente obtenga una base imponible negativa, podrá compensarla con las rentas positivas que obtenga durante los períodos impositivos siguientes, con el límite del <strong>70%</strong> de la base imponible positiva previa a la reducción derivada de la reserva de capitalización y a la propia compensación de bases imponibles negativas. No obstante, dicho porcentaje se reduce al <strong>50%</strong> cuando la cifra de negocios de la entidad sea de, al menos, 20 millones de euros e inferior a 60 millones, y al <strong>25%</strong> cuando la cifra de negocios sea, al menos, de 60 millones de euros.</p>
+  <p>En todo caso, la norma establece que la sociedad podrá compensar siempre un mínimo de 1.000.000 de euros de bases imponibles negativas anuales, con independencia de los límites porcentuales anteriores. Además, para períodos impositivos inferiores al año, la norma obliga a prorratear el citado mínimo en función de la duración del período impositivo. Por otra parte, no hay período máximo de compensación.</p>
   <p>Sin embargo, la LIS establece que las limitaciones a la compensación de bases imponibles citadas anteriormente no se aplicarán:</p>
   <ul>
     <li>A las entidades de nueva creación que apliquen el tipo de gravamen reducido del 15%, durante los tres primeros períodos impositivos en que se genere una base imponible positiva previa.</li>
@@ -1770,7 +2233,7 @@ code {
   <p>Además, como requisito para poder practicar esta reducción, el artículo 105.3 de la LIS exige que el contribuyente dote una reserva indisponible por el importe de la reducción con los resultados positivos obtenidos durante el ejercicio y, si no fuera posible, la reducción quedará condicionada a que se dote dicha reserva con los primeros resultados positivos obtenidos durante los ejercicios siguientes con los que sea posible efectuar dicha dotación.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 28 — Reserva de nivelación</div>
+    <div class="ejemplo-header">Ejemplo Nº 37 — Reserva de nivelación</div>
     <div class="ejemplo-body">
       <p>La sociedad A (ERD) decide dotar la reserva de nivelación, en su nivel máximo, durante el período impositivo 2024. Conocemos que obtiene las siguientes bases imponibles durante los períodos impositivos anuales transcurridos desde 2024 a 2029:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
@@ -1812,19 +2275,41 @@ code {
 
   <p>El artículo 29 de la LIS regula los diferentes tipos de gravamen del IS. Los principales son:</p>
 
+  <p>El <strong>tipo general</strong> es del <strong>25%</strong>. Sin embargo, existen varios tipos reducidos e incrementados:</p>
+
+  <h4>Tipo de gravamen ERD (no aplicable a sociedades patrimoniales)</h4>
+  <div class="tabla-wrap">
+    <table class="tipo-table">
+      <thead><tr><th>Año</th><th>2025</th><th>2026</th><th>2027</th><th>2028</th><th>2029 y siguientes</th></tr></thead>
+      <tbody>
+        <tr><td>Tipo ERD</td><td>24%</td><td>23%</td><td>22%</td><td>21%</td><td>20%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Tipo de gravamen para microempresas (cifra de negocios del período anterior &lt; 1.000.000 €; no aplicable a entidades patrimoniales)</h4>
+  <div class="tabla-wrap">
+    <table class="tipo-table">
+      <thead><tr><th>Tramo de BI</th><th>2025</th><th>2026</th><th>2027 y siguientes</th></tr></thead>
+      <tbody>
+        <tr><td>BI entre 0 y 50.000 €</td><td>21%</td><td>19%</td><td>17%</td></tr>
+        <tr><td>BI &gt; 50.000 €</td><td>22%</td><td>21%</td><td>20%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Otros tipos de gravamen</h4>
   <div class="tabla-wrap">
     <table class="tipo-table">
       <thead><tr><th>Entidad</th><th>Tipo</th></tr></thead>
       <tbody>
-        <tr><td>Tipo general de gravamen</td><td>25%</td></tr>
-        <tr><td>Tipo general para entidades cuya cifra de negocios sea inferior a 1.000.000 € durante el período impositivo anterior</td><td>23%</td></tr>
-        <tr><td>Sociedades de nueva creación (primer período impositivo con base imponible positiva y el siguiente). <em>No aplicable a entidades patrimoniales</em></td><td>15%</td></tr>
-        <tr><td>Sociedades calificadas como empresas emergentes (primer período impositivo con BI positiva y los tres siguientes)</td><td>15%</td></tr>
-        <tr><td>Cooperativas (BI cooperativa / BI extracooperativa)</td><td>20% / 25%</td></tr>
+        <tr><td>Sociedades de nueva creación (primer período impositivo con BI positiva y el siguiente). <em>No aplicable a entidades patrimoniales</em></td><td>15%</td></tr>
+        <tr><td>Sociedades calificadas como empresas emergentes —Ley 28/2022— (primer período impositivo con BI positiva y los tres siguientes)</td><td>15%</td></tr>
+        <tr><td>Cooperativas: (Tg – 3%), con un máximo del 20%, para la BI cooperativa; la BI extracooperativa tributa al tipo que corresponda</td><td>(Tg – 3%) / Tg</td></tr>
         <tr><td>Entidades sin fin lucrativo (Ley 49/2002)</td><td>10%</td></tr>
-        <tr><td>Sociedades de capital variable, fondos de inversión, SICAVs (que cumplan determinados requisitos)</td><td>1%</td></tr>
+        <tr><td>Sociedades de capital variable (SICAV), fondos de inversión y sociedades/fondos de inversión inmobiliaria (que cumplan determinados requisitos)</td><td>1%</td></tr>
         <tr><td>Fondos de Pensiones</td><td>0%</td></tr>
-        <tr><td>Entidades de crédito y dedicadas a la exploración, investigación y explotación de yacimientos y almacenamientos subterráneos de hidrocarburos</td><td>30%</td></tr>
+        <tr><td>Entidades de crédito y entidades dedicadas a la exploración, investigación y explotación de yacimientos y almacenamientos subterráneos de hidrocarburos</td><td>30%</td></tr>
       </tbody>
     </table>
   </div>
@@ -1864,10 +2349,10 @@ code {
     </table>
   </div>
 
-  <p>Además, el importe del impuesto satisfecho en el extranjero que no sea plenamente deducible por aplicación de esta deducción, la norma prevé que podrá considerarse gasto deducible del IS la parte del impuesto extranjero que no sea objeto de deducción por doble imposición internacional, siempre que se corresponda con la realización de actividades económicas en el extranjero. Las cantidades no deducidas por insuficiencia de cuota íntegra, podrán deducirse en los períodos impositivos siguientes. El artículo 31.7 de la LIS extiende hasta diez años la prescripción del derecho de la Administración tributaria para comprobar las deducciones por doble imposición pendientes.</p>
+  <p>Además, el importe del impuesto satisfecho en el extranjero que no sea plenamente deducible por aplicación de esta deducción, la norma prevé que podrá considerarse gasto deducible del IS la parte del impuesto extranjero que no sea objeto de deducción por doble imposición internacional, siempre que se corresponda con la realización de actividades económicas en el extranjero. Las cantidades no deducidas por insuficiencia de cuota íntegra podrán deducirse en los períodos impositivos siguientes. No obstante, para las entidades cuya cifra de negocios sea de, al menos, 20.000.000 euros, las deducciones por doble imposición pendientes solo podrán aplicarse hasta el límite del <strong>50%</strong> de su cuota íntegra. El artículo 31.7 de la LIS extiende hasta diez años la prescripción del derecho de la Administración tributaria para comprobar las deducciones por doble imposición pendientes.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 29 — Deducción por doble imposición jurídica internacional</div>
+    <div class="ejemplo-header">Ejemplo Nº 38 — Deducción por doble imposición jurídica internacional</div>
     <div class="ejemplo-body">
       <p>La sociedad A, cuyo tipo de gravamen es del 25%, obtiene las siguientes rentas íntegras gravadas en el extranjero:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
@@ -1906,7 +2391,7 @@ code {
   <p>Para poder aplicar esta deducción, el contribuyente deberá incluir el citado impuesto subyacente en la base imponible del IS (ajuste positivo IFNC). El importe de esta deducción sumado al importe de la deducción por doble imposición internacional del apartado anterior en relación con los dividendos percibidos no podrá superar la tributación en España del importe de la renta incorporada a la base imponible del IS, minorada dicha renta al efecto del cálculo del citado límite en el 5% de los dividendos percibidos en concepto de gastos de gestión referidos a la participación (95% dividendos + impuesto subyacente).</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 30 — Deducción por doble imposición económica internacional</div>
+    <div class="ejemplo-header">Ejemplo Nº 39 — Deducción por doble imposición económica internacional</div>
     <div class="ejemplo-body">
       <p>La sociedad A (tipo gravamen 25%) obtiene dividendos íntegros de 10.000 euros de una sociedad extranjera E, en la que participa en el 10% de su capital social. La sociedad A soporta una tributación del 5% (500 euros) por los dividendos percibidos en el Estado de residencia de E. El tipo de gravamen del IS de la sociedad E fue del 9%.</p>
       <div class="solucion">
@@ -1933,7 +2418,7 @@ code {
   <p>El artículo 34 de la LIS establece una bonificación del <strong>99%</strong> de la parte de cuota íntegra correspondiente a las rentas derivadas de la prestación de los servicios públicos locales (municipales o provinciales) previstos en los artículos 25.2 y 36.1, apartados a), b) y c) de la Ley 7/1985 Reguladora de las Bases del Régimen Local, excepto cuando se exploten por el sistema de empresa mixta o de capital íntegramente privado.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 31 — Bonificación por prestación de servicios públicos locales</div>
+    <div class="ejemplo-header">Ejemplo Nº 40 — Bonificación por prestación de servicios públicos locales</div>
     <div class="ejemplo-body">
       <p>La sociedad A está participada al 100% por el Ayuntamiento de Alicante y ha obtenido una renta de 500.000 euros derivada del ejercicio de una actividad incluida como servicio municipal obligatorio en el artículo 25.2 de la Ley 7/1985. Tipo de gravamen: 25%.</p>
       <div class="solucion">
@@ -1961,7 +2446,7 @@ code {
   </ul>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 32 — Deducción por I+D</div>
+    <div class="ejemplo-header">Ejemplo Nº 41 — Deducción por I+D</div>
     <div class="ejemplo-body">
       <p>La sociedad A ha realizado durante el período impositivo 2024 gastos de I+D por importe de 900.000 € (de los cuales 200.000 € se corresponden con los gastos de personal de los investigadores) y ha adquirido bienes del inmovilizado material afectos a las actividades de I+D por importe de 100.000 €. Los gastos de I+D de los dos períodos impositivos anteriores han sido 400.000 € (2022) y 800.000 € (2023).</p>
       <div class="solucion">
@@ -1993,7 +2478,7 @@ code {
   </ul>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 33 — Deducción por creación de empleo para trabajadores con discapacidad</div>
+    <div class="ejemplo-header">Ejemplo Nº 42 — Deducción por creación de empleo para trabajadores con discapacidad</div>
     <div class="ejemplo-body">
       <p>El 1 de enero de 2023 la sociedad A tenía contratados a dos trabajadores con una discapacidad comprendida entre el 33% y el 65%. El 1 de octubre de 2023 se jubila uno de ellos y el 1 de mayo de 2024 se contratan dos nuevos empleados con una discapacidad comprendida entre el 33% y el 65%. Se pide calcular la deducción para el período impositivo 2024.</p>
       <div class="solucion">
@@ -2010,7 +2495,7 @@ code {
   <p>El artículo 38 ter de la LIS dispone que el contribuyente podrá deducir de la cuota íntegra el <strong>10%</strong> de las contribuciones empresariales imputadas a favor de los trabajadores con retribuciones brutas anuales inferiores a 27.000 €, siempre que tales contribuciones se realicen a planes de pensiones de empleo, planes de previsión social empresarial y otros sistemas de previsión social regulados en la Directiva (UE) 2016/2341 en los que el contribuyente sea el promotor.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 34 — Deducción por contribuciones empresariales a previsión social</div>
+    <div class="ejemplo-header">Ejemplo Nº 43 — Deducción por contribuciones empresariales a previsión social</div>
     <div class="ejemplo-body">
       <p>La sociedad A realiza una contribución de 5.000 euros al plan de pensiones de empleo de cada uno de los 10 trabajadores de su plantilla. Conocemos que 8 de dichos trabajadores tienen un salario bruto anual de 22.000 € y que los otros dos trabajadores restantes tienen salarios brutos de 30.000 € y 40.000 € respectivamente.</p>
       <div class="solucion">
@@ -2031,7 +2516,7 @@ code {
   <p>La ley 49/2002 prevé una deducción del <strong>40%</strong> del importe de las donaciones efectuadas por los contribuyentes del IS a las entidades sin fines lucrativos, con el límite de que la base de esta deducción no puede superar el 15% de la base imponible del período impositivo. Cuando en los dos períodos impositivos inmediatos anteriores se hubieran realizado donaciones a favor de una misma entidad y se cumpla que tanto la donación efectuada en el período impositivo actual como la del período impositivo anterior sean iguales o superiores a las donaciones realizadas en sus respectivos períodos impositivos anteriores, entonces se aplicará el tipo de deducción del <strong>50%</strong>.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 35 — Deducción por donativos</div>
+    <div class="ejemplo-header">Ejemplo Nº 44 — Deducción por donativos</div>
     <div class="ejemplo-body">
       <p>La sociedad A donó 5.000 euros a la fundación DELA y 7.000 euros a la fundación LUCA durante el período impositivo 2024, obteniendo en dicho período una base imponible de 100.000 €. Durante los períodos impositivos anteriores, la sociedad A efectuó donaciones a la fundación DELA por los siguientes importes: 2.500 euros (2022) y 4.000 euros (2023). Y a la fundación LUCA la primera vez que realiza donaciones es a la fundación LUCA.</p>
       <div class="solucion">
@@ -2049,7 +2534,13 @@ code {
   <h4>7.4.7 Tributación mínima (artículo 30 ter LIS)</h4>
   <p>El artículo 30 ter de la LIS dispone una tributación mínima que es aplicable exclusivamente a dos tipos de contribuyentes: (a) a las sociedades cuya cifra de negocios sea, al menos, de 20.000.000 € durante los 12 meses anteriores a la fecha en que se inicie el período impositivo, y (b) a las sociedades integradas en un grupo de sociedades que tribute en consolidación fiscal.</p>
 
-  <p>Para estos contribuyentes, la cuota líquida resultante no podrá ser inferior al <strong>15%</strong> de la base imponible. No obstante, el citado límite será del 18% de la base imponible, en el caso de las sociedades que apliquen el tipo de gravamen incrementado del 30%, y del 10% de dicha base, en el supuesto de las entidades de nueva creación que apliquen el tipo de gravamen reducido del 15%.</p>
+  <p>Para estos contribuyentes, la cuota líquida resultante no podrá ser inferior al <strong>15%</strong> de la base imponible. No obstante:</p>
+  <ul>
+    <li>Las <strong>ERD y las microempresas</strong> aplicarán una cuota líquida mínima igual a <strong>15/25 × Tg × BI</strong> (redondeado por exceso). Por ejemplo, si el tipo ERD en 2028 es del 21%, la cuota líquida mínima será 15/25 × 21% = 12,6% → <strong>13%</strong>.</li>
+    <li>Las entidades que tributan al tipo incrementado del <strong>30%</strong> tendrán una cuota mínima del <strong>18%</strong> de la BI.</li>
+    <li>Las entidades de nueva creación que tributan al tipo reducido del <strong>15%</strong> tendrán una cuota mínima del <strong>10%</strong> de la BI.</li>
+  </ul>
+  <p>Cuando la sociedad tenga derecho a bonificaciones o deducciones por doble imposición internacional (DDII), la cuota líquida mínima será la <em>menor</em> entre el 15% de la BI y el resultado de restar a la cuota íntegra las DDII y las bonificaciones (CI – DDII – Bonificaciones). Las cantidades que no puedan deducirse por aplicación de la tributación mínima (deducciones para incentivar determinadas actividades) podrán aplicarse en los ejercicios siguientes.</p>
 
   <h3 id="s7-5">7.5 Pagos a cuenta</h3>
 
@@ -2071,7 +2562,7 @@ code {
   <p>El importe de la retención consistirá en el <strong>19%</strong> de la renta íntegra exigible o satisfecha, salvo en los supuestos de las rentas procedentes de la cesión del derecho a la explotación de la imagen (24%), y de los premios sometidos al gravamen especial de determinadas loterías y apuestas (20%).</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 36 — Ingreso a cuenta</div>
+    <div class="ejemplo-header">Ejemplo Nº 45 — Ingreso a cuenta</div>
     <div class="ejemplo-body">
       <p>Un banco entrega un ordenador a la sociedad A como retribución por la constitución de un depósito a plazo fijo de 10.000 €. Conocemos que el banco adquirió el citado ordenador por 400 euros.</p>
       <div class="solucion">
@@ -2088,7 +2579,7 @@ code {
   <p><strong>a) Sistema general</strong> (para contribuyentes cuyo importe neto de la cifra de negocios no haya superado la cantidad de 6.000.000 € durante los doce meses anteriores): cada pago fraccionado consistirá en un <strong>18%</strong> de la cuota líquida del período impositivo inmediato anterior menos retenciones e ingresos a cuenta declarados durante el período impositivo anterior.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 37 — Pagos fraccionados sistema general</div>
+    <div class="ejemplo-header">Ejemplo Nº 46 — Pagos fraccionados sistema general</div>
     <div class="ejemplo-body">
       <p>Una sociedad tiene su período impositivo coincidente con el año natural y debe realizar los pagos fraccionados correspondientes al período 2024 mediante el sistema general. Datos conocidos:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
@@ -2113,7 +2604,7 @@ code {
   <p><strong>b) Sistema alternativo</strong> (obligatorio para contribuyentes cuyo importe neto de la cifra de negocios haya superado la cantidad de 6.000.000 € durante los doce meses anteriores): el importe de cada pago fraccionado se obtendrá aplicando el porcentaje que resulte de multiplicar <strong>5/7</strong> por el tipo de gravamen del IS, redondeado por defecto, a la base imponible generada desde el inicio del período impositivo hasta el día anterior al inicio del plazo para el contribuyente para efectuar cada pago fraccionado. De este resultado se restarán las bonificaciones y las retenciones e ingresos a cuenta aplicables, así como los pagos fraccionados ya realizados.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 38 — Pagos fraccionados sistema alternativo</div>
+    <div class="ejemplo-header">Ejemplo Nº 47 — Pagos fraccionados sistema alternativo</div>
     <div class="ejemplo-body">
       <p>Una sociedad (tipo de gravamen 25%) tiene su período impositivo coincidente con el año natural y debe realizar los pagos fraccionados correspondientes al período 2024 mediante el sistema alternativo. Datos conocidos:</p>
       <div class="tabla-wrap" style="margin-top:10px;">
@@ -2141,7 +2632,7 @@ code {
   <p>El artículo 124 de la LIS dispone que todos los contribuyentes tienen la obligación de presentar la declaración del IS, salvo las entidades exentas y algunas entidades parcialmente exentas. Dicha declaración del IS deberá efectuarse mediante la presentación de una autoliquidación del impuesto en el modelo aprobado reglamentariamente que deberá llevarse a cabo durante los veinticinco días siguientes a los seis meses posteriores a la conclusión del período impositivo.</p>
 
   <div class="ejemplo">
-    <div class="ejemplo-header">Ejemplo Nº 39 — Plazos de declaración</div>
+    <div class="ejemplo-header">Ejemplo Nº 48 — Plazos de declaración</div>
     <div class="ejemplo-body">
       <p><strong>Caso 1:</strong> Las sociedades cuyo período impositivo coincida con el año natural deberán presentar la declaración del IS del año 2024 durante el plazo que va desde el 1 hasta el 25 de julio de 2025 (cierra el período impositivo el 31 de diciembre de 2024 y el plazo de 6 meses posteriores finaliza el 30 de junio de 2025).</p>
       <p><strong>Caso 2:</strong> Una sociedad cuyo período impositivo transcurra desde el 20 de marzo de 2024 hasta el 19 de marzo de 2025 tendrá que efectuar los siguientes cálculos: cierra el período impositivo el 19 de marzo de 2025, finaliza el plazo de 6 meses posteriores el 19 de septiembre de 2025, y el plazo para presentar la declaración del período 2024/2025 irá desde el 20 de septiembre hasta el 14 de octubre de 2025.</p>
