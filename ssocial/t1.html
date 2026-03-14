@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema Español de Seguridad Social — Guía de Estudio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --bg2: #edeadf;
+    --ink: #1a1510;
+    --ink2: #3d3428;
+    --ink3: #6b5e4a;
+    --accent: #c0392b;
+    --accent2: #e8a020;
+    --accent3: #2c6e49;
+    --card: #faf7f2;
+    --border: #d4c9b0;
+    --highlight: #fff3cd;
+    --shadow: rgba(26,21,16,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.75;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 18px,
+      rgba(255,255,255,0.03) 18px,
+      rgba(255,255,255,0.03) 19px
+    );
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .header-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.75rem;
+  }
+  header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--bg);
+    margin-bottom: 0.5rem;
+  }
+  header h1 span { color: var(--accent2); font-style: italic; }
+  header p {
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.6);
+    font-style: italic;
+  }
+  .progress-bar-wrap {
+    margin-top: 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    height: 3px;
+    width: 100%;
+  }
+  .progress-bar {
+    height: 100%;
+    background: var(--accent2);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .progress-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(245,240,232,0.5);
+    margin-top: 0.4rem;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--ink2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--accent);
+  }
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    background: none;
+    border: none;
+    padding: 0.9rem 1.2rem;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { color: var(--bg); }
+  .nav-btn.active {
+    color: var(--accent2);
+    border-bottom-color: var(--accent2);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+  /* ── SECTION TITLE ── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .section-title-wrap h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .section-title-wrap p {
+    font-size: 0.85rem;
+    color: var(--ink3);
+    font-style: italic;
+  }
+
+  /* ── CONTENT BLOCKS ── */
+  .prose {
+    font-size: 1rem;
+    color: var(--ink2);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  /* Quote block */
+  .law-quote {
+    background: var(--card);
+    border-left: 4px solid var(--accent);
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink2);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .law-quote cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ink3);
+    letter-spacing: 0.05em;
+  }
+
+  /* Key concept cards */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .concept-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 6px var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .concept-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .concept-card.red::before { background: var(--accent); }
+  .concept-card.gold::before { background: var(--accent2); }
+  .concept-card.green::before { background: var(--accent3); }
+  .concept-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px var(--shadow); }
+  .concept-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .concept-card p { font-size: 0.88rem; color: var(--ink2); line-height: 1.6; }
+
+  /* Sub-heading */
+  .sub-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .sub-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Numbered list */
+  .numbered-list {
+    list-style: none;
+    margin: 1rem 0;
+  }
+  .numbered-list li {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+  .num-badge {
+    flex-shrink: 0;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 0.15rem;
+  }
+  .num-badge.gold { background: var(--accent2); }
+  .num-badge.green { background: var(--accent3); }
+  .num-content { font-size: 0.95rem; color: var(--ink2); }
+  .num-content strong { color: var(--ink); }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin: 1.5rem 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.55rem;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -1.55rem;
+    top: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent2);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent2);
+  }
+  .tl-item.key::before { background: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+  .tl-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+  }
+  .tl-item.key .tl-year { color: var(--accent); }
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin: 0.1rem 0 0.3rem;
+  }
+  .tl-desc { font-size: 0.85rem; color: var(--ink3); }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+    box-shadow: 0 2px 8px var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .compare-table th {
+    background: var(--ink2);
+    color: var(--bg);
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .compare-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink2);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--bg2); }
+  .compare-table td:first-child { font-weight: 600; color: var(--ink); }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: var(--highlight);
+    border: 1px solid var(--accent2);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+  .highlight-box .hb-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  /* ── FLASHCARDS ── */
+  .flashcard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .flashcard {
+    height: 160px;
+    perspective: 800px;
+    cursor: pointer;
+  }
+  .fc-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(.4,.2,.2,1);
+    transform-style: preserve-3d;
+  }
+  .flashcard.flipped .fc-inner { transform: rotateY(180deg); }
+  .fc-front, .fc-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 8px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .fc-front {
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .fc-front .fc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 0.5rem;
+  }
+  .fc-front .fc-q {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .fc-back {
+    background: var(--ink);
+    border: 1px solid var(--ink2);
+    transform: rotateY(180deg);
+  }
+  .fc-back p {
+    font-size: 0.85rem;
+    color: var(--bg);
+    line-height: 1.5;
+  }
+  .fc-hint {
+    font-size: 0.65rem;
+    color: var(--ink3);
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+
+  /* ── QUIZ ── */
+  .quiz-wrap { margin: 1.5rem 0; }
+  .quiz-q {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 6px var(--shadow);
+  }
+  .quiz-q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+  .quiz-opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--bg);
+    font-size: 0.88rem;
+    color: var(--ink2);
+  }
+  .quiz-opt:hover { border-color: var(--accent2); background: var(--highlight); }
+  .quiz-opt.correct { border-color: var(--accent3); background: #d4edda; color: var(--accent3); }
+  .quiz-opt.wrong { border-color: var(--accent); background: #f8d7da; color: var(--accent); }
+  .quiz-opt.disabled { pointer-events: none; }
+  .opt-letter {
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink3);
+  }
+  .quiz-feedback {
+    margin-top: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    display: none;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.ok { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+  .quiz-feedback.fail { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+  .quiz-score {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: none;
+  }
+  .quiz-score.show { display: block; }
+  .score-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--accent);
+  }
+  .quiz-reset {
+    margin-top: 1rem;
+    padding: 0.6rem 1.5rem;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .quiz-reset:hover { background: var(--accent); }
+
+  /* ── PRACTICE SECTION ── */
+  .practice-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 2px 6px var(--shadow);
+  }
+  .practice-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .practice-header:hover { background: var(--bg2); }
+  .practice-num {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--accent);
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .practice-q { font-size: 0.92rem; font-weight: 600; color: var(--ink); flex: 1; }
+  .practice-arrow {
+    font-size: 0.8rem;
+    color: var(--ink3);
+    transition: transform 0.2s;
+  }
+  .practice-item.open .practice-arrow { transform: rotate(90deg); }
+  .practice-body {
+    display: none;
+    padding: 0 1.2rem 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+  .practice-item.open .practice-body { display: block; }
+  .practice-hint {
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--ink3);
+    font-style: italic;
+    padding: 0.75rem;
+    background: var(--bg2);
+    border-radius: 6px;
+  }
+
+  /* ── PRINCIPLES CARDS ── */
+  .principle-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .principle-card {
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .pc-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .pc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 0.4rem;
+  }
+  .pc-desc { font-size: 0.8rem; color: rgba(245,240,232,0.65); line-height: 1.5; }
+
+  /* ── BEVERIDGE vs BISMARCK ── */
+  .versus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 600px) { .versus-grid { grid-template-columns: 1fr; } }
+  .versus-card {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 1.2rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 6px var(--shadow);
+  }
+  .vc-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin-bottom: 0.2rem;
+  }
+  .vc-name.bis { color: var(--accent); }
+  .vc-name.bev { color: var(--accent3); }
+  .vc-country {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 0.75rem;
+  }
+  .vc-list { list-style: none; }
+  .vc-list li {
+    font-size: 0.84rem;
+    color: var(--ink2);
+    padding: 0.25rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0.5rem;
+  }
+  .vc-list li:last-child { border-bottom: none; }
+  .vc-list li::before { content: '→'; color: var(--ink3); flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--ink3);
+    border-top: 1px solid var(--border);
+    text-transform: uppercase;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header { padding: 1.5rem 1rem 1.2rem; }
+    main { padding: 1.5rem 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-tag">▸ Derecho del Trabajo · Lección 1</div>
+    <h1>Sistema Español de<br><span>Seguridad Social</span></h1>
+    <p>Guía interactiva de estudio basada en TRLGSS y jurisprudencia constitucional</p>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-label" id="progressLabel">0 / 5 secciones completadas</div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('concepto', this)">① Concepto</button>
+    <button class="nav-btn" onclick="showSection('historia', this)">② Historia</button>
+    <button class="nav-btn" onclick="showSection('fuentes', this)">③ Fuentes</button>
+    <button class="nav-btn" onclick="showSection('flashcards', this)">④ Flashcards</button>
+    <button class="nav-btn" onclick="showSection('test', this)">⑤ Test</button>
+    <button class="nav-btn" onclick="showSection('practicas', this)">⑥ Prácticas</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ════════════ SECCIÓN 1: CONCEPTO ════════════ -->
+<div class="section active" id="concepto">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-title-wrap">
+      <h2>Concepto de Seguridad Social</h2>
+      <p>Art. 2 TRLGSS · Real Decreto-Legislativo 8/2015</p>
+    </div>
+  </div>
+
+  <p class="prose">
+    El marco legal básico de la Seguridad Social española viene dado por el <strong>Real Decreto-Legislativo 8/2015, de 30 de octubre</strong>, que aprueba el Texto Refundido de la Ley General de la Seguridad Social (TRLGSS). Su artículo 2.2 define el sistema en los siguientes términos:
+  </p>
+
+  <div class="law-quote">
+    «El Estado, por medio de la Seguridad Social, garantiza a las personas comprendidas en el campo de aplicación de esta, por cumplir los requisitos exigidos en las modalidades contributiva o no contributiva, así como a los familiares o asimilados que estuvieran a su cargo, la protección adecuada frente a las contingencias y en las situaciones que se contemplan en esta Ley.»
+    <cite>Artículo 2.2 TRLGSS</cite>
+  </div>
+
+  <p class="prose">
+    En esencia, la Seguridad Social es el <strong>instrumento del Estado</strong> para proporcionar protección frente a determinadas contingencias o situaciones de necesidad a las personas incluidas en su ámbito de aplicación que cumplan los requisitos exigidos.
+  </p>
+
+  <div class="sub-heading">Principios del Sistema (Art. 2.1 TRLGSS)</div>
+
+  <div class="principle-row">
+    <div class="principle-card">
+      <div class="pc-icon">🌐</div>
+      <div class="pc-title">Universalidad</div>
+      <div class="pc-desc">Cobertura a toda la ciudadanía, no solo a trabajadores</div>
+    </div>
+    <div class="principle-card">
+      <div class="pc-icon">🏛️</div>
+      <div class="pc-title">Unidad</div>
+      <div class="pc-desc">Sistema unificado bajo gestión pública coherente</div>
+    </div>
+    <div class="principle-card">
+      <div class="pc-icon">🤝</div>
+      <div class="pc-title">Solidaridad</div>
+      <div class="pc-desc">Los que más tienen contribuyen en favor de quien más necesita</div>
+    </div>
+    <div class="principle-card">
+      <div class="pc-icon">⚖️</div>
+      <div class="pc-title">Igualdad</div>
+      <div class="pc-desc">Sin discriminación en el acceso y disfrute de prestaciones</div>
+    </div>
+  </div>
+
+  <div class="sub-heading">Las dos modalidades de protección</div>
+
+  <div class="concept-grid">
+    <div class="concept-card red">
+      <h4>🔴 Modalidad Contributiva</h4>
+      <p>La protección se otorga en función de las <strong>cotizaciones efectuadas</strong> en el marco de una actividad profesional. Ejemplo: pensión de jubilación del trabajador por cuenta ajena que acredita un período mínimo de cotización.</p>
+    </div>
+    <div class="concept-card green">
+      <h4>🟢 Modalidad No Contributiva</h4>
+      <p>La protección se dispensa <strong>al margen de la cotización</strong> y del ejercicio profesional. Ejemplo: pensión de jubilación para quien tiene más de 65 años con insuficiencia de recursos, aunque haya cotizado de forma insuficiente o nula.</p>
+    </div>
+  </div>
+
+  <div class="sub-heading">Tipos de prestaciones</div>
+  <ul class="numbered-list">
+    <li>
+      <span class="num-badge">1</span>
+      <div class="num-content"><strong>Exceso de gastos:</strong> prestaciones técnicas como la asistencia sanitaria que cubren gastos extraordinarios derivados de una contingencia.</div>
+    </li>
+    <li>
+      <span class="num-badge gold">2</span>
+      <div class="num-content"><strong>Disminución de ingresos:</strong> subsidios económicos como la incapacidad temporal o la pensión de incapacidad permanente contributiva.</div>
+    </li>
+    <li>
+      <span class="num-badge green">3</span>
+      <div class="num-content"><strong>Insuficiencia de recursos:</strong> pensión de incapacidad permanente no contributiva y el Ingreso Mínimo Vital (reconocido en 2020).</div>
+    </li>
+  </ul>
+
+  <div class="highlight-box">
+    <div class="hb-title">⚠️ Recuerda: Ámbito subjetivo</div>
+    Son beneficiarios tanto los <strong>sujetos causantes</strong> (quienes generan el derecho) como sus <strong>familiares y asimilados a cargo</strong>. Ejemplo: las prestaciones de viudedad y orfandad benefician a la viuda e hijos del fallecido (sujeto causante).
+  </div>
+</div>
+
+
+<!-- ════════════ SECCIÓN 2: HISTORIA ════════════ -->
+<div class="section" id="historia">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-title-wrap">
+      <h2>Formación Histórica</h2>
+      <p>De la Revolución Industrial al Plan Beveridge</p>
+    </div>
+  </div>
+
+  <p class="prose">
+    El proceso de formación de la Seguridad Social corre parejo al del Derecho del Trabajo. Ambos son respuestas normativas diferenciadas a problemas de una misma realidad: la <strong>cuestión social</strong> derivada de la Revolución Industrial (finales del s. XVIII – principios del XIX).
+  </p>
+
+  <div class="sub-heading">Tres hitos fundamentales</div>
+
+  <div class="timeline">
+
+    <div class="tl-item key">
+      <div class="tl-year">HITO 1 · S. XIX</div>
+      <div class="tl-title">Asociacionismo obrero y mutualidades</div>
+      <div class="tl-desc">Las <strong>sociedades de socorros mutuos</strong> (ej.: Sociedad Mutua de Tejedores del Algodón, Barcelona 1840) fueron las primeras formas de protección colectiva. Los obreros ponían en común parte de su retribución en una caja colectiva. Evolucionaron hacia cajas de resistencia y sindicatos.</div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-year">HITO 2 · 1900</div>
+      <div class="tl-title">Ley DATO – Primera Ley de la Seguridad Social</div>
+      <div class="tl-desc">La <strong>Ley de accidentes de trabajo de 30/01/1900</strong> introduce la <em>responsabilidad objetiva del patrono</em>: el empresario responde siempre de los accidentes laborales, sin necesidad de culpa o negligencia, por el mero riesgo creado (teoría del riesgo profesional). Reformada en 1922 (posibilidad de aseguramiento) y 1932 (alta presunta + responsabilidad subsidiaria pública).</div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-year">HITO 3 · 1883–1961</div>
+      <div class="tl-title">Seguros sociales obligatorios – Modelo Bismarckiano</div>
+      <div class="tl-desc">Surgen en <strong>Alemania</strong> con el Canciller Otto von Bismarck: seguro de enfermedad (1883), accidentes (1884), vejez-invalidez (1889). En <strong>España</strong> llegan más tarde: SOE-enfermedad (1942), SOVI-vejez (1947), accidentes de trabajo reformados (1956), desempleo (1961).</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1941 – 1945</div>
+      <div class="tl-title">Plan Beveridge – Germen de la Seguridad Social moderna</div>
+      <div class="tl-desc">El gobierno británico encarga a <strong>William Beveridge</strong> redefinir el sistema de protección social. Aúna la tradición anglosajona (protección de los indigentes) con la germánica (rentas de sustitución). Sus ideas se implantan en Gran Bretaña en 1945 e influyen en toda Europa.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1963</div>
+      <div class="tl-title">Ley de Bases de la Seguridad Social (España)</div>
+      <div class="tl-desc">Propone generalizar la protección a toda la población activa y superar el modelo de seguros múltiples fragmentados.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1990</div>
+      <div class="tl-title">Ley 26/1990 – Prestaciones no contributivas</div>
+      <div class="tl-desc">Materializa el principio constitucional de universalidad: garantiza prestaciones (jubilación, incapacidad, cargas familiares) a quienes no han cotizado o lo han hecho insuficientemente.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1995</div>
+      <div class="tl-title">Pacto de Toledo</div>
+      <div class="tl-desc">Acuerdo político multipartidista para la consolidación y racionalización del sistema. Propugna reducir los regímenes especiales a dos: <em>Régimen General</em> y <em>RETA</em>. Revisado en 2003, 2011 y 2020.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2015</div>
+      <div class="tl-title">TRLGSS (RDL 8/2015)</div>
+      <div class="tl-desc">Texto Refundido vigente. Armoniza y refunde toda la normativa anterior en un solo cuerpo legal: 6 títulos, 373 artículos.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2020</div>
+      <div class="tl-title">Ingreso Mínimo Vital</div>
+      <div class="tl-desc">Nueva prestación que garantiza un nivel mínimo de rentas a quienes se encuentran en situación de vulnerabilidad económica. Refuerza el brazo no contributivo del sistema.</div>
+    </div>
+  </div>
+
+  <div class="sub-heading">Modelos comparados: Bismarck vs. Beveridge</div>
+
+  <div class="versus-grid">
+    <div class="versus-card">
+      <div class="vc-name bis">Otto von Bismarck</div>
+      <div class="vc-country">Alemania · 1883</div>
+      <ul class="vc-list">
+        <li>Protección solo para trabajadores (laboral/profesional)</li>
+        <li>Seguros múltiples y fragmentados</li>
+        <li>Gestión plural</li>
+        <li>Carácter contributivo (cotización)</li>
+        <li>Riesgos profesionales con régimen diferenciado</li>
+      </ul>
+    </div>
+    <div class="versus-card">
+      <div class="vc-name bev">William Beveridge</div>
+      <div class="vc-country">Reino Unido · 1942</div>
+      <ul class="vc-list">
+        <li>Universalidad: toda la ciudadanía</li>
+        <li>Unificación de seguros sociales</li>
+        <li>Gestión centralizada (un ministerio)</li>
+        <li>Financiación tripartita (patrono, trabajador, Estado)</li>
+        <li>Servicio Nacional de Salud gratuito</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-heading">Características del modelo bismarckiano</div>
+  <ul class="numbered-list">
+    <li><span class="num-badge">a</span><div class="num-content"><strong>Protección laboral:</strong> inicialmente solo trabajadores por cuenta ajena de la industria; paulatinamente se extendió a otras profesiones (del modelo laboral al profesional).</div></li>
+    <li><span class="num-badge gold">b</span><div class="num-content"><strong>Seguros múltiples:</strong> accidentes, enfermedad, jubilación, muerte y supervivencia. Distinción entre riesgos profesionales y comunes.</div></li>
+    <li><span class="num-badge green">c</span><div class="num-content"><strong>Gestión plural:</strong> en consonancia con la existencia de múltiples seguros.</div></li>
+    <li><span class="num-badge">d</span><div class="num-content"><strong>Régimen contributivo:</strong> basado en la cotización de empresarios y trabajadores, con aportación estatal.</div></li>
+  </ul>
+</div>
+
+
+<!-- ════════════ SECCIÓN 3: FUENTES ════════════ -->
+<div class="section" id="fuentes">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title-wrap">
+      <h2>Fuentes y Marco Constitucional</h2>
+      <p>CE Arts. 41 · 148 · 149 · Reglamento UE 883/2004</p>
+    </div>
+  </div>
+
+  <p class="prose">
+    La Seguridad Social es un ordenamiento de <strong>derecho público</strong>. El convenio colectivo y el contrato de trabajo tienen escaso margen de actuación. El artículo 3 TRLGSS declara nulo todo pacto individual o colectivo mediante el que el trabajador renuncie a sus derechos reconocidos en la ley.
+  </p>
+
+  <div class="sub-heading">Marco internacional y comunitario</div>
+  <p class="prose">El <strong>Reglamento comunitario 883/2004</strong> y su Reglamento de aplicación 987/2009 coordinan los sistemas de Seguridad Social para proteger a los trabajadores migrantes dentro de la UE, EEE (Islandia, Noruega, Liechtenstein) y Suiza. Sus reglas clave:</p>
+
+  <table class="compare-table">
+    <tr>
+      <th>Regla</th>
+      <th>Contenido</th>
+    </tr>
+    <tr>
+      <td>Territorialidad</td>
+      <td>Aplica la legislación del país de ocupación o empleo en cada momento</td>
+    </tr>
+    <tr>
+      <td>Totalización</td>
+      <td>Se suman los períodos de cotización en distintos países para determinar el derecho a prestaciones</td>
+    </tr>
+    <tr>
+      <td>Prorrata temporis</td>
+      <td>El pago de la prestación se distribuye entre los Estados en proporción al tiempo cotizado en cada uno</td>
+    </tr>
+    <tr>
+      <td>Exportabilidad</td>
+      <td>Las prestaciones pueden percibirse aunque se fije la residencia en otro país</td>
+    </tr>
+  </table>
+
+  <div class="sub-heading">El artículo 41 CE — Marco constitucional</div>
+
+  <div class="law-quote">
+    «Los poderes públicos mantendrán un régimen público de Seguridad Social para todos los ciudadanos, que garantice la asistencia y prestaciones sociales suficientes ante situaciones de necesidad, especialmente en caso de desempleo. La asistencia y prestaciones complementarias serán libres.»
+    <cite>Artículo 41 de la Constitución Española</cite>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hb-title">📌 Ubicación sistemática – Importancia</div>
+    El art. 41 CE está en el <strong>Capítulo III del Título I</strong> («Principios rectores de la política social y económica»). Por tanto (art. 53 CE): <em>no otorga un derecho subjetivo directo</em>; es el legislador quien debe reconocerlo. Los tribunales aplican la legislación vigente interpretándola a la luz del art. 41 CE.
+  </div>
+
+  <div class="sub-heading">Tres principios del art. 41 CE</div>
+
+  <ul class="numbered-list">
+    <li>
+      <span class="num-badge">1</span>
+      <div class="num-content">
+        <strong>Carácter público:</strong> La Seguridad Social es una función de Estado. Hace inviable la privatización del sistema en sus rasgos nucleares. El TC (STC 37/1994) admite fórmulas privadas en la gestión (p. ej. mutuas) sin que ello empañe el carácter público del conjunto.
+      </div>
+    </li>
+    <li>
+      <span class="num-badge gold">2</span>
+      <div class="num-content">
+        <strong>Tendencia a la universalidad subjetiva:</strong> «Para todos los ciudadanos», no solo para trabajadores. Materializada con la Ley 26/1990 (prestaciones no contributivas) y el Ingreso Mínimo Vital (2020).
+      </div>
+    </li>
+    <li>
+      <span class="num-badge green">3</span>
+      <div class="num-content">
+        <strong>Suficiencia de las prestaciones:</strong> Tanto en sentido <em>cualitativo</em> (catálogo completo de contingencias) como <em>cuantitativo</em> (quantum económico). El TC no ha delimitado aún el nivel mínimo exigible; existen prestaciones por debajo del SMI.
+      </div>
+    </li>
+  </ul>
+
+  <div class="sub-heading">Reparto competencial (arts. 148-149 CE)</div>
+
+  <table class="compare-table">
+    <tr>
+      <th>Materia</th>
+      <th>Estado</th>
+      <th>CC.AA.</th>
+    </tr>
+    <tr>
+      <td>Legislación básica y régimen económico SS</td>
+      <td>Competencia exclusiva (art. 149.1.17ª CE)</td>
+      <td>Ejecución de servicios (inscripción, afiliación, altas/bajas)</td>
+    </tr>
+    <tr>
+      <td>Sanidad exterior, bases y coordinación sanitaria</td>
+      <td>Competencia exclusiva (art. 149.1.16ª CE)</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Sanidad e higiene interior</td>
+      <td>—</td>
+      <td>Posible asunción competencial exclusiva (art. 148.1.21ª CE)</td>
+    </tr>
+    <tr>
+      <td>Asistencia social</td>
+      <td>—</td>
+      <td>Competencia exclusiva asumida (art. 148.1.20ª CE)</td>
+    </tr>
+  </table>
+
+  <div class="sub-heading">Seguridad Social vs. Asistencia Social</div>
+  <p class="prose">
+    El <strong>art. 42.4 TRLGSS</strong> clarifica: <em>«Cualquier prestación de carácter público que tenga como finalidad complementar, ampliar o modificar las prestaciones de la Seguridad Social, en su modalidad contributiva, forma parte del sistema de la Seguridad Social»</em>. El TC (STC 239/2002) distingue entre una <strong>asistencia social interna</strong> al sistema de SS y otra <strong>externa</strong> o extramuros del mismo, siendo esta última competencia exclusiva de las CC.AA.
+  </p>
+
+  <div class="sub-heading">Marco legal y normativo</div>
+  <div class="concept-grid">
+    <div class="concept-card gold">
+      <h4>📖 TRLGSS (RDL 8/2015)</h4>
+      <p>Norma básica. 6 títulos, 373 artículos. Refunde toda la normativa dispersa. Se complementa con numerosos reglamentos generales y especiales.</p>
+    </div>
+    <div class="concept-card red">
+      <h4>📜 Pacto de Toledo (1995)</h4>
+      <p>Acuerdo político para la viabilidad financiera del sistema. Recomendaciones sobre financiación, cotización, pensiones y regímenes especiales. Revisado en 2003, 2011 y 2020.</p>
+    </div>
+    <div class="concept-card green">
+      <h4>🇪🇺 Reglamento 883/2004</h4>
+      <p>Coordinación comunitaria de SS. Aplica a UE + EEE + Suiza. Principios de territorialidad, totalización, prorrata y exportabilidad.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════ SECCIÓN 4: FLASHCARDS ════════════ -->
+<div class="section" id="flashcards">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title-wrap">
+      <h2>Flashcards</h2>
+      <p>Haz clic en cada tarjeta para ver la respuesta</p>
+    </div>
+  </div>
+
+  <div class="flashcard-grid">
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <div class="fc-label">Concepto clave</div>
+          <div class="fc-q">¿Qué es la responsabilidad objetiva del empresario en accidentes de trabajo?</div>
+          <div class="fc-hint">Toca para ver la respuesta</div>
+        </div>
+        <div class="fc-back">
+          <p>El empresario responde <strong>siempre</strong> de los accidentes laborales <strong>sin necesidad de culpa o negligencia</strong>, por el mero riesgo creado con el funcionamiento de la empresa (riesgo profesional). Introducida por la Ley DATO de 1900.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <div class="fc-label">Norma</div>
+          <div class="fc-q">¿Cuáles son los cuatro principios del Sistema Español de SS según el art. 2.1 TRLGSS?</div>
+          <div class="fc-hint">Toca para ver la respuesta</div>
+        </div>
+        <div class="fc-back">
+          <p><strong>U</strong>niversalidad · <strong>U</strong>nidad · <strong>S</strong>olidaridad · <strong>I</strong>gualdad</p>
+          <p style="margin-top:0.5rem; font-size:0.75rem; color:rgba(245,240,232,0.6)">Mnemotécnico: UUSI</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <div class="fc-label">Historia</div>
+          <div class="fc-q">¿Qué fue el Plan Beveridge y cuándo se implantó?</div>
+          <div class="fc-hint">Toca para ver la respuesta</div>
+        </div>
+        <div class="fc-back">
+          <p>Informe encargado en 1941 al economista William Beveridge para redefinir la protección social británica. Fusiona la tradición anglosajona y la germánica. Se implantó en Gran Bretaña en <strong>1945</strong> e influyó en toda Europa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <div class="fc-label">Constitución</div>
+          <div class="fc-q">¿Qué implica que el art. 41 CE esté en el Capítulo III del Título I?</div>
+          <div class="fc-hint">Toca para ver la respuesta</div>
+        </div>
+        <div class="fc-back">
+          <p>Es un <strong>principio rector</strong>, no un derecho fundamental. Según el art. 53 CE, no otorga directamente un derecho subjetivo a los ciudadanos: debe ser el <strong>legislador</strong> quien lo reconozca expresamente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <div class="fc-label">Competencias</div>
+          <div class="fc-q">¿Qué competencia tienen las CC.AA. en materia de Seguridad Social?</div>
+          <div class="fc-hint">Toca para ver la respuesta</div>
+        </div>
+        <div class="fc-back">
+          <p>Solo <strong>ejecución de servicios</strong> (inscripción de empresas, afiliación, altas y bajas). La legislación básica y el régimen económico son competencia exclusiva del Estado (art. 149.1.17ª CE).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <div class="fc-label">Régimen comunitario</div>
+          <div class="fc-q">¿Qué es la regla de prorrata temporis?</div>
+          <div class="fc-hint">Toca para ver la respuesta</div>
+        </div>
+        <div class="fc-back">
+          <p>Regla del Reglamento 883/2004. Distribuye el pago de la prestación entre los distintos Estados donde trabajó la persona, <strong>en proporción a los períodos cotizados</strong> en cada uno de ellos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <div class="fc-label">Historia</div>
+          <div class="fc-q">¿Qué fue el «alta presunta»? ¿En qué ley se introdujo?</div>
+          <div class="fc-hint">Toca para ver la respuesta</div>
+        </div>
+        <div class="fc-back">
+          <p>Considera al trabajador en situación de alta <strong>aunque su empleador no haya cumplido la obligación de aseguramiento</strong>. Introducida por la Ley de 4 de julio de 1932. Antecedente del actual principio de automaticidad de las prestaciones.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <div class="fc-label">Distinción</div>
+          <div class="fc-q">Diferencia entre Seguridad Social y Asistencia Social</div>
+          <div class="fc-hint">Toca para ver la respuesta</div>
+        </div>
+        <div class="fc-back">
+          <p>La <strong>asistencia social</strong> protege a quienes están en situación de <em>marginación social</em> y no pueden acceder a las prestaciones de la SS. El TC (STC 239/2002) distingue entre asistencia social <em>interna</em> al sistema de SS y <em>externa</em> (competencia exclusiva CC.AA.).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <div class="fc-label">Norma</div>
+          <div class="fc-q">¿Cuándo y por qué nace el Ingreso Mínimo Vital?</div>
+          <div class="fc-hint">Toca para ver la respuesta</div>
+        </div>
+        <div class="fc-back">
+          <p>Reconocido en <strong>2020</strong>. Garantiza un nivel mínimo de rentas a personas en situación de vulnerabilidad económica. Refuerza el brazo no contributivo de la SS y complementa la universalidad del sistema.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════ SECCIÓN 5: TEST ════════════ -->
+<div class="section" id="test">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-title-wrap">
+      <h2>Test de Autoevaluación</h2>
+      <p>10 preguntas · Selecciona la respuesta correcta</p>
+    </div>
+  </div>
+
+  <div class="quiz-wrap" id="quizWrap">
+
+    <div class="quiz-q" data-answer="b">
+      <div class="quiz-q-text">1. ¿En qué artículo del TRLGSS se recogen los principios de universalidad, unidad, solidaridad e igualdad?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> Artículo 2.2</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> Artículo 2.1</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> Artículo 3</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> Artículo 41 CE</div>
+      </div>
+      <div class="quiz-feedback">El art. 2.1 TRLGSS recoge los principios; el art. 2.2 define el concepto de Seguridad Social.</div>
+    </div>
+
+    <div class="quiz-q" data-answer="c">
+      <div class="quiz-q-text">2. ¿Cómo se conoce coloquialmente a la primera ley de la Seguridad Social en España?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> Ley Bismarck</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> Ley Beveridge</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> Ley DATO</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> Ley SOVI</div>
+      </div>
+      <div class="quiz-feedback">La Ley de accidentes de trabajo de 30/01/1900 es coloquialmente conocida como «Ley DATO».</div>
+    </div>
+
+    <div class="quiz-q" data-answer="a">
+      <div class="quiz-q-text">3. ¿Qué precepto constitucional recoge la competencia exclusiva del Estado en materia de legislación básica y régimen económico de la Seguridad Social?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> Art. 149.1.17ª CE</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> Art. 148.1.20ª CE</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> Art. 41 CE</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> Art. 53 CE</div>
+      </div>
+      <div class="quiz-feedback">El art. 149.1.17ª CE atribuye al Estado la competencia exclusiva en legislación básica y régimen económico de la SS.</div>
+    </div>
+
+    <div class="quiz-q" data-answer="d">
+      <div class="quiz-q-text">4. La regla de totalización del Reglamento 883/2004 sirve para:</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> Determinar qué legislación nacional es aplicable</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> Distribuir el pago de la prestación entre Estados</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> Permitir exportar prestaciones al extranjero</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> Sumar períodos de cotización en distintos países para acceder a prestaciones</div>
+      </div>
+      <div class="quiz-feedback">La totalización suma los períodos cotizados en distintos países. La distribución del pago corresponde a la regla prorrata temporis.</div>
+    </div>
+
+    <div class="quiz-q" data-answer="b">
+      <div class="quiz-q-text">5. El Plan Beveridge fue encargado por el gobierno británico en el año:</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> 1883</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> 1941</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> 1945</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> 1963</div>
+      </div>
+      <div class="quiz-feedback">El encargo fue en 1941; las ideas se implantaron en Gran Bretaña en 1945.</div>
+    </div>
+
+    <div class="quiz-q" data-answer="c">
+      <div class="quiz-q-text">6. ¿Qué modalidad de prestación cubre la incapacidad temporal por contingencias comunes?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> Exceso de gastos</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> Insuficiencia de recursos</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> Disminución de ingresos</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> Asistencia social externa</div>
+      </div>
+      <div class="quiz-feedback">El subsidio de incapacidad temporal cubre la disminución de ingresos por imposibilidad temporal de trabajar.</div>
+    </div>
+
+    <div class="quiz-q" data-answer="a">
+      <div class="quiz-q-text">7. Según la STC 37/1994, el carácter público de la Seguridad Social:</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> Es compatible con fórmulas privadas en la gestión (p. ej. mutuas)</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> Impide cualquier participación privada en el sistema</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> Solo aplica al régimen contributivo</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> Es un derecho subjetivo directamente exigible</div>
+      </div>
+      <div class="quiz-feedback">El TC admite fórmulas privadas en la gestión (mutuas) sin que ello empañe el carácter público del conjunto del sistema.</div>
+    </div>
+
+    <div class="quiz-q" data-answer="d">
+      <div class="quiz-q-text">8. ¿Qué ley materializó por primera vez el principio de universalidad subjetiva en España al reconocer prestaciones no contributivas?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> Ley de Bases de la Seguridad Social 1963</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> Ley 4/2005 de 22 de abril</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> Ley 52/2003 de 10 de diciembre</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> Ley 26/1990 de 26 de diciembre</div>
+      </div>
+      <div class="quiz-feedback">La Ley 26/1990 de prestaciones no contributivas garantizó jubilación, incapacidad permanente y cargas familiares sin cotización previa.</div>
+    </div>
+
+    <div class="quiz-q" data-answer="b">
+      <div class="quiz-q-text">9. ¿Qué competencia ostentan las Comunidades Autónomas en materia de Seguridad Social, según el art. 149.1.17ª CE?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> Legislación básica y régimen económico</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> Ejecución de los servicios (inscripción, afiliación, altas y bajas)</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> Competencia exclusiva en materia de sanidad</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> Gestión de pensiones contributivas</div>
+      </div>
+      <div class="quiz-feedback">Las CC.AA. solo tienen la facultad de ejecución de servicios: inscripción de empresas, afiliación, altas y bajas.</div>
+    </div>
+
+    <div class="quiz-q" data-answer="c">
+      <div class="quiz-q-text">10. ¿En qué año se creó el primer seguro social bismarckiano y de qué tipo era?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="checkAnswer(this, 'a')"><span class="opt-letter">A</span> 1884 · Accidentes de trabajo</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'b')"><span class="opt-letter">B</span> 1889 · Vejez-invalidez</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'c')"><span class="opt-letter">C</span> 1883 · Enfermedad</div>
+        <div class="quiz-opt" onclick="checkAnswer(this, 'd')"><span class="opt-letter">D</span> 1911 · Supervivencia</div>
+      </div>
+      <div class="quiz-feedback">El primer seguro bismarckiano fue el de enfermedad en 1883. Le siguieron accidentes (1884), vejez-invalidez (1889) y supervivencia (1911).</div>
+    </div>
+
+  </div>
+
+  <div class="quiz-score" id="quizScore">
+    <div style="font-family:'Playfair Display',serif; font-size:1rem; color:var(--ink3); margin-bottom:0.5rem;">Resultado final</div>
+    <div class="score-num" id="scoreNum">—</div>
+    <div style="color:var(--ink3); font-size:0.9rem;" id="scoreMsg"></div>
+    <button class="quiz-reset" onclick="resetQuiz()">↺ Reiniciar test</button>
+  </div>
+</div>
+
+
+<!-- ════════════ SECCIÓN 6: PRÁCTICAS ════════════ -->
+<div class="section" id="practicas">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div class="section-title-wrap">
+      <h2>Casos Prácticos</h2>
+      <p>Preguntas orientativas — haz clic para ver pistas de resolución</p>
+    </div>
+  </div>
+
+  <p class="prose" style="margin-bottom:1.5rem;">Los ejercicios siguientes corresponden a las prácticas del Capítulo I. Despliega cada pregunta para ver orientaciones sobre su resolución.</p>
+
+  <!-- PRÁCTICA 4.3 -->
+  <div class="sub-heading">4.3 · Convenio España-Ecuador (BOE 7/02/2011)</div>
+
+  <div class="practice-item" onclick="togglePractice(this)">
+    <div class="practice-header">
+      <div class="practice-num">1</div>
+      <div class="practice-q">¿A qué prestaciones se aplica el Convenio? ¿Incluye el riesgo durante lactancia natural? ¿Y las prestaciones no contributivas?</div>
+      <div class="practice-arrow">▶</div>
+    </div>
+    <div class="practice-body">
+      <div class="practice-hint">
+        <strong>🔍 Orientación:</strong> Consulta el Artículo 2 del Convenio sobre su campo de aplicación material. Diferencia entre prestaciones incluidas explícitamente y las que quedan excluidas. El riesgo durante la lactancia natural es una contingencia específica del ordenamiento español de reciente configuración — analiza si el Convenio la recoge expresamente. Las prestaciones no contributivas tienen una problemática particular ya que se vinculan a la residencia, no a la cotización; examina si el Convenio prevé reglas específicas para ellas (generalmente quedan excluidas de los convenios bilaterales).
+      </div>
+    </div>
+  </div>
+
+  <div class="practice-item" onclick="togglePractice(this)">
+    <div class="practice-header">
+      <div class="practice-num">2</div>
+      <div class="practice-q">¿Puede percibir la pensión de orfandad una ecuatoriana de 20 años que reside en Ecuador tras el fallecimiento de su padre en España?</div>
+      <div class="practice-arrow">▶</div>
+    </div>
+    <div class="practice-body">
+      <div class="practice-hint">
+        <strong>🔍 Orientación:</strong> Analiza la regla de <strong>exportabilidad de prestaciones</strong> del Convenio. La pensión de orfandad es una prestación de supervivencia: en principio, si el Convenio prevé la exportabilidad de este tipo de prestaciones, la nacionalidad ecuatoriana no debería ser obstáculo. Verifica también: (a) si la edad de 20 años cumple los requisitos del ordenamiento español para orfandad; (b) si la residencia en Ecuador está permitida con el Convenio. Para el subsidio de IT: distinto régimen — está vinculado al control médico en España; analiza si el desplazamiento al extranjero durante su percibo es compatible según el Convenio.
+      </div>
+    </div>
+  </div>
+
+  <div class="practice-item" onclick="togglePractice(this)">
+    <div class="practice-header">
+      <div class="practice-num">3</div>
+      <div class="practice-q">Accidente de trabajo de un ecuatoriano en España → incapacidad permanente. ¿Y si está desplazado a Ecuador por su empresa española?</div>
+      <div class="practice-arrow">▶</div>
+    </div>
+    <div class="practice-body">
+      <div class="practice-hint">
+        <strong>🔍 Orientación:</strong> Caso 1 (accidente en España): aplica el principio de <strong>territorialidad</strong>: rige la legislación española, independientemente de la nacionalidad del trabajador. Caso 2 (desplazamiento temporal): analiza si el Convenio contiene una excepción al principio de territorialidad para <strong>trabajadores desplazados temporalmente</strong> (similar al art. 12 del Reg. 883/2004 para la UE). Si existe, el trabajador podría seguir bajo la legislación española. El accidente de tráfico en el trayecto del hotel al trabajo puede calificarse como accidente <em>in itinere</em> — verifica si el ordenamiento ecuatoriano o español lo reconoce como accidente de trabajo.
+      </div>
+    </div>
+  </div>
+
+  <div class="practice-item" onclick="togglePractice(this)">
+    <div class="practice-header">
+      <div class="practice-num">4</div>
+      <div class="practice-q">Trabajadora con 15 años cotizados en España + 15 en Ecuador. Determina el derecho, cálculo y pago de la pensión de jubilación.</div>
+      <div class="practice-arrow">▶</div>
+    </div>
+    <div class="practice-body">
+      <div class="practice-hint">
+        <strong>🔍 Orientación:</strong> Aplica la regla de <strong>totalización</strong> (suma de períodos) y la <strong>prorrata temporis</strong>:<br><br>
+        1. <em>Totalización:</em> 15 + 15 = 30 años totales. Verifica si se cumple el mínimo exigido en cada legislación.<br>
+        2. <em>Prestación teórica:</em> calcula qué pensión correspondería si todos los años hubieran sido cotizados en España.<br>
+        3. <em>Prorrata:</em> España paga la parte proporcional a sus 15 años (50%). Ecuador paga el 50% restante según su legislación.<br>
+        4. Cada Estado abona su cuota directamente a la beneficiaria.
+      </div>
+    </div>
+  </div>
+
+  <div class="practice-item" onclick="togglePractice(this)">
+    <div class="practice-header">
+      <div class="practice-num">5</div>
+      <div class="practice-q">Pensión de viudedad: 125 días cotizados en España + 5400 en Ecuador. ¿Cumple el requisito de 500 días?</div>
+      <div class="practice-arrow">▶</div>
+    </div>
+    <div class="practice-body">
+      <div class="practice-hint">
+        <strong>🔍 Orientación:</strong> Este es el caso clásico de aplicación de la <strong>totalización de períodos</strong> para determinar el derecho:<br><br>
+        • Solo España exige 500 días para viudedad en enfermedad común.<br>
+        • Con la totalización: 125 + 5400 = 5525 días ≫ 500 días → <strong>se cumple el requisito.</strong><br>
+        • Pero España solo paga en <em>prorrata</em>: su cuota proporcional en función de los 125 días cotizados en España respecto del total (5525 días).<br>
+        • Ecuador paga según su propia legislación por los 5400 días.<br>
+        • Analiza también si la beneficiaria (la viuda) necesita tener residencia en España para cobrar la prestación o si la regla de exportabilidad del Convenio le permite cobrar en Ecuador.
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:2rem;">
+    <div class="hb-title">📌 Clave para resolver los casos prácticos del Convenio</div>
+    Siempre sigue este orden: <strong>(1)</strong> ¿El Convenio se aplica a esta prestación? → <strong>(2)</strong> ¿Qué legislación es aplicable (territorialidad/desplazamiento)? → <strong>(3)</strong> ¿Se cumplen los requisitos sumando períodos (totalización)? → <strong>(4)</strong> ¿Cómo se calcula y distribuye la prestación (prorrata temporis)? → <strong>(5)</strong> ¿Es exportable la prestación?
+  </div>
+</div>
+
+</main>
+
+<footer>
+  Sistema Español de Seguridad Social · Lección 1 · Basado en TRLGSS (RDL 8/2015) y CE · Material de estudio
+</footer>
+
+<script>
+  const sections = ['concepto','historia','fuentes','flashcards','test','practicas'];
+  const visited = new Set(['concepto']);
+
+  function showSection(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    visited.add(id);
+    updateProgress();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function updateProgress() {
+    const pct = Math.round((visited.size / sections.length) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent =
+      visited.size + ' / ' + sections.length + ' secciones visitadas (' + pct + '%)';
+  }
+
+  // QUIZ
+  let quizAnswered = 0;
+  let quizCorrect = 0;
+  const totalQ = 10;
+
+  function checkAnswer(el, chosen) {
+    const qBox = el.closest('.quiz-q');
+    if (qBox.dataset.done) return;
+    qBox.dataset.done = '1';
+
+    const correct = qBox.dataset.answer;
+    const opts = qBox.querySelectorAll('.quiz-opt');
+    opts.forEach(o => o.classList.add('disabled'));
+
+    if (chosen === correct) {
+      el.classList.add('correct');
+      quizCorrect++;
+    } else {
+      el.classList.add('wrong');
+      // highlight correct
+      opts.forEach(o => {
+        if (o.querySelector('.opt-letter').textContent.toLowerCase() === correct) {
+          o.classList.add('correct');
+        }
+      });
+    }
+
+    const fb = qBox.querySelector('.quiz-feedback');
+    fb.classList.add('show');
+    fb.classList.add(chosen === correct ? 'ok' : 'fail');
+
+    quizAnswered++;
+    if (quizAnswered === totalQ) showScore();
+  }
+
+  function showScore() {
+    const scoreEl = document.getElementById('quizScore');
+    scoreEl.classList.add('show');
+    document.getElementById('scoreNum').textContent = quizCorrect + '/' + totalQ;
+    const msgs = [
+      [0,3,'Repasa el temario con más calma. ¡Tú puedes!'],
+      [4,6,'Bien encaminado/a. Repasa los puntos flojos.'],
+      [7,8,'¡Muy bien! Casi lo tienes dominado.'],
+      [9,10,'¡Excelente! Dominas el tema.']
+    ];
+    let msg = '';
+    for (const [min,max,m] of msgs) {
+      if (quizCorrect >= min && quizCorrect <= max) { msg = m; break; }
+    }
+    document.getElementById('scoreMsg').textContent = msg;
+    scoreEl.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function resetQuiz() {
+    quizAnswered = 0;
+    quizCorrect = 0;
+    document.querySelectorAll('.quiz-q').forEach(q => {
+      delete q.dataset.done;
+      q.querySelectorAll('.quiz-opt').forEach(o => {
+        o.classList.remove('correct','wrong','disabled');
+      });
+      const fb = q.querySelector('.quiz-feedback');
+      fb.classList.remove('show','ok','fail');
+    });
+    document.getElementById('quizScore').classList.remove('show');
+  }
+
+  // PRACTICE ACCORDION
+  function togglePractice(el) {
+    el.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
