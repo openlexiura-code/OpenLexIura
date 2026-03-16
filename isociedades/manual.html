@@ -585,6 +585,187 @@ code {
   main { padding: 30px 20px 60px; }
   .chapter-title { font-size: 28px; }
 }
+
+/* ── TABLA UMBRALES ACCORDION ── */
+.umbrales-accordion {
+  margin: 52px 0 20px;
+}
+
+.umbrales-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: var(--ink);
+  border: 1px solid rgba(184,134,11,0.45);
+  border-bottom: 3px solid var(--gold);
+  padding: 14px 22px;
+  user-select: none;
+  transition: background 0.2s;
+  list-style: none;
+  gap: 16px;
+}
+
+.umbrales-toggle::-webkit-details-marker { display: none; }
+.umbrales-toggle::marker { display: none; }
+
+.umbrales-toggle:hover {
+  background: rgba(28,23,16,0.92);
+}
+
+.umbrales-toggle-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.umbrales-toggle-icon {
+  font-size: 16px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.umbrales-toggle-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--parchment-dark);
+}
+
+.umbrales-toggle-sub {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(240,233,216,0.5);
+  margin-top: 2px;
+}
+
+.umbrales-chevron {
+  color: var(--gold-light);
+  font-size: 18px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+details[open] .umbrales-chevron {
+  transform: rotate(180deg);
+}
+
+.umbrales-body {
+  border: 1px solid rgba(184,134,11,0.25);
+  border-top: none;
+  background: var(--parchment);
+  padding: 28px 0 8px;
+  overflow-x: auto;
+}
+
+.umbrales-intro {
+  padding: 0 22px 18px;
+  font-size: 14.5px;
+  font-style: italic;
+  color: rgba(60,50,30,0.7);
+  border-bottom: 1px solid rgba(184,134,11,0.15);
+  margin-bottom: 18px;
+}
+
+.umbrales-table-wrap {
+  overflow-x: auto;
+  padding: 0 4px;
+}
+
+.umbrales-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 820px;
+}
+
+.umbrales-table thead tr {
+  background: var(--ink);
+}
+
+.umbrales-table thead th {
+  padding: 10px 14px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  border-right: 1px solid rgba(184,134,11,0.18);
+  white-space: nowrap;
+}
+
+.umbrales-table thead th:last-child { border-right: none; }
+
+.umbrales-table tbody tr {
+  border-bottom: 1px solid rgba(184,134,11,0.15);
+  transition: background 0.12s;
+}
+
+.umbrales-table tbody tr:nth-child(even) {
+  background: rgba(184,134,11,0.04);
+}
+
+.umbrales-table tbody tr:hover {
+  background: rgba(184,134,11,0.09);
+}
+
+.umbrales-table tbody td {
+  padding: 9px 14px;
+  vertical-align: top;
+  line-height: 1.5;
+  border-right: 1px solid rgba(184,134,11,0.1);
+}
+
+.umbrales-table tbody td:last-child { border-right: none; }
+
+.umbrales-table .col-concepto {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--ink);
+  width: 18%;
+}
+
+.umbrales-table .col-limite {
+  font-weight: 600;
+  color: var(--red-accent);
+  white-space: nowrap;
+  width: 14%;
+}
+
+.umbrales-table .col-condicion { width: 22%; }
+.umbrales-table .col-articulo {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  white-space: nowrap;
+  width: 9%;
+}
+
+.umbrales-table .col-impacto { width: 28%; }
+
+.umbrales-table .col-fuente {
+  text-align: center;
+  color: rgba(60,50,30,0.55);
+  font-size: 12.5px;
+  width: 6%;
+}
+
+.umbrales-footer {
+  padding: 12px 22px 4px;
+  font-size: 12.5px;
+  font-style: italic;
+  color: rgba(60,50,30,0.5);
+  border-top: 1px solid rgba(184,134,11,0.15);
+  margin-top: 8px;
+}
+
 </style>
 </head>
 <body>
@@ -652,6 +833,9 @@ code {
   <a href="#s7-5" class="toc-item sub">7.5 Pagos a cuenta</a>
 
   <a href="#s8" class="toc-item main">8. Obligación de Declarar</a>
+
+  <a href="#s9" class="toc-item main">9. Tabla de Umbrales Clave</a>
+  <a href="#s9" class="toc-item sub">Límites y umbrales LIS</a>
 </aside>
 
 <!-- MAIN -->
@@ -717,6 +901,13 @@ code {
         <span class="sumario-text">
           <strong>Obligación de Declarar</strong>
           <em>Autoliquidación · Plazos de presentación</em>
+        </span>
+      </a></li>
+      <li><a href="#s9">
+        <span class="sumario-num">9</span>
+        <span class="sumario-text">
+          <strong>Tabla de Umbrales y Límites Clave</strong>
+          <em>Resumen de umbrales, límites y artículos relevantes de la LIS · Basado en 2 fuentes</em>
         </span>
       </a></li>
     </ol>
@@ -2642,6 +2833,171 @@ code {
   <div class="footnote">
     <p>Manual académico sobre el régimen general del Impuesto sobre Sociedades y el régimen especial de entidades de reducida dimensión. Con el objetivo de adecuarse al tiempo disponible en los estudios de Grado, el manual recoge únicamente el régimen general y el régimen especial de entidades de reducida dimensión del IS, sin perjuicio de que pueda incluir puntualmente alguna referencia a otros regímenes especiales del IS.</p>
   </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <h2 id="s9">9. Tabla de Umbrales y Límites Clave</h2>
+  <p>La siguiente tabla recoge, de forma sintética, los principales umbrales cuantitativos, límites y condiciones que articulan el régimen general y los regímenes especiales del Impuesto sobre Sociedades estudiados en este manual. Despliéguela para consultar cada concepto junto con su artículo de referencia e impacto fiscal.</p>
+
+  <details class="umbrales-accordion" id="tabla-umbrales">
+    <summary class="umbrales-toggle">
+      <span class="umbrales-toggle-left">
+        <span class="umbrales-toggle-icon">⚖</span>
+        <span>
+          <div class="umbrales-toggle-title">Umbrales y Límites — LIS</div>
+          <div class="umbrales-toggle-sub">16 conceptos clave · Basado en 2 fuentes · Haga clic para desplegar</div>
+        </span>
+      </span>
+      <span class="umbrales-chevron">▾</span>
+    </summary>
+    <div class="umbrales-body">
+      <p class="umbrales-intro">Referencia rápida de límites cuantitativos, condiciones de aplicación y artículos de la LIS. Los valores monetarios corresponden al importe neto de la cifra de negocios u otros parámetros según se indica en cada fila.</p>
+      <div class="umbrales-table-wrap">
+        <table class="umbrales-table">
+          <thead>
+            <tr>
+              <th class="col-concepto">Concepto o Régimen</th>
+              <th class="col-limite">Límite o Umbral</th>
+              <th class="col-condicion">Condición o Requisito</th>
+              <th class="col-articulo">Artículo LIS</th>
+              <th class="col-impacto">Impacto o Beneficio</th>
+              <th class="col-fuente">Fuente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-concepto">Entidades de Reducida Dimensión (ERD)</td>
+              <td class="col-limite">10.000.000 €</td>
+              <td class="col-condicion">Importe neto de la cifra de negocios en el periodo impositivo inmediato anterior.</td>
+              <td class="col-articulo">Art. 101</td>
+              <td class="col-impacto">Acceso a incentivos fiscales: libertad de amortización, amortización acelerada, reserva de nivelación y deducción por insolvencias.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Tributación Mínima</td>
+              <td class="col-limite">20.000.000 €</td>
+              <td class="col-condicion">Cifra de negocios igual o superior a este importe o entidades en consolidación fiscal.</td>
+              <td class="col-articulo">Art. 30 ter</td>
+              <td class="col-impacto">Cuota líquida mínima del 15% de la base imponible (con variaciones según tipo de entidad).</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Microempresas</td>
+              <td class="col-limite">1.000.000 €</td>
+              <td class="col-condicion">Cifra de negocios del periodo anterior inferior a este importe.</td>
+              <td class="col-articulo">Art. 29, 105</td>
+              <td class="col-impacto">Tipo de gravamen reducido (p. ej. 17% en 2027) y límite de reserva de capitalización ampliado al 25%.</td>
+              <td class="col-fuente">[1]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Límite deducibilidad Gastos Financieros</td>
+              <td class="col-limite">1.000.000 € o 30% del beneficio operativo</td>
+              <td class="col-condicion">Se deducirá el mayor de ambos importes; el exceso es compensable en años futuros.</td>
+              <td class="col-articulo">Art. 16</td>
+              <td class="col-impacto">Limitación a la deducibilidad inmediata de gastos financieros netos.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Atenciones a clientes y proveedores</td>
+              <td class="col-limite">1% de la cifra de negocios</td>
+              <td class="col-condicion">Límite máximo de deducibilidad sobre el importe neto de la cifra de negocios del periodo.</td>
+              <td class="col-articulo">Art. 15 e)</td>
+              <td class="col-impacto">Restricción a la deducibilidad de liberalidades.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Libertad de amortización (Bienes escaso valor)</td>
+              <td class="col-limite">300 € (unitario) / 25.000 € (anual)</td>
+              <td class="col-condicion">Elementos nuevos del inmovilizado material.</td>
+              <td class="col-articulo">Art. 12.3 c)</td>
+              <td class="col-impacto">Amortización íntegra en el primer periodo impositivo.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Exención por dividendos o plusvalías</td>
+              <td class="col-limite">5%</td>
+              <td class="col-condicion">Porcentaje mínimo de participación en el capital o fondos propios de la entidad.</td>
+              <td class="col-articulo">Art. 21</td>
+              <td class="col-impacto">Exención del 95% de las rentas (dividendos o transmisión).</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Operaciones Vinculadas</td>
+              <td class="col-limite">25%</td>
+              <td class="col-condicion">Nivel de participación para considerar vinculación socio-entidad.</td>
+              <td class="col-articulo">Art. 18.2</td>
+              <td class="col-impacto">Obligación de valorar a valor de mercado y deberes de documentación.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Documentación simplificada (Vinculadas)</td>
+              <td class="col-limite">45.000.000 €</td>
+              <td class="col-condicion">Cifra de negocios inferior a este umbral.</td>
+              <td class="col-articulo">Art. 18</td>
+              <td class="col-impacto">Posibilidad de elaborar documentación de precios de transferencia con contenido simplificado.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Umbral de documentación (Vinculadas)</td>
+              <td class="col-limite">250.000 €</td>
+              <td class="col-condicion">Importe total de operaciones con la misma persona o entidad vinculada.</td>
+              <td class="col-articulo">Art. 18</td>
+              <td class="col-impacto">No exigibilidad de documentación si no se supera el umbral.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Libertad de amortización por empleo (ERD)</td>
+              <td class="col-limite">120.000 € por incremento de plantilla</td>
+              <td class="col-condicion">Incremento de plantilla media en 24 meses y mantenimiento otros 24 meses.</td>
+              <td class="col-articulo">Art. 102</td>
+              <td class="col-impacto">Libertad de amortización para elementos nuevos del inmovilizado.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Reserva de Capitalización</td>
+              <td class="col-limite">20% (Reducción) / 3 años (Mantenimiento)</td>
+              <td class="col-condicion">Incremento de fondos propios y dotación de reserva indisponible.</td>
+              <td class="col-articulo">Art. 25</td>
+              <td class="col-impacto">Reducción de la base imponible del 20% del incremento (desde 2025).</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Reserva de Nivelación (ERD)</td>
+              <td class="col-limite">10% (Reducción) / 1.000.000 € (Límite)</td>
+              <td class="col-condicion">Minoración de BI positiva a compensar con negativas en 5 años.</td>
+              <td class="col-articulo">Art. 105</td>
+              <td class="col-impacto">Diferimiento del pago del impuesto.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Plazo Prescripción (BINs y Deducciones)</td>
+              <td class="col-limite">10 años</td>
+              <td class="col-condicion">Plazo para que la Administración compruebe bases negativas o deducciones pendientes.</td>
+              <td class="col-articulo">Art. 26.5 y 31.7</td>
+              <td class="col-impacto">Extensión del plazo general de 4 años para facultades de comprobación.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Plazo Declaración IS</td>
+              <td class="col-limite">25 días (desde los 6 meses del cierre)</td>
+              <td class="col-condicion">Autoliquidación del impuesto.</td>
+              <td class="col-articulo">Art. 124</td>
+              <td class="col-impacto">Plazo reglamentario de presentación (ej. 1 al 25 de julio para año natural).</td>
+              <td class="col-fuente">[1]</td>
+            </tr>
+            <tr>
+              <td class="col-concepto">Compensación mínima BINs</td>
+              <td class="col-limite">1.000.000 €</td>
+              <td class="col-condicion">Importe mínimo que siempre se puede compensar sin aplicar límites porcentuales.</td>
+              <td class="col-articulo">Art. 26</td>
+              <td class="col-impacto">Garantía de compensación para pequeñas empresas o resultados bajos.</td>
+              <td class="col-fuente">[1, 2]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="umbrales-footer">Basado en 2 fuentes · Artículos del texto refundido de la Ley 27/2014, del Impuesto sobre Sociedades (LIS)</p>
+    </div>
+  </details>
 
 </main>
 
