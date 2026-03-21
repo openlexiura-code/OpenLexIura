@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 5 · Contratos Publicitarios · Alojamiento Turístico · Restauración</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:     #0e0e12;
+  --panel:   #14141a;
+  --card:    #1c1c26;
+  --raised:  #22222f;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --gold:    #c8a84b;
+  --gold2:   #e8cc78;
+  --silver:  #a0aec0;
+  --white:   #f4f1eb;
+  --dim:     #6b7280;
+  --blue:    #4a7fc1;
+  --blue2:   #7eb4e0;
+  --green:   #3a9e6f;
+  --green2:  #5dca90;
+  --purple:  #8b6fcb;
+  --purple2: #b8a0e8;
+  --red:     #c05050;
+  --red2:    #e09090;
+  --orange:  #c07840;
+  --orange2: #e09060;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(200,168,75,0.2); border-radius: 3px; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(14,14,18,0.94);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.8rem 2rem; gap: 1rem;
+}
+.nav-left { display: flex; align-items: center; gap: 1rem; }
+.nav-back { color: var(--dim); font-size: 1.1rem; text-decoration: none; transition: color 0.2s; line-height: 1; }
+.nav-back:hover { color: var(--gold); }
+.nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; color: var(--gold); }
+.nav-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+  background: rgba(200,168,75,0.1); color: var(--gold);
+  border: 1px solid rgba(200,168,75,0.25); border-radius: 2px;
+  padding: 0.18rem 0.55rem;
+}
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dim); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold2); }
+@media (max-width: 700px) { .nav-links { display: none; } }
+
+/* HERO */
+.hero {
+  position: relative; z-index: 1;
+  min-height: 72vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 6rem 2rem 5rem;
+  text-align: center;
+  overflow: clip; isolation: isolate;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 70% at 10% 35%, rgba(200,168,75,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 88% 20%, rgba(74,127,193,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 55% at 50% 92%, rgba(139,111,203,0.05) 0%, transparent 50%);
+}
+.hero-grid { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.hero-grid svg { width: 100%; height: 100%; opacity: 0.05; }
+.hero-kicker {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.38em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 1rem;
+  opacity: 0; animation: riseIn 0.9s cubic-bezier(.22,1,.36,1) forwards 0.15s;
+}
+.hero-kicker::before, .hero-kicker::after {
+  content: ''; display: block; width: 28px; height: 1px;
+  background: var(--gold); opacity: 0.45;
+}
+.hero-lesson {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 0.75rem;
+  opacity: 0; animation: riseIn 0.9s cubic-bezier(.22,1,.36,1) forwards 0.25s;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5.5vw, 4.6rem);
+  font-weight: 700; line-height: 1.08;
+  color: var(--white); max-width: 860px;
+  opacity: 0; animation: riseIn 1s cubic-bezier(.22,1,.36,1) forwards 0.4s;
+}
+.hero-title .accent { color: var(--gold); font-style: italic; }
+.hero-desc {
+  margin-top: 1.4rem; font-size: 0.95rem; font-weight: 300;
+  color: var(--silver); max-width: 620px; line-height: 1.75;
+  opacity: 0; animation: riseIn 1s cubic-bezier(.22,1,.36,1) forwards 0.6s;
+}
+.hero-meta {
+  margin-top: 2.5rem;
+  display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: riseIn 1s cubic-bezier(.22,1,.36,1) forwards 0.8s;
+}
+.hero-badge {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.35rem 0.9rem; border-radius: 3px;
+  border: 1px solid rgba(200,168,75,0.3);
+  background: rgba(200,168,75,0.06); color: var(--gold2);
+}
+.scroll-cue {
+  position: absolute; bottom: 2.5rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  opacity: 0; animation: riseIn 1s ease forwards 1.2s;
+  pointer-events: none; transition: opacity 0.4s ease; z-index: 0;
+}
+.scroll-cue.hidden { opacity: 0 !important; }
+.scroll-cue span { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dim); }
+.scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2.5s ease-in-out infinite; }
+@keyframes scrollPulse { 0%,100%{opacity:0.2} 50%{opacity:0.8} }
+@keyframes riseIn { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+/* LAYOUT */
+.page { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 4rem 1.5rem 8rem; }
+
+/* TOC */
+.toc {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 8px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 3.5rem;
+}
+.toc-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.toc-title::after { content:''; flex:1; height:1px; background: rgba(200,168,75,0.2); }
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+.toc-list li { display: flex; align-items: baseline; gap: 0.6rem; }
+.toc-num { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--gold); opacity: 0.6; flex-shrink: 0; width: 28px; }
+.toc-list a { font-size: 0.85rem; color: var(--silver); text-decoration: none; transition: color 0.2s; line-height: 1.5; }
+.toc-list a:hover { color: var(--gold2); }
+.toc-sub { margin-left: 28px; list-style: none; display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.2rem; }
+.toc-sub a { font-size: 0.78rem; color: var(--dim); }
+
+/* SECTIONS */
+.section-block {
+  margin-bottom: 4rem;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.section-block.visible { opacity: 1; transform: translateY(0); }
+.section-roman {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-roman::after { content:''; flex:1; height:1px; background: rgba(200,168,75,0.2); }
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 700; color: var(--white);
+  line-height: 1.2; margin-bottom: 1.5rem;
+}
+.sub-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; font-weight: 600;
+  color: var(--white); margin: 2rem 0 0.9rem;
+  line-height: 1.25;
+}
+.sub-sub-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem; font-weight: 600;
+  color: var(--silver); margin: 1.5rem 0 0.6rem;
+  letter-spacing: 0.015em;
+}
+
+/* PROSE */
+.prose p { font-size: 0.93rem; color: #c8c4bc; line-height: 1.8; margin-bottom: 1rem; }
+.prose p:last-child { margin-bottom: 0; }
+
+/* ART */
+.art {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; font-weight: 500;
+  background: rgba(74,127,193,0.12);
+  color: var(--blue2);
+  border: 1px solid rgba(74,127,193,0.25);
+  border-radius: 3px; padding: 0.1rem 0.4rem;
+  white-space: nowrap; vertical-align: middle; margin: 0 0.1rem;
+}
+
+/* CALLOUTS */
+.callout {
+  border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.5rem 0;
+  border-left: 3px solid var(--c, var(--gold));
+  background: var(--bg, rgba(200,168,75,0.05));
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--c, var(--gold)); margin-bottom: 0.55rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.callout-label .icon { font-size: 0.85rem; }
+.callout p, .callout li { font-size: 0.88rem; color: #bbb8b0; line-height: 1.75; }
+.callout ul, .callout ol { padding-left: 1.2rem; }
+.callout li { margin-bottom: 0.3rem; }
+.callout strong { color: var(--white); }
+.callout-concepto { --c: var(--gold); --bg: rgba(200,168,75,0.06); }
+.callout-ejemplo  { --c: var(--green2); --bg: rgba(58,158,111,0.06); }
+.callout-caso     { --c: var(--blue2); --bg: rgba(74,127,193,0.07); }
+.callout-atencion { --c: var(--red2); --bg: rgba(192,80,80,0.07); }
+.callout-norma    { --c: var(--purple2); --bg: rgba(139,111,203,0.07); }
+.callout-regla    { --c: var(--orange2); --bg: rgba(192,120,64,0.07); }
+
+/* GRID */
+.concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.9rem; margin: 1.5rem 0;
+}
+.concept-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.1rem 1.2rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.concept-card:hover { border-color: rgba(200,168,75,0.3); transform: translateY(-2px); }
+.concept-card .cc-icon { font-size: 1.4rem; margin-bottom: 0.55rem; }
+.concept-card .cc-title { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--white); margin-bottom: 0.35rem; }
+.concept-card .cc-body { font-size: 0.78rem; color: var(--dim); line-height: 1.6; }
+.concept-card .cc-body strong { color: var(--silver); }
+
+/* TABLE */
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem; }
+.compare-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); padding: 0.7rem 1rem; text-align: left;
+  border-bottom: 1px solid rgba(200,168,75,0.3);
+  background: rgba(200,168,75,0.04);
+}
+.compare-table td {
+  padding: 0.75rem 1rem; color: #bbb8b0; line-height: 1.6;
+  border-bottom: 1px solid var(--border); vertical-align: top;
+}
+.compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+.compare-table td strong { color: var(--white); }
+.compare-table td:first-child { color: var(--silver); font-weight: 500; font-size: 0.82rem; }
+
+/* FANCY LIST */
+.fancy-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin: 1.25rem 0; }
+.fancy-list li { display: flex; gap: 0.9rem; align-items: flex-start; }
+.fancy-list .fn {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 700; color: rgba(200,168,75,0.4);
+  line-height: 1.3; flex-shrink: 0; width: 22px; text-align: right;
+}
+.fancy-list .ft { font-size: 0.88rem; color: #bbb8b0; line-height: 1.7; }
+.fancy-list .ft strong { color: var(--white); }
+
+/* TRIPARTITO — diagrama de partes */
+.tri-grid {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; margin: 1.5rem 0;
+  align-items: center;
+}
+.tri-node {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1rem 1.1rem; text-align: center;
+}
+.tri-node .tn-icon { font-size: 1.6rem; margin-bottom: 0.35rem; }
+.tri-node .tn-label {
+  font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--white);
+}
+.tri-node .tn-sub { font-size: 0.72rem; color: var(--dim); margin-top: 0.2rem; }
+.tri-arrow {
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  padding: 0 0.8rem;
+}
+.tri-arrow span { font-size: 0.6rem; font-family: 'DM Mono', monospace; color: var(--gold); text-align: center; letter-spacing: 0.08em; }
+.tri-arrow .arr { font-size: 1.2rem; color: rgba(200,168,75,0.5); }
+
+/* OBLIG GRID */
+.oblig-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+}
+.oblig-col {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.2rem;
+}
+.oblig-col-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 0.9rem; padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border2);
+}
+.oc-blue .oblig-col-title  { color: var(--blue2); border-color: rgba(74,127,193,0.3); }
+.oc-green .oblig-col-title { color: var(--green2); border-color: rgba(58,158,111,0.3); }
+.oc-gold .oblig-col-title  { color: var(--gold2); border-color: rgba(200,168,75,0.3); }
+.oc-purple .oblig-col-title { color: var(--purple2); border-color: rgba(139,111,203,0.3); }
+.oblig-item { font-size: 0.8rem; color: #bbb8b0; line-height: 1.65; margin-bottom: 0.55rem; padding-left: 0.9rem; position: relative; }
+.oblig-item::before { content: '—'; position: absolute; left: 0; color: var(--dim); }
+.oblig-item strong { color: var(--white); }
+@media (max-width: 600px) { .oblig-grid { grid-template-columns: 1fr; } .tri-grid { grid-template-columns: 1fr; } }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 3rem 0; }
+
+/* HIGHLIGHT QUOTE */
+.highlight-quote {
+  border-left: 3px solid var(--gold);
+  padding: 1rem 1.5rem; margin: 1.5rem 0;
+  background: rgba(200,168,75,0.04);
+  border-radius: 0 6px 6px 0;
+}
+.highlight-quote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-style: italic;
+  color: var(--gold2); line-height: 1.65;
+}
+.highlight-quote cite {
+  display: block; font-size: 0.72rem; font-style: normal;
+  font-family: 'DM Mono', monospace; color: var(--dim);
+  margin-top: 0.5rem; letter-spacing: 0.05em;
+}
+
+/* FOOTER */
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 2rem; text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; color: #2a2a35; letter-spacing: 0.1em;
+}
+footer span { color: var(--gold); opacity: 0.4; }
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 2rem; }
+  .page { padding: 3rem 1.2rem 6rem; }
+  .concepts-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="#" class="nav-back">←</a>
+    <div class="nav-brand">🏛️ Derecho Mercantil</div>
+    <span class="nav-pill">Lección 5</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#publicidad">Publicidad</a></li>
+    <li><a href="#creacion">Creación</a></li>
+    <li><a href="#difusion">Difusión</a></li>
+    <li><a href="#patrocinio">Patrocinio</a></li>
+    <li><a href="#alojamiento">Alojamiento</a></li>
+    <li><a href="#restauracion">Restauración</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="140" x2="1200" y2="560" stroke="white" stroke-width="0.5"/>
+      <line x1="0" y1="560" x2="1200" y2="140" stroke="white" stroke-width="0.5"/>
+      <line x1="400" y1="0" x2="400" y2="700" stroke="white" stroke-width="0.5"/>
+      <line x1="800" y1="0" x2="800" y2="700" stroke="white" stroke-width="0.5"/>
+      <line x1="0" y1="350" x2="1200" y2="350" stroke="white" stroke-width="0.5"/>
+      <rect x="100" y="150" width="180" height="180" stroke="white" stroke-width="0.5" fill="none"/>
+      <rect x="920" y="370" width="180" height="180" stroke="white" stroke-width="0.5" fill="none"/>
+      <circle cx="600" cy="350" r="200" stroke="white" stroke-width="0.5" fill="none"/>
+      <circle cx="600" cy="350" r="50" stroke="white" stroke-width="0.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero-lesson">Lección 5</div>
+  <div class="hero-kicker">Guía de Estudio</div>
+  <h1 class="hero-title">
+    Contratos Publicitarios ·<br>
+    <span class="accent">Alojamiento Turístico · Restauración</span>
+  </h1>
+  <p class="hero-desc">
+    El contrato de publicidad y sus modalidades: creación, difusión, patrocinio,
+    merchandising y bartering. Los contratos de alojamiento turístico: gestión hotelera,
+    reservas de cupo, hospedaje y aprovechamiento por turno. Los contratos de restauración.
+  </p>
+  <div class="hero-meta">
+    <span class="hero-badge">📘 Apuntes completos</span>
+    <span class="hero-badge">⚖️ LGP · LGCA · L 4/2012</span>
+    <span class="hero-badge">📋 Casos prácticos</span>
+  </div>
+  <div class="scroll-cue">
+    <span>Comenzar</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="page">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title"><span>Índice de contenidos</span></div>
+    <ul class="toc-list">
+      <li>
+        <span class="toc-num">I</span>
+        <a href="#publicidad">Contratos Publicitarios</a>
+        <ul class="toc-sub">
+          <li><a href="#publicidad">1. Caracterización: concepto, clases y normativa</a></li>
+          <li><a href="#elementos">2. Elementos personales: anunciante, agencia y medio</a></li>
+          <li><a href="#contrato-pub">3. El contrato de publicidad</a></li>
+          <li><a href="#creacion">4. Contrato de creación publicitaria</a></li>
+          <li><a href="#difusion">5. Contrato de difusión publicitaria</a></li>
+          <li><a href="#patrocinio">6. Contrato de patrocinio</a></li>
+          <li><a href="#merchandising">7. Merchandising y bartering</a></li>
+        </ul>
+      </li>
+      <li>
+        <span class="toc-num">II</span>
+        <a href="#alojamiento">Contratos relativos al Alojamiento Turístico</a>
+        <ul class="toc-sub">
+          <li><a href="#gestion">1. Contrato de gestión hotelera</a></li>
+          <li><a href="#cupo">2. Contrato de reservas de plazas de alojamiento (cupo/contingente)</a></li>
+          <li><a href="#hospedaje">3. Contrato de hospedaje</a></li>
+          <li><a href="#aprovechamiento">4. Aprovechamiento por turno de bienes de uso turístico</a></li>
+        </ul>
+      </li>
+      <li>
+        <span class="toc-num">III</span>
+        <a href="#restauracion">Contratos de Restauración</a>
+        <ul class="toc-sub">
+          <li><a href="#hosteleria">1. Contrato de hostelería</a></li>
+          <li><a href="#catering">2. Contrato de catering</a></li>
+          <li><a href="#banqueting">3. Contrato de banqueting</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- ═══════════════════════
+       I. CONTRATOS PUBLICITARIOS
+  ═══════════════════════ -->
+  <div class="section-block" id="publicidad">
+    <div class="section-roman">I</div>
+    <h2 class="section-title">Contratos Publicitarios</h2>
+
+    <h3 class="sub-title">1. Caracterización: Concepto y clases</h3>
+    <div class="prose">
+      <p>
+        Los contratos publicitarios son aquellos que versan sobre actividades publicitarias
+        (<span class="art">art. 7 LGP</span>). En especial constituyen actividades publicitarias todas
+        aquellas que consisten en formas de comunicación realizadas con el fin de promover de forma directa
+        o indirecta la contratación de bienes, servicios, derechos y obligaciones, aunque no se excluyen
+        otras (<span class="art">art. 2 LGP</span>).
+      </p>
+      <p>
+        La noción <strong>amplia</strong> de contrato publicitario se caracteriza por la concurrencia
+        acumulativa de dos elementos: (i) un elemento estructural —comunicación colectiva—; y (ii) un
+        elemento funcional —la promoción de determinadas actitudes o comportamientos entre el público—.
+        En su concepto <strong>estricto</strong>, el contrato publicitario requiere adicionalmente que
+        el sujeto emisor sea un empresario, artesano o profesional que pretende promover los negocios
+        propios de su actividad empresarial, artesana o profesional.
+      </p>
+    </div>
+
+    <div class="callout callout-concepto">
+      <div class="callout-label"><span class="icon">💡</span>Normativa aplicable — LGP y Derecho Común</div>
+      <p>
+        Los contratos publicitarios están regulados en la <strong>LGP</strong> y, subsidiariamente, en
+        las reglas generales de Derecho Común (<span class="art">art. 7 LGP</span>). La aplicación de
+        las normas de la LGP a la actividad publicitaria no comercial se <strong>limita a las normas
+        contractuales</strong>: no abarca la disciplina sobre publicidad ilícita prevista en la LGP
+        (<span class="art">arts. 2 y 7 LGP</span>), ni sobre publicidad desleal incluida en la LCD.
+        Hay que tener también en cuenta la <strong>LGCA</strong> (Ley 7/2010, de 31 de marzo, General
+        de la Comunicación Audiovisual), de carácter administrativo pero cuyo contenido influye en
+        aspectos relevantes de los contratos publicitarios.
+      </p>
+    </div>
+
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <div class="cc-icon">📺</div>
+        <div class="cc-title">Contrato de publicidad</div>
+        <div class="cc-body">Un anunciante encarga a una agencia la <strong>preparación, programación y ejecución</strong> de una determinada publicidad (<span class="art">art. 13 LGP</span>). Bilateral y sinalagmático.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🎨</div>
+        <div class="cc-title">Contrato de creación</div>
+        <div class="cc-body">Una persona se obliga a idear y elaborar un <strong>proyecto de campaña publicitaria</strong> a cambio de una contraprestación dineraria (<span class="art">art. 20 LGP</span>). Contrato de resultado.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">📡</div>
+        <div class="cc-title">Contrato de difusión</div>
+        <div class="cc-body">Un medio permite la <strong>utilización publicitaria de unidades de espacio o tiempo</strong> y desarrolla la actividad técnica necesaria para lograr el resultado publicitario (<span class="art">art. 17 LGP</span>). Contrato de resultado.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🏆</div>
+        <div class="cc-title">Contrato de patrocinio</div>
+        <div class="cc-body">El patrocinado colabora en la publicidad del patrocinador a cambio de una <strong>ayuda económica</strong> para la realización de su actividad (<span class="art">art. 22 LGP</span>). No es gratuito.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">👤</div>
+        <div class="cc-title">Merchandising</div>
+        <div class="cc-body">El titular de un derecho de la personalidad o de un bien inmaterial cede su uso a un empresario para <strong>atraer clientela</strong> hacia sus productos o servicios. Contrato atípico.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🔄</div>
+        <div class="cc-title">Bartering</div>
+        <div class="cc-body">Un anunciante o agencia <strong>produce un programa</strong> de radio o TV y lo entrega a un medio para que lo difunda a cambio de realizar gratuitamente publicidad dentro del mismo programa.</div>
+      </div>
+    </div>
+
+
+    <!-- ELEMENTOS PERSONALES -->
+    <h3 class="sub-title" id="elementos">2. Elementos personales</h3>
+
+    <div class="tri-grid">
+      <div class="tri-node">
+        <div class="tn-icon">🏢</div>
+        <div class="tn-label">Anunciante</div>
+        <div class="tn-sub">Persona en cuyo interés se realiza la publicidad. Ordena las actuaciones y asume la responsabilidad de su difusión (<span class="art">art. 8 I LGP</span>). No precisa ser empresario.</div>
+      </div>
+      <div class="tri-arrow">
+        <span class="arr">⇄</span>
+        <span>Contratos</span>
+        <span class="arr">⇄</span>
+      </div>
+      <div class="tri-node">
+        <div class="tn-icon">✏️</div>
+        <div class="tn-label">Agencia de publicidad</div>
+        <div class="tn-sub">Persona natural o jurídica que crea, prepara, programa o ejecuta publicidad por cuenta del anunciante (<span class="art">art. 8 II LGP</span>). Actúa siempre por cuenta del anunciante.</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin: 0.75rem 0 1.5rem;">
+      <div class="tri-node" style="display:inline-block; min-width:240px;">
+        <div class="tn-icon">📻</div>
+        <div class="tn-label">Medio de publicidad</div>
+        <div class="tn-sub">Persona natural o jurídica que difunde la publicidad a través de los soportes de comunicación social (<span class="art">art. 8 III LGP</span>). Asume responsabilidad legal por los contenidos.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-norma">
+      <div class="callout-label"><span class="icon">📖</span>Responsabilidad del anunciante — art. 11 LGP</div>
+      <p>
+        El anunciante asume la responsabilidad de la realización publicitaria y de su difusión frente
+        a terceros, <strong>sin posibilidad de exoneración, imputación o delegación</strong>, según
+        previene el <span class="art">art. 11 LGP</span>. Este precepto prohíbe incluir en los contratos
+        publicitarios cláusulas de exoneración, imputación o limitación de la responsabilidad frente a
+        terceros en que puedan incurrir las partes como consecuencia de la publicidad. Este derecho a
+        controlar la ejecución de la publicidad constituye el fundamento de la obligación legal de
+        desvelar inequívocamente el carácter publicitario de sus anuncios (<span class="art">art. 9
+        LGP</span>).
+      </p>
+    </div>
+
+
+    <!-- CONTRATO DE PUBLICIDAD -->
+    <h3 class="sub-title" id="contrato-pub">3. El contrato de publicidad</h3>
+
+    <h4 class="sub-sub-title">3.1. Concepto</h4>
+    <div class="prose">
+      <p>
+        Contrato de publicidad es aquél por el que un anunciante encarga a una agencia de publicidad,
+        mediante una contraprestación, la preparación, programación y ejecución de una determinada
+        publicidad (<span class="art">art. 13 LGP</span>). Es un contrato bilateral y sinalagmático
+        que genera, por tanto, obligaciones para ambas partes. Es también un contrato consensual, que
+        se perfecciona por el mero consentimiento sin requerir forma especial. Su naturaleza jurídica
+        es la de contrato de obra por empresa (<span class="art">arts. 1588 a 1600 Cciv</span>).
+      </p>
+    </div>
+
+    <h4 class="sub-sub-title">3.2. Contenido y cumplimiento</h4>
+
+    <div class="oblig-grid">
+      <div class="oblig-col oc-blue">
+        <div class="oblig-col-title">✏️ Obligaciones de la agencia</div>
+        <div class="oblig-item"><strong>Preparar y ejecutar</strong> la publicidad en el tiempo pactado, contratando con los medios de difusión la prestación de servicios necesarios (<span class="art">art. 13 LGP</span>).</div>
+        <div class="oblig-item">Emplear la <strong>máxima diligencia</strong> cuidando el negocio como propio (<span class="art">art. 255 Ccom</span>).</div>
+        <div class="oblig-item">Seguir las <strong>instrucciones expresas</strong> del anunciante. Tiene derecho a supervisar la ejecución de la campaña de publicidad.</div>
+        <div class="oblig-item"><strong>Abstenerse</strong> de utilizar la información o material suministrado por el anunciante para fines distintos de los pactados (<span class="art">art. 14 LGP</span>).</div>
+        <div class="oblig-item">Crear también la publicidad si el contrato lo incluye: se aplican las normas del contrato de creación publicitaria (<span class="art">art. 13 II LGP</span>).</div>
+      </div>
+      <div class="oblig-col oc-green">
+        <div class="oblig-col-title">🏢 Obligaciones del anunciante</div>
+        <div class="oblig-item">Proporcionar a la agencia <strong>los medios y la información</strong> necesaria para que pueda ejecutar su prestación (<span class="art">art. 14 LGP</span>).</div>
+        <div class="oblig-item">Pagar la <strong>remuneración convenida</strong>, que suele consistir en un porcentaje del importe bruto de lo facturado por la agencia al anunciante como coste del empleo de los medios de difusión.</div>
+        <div class="oblig-item">No utilizar la <strong>creación publicitaria</strong> ni la información suministrada para fines distintos de los pactados.</div>
+        <div class="oblig-item">Respetar los <strong>derechos de propiedad intelectual</strong> sobre las creaciones publicitarias cuya explotación le ha sido cedida.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span class="icon">⚠️</span>Incumplimiento: ajuste o resolución, no resolución directa</div>
+      <p>
+        Si la publicidad no se ajusta a los términos del contrato o a las instrucciones expresas del
+        anunciante, se considera que existe cumplimiento defectuoso. En ese caso el anunciante
+        <strong>no está autorizado a resolver el contrato directamente</strong>, sino solo a exigir
+        una <strong>rebaja de la contraprestación</strong> o la repetición total o parcial de la
+        publicidad en los términos pactados (<span class="art">art. 15 LGP</span>). Con todo, cuando
+        la agencia injustificadamente no realiza la prestación comprometida o lo hace fuera del término
+        establecido, el anunciante puede resolver el contrato y exigir la devolución de lo pagado, así
+        como la indemnización de daños (<span class="art">art. 16 LGP</span>).
+      </p>
+    </div>
+
+    <div class="callout callout-caso">
+      <div class="callout-label"><span class="icon">⚖️</span>Caso práctico: incumplimiento del contrato de publicidad</div>
+      <p>
+        Una empresa contrata a una agencia para emitir una campaña de radio durante tres semanas.
+        La agencia solo emite la campaña durante diez días y en horario nocturno, cuando se había
+        pactado horario de mañana. <strong>¿Qué puede hacer el anunciante?</strong>
+      </p>
+      <p style="margin-top:0.7rem;">
+        <strong>Solución:</strong> Existe cumplimiento defectuoso tanto en el tiempo (solo 10 de
+        los 21 días pactados) como en el horario. El anunciante puede: (i) exigir la
+        <strong>rebaja de la contraprestación</strong> proporcional al incumplimiento; o
+        (ii) exigir la <strong>repetición de la publicidad</strong> en las condiciones pactadas
+        (<span class="art">art. 15 LGP</span>). Al tratarse de un incumplimiento injustificado y
+        fuera del término establecido, también puede optar por <strong>resolver el contrato</strong>
+        y reclamar la devolución de lo pagado más los daños y perjuicios acreditados
+        (<span class="art">art. 16 LGP</span>).
+      </p>
+    </div>
+
+
+    <!-- CREACION -->
+    <h3 class="sub-title" id="creacion">4. Contrato de creación publicitaria</h3>
+
+    <h4 class="sub-sub-title">4.1. Concepto y naturaleza</h4>
+    <div class="prose">
+      <p>
+        Contrato de creación publicitaria es aquél por el que una persona se obliga a favor de un
+        anunciante o agencia a idear y elaborar un proyecto de campaña publicitaria, una parte de la
+        misma o cualquier otro elemento publicitario, a cambio de una contraprestación dineraria
+        (<span class="art">art. 20 LGP</span>). El objeto consiste en <em>idear</em> y también
+        <em>elaborar o plasmar materialmente</em> un proyecto de campaña completo. Se trata de un
+        <strong>contrato de resultado</strong> cuyo resultado consiste precisamente en la obra
+        publicitaria, no en un resultado comercial o económico.
+      </p>
+      <p>
+        Su naturaleza jurídica es la propia del <strong>arrendamiento de obra</strong>
+        (<span class="art">arts. 1544 y concordantes Cciv</span>), en tanto que se contrata a alguien
+        para que alcance un resultado creativo concreto.
+      </p>
+    </div>
+
+    <h4 class="sub-sub-title">4.2. Contenido y cumplimiento: los derechos de propiedad intelectual</h4>
+    <div class="prose">
+      <p>
+        La principal obligación del creador es la de <strong>ejecutar el resultado publicitario</strong>,
+        esto es, crear la obra publicitaria y cederla a la contraparte. La creación publicitaria puede
+        gozar de los derechos de propiedad intelectual cuando reúna los requisitos exigidos por las
+        disposiciones vigentes. La LGP presume, salvo pacto en contrario, que los <strong>derechos de
+        explotación de estas creaciones publicitarias han sido cedidos en exclusiva al anunciante o a
+        la agencia</strong> en virtud del contrato de creación publicitaria (<span class="art">art. 21
+        LGP</span>).
+      </p>
+    </div>
+
+    <div class="callout callout-norma">
+      <div class="callout-label"><span class="icon">📖</span>Presunción de cesión de derechos — art. 21 LGP</div>
+      <p>
+        Hay que tener en cuenta varias limitaciones de esta presunción:
+      </p>
+      <ul style="margin-top:0.5rem;">
+        <li>La cesión no equivale a la <strong>transmisión definitiva</strong> de los derechos, sino que se realiza solo para los <strong>fines previstos en el contrato</strong>, aproximando la figura a la licencia.</li>
+        <li>Los límites <strong>temporales y territoriales</strong> de la cesión vendrán determinados por el propio contrato de creación publicitaria.</li>
+        <li>El pacto en contrario podría venir referido a la <strong>ampliación de la autorización de uso</strong>, a otros medios distintos, o al carácter no exclusivo de la licencia.</li>
+        <li>La creación publicitaria protegida como obra intelectual exige que la cesión se realice <strong>para los fines previstos en el contrato</strong>, lo que parece incompatible con que consigne que sea para los fines en general.</li>
+      </ul>
+    </div>
+
+    <div class="callout callout-caso">
+      <div class="callout-label"><span class="icon">⚖️</span>Caso práctico: propiedad intelectual en la creación publicitaria</div>
+      <p>
+        Una agencia contrata a un ilustrador freelance para crear el logo y los carteles de la campaña
+        navideña de un banco. El ilustrador pide regalías cada vez que el banco use esas imágenes en
+        años posteriores. <strong>¿Tiene razón?</strong>
+      </p>
+      <p style="margin-top:0.7rem;">
+        <strong>Depende del contrato.</strong> La LGP presume que los derechos de explotación se han
+        cedido en exclusiva al anunciante (banco) en virtud del contrato de creación publicitaria
+        (<span class="art">art. 21 LGP</span>). Sin embargo, esa cesión se limita a los <strong>fines
+        previstos en el contrato</strong>. Si el contrato solo contemplaba la campaña navideña de ese
+        año, el banco no podría usar las imágenes en campañas posteriores sin nueva autorización del
+        ilustrador o nuevo pago. Si el contrato cedía los derechos de forma general y permanente, el
+        banco puede usar las imágenes libremente. En la duda, el ilustrador tiene derecho a limitar
+        el uso.
+      </p>
+    </div>
+
+
+    <!-- DIFUSION -->
+    <h3 class="sub-title" id="difusion">5. Contrato de difusión publicitaria</h3>
+
+    <h4 class="sub-sub-title">5.1. Concepto</h4>
+    <div class="prose">
+      <p>
+        Contrato de difusión publicitaria es aquél por el que un medio se obliga en favor de un
+        anunciante o agencia a <strong>permitir la utilización publicitaria de unidades de espacio o
+        de tiempo disponible</strong> y a desarrollar la actividad técnica necesaria para lograr el
+        resultado publicitario, a cambio de una contraprestación fijada en tarifas preestablecidas
+        (<span class="art">art. 17 LGP</span>).
+      </p>
+    </div>
+
+    <h4 class="sub-sub-title">5.2. Contenido y cumplimiento</h4>
+
+    <div class="oblig-grid">
+      <div class="oblig-col oc-purple">
+        <div class="oblig-col-title">📡 Obligaciones del medio</div>
+        <div class="oblig-item">No solo ceder un <strong>espacio y un tiempo</strong> en el soporte de difusión, sino también desarrollar la <strong>actividad técnica</strong> necesaria para lograr el resultado publicitario (obligación de resultado).</div>
+        <div class="oblig-item">Difundir la publicidad entre su audiencia en los <strong>términos pactados</strong>.</div>
+        <div class="oblig-item">Si no la difunde por causas imputables a él: el anunciante o agencia pueden exigir la <strong>reducción del precio</strong> y la indemnización de los perjuicios (<span class="art">art. 18 LGP</span>).</div>
+        <div class="oblig-item">Si no la difunde por causa imputable a la <strong>agencia</strong>: el responsable deberá indemnizar al medio y satisfacerle íntegramente el precio (<span class="art">art. 19 LGP</span>).</div>
+      </div>
+      <div class="oblig-col oc-gold">
+        <div class="oblig-col-title">🏢 Obligaciones del anunciante o agencia</div>
+        <div class="oblig-item">Satisfacer al medio la <strong>contraprestación</strong> por la difusión pactada, según las tarifas preestablecidas (<span class="art">art. 17 LGP</span>).</div>
+        <div class="oblig-item">El contrato se concluye siempre en nombre del anunciante, pero puede estar concluido en nombre de la agencia si así se ha previsto.</div>
+        <div class="oblig-item">La agencia puede usar una <strong>central de compras</strong> para contratar espacios publicitarios (<span class="art">art. 17 LGP</span>).</div>
+        <div class="oblig-item">Prohibición expresa: durante la <strong>campaña electoral</strong>, los partidos políticos no pueden suscribir contratos de difusión publicitaria en medios de comunicación audiovisual de titularidad pública ni en emisoras privadas de televisión.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span class="icon">⚠️</span>Obligación de resultado del medio — art. 19 LGP</div>
+      <p>
+        La obligación principal del medio es difundir la publicidad entre su audiencia. No basta con
+        realizar la actividad técnica: es necesario que el <strong>resultado publicitario</strong>,
+        que consiste en la divulgación entre su audiencia de la publicidad pactada, se produzca. Si la
+        repetición no fuere posible, el anunciante o la agencia podrán exigir la reducción del precio y
+        la indemnización de los perjuicios. Si no la difunde, pueden optar entre exigir una difusión
+        posterior o denunciar el contrato. Si el medio ha tenido plazas ocupadas con otra publicidad,
+        el responsable deberá indemnizar al medio e integrarle el precio.
+      </p>
+    </div>
+
+
+    <!-- PATROCINIO -->
+    <h3 class="sub-title" id="patrocinio">6. Contrato de patrocinio</h3>
+
+    <h4 class="sub-sub-title">6.1. Concepto</h4>
+    <div class="prose">
+      <p>
+        El contrato de patrocinio publicitario, también denominado de esponsorización, es aquel por el
+        que el patrocinado se compromete a colaborar en la publicidad del patrocinador, a cambio de una
+        ayuda económica para la realización de la actividad a la que el patrocinado se dedique, que puede
+        ser una actividad deportiva, benéfica, cultural, científica o de otra índole (<span class="art">art.
+        22 LGP</span>). La característica fundamental del contrato es la condición de <strong>benefactor
+        del patrocinador</strong> respecto de la actividad del patrocinado, que falta en el contrato de
+        difusión publicitaria. Por eso a pesar de las analogías, la LGP dispone que el contrato de
+        patrocinio se regirá por las normas del contrato de difusión publicitaria solo en cuanto le sean
+        aplicables (<span class="art">art. 22 LGP</span>).
+      </p>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Aspecto</th>
+          <th>Patrocinio publicitario</th>
+          <th>Mecenazgo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Finalidad</strong></td>
+          <td>Obtener la ventaja publicitaria correspondiente. No es gratuito; la colaboración se presta con ánimo de obtener publicidad.</td>
+          <td>El mecenas realiza una atribución patrimonial con ánimo de liberalidad, sin esperar nada a cambio.</td>
+        </tr>
+        <tr>
+          <td><strong>Contraprestación</strong></td>
+          <td>Ayuda económica a cambio de publicidad explícita de la marca/imagen del patrocinador.</td>
+          <td>No existe contraprestación económica publicitaria directa; la donación es la prestación principal.</td>
+        </tr>
+        <tr>
+          <td><strong>Régimen jurídico</strong></td>
+          <td>Normas del contrato de difusión publicitaria (<span class="art">art. 22 LGP</span>), en lo que sea aplicable.</td>
+          <td>Régimen de la donación y legislación fiscal específica (Ley de Mecenazgo).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub-sub-title">6.2. Obligaciones del patrocinado</h4>
+    <div class="prose">
+      <p>
+        El patrocinado se compromete a realizar la actividad patrocinada <strong>haciendo expresa la
+        publicidad pactada a favor de su patrocinador</strong> en los términos acordados, debiendo rendir
+        cuenta de la utilización de la ayuda percibida. Sin embargo no promueve de forma directa la
+        contratación de los productos o servicios del patrocinador, ni ensalza sus cualidades: se limita
+        a conectar su actividad con los signos distintivos del patrocinador, tratando de producir en los
+        destinatarios una asociación entre ambos (<span class="art">art. 12 LGP</span>).
+      </p>
+    </div>
+
+    <h4 class="sub-sub-title">6.2.3. Cláusula de exclusiva</h4>
+    <div class="prose">
+      <p>
+        La exclusiva a favor del patrocinador ha de ser <strong>expresamente acordada</strong> en lo
+        que se refiere a su duración y excepciones. La cláusula de prioridad o de contratación preferente
+        en caso de prolongación de la actividad patrocinada debe ser, asimismo, expresamente acordada.
+        Ninguna de las dos constituye elemento esencial, ni tan siquiera natural del contrato.
+      </p>
+    </div>
+
+    <div class="callout callout-caso">
+      <div class="callout-label"><span class="icon">⚖️</span>Caso práctico: patrocinio vs. publicidad encubierta</div>
+      <p>
+        Un programa de cocina de TV muestra repetidamente la marca de una cuchillería sin que el público
+        sepa que existe un contrato de patrocinio publicitario. El presentador dice «uso siempre estos
+        cuchillos» sin identificar el patrocinio. <strong>¿Es legal?</strong>
+      </p>
+      <p style="margin-top:0.7rem;">
+        <strong>No.</strong> La LGCA prohíbe el patrocinio encubierto: el público debe ser
+        <strong>claramente informado del patrocinio</strong> al principio, al inicio de cada reanudación
+        tras los cortes, y al final del programa, mediante el nombre, logotipo o cualquier otro símbolo
+        del patrocinador (<span class="art">art. 16 LGCA</span>). Además, el patrocinio no puede
+        condicionar la independencia editorial ni afectar al contenido del programa. La conducta
+        descrita constituye <strong>publicidad encubierta</strong> prohibida (<span class="art">arts.
+        9 LGP y 18.2 y 2.32 LGCA</span>), con las correspondientes sanciones administrativas.
+      </p>
+    </div>
+
+
+    <!-- MERCHANDISING Y BARTERING -->
+    <h3 class="sub-title" id="merchandising">7. Contrato de reclamo mercantil (merchandising) y permuta publicitaria (bartering)</h3>
+
+    <div class="oblig-grid">
+      <div class="oblig-col oc-blue">
+        <div class="oblig-col-title">👤 Merchandising — reclamo mercantil</div>
+        <div class="oblig-item">El titular de un <strong>derecho de la personalidad</strong> o de un bien inmaterial protegido cede su uso a un empresario para atraer clientela hacia sus productos o servicios, a cambio de una contraprestación.</div>
+        <div class="oblig-item">El objeto puede ser el <strong>nombre, imagen</strong> de una persona física, las creaciones protegidas por el derecho de propiedad intelectual, las marcas, entre otros.</div>
+        <div class="oblig-item">El cesionario deberá servirse del derecho cedido durante el <strong>período pactado</strong> y evitar cualquier utilización que pueda afectar a la dignidad del titular o menoscabar el atractivo público del bien inmaterial (<span class="art">art. atípico</span>).</div>
+        <div class="oblig-item">El titular está obligado a <strong>mantener en su uso el bien</strong> de manera pacífica durante el período pactado y a observar una conducta que no menoscabe el atractivo público de aquellos.</div>
+      </div>
+      <div class="oblig-col oc-purple">
+        <div class="oblig-col-title">🔄 Bartering — permuta publicitaria</div>
+        <div class="oblig-item">Un anunciante o agencia <strong>produce un programa</strong> de radio, radiofónico o audiovisual que aparece vinculado a la publicidad de sus bienes o servicios.</div>
+        <div class="oblig-item">Lo entrega a un <strong>medio de comunicación</strong> para que lo difunda a cambio de realizar gratuitamente publicidad dentro de ese programa.</div>
+        <div class="oblig-item">Una de las modalidades más comunes es aquella en que el anunciante produce el programa y lo entrega a un medio para que lo difunda gratuitamente.</div>
+        <div class="oblig-item">Contrato legalmente atípico cuyo régimen puede integrarse, por analogía, con las normas del contrato de difusión publicitaria y del contrato de creación publicitaria.</div>
+      </div>
+    </div>
+
+  </div><!-- /publicidad -->
+
+
+  <!-- ═══════════════════════════
+       II. ALOJAMIENTO TURÍSTICO
+  ═══════════════════════════ -->
+  <div class="section-block" id="alojamiento">
+    <div class="section-roman">II</div>
+    <h2 class="section-title">Contratos relativos al Alojamiento Turístico</h2>
+
+    <!-- GESTIÓN HOTELERA -->
+    <h3 class="sub-title" id="gestion">1. Contrato de gestión hotelera</h3>
+
+    <h4 class="sub-sub-title">1.1. Concepto y caracteres</h4>
+    <div class="prose">
+      <p>
+        El contrato de gestión hotelera es aquel mediante el cual el titular de un establecimiento
+        hotelero confía su dirección y administración a un empresario, denominado <strong>gestor
+        hotelero</strong>, que la lleva a cabo en nombre y por cuenta de su titular, integrando dicho
+        establecimiento en una cadena o red de establecimientos similares que también gestiona, e
+        identificándolo con los mismos signos de esta, todo ello a cambio de una retribución.
+      </p>
+      <p>
+        El contrato carece de regulación legal, pero está dotado de una elevada tipicidad social derivada
+        de su uso en el tráfico. Se trata de un contrato mercantil, bilateral y de tracto sucesivo, pues
+        su duración ordinaria oscila <strong>entre los diez y quince años prorrogables</strong>. Su
+        disciplina jurídica habrá de integrarse por las normas generales sobre contratación con las
+        especialidades propias de la mercantil y atendiendo a la normativa de los contratos próximos como
+        puede ser el de comisión mercantil, ya que el gestor actúa en nombre y por cuenta del titular
+        del establecimiento.
+      </p>
+    </div>
+
+    <div class="callout callout-concepto">
+      <div class="callout-label"><span class="icon">💡</span>Gestión hotelera vs. franquicia hotelera — diferencia esencial</div>
+      <p>
+        En el <strong>contrato de gestión</strong> es el <em>gestor hotelero</em> quien gestiona el
+        establecimiento, mientras que en la <strong>franquicia hotelera</strong> lo hace el propio
+        propietario —el franquiciado— bajo las directrices del franquiciador, quien retiene el riesgo
+        de explotación. Esta es la diferencia esencial: en la gestión hotelera el titular cede la gestión
+        y retiene la propiedad, mientras que en la franquicia el titular asume el riesgo gestionando
+        él mismo bajo las condiciones del franquiciador.
+      </p>
+    </div>
+
+    <h4 class="sub-sub-title">1.2. Contenido</h4>
+
+    <div class="oblig-grid">
+      <div class="oblig-col oc-blue">
+        <div class="oblig-col-title">🏨 Obligaciones del gestor hotelero</div>
+        <div class="oblig-item"><strong>Administrar el hotel</strong>: obligación de contornos amplios que incluye la realización de todos los actos necesarios o convenientes para la adecuada explotación.</div>
+        <div class="oblig-item">Contratar los servicios y suministros necesarios para el desarrollo de la actividad hostelera.</div>
+        <div class="oblig-item">Deberes de <strong>diligencia y lealtad</strong>: perseguir el interés del titular, prohibiéndose obtener ventajas propias a costa del sacrificio del primero.</div>
+        <div class="oblig-item">Someterse a las instrucciones del titular, informarle de las cuestiones relevantes y <strong>rendirle cuentas</strong>.</div>
+      </div>
+      <div class="oblig-col oc-green">
+        <div class="oblig-col-title">🏢 Obligaciones del titular del establecimiento</div>
+        <div class="oblig-item">Abonar al gestor la <strong>remuneración pactada</strong>, que suele consistir en el abono de una comisión, fija o variable en función de los resultados.</div>
+        <div class="oblig-item">Hacerse cargo de los <strong>gastos derivados de la administración</strong> ya que el gestor actúa en su nombre y por su cuenta.</div>
+        <div class="oblig-item">Asumir en exclusiva la <strong>responsabilidad empresarial frente a terceros</strong>.</div>
+      </div>
+    </div>
+
+
+    <!-- CUPO / CONTINGENTE -->
+    <h3 class="sub-title" id="cupo">2. Contrato de reservas de plazas de alojamiento (cupo o contingente)</h3>
+
+    <h4 class="sub-sub-title">2.1. Concepto y caracteres</h4>
+    <div class="prose">
+      <p>
+        El contrato de reserva de un cupo de plazas de alojamiento, también llamado contrato de
+        reserva de plazas de alojamiento en régimen de contingente, es aquel mediante el cual el titular
+        o gestor de un establecimiento hotelero se compromete frente a un empresario, normalmente una
+        <strong>agencia de viajes</strong>, a tener a disposición de esta última hasta un determinado
+        número de plazas de alojamiento en las fechas convenidas y a un precio preestablecido,
+        concediéndola el derecho de usarlas o no, siempre que lo anuncie con la necesaria anticipación
+        (preaviso o período de <em>release</em>), mediante el envío de la correspondiente lista de
+        ocupación (<em>rooming list</em>), sin que deba abonar cantidad alguna por las plazas de
+        alojamiento cuya reserva no confirme.
+      </p>
+    </div>
+
+    <div class="callout callout-norma">
+      <div class="callout-label"><span class="icon">📖</span>Relaciones jurídicas en el contrato de cupo</div>
+      <p>
+        La agencia de viajes y el cliente que desea alojarse establecen relaciones jurídicas con ambos
+        en virtud de dos contratos distintos:
+      </p>
+      <ul style="margin-top:0.5rem;">
+        <li><strong>Con el hotel:</strong> la une el <em>contrato de reserva de plazas de alojamiento</em> (cupo/contingente).</li>
+        <li><strong>Con el cliente:</strong> la une un <em>contrato de alojamiento</em> o de viajes combinados.</li>
+      </ul>
+      <p style="margin-top:0.5rem;">
+        El cliente <strong>no puede dirigirse directamente al hotel</strong> reclamando el cumplimiento
+        del contrato de reserva, salvo que la agencia le permita la subrogación en su posición
+        contractual. Ni el hotel puede exigir directamente el pago del alojamiento al cliente, ya que
+        es la agencia quien establece las relaciones jurídicas con ambos. La agencia responde frente
+        al cliente por la inadecuada ejecución de los servicios ofrecidos, aun cuando no sean prestados
+        por ella directamente, sino a través del empresario hotelero.
+      </p>
+    </div>
+
+    <div class="callout callout-caso">
+      <div class="callout-label"><span class="icon">⚖️</span>Caso práctico: overbooking y contrato de cupo</div>
+      <p>
+        Una agencia de viajes tiene contratado un cupo de 50 habitaciones en un hotel de Mallorca
+        para la semana del 15 al 22 de agosto. La agencia envía el <em>rooming list</em> con 45
+        habitaciones confirmadas 3 días antes. El día de llegada el hotel alega overbooking y niega
+        habitación a los clientes. <strong>¿Quién responde ante los clientes?</strong>
+      </p>
+      <p style="margin-top:0.7rem;">
+        <strong>La agencia de viajes</strong> responde frente a los clientes por la inadecuada
+        ejecución de los servicios ofrecidos, aunque el fallo haya sido del hotel
+        (<span class="art">art. 161 TRLCU</span> en viajes combinados). La agencia, a su vez,
+        tiene acción de repetición contra el hotel por incumplimiento del contrato de cupo:
+        el hotel debía tener disponibles las 45 habitaciones confirmadas en el <em>rooming list</em>
+        y su incumplimiento le genera responsabilidad frente a la agencia por los daños sufridos
+        (alojamiento alternativo, compensaciones a clientes, daño reputacional, etc.).
+      </p>
+    </div>
+
+
+    <!-- HOSPEDAJE -->
+    <h3 class="sub-title" id="hospedaje">3. Contrato de hospedaje</h3>
+
+    <h4 class="sub-sub-title">3.1. Concepto y caracteres</h4>
+    <div class="prose">
+      <p>
+        Mediante el contrato de hospedaje el titular de un establecimiento de alojamiento (hotel,
+        balneario, hotel rural, albergue) se obliga, a cambio de una contraprestación en dinero, a ceder
+        al usuario (huésped o viajero) el uso de una unidad de alojamiento provista de mobiliario, equipo
+        e instalaciones, a custodiar su equipaje, a revenderle ciertos objetos o energías industriales
+        (agua, luz, teléfono) y a prestarle ciertos servicios complementarios variables (limpieza,
+        conserjería, alimentación, lavado y planchado de ropa, entre otros).
+      </p>
+      <p>
+        Se trata de un <strong>contrato mercantil</strong>, consensual, bilateral y de carácter mercantil,
+        tanto por la condición de empresario del titular del establecimiento hotelero como por la índole
+        de las prestaciones. Su disciplina jurídica habrá de integrarse por las normas generales de
+        contratación mercantil y atendiendo a la normativa de contratos próximos como el depósito,
+        la compraventa o el arrendamiento.
+      </p>
+    </div>
+
+    <h4 class="sub-sub-title">3.2. Contenido</h4>
+
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <div class="cc-icon">🛏️</div>
+        <div class="cc-title">Habitación y dependencias</div>
+        <div class="cc-body">El hotelero está obligado a <strong>proporcionar y mantener</strong> al huésped en el uso y disfrute pacíficos de la unidad de alojamiento contratada durante el tiempo determinado en el contrato, con los requisitos y características mínimos exigibles a la categoría del establecimiento.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🏊</div>
+        <div class="cc-title">Servicios complementarios</div>
+        <div class="cc-body">El uso de instalaciones como salones, gimnasios, piscinas, etc. puede estar <strong>condicionado a un sobreprecio</strong>. La obligación de prestar estos servicios está sometida a un régimen distinto en el que hay que distinguir el deber del empresario de poner tales servicios a disposición del huésped y su pago.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🧳</div>
+        <div class="cc-title">Custodia del equipaje</div>
+        <div class="cc-body">El empresario asume una <strong>obligación de custodia</strong> impuesta legalmente en cuanto hayan sido introducidos en el establecimiento con conocimiento de su titular (<span class="art">art. 1783 Cciv</span>). Basta con que sea introducido en el establecimiento a la vista de cualquiera de los empleados.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">💶</div>
+        <div class="cc-title">Pago del precio</div>
+        <div class="cc-body">La principal obligación del huésped es <strong>satisfacer el precio</strong> de la habitación y de cada uno de los servicios complementarios contratados. El pago se efectuará una vez recibido el servicio (momento de abandonar la habitación), salvo pacto en contrario.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span class="icon">⚠️</span>Responsabilidad por robo del equipaje — art. 1784 Cciv</div>
+      <p>
+        La responsabilidad del hotelero por la desaparición o deterioro del equipaje es de carácter
+        <strong>cuasiobjetivo</strong>: solo queda exonerado cuando el huésped no ha observado las
+        prevenciones prescritas por el titular del establecimiento sobre el cuidado y vigilancia de los
+        efectos, o cuando la desaparición o deterioro se deba a <strong>robo a mano armada</strong>
+        o <strong>fuerza mayor</strong> (<span class="art">art. 1784 Cciv</span>). No existe verdadero
+        depósito cuando el huésped no entrega el equipaje al hotelero para que se lo guarde, ni queda
+        por tanto obligado a devolver lo que no le ha sido entregado. Sí existe verdadero depósito
+        cuando se entregan los objetos para ser guardados en la caja del hotel, o cuando expresamente
+        se solicita que sean consignados en otro lugar que no sea la propia habitación.
+      </p>
+    </div>
+
+    <div class="callout callout-caso">
+      <div class="callout-label"><span class="icon">⚖️</span>Caso práctico: robo en la habitación del hotel</div>
+      <p>
+        Un huésped deja su portátil y cámara en la habitación cerrada con llave. Durante su ausencia
+        hay un robo; el ladrón fuerza la puerta. El hotel alega que no es responsable porque el huésped
+        no depositó los bienes en la caja fuerte del hotel. <strong>¿Tiene razón el hotel?</strong>
+      </p>
+      <p style="margin-top:0.7rem;">
+        <strong>Depende del caso.</strong> El hotelero asume automáticamente la obligación de custodia
+        por los efectos introducidos en el establecimiento con su conocimiento
+        (<span class="art">art. 1783 Cciv</span>). El robo por forzamiento de la puerta puede
+        considerarse un supuesto de robo a mano armada o fuerza mayor solo si hay violencia o fuerza
+        irresistible. Si el hotel no acredita ninguna de estas circunstancias, responde de los daños.
+        El hecho de no depositar los bienes en la caja fuerte no exonera al hotel, salvo que hubiera
+        prescripciones específicas sobre el cuidado de objetos de valor que el huésped haya incumplido.
+      </p>
+    </div>
+
+
+    <!-- APROVECHAMIENTO POR TURNO -->
+    <h3 class="sub-title" id="aprovechamiento">4. Contrato de aprovechamiento por turno de bienes de uso turístico</h3>
+
+    <h4 class="sub-sub-title">4.1. Concepto y normativa aplicable</h4>
+    <div class="prose">
+      <p>
+        Se entiende por contrato de aprovechamiento por turno de bienes de uso turístico aquel de
+        duración superior a un año en virtud del cual un consumidor adquiere, a título oneroso, el
+        derecho a utilizar uno o varios alojamientos para pernoctar durante más de un período de
+        ocupación. Está regulado en la <strong>Ley 4/2012 de 6 de julio</strong> de contratos de
+        aprovechamiento por turno de bienes de uso turístico, de adquisición de productos vacacionales
+        de larga duración, de reventa y de intercambio y normas tributarias.
+      </p>
+      <p>
+        Esta definición permite entender que la figura incluye no solo los contratos sobre bienes
+        inmuebles (los más comunes), sino también otros con distinto objeto, como los contratos relativos
+        a un alojamiento en embarcaciones o caravanas. Quedan excluidos los contratos que no se refieren
+        a un alojamiento, como los de alquiler de terrenos para caravanas.
+      </p>
+    </div>
+
+    <div class="callout callout-norma">
+      <div class="callout-label"><span class="icon">📖</span>Régimen especial para bienes inmuebles de uso turístico — Ley 4/2012</div>
+      <p>
+        Para los bienes <strong>inmuebles</strong>, el régimen de aprovechamiento por turno se constituirá
+        por el propietario registral del inmueble mediante escritura pública, que se inscribirá en el
+        Registro de la Propiedad. Este derecho real de uso consiste en la facultad de disfrutar, con
+        carácter exclusivo, durante un período específico de cada año —consecutivo o alterno—, un
+        alojamiento susceptible de utilización independiente. El régimen tendrá una duración entre
+        <strong>1 año y 50 años</strong> como máximo (<span class="art">art. 23.4 L 4/2012</span>).
+        Extinguido el régimen, los titulares no tendrán derecho a compensación alguna.
+      </p>
+    </div>
+
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <div class="cc-icon">📋</div>
+        <div class="cc-title">Información precontractual</div>
+        <div class="cc-body">Obligación de información normalizada mediante formulario recogido en el anexo de la Ley (<span class="art">art. 9 L 4/2012</span>). Ha de indicar claramente la finalidad comercial y la naturaleza del contrato. Forma parte integrante del contrato.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">📝</div>
+        <div class="cc-title">Forma del contrato</div>
+        <div class="cc-body">Debe formalizarse <strong>por escrito</strong> y redactarse en tamaño tipográfico y con contraste de impresión adecuado. Se adjuntará un formulario normalizado de desistimiento (<span class="art">art. 11 L 4/2012</span>).</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">↩️</div>
+        <div class="cc-title">Derecho de desistimiento</div>
+        <div class="cc-body">El consumidor tiene la facultad de desistir sin necesidad de justificación alguna en los <strong>términos previstos en la Ley y el TRLGCU</strong> (<span class="art">art. 12 L 4/2012</span>). Los contratos accesorios quedarán automáticamente sin eficacia.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🚫</div>
+        <div class="cc-title">Prohibición de anticipos</div>
+        <div class="cc-body">Prohibición absoluta del pago de anticipos antes de que concluya el plazo de desistimiento (<span class="art">art. 10 L 4/2012</span>): pagos, reconocimiento expreso de deuda, constitución de garantías, reservas de dinero en cuentas, etc. Contravención: puede reclamar el <strong>duplo</strong> de las cantidades entregadas.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-caso">
+      <div class="callout-label"><span class="icon">⚖️</span>Caso práctico: multipropiedad y prohibición de anticipos</div>
+      <p>
+        En una feria de turismo, una empresa ofrece a una pareja un contrato de aprovechamiento por
+        turno de un apartamento en la costa durante 2 semanas al año por 25 años, a cambio de 15.000 €.
+        Les exigen un depósito de 3.000 € en el acto para «reservar la semana». <strong>¿Pueden hacerlo?</strong>
+      </p>
+      <p style="margin-top:0.7rem;">
+        <strong>No.</strong> La <span class="art">L 4/2012 (art. 10)</span> prohíbe de forma absoluta
+        cualquier pago de anticipos antes de que concluya el plazo de desistimiento. Si la empresa exige
+        el depósito y los consumidores lo pagan, pueden reclamar <strong>el doble de las cantidades
+        entregadas</strong> (6.000 €) en caso de contravención. Además, la información precontractual
+        debe haberse entregado antes mediante el formulario normalizado de la Ley. El incumplimiento
+        de las previsiones sobre información faculta al consumidor a resolver la relación contractual.
+      </p>
+    </div>
+
+  </div><!-- /alojamiento -->
+
+
+  <!-- ═══════════════════════
+       III. RESTAURACIÓN
+  ═══════════════════════ -->
+  <div class="section-block" id="restauracion">
+    <div class="section-roman">III</div>
+    <h2 class="section-title">Contratos de Restauración</h2>
+
+    <!-- HOSTELERIA -->
+    <h3 class="sub-title" id="hosteleria">1. Contrato de hostelería</h3>
+    <div class="prose">
+      <p>
+        El contrato de hostelería o de restauración se caracteriza por el <strong>suministro de
+        mercaderías alimenticias</strong> para su consumo inmediato por los usuarios a cambio de
+        compensación monetaria, comprendiéndose a su vez la prestación y ocupación del establecimiento
+        y servicios auxiliares como iluminación, calefacción, higiénicos o similares.
+      </p>
+      <p>
+        No es un contrato de compraventa de mercaderías, sino que se trata de un <strong>contrato atípico
+        legalmente de naturaleza mixta</strong>. Es, además, un contrato mercantil, tanto por la condición
+        de empresario del titular del establecimiento como porque las prestaciones que constituyen su
+        objeto suponen el ejercicio de una actividad empresarial. Su disciplina jurídica habrá de
+        integrarse por las normas generales sobre contratación con las especialidades propias de la
+        mercantil y atendiendo a la normativa de los contratos próximos como pueden ser la compraventa
+        o el arrendamiento. Si el cliente es consumidor, se aplicarán las normas generales sobre
+        protección de este.
+      </p>
+    </div>
+
+    <!-- CATERING -->
+    <h3 class="sub-title" id="catering">2. Contrato de catering</h3>
+    <div class="prose">
+      <p>
+        Mediante el <em>catering</em>, una de las partes asume, mediante precio, el compromiso de
+        elaborar, suministrar y, eventualmente, servir, una o dos veces al día y durante un período
+        determinado (mensual, trimestral o anual) la comida que ha de consumir una determinada
+        colectividad de personas que se hallan bajo la atención de la otra parte contratante.
+      </p>
+      <p>
+        Su naturaleza jurídica es similar a la del contrato de hostelería en la medida en que ambos
+        son contratos de restauración. Sin embargo, se diferencian en que el primero es un
+        <strong>contrato instantáneo</strong> en atención al tiempo de su cumplimiento; mientras que
+        el contrato de <em>catering</em> es <strong>contrato de tracto duradero o de tracto periódico</strong>,
+        que se caracteriza por la prestación periódica de servicios de elaboración y suministro de comidas.
+      </p>
+    </div>
+
+    <!-- BANQUETING -->
+    <h3 class="sub-title" id="banqueting">3. Contrato de banqueting</h3>
+    <div class="prose">
+      <p>
+        El <em>banqueting</em> es otro contrato de restauración cuya prestación principal es la
+        <strong>confección de alimentos y la distribución de los mismos entre los comensales</strong>.
+        Frente a los demás se caracteriza por obligar a una de las partes a prestar servicios de
+        organización (decoración y acondicionamiento del lugar de celebración, animación, discoteca,
+        parque infantil, etc.) de un evento determinado, como puede ser un banquete, un espectáculo,
+        un congreso, una convención o una fiesta.
+      </p>
+      <p>
+        Se diferencia del <em>catering</em> en que es, como el contrato de hospedaje, un
+        <strong>contrato de cumplimiento instantáneo</strong>, que se extingue con la realización de
+        los servicios el día concertado.
+      </p>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Contrato</th>
+          <th>Prestación principal</th>
+          <th>Tracto</th>
+          <th>Destinatario</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hostelería</strong></td>
+          <td>Suministro de alimentos para consumo inmediato + uso del establecimiento</td>
+          <td>Instantáneo (por servicio)</td>
+          <td>Usuario individual o grupo</td>
+        </tr>
+        <tr>
+          <td><strong>Catering</strong></td>
+          <td>Elaboración y suministro periódico de comidas a una colectividad</td>
+          <td><strong>Duradero / periódico</strong> (mensual, trimestral, anual)</td>
+          <td>Colectividad de personas determinada</td>
+        </tr>
+        <tr>
+          <td><strong>Banqueting</strong></td>
+          <td>Confección de alimentos + servicios de organización del evento</td>
+          <td>Instantáneo (el día del evento)</td>
+          <td>Asistentes a un evento determinado</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-caso">
+      <div class="callout-label"><span class="icon">⚖️</span>Caso práctico: catering vs. banqueting — responsabilidad ante intoxicación</div>
+      <p>
+        Una empresa contrata un servicio de comidas para 120 empleados que trabajan en sus instalaciones,
+        con entregas diarias a mediodía durante un año. Veinte empleados sufren una intoxicación alimentaria
+        por un lote de ensaladas en mal estado. <strong>¿Qué tipo de contrato es y quién responde?</strong>
+      </p>
+      <p style="margin-top:0.7rem;">
+        Se trata de un contrato de <strong>catering</strong> (tracto duradero, colectividad, período
+        determinado). La empresa de catering responde por el incumplimiento contractual frente a la empresa
+        contratante y también, por responsabilidad extracontractual del producto defectuoso, frente a los
+        trabajadores afectados que son consumidores (<span class="art">arts. 128 y ss. TRLCU</span>).
+        La empresa contratante puede reclamar al catering la <strong>resolución del contrato con
+        indemnización</strong> por los daños sufridos (bajas laborales, costes sanitarios, sanciones,
+        etc.), además de exigir garantías sobre el sistema APPCC (control de calidad alimentaria)
+        para el resto del período contractual.
+      </p>
+    </div>
+
+  </div><!-- /restauracion -->
+
+
+  <!-- IDEAS CLAVE -->
+  <div class="section-block">
+    <div class="divider"></div>
+    <div class="toc" style="border-color: rgba(200,168,75,0.3);">
+      <div class="toc-title">📌 Ideas clave del tema</div>
+      <ul class="fancy-list">
+        <li>
+          <span class="fn">1</span>
+          <span class="ft">En el contrato de publicidad el anunciante asume la <strong>responsabilidad irrenunciable</strong> de la realización y difusión de la publicidad frente a terceros. Las cláusulas de exoneración o limitación son nulas (<span class="art">art. 11 LGP</span>).</span>
+        </li>
+        <li>
+          <span class="fn">2</span>
+          <span class="ft">El contrato de creación publicitaria es de <strong>resultado</strong> (no de actividad). Los derechos de explotación de la obra se presumen cedidos en exclusiva al anunciante o agencia para los fines previstos en el contrato (<span class="art">art. 21 LGP</span>).</span>
+        </li>
+        <li>
+          <span class="fn">3</span>
+          <span class="ft">El contrato de difusión publicitaria obliga al medio a alcanzar el <strong>resultado</strong> de la divulgación publicitaria. La mera cesión de espacio sin actividad técnica no es contrato de difusión. Si no difunde por causa imputable a la agencia, el responsable indemniza íntegramente al medio (<span class="art">art. 19 LGP</span>).</span>
+        </li>
+        <li>
+          <span class="fn">4</span>
+          <span class="ft">El patrocinio publicitario es <strong>oneroso</strong> (no gratuito): el patrocinado presta publicidad a cambio de la ayuda económica. Se diferencia del mecenazgo en que este sí es gratuito. La exclusiva no es un elemento natural del contrato: debe pactarse expresamente.</span>
+        </li>
+        <li>
+          <span class="fn">5</span>
+          <span class="ft">En el contrato de cupo hotelero, la <strong>agencia de viajes</strong> responde frente al cliente por los servicios defectuosos aunque no los haya prestado ella directamente, y tiene acción de repetición contra el hotel incumplidor.</span>
+        </li>
+        <li>
+          <span class="fn">6</span>
+          <span class="ft">En el contrato de hospedaje el hotelero responde de la custodia del equipaje con carácter cuasiobjetivo. Solo se exonera por robo a mano armada o fuerza mayor (<span class="art">art. 1784 Cciv</span>). No es necesaria una entrega formal: basta la introducción en el establecimiento a la vista de los empleados.</span>
+        </li>
+        <li>
+          <span class="fn">7</span>
+          <span class="ft">En el aprovechamiento por turno, la <strong>prohibición de anticipos</strong> antes de que expire el plazo de desistimiento es absoluta. Su incumplimiento da derecho al consumidor a reclamar el <strong>duplo</strong> de las cantidades entregadas (<span class="art">art. 10 L 4/2012</span>).</span>
+        </li>
+        <li>
+          <span class="fn">8</span>
+          <span class="ft">La diferencia esencial entre hostelería, catering y banqueting reside en el <strong>tracto</strong>: la hostelería y el banqueting son contratos de tracto instantáneo; el catering es de tracto duradero o periódico destinado a una colectividad de personas durante un período determinado.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<footer>
+  DERECHO MERCANTIL · LECCIÓN 5 &nbsp;·&nbsp; Guía de Estudio &nbsp;·&nbsp; <span>2025</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.section-block').forEach(el => io.observe(el));
+
+  const scrollCue = document.querySelector('.scroll-cue');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) scrollCue.classList.add('hidden');
+    else scrollCue.classList.remove('hidden');
+  }, { passive: true });
+
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold2)' : '';
+    });
+  });
+</script>
+</body>
+</html>
