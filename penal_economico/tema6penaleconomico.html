@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tema 6 · Delitos contra los Derechos de los Trabajadores</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══ VARIABLES ═══ */
+:root {
+  --bg:#0e0e12; --panel:#14141a; --card:#1c1c26; --raised:#22222f;
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.12);
+  --gold:#c8a84b; --gold2:#e8cc78; --silver:#a0aec0; --white:#f4f1eb; --dim:#6b7280;
+  --blue:#4a7fc1; --blue2:#7eb4e0; --green:#3a9e6f; --green2:#5dca90;
+  --purple:#8b6fcb; --purple2:#b8a0e8; --red:#c05050; --red2:#e09090;
+  --orange:#c07840; --orange2:#e09060;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(200,168,75,0.2);border-radius:3px}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:0.2}50%{opacity:0.8}}
+
+/* ═══ NAV ═══ */
+nav{position:sticky;top:0;z-index:200;background:rgba(14,14,18,0.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0.8rem 2rem;gap:1rem}
+.nav-left{display:flex;align-items:center;gap:1rem}
+.nav-back{color:var(--dim);font-size:1.1rem;text-decoration:none;transition:color 0.2s;line-height:1}
+.nav-back:hover{color:var(--gold)}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--gold)}
+.nav-pill{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;background:rgba(200,168,75,0.1);color:var(--gold);border:1px solid rgba(200,168,75,0.25);border-radius:2px;padding:0.18rem 0.55rem}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold2)}
+@media(max-width:700px){.nav-links{display:none}}
+
+/* ═══ HERO ═══ */
+.hero{position:relative;z-index:1;min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6rem 2rem 5rem;text-align:center;overflow:clip;isolation:isolate}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 12% 30%,rgba(74,127,193,0.09) 0%,transparent 60%),radial-gradient(ellipse 70% 60% at 85% 25%,rgba(200,168,75,0.07) 0%,transparent 55%)}
+.hero-kicker{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:riseIn 0.9s cubic-bezier(.22,1,.36,1) forwards 0.15s}
+.hero-kicker::before,.hero-kicker::after{content:'';display:block;width:28px;height:1px;background:var(--gold);opacity:0.45}
+.hero-lesson{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim);margin-bottom:0.75rem;opacity:0;animation:riseIn 0.9s cubic-bezier(.22,1,.36,1) forwards 0.25s}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:700;line-height:1.08;color:var(--white);max-width:820px;opacity:0;animation:riseIn 1s cubic-bezier(.22,1,.36,1) forwards 0.4s}
+.hero-title .accent{color:var(--gold);font-style:italic}
+.hero-desc{margin-top:1.4rem;font-size:0.95rem;font-weight:300;color:var(--silver);max-width:620px;line-height:1.75;opacity:0;animation:riseIn 1s cubic-bezier(.22,1,.36,1) forwards 0.6s}
+.hero-meta{margin-top:2.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:riseIn 1s cubic-bezier(.22,1,.36,1) forwards 0.8s}
+.hero-badge{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:3px;border:1px solid rgba(200,168,75,0.3);background:rgba(200,168,75,0.06);color:var(--gold2)}
+.scroll-cue{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:riseIn 1s ease forwards 1.2s;pointer-events:none}
+.scroll-cue span{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--dim)}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.5s ease-in-out infinite}
+.scroll-cue.hidden{opacity:0!important}
+
+/* ═══ LAYOUT ═══ */
+.page{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:4rem 1.5rem 8rem}
+
+/* ═══ TOC ═══ */
+.toc{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:1.75rem 2rem;margin-bottom:3.5rem}
+.toc-title{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.6rem}
+.toc-title::after{content:'';flex:1;height:1px;background:rgba(200,168,75,0.2)}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:0.35rem}
+.toc-list li{display:flex;align-items:baseline;gap:0.6rem}
+.toc-num{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gold);opacity:0.6;flex-shrink:0;width:28px}
+.toc-list a{font-size:0.85rem;color:var(--silver);text-decoration:none;transition:color 0.2s;line-height:1.5}
+.toc-list a:hover{color:var(--gold2)}
+
+/* ═══ SECTION BLOCK ═══ */
+.section-block{margin-bottom:4rem;opacity:0;transform:translateY(16px);transition:opacity 0.55s ease,transform 0.55s ease}
+.section-block.visible{opacity:1;transform:translateY(0)}
+.section-roman{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.75rem}
+.section-roman::after{content:'';flex:1;height:1px;background:rgba(200,168,75,0.2)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:1.5rem}
+.sub-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--white);margin:2rem 0 0.9rem;line-height:1.25}
+.sub-sub-title{font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:600;color:var(--silver);margin:1.5rem 0 0.6rem;letter-spacing:0.015em}
+
+/* ═══ PROSE ═══ */
+.prose p{font-size:0.93rem;color:#c8c4bc;line-height:1.8;margin-bottom:1rem}
+.prose p:last-child{margin-bottom:0}
+
+/* ═══ ARTICLE TAG ═══ */
+.art{font-family:'DM Mono',monospace;font-size:0.72rem;font-weight:500;background:rgba(74,127,193,0.12);color:var(--blue2);border:1px solid rgba(74,127,193,0.25);border-radius:3px;padding:0.1rem 0.4rem;white-space:nowrap;vertical-align:middle;margin:0 0.1rem}
+
+/* ═══ CALLOUTS ═══ */
+.callout{border-radius:8px;padding:1.25rem 1.5rem;margin:1.5rem 0;border-left:3px solid var(--c,var(--gold));background:var(--bg,rgba(200,168,75,0.05))}
+.callout-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--c,var(--gold));margin-bottom:0.55rem;display:flex;align-items:center;gap:0.5rem}
+.callout p,.callout li{font-size:0.88rem;color:#bbb8b0;line-height:1.75}
+.callout ul,.callout ol{padding-left:1.2rem}
+.callout li{margin-bottom:0.3rem}
+.callout strong{color:var(--white)}
+.callout-concepto{--c:var(--gold);--bg:rgba(200,168,75,0.06)}
+.callout-ejemplo{--c:var(--green2);--bg:rgba(58,158,111,0.06)}
+.callout-caso{--c:var(--blue2);--bg:rgba(74,127,193,0.07)}
+.callout-atencion{--c:var(--red2);--bg:rgba(192,80,80,0.07)}
+.callout-norma{--c:var(--purple2);--bg:rgba(139,111,203,0.07)}
+.callout-regla{--c:var(--orange2);--bg:rgba(192,120,64,0.07)}
+
+/* ═══ CONCEPT CARDS GRID ═══ */
+.concepts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.9rem;margin:1.5rem 0}
+.concept-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.2rem;transition:border-color 0.2s,transform 0.2s}
+.concept-card:hover{border-color:rgba(200,168,75,0.3);transform:translateY(-2px)}
+.concept-card .cc-icon{font-size:1.4rem;margin-bottom:0.55rem}
+.concept-card .cc-title{font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:0.35rem}
+.concept-card .cc-body{font-size:0.78rem;color:var(--dim);line-height:1.6}
+.concept-card .cc-body strong{color:var(--silver)}
+
+/* ═══ COMPARE TABLE ═══ */
+.compare-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.85rem}
+.compare-table th{font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0.7rem 1rem;text-align:left;border-bottom:1px solid rgba(200,168,75,0.3);background:rgba(200,168,75,0.04)}
+.compare-table td{padding:0.75rem 1rem;color:#bbb8b0;line-height:1.6;border-bottom:1px solid var(--border);vertical-align:top}
+.compare-table tr:hover td{background:rgba(255,255,255,0.015)}
+.compare-table td strong{color:var(--white)}
+.compare-table td:first-child{color:var(--silver);font-weight:500;font-size:0.82rem}
+
+/* ═══ FANCY LIST ═══ */
+.fancy-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;margin:1.25rem 0}
+.fancy-list li{display:flex;gap:0.9rem;align-items:flex-start}
+.fancy-list .fn{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:rgba(200,168,75,0.4);line-height:1.3;flex-shrink:0;width:22px;text-align:right}
+.fancy-list .ft{font-size:0.88rem;color:#bbb8b0;line-height:1.7}
+.fancy-list .ft strong{color:var(--white)}
+
+/* ═══ STUDY CARDS ═══ */
+.study-section{margin-top:5rem}
+.study-label{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.75rem}
+.study-label::after{content:'';flex:1;height:1px;background:rgba(200,168,75,0.2)}
+.study-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:2rem}
+.study-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.75rem;margin-bottom:1.25rem}
+.study-card h3{font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:600;color:var(--white);margin-bottom:1.1rem;display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap}
+.method-badge{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:3px;font-weight:500}
+.badge-gold{background:rgba(200,168,75,0.12);color:var(--gold2);border:1px solid rgba(200,168,75,0.25)}
+.badge-blue{background:rgba(74,127,193,0.12);color:var(--blue2);border:1px solid rgba(74,127,193,0.25)}
+.badge-red{background:rgba(192,80,80,0.12);color:var(--red2);border:1px solid rgba(192,80,80,0.25)}
+.badge-green{background:rgba(58,158,111,0.12);color:var(--green2);border:1px solid rgba(58,158,111,0.25)}
+
+/* ═══ FLOW (árbol de decisión) ═══ */
+.flow{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.flow-step{background:var(--raised);border:1px solid var(--border2);border-radius:6px;padding:0.5rem 0.9rem;font-size:0.8rem;color:var(--silver)}
+.flow-arrow{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--dim)}
+
+/* ═══ FOOTER ═══ */
+footer{text-align:center;padding:2rem;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim);border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">←</a>
+    <span class="nav-brand">Derecho Penal</span>
+    <span class="nav-pill">Tema 6</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#s1">Introducción</a></li>
+    <li><a href="#s2">Condiciones de Trabajo</a></li>
+    <li><a href="#s3">Seguridad Laboral</a></li>
+    <li><a href="#s4">Contratación</a></li>
+    <li><a href="#s5">Libertad Sindical</a></li>
+    <li><a href="#s6">Aspectos Comunes</a></li>
+    <li><a href="#estudio">Estudio</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div style="position:relative;z-index:1">
+    <div class="hero-kicker">Derecho Penal · Parte Especial</div>
+    <div class="hero-lesson">Tema 6</div>
+    <h1 class="hero-title">Delitos contra los <span class="accent">Derechos de los Trabajadores</span></h1>
+    <p class="hero-desc">Estudio completo de los arts. 311–318 CP: explotación laboral, seguridad en el trabajo, contratación irregular, libertad sindical y aspectos comunes de autoría y consentimiento.</p>
+    <div class="hero-meta">
+      <span class="hero-badge">Arts. 311–318 CP</span>
+      <span class="hero-badge">Título XV CP</span>
+      <span class="hero-badge">Derecho Penal del Trabajo</span>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="page">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Índice de Contenidos</div>
+    <ol class="toc-list">
+      <li><span class="toc-num">I</span><a href="#s1">Introducción y clasificación</a></li>
+      <li><span class="toc-num">II</span><a href="#s2">Delitos contra las condiciones de trabajo (arts. 311, 312.2, 314)</a></li>
+      <li><span class="toc-num">III</span><a href="#s3">Delitos contra la seguridad de los trabajadores (arts. 316–317)</a></li>
+      <li><span class="toc-num">IV</span><a href="#s4">Delitos de contratación irregular (arts. 311.2º, 311 bis, 312.1, 313)</a></li>
+      <li><span class="toc-num">V</span><a href="#s5">Libertad sindical y derecho de huelga (art. 315)</a></li>
+      <li><span class="toc-num">VI</span><a href="#s6">Aspectos comunes: autoría, consentimiento y estado de necesidad</a></li>
+      <li><span class="toc-num">VII</span><a href="#estudio">Herramientas de estudio</a></li>
+    </ol>
+  </div>
+
+  <!-- SECCIÓN I — INTRODUCCIÓN -->
+  <section class="section-block" id="s1">
+    <div class="section-roman">I · Introducción</div>
+    <h2 class="section-title">Clasificación y Elementos Comunes</h2>
+
+    <div class="prose">
+      <p>La actividad laboral ocupa una parte central de la vida de muchas personas y en su seno pueden dañarse gravemente sus intereses fundamentales. El Título XV del Código Penal ("De los delitos contra los derechos de los trabajadores") responde a esta realidad.</p>
+    </div>
+
+    <div class="callout callout-concepto">
+      <div class="callout-label"><span>◆</span> Bien jurídico común</div>
+      <p>El bien jurídico protegido es siempre <strong>un interés del trabajador en cuanto tal</strong>: su dignidad, su patrimonio, su integridad física, su libertad de organización colectiva. En casi todos los tipos el sujeto activo solo podrá ser el <strong>empresario o uno de sus delegados</strong>, dada la índole restrictiva de las conductas.</p>
+    </div>
+
+    <h3 class="sub-title">Tres grupos de delitos</h3>
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <div class="cc-icon">⚖️</div>
+        <div class="cc-title">Grupo 1 — Condiciones de trabajo</div>
+        <div class="cc-body">Irregularidad en las condiciones con que el trabajador desempeña su actividad. <strong>Arts. 311, 312.2, 314, 316 y 317 CP.</strong></div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">📝</div>
+        <div class="cc-title">Grupo 2 — Contratación irregular</div>
+        <div class="cc-body">Lesividad producida en torno a la contratación: ofertas falsas, intermediación no autorizada, falta de permiso o de alta en SS. <strong>Arts. 311.2º, 311 bis, 312.1, 313 CP.</strong></div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">✊</div>
+        <div class="cc-title">Grupo 3 — Libertad sindical y huelga</div>
+        <div class="cc-body">Vulneración de los principales instrumentos constitucionales de defensa colectiva de los trabajadores. <strong>Art. 315 CP.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN II — CONDICIONES DE TRABAJO -->
+  <section class="section-block" id="s2">
+    <div class="section-roman">II · Condiciones de Trabajo</div>
+    <h2 class="section-title">Delitos contra las Condiciones de Trabajo</h2>
+
+    <!-- Art. 311.1 -->
+    <h3 class="sub-title">1. Imposición mediante engaño o abuso de necesidad — <span class="art">art. 311.1º CP</span></h3>
+
+    <div class="callout callout-norma">
+      <div class="callout-label"><span>§</span> Artículo 311.1º CP</div>
+      <p>Pena de <strong>prisión de 6 meses a 6 años</strong> y multa de 6 a 12 meses a «los que, <strong>mediante engaño o abuso de situación de necesidad</strong>, impongan a los trabajadores a su servicio condiciones laborales o de Seguridad Social que perjudiquen, supriman o restrinjan los derechos que tengan reconocidos por disposiciones legales, convenios colectivos o contrato individual».</p>
+    </div>
+
+    <div class="prose">
+      <p>El engaño es poco frecuente en la práctica, pues el trabajador se somete a las condiciones irregulares por la <strong>necesidad del salario</strong>. El abuso de situación de necesidad es, por tanto, casi inherente al tipo. El Tribunal Supremo se conforma con la «generada por el mercado de trabajo, que provoca un desequilibrio entre asalariado y empleador» (STS 1611/2000).</p>
+      <p>El resultado del tipo —el mero perjuicio de cualquier condición legal— es muy amplio, por lo que el intérprete debe buscar lo verdaderamente grave. La jurisprudencia excluye las imposiciones de las que deriven menoscabos «fácilmente reparables acudiendo al procedimiento administrativo o judicial» (STS 494/2016). Como punto de partida, las infracciones <strong>muy graves</strong> de la LISOS orientan el umbral de lo delictivo.</p>
+    </div>
+
+    <div class="callout callout-caso">
+      <div class="callout-label"><span>⚖</span> Caso — Explotación de la prostitución (STS 438/2004)</div>
+      <p>Regentador de un club empleaba a trabajadoras sin contrato ni alta en SS, reteniéndoles los pasaportes, sin pago de salarios pactados y sin descanso semanal. Se da el tipo del <span class="art">art. 311.1º</span> y, por ser extranjeras sin permiso, también el del <span class="art">art. 312.2 CP</span>. Al mediar además violencia e intimidación, se aplica la agravante del <span class="art">art. 311.4º</span>.</p>
+    </div>
+
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span>⚠</span> Sujeto pasivo y pluralidad</div>
+      <p>El precepto protege también a trabajadores <strong>sin contrato válido</strong> («no protege las consecuencias de un contrato formalmente válido, sino la situación de personas que prestan servicios»: STS 12-04-1991). El plural «trabajadores a su servicio» indica que existirá un <strong>solo delito</strong> aunque sean varios los afectados por una misma conducta.</p>
+    </div>
+
+    <!-- Art. 311.3 -->
+    <h3 class="sub-title">2. Mantenimiento de condiciones irregulares — <span class="art">art. 311.3º CP</span></h3>
+    <div class="prose">
+      <p>Misma pena que el tipo básico. Comete el delito el <strong>nuevo empleador</strong> que conoce que las condiciones irregulares se establecieron mediando engaño o abuso de necesidad y las mantiene. El mantenimiento solo debe ser delictivo si también persiste el error o la situación de necesidad del trabajador.</p>
+    </div>
+
+    <!-- Art. 311.4 -->
+    <h3 class="sub-title">3. Imposición mediante violencia o intimidación — <span class="art">art. 311.4º CP</span></h3>
+    <div class="callout callout-norma">
+      <div class="callout-label"><span>§</span> Pena agravada</div>
+      <p>La pena es la <strong>superior en grado</strong> (prisión de 6 años y 1 día a 9 años) cuando las condiciones irregulares se imponen mediante violencia o intimidación. Si concurren además engaño o necesidad, el tipo más grave absorbe todo el desvalor (concurso de normas).</p>
+    </div>
+
+    <!-- Art. 312.2 -->
+    <h3 class="sub-title">4. Imposición a extranjeros sin permiso de trabajo — <span class="art">art. 312.2 CP</span></h3>
+    <div class="callout callout-norma">
+      <div class="callout-label"><span>§</span> Artículo 312.2 CP</div>
+      <p>Prisión de <strong>2 a 5 años</strong> y multa de 6 a 12 meses para quienes «empleen a súbditos extranjeros sin permiso de trabajo en condiciones que perjudiquen, supriman o restrinjan los derechos que tuviesen reconocidos». No exige modalidades especiales de acción, pues el abuso de necesidad es <strong>prácticamente inherente</strong> a la indefensión del trabajador irregular.</p>
+    </div>
+    <div class="prose">
+      <p>Los trabajadores extranjeros sin permiso <strong>sí tienen derechos laborales</strong>: la LO 4/2000 establece que la carencia de autorización no invalida el contrato respecto a sus derechos. El empresario que no respete las condiciones derivadas del contrato (jornada, remuneración pactada, seguro médico, etc.) cometerá este delito, siempre que la restricción sea relevante (STS 1349/2004).</p>
+    </div>
+
+    <!-- Art. 314 -->
+    <h3 class="sub-title">5. Discriminación laboral grave — <span class="art">art. 314 CP</span></h3>
+    <div class="callout callout-norma">
+      <div class="callout-label"><span>§</span> Artículo 314 CP</div>
+      <p>Prisión de <strong>6 meses a 2 años o multa de 12 a 24 meses</strong>. Requiere que, producida una discriminación grave por motivos de ideología, religión, raza, sexo, orientación sexual, enfermedad, etc., el empresario <strong>no restablezca la situación de igualdad</strong> tras requerimiento o sanción administrativa, sin reparar los daños económicos causados.</p>
+    </div>
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span>⚠</span> Escasa aplicación práctica</div>
+      <p>La inversión de la carga de la prueba que opera en el proceso laboral (art. 96.1 LJS) no rige en el proceso penal, donde la acusación debe acreditar plenamente la culpabilidad. Esto dificulta extraordinariamente la condena penal por discriminación.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN III — SEGURIDAD LABORAL -->
+  <section class="section-block" id="s3">
+    <div class="section-roman">III · Seguridad Laboral</div>
+    <h2 class="section-title">Delitos contra la Seguridad de los Trabajadores</h2>
+
+    <div class="callout callout-concepto">
+      <div class="callout-label"><span>◆</span> Bien jurídico y estructura</div>
+      <p>Protegen la <strong>seguridad de la vida, la integridad física y la salud</strong> de los trabajadores, anticipando la intervención penal al momento de la puesta en <strong>peligro grave</strong>, sin necesidad de que se produzca lesión. Son delitos de <strong>peligro concreto</strong>.</p>
+    </div>
+
+    <div class="callout callout-caso">
+      <div class="callout-label"><span>⚖</span> Caso de los tablones (STS 1329/2001)</div>
+      <p>Trabajador fallecido al caer por un hueco de escalera no protegido. El aparejador había incluido en el estudio de seguridad la obligación de proteger los huecos. Ni el aparejador ni el empresario adoptaron las medidas. Se aplica el <span class="art">art. 316 CP</span> por incumplimiento de normas de prevención de riesgos laborales.</p>
+    </div>
+
+    <h3 class="sub-title">Tipo doloso — <span class="art">art. 316 CP</span></h3>
+    <div class="callout callout-norma">
+      <div class="callout-label"><span>§</span> Artículo 316 CP</div>
+      <p>Prisión de <strong>6 meses a 3 años</strong> y multa de 6 a 12 meses para «los que con infracción de las normas de prevención de riesgos laborales y estando legalmente obligados, no faciliten los medios necesarios para que los trabajadores desempeñen su actividad con las medidas de seguridad e higiene adecuadas, de forma que <strong>pongan así en peligro grave su vida, integridad física o salud</strong>».</p>
+    </div>
+
+    <h3 class="sub-title">Tipo imprudente — <span class="art">art. 317 CP</span></h3>
+    <div class="prose">
+      <p>Cuando la conducta del <span class="art">art. 316 CP</span> se realiza por <strong>imprudencia grave</strong>, la pena es la inferior en grado (prisión de 3 a 6 meses o multa de 3 a 6 meses). Es el único delito del título cuya realización imprudente se tipifica expresamente, para prevenir supuestos en que la infracción dolosa es difícil de constatar por la distancia orgánica entre quien decide y quien ejecuta.</p>
+    </div>
+
+    <h3 class="sub-title">Elementos clave del tipo</h3>
+
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <div class="cc-icon">👤</div>
+        <div class="cc-title">Sujeto activo</div>
+        <div class="cc-body">El <strong>empresario</strong> (o su delegado vía art. 318 CP). Es quien tiene el deber intenso y primigenio de facilitar medios de seguridad como contraprestación a su libertad de poner a otros en situación de riesgo.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">📋</div>
+        <div class="cc-title">Tipo remisivo</div>
+        <div class="cc-body">Solo se comete el delito si se infringe la <strong>normativa de prevención de riesgos laborales</strong> (LPRL, reglamentos, convenios colectivos). Es una norma penal en blanco.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">⚡</div>
+        <div class="cc-title">Peligro grave</div>
+        <div class="cc-body">Se requiere una situación de <strong>relevante probabilidad</strong> de daño a la vida, integridad o salud. La doctrina exige peligro estrictamente concreto: el curso de peligro se dirige con suma probabilidad hacia el trabajador.</div>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🔗</div>
+        <div class="cc-title">Concurso con lesiones</div>
+        <div class="cc-body">Si todos los trabajadores en peligro resultan lesionados → <strong>concurso de normas</strong> (homicidio/lesiones desplazan al art. 316). Si algunos no resultan lesionados → <strong>concurso ideal</strong> de delitos.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span>⚠</span> Conducta: ¿qué es «no facilitar medios»?</div>
+      <p>Constituye conducta típica la falta de suministro de <strong>información y formación</strong> sobre riesgos. Es debatido si también lo son: la selección inadecuada de trabajadores, la no suspensión ante grave peligro, la delegación sin vigilancia posterior o la facilitación de medios sin exigir su utilización efectiva.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN IV — CONTRATACIÓN IRREGULAR -->
+  <section class="section-block" id="s4">
+    <div class="section-roman">IV · Contratación Irregular</div>
+    <h2 class="section-title">Delitos de Contratación Irregular</h2>
+
+    <h3 class="sub-title">1. Contratación plural sin SS o sin permiso — <span class="art">art. 311.2º CP</span></h3>
+
+    <div class="callout callout-norma">
+      <div class="callout-label"><span>§</span> Artículo 311.2º CP (introducido en 2012)</div>
+      <p>Misma pena que el <span class="art">art. 311.1º</span>. Delito consistente en dar ocupación a un <strong>porcentaje de trabajadores</strong> sin darles de alta en la SS o sin autorización de trabajo.</p>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>Tamaño empresa</th><th>Umbral de trabajadores afectados</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Más de 100 trabajadores</strong></td><td>Al menos el <strong>25%</strong> (una cuarta parte)</td></tr>
+        <tr><td><strong>Más de 10 trabajadores</strong></td><td>Al menos el <strong>50%</strong> (la mitad)</td></tr>
+        <tr><td><strong>Hasta 5 trabajadores</strong></td><td><strong>La totalidad</strong> de la plantilla</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span>⚠</span> Crítica doctrinal</div>
+      <p>El desvalor penal no depende de la lesividad de la conducta sino de un <strong>porcentaje relativo</strong>. Puede ser punible el responsable de una pequeña empresa que contrate a 5 trabajadores irregulares y no el de una gran empresa que contrate a 300. El bien jurídico protegido aparece como <strong>la competencia</strong> tanto o más que los derechos individuales del trabajador.</p>
+    </div>
+
+    <h3 class="sub-title">2. Contratación reiterada de extranjeros sin permiso — <span class="art">art. 311 bis CP</span></h3>
+    <div class="prose">
+      <p>Pena de <strong>prisión de 3 a 18 meses o multa de 12 a 30 meses</strong> para quien, <strong>de forma reiterada</strong>, emplee a ciudadanos extranjeros sin el preceptivo permiso de trabajo. Tipo subsidiario respecto al <span class="art">art. 311.2º</span> (queda desplazado si el número de trabajadores supera los porcentajes). Incluye también el empleo de <strong>menores extranjeros</strong> sin permiso de trabajo.</p>
+    </div>
+
+    <h3 class="sub-title">3. Tráfico ilegal de mano de obra — <span class="art">art. 312.1 CP</span></h3>
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span>⚠</span> Tipo de máxima indeterminación</div>
+      <p>Prisión de <strong>2 a 5 años</strong> y multa de 6 a 12 meses para quien «trafique de manera ilegal con mano de obra». El precepto es un ejemplo de cómo <strong>no debe tipificarse</strong> un delito. La doctrina propone tres hipótesis: (1) intermediación no autorizada, (2) cesión ilegal de trabajadores, (3) intermediación con cosificación del trabajador mediante engaño, violencia o abuso de necesidad.</p>
+    </div>
+
+    <h3 class="sub-title">4. Oferta falsa de empleo — <span class="art">arts. 312.2 y 313 CP</span></h3>
+    <div class="prose">
+      <p>Estructura próxima a la estafa: el engaño consiste en ofrecer empleo o condiciones falsas y el resultado perjudicial es el <strong>abandono del puesto de trabajo previo</strong> (<span class="art">art. 312.2</span>) o la <strong>emigración a otro país</strong> (<span class="art">art. 313</span>). Pena de prisión de 2 a 5 años y multa de 6 a 12 meses.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN V — LIBERTAD SINDICAL -->
+  <section class="section-block" id="s5">
+    <div class="section-roman">V · Libertad Sindical y Huelga</div>
+    <h2 class="section-title">Delitos contra la Libertad Sindical y el Derecho de Huelga</h2>
+
+    <div class="callout callout-norma">
+      <div class="callout-label"><span>§</span> Artículo 315 CP — estructura general</div>
+      <p>El precepto protege tanto la <strong>libertad sindical</strong> (art. 28.1 CE) como el <strong>derecho de huelga</strong> (art. 28.2 CE). En ambos casos la pena es <strong>prisión de 6 meses a 2 años o multa de 6 a 12 meses</strong>. Si media coacción (violencia, intimidación o fuerza en las cosas), la pena sube a <strong>1 año y 9 meses a 3 años</strong> de prisión.</p>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>Modalidad</th><th>Conducta</th><th>Pena</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Libertad sindical (§315.1)</strong></td>
+          <td>Impedir o limitar, mediante engaño o abuso de necesidad, el ejercicio de la libertad sindical</td>
+          <td>6 meses–2 años / multa 6–12 m.</td>
+        </tr>
+        <tr>
+          <td><strong>Derecho de huelga (§315.2)</strong></td>
+          <td>Impedir o limitar el ejercicio del derecho de huelga</td>
+          <td>6 meses–2 años / multa 6–12 m.</td>
+        </tr>
+        <tr>
+          <td><strong>Coacción a la huelga (§315.3)</strong></td>
+          <td>Coaccionar a otros a iniciar o continuar una huelga, actuando en grupo o individualmente de acuerdo con otros</td>
+          <td>1 año 9 m.–3 años / multa 18–24 m.</td>
+        </tr>
+        <tr>
+          <td><strong>Coacciones agravadas (§315.2 in fine)</strong></td>
+          <td>Cualquiera de las anteriores realizada con violencia o intimidación</td>
+          <td>1 año 9 m.–3 años / multa 18–24 m.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span>⚠</span> Límite constitucional (STC 104/2011)</div>
+      <p>La sanción penal solo es constitucionalmente posible cuando la conducta «desnaturalice o desfigure el derecho y se sitúe objetivamente al margen de su contenido esencial». No cabe sancionar penalmente el mero ejercicio irregular del derecho fundamental de huelga si la conducta es inequívocamente huelguística.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN VI — ASPECTOS COMUNES -->
+  <section class="section-block" id="s6">
+    <div class="section-roman">VI · Aspectos Comunes</div>
+    <h2 class="section-title">Autoría, Consentimiento y Estado de Necesidad</h2>
+
+    <h3 class="sub-title">1. Extensión de la autoría — <span class="art">art. 318 CP</span></h3>
+    <div class="prose">
+      <p>Cuando los hechos delictivos se atribuyan a personas jurídicas, el <span class="art">art. 318 CP</span> establece tres reglas de extensión de la responsabilidad penal a las personas físicas que actúan en su nombre.</p>
+    </div>
+
+    <ul class="fancy-list">
+      <li>
+        <span class="fn">A</span>
+        <span class="ft"><strong>El administrador que haya realizado el hecho típico.</strong> La persona jurídica actúa originariamente a través de él; su conducta tiene el desvalor especial que inicialmente se atribuye a la autoría de la persona jurídica.</span>
+      </li>
+      <li>
+        <span class="fn">B</span>
+        <span class="ft"><strong>El encargado del servicio que haya cometido el hecho típico.</strong> Ha asumido libre y responsablemente las funciones mediante delegación del empresario. Si el empresario es persona física se aplica el <span class="art">art. 31 CP</span>.</span>
+      </li>
+      <li>
+        <span class="fn">C</span>
+        <span class="ft"><strong>Quien, conociendo el hecho delictivo y pudiendo remediarlo, no haya adoptado medidas para ello.</strong> Establece un deber penal de acción: el administrador o delegado tiene obligación de impedir que sus subordinados cometan delitos contra los derechos de los trabajadores.</span>
+      </li>
+    </ul>
+
+    <h3 class="sub-title">2. El consentimiento del trabajador</h3>
+
+    <div class="callout callout-regla">
+      <div class="callout-label"><span>→</span> Regla general</div>
+      <p>El consentimiento del trabajador en la lesión de sus derechos laborales <strong>no tiene efecto alguno atenuante ni exonerante</strong> en la responsabilidad del autor. El ordenamiento laboral niega valor a ese consentimiento con independencia de las condiciones concretas de conocimiento y voluntad (art. 3 ET).</p>
+    </div>
+
+    <div class="prose">
+      <p>Las razones de esta invalidez son dos. Primera: el trabajador no se halla en plenitud de separación de esferas de organización, pues actúa por cuenta y dependencia ajena. Segunda: no suelen concurrir los rasgos de conocimiento y voluntad propios de una decisión autónoma (información limitada del riesgo, mercado laboral con exceso de demanda).</p>
+      <p>En materia de seguridad, el deber del empresario alcanza a <strong>controlar la propia actividad del trabajador</strong> en cuanto peligrosa para sí mismo o terceros, y a prever sus <strong>imprudencias previsibles</strong>. El límite: la imprudencia <strong>temeraria</strong> del trabajador puede exonerar (art. 15.4 LPRL).</p>
+    </div>
+
+    <h3 class="sub-title">3. Estado de necesidad empresarial</h3>
+    <div class="callout callout-atencion">
+      <div class="callout-label"><span>⚠</span> No procede como eximente</div>
+      <p>El empresario <strong>no puede invocar</strong> el estado de necesidad («no hay liquidez», «si cumplo tengo que cerrar») para justificar la imposición de condiciones irregulares o la falta de medidas de seguridad. El regulador laboral ya realizó la ponderación al establecer las condiciones mínimas de producción; y existen cauces específicos (ERE, ERTE, etc.) para que las dificultades económicas incidan en las condiciones de trabajo.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN VII — ESTUDIO -->
+  <section class="section-block study-section" id="estudio">
+    <div class="study-label">Herramientas de Estudio</div>
+    <h2 class="study-title">Árbol de Decisión, Casos y Memorización</h2>
+
+    <!-- 1. Árbol de decisión -->
+    <div class="study-card">
+      <h3>🌳 Árbol de Decisión <span class="method-badge badge-gold">EXAMEN</span></h3>
+
+      <p style="font-size:0.8rem;color:var(--dim);margin-bottom:1rem">Para determinar qué delito(s) del Título XV CP son aplicables:</p>
+
+      <div class="flow">
+        <div class="flow-step" style="background:rgba(200,168,75,0.1);border-color:rgba(200,168,75,0.3)">¿Se imponen condiciones laborales o de SS irregulares?</div>
+        <span class="flow-arrow">NO →</span>
+        <div class="flow-step" style="border-color:rgba(192,80,80,0.4);color:var(--red2)">Sin delito del art. 311</div>
+      </div>
+      <div class="flow">
+        <div class="flow-step" style="background:rgba(200,168,75,0.1);border-color:rgba(200,168,75,0.3)">¿Sí? → ¿Medio: engaño o abuso de necesidad?</div>
+        <span class="flow-arrow">SÍ →</span>
+        <div class="flow-step" style="background:rgba(93,202,144,0.1);border-color:rgba(93,202,144,0.3);color:var(--green2)">ART. 311.1º CP (6m–6a)</div>
+      </div>
+      <div class="flow">
+        <div class="flow-step">¿Medio: violencia o intimidación?</div>
+        <span class="flow-arrow">SÍ →</span>
+        <div class="flow-step" style="background:rgba(93,202,144,0.1);border-color:rgba(93,202,144,0.3);color:var(--green2)">ART. 311.4º CP (6a+1d–9a)</div>
+      </div>
+      <div class="flow">
+        <div class="flow-step">¿Víctima: extranjero sin permiso de trabajo?</div>
+        <span class="flow-arrow">SÍ →</span>
+        <div class="flow-step" style="background:rgba(93,202,144,0.1);border-color:rgba(93,202,144,0.3);color:var(--green2)">ART. 312.2 CP (2–5a) — sin necesidad de medio especial</div>
+      </div>
+      <div class="flow">
+        <div class="flow-step" style="background:rgba(200,168,75,0.1);border-color:rgba(200,168,75,0.3)">¿Se pone en peligro grave la vida/integridad del trabajador por falta de medios de seguridad?</div>
+        <span class="flow-arrow">SÍ →</span>
+        <div class="flow-step" style="background:rgba(93,202,144,0.1);border-color:rgba(93,202,144,0.3);color:var(--green2)">ART. 316 (doloso) o ART. 317 (imprudencia grave)</div>
+      </div>
+      <div class="flow">
+        <div class="flow-step">¿Además se produce lesión/muerte del trabajador?</div>
+        <span class="flow-arrow">SOLO 1 TRABAJADOR →</span>
+        <div class="flow-step" style="background:rgba(93,202,144,0.1);border-color:rgba(93,202,144,0.3);color:var(--green2)">Concurso de normas: arts. 152/142 desplazan al 316/317</div>
+      </div>
+      <div class="flow">
+        <div class="flow-step">¿Hay más trabajadores en peligro no lesionados?</div>
+        <span class="flow-arrow">SÍ →</span>
+        <div class="flow-step" style="background:rgba(93,202,144,0.1);border-color:rgba(93,202,144,0.3);color:var(--green2)">Concurso ideal de delitos (lesión + peligro)</div>
+      </div>
+    </div>
+
+    <!-- 2. Casos tipo -->
+    <div class="study-card">
+      <h3>📋 Casos Tipo de Examen <span class="method-badge badge-red">PRÁCTICA</span></h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem">
+        <div style="background:var(--card);border:1px solid var(--border);border-top:2px solid var(--blue);border-radius:8px;padding:1.1rem">
+          <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.6rem;color:var(--white)">Caso 1 — Explotación con retención de pasaportes</div>
+          <p style="font-size:0.82rem;color:var(--silver);line-height:1.65">Empresario retiene los pasaportes a trabajadoras extranjeras sin permiso, no les paga el salario pactado, les impone jornada sin descanso y les obliga bajo amenaza a mantener relaciones sexuales con clientes.</p>
+          <p style="margin-top:0.7rem;font-size:0.78rem;color:var(--dim)">→ <strong>Arts. 311.4º y 312.2 CP</strong> en concurso real (distintos bienes jurídicos). El 311.4º absorbe el desvalor de la necesidad y la violencia. Las coacciones a la prostitución forman concurso real con los delitos laborales (Acuerdo Pleno TS 30-05-06).</p>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-top:2px solid var(--orange);border-radius:8px;padding:1.1rem">
+          <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.6rem;color:var(--white)">Caso 2 — Caída en obra de construcción</div>
+          <p style="font-size:0.82rem;color:var(--silver);line-height:1.65">Trabajador fallece al caer por un hueco de escalera sin protección. El aparejador había establecido la obligación de proteger huecos. Los demás trabajadores estaban expuestos al mismo peligro pero no resultaron lesionados.</p>
+          <p style="margin-top:0.7rem;font-size:0.78rem;color:var(--dim)">→ Concurso ideal entre <strong>art. 142 CP</strong> (homicidio imprudente) y <strong>art. 316 o 317 CP</strong> por la situación de peligro para los demás trabajadores. Sujetos activos: empresario, aparejador y encargado (vía art. 318 CP).</p>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-top:2px solid var(--green);border-radius:8px;padding:1.1rem">
+          <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.6rem;color:var(--white)">Caso 3 — Empresa que no da de alta a la plantilla completa</div>
+          <p style="font-size:0.82rem;color:var(--silver);line-height:1.65">Una empresa de 4 trabajadores tiene a todos ellos sin alta en la Seguridad Social. El empresario alega crisis económica y que de haber cotizado habría tenido que cerrar.</p>
+          <p style="margin-top:0.7rem;font-size:0.78rem;color:var(--dim)">→ <strong>Art. 311.2º CP</strong> (totalidad de plantilla ≤5). El estado de necesidad <strong>no es eximente</strong>: el regulador laboral ya ha ponderado los intereses en juego y existen cauces legales (ERTE) para situaciones de crisis.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Tabla resumen de penas -->
+    <div class="study-card">
+      <h3>📊 Tabla de Penas <span class="method-badge badge-blue">MEMORIZACIÓN</span></h3>
+      <table class="compare-table">
+        <thead>
+          <tr><th>Precepto</th><th>Modalidad / Conducta</th><th>Prisión</th><th>Multa</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Art. 311.1º</strong></td><td>Imposición condiciones por engaño o necesidad</td><td>6 meses – 6 años</td><td>6–12 meses</td></tr>
+          <tr><td><strong>Art. 311.2º</strong></td><td>Contratación plural sin SS/permiso (% plantilla)</td><td>6 meses – 6 años</td><td>6–12 meses</td></tr>
+          <tr><td><strong>Art. 311.3º</strong></td><td>Mantenimiento condiciones irregulares (nuevo empleador)</td><td>6 meses – 6 años</td><td>6–12 meses</td></tr>
+          <tr><td><strong>Art. 311.4º</strong></td><td>Violencia o intimidación (agravante)</td><td>6a 1d – 9 años</td><td>6–12 meses</td></tr>
+          <tr><td><strong>Art. 311 bis</strong></td><td>Contratación reiterada extranjeros sin permiso / menores</td><td>3 meses – 18 meses</td><td>12–30 meses</td></tr>
+          <tr><td><strong>Art. 312.1</strong></td><td>Tráfico ilegal de mano de obra</td><td>2–5 años</td><td>6–12 meses</td></tr>
+          <tr><td><strong>Art. 312.2</strong></td><td>Imposición cond. a extranjero sin permiso</td><td>2–5 años</td><td>6–12 meses</td></tr>
+          <tr><td><strong>Art. 313</strong></td><td>Oferta falsa de empleo / emigración</td><td>2–5 años</td><td>6–12 meses</td></tr>
+          <tr><td><strong>Art. 314</strong></td><td>Discriminación laboral grave tras requerimiento</td><td>6 meses – 2 años</td><td>12–24 meses</td></tr>
+          <tr><td><strong>Art. 315.1/2</strong></td><td>Limitar libertad sindical / derecho de huelga</td><td>6 meses – 2 años</td><td>6–12 meses</td></tr>
+          <tr><td><strong>Art. 315.2 (coacciones)</strong></td><td>Con violencia o intimidación</td><td>1a 9m – 3 años</td><td>18–24 meses</td></tr>
+          <tr><td><strong>Art. 315.3</strong></td><td>Coacción a la huelga (grupo o acuerdo)</td><td>1a 9m – 3 años</td><td>18–24 meses</td></tr>
+          <tr><td><strong>Art. 316</strong></td><td>Peligro grave por falta de medios de seguridad (doloso)</td><td>6 meses – 3 años</td><td>6–12 meses</td></tr>
+          <tr><td><strong>Art. 317</strong></td><td>Peligro grave por falta de medios (imprudencia grave)</td><td>3–6 meses</td><td>3–6 meses</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. Nemotecnia -->
+    <div class="study-card">
+      <h3>🔁 Reglas para Memorizar <span class="method-badge badge-gold">NEMOTECNIA</span></h3>
+      <ul class="fancy-list">
+        <li>
+          <span class="fn">1</span>
+          <span class="ft"><strong>311 = explotación clásica.</strong> El art. 311 es el gran precepto del título: cuatro apartados, de la imposición por engaño/necesidad (§1) al mantenimiento (§3) y la violencia (§4). Marco inusualmente amplio: 6m–6 años en los tipos básicos.</span>
+        </li>
+        <li>
+          <span class="fn">2</span>
+          <span class="ft"><strong>312.2 = el «casi 311» sin exigir medio especial.</strong> Mismo injusto que el 311.1º pero el sujeto pasivo es extranjero sin permiso. El abuso de necesidad es tan inherente que el legislador lo omite. Pena diferente: 2–5 años.</span>
+        </li>
+        <li>
+          <span class="fn">3</span>
+          <span class="ft"><strong>316–317 = peligro antes de la lesión.</strong> La diferencia esencial con el homicidio/lesiones imprudentes es que se pena la <em>puesta en peligro grave</em> sin necesidad de lesión. 316 = dolo, 317 = imprudencia grave. Solo 316 permite autoría por omisión sin resultado.</span>
+        </li>
+        <li>
+          <span class="fn">4</span>
+          <span class="ft"><strong>318 = tres vías para alcanzar a la persona física.</strong> Administrador que actúa + Encargado de servicio delegado + Quien conoce y pudiendo remediar no lo hace. Sin este artículo muchos delitos quedarían impunes cuando el empleador es persona jurídica.</span>
+        </li>
+        <li>
+          <span class="fn">5</span>
+          <span class="ft"><strong>Consentimiento del trabajador = nunca exonera.</strong> Ni en condiciones salariales, ni en contratación irregular, ni en seguridad laboral. Fundamento: art. 3 ET + mercado laboral desequilibrado + imprudencias previsibles a cargo del empresario.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 5. Plan de estudio -->
+    <div class="study-card">
+      <h3>⏱️ Plan de Estudio <span class="method-badge badge-blue">3 SESIONES</span></h3>
+      <table class="compare-table">
+        <thead><tr><th>Sesión</th><th>Duración</th><th>Actividad</th><th>Secciones</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1ª — Estructura y penas</strong></td><td>60 min</td><td>Lectura completa y memorización de la tabla de penas. Situar cada artículo en su grupo.</td><td>§I + Tabla de penas</td></tr>
+          <tr><td><strong>2ª — Tipos clave en profundidad</strong></td><td>60 min</td><td>Estudio detallado de arts. 311, 312.2, 316 y 317. Jurisprudencia (STS 1611/2000, STS 494/2016, STS 1329/2001). Leer arts. en el CP.</td><td>§II + §III</td></tr>
+          <tr><td><strong>3ª — Casos y árbol</strong></td><td>45 min</td><td>Resolver los tres casos tipo. Reproducir el árbol de decisión sin mirar. Repasar art. 318 y consentimiento.</td><td>§VI + Estudio</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<footer>
+  Tema 6 · Delitos contra los Derechos de los Trabajadores · Arts. 311–318 CP · Derecho Penal Económico y de la Empresa
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, { threshold: 0.08 });
+document.querySelectorAll('.section-block').forEach(el => observer.observe(el));
+
+const scrollCue = document.querySelector('.scroll-cue');
+if(scrollCue) window.addEventListener('scroll', () => {
+  scrollCue.classList.toggle('hidden', window.scrollY > 80);
+}, { passive: true });
+</script>
+</body>
+</html>
