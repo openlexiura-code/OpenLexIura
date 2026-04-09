@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>El IBI y la Comunidad: quién paga qué en el alquiler | OpenLexIura</title>
+  <meta name="description" content="¿Quién paga el IBI, la comunidad de propietarios o las derramas en un alquiler? Todo lo que dice el Artículo 20 de la LAU, el truco de la cantidad exacta y la tasa de basuras explicados.">
+  <link rel="icon" type="image/jpeg" href="../Icono.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+    :root {
+      --bg: #f4faf5;
+      --bg-2: #ecf7ee;
+      --text: #1f2937;
+      --muted: #64748b;
+      --brand: #16a34a;
+      --brand-dark: #15803d;
+      --brand-light: #4ade80;
+      --line: rgba(22,163,74,.14);
+      --line-2: rgba(15,42,23,.08);
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --radius: 24px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(22,163,74,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,42,23,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(22,163,74,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+    nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(22,163,74,.10)}
+    .nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+    .nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(22,163,74,.22),0 10px 30px rgba(0,0,0,.35)}
+    .nav-links{display:flex;align-items:center;gap:1.4rem}
+    .nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+    .nav-links a:hover{color:var(--brand)}
+    .nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(22,163,74,.22);border-radius:999px;background:linear-gradient(180deg,rgba(22,163,74,.10),rgba(22,163,74,.05))}
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(22,163,74,.14),0 10px 24px rgba(0,0,0,.2)}
+
+    /* HERO */
+    .article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative}
+    .article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(22,163,74,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+    .article-hero{position:relative;z-index:1}
+    .cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(22,163,74,.20);background:rgba(22,163,74,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+    .cat-pill::before{content:'●';width:7px;height:7px;border-radius:50%;color:var(--brand)}
+    .article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+    .article-title em{font-style:italic;color:var(--brand)}
+    .article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+    .article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+    .article-meta span{display:flex;align-items:center;gap:.35rem}
+    .meta-sep{color:rgba(15,23,42,.18)}
+    .meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+    .art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+
+    /* BODY */
+    .article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+    .article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+    .article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+    .article-body h2 span{color:var(--brand);font-style:italic}
+    .article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem}
+    .article-body strong{font-weight:700;color:#111827}
+    .article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(22,163,74,.25);transition:.2s ease}
+    .article-body a:hover{border-bottom-color:var(--brand)}
+    .article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+    .article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+    .article-body ul li::before{content:'▸';color:var(--brand);position:absolute;left:-1rem}
+
+    /* QUICK ANSWER */
+    .quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(22,163,74,.30)}
+    .quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+    .quick-answer .qa-label::before{content:'⚡'}
+    .quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+    .quick-answer strong{color:#fff;font-weight:700}
+
+    /* INFO BOX */
+    .info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fff4);border:1px solid rgba(22,163,74,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+    .info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .info-box .info-title::before{content:'⚖️';width:28px;height:28px;border-radius:50%;background:rgba(22,163,74,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+    .info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+
+    /* JURISPRUDENCIA BOX */
+    .juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .juris-box .juris-title::before{content:'📋';font-size:.95rem}
+    .juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+
+    /* ALERTA / WARNING BOX */
+    .warn-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:1px solid rgba(234,88,12,.20);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .warn-box .warn-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#9a3412;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .warn-box .warn-title::before{content:'⚠️';font-size:.95rem}
+    .warn-box p{margin-bottom:0;font-size:1rem;color:#7c2d12;line-height:1.75}
+
+    /* BLOCKQUOTE */
+    .article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(22,163,74,.06),rgba(22,163,74,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic}
+    .article-body blockquote cite{display:block;margin-top:.6rem;font-family:Inter,sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+
+    /* TABLA RESUMEN */
+    .summary-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+    .summary-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem}
+    .summary-table th:first-child{background:linear-gradient(135deg,#15803d,#4ade80);color:#fff}
+    .summary-table th:last-child{background:linear-gradient(135deg,#1e3a5f,#3b82f6);color:#fff}
+    .summary-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6}
+    .summary-table tr:nth-child(even) td:first-child{background:rgba(22,163,74,.04)}
+    .summary-table tr:nth-child(even) td:last-child{background:rgba(37,99,235,.04)}
+    .summary-table tr:last-child td{border-bottom:none}
+
+    /* CÁLCULO BOX */
+    .calc-box{padding:1.8rem;border-radius:var(--radius);background:#fff;border:2px solid rgba(22,163,74,.30);box-shadow:0 12px 40px rgba(22,163,74,.12);margin:2rem 0}
+    .calc-box .calc-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--brand-dark);margin-bottom:1rem}
+    .calc-box .calc-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--line-2);font-size:1rem}
+    .calc-box .calc-row:last-child{border-bottom:none;font-weight:700;font-size:1.1rem;color:#0f172a;margin-top:.4rem}
+    .calc-box .calc-label{color:#374151}
+    .calc-box .calc-value{color:var(--brand-dark);font-weight:600}
+    .calc-box .calc-total-label{color:#0f172a}
+    .calc-box .calc-total-value{color:var(--brand);font-size:1.3rem}
+
+    /* STEPS */
+    .article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+    .article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fff4);border:1px solid rgba(22,163,74,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    .step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+    .step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+    .step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+
+    /* TAGS */
+    .article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+    .tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+    .tag:hover{border-color:rgba(22,163,74,.34);color:var(--brand)}
+
+    /* CTA */
+    .article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+    .cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(240,255,244,.94));border:1px solid rgba(22,163,74,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+    .cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+    .cta-box h3 em{font-style:italic;color:var(--brand)}
+    .cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(22,163,74,.18);font-weight:600;transition:.25s ease;font-family:Inter,sans-serif}
+    .btn-primary{background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff !important;box-shadow:0 16px 40px rgba(22,163,74,.35)}
+    .btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(22,163,74,.28)}
+
+    footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+
+    /* ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    /* CURSOR */
+    .cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(22,163,74,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(74,222,128,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+    .cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#16a34a;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(22,163,74,.75)}
+
+    @media(max-width:640px){
+      nav{padding:1rem 1.1rem}
+      .nav-links{display:none}
+      .article-hero{padding:7.5rem 1.2rem 3rem}
+      .article-body{padding:2.5rem 1.2rem 4rem}
+      .calc-box .calc-row{flex-direction:column;align-items:flex-start;gap:.2rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <nav id="nav">
+    <a class="nav-logo" href="../index.html">
+      <img src="Icono.jpg" alt="OpenLexIura">
+      <span>OpenLexIura</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Inicio</a>
+      <a href="../consultas.html">Consultas</a>
+      <a class="nav-cta" href="../portal.html">Acceder al portal</a>
+    </div>
+  </nav>
+
+  <header class="article-hero">
+    <div class="cat-pill">Alquiler · Gastos y tributos</div>
+    <h1 class="article-title">El IBI y la Comunidad:<br><em>quién paga qué</em></h1>
+    <p class="article-lead">Desmontar el mito de "el inquilino asume todos los gastos" con el Artículo 20 de la LAU, el truco de la cantidad exacta y la excepción de la tasa de basuras</p>
+    <div class="article-meta">
+      <span><strong>OpenLexIura</strong></span>
+      <span class="meta-sep">·</span>
+      <span>2026</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">8 min de lectura</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">Alquiler</span>
+    </div>
+    <div class="art-divider"></div>
+  </header>
+
+  <main class="article-body">
+
+    <!-- ARTÍCULO INTRODUCTORIO -->
+    <article class="art-card" style="cursor: auto; animation: none; transform: none; box-shadow: none;">
+      <div class="kicker" style="color: var(--brand); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">Gastos del alquiler</div>
+      <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: #111827; margin-bottom: 1rem; line-height: 1.1;">El IBI y la Comunidad: ¿quién está obligado a pagarlos de verdad?</h1>
+
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem;">
+        "El arrendatario asume todos los gastos del inmueble." Esta cláusula aparece en miles de contratos de alquiler. Pero ¿es siempre válida? Analizamos qué dice exactamente el Artículo 20 de la LAU, cuándo un pacto de este tipo es nulo y cuál es la excepción que los tribunales aplican a la tasa de basuras.
+      </p>
+
+      <div style="background: rgba(16,185,129,.1); border-left: 4px solid var(--brand); padding: 1.5rem; border-radius: 0 10px 10px 0; margin-bottom: 2.5rem;">
+        <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">⏱️ RESPUESTA RÁPIDA:</strong>
+        <p style="color: #374151; font-size: 0.95rem; line-height: 1.5;">
+          En una <strong>vivienda habitual</strong>, si el contrato no dice nada, los gastos de comunidad e IBI los paga el propietario. Para que el inquilino los asuma, el pacto debe estar por escrito <strong>y</strong> debe indicar la cantidad exacta anual. Si solo dice "pagará el IBI" sin cifra, el pacto no es válido. En los <strong>alquileres de temporada</strong>, rige la libertad de pactos, así que el casero puede repercutir lo que acuerden sin esos requisitos formales.
+        </p>
+      </div>
+
+      <h2 style="font-size: 1.4rem; color: #111827; margin-bottom: 1rem; margin-top: 2rem;">1. La regla general: vivienda habitual vs. alquiler de temporada</h2>
+      <p style="color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem;">El punto de partida es siempre el mismo: ¿qué tipo de contrato has firmado? La protección del Artículo 20 de la LAU solo se activa plenamente en los arrendamientos de vivienda habitual (Título II). En los contratos de temporada o uso distinto (Título III), las partes pueden pactar libremente quién asume cada gasto.</p>
+
+      <h3 style="font-size: 1.1rem; color: var(--brand); margin-bottom: 0.8rem;">A) Vivienda Habitual — La regla de oro del Art. 20 LAU</h3>
+      <ul style="color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;"><strong>Regla general:</strong> Los gastos de comunidad, el IBI y demás tributos los paga el propietario, salvo pacto expreso en contrario.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Requisito de validez:</strong> Para que el inquilino pague esos gastos, el pacto debe ser por escrito <em>y</em> debe figurar el importe anual exacto en el momento de firmar.</li>
+        <li><strong>Protección adicional:</strong> Durante los primeros 5 años (o 7 si el arrendador es empresa), esos gastos solo pueden incrementarse en el doble del porcentaje máximo de subida de renta.</li>
+      </ul>
+
+      <h3 style="font-size: 1.1rem; color: var(--brand); margin-bottom: 0.8rem;">B) Alquiler de Temporada — Libertad de pactos</h3>
+      <p style="color: var(--muted); line-height: 1.6; margin-bottom: 1rem;">Se rige por el Título III de la LAU y el Código Civil. Al no existir las protecciones del Título II, el casero puede acordar con el inquilino que este asuma el IBI o la comunidad sin necesidad de indicar la cantidad exacta, siempre que quede por escrito.</p>
+      <ul style="color: var(--muted); line-height: 1.6; margin-bottom: 2.5rem; padding-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;"><strong>Mayor flexibilidad:</strong> Las partes pueden repartir los gastos como estimen oportuno.</li>
+        <li><strong>Riesgo para el inquilino:</strong> Sin los límites del Título II, el propietario podría repercutir variaciones al alza sin restricciones.</li>
+      </ul>
+
+      <h2 style="font-size: 1.4rem; color: #111827; margin-bottom: 1rem;">2. El "truco" de la cantidad exacta (Art. 20.1 LAU)</h2>
+      <p style="color: var(--muted); line-height: 1.6; margin-bottom: 1rem;">Este es el requisito que más se vulnera y que más protege al inquilino. El Artículo 20.1 de la LAU es muy claro: <em>"Para su validez, este pacto deberá constar por escrito y determinar el importe anual de dichos gastos a la fecha del contrato."</em></p>
+      <p style="color: #111827; font-weight: 600; line-height: 1.6; background: #f3f4f6; padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
+        ⚠️ CLAVE: Si tu contrato dice <em>"el arrendatario pagará el IBI"</em> pero no indica la cifra concreta (ej. "456 €/año"), ese pacto puede ser nulo. El inquilino no estaría obligado a abonarlo.
+      </p>
+    </article>
+    <!-- FIN ARTÍCULO INTRODUCTORIO -->
+
+    <!-- RESPUESTA RÁPIDA -->
+    <div class="quick-answer reveal">
+      <div class="qa-label">Respuesta rápida</div>
+      <p>Si el contrato no dice nada o el pacto no incluye la cantidad exacta, <strong>el IBI y la comunidad los paga el propietario</strong>. La tasa de basuras es la excepción: los tribunales la asignan habitualmente al inquilino por ser quien genera el residuo.</p>
+    </div>
+
+    <p class="reveal">Firmar un contrato con la cláusula "el inquilino asume todos los gastos" sin entender sus consecuencias puede suponer pagar cientos de euros al año de más. El Artículo 20 de la LAU establece un sistema con condiciones muy concretas que, si no se cumplen, protegen automáticamente al arrendatario.</p>
+
+    <!-- SECCIÓN 1 -->
+    <h2 class="reveal">La regla de oro: <span>si el contrato calla, paga el casero</span></h2>
+
+    <p class="reveal">El principio general del <strong>Artículo 20.1 de la LAU</strong> es que los gastos generales para el sostenimiento del inmueble —comunidad de propietarios, IBI y demás tributos no individualizables— corresponden al arrendador. Solo pueden trasladarse al inquilino mediante un pacto expreso que cumpla dos condiciones acumulativas: que conste <em>por escrito</em> y que <em>determine el importe anual</em> de esos gastos a la fecha del contrato.</p>
+
+    <div class="info-box reveal">
+      <p class="info-title">Artículo 20.1 LAU — Texto literal</p>
+      <p>"Las partes podrán pactar que los gastos generales para el adecuado sostenimiento del inmueble, sus servicios, tributos, cargas y responsabilidades que no sean susceptibles de individualizacin y que correspondan a la vivienda arrendada o a sus accesorios, sean a cargo del arrendatario. <strong>Para su validez, este pacto deberá constar por escrito y determinar el importe anual de dichos gastos a la fecha del contrato.</strong> Los gastos de gestión inmobiliaria y los de formalización del contrato serán a cargo del arrendador."</p>
+    </div>
+
+    <p class="reveal">Los suministros individualizados con contador (luz, agua, gas) son distintos: el <strong>Artículo 20.3 de la LAU</strong> establece que estos van siempre a cargo del inquilino, con independencia de lo que diga o no diga el contrato.</p>
+
+    <!-- SECCIÓN 2 -->
+    <h2 class="reveal">El IBI y los gastos de Comunidad: <span>el truco de la cantidad exacta</span></h2>
+
+    <p class="reveal">Este es el punto donde más abusos se cometen y, paradójicamente, donde el inquilino tiene más protección. La exigencia de que figure la cantidad exacta en el contrato no es un mero formalismo: tiene una consecuencia práctica demoledora para el arrendador.</p>
+
+    <div class="warn-box reveal">
+      <p class="warn-title">¿Qué pasa si el contrato no pone la cantidad exacta?</p>
+      <p>Si tu contrato dice "el arrendatario asume el pago del IBI y de la comunidad" pero no especifica cuánto importa cada concepto anualmente, ese pacto carece de los requisitos de validez exigidos por el Art. 20.1 LAU. La doctrina mayoritaria de los tribunales considera ese pacto nulo o ineficaz, y el arrendatario no estaría obligado a pagar esos gastos. El propietario tampoco puede reclamártelos después, puesto que no constarían como obligación válida en el contrato.</p>
+    </div>
+
+    <table class="summary-table reveal">
+      <thead>
+        <tr>
+          <th>Situación del contrato</th>
+          <th>¿Quién paga?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>No se menciona nada sobre el IBI</td>
+          <td>El propietario (regla general del Art. 20.1)</td>
+        </tr>
+        <tr>
+          <td>Dice "el inquilino pagará el IBI" sin cifra</td>
+          <td>El propietario (pacto nulo por falta de importe)</td>
+        </tr>
+        <tr>
+          <td>Dice "el inquilino pagará el IBI: 480 €/año"</td>
+          <td>El inquilino (pacto válido y completo)</td>
+        </tr>
+        <tr>
+          <td>No menciona la comunidad de propietarios</td>
+          <td>El propietario (regla general del Art. 20.1)</td>
+        </tr>
+        <tr>
+          <td>Dice "comunidad: 75 €/mes" en el contrato</td>
+          <td>El inquilino (pacto válido y completo)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="juris-box reveal">
+      <p class="juris-title">Límite al incremento durante los primeros 5 años</p>
+      <p>El <strong>Artículo 20.2 de la LAU</strong> añade otra protección: aunque el pacto sea válido, durante los primeros 5 años (o 7 si el arrendador es persona jurídica), la suma que el inquilino abona por comunidad e IBI solo podrá incrementarse en un porcentaje máximo equivalente al <strong>doble del porcentaje máximo en que puede subir la renta</strong>. Esto impide que el propietario traslade al inquilino subidas desproporcionadas del recibo de la comunidad.</p>
+    </div>
+
+    <!-- SECCIÓN 3 -->
+    <h2 class="reveal">La Tasa de Basuras: <span>la excepción a la regla</span></h2>
+
+    <p class="reveal">La tasa de recogida de residuos urbanos ocupa un lugar especial en la jurisprudencia española. A diferencia del IBI —que grava la titularidad del bien inmueble y, por tanto, corresponde al propietario— la tasa de basuras grava el <em>servicio de recogida de residuos</em>, que se presta en beneficio de quien ocupa y usa el inmueble.</p>
+
+    <div class="juris-box reveal">
+      <p class="juris-title">Doctrina jurisprudencial mayoritaria</p>
+      <p>Numerosas Audiencias Provinciales (entre ellas las de Madrid, Barcelona y Valencia) han consolidado la doctrina de que la tasa de basuras, al ser una tasa por prestación de servicio y no un tributo sobre la propiedad, puede repercutirse al inquilino aunque el contrato no la mencione expresamente. El argumento es que es el <strong>inquilino quien genera los residuos</strong> y quien se beneficia del servicio de recogida. No obstante, si el contrato pactara expresamente lo contrario —que la paga el propietario—, ese pacto es perfectamente válido y prevalece.</p>
+    </div>
+
+    <p class="reveal">En la práctica, si recibes un cargo por tasa de basuras sin que el contrato lo mencione, conviene consultar la jurisprudencia de tu propia Audiencia Provincial, ya que puede haber matices según la comunidad autónoma y la naturaleza concreta del tributo (tasa municipal vs. tributo autonómico).</p>
+
+    <!-- SECCIÓN 4 -->
+    <h2 class="reveal">Derramas de la Comunidad: <span>por qué el inquilino nunca debe pagarlas</span></h2>
+
+    <p class="reveal">Las derramas extraordinarias son cuotas adicionales que la comunidad de propietarios aprueba para hacer frente a gastos imprevistos o de gran envergadura: reparar el ascensor, rehabilitar la fachada o impermeabilizar la cubierta. El inquilino nunca debe pagar estas derramas.</p>
+
+    <div class="info-box reveal">
+      <p class="info-title">¿Por qué? La razón legal</p>
+      <p>La derrama no es un gasto periódico del inmueble, sino una obligación extraordinaria que recae sobre el <strong>propietario del piso</strong> en su condición de comunero, no sobre quien lo habita. El Artículo 20.1 de la LAU permite trasladar al inquilino los "gastos generales para el adecuado sostenimiento del inmueble", pero una derrama por obras de rehabilitación aprobada en junta de propietarios excede ese concepto. Además, si el contrato pactara que el inquilino paga "todos los gastos de la comunidad incluidas derramas", esa cláusula podría considerarse abusiva por desequilibrio entre las partes.</p>
+    </div>
+
+    <ol class="steps reveal">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Recibe un cargo por derrama y no lo pagues sin más</strong>
+          <p>Si el propietario te remite el recibo de una derrama extraordinaria, solicítale el acta de la junta donde se aprobó y comprueba que no es un gasto ordinario de mantenimiento antes de negarte.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Comprueba qué dice exactamente el contrato</strong>
+          <p>Si el contrato menciona las derramas expresamente y te obliga a pagarlas, busca asesoramiento jurídico: esa cláusula puede ser impugnable si supone un desequilibrio notable entre las obligaciones de las partes.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Las obras de mejora del edificio no son tu problema</strong>
+          <p>Si la junta aprueba la instalación de un ascensor nuevo o la renovación de la caldera central, ese coste extraordinario es siempre del propietario, incluso si el contrato intentara trasladártelo de forma genérica.</p>
+        </div>
+      </li>
+    </ol>
+
+    <!-- SECCIÓN 5 -->
+    <h2 class="reveal">El alta de suministros: <span>¿quién paga si el piso estaba de baja?</span></h2>
+
+    <p class="reveal">Si el piso al que te mudas tiene la luz o el agua dadas de baja, surge la duda de quién debe pagar los derechos de alta o de enganche. El <strong>Artículo 20.3 de la LAU</strong> establece que los gastos de servicios individualizados mediante contadores son siempre del arrendatario; sin embargo, el coste del alta inicial es una cuestión que los tribunales resuelven atendiendo a quién causó la baja y cuál fue la razón.</p>
+
+    <div class="warn-box reveal">
+      <p class="warn-title">La regla práctica</p>
+      <p>Si el piso lleva años sin inquilinos y los suministros están dados de baja por decisión del propietario, la doctrina más extendida atribuye al <strong>arrendador</strong> la obligación de entregar la vivienda en condiciones de habitabilidad (Art. 21.1 LAU), lo que incluye tener los suministros básicos operativos o al menos listos para ser dados de alta sin coste adicional para el inquilino. Si el piso tiene los suministros en alta pero el anterior inquilino los dejó dados de baja, la responsabilidad puede ser del propietario si no lo comunicó al entregar las llaves. En todo caso, pactarlo expresamente en el contrato antes de firmar evita cualquier disputa posterior.</p>
+    </div>
+
+    <blockquote class="reveal">
+      "Para su validez, este pacto deberá constar por escrito y determinar el importe anual de dichos gastos a la fecha del contrato."
+      <cite>Artículo 20.1, Ley de Arrendamientos Urbanos (LAU), redacción vigente</cite>
+    </blockquote>
+
+    <div class="article-tags reveal">
+      <a class="tag" href="#">Alquiler</a>
+      <a class="tag" href="#">IBI</a>
+      <a class="tag" href="#">Comunidad de Propietarios</a>
+      <a class="tag" href="#">LAU</a>
+      <a class="tag" href="#">Gastos del alquiler</a>
+      <a class="tag" href="#">Tasa de basuras</a>
+      <a class="tag" href="#">Derechos del inquilino</a>
+    </div>
+  </main>
+
+  <section class="article-cta">
+    <div class="cta-box reveal">
+      <h3>¿Tu contrato te carga gastos que <em>no te corresponden</em>?</h3>
+      <p>Cuéntanos qué pone tu contrato y te decimos si ese pacto es válido o nulo según la LAU.</p>
+      <a class="btn btn-primary" href="../consultas.html">Hacer mi consulta ahora →</a>
+    </div>
+  </section>
+
+  <footer>2026 OpenLexIura · El derecho para ciudadanos</footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }), { threshold: .10 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    const cursorRing = document.createElement('div'); cursorRing.className = 'cursor-ring';
+    const cursorDot = document.createElement('div'); cursorDot.className = 'cursor-dot';
+    document.body.appendChild(cursorRing); document.body.appendChild(cursorDot);
+    document.body.style.cursor = 'none'; document.documentElement.style.cursor = 'none';
+    let mx=0,my=0,rx=0,ry=0;
+    window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursorRing.style.opacity=1; cursorDot.style.opacity=1; });
+    window.addEventListener('mouseleave', () => { cursorRing.style.opacity=0; cursorDot.style.opacity=0; });
+    window.addEventListener('mouseenter', () => { cursorRing.style.opacity=1; cursorDot.style.opacity=1; });
+    function follow() {
+      rx += (mx-rx)*.55; ry += (my-ry)*.55;
+      cursorRing.style.left=rx+'px'; cursorRing.style.top=ry+'px';
+      cursorDot.style.left=mx+'px'; cursorDot.style.top=my+'px';
+      requestAnimationFrame(follow);
+    }
+    document.querySelectorAll('a,button,input').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursorRing.style.transform='translate(-50%,-50%) scale(1.28)'; cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px'; cursorRing.style.background='rgba(74,222,128,.09)'; });
+      el.addEventListener('mouseleave', () => { cursorRing.style.transform='translate(-50%,-50%) scale(1)'; cursorRing.style.borderRadius='50%'; cursorRing.style.background='transparent'; });
+    });
+    follow();
+  </script>
+</body>
+</html>
