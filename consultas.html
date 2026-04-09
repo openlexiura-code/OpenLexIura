@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenLexIura · Hacer una Consulta</title>
+<link rel="icon" type="image/png" href="Icono.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5ef; --bg-2:#eef1f6;
+  --panel:rgba(255,255,255,.78); --panel-strong:#ffffff;
+  --text:#1f2937; --muted:#64748b;
+  --brand:#2563eb; --brand-2:#6bb7ff;
+  --line:rgba(37,99,235,.14); --line-2:rgba(15,23,42,.08);
+  --shadow:0 24px 80px rgba(0,0,0,.12); --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,.09), transparent 28%),
+    radial-gradient(circle at 80% 15%, rgba(15,23,42,.05), transparent 24%),
+    radial-gradient(circle at 50% 100%, rgba(37,99,235,.06), transparent 30%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  color:#1f2937; min-height:100vh; overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+
+/* ── CURSOR ── */
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(43,111,232,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(135,206,250,.12), inset 0 0 6px rgba(255,255,255,.22);transition:width .08s linear,height .08s linear,border-color .08s linear,opacity .08s linear,transform .08s linear}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#2b6fe8;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(43,111,232,.75)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(37,99,235,.10);box-shadow:0 2px 24px rgba(0,0,0,.07)}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(37,99,235,.22), 0 10px 30px rgba(0,0,0,.2)}
+.nav-links{display:flex;align-items:center;gap:1.4rem}
+.nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+.nav-links a:hover{color:var(--brand)}
+.nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg, rgba(37,99,235,.10), rgba(37,99,235,.05))}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(37,99,235,.14), 0 10px 24px rgba(0,0,0,.12)}
+.nav-active{color:var(--brand)!important;font-weight:600}
+
+/* ── PAGE WRAPPER ── */
+.page-wrap{max-width:680px;margin:0 auto;padding:9rem 1.5rem 6rem}
+
+/* ── HEADER ── */
+.page-header{text-align:center;margin-bottom:3rem}
+.page-header .kicker{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:.75rem}
+.page-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:500;color:#111827;line-height:1.1;margin-bottom:.75rem}
+.page-header h1 em{color:var(--brand);font-style:italic}
+.page-header p{color:var(--muted);font-size:.97rem;max-width:460px;margin:0 auto}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap{margin-bottom:2.5rem}
+.progress-steps{display:flex;justify-content:space-between;align-items:center;position:relative;margin-bottom:.6rem}
+.progress-steps::before{content:'';position:absolute;top:50%;left:0;right:0;height:2px;background:var(--line);transform:translateY(-50%);z-index:0}
+.progress-fill{position:absolute;top:50%;left:0;height:2px;background:var(--brand);transform:translateY(-50%);z-index:1;transition:width .4s ease}
+.step-dot{width:32px;height:32px;border-radius:50%;border:2px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--muted);z-index:2;position:relative;transition:all .3s ease;flex-shrink:0}
+.step-dot.done{background:var(--brand);border-color:var(--brand);color:#fff}
+.step-dot.active{border-color:var(--brand);color:var(--brand);box-shadow:0 0 0 4px rgba(37,99,235,.12)}
+.progress-labels{display:flex;justify-content:space-between}
+.progress-labels span{font-size:.68rem;color:var(--muted);text-align:center;width:32px;line-height:1.3;transition:color .3s}
+.progress-labels span.active-label{color:var(--brand);font-weight:600}
+
+/* ── CARD ── */
+.form-card{background:rgba(255,255,255,.82);border:1px solid rgba(37,99,235,.10);border-radius:var(--radius);padding:2.2rem 2.4rem;backdrop-filter:blur(12px);box-shadow:0 4px 32px rgba(37,99,235,.06)}
+
+/* ── STEP ── */
+.step{display:none;animation:stepIn .3s ease}
+.step.active{display:block}
+@keyframes stepIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.step-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:.5rem}
+.step h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:500;color:#111827;margin-bottom:.4rem;line-height:1.2}
+.step .hint{font-size:.85rem;color:var(--muted);margin-bottom:1.6rem;line-height:1.5}
+
+/* ── INPUTS ── */
+.field{margin-bottom:1.2rem}
+.field label{display:block;font-size:.82rem;font-weight:600;color:#374151;margin-bottom:.45rem}
+.field select,
+.field input[type="text"],
+.field input[type="email"],
+.field textarea{
+  width:100%;background:#fff;border:1px solid rgba(37,99,235,.18);
+  border-radius:12px;padding:.85rem 1rem;color:#1f2937;font-size:.95rem;
+  font-family:'Inter',sans-serif;outline:none;
+  box-shadow:0 2px 8px rgba(37,99,235,.04);
+  transition:border-color .2s, box-shadow .2s;
+  appearance:none;-webkit-appearance:none;
+}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer}
+.field select:focus,
+.field input:focus,
+.field textarea:focus{border-color:rgba(37,99,235,.5);box-shadow:0 0 0 3px rgba(37,99,235,.10)}
+.field textarea{resize:none;height:90px;line-height:1.5}
+.char-count{font-size:.75rem;color:var(--muted);text-align:right;margin-top:.3rem;transition:color .2s}
+.char-count.warn{color:#ef4444}
+
+/* ── IMPLICADOS PILLS ── */
+.pills-grid{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.2rem}
+.pill-opt{padding:.55rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.18);background:#fff;color:#374151;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .18s;user-select:none}
+.pill-opt:hover{border-color:rgba(37,99,235,.4);color:var(--brand)}
+.pill-opt.selected{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.25)}
+
+/* ── DETALLES OPCIONALES ── */
+.optional-badge{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;background:rgba(37,99,235,.08);color:var(--brand);border-radius:999px;padding:.2rem .7rem;margin-left:.5rem;vertical-align:middle}
+.detail-questions{display:flex;flex-direction:column;gap:1rem}
+.detail-row{display:flex;flex-direction:column;gap:.4rem}
+.detail-row label{font-size:.82rem;font-weight:600;color:#374151}
+.radio-group{display:flex;gap:.8rem;flex-wrap:wrap}
+.radio-opt{display:flex;align-items:center;gap:.4rem;font-size:.88rem;color:#374151;cursor:pointer}
+.radio-opt input{accent-color:var(--brand);width:16px;height:16px}
+
+/* ── EMAIL STEP ── */
+.email-note{background:rgba(37,99,235,.05);border:1px solid rgba(37,99,235,.12);border-radius:12px;padding:1rem 1.2rem;font-size:.83rem;color:var(--muted);line-height:1.5;margin-bottom:1.4rem}
+.email-note strong{color:#1f2937}
+
+/* ── RESUMEN ── */
+.resumen-box{background:rgba(37,99,235,.04);border:1px solid rgba(37,99,235,.12);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1.6rem}
+.resumen-row{display:flex;gap:.75rem;padding:.5rem 0;border-bottom:1px solid rgba(37,99,235,.08);font-size:.88rem}
+.resumen-row:last-child{border-bottom:none}
+.resumen-key{color:var(--muted);font-weight:500;min-width:110px;flex-shrink:0}
+.resumen-val{color:#1f2937;font-weight:600}
+
+/* ── BOTONES ── */
+.btn-row{display:flex;gap:.75rem;margin-top:1.8rem;justify-content:space-between;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.6rem;border-radius:999px;font-size:.9rem;font-weight:600;transition:all .2s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-back{background:transparent;border:1px solid rgba(37,99,235,.2);color:var(--muted)}
+.btn-back:hover{border-color:rgba(37,99,235,.4);color:var(--brand)}
+.btn-next{background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;box-shadow:0 4px 18px rgba(37,99,235,.28)}
+.btn-next:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(37,99,235,.35)}
+.btn-next:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn-submit{background:linear-gradient(135deg,#1d4ed8,#2563eb);color:#fff;box-shadow:0 4px 18px rgba(37,99,235,.35);width:100%;justify-content:center;padding:1rem}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 32px rgba(37,99,235,.42)}
+
+/* ── SUCCESS ── */
+.success-screen{display:none;text-align:center;padding:3rem 1rem;animation:stepIn .4s ease}
+.success-screen.active{display:block}
+.success-icon{width:72px;height:72px;background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(37,99,235,.05));border:2px solid rgba(37,99,235,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.5rem}
+.success-screen h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:500;color:#111827;margin-bottom:.75rem}
+.success-screen p{color:var(--muted);font-size:.95rem;line-height:1.6;max-width:400px;margin:0 auto 2rem}
+.success-screen a{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:999px;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;font-weight:600;font-size:.9rem;box-shadow:0 4px 18px rgba(37,99,235,.28);transition:all .2s}
+.success-screen a:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(37,99,235,.38)}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--line-2);text-align:center;padding:1.8rem;font-size:.8rem;color:var(--muted)}
+footer a{color:var(--brand);transition:opacity .2s}
+footer a:hover{opacity:.7}
+
+/* ── ANIMATIONS ── */
+@keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Icono.png" alt="OpenLexIura"><span>OpenLexIura</span></a>
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="portal.html">Temas</a>
+    <a class="nav-cta nav-active" href="consultas.html">Consultas</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="page-header">
+    <div class="kicker">Consulta legal</div>
+    <h1>Cuéntanos tu <em>problema</em></h1>
+    <p>Responde 5 preguntas rápidas y te enviamos la orientación legal que necesitas.</p>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-steps" id="progressSteps">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      <div class="step-dot active" id="dot1">1</div>
+      <div class="step-dot" id="dot2">2</div>
+      <div class="step-dot" id="dot3">3</div>
+      <div class="step-dot" id="dot4">4</div>
+      <div class="step-dot" id="dot5">5</div>
+    </div>
+    <div class="progress-labels">
+      <span class="active-label" id="lbl1">Área</span>
+      <span id="lbl2">Partes</span>
+      <span id="lbl3">Resumen</span>
+      <span id="lbl4">Detalles</span>
+      <span id="lbl5">Email</span>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card" id="formCard">
+
+    <!-- PASO 1 -->
+    <div class="step active" id="step1">
+      <div class="step-label">Paso 1 de 5</div>
+      <h2>¿De qué va tu consulta?</h2>
+      <p class="hint">Selecciona el área que mejor describe tu situación.</p>
+      <div class="field">
+        <label for="area">Área legal</label>
+        <select id="area" onchange="checkStep1()">
+          <option value="">— Selecciona una opción —</option>
+          <option>Alquiler y vivienda</option>
+          <option>Trabajo y despidos</option>
+          <option>Comunidad de vecinos</option>
+          <option>Compras y consumo</option>
+          <option>Herencias y sucesiones</option>
+          <option>Familia y divorcio</option>
+          <option>Impuestos y Hacienda</option>
+          <option>Seguridad Social y pensiones</option>
+          <option>Empresas y contratos mercantiles</option>
+          <option>Accidentes y tráfico</option>
+          <option>Extranjería e inmigración</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-next" id="btn1" onclick="goTo(2)" disabled>Siguiente →</button>
+      </div>
+    </div>
+
+    <!-- PASO 2 -->
+    <div class="step" id="step2">
+      <div class="step-label">Paso 2 de 5</div>
+      <h2>¿Quiénes son los implicados?</h2>
+      <p class="hint">Selecciona la parte que mejor describe el conflicto. Puedes elegir más de una.</p>
+      <div class="pills-grid" id="pillsGrid">
+        <div class="pill-opt" onclick="togglePill(this)">Yo vs Casero</div>
+        <div class="pill-opt" onclick="togglePill(this)">Yo vs Empresa</div>
+        <div class="pill-opt" onclick="togglePill(this)">Yo vs Banco</div>
+        <div class="pill-opt" onclick="togglePill(this)">Yo vs Hacienda</div>
+        <div class="pill-opt" onclick="togglePill(this)">Yo vs Seguridad Social</div>
+        <div class="pill-opt" onclick="togglePill(this)">Yo vs Comunidad de vecinos</div>
+        <div class="pill-opt" onclick="togglePill(this)">Yo vs Vendedor / Tienda</div>
+        <div class="pill-opt" onclick="togglePill(this)">Yo vs Familiar</div>
+        <div class="pill-opt" onclick="togglePill(this)">Yo vs Administración</div>
+        <div class="pill-opt" onclick="togglePill(this)">Otro</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goTo(1)">← Atrás</button>
+        <button class="btn btn-next" id="btn2" onclick="goTo(3)" disabled>Siguiente →</button>
+      </div>
+    </div>
+
+    <!-- PASO 3 -->
+    <div class="step" id="step3">
+      <div class="step-label">Paso 3 de 5</div>
+      <h2>Resume tu problema en una frase</h2>
+      <p class="hint">Sé concreto. Máximo 100 caracteres. Ej: "Mi casero no me devuelve la fianza".</p>
+      <div class="field">
+        <label for="resumen">Tu problema en una frase</label>
+        <input type="text" id="resumen" maxlength="100" placeholder="Ej: Mi empresa me ha despedido sin causa justificada" oninput="checkStep3()">
+        <div class="char-count" id="charCount">0 / 100</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goTo(2)">← Atrás</button>
+        <button class="btn btn-next" id="btn3" onclick="goTo(4)" disabled>Siguiente →</button>
+      </div>
+    </div>
+
+    <!-- PASO 4 -->
+    <div class="step" id="step4">
+      <div class="step-label">Paso 4 de 5 <span class="optional-badge">Opcional</span></div>
+      <h2>Detalles clave</h2>
+      <p class="hint">Cuanta más información nos des, mejor podremos orientarte.</p>
+      <div class="detail-questions">
+        <div class="detail-row">
+          <label>¿Hay algún documento firmado relacionado?</label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="doc" value="Sí"> Sí</label>
+            <label class="radio-opt"><input type="radio" name="doc" value="No"> No</label>
+            <label class="radio-opt"><input type="radio" name="doc" value="No sé"> No lo sé</label>
+          </div>
+        </div>
+        <div class="detail-row">
+          <label>¿Desde cuándo ocurre esto?</label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="tiempo" value="Menos de 1 mes"> Menos de 1 mes</label>
+            <label class="radio-opt"><input type="radio" name="tiempo" value="1-6 meses"> 1–6 meses</label>
+            <label class="radio-opt"><input type="radio" name="tiempo" value="Más de 6 meses"> Más de 6 meses</label>
+            <label class="radio-opt"><input type="radio" name="tiempo" value="Más de 1 año"> Más de 1 año</label>
+          </div>
+        </div>
+        <div class="detail-row">
+          <label>¿Has intentado resolverlo antes?</label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="intento" value="Sí, sin éxito"> Sí, sin éxito</label>
+            <label class="radio-opt"><input type="radio" name="intento" value="Sí, parcialmente"> Sí, parcialmente</label>
+            <label class="radio-opt"><input type="radio" name="intento" value="No todavía"> No todavía</label>
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label for="extra">Añade cualquier dato adicional <span class="optional-badge">Opcional</span></label>
+          <textarea id="extra" placeholder="Ej: Tengo contrato por escrito firmado en 2023, ya envié un burofax..."></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goTo(3)">← Atrás</button>
+        <button class="btn btn-next" onclick="goTo(5)">Siguiente →</button>
+      </div>
+    </div>
+
+    <!-- PASO 5 -->
+    <div class="step" id="step5">
+      <div class="step-label">Paso 5 de 5</div>
+      <h2>¿Dónde te enviamos la respuesta?</h2>
+      <div class="email-note">
+        <strong>Sin spam, sin letra pequeña.</strong> Usamos tu email únicamente para enviarte la orientación legal sobre tu consulta. No lo compartimos con terceros.
+      </div>
+
+      <!-- RESUMEN -->
+      <div class="resumen-box" id="resumenBox"></div>
+
+      <div class="field">
+        <label for="email">Tu correo electrónico</label>
+        <input type="email" id="email" placeholder="ejemplo@correo.com" oninput="checkStep5()">
+      </div>
+      <div class="btn-row" style="flex-direction:column;gap:.75rem">
+        <button class="btn btn-submit" id="btn5" onclick="enviar()" disabled>✉️ Enviar consulta</button>
+        <button class="btn btn-back" onclick="goTo(4)" style="align-self:center">← Atrás</button>
+      </div>
+    </div>
+
+  </div><!-- /form-card -->
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✅</div>
+    <h2>Consulta enviada</h2>
+    <p>Hemos recibido tu consulta. Revisaremos los detalles y te enviaremos una orientación legal a tu correo en breve.</p>
+    <a href="index.html">← Volver al inicio</a>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<footer>
+  2026 · <a href="index.html">OpenLexIura</a> · El derecho en el idioma de la calle
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cursorRing=document.createElement('div');cursorRing.className='cursor-ring';
+const cursorDot=document.createElement('div');cursorDot.className='cursor-dot';
+document.body.appendChild(cursorRing);document.body.appendChild(cursorDot);
+document.body.style.cursor='none';document.documentElement.style.cursor='none';
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+window.addEventListener('mouseleave',()=>{cursorRing.style.opacity='0';cursorDot.style.opacity='0'});
+window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+function follow(){rx+=(mx-rx)*0.55;ry+=(my-ry)*0.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)}
+follow();
+document.querySelectorAll('a,button,input,select,textarea,.pill-opt,.radio-opt').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=(['INPUT','SELECT','TEXTAREA'].includes(el.tagName)||el.classList.contains('pill-opt'))?'10px':'999px';cursorRing.style.background='rgba(91,188,255,.09)'});
+  el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'});
+});
+
+/* ── NAV SCROLL ── */
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+/* ── ESTADO ── */
+const state={area:'',partes:[],resumen:'',doc:'',tiempo:'',intento:'',extra:'',email:''};
+let currentStep=1;
+
+/* ── PROGRESS ── */
+const FILLS=[0,25,50,75,100];
+function updateProgress(step){
+  document.querySelectorAll('.step-dot').forEach((d,i)=>{
+    d.classList.toggle('done', i+1<step);
+    d.classList.toggle('active', i+1===step);
+  });
+  document.querySelectorAll('.progress-labels span').forEach((s,i)=>{
+    s.classList.toggle('active-label', i+1===step);
+  });
+  document.getElementById('progressFill').style.width=FILLS[step-1]+'%';
+}
+
+/* ── NAVEGACIÓN ── */
+function goTo(n){
+  document.getElementById('step'+currentStep).classList.remove('active');
+  currentStep=n;
+  document.getElementById('step'+n).classList.add('active');
+  updateProgress(n);
+  if(n===5) buildResumen();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── VALIDACIONES ── */
+function checkStep1(){
+  state.area=document.getElementById('area').value;
+  document.getElementById('btn1').disabled=!state.area;
+}
+function togglePill(el){
+  el.classList.toggle('selected');
+  state.partes=Array.from(document.querySelectorAll('.pill-opt.selected')).map(p=>p.textContent);
+  document.getElementById('btn2').disabled=state.partes.length===0;
+}
+function checkStep3(){
+  const v=document.getElementById('resumen').value;
+  state.resumen=v;
+  const cc=document.getElementById('charCount');
+  cc.textContent=v.length+' / 100';
+  cc.classList.toggle('warn',v.length>90);
+  document.getElementById('btn3').disabled=v.trim().length<5;
+}
+function checkStep5(){
+  const v=document.getElementById('email').value;
+  state.email=v;
+  document.getElementById('btn5').disabled=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
+/* ── RESUMEN PASO 5 ── */
+function buildResumen(){
+  const doc=document.querySelector('input[name="doc"]:checked');
+  const tiempo=document.querySelector('input[name="tiempo"]:checked');
+  const intento=document.querySelector('input[name="intento"]:checked');
+  state.doc=doc?doc.value:'—';
+  state.tiempo=tiempo?tiempo.value:'—';
+  state.intento=intento?intento.value:'—';
+  state.extra=document.getElementById('extra').value||'—';
+  document.getElementById('resumenBox').innerHTML=`
+    <div class="resumen-row"><span class="resumen-key">Área</span><span class="resumen-val">${state.area}</span></div>
+    <div class="resumen-row"><span class="resumen-key">Implicados</span><span class="resumen-val">${state.partes.join(', ')}</span></div>
+    <div class="resumen-row"><span class="resumen-key">Problema</span><span class="resumen-val">${state.resumen}</span></div>
+    <div class="resumen-row"><span class="resumen-key">Documento</span><span class="resumen-val">${state.doc}</span></div>
+    <div class="resumen-row"><span class="resumen-key">Tiempo</span><span class="resumen-val">${state.tiempo}</span></div>
+    <div class="resumen-row"><span class="resumen-key">Intentos prev.</span><span class="resumen-val">${state.intento}</span></div>
+  `;
+}
+
+/* ── ENVÍO ── */
+function enviar(){
+  document.getElementById('formCard').style.display='none';
+  document.getElementById('successScreen').classList.add('active');
+  document.querySelector('.progress-wrap').style.display='none';
+  document.querySelector('.page-header').style.display='none';
+}
+</script>
+</body>
+</html>
