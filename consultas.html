@@ -435,12 +435,48 @@ function buildResumen(){
   `;
 }
 
-/* ── ENVÍO ── */
+/* ── ENVÍO Web3Forms ── */
 function enviar(){
-  document.getElementById('formCard').style.display='none';
-  document.getElementById('successScreen').classList.add('active');
-  document.querySelector('.progress-wrap').style.display='none';
-  document.querySelector('.page-header').style.display='none';
+  const btn = document.getElementById('btn5');
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      access_key:  'f437af6d-917e-4b98-98db-97bd4b4f164b',
+      subject:     '📋 Nueva consulta legal — ' + state.area,
+      from_name:   'OpenLexIura · Consultas',
+      area:        state.area,
+      implicados:  state.partes.join(', '),
+      problema:    state.resumen,
+      documento:   state.doc,
+      tiempo:      state.tiempo,
+      intentos_previos: state.intento,
+      detalles_extra:   state.extra,
+      email_usuario:    state.email,
+      replyto:     state.email
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    if(data.success){
+      document.getElementById('formCard').style.display='none';
+      document.getElementById('successScreen').classList.add('active');
+      document.querySelector('.progress-wrap').style.display='none';
+      document.querySelector('.page-header').style.display='none';
+    } else {
+      btn.disabled=false;
+      btn.textContent='✉️ Enviar consulta';
+      alert('Error al enviar. Inténtalo de nuevo.');
+    }
+  })
+  .catch(()=>{
+    btn.disabled=false;
+    btn.textContent='✉️ Enviar consulta';
+    alert('Error de conexión. Comprueba tu internet e inténtalo de nuevo.');
+  });
 }
 </script>
 </body>
