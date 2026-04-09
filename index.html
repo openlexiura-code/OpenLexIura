@@ -134,7 +134,8 @@ h1 em{font-style:italic;color:var(--brand)}
   position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
 }
 .art-logo img{
-  width:72%;max-width:360px;filter:drop-shadow(0 0 24px rgba(37,99,235,.10)) drop-shadow(0 16px 30px rgba(0,0,0,.48));
+  width:72%;max-width:360px;border-radius:50%;object-fit:cover;
+  filter:drop-shadow(0 0 24px rgba(37,99,235,.10)) drop-shadow(0 16px 30px rgba(0,0,0,.48));
   transform:translateY(-2px);animation:pulse 5s ease-in-out infinite
 }
 .spark{position:absolute;border-radius:50%;background:radial-gradient(circle, rgba(241,215,155,.95), rgba(241,215,155,.12) 50%, transparent 72%);filter:blur(1px);opacity:.8;animation:twinkle 3.8s ease-in-out infinite}
@@ -239,6 +240,7 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 <nav id="nav">
   <a class="nav-logo" href="#inicio"><img src="Icono.png" alt="OpenLexIura"><span>OpenLexIura</span></a>
   <div class="nav-links">
+    <a href="../portal.html">Aprender</a>
     <a href="#temas">Temas</a>
     <a href="#consultas">Consultas</a>
     <a class="nav-cta" href="portal.html">Acceder al portal</a>
@@ -329,7 +331,7 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
   <div class="bottom-box reveal">
     <h2 class="title" style="margin-bottom:1rem;">Deja de buscar en foros</h2>
     <p>Respuestas fiables, visualmente potentes y con un recorrido más cómodo para que el usuario perciba calidad, confianza y profesionalidad desde el primer momento.</p>
-    <a class="btn btn-primary" href="consultas.html">Hacer mi consulta ahora</a>
+    <a class="btn btn-primary" href="portal.html">Hacer mi consulta ahora</a>
   </div>
 </section>
 
