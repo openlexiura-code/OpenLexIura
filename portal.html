@@ -29,8 +29,8 @@ body{
 a{text-decoration:none;color:inherit}
 
 /* ── CURSOR ── */
-.cursor-ring{position:fixed;left:0;top:0;width:22px;height:22px;border:1.5px solid rgba(37,99,235,.35);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 18px rgba(37,99,235,.12),inset 0 0 6px rgba(255,255,255,.18);transition:width .12s,height .12s,border-color .12s,opacity .12s,transform .12s,border-radius .12s,background .12s}
-.cursor-dot{position:fixed;left:0;top:0;width:5px;height:5px;background:var(--brand);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(37,99,235,.8)}
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(43,111,232,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(135,206,250,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s linear,height .08s linear,border-color .08s linear,opacity .08s linear,transform .08s linear}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#2b6fe8;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(43,111,232,.75)}
 
 /* ── PARTICLES CANVAS ── */
 #particleCanvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55}
@@ -252,7 +252,7 @@ footer a:hover{opacity:.7}
   </a>
   <div class="nav-links">
     <a href="index.html">Inicio</a>
-    <a href="index.html#consultas">Consultas</a>
+    <a href="consultas.html">Consultas</a>
     <a class="nav-cta active" href="portal.html">Portal</a>
   </div>
 </nav>
@@ -328,20 +328,20 @@ footer a:hover{opacity:.7}
 })();
 
 /* ── CURSOR ── */
-const ring=document.createElement('div');ring.className='cursor-ring';
-const dot=document.createElement('div');dot.className='cursor-dot';
-document.body.appendChild(ring);document.body.appendChild(dot);
+const cursorRing=document.createElement('div');cursorRing.className='cursor-ring';
+const cursorDot=document.createElement('div');cursorDot.className='cursor-dot';
+document.body.appendChild(cursorRing);document.body.appendChild(cursorDot);
 document.body.style.cursor='none';document.documentElement.style.cursor='none';
 let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;ring.style.opacity='1';dot.style.opacity='1'});
-window.addEventListener('mouseleave',()=>{ring.style.opacity='0';dot.style.opacity='0'});
-window.addEventListener('mouseenter',()=>{ring.style.opacity='1';dot.style.opacity='1'});
-(function follow(){rx+=(mx-rx)*.55;ry+=(my-ry)*.55;ring.style.left=rx+'px';ring.style.top=ry+'px';dot.style.left=mx+'px';dot.style.top=my+'px';requestAnimationFrame(follow)})();
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+window.addEventListener('mouseleave',()=>{cursorRing.style.opacity='0';cursorDot.style.opacity='0'});
+window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+(function follow(){rx+=(mx-rx)*0.55;ry+=(my-ry)*0.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)})();
 function bindCursor(el){
-  el.addEventListener('mouseenter',()=>{ring.style.width='34px';ring.style.height='34px';ring.style.borderRadius=el.tagName==='INPUT'?'12px':'999px';ring.style.background='rgba(37,99,235,.08)';ring.style.borderColor='rgba(37,99,235,.5)'});
-  el.addEventListener('mouseleave',()=>{ring.style.width='22px';ring.style.height='22px';ring.style.borderRadius='50%';ring.style.background='transparent';ring.style.borderColor='rgba(37,99,235,.35)'});
+  el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(91,188,255,.09)'});
+  el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'});
 }
-document.querySelectorAll('a,button,input').forEach(bindCursor);
+document.querySelectorAll('a,button,input,.area-card').forEach(bindCursor);
 
 /* ── NAV ── */
 const navEl=document.getElementById('nav');
@@ -360,18 +360,12 @@ document.addEventListener('mousemove',e=>{
 
 /* ── DATOS ── */
 const AREAS=[
-  {id:'vivienda',   icon:'🏠',color:'#2563eb',titulo:'Vivienda y Propiedad',       desc:'Compraventa, hipotecas, comunidades de propietarios y derechos del comprador.',         url:'vivienda/'},
-  {id:'alquiler',   icon:'🔑',color:'#10b981',titulo:'Alquiler y Arrendamientos',  desc:'Contratos de alquiler, fianzas, desahucios y derechos del inquilino y propietario.',   url:'alquiler/'},
-  {id:'consumo',    icon:'🛒',color:'#f59e0b',titulo:'Consumo y Compras',           desc:'Devoluciones, garantías, fraudes, comercio electrónico y defensa del consumidor.',     url:'consumo/'},
-  {id:'laboral',    icon:'👷',color:'#8b5cf6',titulo:'Trabajo y Empleo',            desc:'Despidos, ERTEs, nóminas, contratos laborales, accidentes de trabajo y bajas.',       url:'laboral/'},
-  {id:'impuestos',  icon:'📊',color:'#ef4444',titulo:'Impuestos y Fiscalidad',      desc:'IRPF, IVA, declaración de la renta, sanciones de Hacienda y recursos fiscales.',     url:'impuestos/'},
-  {id:'familia',    icon:'👨‍👩‍👧',color:'#ec4899',titulo:'Familia y Menores',          desc:'Divorcios, custodia, pensión alimenticia, adopciones y violencia doméstica.',        url:'familia/'},
-  {id:'herencia',   icon:'📜',color:'#d97706',titulo:'Herencias y Sucesiones',      desc:'Testamentos, reparto de herencia, legítimas, aceptación o renuncia.',                 url:'herencia/'},
-  {id:'mercantil',  icon:'🏛️',color:'#4a7fc1',titulo:'Empresas y Derecho Mercantil',desc:'Sociedades, contratos mercantiles, concursos de acreedores y propiedad industrial.', url:'mercantil/'},
-  {id:'ssocial',    icon:'🛡️',color:'#3a9e6f',titulo:'Seguridad Social',           desc:'Prestaciones por desempleo, pensiones, afiliación, bajas médicas y cotización.',      url:'ssocial/'},
-  {id:'extranjeria',icon:'🌍',color:'#f97316',titulo:'Extranjería e Inmigración',   desc:'Residencia, visados, nacionalidad, reagrupación familiar y permisos de trabajo.',     url:'extranjeria/'},
-  {id:'trafico',    icon:'🚗',color:'#84cc16',titulo:'Tráfico y Accidentes',        desc:'Multas, accidentes, seguros, puntos del carné y recursos ante la DGT.',              url:'trafico/'},
-  {id:'isociedades',icon:'🏗️',color:'#c8a84b',titulo:'Derecho de Sociedades',      desc:'Constitución, funcionamiento, responsabilidad y disolución de sociedades mercantiles.',url:'isociedades/'},
+  {id:'vivienda',  icon:'🏠',color:'#2563eb',titulo:'Vivienda y Propiedad',      desc:'Compraventa, hipotecas, comunidades de propietarios y derechos del comprador.',     url:'vivienda/'},
+  {id:'alquiler',  icon:'🔑',color:'#10b981',titulo:'Alquiler y Arrendamientos', desc:'Contratos de alquiler, fianzas, desahucios y derechos del inquilino y propietario.',url:'alquiler/'},
+  {id:'consumo',   icon:'🛒',color:'#f59e0b',titulo:'Consumo y Compras',          desc:'Devoluciones, garantías, fraudes, comercio electrónico y defensa del consumidor.',  url:'consumo/'},
+  {id:'impuestos', icon:'📊',color:'#ef4444',titulo:'Impuestos y Fiscalidad',     desc:'IRPF, IVA, declaración de la renta, sanciones de Hacienda y recursos fiscales.',   url:'impuestos/'},
+  {id:'herencia',  icon:'📜',color:'#d97706',titulo:'Herencias y Sucesiones',     desc:'Testamentos, reparto de herencia, legítimas, aceptación o renuncia.',               url:'herencia/'},
+  {id:'trafico',   icon:'🚗',color:'#84cc16',titulo:'Tráfico y Accidentes',       desc:'Multas, accidentes, seguros, puntos del carné y recursos ante la DGT.',            url:'trafico/'},
 ];
 
 function hexBg(hex){return hex+'18'}
