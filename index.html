@@ -181,6 +181,26 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 @keyframes twinkle{0%,100%{opacity:.35;transform:scale(.9)}50%{opacity:1;transform:scale(1.15)}}
 @media (max-width: 980px){.hero-content{grid-template-columns:1fr}.hero-art{order:-1;min-height:420px}.grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width: 640px){nav{padding:1rem 1.1rem}.nav-links{display:none}.hero{padding-top:6rem}.grid{grid-template-columns:1fr}.art-shell{width:min(360px,92vw)}h1{font-size:clamp(3rem,16vw,4.4rem)}.title{font-size:clamp(2rem,9vw,2.8rem)}}
+
+.search{position:relative}
+.search-results{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;
+  background:#ffffff;border:1px solid rgba(37,99,235,.18);
+  border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.18);
+  z-index:9999;overflow:hidden;display:none;max-height:380px;overflow-y:auto;
+}
+.search-results.active{display:block}
+.search-result-item{
+  display:flex;flex-direction:column;gap:.25rem;
+  padding:1rem 1.25rem;border-bottom:1px solid rgba(37,99,235,.07);
+  cursor:pointer;transition:.18s ease;text-decoration:none;color:inherit;
+}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:rgba(37,99,235,.05)}
+.res-titulo{font-weight:600;color:#1f2937;font-size:.97rem}
+.res-cat{font-size:.78rem;color:#2563eb;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+.res-resumen{font-size:.87rem;color:#64748b;line-height:1.5;margin-top:.1rem}
+.search-no-results{padding:1.2rem 1.25rem;color:#64748b;font-size:.92rem;text-align:center}
 </style>
 
 <style>
@@ -191,8 +211,29 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 .bottom-box .title,.bottom-box p{color:#1f2937}
 .hero::before{background:radial-gradient(circle, rgba(135,206,250,.28), transparent 60%)}
 .hero::after{background:radial-gradient(circle, rgba(43,111,232,.08), transparent 70%)}
+
+.search{position:relative}
+.search-results{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;
+  background:#ffffff;border:1px solid rgba(37,99,235,.18);
+  border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.18);
+  z-index:9999;overflow:hidden;display:none;max-height:380px;overflow-y:auto;
+}
+.search-results.active{display:block}
+.search-result-item{
+  display:flex;flex-direction:column;gap:.25rem;
+  padding:1rem 1.25rem;border-bottom:1px solid rgba(37,99,235,.07);
+  cursor:pointer;transition:.18s ease;text-decoration:none;color:inherit;
+}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:rgba(37,99,235,.05)}
+.res-titulo{font-weight:600;color:#1f2937;font-size:.97rem}
+.res-cat{font-size:.78rem;color:#2563eb;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+.res-resumen{font-size:.87rem;color:#64748b;line-height:1.5;margin-top:.1rem}
+.search-no-results{padding:1.2rem 1.25rem;color:#64748b;font-size:.92rem;text-align:center}
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
 </head>
 <body>
 <nav id="nav">
@@ -215,9 +256,10 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
         <a class="btn btn-primary" href="portal.html">Buscar mi problema legal</a>
         <a class="btn btn-secondary" href="#temas">Ver áreas clave</a>
       </div>
-      <div class="search">
+      <div class="search" id="search-wrap">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" placeholder="Ej.: ¿Quién paga la avería de la lavadora?" />
+        <input type="text" id="search-input" placeholder="Ej.: ¿Quién paga la avería de la lavadora?" autocomplete="off" />
+        <div class="search-results" id="search-results"></div>
       </div>
       <div class="badges">
         <div class="badge">Tu Casa</div>
@@ -319,6 +361,59 @@ window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot
 function follow(){rx+=(mx-rx)*0.55;ry+=(my-ry)*0.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)}
 follow();
 document.querySelectorAll('a,button,input,.card').forEach(el=>{el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(91,188,255,.09)'});el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'})});
+
+// ── Buscador Fuse.js ──────────────────────────────────────────
+(function(){
+  const BASE = 'https://openlexiura-code.github.io/OpenLexIura/';
+  let fuse = null;
+
+  fetch(BASE + 'search.json')
+    .then(r => { if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(data => {
+      fuse = new Fuse(data, {
+        keys: [
+          { name: 'titulo',    weight: 0.5  },
+          { name: 'resumen',   weight: 0.35 },
+          { name: 'categoria', weight: 0.15 }
+        ],
+        threshold: 0.4,
+        minMatchCharLength: 2,
+        includeScore: true
+      });
+    })
+    .catch(e => console.error('search.json error:', e));
+
+  const inp = document.getElementById('search-input');
+  const box = document.getElementById('search-results');
+  if(!inp || !box) return;
+
+  inp.addEventListener('input', function(){
+    const q = this.value.trim();
+    if(!q || !fuse){ box.classList.remove('active'); return; }
+    const res = fuse.search(q).slice(0,6);
+    if(!res.length){
+      box.innerHTML = '<div class="search-no-results">Sin resultados. Prueba con otras palabras.</div>';
+    } else {
+      box.innerHTML = res.map(r => `
+        <a class="search-result-item" href="${BASE}${r.item.url}" target="_blank">
+          <span class="res-cat">${r.item.categoria}</span>
+          <span class="res-titulo">${r.item.titulo}</span>
+          <span class="res-resumen">${r.item.resumen}</span>
+        </a>`).join('');
+    }
+    box.classList.add('active');
+  });
+
+  document.addEventListener('click', e => {
+    const wrap = document.getElementById('search-wrap');
+    if(wrap && !wrap.contains(e.target)) box.classList.remove('active');
+  });
+
+  inp.addEventListener('keydown', e => {
+    if(e.key === 'Escape') box.classList.remove('active');
+  });
+})();
+
 </script>
 </body>
 </html>
