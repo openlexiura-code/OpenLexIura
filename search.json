@@ -1,0 +1,116 @@
+[
+  {
+    "titulo": "Explicación general - Derecho de Sociedades",
+    "categoria": "Derecho de Sociedades",
+    "resumen": "Introducción y explicación general sobre el derecho de sociedades mercantiles.",
+    "url": "isociedades/explicacion.html"
+  },
+  {
+    "titulo": "Manual - Derecho de Sociedades",
+    "categoria": "Derecho de Sociedades",
+    "resumen": "Manual completo sobre constitución, funcionamiento y tipos de sociedades.",
+    "url": "isociedades/manual.html"
+  },
+  {
+    "titulo": "Casos prácticos - Derecho de Sociedades",
+    "categoria": "Derecho de Sociedades",
+    "resumen": "Ejercicios y casos prácticos resueltos sobre derecho de sociedades.",
+    "url": "isociedades/practica.html"
+  },
+  {
+    "titulo": "Tema 1 - Derecho Mercantil",
+    "categoria": "Derecho Mercantil",
+    "resumen": "Introducción al derecho mercantil, el empresario y el estatuto jurídico.",
+    "url": "mercantil/tema1mercantil.html"
+  },
+  {
+    "titulo": "Tema 2 - Derecho Mercantil",
+    "categoria": "Derecho Mercantil",
+    "resumen": "El registro mercantil y la publicidad registral.",
+    "url": "mercantil/tema2mercantil.html"
+  },
+  {
+    "titulo": "Tema 3 - Derecho Mercantil",
+    "categoria": "Derecho Mercantil",
+    "resumen": "La empresa y los signos distintivos: marcas, nombre comercial y patentes.",
+    "url": "mercantil/tema3mercantil.html"
+  },
+  {
+    "titulo": "Tema 4 - Derecho Mercantil",
+    "categoria": "Derecho Mercantil",
+    "resumen": "Contratos mercantiles: compraventa, transporte y arrendamiento financiero.",
+    "url": "mercantil/tema4mercantil.html"
+  },
+  {
+    "titulo": "Tema 5 - Derecho Mercantil",
+    "categoria": "Derecho Mercantil",
+    "resumen": "Títulos valores: letra de cambio, cheque y pagaré.",
+    "url": "mercantil/tema5mercantil.html"
+  },
+  {
+    "titulo": "Tema 6 - Derecho Mercantil",
+    "categoria": "Derecho Mercantil",
+    "resumen": "Derecho concursal: el concurso de acreedores y la insolvencia empresarial.",
+    "url": "mercantil/tema6mercantil.html"
+  },
+  {
+    "titulo": "Tema 7 - Derecho Mercantil",
+    "categoria": "Derecho Mercantil",
+    "resumen": "Derecho de la competencia y competencia desleal.",
+    "url": "mercantil/tema7mercantil.html"
+  },
+  {
+    "titulo": "Tema 1 - Penal Económico",
+    "categoria": "Derecho Penal Económico",
+    "resumen": "Introducción al derecho penal económico y delitos patrimoniales.",
+    "url": "penal_economico/tema1_penal_economico.html"
+  },
+  {
+    "titulo": "Tema 2 - Penal Económico",
+    "categoria": "Derecho Penal Económico",
+    "resumen": "Estafa, apropiación indebida y administración desleal.",
+    "url": "penal_economico/tema2_penal_economico.html"
+  },
+  {
+    "titulo": "Tema 3 - Penal Económico",
+    "categoria": "Derecho Penal Económico",
+    "resumen": "Insolvencias punibles y alzamiento de bienes.",
+    "url": "penal_economico/tema3_penal_economico.html"
+  },
+  {
+    "titulo": "Tema 4.1 - Penal Económico",
+    "categoria": "Derecho Penal Económico",
+    "resumen": "Delitos societarios y responsabilidad penal de las personas jurídicas.",
+    "url": "penal_economico/tema4.1_penal_economico.html"
+  },
+  {
+    "titulo": "Tema 4.2 - Penal Económico",
+    "categoria": "Derecho Penal Económico",
+    "resumen": "Delitos contra la Hacienda Pública y la Seguridad Social.",
+    "url": "penal_economico/tema4.2_penal_economico.html"
+  },
+  {
+    "titulo": "Tema 5 - Penal Económico",
+    "categoria": "Derecho Penal Económico",
+    "resumen": "Blanqueo de capitales y financiación del terrorismo.",
+    "url": "penal_economico/tema5penaleconomico.html"
+  },
+  {
+    "titulo": "Tema 6 - Penal Económico",
+    "categoria": "Derecho Penal Económico",
+    "resumen": "Corrupción entre particulares y delitos de mercado.",
+    "url": "penal_economico/tema6penaleconomico.html"
+  },
+  {
+    "titulo": "Tema 1 - Seguridad Social",
+    "categoria": "Seguridad Social",
+    "resumen": "Estructura y principios del sistema de Seguridad Social en España.",
+    "url": "ssocial/t1.html"
+  },
+  {
+    "titulo": "Tema 2 - Seguridad Social",
+    "categoria": "Seguridad Social",
+    "resumen": "Afiliación, altas, bajas y cotización a la Seguridad Social.",
+    "url": "ssocial/t2.html"
+  }
+]
