@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Mascotas en casa: el conflicto animal en el alquiler | OpenLexIura</title>
+  <meta name="description" content="¿La nueva Ley de Bienestar Animal permite tener perros en pisos de alquiler que lo prohíben? ¿Puedes pagar una fianza extra por mascota? Todo sobre la Ley 7/2023 y la LAU.">
+  <link rel="icon" type="image/jpeg" href="../Icono.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+    :root {
+      --bg: #f4faf5;
+      --bg-2: #ecf7ee;
+      --text: #1f2937;
+      --muted: #64748b;
+      --brand: #16a34a;
+      --brand-dark: #15803d;
+      --brand-light: #4ade80;
+      --line: rgba(22,163,74,.14);
+      --line-2: rgba(15,42,23,.08);
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --radius: 24px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(22,163,74,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,42,23,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(22,163,74,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+    nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(22,163,74,.10)}
+    .nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+    .nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(22,163,74,.22),0 10px 30px rgba(0,0,0,.35)}
+    .nav-links{display:flex;align-items:center;gap:1.4rem}
+    .nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+    .nav-links a:hover{color:var(--brand)}
+    .nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(22,163,74,.22);border-radius:999px;background:linear-gradient(180deg,rgba(22,163,74,.10),rgba(22,163,74,.05))}
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(22,163,74,.14),0 10px 24px rgba(0,0,0,.2)}
+
+    /* HERO */
+    .article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative}
+    .article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(22,163,74,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+    .article-hero{position:relative;z-index:1}
+    .cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(22,163,74,.20);background:rgba(22,163,74,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+    .cat-pill::before{content:'●';width:7px;height:7px;border-radius:50%;color:var(--brand)}
+    .article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+    .article-title em{font-style:italic;color:var(--brand)}
+    .article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+    .article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+    .article-meta span{display:flex;align-items:center;gap:.35rem}
+    .meta-sep{color:rgba(15,23,42,.18)}
+    .meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+    .art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+
+    /* BODY */
+    .article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+    .article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+    .article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+    .article-body h2 span{color:var(--brand);font-style:italic}
+    .article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem}
+    .article-body strong{font-weight:700;color:#111827}
+    .article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(22,163,74,.25);transition:.2s ease}
+    .article-body a:hover{border-bottom-color:var(--brand)}
+    .article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+    .article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+    .article-body ul li::before{content:'▸';color:var(--brand);position:absolute;left:-1rem}
+
+    /* QUICK ANSWER */
+    .quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(22,163,74,.30)}
+    .quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+    .quick-answer .qa-label::before{content:'⚡'}
+    .quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+    .quick-answer strong{color:#fff;font-weight:700}
+
+    /* INFO BOX */
+    .info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fff4);border:1px solid rgba(22,163,74,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+    .info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .info-box .info-title::before{content:'⚖️';width:28px;height:28px;border-radius:50%;background:rgba(22,163,74,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+    .info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+
+    /* JURISPRUDENCIA BOX */
+    .juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .juris-box .juris-title::before{content:'📋';font-size:.95rem}
+    .juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+
+    /* ALERTA / WARNING BOX */
+    .warn-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:1px solid rgba(234,88,12,.20);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .warn-box .warn-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#9a3412;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .warn-box .warn-title::before{content:'⚠️';font-size:.95rem}
+    .warn-box p{margin-bottom:0;font-size:1rem;color:#7c2d12;line-height:1.75}
+
+    /* BLOCKQUOTE */
+    .article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(22,163,74,.06),rgba(22,163,74,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic}
+    .article-body blockquote cite{display:block;margin-top:.6rem;font-family:Inter,sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+
+    /* TABLA RESUMEN */
+    .summary-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+    .summary-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem}
+    .summary-table th:first-child{background:linear-gradient(135deg,#15803d,#4ade80);color:#fff}
+    .summary-table th:last-child{background:linear-gradient(135deg,#1e3a5f,#3b82f6);color:#fff}
+    .summary-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6}
+    .summary-table tr:nth-child(even) td:first-child{background:rgba(22,163,74,.04)}
+    .summary-table tr:nth-child(even) td:last-child{background:rgba(37,99,235,.04)}
+    .summary-table tr:last-child td{border-bottom:none}
+
+    /* CÁLCULO BOX */
+    .calc-box{padding:1.8rem;border-radius:var(--radius);background:#fff;border:2px solid rgba(22,163,74,.30);box-shadow:0 12px 40px rgba(22,163,74,.12);margin:2rem 0}
+    .calc-box .calc-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--brand-dark);margin-bottom:1rem}
+    .calc-box .calc-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--line-2);font-size:1rem}
+    .calc-box .calc-row:last-child{border-bottom:none;font-weight:700;font-size:1.1rem;color:#0f172a;margin-top:.4rem}
+    .calc-box .calc-label{color:#374151}
+    .calc-box .calc-value{color:var(--brand-dark);font-weight:600}
+    .calc-box .calc-total-label{color:#0f172a}
+    .calc-box .calc-total-value{color:var(--brand);font-size:1.3rem}
+
+    /* STEPS */
+    .article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+    .article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fff4);border:1px solid rgba(22,163,74,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    .step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+    .step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+    .step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+
+    /* TAGS */
+    .article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+    .tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+    .tag:hover{border-color:rgba(22,163,74,.34);color:var(--brand)}
+
+    /* CTA */
+    .article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+    .cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(240,255,244,.94));border:1px solid rgba(22,163,74,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+    .cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+    .cta-box h3 em{font-style:italic;color:var(--brand)}
+    .cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(22,163,74,.18);font-weight:600;transition:.25s ease;font-family:Inter,sans-serif}
+    .btn-primary{background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff !important;box-shadow:0 16px 40px rgba(22,163,74,.35)}
+    .btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(22,163,74,.28)}
+
+    footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+
+    /* ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    /* CURSOR */
+    .cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(22,163,74,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(74,222,128,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+    .cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#16a34a;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(22,163,74,.75)}
+
+    @media(max-width:640px){
+      nav{padding:1rem 1.1rem}
+      .nav-links{display:none}
+      .article-hero{padding:7.5rem 1.2rem 3rem}
+      .article-body{padding:2.5rem 1.2rem 4rem}
+      .calc-box .calc-row{flex-direction:column;align-items:flex-start;gap:.2rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <nav id="nav">
+    <a class="nav-logo" href="../index.html">
+      <img src="Icono.jpg" alt="OpenLexIura">
+      <span>OpenLexIura</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Inicio</a>
+      <a href="../consultas.html">Consultas</a>
+      <a class="nav-cta" href="../portal.html">Acceder al portal</a>
+    </div>
+  </nav>
+
+  <header class="article-hero">
+    <div class="cat-pill">Alquiler · Mascotas</div>
+    <h1 class="article-title">Mascotas en casa:<br><em>el conflicto animal</em></h1>
+    <p class="article-lead">Lo que la Ley de Bienestar Animal de verdad dice, qué pasa si el contrato lo prohíbe y hasta dónde puede llegar la fianza por mascota</p>
+    <div class="article-meta">
+      <span><strong>OpenLexIura</strong></span>
+      <span class="meta-sep">·</span>
+      <span>2026</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">8 min de lectura</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">Alquiler</span>
+    </div>
+    <div class="art-divider"></div>
+  </header>
+
+  <main class="article-body">
+
+    <!-- ARTÍCULO INTRODUCTORIO -->
+    <article class="art-card" style="cursor: auto; animation: none; transform: none; box-shadow: none;">
+      <div class="kicker" style="color: var(--brand); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">Mascotas en alquiler</div>
+      <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: #111827; margin-bottom: 1rem; line-height: 1.1;">Mascotas en casa de alquiler: lo que la ley dice realmente</h1>
+
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem;">
+        Desde la aprobación de la Ley 7/2023 de Bienestar Animal, los foros están llenos de un mito peligroso: que ningún propietario puede prohibirte ya tener una mascota. Este error puede costarte el contrato. Analizamos qué dice de verdad la ley, cuándo puedes tener mascota y cuándo no, y cuáles son los límites de la "fianza por mascota".
+      </p>
+
+      <div style="background: rgba(239,68,68,.1); border-left: 4px solid #ef4444; padding: 1.5rem; border-radius: 0 10px 10px 0; margin-bottom: 2.5rem;">
+        <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">⚠️ MITO A DESTERRAR:</strong>
+        <p style="color: #374151; font-size: 0.95rem; line-height: 1.5;">
+          La Ley 7/2023 de Bienestar Animal <strong>NO crea un derecho universal a tener mascotas en pisos de alquiler</strong>. No modifica ni deroga ningún artículo de la LAU. Si tu contrato prohíbe expresamente los animales, esa cláusula sigue siendo válida y meter un perro a escondidas puede ser motivo de rescisión del contrato.
+        </p>
+      </div>
+
+      <h2 style="font-size: 1.4rem; color: #111827; margin-bottom: 1rem; margin-top: 2rem;">El mapa legal: cuatro escenarios</h2>
+
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.92rem;">
+        <thead>
+          <tr style="background: var(--brand); color: white;">
+            <th style="padding: 0.8rem; text-align: left;">Escenario</th>
+            <th style="padding: 0.8rem; text-align: left;">¿Puedes tener mascota?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #e5e7eb;">
+            <td style="padding: 0.8rem; color: #374151;">El contrato prohíbe animales expresamente</td>
+            <td style="padding: 0.8rem; color: #ef4444; font-weight: 600;">No. Riesgo de rescisión</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e5e7eb; background: #f9fafb;">
+            <td style="padding: 0.8rem; color: #374151;">El contrato no dice nada sobre animales</td>
+            <td style="padding: 0.8rem; color: #10b981; font-weight: 600;">Sí, en principio</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e5e7eb;">
+            <td style="padding: 0.8rem; color: #374151;">Los estatutos de la comunidad los prohíben</td>
+            <td style="padding: 0.8rem; color: #f59e0b; font-weight: 600;">Depende (ver sección 5)</td>
+          </tr>
+          <tr style="background: #f9fafb;">
+            <td style="padding: 0.8rem; color: #374151;">El contrato lo permite expresamente</td>
+            <td style="padding: 0.8rem; color: #10b981; font-weight: 600;">Sí, con garantías</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <!-- FIN ARTÍCULO INTRODUCTORIO -->
+
+    <!-- RESPUESTA RÁPIDA -->
+    <div class="quick-answer reveal">
+      <div class="qa-label">Respuesta rápida</div>
+      <p>La Ley de Bienestar Animal <strong>no te da derecho a tener mascota si el contrato lo prohíbe</strong>. Si el contrato no dice nada, la jurisprudencia tiende a permitirla. La "fianza por mascota" es legal pero no puede superar en total las 2 mensualidades de garantía adicional.</p>
+    </div>
+
+    <p class="reveal">Hay pocas materias en el alquiler que generen tanta desinformación como las mascotas. El error más extendido arranca con la Ley 7/2023: mucha gente confunde el reconocimiento de los animales como seres sintientes con la creación de un derecho arrendaticio que sencillamente no existe en esa ley.</p>
+
+    <!-- SECCIÓN 1 -->
+    <h2 class="reveal">El mito de la Ley de Bienestar Animal: <span>lo que realmente dice</span></h2>
+
+    <p class="reveal">La <strong>Ley 7/2023, de 28 de marzo, de Protección de los Derechos y el Bienestar de los Animales</strong> es una norma de protección animal. Regula la cría, comercio, tenencia responsable y prohibición del abandono, pero <strong>no contiene ningún artículo que modifique la LAU</strong> ni que limite la facultad del propietario de prohibir mascotas en su vivienda.</p>
+
+    <div class="info-box reveal">
+      <p class="info-title">¿Qué dice la Ley 7/2023 sobre el alquiler? Nada.</p>
+      <p>La Ley 7/2023 reconoce a los animales como seres sintientes y obliga a sus dueños a garantizarles unas condiciones de vida adecuadas. No crea ningún derecho del inquilino frente al arrendador. La relación jurídica arrendaticia sigue rigiéndose exclusivamente por la LAU y el principio de <strong>libertad de pactos del Artículo 4.2 de la LAU</strong>.</p>
+    </div>
+
+    <p class="reveal">El <strong>Artículo 4.2 de la LAU</strong> establece que los arrendamientos de vivienda se rigen por los pactos, cláusulas y condiciones determinados por la voluntad de las partes. Como la LAU no regula la tenencia de animales, lo que diga —o no diga— el contrato es determinante.</p>
+
+    <!-- SECCIÓN 2 -->
+    <h2 class="reveal">Si el contrato lo prohíbe: <span>qué pasa si metes un perro a escondidas</span></h2>
+
+    <p class="reveal">Una cláusula contractual que prohíba la tenencia de animales de compañía en el inmueble es perfectamente válida. Si la incumples, el arrendador puede invocar el <strong>Artículo 27.1 de la LAU</strong>, que permite a la parte cumplidora exigir el cumplimiento de la obligación o promover la resolución del contrato.</p>
+
+    <div class="warn-box reveal">
+      <p class="warn-title">Riesgo real: resolución del contrato</p>
+      <p>El artículo 27.2.e) de la LAU también prevé que el arrendador pueda resolver el contrato cuando en la vivienda tengan lugar "actividades molestas, insalubres, nocivas, peligrosas o ilícitas". Si la tenencia del animal incumple una prohibición contractual y además genera molestias, el riesgo de desahucio es real. Además, podrías perder la fianza si se acreditan daños atribuibles al animal.</p>
+    </div>
+
+    <ol class="steps reveal">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Lee el contrato antes de adoptaar</strong>
+          <p>Busca cualquier mención a "animales", "mascotas", "animales domésticos" o "actividades molestas". Una prohibición puede estar en cláusulas aparentemente genéricas.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Si el contrato lo prohíbe, negocia antes de firmar</strong>
+          <p>Puedes intentar que el propietario elimine esa cláusula o la sustituya por una que exija responsabilidad por daños. Una vez firmado, ya no puedes ignorarla.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>La Ley de Bienestar Animal no te protege frente al contrato</strong>
+          <p>Esta es la clave del mito. Aunque tengas un perro legalmente registrado y vacunado, si el contrato lo prohíbe, el incumplimiento es del contrato, no de la ley animal.</p>
+        </div>
+      </li>
+    </ol>
+
+    <!-- SECCIÓN 3 -->
+    <h2 class="reveal">Si el contrato no dice nada: <span>tu derecho a tener mascotas</span></h2>
+
+    <p class="reveal">Aquí entra en juego la jurisprudencia. Cuando el contrato guarda silencio absoluto sobre la tenencia de animales, la doctrina mayoritaria de los tribunales españoles tiende a reconocer que el inquilino puede tenerlos, argumentando que lo que no está expresamente prohibido, está permitido.</p>
+
+    <div class="juris-box reveal">
+      <p class="juris-title">Jurisprudencia: el silencio beneficia al inquilino</p>
+      <p>Diversas Audiencias Provinciales han declarado que si el contrato no prohíbe expresamente la tenencia de animales, el arrendatario puede tenerlos siempre que no causen daños en el inmueble ni generen molestias que afecten a la convivencia. La tenencia "normal" de un animal doméstico no supone incumplimiento contractual ni activa el artículo 27 de la LAU. Eso sí: si el animal causa destrozos en el piso, el inquilino responde por esos daños al entregar la vivienda.</p>
+    </div>
+
+    <p class="reveal">Si el casero intenta resolver el contrato solo porque tienes mascota y el contrato no lo prohíbe, ese intento carecería de base legal. Podrías oponerte con éxito en un procedimiento judicial.</p>
+
+    <!-- SECCIÓN 4 -->
+    <h2 class="reveal">Fianzas especiales por mascotas: <span>límites legales</span></h2>
+
+    <p class="reveal">Es habitual que los propietarios que aceptan mascotas pidan una "fianza extra" o "depósito por mascota". Esta práctica es legal, pero tiene un techo claro en el <strong>Artículo 36.5 de la LAU</strong>.</p>
+
+    <div class="info-box reveal">
+      <p class="info-title">Artículo 36.5 LAU — Garantías adicionales</p>
+      <p>"Las partes podrán pactar cualquier tipo de garantía del cumplimiento por el arrendatario de sus obligaciones arrendaticias adicional a la fianza en metálico." Sin embargo, el apartado 5 del mismo artículo establece que <strong>en contratos de hasta cinco años (o siete si el arrendador es persona jurídica), el valor de esta garantía adicional no podrá exceder de dos mensualidades de renta.</strong></p>
+    </div>
+
+    <table class="summary-table reveal">
+      <thead>
+        <tr>
+          <th>Tipo de garantía</th>
+          <th>Importe máximo legal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fianza obligatoria (Art. 36.1 LAU)</td>
+          <td>1 mensualidad de renta</td>
+        </tr>
+        <tr>
+          <td>Garantía adicional (incluida "fianza por mascota")</td>
+          <td>Máximo 2 mensualidades de renta</td>
+        </tr>
+        <tr>
+          <td>Total máximo legalmente exigible</td>
+          <td>3 mensualidades de renta</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="reveal">Por tanto, si el contrato exige 1 mensualidad de fianza legal más otra mensualidad adicional "por mascota", eso es perfectamente válido. Pero si exige 1 + 3 mensualidades, la tercera mensualidad excede el límite legal y no estarías obligado a pagarla.</p>
+
+    <!-- SECCIÓN 5 -->
+    <h2 class="reveal">Los estatutos de la Comunidad: <span>¿mandan sobre tu contrato?</span></h2>
+
+    <p class="reveal">Este es el escenario más complejo. Los estatutos de la comunidad de propietarios pueden contener normas sobre animales en el edificio. ¿Prevalecen sobre tu contrato de alquiler?</p>
+
+    <div class="warn-box reveal">
+      <p class="warn-title">La situación legal: dos planos distintos</p>
+      <p>Los estatutos de la comunidad vinculan al <strong>propietario</strong> como comunero. Si los estatutos prohíben animales y el propietario te ha arrendado el piso permitiéndotelos, es el propietario quien puede estar incumpliendo frente a la comunidad, no necesariamente tú de forma directa. Sin embargo, si la comunidad adopta medidas (requerimiento, acción judicial) por los animales del piso, el propietario puede trasladar esa presión a ti argumentando que infringes normas de convivencia. En la práctica, si los estatutos de la comunidad prohíben animales, el propietario raramente permitirá mascotas en el contrato.</p>
+    </div>
+
+    <p class="reveal">Existe jurisprudencia del Tribunal Supremo que ha declarado nulas cláusulas de estatutos comunitarios que prohíben de forma genérica cualquier tipo de animal, al considerar que una prohibición tan amplia puede vulnerar el derecho a la intimidad personal y familiar. No obstante, restricciones razonables (por ejemplo, prohibición de animales que generen ruidos o molestias) sí han sido validadas.</p>
+
+    <blockquote class="reveal">
+      "Los arrendamientos de vivienda se regirán por los pactos, cláusulas y condiciones determinados por la voluntad de las partes, en el marco de lo establecido en el Título II de la presente ley."
+      <cite>Artículo 4.2, Ley de Arrendamientos Urbanos (LAU)</cite>
+    </blockquote>
+
+    <div class="article-tags reveal">
+      <a class="tag" href="#">Alquiler</a>
+      <a class="tag" href="#">Mascotas</a>
+      <a class="tag" href="#">Ley de Bienestar Animal</a>
+      <a class="tag" href="#">LAU</a>
+      <a class="tag" href="#">Fianza</a>
+      <a class="tag" href="#">Comunidad de propietarios</a>
+      <a class="tag" href="#">Derechos del inquilino</a>
+    </div>
+  </main>
+
+  <section class="article-cta">
+    <div class="cta-box reveal">
+      <h3>¿Tu contrato prohíbe mascotas y no sabes <em>qué puedes hacer</em>?</h3>
+      <p>Cuéntanos qué dice exactamente tu contrato y te analizamos si esa cláusula es válida o tiene fisuras.</p>
+      <a class="btn btn-primary" href="../consultas.html">Hacer mi consulta ahora →</a>
+    </div>
+  </section>
+
+  <footer>2026 OpenLexIura · El derecho para ciudadanos</footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }), { threshold: .10 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    const cursorRing = document.createElement('div'); cursorRing.className = 'cursor-ring';
+    const cursorDot = document.createElement('div'); cursorDot.className = 'cursor-dot';
+    document.body.appendChild(cursorRing); document.body.appendChild(cursorDot);
+    document.body.style.cursor = 'none'; document.documentElement.style.cursor = 'none';
+    let mx=0,my=0,rx=0,ry=0;
+    window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursorRing.style.opacity=1; cursorDot.style.opacity=1; });
+    window.addEventListener('mouseleave', () => { cursorRing.style.opacity=0; cursorDot.style.opacity=0; });
+    window.addEventListener('mouseenter', () => { cursorRing.style.opacity=1; cursorDot.style.opacity=1; });
+    function follow() {
+      rx += (mx-rx)*.55; ry += (my-ry)*.55;
+      cursorRing.style.left=rx+'px'; cursorRing.style.top=ry+'px';
+      cursorDot.style.left=mx+'px'; cursorDot.style.top=my+'px';
+      requestAnimationFrame(follow);
+    }
+    document.querySelectorAll('a,button,input').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursorRing.style.transform='translate(-50%,-50%) scale(1.28)'; cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px'; cursorRing.style.background='rgba(74,222,128,.09)'; });
+      el.addEventListener('mouseleave', () => { cursorRing.style.transform='translate(-50%,-50%) scale(1)'; cursorRing.style.borderRadius='50%'; cursorRing.style.background='transparent'; });
+    });
+    follow();
+  </script>
+</body>
+</html>
