@@ -65,7 +65,7 @@ nav.scrolled{
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(37,99,235,.14), 0 10px 24px rgba(0,0,0,.2)}
 .hero{
   position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
-  padding:7rem 1.5rem 5rem;overflow:hidden;
+  padding:7rem 1.5rem 5rem;overflow:visible;
 }
 .hero::before,
 .hero::after{
@@ -107,7 +107,8 @@ h1 em{font-style:italic;color:var(--brand)}
 .btn-secondary{background:#ffffff;color:var(--text)}
 .btn-secondary:hover{transform:translateY(-2px);border-color:rgba(37,99,235,.34)}
 .search{
-  margin-top:1rem;position:relative;max-width:610px;animation:rise .9s ease both .48s
+  margin-top:1rem;position:relative;max-width:610px;animation:rise .9s ease both .48s;
+  z-index:500;
 }
 .search input{
   width:100%;padding:1.15rem 1.25rem 1.15rem 3.4rem;border-radius:18px;
