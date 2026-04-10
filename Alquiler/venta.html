@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Venta del piso alquilado: tus derechos como inquilino | OpenLexIura</title>
+  <meta name="description" content="El casero pone el piso a la venta. ¿Te tienes que ir? No. Explicamos la subrogación del comprador, el derecho de tanteo y retracto y si estás obligado a dejar entrar a compradores.">
+  <link rel="icon" type="image/jpeg" href="../Icono.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf4f7;
+      --bg-2: #f7eef3;
+      --text: #1f2937;
+      --muted: #64748b;
+      --brand: #9d174d;
+      --brand-dark: #831843;
+      --brand-light: #f472b6;
+      --line: rgba(157,23,77,.14);
+      --line-2: rgba(15,23,42,.08);
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --radius: 24px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(157,23,77,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,23,42,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(157,23,77,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+    nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(157,23,77,.10)}
+    .nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+    .nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(157,23,77,.22),0 10px 30px rgba(0,0,0,.35)}
+    .nav-links{display:flex;align-items:center;gap:1.4rem}
+    .nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+    .nav-links a:hover{color:var(--brand)}
+    .nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(157,23,77,.22);border-radius:999px;background:linear-gradient(180deg,rgba(157,23,77,.10),rgba(157,23,77,.05))}
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(157,23,77,.14),0 10px 24px rgba(0,0,0,.2)}
+
+    .article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:1}
+    .article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(157,23,77,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+    .cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(157,23,77,.20);background:rgba(157,23,77,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+    .cat-pill::before{content:'●';color:var(--brand)}
+    .article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+    .article-title em{font-style:italic;color:var(--brand)}
+    .article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+    .article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+    .article-meta span{display:flex;align-items:center;gap:.35rem}
+    .meta-sep{color:rgba(15,23,42,.18)}
+    .meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+    .art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+
+    .article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+    .article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+    .article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+    .article-body h2 span{color:var(--brand);font-style:italic}
+    .article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem}
+    .article-body strong{font-weight:700;color:#111827}
+    .article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(157,23,77,.25);transition:.2s ease}
+    .article-body a:hover{border-bottom-color:var(--brand)}
+    .article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+    .article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+    .article-body ul li::before{content:'▸';color:var(--brand);position:absolute;left:-1rem}
+
+    .quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#9d174d,#f472b6);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(157,23,77,.30)}
+    .quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+    .quick-answer .qa-label::before{content:'⚡'}
+    .quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+    .quick-answer strong{color:#fff;font-weight:700}
+
+    .info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff1f5);border:1px solid rgba(157,23,77,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+    .info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .info-box .info-title::before{content:'⚖️';width:28px;height:28px;border-radius:50%;background:rgba(157,23,77,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+    .info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+
+    .juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .juris-box .juris-title::before{content:'📋';font-size:.95rem}
+    .juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+
+    .warn-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:1px solid rgba(234,88,12,.20);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .warn-box .warn-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#9a3412;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .warn-box .warn-title::before{content:'⚠️';font-size:.95rem}
+    .warn-box p{margin-bottom:0;font-size:1rem;color:#7c2d12;line-height:1.75}
+
+    .article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(157,23,77,.06),rgba(157,23,77,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic}
+    .article-body blockquote cite{display:block;margin-top:.6rem;font-family:Inter,sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+
+    .summary-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+    .summary-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem}
+    .summary-table th:first-child{background:linear-gradient(135deg,#831843,#f472b6);color:#fff}
+    .summary-table th:last-child{background:linear-gradient(135deg,#1e3a5f,#6366f1);color:#fff}
+    .summary-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6}
+    .summary-table tr:nth-child(even) td:first-child{background:rgba(157,23,77,.04)}
+    .summary-table tr:nth-child(even) td:last-child{background:rgba(99,102,241,.04)}
+    .summary-table tr:last-child td{border-bottom:none}
+
+    .article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+    .article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff1f5);border:1px solid rgba(157,23,77,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    .step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#9d174d,#f472b6);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+    .step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+    .step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+
+    .article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+    .tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+    .tag:hover{border-color:rgba(157,23,77,.34);color:var(--brand)}
+
+    .article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+    .cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,241,245,.94));border:1px solid rgba(157,23,77,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+    .cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+    .cta-box h3 em{font-style:italic;color:var(--brand)}
+    .cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(157,23,77,.18);font-weight:600;transition:.25s ease;font-family:Inter,sans-serif}
+    .btn-primary{background:linear-gradient(135deg,#9d174d,#f472b6);color:#fff !important;box-shadow:0 16px 40px rgba(157,23,77,.35)}
+    .btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(157,23,77,.28)}
+
+    footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    .cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(157,23,77,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(244,114,182,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+    .cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#9d174d;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(157,23,77,.75)}
+
+    @media(max-width:640px){
+      nav{padding:1rem 1.1rem}
+      .nav-links{display:none}
+      .article-hero{padding:7.5rem 1.2rem 3rem}
+      .article-body{padding:2.5rem 1.2rem 4rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <nav id="nav">
+    <a class="nav-logo" href="../index.html">
+      <img src="Icono.png" alt="OpenLexIura">
+      <span>OpenLexIura</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Inicio</a>
+      <a href="../consultas.html">Consultas</a>
+      <a class="nav-cta" href="../portal.html">Acceder al portal</a>
+    </div>
+  </nav>
+
+  <header class="article-hero">
+    <div class="cat-pill">Alquiler · Venta del inmueble</div>
+    <h1 class="article-title">El miedo<br>a <em>la calle</em></h1>
+    <p class="article-lead">Tu casero pone el piso a la venta. Que no cunda el pánico: tu contrato sigue vivo, el nuevo dueño pasa a ser tu casero y tienes derechos que muy pocos conocen</p>
+    <div class="article-meta">
+      <span><strong>OpenLexIura</strong></span>
+      <span class="meta-sep">·</span>
+      <span>2026</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">10 min de lectura</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">Alquiler</span>
+    </div>
+    <div class="art-divider"></div>
+  </header>
+
+  <main class="article-body">
+
+    <div class="quick-answer">
+      <div class="qa-label">Respuesta rápida</div>
+      <p>Si el piso se vende mientras vives en él, <strong>no tienes que irte</strong>. El comprador se convierte en tu nuevo casero y debe respetar tu contrato hasta que se cumplan los <strong>5 años de duración legal</strong> (7 si el anterior propietario era una empresa). Además, tienes <strong>derecho preferente de compra</strong>, salvo que lo hayas renunciado en el contrato.</p>
+    </div>
+
+    <!-- SECCIÓN 1 -->
+    <h2><span>1.</span> Que no cunda el pánico: <span>tu contrato sigue vivo</span></h2>
+    <p>El mensaje del casero anunciando que pone el piso a la venta genera un pánico instintivo. Mucha gente cree que la venta extingue automáticamente el contrato de alquiler. Es uno de los mitos jurídicos más extendidos en España y es <strong>completamente falso</strong>.</p>
+
+    <div class="info-box">
+      <div class="info-title">La Ley en la mano — Artículo 14 LAU</div>
+      <p>«El adquirente de una vivienda arrendada <strong>quedará subrogado en los derechos y obligaciones del arrendador</strong> durante los cinco primeros años de vigencia del contrato, o siete años si el arrendador anterior fuese persona jurídica, aun cuando concurran en él los requisitos del artículo 34 de la Ley Hipotecaria.»</p>
+    </div>
+
+    <p>La palabra clave es <strong>subrogación</strong>: el comprador «hereda» la posición jurídica del vendedor. Desde el mismo día en que firma la escritura de compraventa, el nuevo propietario pasa a ser tu arrendador con todas las consecuencias. Debe respetar la renta pactada, los plazos, las cláusulas y todos los derechos que tenías reconocidos frente al anterior dueño.</p>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Situación</th>
+          <th>¿Qué pasa con el contrato?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Venta durante los primeros 5 años (casero persona física)</td>
+          <td>El comprador se subroga obligatoriamente y debe respetar el contrato hasta cumplir los 5 años.</td>
+        </tr>
+        <tr>
+          <td>Venta durante los primeros 7 años (casero empresa)</td>
+          <td>El comprador se subroga obligatoriamente hasta los 7 años.</td>
+        </tr>
+        <tr>
+          <td>Contrato inscrito en el Registro de la Propiedad</td>
+          <td>El comprador respeta el contrato por toda su duración pactada, sin límite de los 5/7 años.</td>
+        </tr>
+        <tr>
+          <td>Contrato con cláusula de extinción por venta</td>
+          <td>Sigue sin poder echarte antes del mínimo legal de 5/7 años. El comprador solo tiene que soportar ese plazo mínimo.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SECCIÓN 2 -->
+    <h2><span>2.</span> El desfile de compradores: <span>¿estás obligado a abrir la puerta?</span></h2>
+    <p>Una vez que el piso sale al mercado, la siguiente presión son las visitas. El casero —o la agencia— llama para decirte que «van a venir unos compradores». Aquí muchos inquilinos ceden sin saber que tienen todo el derecho a negarse.</p>
+
+    <p>La <strong>inviolabilidad del domicilio</strong> está protegida por el Artículo 18.2 de la Constitución Española con rango de derecho fundamental. Tu piso alquilado es tu domicilio mientras dure el contrato, y nadie —ni el propietario, ni una agencia inmobiliaria, ni potenciales compradores— puede entrar sin tu consentimiento expreso.</p>
+
+    <div class="juris-box">
+      <div class="juris-title">¿Qué dice la jurisprudencia?</div>
+      <p>Los tribunales han confirmado de forma reiterada que el inquilino <strong>no tiene obligación legal de facilitar visitas</strong> de compradores al inmueble que habita. La única vía para acceder sin consentimiento sería una resolución judicial, que en la práctica nunca se concede para este fin. Si la agencia o el propietario insisten y crean un ambiente hostil, puede constituir <strong>acoso inmobiliario</strong>, tipificado expresamente en el Artículo 6.2.c de la Ley 12/2023.</p>
+    </div>
+
+    <p>Dicho esto, nada impide llegar a un <strong>acuerdo voluntario</strong>. Es perfectamente lícito negociar una compensación económica —una rebaja temporal en la renta, el pago de algún gasto— a cambio de facilitar las visitas en horarios acordados. Muchos inquilinos consiguen mejoras en su contrato o incluso acceso preferente a la compra por esta vía.</p>
+
+    <div class="warn-box">
+      <div class="warn-title">Si decides facilitar las visitas, ponlo por escrito</div>
+      <p>Fija por escrito el número máximo de visitas por semana, el aviso previo mínimo (recomendable 48 horas), que siempre irán acompañadas por el agente (nunca visita libre) y la compensación económica pactada. Un correo electrónico con confirmación del casero sirve como prueba válida ante cualquier disputa posterior.</p>
+    </div>
+
+    <!-- SECCIÓN 3 -->
+    <h2><span>3.</span> Tu derecho preferente: <span>tanteo y retracto</span></h2>
+    <p>Aquí viene uno de los derechos más poderosos —y más desconocidos— que tienes como inquilino. Si el piso se pone a la venta, la ley te da la opción de comprarlo <strong>tú primero, antes que cualquier inversor</strong>, y exactamente al mismo precio.</p>
+
+    <h3>Derecho de tanteo: la primera oportunidad</h3>
+    <p>Cuando el casero decida vender, está obligado a notificarte la intención de venta, el precio y todas las condiciones esenciales de la operación de forma <strong>fehaciente</strong> (burofax, notario o cualquier medio que deje constancia). Desde ese momento, tienes <strong>30 días naturales</strong> para ejercer tu derecho de tanteo y comprar tú el piso en esas mismas condiciones.</p>
+
+    <div class="info-box">
+      <div class="info-title">La Ley en la mano — Artículo 25.2 LAU</div>
+      <p>«El arrendatario podrá ejercitar un derecho de tanteo sobre la finca arrendada en un plazo de <strong>treinta días naturales</strong>, a contar desde el siguiente en que se le notifique en forma fehaciente la decisión de vender la finca arrendada, el precio y las demás condiciones esenciales de la transmisión. Los efectos de la notificación caducará a los ciento ochenta días naturales siguientes a la misma.»</p>
+    </div>
+
+    <h3>Derecho de retracto: la segunda oportunidad</h3>
+    <p>¿Y si el casero vendió el piso sin avisarte, o te notificó condiciones distintas a las que finalmente pactó con el comprador? La ley te da una segunda bala: el <strong>derecho de retracto</strong>. Tienes <strong>30 días</strong> desde que el nuevo propietario te notifica las condiciones reales de la compraventa para obligar a que te vendan el piso a ti, en lugar del comprador, en esas mismas condiciones.</p>
+
+    <blockquote>
+      «Podrá el arrendatario ejercitar el derecho de retracto […] cuando no se le hubiese hecho la notificación prevenida o se hubiese omitido en ella cualquiera de los requisitos exigidos, así como cuando resultase inferior el precio efectivo de la compraventa o menos onerosas sus restantes condiciones esenciales.»
+      <cite>— Artículo 25.3 LAU</cite>
+    </blockquote>
+
+    <div class="juris-box">
+      <div class="juris-title">Preferencia sobre otros derechos de adquisición</div>
+      <p>El derecho de tanteo o retracto del arrendatario tiene <strong>preferencia sobre cualquier otro derecho similar</strong>, con dos excepciones: el retracto reconocido al condueño de la vivienda y el retracto convencional que estuviese inscrito en el Registro de la Propiedad al tiempo de celebrarse el contrato de arrendamiento (Artículo 25.4 LAU).</p>
+    </div>
+
+    <!-- SECCIÓN 4 -->
+    <h2><span>4.</span> La cláusula trampa: <span>¿renunciaste sin saberlo?</span></h2>
+    <p>Aquí viene la parte que enfada a mucha gente cuando la descubre. La LAU permite que en el propio contrato de alquiler se incluya una cláusula por la que el inquilino <strong>renuncia expresamente</strong> al derecho de tanteo y retracto. Y es completamente legal.</p>
+
+    <div class="info-box">
+      <div class="info-title">La Ley en la mano — Artículo 25.8 LAU</div>
+      <p>«No obstante lo establecido en los apartados anteriores, las partes podrán pactar la <strong>renuncia del arrendatario al derecho de adquisición preferente</strong>. En los casos en los que se haya pactado dicha renuncia, el arrendador deberá comunicar al arrendatario su intención de vender la vivienda con una antelación mínima de <strong>treinta días</strong> a la fecha de formalización del contrato de compraventa.»</p>
+    </div>
+
+    <p>En la práctica, la inmensa mayoría de los contratos redactados por agencias inmobiliarias o grandes propietarios incluyen esta renuncia en algún párrafo del contrato, normalmente en el bloque de cláusulas adicionales y redactado en letra pequeña. Si firmaste una cláusula similar, tu derecho de tanteo y retracto <strong>ya no existe</strong>. Pero hay un matiz importante: incluso habiendo renunciado, el casero sigue obligado a avisarte con 30 días de antelación antes de firmar la escritura.</p>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Busca en tu contrato estas palabras clave</strong>
+          <p>Abre tu contrato y busca las expresiones: «renuncia», «adquisición preferente», «tanteo», «retracto». Si aparecen en una cláusula que hayas firmado, es muy probable que hayas cedido ese derecho.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>¿No aparece ninguna cláusula de renuncia? Tienes el derecho intacto</strong>
+          <p>Si tras revisar el contrato no localizas ninguna renuncia expresa, tus derechos de tanteo y retracto están completamente vigentes. Si el casero vende sin notificarte correctamente, puedes impugnar la venta ante los tribunales.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Aunque hayas renunciado, tienes un preaviso obligatorio de 30 días</strong>
+          <p>El Artículo 25.8 impone al casero avisarte con al menos 30 días de antelación antes de firmar la escritura de compraventa. Ese margen te permite prepararte o, si decides comprar, iniciar las gestiones de financiación con tiempo.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Venta conjunta del edificio completo: excepción importante</strong>
+          <p>El derecho de tanteo y retracto <strong>no aplica</strong> cuando la vivienda se vende conjuntamente con el resto de viviendas del inmueble que pertenecen al mismo propietario, ni cuando varios propietarios distintos venden de forma conjunta la totalidad de los pisos y locales del edificio a un mismo comprador (Artículo 25.7 LAU). En esos casos, el derecho de adquisición preferente puede corresponder a la Administración competente.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="article-tags">
+      <span class="tag">#VentaPisoAlquilado</span>
+      <span class="tag">#Artículo14LAU</span>
+      <span class="tag">#Artículo25LAU</span>
+      <span class="tag">#DerechoDeTanteo</span>
+      <span class="tag">#DerechoDeRetracto</span>
+      <span class="tag">#Subrogación</span>
+      <span class="tag">#InviolabilidadDomicilio</span>
+      <span class="tag">#LeyVivienda2023</span>
+    </div>
+
+  </main>
+
+  <section class="article-cta">
+    <div class="cta-box">
+      <h3>¿Tu casero acaba de anunciar <em>que vende el piso</em>?</h3>
+      <p>Revisamos tu contrato para ver si tienes derecho de tanteo o si lo renunciaste, y te asesoramos sobre tus opciones reales antes de que sea demasiado tarde.</p>
+      <a href="../consultas.html" class="btn btn-primary">Consultar mi caso →</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 OpenLexIura · Información legal divulgativa. No constituye asesoramiento jurídico individualizado.</p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    const ring = document.querySelector('.cursor-ring');
+    const dot = document.querySelector('.cursor-dot');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+    function animRing() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); }
+    animRing();
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
