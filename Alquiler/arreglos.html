@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Pequeños arreglos: el límite del desgaste diario | OpenLexIura</title>
+  <meta name="description" content="¿Quién paga cuando se rompe un grifo, se funde una bombilla o se atasca el fregadero? El Artículo 21.4 de la LAU y la jurisprudencia lo explican con claridad.">
+  <link rel="icon" type="image/jpeg" href="../Icono.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4faf5;
+      --bg-2: #ecf7ee;
+      --text: #1f2937;
+      --muted: #64748b;
+      --brand: #16a34a;
+      --brand-dark: #15803d;
+      --brand-light: #4ade80;
+      --line: rgba(22,163,74,.14);
+      --line-2: rgba(15,42,23,.08);
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --radius: 24px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(22,163,74,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,42,23,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(22,163,74,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+    nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(22,163,74,.10)}
+    .nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+    .nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(22,163,74,.22),0 10px 30px rgba(0,0,0,.35)}
+    .nav-links{display:flex;align-items:center;gap:1.4rem}
+    .nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+    .nav-links a:hover{color:var(--brand)}
+    .nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(22,163,74,.22);border-radius:999px;background:linear-gradient(180deg,rgba(22,163,74,.10),rgba(22,163,74,.05))}
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(22,163,74,.14),0 10px 24px rgba(0,0,0,.2)}
+
+    .article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative}
+    .article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(22,163,74,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+    .article-hero{position:relative;z-index:1}
+    .cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(22,163,74,.20);background:rgba(22,163,74,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+    .cat-pill::before{content:'●';width:7px;height:7px;border-radius:50%;color:var(--brand)}
+    .article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+    .article-title em{font-style:italic;color:var(--brand)}
+    .article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+    .article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+    .article-meta span{display:flex;align-items:center;gap:.35rem}
+    .meta-sep{color:rgba(15,23,42,.18)}
+    .meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+    .art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+
+    .article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+    .article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+    .article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+    .article-body h2 span{color:var(--brand);font-style:italic}
+    .article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem}
+    .article-body strong{font-weight:700;color:#111827}
+    .article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(22,163,74,.25);transition:.2s ease}
+    .article-body a:hover{border-bottom-color:var(--brand)}
+    .article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+    .article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+    .article-body ul li::before{content:'▸';color:var(--brand);position:absolute;left:-1rem}
+
+    .quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(22,163,74,.30)}
+    .quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+    .quick-answer .qa-label::before{content:'⚡'}
+    .quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+    .quick-answer strong{color:#fff;font-weight:700}
+
+    .info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fff4);border:1px solid rgba(22,163,74,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+    .info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .info-box .info-title::before{content:'⚖️';width:28px;height:28px;border-radius:50%;background:rgba(22,163,74,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+    .info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+
+    .juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .juris-box .juris-title::before{content:'📋';font-size:.95rem}
+    .juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+
+    .warn-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:1px solid rgba(234,88,12,.20);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .warn-box .warn-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#9a3412;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .warn-box .warn-title::before{content:'⚠️';font-size:.95rem}
+    .warn-box p{margin-bottom:0;font-size:1rem;color:#7c2d12;line-height:1.75}
+
+    .article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(22,163,74,.06),rgba(22,163,74,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic}
+    .article-body blockquote cite{display:block;margin-top:.6rem;font-family:Inter,sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+
+    .summary-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+    .summary-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem}
+    .summary-table th:first-child{background:linear-gradient(135deg,#15803d,#4ade80);color:#fff}
+    .summary-table th:last-child{background:linear-gradient(135deg,#1e3a5f,#3b82f6);color:#fff}
+    .summary-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6}
+    .summary-table tr:nth-child(even) td:first-child{background:rgba(22,163,74,.04)}
+    .summary-table tr:nth-child(even) td:last-child{background:rgba(37,99,235,.04)}
+    .summary-table tr:last-child td{border-bottom:none}
+
+    .article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+    .article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fff4);border:1px solid rgba(22,163,74,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    .step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+    .step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+    .step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+
+    .article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+    .tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+    .tag:hover{border-color:rgba(22,163,74,.34);color:var(--brand)}
+
+    .article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+    .cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(240,255,244,.94));border:1px solid rgba(22,163,74,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+    .cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+    .cta-box h3 em{font-style:italic;color:var(--brand)}
+    .cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(22,163,74,.18);font-weight:600;transition:.25s ease;font-family:Inter,sans-serif}
+    .btn-primary{background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff !important;box-shadow:0 16px 40px rgba(22,163,74,.35)}
+    .btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(22,163,74,.28)}
+
+    footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    .cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(22,163,74,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(74,222,128,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+    .cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#16a34a;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(22,163,74,.75)}
+
+    @media(max-width:640px){
+      nav{padding:1rem 1.1rem}
+      .nav-links{display:none}
+      .article-hero{padding:7.5rem 1.2rem 3rem}
+      .article-body{padding:2.5rem 1.2rem 4rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <nav id="nav">
+    <a class="nav-logo" href="../index.html">
+      <img src="Icono.jpg" alt="OpenLexIura">
+      <span>OpenLexIura</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Inicio</a>
+      <a href="../consultas.html">Consultas</a>
+      <a class="nav-cta" href="../portal.html">Acceder al portal</a>
+    </div>
+  </nav>
+
+  <header class="article-hero">
+    <div class="cat-pill">Alquiler · Reparaciones y Mantenimiento</div>
+    <h1 class="article-title">Pequeños arreglos:<br><em>el límite del desgaste diario</em></h1>
+    <p class="article-lead">El casero no es el servicio técnico de un hotel. Pero tampoco puedes pasarle la factura de todo. El Artículo 21.4 de la LAU y los jueces trazan la línea</p>
+    <div class="article-meta">
+      <span><strong>OpenLexIura</strong></span>
+      <span class="meta-sep">·</span>
+      <span>2026</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">7 min de lectura</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">Alquiler</span>
+    </div>
+    <div class="art-divider"></div>
+  </header>
+
+  <main class="article-body">
+
+    <!-- RESPUESTA RÁPIDA -->
+    <div class="quick-answer reveal">
+      <div class="qa-label">Respuesta rápida</div>
+      <p>Las <strong>pequeñas reparaciones por desgaste ordinario</strong> las paga el inquilino (Art. 21.4 LAU). La jurisprudencia sitúa el umbral orientativo en reparaciones <strong>inferiores a 150 €</strong>, aunque los tribunales también atienden a si el coste supera el 50 % de la renta mensual o el 50 % del valor de reposición del bien. Si la avería es de mayor calado o afecta a la habitabilidad, la obligación recae sobre el arrendador.</p>
+    </div>
+
+    <p class="reveal">Muchos conflictos entre inquilinos y propietarios nacen de una confusión muy concreta: ¿quién llama al fontanero cuando gotea el grifo? La respuesta no es siempre la misma. La Ley de Arrendamientos Urbanos traza una línea clara, aunque corta. Son los jueces quienes, décadas de sentencias mediante, han dotado de contenido práctico a ese límite.</p>
+
+    <!-- SECCIÓN 1 -->
+    <h2 class="reveal">El Artículo 21.4 LAU: <span>la regla del desgaste</span></h2>
+
+    <p class="reveal">La LAU distingue con precisión dos tipos de reparaciones según quién deba afrontarlas. El artículo 21.1 impone al arrendador la obligación de mantener la vivienda en condiciones de habitabilidad. Pero el apartado 4 introduce una excepción directa a cargo del inquilino.</p>
+
+    <div class="info-box reveal">
+      <p class="info-title">La Ley en la mano — Artículo 21.4 LAU</p>
+      <p><strong>«Las pequeñas reparaciones que exija el desgaste por el uso ordinario de la vivienda serán de cargo del arrendatario.»</strong><br><br>Ley de Arrendamientos Urbanos (LAU), texto consolidado. Este precepto es imperativo: no puede eliminarse por contrato en perjuicio del inquilino, pero sí puede concretarse mediante pacto expreso que fije un importe máximo orientativo.</p>
+    </div>
+
+    <p class="reveal">La lógica es sencilla: el casero entregó la vivienda en buen estado. El desgaste que genera el simple hecho de vivir —abrir y cerrar grifos, tirar de persianas, encender luces— es previsible y forma parte del uso. Esos pequeños deterioros los asume quien usa, es decir, el inquilino.</p>
+
+    <!-- SECCIÓN 2 -->
+    <h2 class="reveal">La frontera del dinero: <span>¿cuándo deja de ser «pequeño»?</span></h2>
+
+    <p class="reveal">La LAU no pone cifras. La palabra "pequeña" es un concepto jurídico indeterminado que ha tenido que ser rellenado, caso a caso, por la jurisprudencia. Los tribunales españoles han construido una doctrina que atiende a cuatro criterios de forma combinada:</p>
+
+    <div class="juris-box reveal">
+      <p class="juris-title">Los cuatro criterios judiciales</p>
+      <p><strong>1. Importe absoluto:</strong> La mayoría de las Audiencias Provinciales consideran «pequeña reparación» toda aquella cuyo coste sea inferior a <strong>150 €</strong>. Algunas sentencias anteriores fijaban ese umbral en 120-125 €, aunque la tendencia reciente lo eleva ligeramente.<br><br>
+      <strong>2. Relación con la renta:</strong> Si el coste de la reparación no supera el 50 % de la mensualidad de alquiler, varios tribunales lo catalogan automáticamente como pequeño arreglo a cargo del inquilino (Audiencia Provincial de Madrid, 2004).<br><br>
+      <strong>3. Relación con el valor de reposición:</strong> Si reparar cuesta menos de la mitad de lo que costaría comprar el bien nuevo, la reparación es «pequeña» independientemente de la cifra absoluta.<br><br>
+      <strong>4. Naturaleza del bien:</strong> Existe una categoría de objetos que los jueces consideran de mantenimiento ordinario casi de forma automática: grifos, cisternas, persianas, bombillas, cerraduras de uso diario.</p>
+    </div>
+
+    <p class="reveal">El criterio económico de los 150 € no es un límite legal escrito, sino doctrina jurisprudencial consolidada. Esto significa que un juez podría apartarse de él si las circunstancias del caso lo justifican, aunque en la práctica ese umbral actúa como una presunción fuerte a favor del propietario.</p>
+
+    <div class="warn-box reveal">
+      <p class="warn-title">Importante: el pacto en contrato</p>
+      <p>Las partes pueden acordar expresamente en el contrato que las reparaciones de hasta un importe concreto —habitualmente entre 100 y 150 €— serán siempre de cargo del inquilino. Este pacto es perfectamente válido y dota de seguridad jurídica a ambas partes, evitando disputas sobre si algo es o no un «pequeño arreglo». Si tu contrato lo incluye, ese límite pactado prevalece sobre la doctrina general.</p>
+    </div>
+
+    <!-- SECCIÓN 3 -->
+    <h2 class="reveal">Lista práctica: <span>¿qué paga el inquilino?</span></h2>
+
+    <p class="reveal">La jurisprudencia ha ido depurando un catálogo de reparaciones que, salvo pacto en contrario o prueba de defecto preexistente, se consideran de mantenimiento ordinario y recaen sobre el arrendatario:</p>
+
+    <table class="summary-table reveal">
+      <thead>
+        <tr>
+          <th>✅ Paga el Inquilino</th>
+          <th>❌ Paga el Propietario</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cambiar bombillas y fluorescentes fundidos</td>
+          <td>Avería del cuadro eléctrico o instalación</td>
+        </tr>
+        <tr>
+          <td>Cinta o mecanismo de persiana rota por uso</td>
+          <td>Motor de persiana eléctrica averiado</td>
+        </tr>
+        <tr>
+          <td>Goma o junta de grifo que gotea</td>
+          <td>Rotura de tubería empotrada</td>
+        </tr>
+        <tr>
+          <td>Desatascar el fregadero o WC por uso</td>
+          <td>Obstrucción grave de la instalación general</td>
+        </tr>
+        <tr>
+          <td>Tirador o manilla de puerta interior rota</td>
+          <td>Puerta exterior o de seguridad deteriorada</td>
+        </tr>
+        <tr>
+          <td>Goma de escotilla o cajón de lavadora</td>
+          <td>Avería del motor o componente eléctrico del electrodoméstico</td>
+        </tr>
+        <tr>
+          <td>Bombín de cerradura desgastado por uso</td>
+          <td>Cerradura de alta seguridad de la puerta principal</td>
+        </tr>
+        <tr>
+          <td>Elemento de sellado de ducha (silicona)</td>
+          <td>Obra de impermeabilización por humedad estructural</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="reveal">Esta tabla no es exhaustiva ni vinculante: cada caso puede variar según la antigüedad del elemento, el tiempo de uso por parte del inquilino y las condiciones en que se entregó la vivienda. El inventario del estado del piso al inicio del contrato es, en este sentido, tu mejor aliado.</p>
+
+    <!-- SECCIÓN 4 -->
+    <h2 class="reveal">El límite del tiempo: <span>¿y si llevas dos meses?</span></h2>
+
+    <p class="reveal">Aquí la jurisprudencia es especialmente valiosa. Una persiana que se rompe a los dos meses de entrar a vivir genera una duda razonable: ¿se rompió por mi uso o ya venía mal? Un tribunal andaluz lo resumió con precisión en 2019:</p>
+
+    <blockquote class="reveal">
+      «Si la duración efectiva del uso ha sido muy corta, sólo seis meses, los bienes instalados desde hace años han podido ser utilizados por otros inquilinos anteriores con el correspondiente desgaste acumulado que no resultaría admisible trasladar al último.»
+      <cite>— Audiencia Provincial de Toledo (Sección 1ª), sentencia 27.03.2019</cite>
+    </blockquote>
+
+    <p class="reveal">El principio que aplican los jueces es el de <strong>proporcionalidad entre tiempo de uso y desgaste razonable</strong>. Si la pieza en cuestión es relativamente nueva o el inquilino lleva poco tiempo, la carga de la prueba se desplaza hacia el propietario, que deberá acreditar que el deterioro fue provocado por mal uso y no por el simple paso del tiempo o por un defecto preexistente.</p>
+
+    <div class="juris-box reveal">
+      <p class="juris-title">La regla práctica del sentido común</p>
+      <p>Antes de asumir el coste de cualquier reparación, hazte estas preguntas:<br><br>
+      <strong>¿Cuánto tiempo llevas en el piso?</strong> Si es menos de seis meses y el elemento falla, documenta el problema con fotos y comunícaselo al propietario por escrito (WhatsApp con confirmación de lectura sirve).<br><br>
+      <strong>¿Estaba en buen estado cuando entraste?</strong> El inventario inicial es clave. Si no hiciste uno, la ley presume que recibiste el piso en buen estado (Art. 1562 Código Civil), pero tú puedes rebatirlo con prueba en contrario.<br><br>
+      <strong>¿Supera los 150 € o el 50 % de tu renta?</strong> Si es así, comunícalo al propietario y solicita que actúe él. Hazlo siempre por escrito.</p>
+    </div>
+
+    <h3 class="reveal">El protocolo correcto ante una avería</h3>
+
+    <ol class="steps reveal">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Documenta el estado</strong>
+          <p>Fotografía o graba en vídeo el desperfecto en cuanto aparezca. Fecha y hora de los archivos multimedia son tu prueba más sólida.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Comunica al propietario por escrito</strong>
+          <p>Art. 21.3 LAU: tienes obligación legal de avisar al casero en el plazo más breve posible. Hazlo por escrito (email, burofax o WhatsApp con lectura). Guarda el mensaje.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Valora si es urgente</strong>
+          <p>Si hay peligro inminente o incomodidad grave (fuga de agua, sin calefacción en invierno), el Art. 21.3 LAU te permite actuar de inmediato y reclamar el importe al propietario. Guarda siempre la factura.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Determina quién debe pagar</strong>
+          <p>Aplica los criterios: ¿menos de 150 €? ¿Desgaste ordinario? ¿Llevas más de un año? Si la respuesta a las tres es sí, es tu cargo. En caso de duda, solicita siempre el criterio del propietario por escrito antes de pagar.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="article-tags">
+      <span class="tag">LAU</span>
+      <span class="tag">Artículo 21</span>
+      <span class="tag">Reparaciones</span>
+      <span class="tag">Desgaste ordinario</span>
+      <span class="tag">Jurisprudencia</span>
+      <span class="tag">Derechos del inquilino</span>
+      <span class="tag">Alquiler</span>
+    </div>
+
+  </main>
+
+  <section class="article-cta">
+    <div class="cta-box">
+      <h3>¿Tienes dudas sobre <em>tu caso concreto</em>?</h3>
+      <p>En OpenLexIura analizamos tu situación, revisamos tu contrato y te explicamos exactamente qué dice la ley sobre quién debe pagar cada reparación.</p>
+      <a href="../consultas.html" class="btn btn-primary">Consultar mi caso →</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 OpenLexIura · Información jurídica para inquilinos · No constituye asesoramiento legal individualizado</p>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    reveals.forEach(r => io.observe(r));
+
+    // Cursor
+    const ring = document.querySelector('.cursor-ring');
+    const dot = document.querySelector('.cursor-dot');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+    (function loop() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(loop); })();
+    document.querySelectorAll('a,button').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderRadius = '50%'; });
+      el.addEventListener('mouseleave', () => { ring.style.width = '18px'; ring.style.height = '18px'; });
+    });
+  </script>
+</body>
+</html>
