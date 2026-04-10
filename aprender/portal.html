@@ -277,7 +277,7 @@ img { display: block; max-width: 100%; }
 /* ─────────────────────────────────────────
    DATA LAYER
 ───────────────────────────────────────── */
-const STORE_KEY = 'studybase_v1';
+const STORE_KEY = 'studybase_v2';
 function loadData() {
   try { return JSON.parse(localStorage.getItem(STORE_KEY)) || { subjects: [] }; }
   catch { return { subjects: [] }; }
@@ -287,17 +287,9 @@ let DB = loadData();
 /* ─────────────────────────────────────────
    ROUTER & NAVIGATION
 ───────────────────────────────────────── */
-let currentView = 'home';
-let currentSbjId = null;
-
-function navigate(view, sbjId) {
-  if (view === 'subject') {
-    const s = DB.subjects.find(x => x.id === sbjId);
-    if (s && s.name.toLowerCase().includes('penal')) { window.location.href = 'penal_economico/'; return; }
-    if (s && s.name.toLowerCase().includes('mercantil')) { window.location.href = 'mercantil/'; return; }
-    if (s && s.name.toLowerCase().includes('sociedades')) { window.location.href = 'isociedades/'; return; }
-  }
-  renderBreadcrumb();
+function navigate(sbjId) {
+  const s = DB.subjects.find(x => x.id === sbjId);
+  if (s && s.url) { window.location.href = s.url; }
 }
 
 function renderBreadcrumb() {
@@ -326,7 +318,7 @@ function renderSubjectsGrid() {
   grid.innerHTML = subjects.map(s => {
     const color = s.color || '#c8a84b';
     return `
-      <div class="subject-card" onclick="navigate('subject','${s.id}')"
+      <div class="subject-card" onclick="navigate('${s.id}')"
            style="--subject-color:${color};--subject-color-bg:${colorBg(color)};--subject-color-border:${colorBorder(color)}">
         <div class="subject-icon">${s.icon||'📚'}</div>
         <h2>${s.name}</h2>
@@ -342,10 +334,10 @@ function renderSubjectsGrid() {
 function seedDemo() {
   if (DB.subjects.length > 0) return;
   DB.subjects = [
-    { id: '1', name: 'Derecho Penal Económico', description: 'Delitos societarios y económicos.', icon: '⚖️', color: '#c8a84b' },
-    { id: '2', name: 'Derecho Mercantil', description: 'Contratos y sociedades mercantiles.', icon: '🏛️', color: '#4a7fc1' },
-    { id: '3', name: 'Impuesto de Sociedades', description: 'Liquidación y normativa fiscal.', icon: '📊', color: '#8b6fcb' },
-    { id: '4', name: 'Seguridad Social', description: 'Prestaciones y cotización.', icon: '🛡️', color: '#3a9e6f' }
+    { id: '1', name: 'Derecho Penal Económico', description: 'Delitos societarios y económicos.', icon: '⚖️', color: '#c8a84b', url: 'penal_economico/index.html' },
+    { id: '2', name: 'Derecho Mercantil',        description: 'Contratos y sociedades mercantiles.', icon: '🏛️', color: '#4a7fc1', url: 'mercantil/index.html' },
+    { id: '3', name: 'Derecho de Sociedades',    description: 'Constitución y funcionamiento de sociedades.', icon: '📊', color: '#8b6fcb', url: 'isociedades/index.html' },
+    { id: '4', name: 'Seguridad Social',          description: 'Prestaciones y cotización.', icon: '🛡️', color: '#3a9e6f', url: 'ssocial/index.html' }
   ];
   localStorage.setItem(STORE_KEY, JSON.stringify(DB));
 }
