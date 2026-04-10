@@ -181,8 +181,71 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 @keyframes spinReverse{to{transform:rotate(-360deg)}}
 @keyframes pulse{0%,100%{transform:translateY(-2px) scale(1)}50%{transform:translateY(-2px) scale(1.02)}}
 @keyframes twinkle{0%,100%{opacity:.35;transform:scale(.9)}50%{opacity:1;transform:scale(1.15)}}
-@media (max-width: 980px){.hero-content{grid-template-columns:1fr}.hero-art{order:-1;min-height:420px}.grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width: 640px){nav{padding:1rem 1.1rem}.nav-links{display:none}.hero{padding-top:6rem}.grid{grid-template-columns:1fr}.art-shell{width:min(360px,92vw)}h1{font-size:clamp(3rem,16vw,4.4rem)}.title{font-size:clamp(2rem,9vw,2.8rem)}}
+/* ── Hamburger button ── */
+.nav-burger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  background:none;border:none;cursor:pointer;padding:.5rem;z-index:1100;
+  width:44px;height:44px;
+}
+.nav-burger span{
+  display:block;width:24px;height:2px;background:#1f2937;border-radius:2px;
+  transition:transform .28s ease, opacity .28s ease;
+}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── Tablet ── */
+@media (max-width: 980px){
+  .hero-content{grid-template-columns:1fr}
+  .hero-art{order:-1;min-height:380px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px){
+  nav{padding:1rem 1.1rem}
+  .nav-burger{display:flex}
+  .nav-links{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:fixed;inset:0;top:0;padding:5.5rem 1.5rem 2rem;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(18px);
+    z-index:1000;transform:translateX(100%);transition:transform .32s ease;
+    border-left:1px solid rgba(37,99,235,.10);
+  }
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{
+    padding:1rem 0;font-size:1.1rem;border-bottom:1px solid rgba(37,99,235,.07);
+    min-height:44px;display:flex;align-items:center;
+  }
+  .nav-links a:last-child{border-bottom:none}
+  .nav-cta{
+    margin-top:1rem;justify-content:center;border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff !important;
+  }
+  .hero{padding:5.5rem 1.2rem 3rem}
+  .hero-art{display:none}
+  h1{font-size:clamp(2.8rem,14vw,4rem)}
+  .sub{font-size:1rem}
+  .actions{flex-direction:column}
+  .btn{width:100%;justify-content:center;min-height:52px;font-size:1rem}
+  .kicker{font-size:.78rem}
+  .search{max-width:100%}
+  .search input{font-size:.97rem;padding:1rem 1rem 1rem 3rem}
+  .search-results{left:0;right:0;max-height:60vh}
+  .badges{gap:.5rem}
+  .badge{font-size:.82rem;padding:.55rem .8rem}
+  .section{padding:3rem 1.2rem}
+  .grid{grid-template-columns:1fr;gap:.85rem}
+  .card{padding:1.25rem;min-height:auto}
+  .card h3{font-size:1.4rem}
+  .title{font-size:clamp(1.9rem,8vw,2.6rem)}
+  .lead{font-size:.95rem}
+  .bottom{padding:3rem 1.2rem}
+  .bottom-box{padding:2rem 1.2rem;border-radius:20px}
+  .bottom-box .btn{width:100%;justify-content:center}
+  .cursor-ring,.cursor-dot{display:none}
+}
 
 .search{position:relative}
 .search-results{
@@ -240,12 +303,15 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 <body>
 <nav id="nav">
   <a class="nav-logo" href="#inicio"><img src="Icono.png" alt="OpenLexIura"><span>OpenLexIura</span></a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="aprender/portal.html">Aprender</a>
     <a href="#temas">Temas</a>
     <a href="consultas.html">Consultas</a>
     <a class="nav-cta" href="portal.html">Acceder al portal</a>
   </div>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <section class="hero" id="inicio">
@@ -342,6 +408,20 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 <script>
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10));
+
+// ── Hamburger ──
+const burger = document.getElementById('nav-burger');
+const navLinks = document.getElementById('nav-links');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+  document.body.style.overflow = '';
+}));
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
