@@ -1,355 +1,274 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El inventario salvavidas: Protege tu fianza desde el día 1 | TuPortalInquilino</title>
-    <meta name="description" content="Descubre cómo el Artículo 1562 del Código Civil puede jugarte una mala pasada y cómo un buen inventario fotográfico te protege la fianza ante el casero.">
-    <style>
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            font-size: 17px;
-            line-height: 1.7;
-            color: #1a1a2e;
-            background: #f8f9fc;
-        }
-
-        /* ===== TIPOGRAFÍA ===== */
-        h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.2; font-weight: 800; }
-        h2 { font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700; margin-bottom: 1rem; color: #1a1a2e; }
-        h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: #1a1a2e; }
-        p  { margin-bottom: 1.2rem; }
-        a  { color: #2563eb; text-decoration: underline; }
-        a:hover { color: #1d4ed8; }
-
-        /* ===== LAYOUT ===== */
-        .page-wrapper { max-width: 780px; margin: 0 auto; padding: 0 1.25rem 3rem; }
-
-        /* ===== HEADER ARTÍCULO ===== */
-        .article-hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-            color: #fff;
-            padding: 3rem 1.5rem 2.5rem;
-            margin-bottom: 2.5rem;
-        }
-        .article-hero .category-tag {
-            display: inline-block;
-            background: #f59e0b;
-            color: #1a1a2e;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            margin-bottom: 1rem;
-        }
-        .article-hero h1 { margin-bottom: 1rem; }
-        .article-hero .subtitle {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.78);
-            max-width: 640px;
-            margin-bottom: 1.5rem;
-        }
-        .article-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.82rem;
-            color: rgba(255,255,255,0.6);
-            border-top: 1px solid rgba(255,255,255,0.15);
-            padding-top: 1rem;
-        }
-        .article-meta span { display: flex; align-items: center; gap: 0.3rem; }
-
-        /* ===== CAJA RESUMEN ===== */
-        .summary-box {
-            background: #fff;
-            border-left: 5px solid #2563eb;
-            border-radius: 0 12px 12px 0;
-            padding: 1.5rem 1.75rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-        }
-        .summary-box h3 { color: #2563eb; font-size: 0.85rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 0.75rem; }
-        .summary-box ul { padding-left: 1.3rem; }
-        .summary-box li { margin-bottom: 0.4rem; font-size: 0.95rem; }
-
-        /* ===== CAJA LEGAL ===== */
-        .law-box {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 12px;
-            padding: 1.4rem 1.6rem;
-            margin: 2rem 0;
-        }
-        .law-box .law-label {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            background: #2563eb; color: #fff;
-            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
-            padding: 0.2rem 0.7rem; border-radius: 20px; margin-bottom: 0.75rem;
-        }
-        .law-box .law-text {
-            font-size: 0.97rem;
-            font-style: italic;
-            color: #1e3a5f;
-            border-left: 3px solid #93c5fd;
-            padding-left: 1rem;
-            margin: 0.75rem 0;
-        }
-        .law-box p { margin-bottom: 0; font-size: 0.95rem; color: #374151; }
-
-        /* ===== ALERTA / ADVERTENCIA ===== */
-        .alert-box {
-            background: #fef3c7;
-            border: 1px solid #fcd34d;
-            border-radius: 12px;
-            padding: 1.2rem 1.5rem;
-            margin: 2rem 0;
-            display: flex; gap: 0.9rem; align-items: flex-start;
-        }
-        .alert-box .alert-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1.4; }
-        .alert-box p { margin: 0; font-size: 0.95rem; color: #78350f; }
-        .alert-box strong { color: #92400e; }
-
-        /* ===== CAJA DE CONSEJO ===== */
-        .tip-box {
-            background: #f0fdf4;
-            border: 1px solid #86efac;
-            border-radius: 12px;
-            padding: 1.4rem 1.6rem;
-            margin: 2rem 0;
-        }
-        .tip-box h3 { color: #166534; font-size: 0.85rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 0.6rem; }
-        .tip-box ul { padding-left: 1.3rem; }
-        .tip-box li { margin-bottom: 0.5rem; font-size: 0.95rem; color: #14532d; }
-
-        /* ===== CHECKLIST ===== */
-        .checklist { list-style: none; padding: 0; margin: 1rem 0 1.5rem; }
-        .checklist li {
-            display: flex; gap: 0.6rem; align-items: flex-start;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid #e5e7eb;
-            font-size: 0.97rem;
-        }
-        .checklist li:last-child { border-bottom: none; }
-        .checklist .check { color: #22c55e; font-weight: 700; flex-shrink: 0; }
-        .checklist .cross { color: #ef4444; font-weight: 700; flex-shrink: 0; }
-
-        /* ===== SECCIÓN ===== */
-        .article-section { margin-bottom: 2.8rem; }
-
-        /* ===== SEPARADOR ===== */
-        .divider { border: none; border-top: 2px solid #e5e7eb; margin: 2.5rem 0; }
-
-        /* ===== TABLA DE PRUEBAS ===== */
-        .proof-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
-        .proof-table th { background: #1e3a5f; color: #fff; padding: 0.7rem 1rem; text-align: left; }
-        .proof-table td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e7eb; }
-        .proof-table tr:nth-child(even) td { background: #f8faff; }
-        .proof-table .badge-yes { background: #dcfce7; color: #166534; padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: 600; font-size: 0.8rem; }
-        .proof-table .badge-cond { background: #fef9c3; color: #713f12; padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: 600; font-size: 0.8rem; }
-        .proof-table .badge-no { background: #fee2e2; color: #991b1b; padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: 600; font-size: 0.8rem; }
-
-        /* ===== CAJA CTA ===== */
-        .cta-box {
-            background: linear-gradient(135deg, #1a1a2e, #0f3460);
-            color: #fff;
-            border-radius: 14px;
-            padding: 2rem 1.75rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .cta-box h3 { color: #fff; font-size: 1.2rem; margin-bottom: 0.6rem; }
-        .cta-box p  { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-bottom: 1.2rem; }
-        .cta-btn {
-            display: inline-block;
-            background: #f59e0b; color: #1a1a2e;
-            font-weight: 700; font-size: 0.95rem;
-            padding: 0.75rem 1.8rem; border-radius: 8px;
-            text-decoration: none;
-            transition: background .2s;
-        }
-        .cta-btn:hover { background: #d97706; color: #fff; }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 540px) {
-            .proof-table { font-size: 0.82rem; }
-            .proof-table th, .proof-table td { padding: 0.5rem 0.6rem; }
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>El inventario salvavidas: protege tu fianza desde el día 1 · OpenLexIura</title>
+<meta name="description" content="La ley presume que el piso te lo dieron en perfecto estado. Sin un buen inventario, pierdes. Te explicamos cómo hacerlo a prueba de conflictos.">
+<link rel="icon" type="image/jpeg" href="../Icono.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5ef;--bg-2:#eef1f6;--text:#1f2937;--muted:#64748b;--brand:#2563eb;--line:rgba(37,99,235,.14);--line-2:rgba(15,23,42,.08);--shadow:0 24px 80px rgba(0,0,0,.45);--radius:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:radial-gradient(circle at 20% 10%,rgba(37,99,235,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,23,42,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(37,99,235,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(37,99,235,.10)}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(37,99,235,.22),0 10px 30px rgba(0,0,0,.35)}
+.nav-links{display:flex;align-items:center;gap:1.4rem}
+.nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+.nav-links a:hover{color:var(--brand)}
+.nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05))}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(37,99,235,.14),0 10px 24px rgba(0,0,0,.2)}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+.article-hero>*{position:relative;z-index:1}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8)}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+.article-title em{font-style:italic;color:var(--brand)}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+.article-meta span{display:flex;align-items:center;gap:.35rem}
+.meta-sep{color:rgba(15,23,42,.18)}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+.article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+.article-body h2 span{color:var(--brand);font-style:italic}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem}
+.article-body strong{font-weight:700;color:#111827}
+.article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(37,99,235,.25);transition:.2s ease}
+.article-body a:hover{border-bottom-color:var(--brand)}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+.article-body ul li::before{content:'•';color:var(--brand);position:absolute;left:-1rem}
+.article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+.article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f6faff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+.article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic}
+.article-body blockquote cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30)}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.quick-answer .qa-label::before{content:'⏱';font-size:.9rem}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+.quick-answer strong{color:#fff;font-weight:700}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0f7ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.info-box .info-title::before{content:'⚖';width:28px;height:28px;border-radius:50%;background:rgba(37,99,235,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+.info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.juris-box .juris-title::before{content:'🧑d⚖️';font-size:.95rem}
+.juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+.split-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+.split-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem}
+.split-table th:first-child{background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff}
+.split-table th:last-child{background:linear-gradient(135deg,#dc2626,#f87171);color:#fff}
+.split-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6}
+.split-table tr:nth-child(even) td:first-child{background:rgba(22,163,74,.04)}
+.split-table tr:nth-child(even) td:last-child{background:rgba(220,38,38,.04)}
+.split-table tr:last-child td{border-bottom:none}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+.tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+.tag:hover{border-color:rgba(37,99,235,.34);color:var(--brand)}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(242,248,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+.cta-box h3 em{font-style:italic;color:var(--brand)}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(37,99,235,.18);font-weight:600;transition:.25s ease;font-family:'Inter',sans-serif}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35)}
+.btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(37,99,235,.28)}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(43,111,232,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(135,206,250,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#2b6fe8;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(43,111,232,.75)}
+@media(max-width:640px){nav{padding:1rem 1.1rem}.nav-links{display:none}.article-hero{padding:7.5rem 1.2rem 3rem}.article-body{padding:2.5rem 1.2rem 4rem}}
+</style>
 </head>
 <body>
 
+<div class="cursor-ring" id="ring"></div>
+<div class="cursor-dot" id="dot"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="../index.html"><img src="Icono.jpg" alt="OpenLexIura"><span>OpenLexIura</span></a>
+  <div class="nav-links">
+    <a href="../index.html#inicio">Inicio</a>
+    <a href="../consultas.html#consultas">Consultas</a>
+    <a class="nav-cta" href="../portal.html">Acceder al portal</a>
+  </div>
+</nav>
+
 <header class="article-hero">
-    <div style="max-width:780px; margin:0 auto; padding:0 1.25rem;">
-        <span class="category-tag">📋 Fianza &amp; Depósito</span>
-        <h1>El inventario salvavidas<br><span style="font-weight:400; font-size:0.65em; opacity:.85;">Protege tu fianza desde el día 1</span></h1>
-        <p class="subtitle">La mayoría de los inquilinos firman el contrato, cogen las llaves y se olvidan. Años después, cuando el casero les descuenta 300 € por un sofá que ya estaba arañado, vienen los lamentos. La solución existe desde el primer día.</p>
-        <div class="article-meta">
-            <span>📅 Actualizado: abril 2026</span>
-            <span>⚖️ Base legal: CC Art. 1562–1564</span>
-            <span>⏱️ 6 min de lectura</span>
-        </div>
-    </div>
+  <div class="cat-pill">Alquiler · Fianza</div>
+  <h1 class="article-title">El inventario <em>salvavidas</em></h1>
+  <p class="article-lead">Protege tu fianza desde el día 1: la trampa legal que pocos inquilinos conocen</p>
+  <div class="article-meta">
+    <span><strong>OpenLexIura</strong></span>
+    <span class="meta-sep">·</span>
+    <span>2026</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">7 min de lectura</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">Alquiler</span>
+  </div>
+  <div class="art-divider"></div>
 </header>
 
-<main class="page-wrapper">
+<main class="article-body">
 
-    <div class="summary-box">
-        <h3>🔍 Lo que aprenderás</h3>
-        <ul>
-            <li>Por qué la ley asume que el piso te lo entregaron "como nuevo" (Art. 1562 CC)</li>
-            <li>Cómo hacer un inventario que un juez tome en serio</li>
-            <li>El protocolo del anexo fotográfico: cómo firmarlo o enviarlo por email ese mismo día</li>
-            <li>Qué hacer si descubres un defecto oculto en tu primera semana</li>
-        </ul>
-    </div>
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p>Si entras en un piso sin hacer un inventario firmado, la ley <strong>presume que lo recibiste en perfecto estado</strong>. Eso significa que cualquier arañazo o desperfecto previo puede cargarse a tu fianza cuando te vayas. Un buen inventario es tu única defensa.</p>
+  </div>
 
-    <!-- SECCIÓN 1 -->
-    <section class="article-section">
-        <h2>La trampa del Artículo 1562: la ley asume que el piso era perfecto</h2>
+  <p class="reveal">La mayoría de los inquilinos firman el contrato, cogen las llaves y se olvidan. Años después, cuando el casero les descuenta 300 € de la fianza por un sofá que ya estaba arañado cuando llegaron, solo queda lamentarse. Vamos a ver cómo evitar esa trampa desde el primer día.</p>
 
-        <p>Existe un artículo del Código Civil que muy pocos inquilinos conocen pero que puede costarles cientos de euros. Se llama Artículo 1562 y dice lo siguiente:</p>
+  <!-- SECCIÓN 1 -->
+  <h2 class="reveal">La trampa del <span>Artículo 1562</span></h2>
 
-        <div class="law-box">
-            <span class="law-label">⚖️ Código Civil — Art. 1562</span>
-            <p class="law-text">«A falta de expresión del estado de la finca al tiempo de arrendarla, la ley presume que el arrendatario la recibió en buen estado, salvo prueba en contrario.»</p>
-            <p>Traducido al castellano de la calle: <strong>si no hay nada escrito ni fotografiado sobre el estado del piso cuando entraste, la ley da por hecho que estaba impecable.</strong> El sofá arañado, la pared con manchas, el grifo que ya gotea… todo presuntamente perfecto. La carga de la prueba recae sobre ti.</p>
-        </div>
+  <p class="reveal">Hay un precepto del Código Civil que muy pocos inquilinos conocen y que puede costarles caro. El <strong>Artículo 1562 del Código Civil</strong> establece una presunción legal de gran peso: <em>"A falta de expresión del estado de la finca al tiempo de arrendarla, la ley presume que el arrendatario la recibió en buen estado, salvo prueba en contrario"</em>.</p>
 
-        <p>Y los artículos que van justo detrás no mejoran las cosas. El <strong>Art. 1563</strong> establece que el inquilino responde del deterioro o pérdida de la cosa arrendada, salvo que pruebe que ocurrió sin su culpa. El <strong>Art. 1564</strong> añade que también respondes de los daños causados por las personas de tu casa. Es decir: la ley parte de la presunción de que eres tú quien ha estropeado todo, a menos que demuestres lo contrario.</p>
+  <div class="info-box reveal">
+    <p class="info-title">La Ley en la mano</p>
+    <p>El <strong>Artículo 1562 del Código Civil</strong> presume que, si no existe un documento que diga lo contrario, el inquilino recibió el piso en perfecto estado. La carga de probar que había desperfectos previos recae íntegramente sobre el inquilino. A esta presunción se suman los <strong>artículos 1563 y 1564 del Código Civil</strong>, que hacen responsable al arrendatario del deterioro de la finca salvo que acredite que se produjo sin culpa suya.</p>
+  </div>
 
-        <div class="alert-box">
-            <span class="alert-icon">⚠️</span>
-            <p><strong>El escenario típico:</strong> Te vas después de 3 años. El casero te envía un WhatsApp con fotos de desperfectos y te descuenta 450 € de la fianza. Tú recuerdas que el armario ya tenía esa puerta rota cuando llegaste, pero no tienes nada que lo demuestre. El Art. 1562 está de su lado, no del tuyo.</p>
-        </div>
-    </section>
+  <p class="reveal">Traducido al lenguaje del día a día: si no hay un inventario que diga que el sofá ya tenía arañazos cuando llegaste, la ley asume que te lo dieron nuevo y que tú lo has estropeado. El casero no tiene que demostrar nada. Eres tú quien tiene que demostrar que ya estaba así.</p>
 
-    <hr class="divider">
+  <!-- SECCIÓN 2 -->
+  <h2 class="reveal">Cómo hacer un inventario <span>infalible</span></h2>
 
-    <!-- SECCIÓN 2 -->
-    <section class="article-section">
-        <h2>Cómo hacer un inventario que proteja de verdad</h2>
+  <p class="reveal">No vale con escribir <em>"1 sofá"</em> en un papel. Un inventario que te proteja de verdad debe ser tan detallado que haga imposible cualquier confusión posterior. Cada elemento debe describir su estado actual, no solo su existencia.</p>
 
-        <p>Un inventario no es una lista de muebles. Un inventario eficaz es un documento descriptivo que recoge el estado real de cada elemento en el momento de la entrega de llaves. La diferencia entre "1 sofá" y "1 sofá gris marca IKEA KIVIK, arañazo de 15 cm en el cojín derecho y mancha oscura en el brazo izquierdo" puede valer varios cientos de euros.</p>
+  <p class="reveal">Para cada mueble, electrodoméstico y elemento de la vivienda, el inventario debe recoger:</p>
 
-        <h3>Lo que debe incluir, estancia por estancia:</h3>
+  <ul class="reveal">
+    <li><strong>Marca y modelo</strong> (cuando sea posible): "Lavadora Samsung WW80T4540AE"</li>
+    <li><strong>Estado funcional</strong>: "Funciona correctamente" o "El cajón del detergente no cierra bien"</li>
+    <li><strong>Desperfectos visibles</strong>: "Arañazo de 3 cm en el lateral derecho del sofá", "Mancha amarilla en la esquina del techo del baño"</li>
+    <li><strong>Estado de paredes, suelos y techos</strong>: consignar cualquier grieta, marca o zona de pintura deteriorada</li>
+    <li><strong>Contadores de luz, agua y gas</strong>: anota las lecturas el día de entrada</li>
+  </ul>
 
-        <ul class="checklist">
-            <li><span class="check">✓</span> <strong>Paredes y techo:</strong> humedad, grietas, manchas, pintura descascarada (indicar dónde exactamente)</li>
-            <li><span class="check">✓</span> <strong>Suelos:</strong> rasguños, baldosas rotas o levantadas, parquet en mal estado</li>
-            <li><span class="check">✓</span> <strong>Muebles:</strong> marca si se conoce, descripción del daño visible y su ubicación exacta</li>
-            <li><span class="check">✓</span> <strong>Electrodomésticos:</strong> marca, modelo y si funcionan correctamente en el momento de la entrega</li>
-            <li><span class="check">✓</span> <strong>Ventanas y persianas:</strong> si cierran bien, estado de la cinta, roturas en el cristal</li>
-            <li><span class="check">✓</span> <strong>Fontanería:</strong> grifos, presión del agua, desagües (anotar si ya hay sarro visible)</li>
-            <li><span class="cross">✗</span> No escribas simplemente "bien" o "correcto" — esas palabras no sirven ante un juez</li>
-            <li><span class="cross">✗</span> No dejes ninguna estancia sin revisar, aunque parezca nueva</li>
-        </ul>
+  <div class="juris-box reveal">
+    <p class="juris-title">Lo que dicen los Jueces (Jurisprudencia)</p>
+    <p>Los tribunales han declarado en numerosas ocasiones que un inventario genérico —que solo lista los objetos sin describir su estado— no destruye la presunción del artículo 1562 CC. La <strong>Audiencia Provincial de Madrid (Sección 21ª)</strong> ha señalado que el inventario debe reflejar de forma inequívoca el estado del inmueble y su contenido en el momento de la entrega de llaves para que pueda considerarse prueba válida frente a futuras reclamaciones.</p>
+  </div>
 
-        <div class="tip-box">
-            <h3>💡 Consejo práctico</h3>
-            <ul>
-                <li>Revisa el piso con luz natural o linterna — los desperfectos se esconden con luz artificial.</li>
-                <li>Pide al casero que firme el inventario en cada página, no solo al final.</li>
-                <li>Si el casero se niega a firmar, envíaselo por email o burofax ese mismo día.</li>
-            </ul>
-        </div>
-    </section>
+  <!-- SECCIÓN 3 -->
+  <h2 class="reveal">El anexo fotográfico: <span>cómo convertirlo en prueba irrefutable</span></h2>
 
-    <hr class="divider">
+  <p class="reveal">Las fotos son imprescindibles, pero solo valen como prueba si están correctamente datadas y si el casero no puede negar haberlas recibido. Una carpeta de fotos en tu móvil sin ningún rastro de envío no sirve de mucho ante un juez.</p>
 
-    <!-- SECCIÓN 3 -->
-    <section class="article-section">
-        <h2>El anexo fotográfico: tu seguro de vida documental</h2>
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>El anexo fotográfico firmado</strong>
+        <p>Lo ideal es imprimir las fotos más relevantes (desperfectos, electrodomésticos, contadores) y adjuntarlas al contrato como anexo. Ambas partes deben <strong>firmar en cada página</strong>. Así es imposible que el casero diga que no las conocía.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>El email del primer día (el rastro digital)</strong>
+        <p>Si el casero no quiere firmar nada, envíale un email el mismo día de entrada con todas las fotos adjuntas y el texto del inventario en el cuerpo del mensaje. El email tiene <strong>fecha y hora</strong> y queda registrado en los servidores. Los tribunales admiten plenamente esta prueba.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>El WhatsApp también vale (con matices)</strong>
+        <p>Un WhatsApp enviado el día de entrada con las fotos y un mensaje como <em>"Te mando fotos del estado del piso tal como lo recibo hoy"</em> es válido como prueba siempre que quede constancia de la <strong>fecha de envío y de que fue leído</strong> (doble check azul). Guarda pantallazos de esa conversación.</p>
+      </div>
+    </li>
+  </ol>
 
-        <p>El inventario escrito es necesario, pero incompleto. La jurisprudencia española ha consolidado el <strong>anexo fotográfico firmado por ambas partes</strong> como el estándar de oro en los litigios por fianza. Una fotografía fechada y firmada es prácticamente irrefutable.</p>
+  <blockquote class="reveal">
+    Los mensajes de WhatsApp y correos electrónicos tienen plena validez probatoria en los procedimientos civiles, siempre que se pueda acreditar su autenticidad y la fecha de envío mediante cualquier medio admitido en derecho.
+    <cite>— Doctrina consolidada, Tribunales Civiles españoles</cite>
+  </blockquote>
 
-        <h3>El protocolo correcto:</h3>
-        <ol style="padding-left: 1.4rem; margin-bottom: 1.5rem;">
-            <li style="margin-bottom:.6rem;">El día de entrega de llaves, fotografía cada estancia sistemáticamente (plano general + detalle de cada desperfecto).</li>
-            <li style="margin-bottom:.6rem;">Imprime las fotos, adjúntalas al inventario y <strong>firma todas las páginas junto al casero</strong>.</li>
-            <li style="margin-bottom:.6rem;">Si no es posible imprimir en ese momento, envía todas las fotos al casero por email o WhatsApp ese mismo día, con un mensaje explicativo. La fecha y la lectura quedan registradas.</li>
-            <li style="margin-bottom:.6rem;">Guarda pantallazos del WhatsApp o copia del email en un lugar seguro (nube, correo reenviado a ti mismo).</li>
-        </ol>
+  <!-- SECCIÓN 4 -->
+  <h2 class="reveal">¿Qué hacer si descubres un <span>fallo oculto</span> en tu primera semana?</h2>
 
-        <h3>¿Tienen validez los WhatsApps y emails?</h3>
+  <p class="reveal">A veces los problemas no son visibles el día de la visita: la calefacción que falla cuando hace frío de verdad, la humedad que aparece tras la primera lluvia, el extractor que hace un ruido horrible. La pregunta es: ¿cuánto tiempo tienes para reclamarlo sin que te lo carguen a ti?</p>
 
-        <table class="proof-table">
-            <thead>
-                <tr>
-                    <th>Tipo de prueba</th>
-                    <th>Validez judicial</th>
-                    <th>Condición</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Inventario firmado por ambas partes</td>
-                    <td><span class="badge-yes">Máxima</span></td>
-                    <td>Sin condiciones adicionales</td>
-                </tr>
-                <tr>
-                    <td>Fotos enviadas por email</td>
-                    <td><span class="badge-yes">Alta</span></td>
-                    <td>Queda constancia de fecha y lectura</td>
-                </tr>
-                <tr>
-                    <td>WhatsApp con fotos (leído)</td>
-                    <td><span class="badge-cond">Media-alta</span></td>
-                    <td>El doble check azul demuestra recepción</td>
-                </tr>
-                <tr>
-                    <td>Fotos sin enviar a nadie</td>
-                    <td><span class="badge-no">Baja</span></td>
-                    <td>La fecha del archivo puede manipularse</td>
-                </tr>
-                <tr>
-                    <td>Descripción verbal sin documento</td>
-                    <td><span class="badge-no">Ninguna</span></td>
-                    <td>Imposible de probar</td>
-                </tr>
-            </tbody>
-        </table>
+  <p class="reveal">La práctica judicial establece lo que se conoce como el <strong>"plazo prudencial de habitabilidad"</strong>: los primeros 7 a 15 días desde la entrada son el margen razonable para detectar y comunicar vicios o defectos ocultos que no eran apreciables en la visita inicial. Pasado ese tiempo, probar que el defecto ya existía se complica notablemente.</p>
 
-        <div class="alert-box">
-            <span class="alert-icon">📩</span>
-            <p><strong>Truco del email a ti mismo:</strong> Tras enviar las fotos al casero, reenvíate ese email a tu propia cuenta. Quedará un registro inmutable con sello de tiempo en dos bandejas de entrada distintas.</p>
-        </div>
-    </section>
+  <table class="split-table reveal">
+    <thead>
+      <tr>
+        <th>✔ Actúa bien: el fallo oculto queda documentado</th>
+        <th>✘ Error típico: no comunicarlo a tiempo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Envías un email al casero en los primeros 7 días describiendo el problema</td>
+        <td>Esperas semanas y lo mencionas de palabra</td>
+      </tr>
+      <tr>
+        <td>Adjuntas fotos o vídeo con fecha visible en el archivo</td>
+        <td>Haces fotos pero no las envías a nadie</td>
+      </tr>
+      <tr>
+        <td>Guardas la respuesta del casero (o su silencio) como prueba</td>
+        <td>Confías en que "ya lo sabe"</td>
+      </tr>
+      <tr>
+        <td>El juez puede corroborar que el defecto era preexistente</td>
+        <td>El juez aplica la presunción del Art. 1562 CC en tu contra</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <hr class="divider">
+  <p class="reveal">La regla práctica es sencilla: <strong>cualquier problema que detectes en los primeros días, comunícalo por escrito de inmediato</strong>. No hace falta un requerimiento formal. Un email o un WhatsApp con descripción y fotos, enviado esa misma semana, puede ahorrarte cientos de euros al finalizar el contrato.</p>
 
-    <!-- SECCIÓN 4 -->
-    <section class="article-section">
-        <h2>Defecto oculto en la primera semana: cuándo y cómo avisar</h2>
-
-        <p>A veces los problemas no se ven el primer día. La caldera que solo falla cuando hace frío, la humedad que aparece tras la primera lluvia, el enchufe que salta al usar el microondas. ¿Qué hacer?</p>
-
-        <p>La jurisprudencia española reconoce un <strong>"plazo prudencial"</strong> para comunicar defectos descubiertos ya durante los primeros días de ocupación. No existe un plazo legal fijo en días, pero la doctrina consolidada acepta que avisar dentro de los <strong>7-10 primeros días</strong> desde el descubrimiento sitúa al inquilino en una posición sólida.</p>
-
-        <div class="tip-box">
-            <h3>✅ Protocolo para defectos ocultos</h3>
-            <ul>
-                <li><strong>Avisa siempre por escrito</strong> (email o WhatsApp), nunca solo por teléfono.</li>
-                <li>Describe el defecto con detalle: fecha en que lo descubriste, dónde está, fotografía adjunta.</li>
-                <li>El mensaje debe llegar al casero y debes conservar prueba de que lo leyó.</li>
-                <li>Si no responde en 48 horas, manda un segundo mensaje o un burofax.</li>
-                <li>Nunca repares tú mismo sin comunicarlo antes por escrito: podrías perder el derecho a reclamar.</li>
-            </ul>
-        </div>
-
-        <p>Este aviso temprano y documentado cumple dos funciones: por un lado, exime al inquilino de responsabilidad sobre ese desperfecto (Art. 1563 CC); por otro, obliga al casero a reparar si la avería afecta a la habitabilidad, según el Art. 21.1 de la LAU.</p>
-    </section>
-
-    <div class="cta-box">
-        <h3>¿Ya tienes el inventario listo?</h3>
-        <p>Descarga nuestra guía gratuita con la plantilla de inventario habitación por habitación y el modelo de email para enviar al casero el día de la entrega de llaves.</p>
-        <a href="#" class="cta-btn">Descargar plantilla gratis →</a>
-    </div>
+  <div class="article-tags reveal">
+    <span class="tag">Inventario</span>
+    <span class="tag">Fianza</span>
+    <span class="tag">Código Civil</span>
+    <span class="tag">Art. 1562</span>
+    <span class="tag">Prueba documental</span>
+    <span class="tag">Alquiler</span>
+  </div>
 
 </main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Tienes dudas sobre tu <em>contrato de alquiler</em>?</h3>
+    <p>En OpenLexIura analizamos tu caso concreto con base en la ley y la jurisprudencia más reciente. Sin tecnicismos, con respuestas claras.</p>
+    <a href="../consultas.html" class="btn btn-primary">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 OpenLexIura · Información jurídica divulgativa, no asesoramiento legal profesional</p>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+const ring=document.getElementById('ring'),dot=document.getElementById('dot');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+</script>
 </body>
 </html>
