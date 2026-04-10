@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>La duración real del contrato: la trampa del año a año · OpenLexIura</title>
+<meta name="description" content="Tu contrato dice 1 año pero la ley te da 5. Explicamos la prórroga obligatoria, la prórroga tácita y cómo defenderte del falso contrato de 11 meses.">
+<link rel="icon" type="image/png" href="../Icono.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2faf9;--bg-2:#e8f6f4;--text:#1f2937;--muted:#64748b;--brand:#0f766e;--line:rgba(14,118,110,.14);--line-2:rgba(15,23,42,.08);--shadow:0 24px 80px rgba(0,0,0,.45);--radius:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:radial-gradient(circle at 20% 10%,rgba(14,118,110,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,23,42,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(14,118,110,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(14,118,110,.10)}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(14,118,110,.22),0 10px 30px rgba(0,0,0,.35)}
+.nav-links{display:flex;align-items:center;gap:1.4rem}
+.nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+.nav-links a:hover{color:var(--brand)}
+.nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(14,118,110,.22);border-radius:999px;background:linear-gradient(180deg,rgba(14,118,110,.10),rgba(14,118,110,.05))}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(14,118,110,.14),0 10px 24px rgba(0,0,0,.2)}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(14,118,110,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+.article-hero>*{position:relative;z-index:1}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(14,118,110,.20);background:rgba(14,118,110,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(14,118,110,.8)}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+.article-title em{font-style:italic;color:var(--brand)}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+.article-meta span{display:flex;align-items:center;gap:.35rem}
+.meta-sep{color:rgba(15,23,42,.18)}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+.article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+.article-body h2 span{color:var(--brand);font-style:italic}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem}
+.article-body strong{font-weight:700;color:#111827}
+.article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(14,118,110,.25);transition:.2s ease}
+.article-body a:hover{border-bottom-color:var(--brand)}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+.article-body ul li::before{content:'▸';color:var(--brand);position:absolute;left:-1rem}
+.article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+.article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fdfa);border:1px solid rgba(14,118,110,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#0f766e,#2dd4bf);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+.article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(14,118,110,.06),rgba(14,118,110,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic}
+.article-body blockquote cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#0f766e,#2dd4bf);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(14,118,110,.30)}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.quick-answer .qa-label::before{content:'⚡';font-size:.9rem}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+.quick-answer strong{color:#fff;font-weight:700}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fdfa);border:1px solid rgba(14,118,110,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.info-box .info-title::before{content:'⚖️';width:28px;height:28px;border-radius:50%;background:rgba(14,118,110,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+.info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.juris-box .juris-title::before{content:'🧑‍⚖️';font-size:.95rem}
+.juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+.warn-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:1px solid rgba(234,88,12,.20);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+.warn-box .warn-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#9a3412;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.warn-box .warn-title::before{content:'⚠️';font-size:.95rem}
+.warn-box p{margin-bottom:0;font-size:1rem;color:#7c2d12;line-height:1.75}
+.split-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+.split-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem}
+.split-table th:first-child{background:linear-gradient(135deg,#0f766e,#2dd4bf);color:#fff}
+.split-table th:last-child{background:linear-gradient(135deg,#1e3a5f,#3b82f6);color:#fff}
+.split-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6}
+.split-table tr:nth-child(even) td:first-child{background:rgba(14,118,110,.04)}
+.split-table tr:nth-child(even) td:last-child{background:rgba(59,130,246,.04)}
+.split-table tr:last-child td{border-bottom:none}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+.tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+.tag:hover{border-color:rgba(14,118,110,.34);color:var(--brand)}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),#f0fdfaf0);border:1px solid rgba(14,118,110,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+.cta-box h3 em{font-style:italic;color:var(--brand)}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(14,118,110,.18);font-weight:600;transition:.25s ease;font-family:'Inter',sans-serif}
+.btn-primary{background:linear-gradient(135deg,#0f766e,#2dd4bf);color:#fff !important;box-shadow:0 16px 40px rgba(14,118,110,.35)}
+.btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(14,118,110,.28)}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(14,118,110,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(14,118,110,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#0f766e;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(14,118,110,.75)}
+@media(max-width:640px){nav{padding:1rem 1.1rem}.nav-links{display:none}.article-hero{padding:7.5rem 1.2rem 3rem}.article-body{padding:2.5rem 1.2rem 4rem}}
+</style>
+</head>
+<body>
+<div class="cursor-ring"></div><div class="cursor-dot"></div>
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="../Icono.png" alt="OpenLexIura"><span>OpenLexIura</span></a>
+  <div class="nav-links">
+    <a href="index.html#temas">Temas</a>
+    <a href="index.html#consultas">Consultas</a>
+    <a class="nav-cta" href="portal.html">Acceder al portal</a>
+  </div>
+</nav>
+<header class="article-hero">
+  <div class="cat-pill">Alquiler · Duración del contrato</div>
+  <h1 class="article-title">La trampa<br>del <em>año a año</em></h1>
+  <p class="article-lead">Tu contrato dice «1 año». La ley dice otra cosa: tienes derecho a quedarte hasta 5 años y el casero no puede negarse. Te lo explicamos sin letra pequeña.</p>
+  <div class="article-meta">
+    <span><strong>OpenLexIura</strong></span>
+    <span class="meta-sep">·</span>
+    <span>2026</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">9 min de lectura</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">Alquiler</span>
+  </div>
+  <div class="art-divider"></div>
+</header>
+<main class="article-body">
+
+  <div class="quick-answer">
+    <div class="qa-label">Respuesta rápida</div>
+    <p>Un contrato de <strong>«1 año»</strong> no significa que el casero pueda echarte al año. La ley te da el derecho a quedarte <strong>hasta 5 años</strong> (o 7 si el propietario es una empresa), renovándose automáticamente cada año hasta alcanzar ese mínimo. Esa prórroga es <strong>obligatoria para el casero, voluntaria para ti</strong>.</p>
+  </div>
+
+  <h2><span>1.</span> El superpoder de los 5 años: <span>por qué la fecha de «1 año» es un formalismo</span></h2>
+  <p>Cuando alguien firma un contrato de alquiler que dice «Duración: 1 año», la mayoría lo interpreta como un compromiso real de solo doce meses. La realidad legal es radicalmente distinta. Ese «1 año» describe el periodo de renta pactado, pero <strong>no la duración mínima de tu protección como inquilino</strong>.</p>
+
+  <div class="info-box">
+    <div class="info-title">La Ley en la mano — Artículo 9.1 LAU</div>
+    <p>«La duración del arrendamiento será libremente pactada por las partes. Si esta fuera inferior a cinco años, o inferior a siete años si el arrendador fuese persona jurídica, llegado el día del vencimiento del contrato, este se <strong>prorrogará obligatoriamente</strong> por plazos anuales hasta que el arrendamiento alcance una duración mínima de cinco años, o de siete años si el arrendador fuese persona jurídica.»</p>
+  </div>
+
+  <p>La prórroga es <strong>obligatoria para el casero</strong> pero <strong>voluntaria para el inquilino</strong>. Tú puedes no renovar avisando con 30 días de antelación (como vimos en el artículo sobre desistimiento). Pero el propietario no puede negarse a renovarte salvo por causas tasadas en la ley.</p>
+
+  <table class="split-table">
+    <thead><tr><th>Tipo de propietario</th><th>Duración mínima garantizada</th></tr></thead>
+    <tbody>
+      <tr><td>Persona física (particular)</td><td>5 años de protección, con prórrogas anuales automáticas hasta llegar</td></tr>
+      <tr><td>Persona jurídica (empresa, fondo, sociedad)</td><td>7 años de protección, con prórrogas anuales automáticas hasta llegar</td></tr>
+      <tr><td>Cualquier tipo, contrato firmado a partir de marzo 2019</td><td>Se aplica la reforma LAU 2019: 5 años (físico) o 7 años (jurídico)</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span>2.</span> ¿Tengo que firmar un papel nuevo cada año? <span>Spoiler: no te conviene</span></h2>
+  <p>La prórroga anual es <strong>automática</strong> por ley: no hace falta firmar nada. El contrato original sigue vigente en las mismas condiciones, simplemente se prolonga. De hecho, firmar un contrato nuevo cada año puede <strong>perjudicarte seriamente</strong>.</p>
+
+  <ol class="steps">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Cada contrato nuevo reinicia el contador de los 5 años</strong>
+        <p>Si llevas 3 años en el piso y el casero te propone firmar un contrato nuevo «para actualizarlo», y tú lo firmas, el reloj vuelve a cero. Perderías los 3 años ya acumulados y empezarías desde el año 1 de los nuevos 5 años. La prórroga del contrato original es siempre más beneficiosa.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>La prórroga no permite subir la renta libremente</strong>
+        <p>Durante la prórroga dentro de los primeros 5/7 años, la renta solo puede actualizarse según el Índice de Referencia del INE (como vimos en el artículo sobre subidas anuales). Un contrato nuevo podría fijar una renta de mercado mucho más alta.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>La fianza no se puede pedir de nuevo</strong>
+        <p>En una prórroga del mismo contrato, el casero no puede exigirte una nueva fianza ni actualizar su importe más allá de lo permitido. Con un contrato nuevo podría reclamar una fianza ajustada a la nueva renta.</p>
+      </div>
+    </li>
+  </ol>
+
+  <h2><span>3.</span> Prórroga tácita: <span>qué pasa al llegar a los 5 o 7 años</span></h2>
+  <p>Una vez cumplidos los 5 o 7 años de protección mínima, si <strong>ninguna de las partes avisa de que no quiere continuar</strong>, el contrato entra en prórroga tácita y se renueva automáticamente por <strong>3 años más</strong>.</p>
+
+  <div class="info-box">
+    <div class="info-title">La Ley en la mano — Artículo 10 LAU</div>
+    <p>«Si llegada la fecha de vencimiento del contrato, o de cualquiera de sus prórrogas, una vez transcurridos como mínimo cinco años de duración de aquel, o siete años si el arrendador fuese persona jurídica, ninguna de las partes hubiese notificado a la otra, al menos con <strong>cuatro meses de antelación</strong> (arrendador) o al menos con <strong>dos meses de antelación</strong> (arrendatario) que su voluntad es la de no renovarlo, el contrato se prorrogará obligatoriamente por <strong>plazos anuales hasta un máximo de tres años más</strong>.»</p>
+  </div>
+
+  <div class="juris-box">
+    <div class="juris-title">Resumen de plazos de aviso para no renovar</div>
+    <p>El <strong>casero</strong> tiene que avisar con <strong>4 meses</strong> de antelación. El <strong>inquilino</strong> tiene que avisar con <strong>2 meses</strong>. Si el casero no avisa a tiempo, aunque hayan pasado los 5 años ya no puede echarte: el contrato se prorroga automáticamente un año más. Este asimetría es una protección deliberada a favor del inquilino.</p>
+  </div>
+
+  <h2><span>4.</span> La trampa del contrato de 11 meses: <span>cómo defenderte del falso alquiler de temporada</span></h2>
+  <p>Algunos propietarios intentan esquivar los 5 años de protección usando un truco: en lugar de llamarlo «arrendamiento de vivienda», redactan un «contrato de temporada» de 11 meses, porque la LAU no exige prórroga obligatoria en los contratos de temporada. Es una práctica fraudulenta y los tribunales la tumban sistemáticamente.</p>
+
+  <div class="warn-box">
+    <div class="warn-title">El criterio del juez: ¿es tu vivienda habitual?</div>
+    <p>La diferencia entre un contrato de temporada válido y uno fraudulento no está en lo que diga el papel, sino en la <strong>realidad del uso</strong>. Si el inmueble es tu domicilio habitual (estás empadronado, recibes el correo, vives allí de forma continuada), el juez lo reconvertirá automáticamente en un contrato de vivienda habitual con toda la protección de los 5 años, independientemente de lo que ponga el título del documento.</p>
+  </div>
+
+  <blockquote>
+    «La calificación del contrato depende de la finalidad para la que el inmueble es utilizado y no de la denominación dada por las partes. Si el destino es la satisfacción de la necesidad de vivienda permanente, se aplican las normas imperativas de la LAU.»
+    <cite>— Criterio reiterado de las Audiencias Provinciales (entre otras, AP Madrid, AP Barcelona)</cite>
+  </blockquote>
+
+  <ol class="steps">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Empadrónate desde el primer día</strong>
+        <p>El empadronamiento es la prueba más sólida de que el piso es tu vivienda habitual. Sin él, es más difícil demostrar ante un juez que el contrato de temporada es fraudulento.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Conserva facturas de suministros a tu nombre</strong>
+        <p>Facturas de luz, gas, internet o agua a tu nombre en esa dirección son prueba adicional de residencia habitual.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Si el casero no te renueva, impugna el desahucio</strong>
+        <p>Si al cumplirse los 11 meses el propietario inicia un procedimiento de desahucio, alega en tu defensa que el contrato es en realidad un arrendamiento de vivienda habitual. Un abogado de oficio puede hacerlo y los jueces habitualmente dan la razón al inquilino en estos casos.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="article-tags">
+    <span class="tag">#Artículo9LAU</span>
+    <span class="tag">#Artículo10LAU</span>
+    <span class="tag">#PrórrogaObligatoria</span>
+    <span class="tag">#5AñosDeAlquiler</span>
+    <span class="tag">#ContratoDe11Meses</span>
+    <span class="tag">#FalsaTemporada</span>
+    <span class="tag">#DuraciónContrato</span>
+  </div>
+
+</main>
+<section class="article-cta">
+  <div class="cta-box">
+    <h3>¿Tu casero <em>no quiere renovarte</em> el contrato?</h3>
+    <p>Analizamos tu situación, comprobamos si la protección de los 5 años te aplica y te decimos cómo actuar si el propietario está incumpliendo la ley.</p>
+    <a href="portal.html" class="btn btn-primary">Consultar mi caso →</a>
+  </div>
+</section>
+<footer>
+  <p>© 2026 OpenLexIura · Información legal divulgativa. No constituye asesoramiento jurídico individualizado.</p>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)});
+const ring=document.querySelector('.cursor-ring'),dot=document.querySelector('.cursor-dot');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)}animRing();
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

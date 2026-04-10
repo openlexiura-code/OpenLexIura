@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Subarriendo de habitaciones: el riesgo de realquilar · OpenLexIura</title>
+<meta name="description" content="¿Puedes alquilar una habitación de tu piso a otra persona? Solo con permiso escrito del casero. Te explicamos las reglas, los límites de precio y el riesgo fiscal.">
+<link rel="icon" type="image/png" href="../Icono.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f7f4;--bg-2:#eaf0ea;--text:#1f2937;--muted:#64748b;--brand:#15803d;--line:rgba(21,128,61,.14);--line-2:rgba(15,23,42,.08);--shadow:0 24px 80px rgba(0,0,0,.45);--radius:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:radial-gradient(circle at 20% 10%,rgba(21,128,61,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,23,42,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(21,128,61,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(21,128,61,.10)}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(21,128,61,.22),0 10px 30px rgba(0,0,0,.35)}
+.nav-links{display:flex;align-items:center;gap:1.4rem}
+.nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+.nav-links a:hover{color:var(--brand)}
+.nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(21,128,61,.22);border-radius:999px;background:linear-gradient(180deg,rgba(21,128,61,.10),rgba(21,128,61,.05))}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(21,128,61,.14),0 10px 24px rgba(0,0,0,.2)}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(21,128,61,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+.article-hero>*{position:relative;z-index:1}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(21,128,61,.20);background:rgba(21,128,61,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(21,128,61,.8)}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+.article-title em{font-style:italic;color:var(--brand)}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+.article-meta span{display:flex;align-items:center;gap:.35rem}
+.meta-sep{color:rgba(15,23,42,.18)}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+.article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+.article-body h2 span{color:var(--brand);font-style:italic}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem}
+.article-body strong{font-weight:700;color:#111827}
+.article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(21,128,61,.25);transition:.2s ease}
+.article-body a:hover{border-bottom-color:var(--brand)}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+.article-body ul li::before{content:'▸';color:var(--brand);position:absolute;left:-1rem}
+.article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+.article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fdf4);border:1px solid rgba(21,128,61,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#15803d,#4ade80);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+.article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(21,128,61,.06),rgba(21,128,61,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic}
+.article-body blockquote cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#15803d,#4ade80);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(21,128,61,.30)}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.quick-answer .qa-label::before{content:'⚡';font-size:.9rem}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+.quick-answer strong{color:#fff;font-weight:700}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0fdf4);border:1px solid rgba(21,128,61,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.info-box .info-title::before{content:'⚖️';width:28px;height:28px;border-radius:50%;background:rgba(21,128,61,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+.info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.juris-box .juris-title::before{content:'🧑‍⚖️';font-size:.95rem}
+.juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+.warn-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:1px solid rgba(234,88,12,.20);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+.warn-box .warn-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#9a3412;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.warn-box .warn-title::before{content:'⚠️';font-size:.95rem}
+.warn-box p{margin-bottom:0;font-size:1rem;color:#7c2d12;line-height:1.75}
+.split-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+.split-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem}
+.split-table th:first-child{background:linear-gradient(135deg,#15803d,#4ade80);color:#fff}
+.split-table th:last-child{background:linear-gradient(135deg,#dc2626,#f87171);color:#fff}
+.split-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6}
+.split-table tr:nth-child(even) td:first-child{background:rgba(21,128,61,.04)}
+.split-table tr:nth-child(even) td:last-child{background:rgba(220,38,38,.04)}
+.split-table tr:last-child td{border-bottom:none}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+.tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+.tag:hover{border-color:rgba(21,128,61,.34);color:var(--brand)}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(240,253,244,.94));border:1px solid rgba(21,128,61,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+.cta-box h3 em{font-style:italic;color:var(--brand)}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(21,128,61,.18);font-weight:600;transition:.25s ease;font-family:'Inter',sans-serif}
+.btn-primary{background:linear-gradient(135deg,#15803d,#4ade80);color:#fff !important;box-shadow:0 16px 40px rgba(21,128,61,.35)}
+.btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(21,128,61,.28)}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(21,128,61,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(74,222,128,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#15803d;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(21,128,61,.75)}
+@media(max-width:640px){nav{padding:1rem 1.1rem}.nav-links{display:none}.article-hero{padding:7.5rem 1.2rem 3rem}.article-body{padding:2.5rem 1.2rem 4rem}}
+</style>
+</head>
+<body>
+<div class="cursor-ring"></div><div class="cursor-dot"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="../Icono.png" alt="OpenLexIura"><span>OpenLexIura</span></a>
+  <div class="nav-links">
+    <a href="index.html#temas">Temas</a>
+    <a href="index.html#consultas">Consultas</a>
+    <a class="nav-cta" href="portal.html">Acceder al portal</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill">Alquiler · Subarriendo</div>
+  <h1 class="article-title">El riesgo<br>de <em>realquilar</em></h1>
+  <p class="article-lead">Con los alquileres por las nubes, alquilar la habitación sobrante a un amigo parece la solución perfecta. Hacerlo a escondidas del casero es una ruleta rusa.</p>
+  <div class="article-meta">
+    <span><strong>OpenLexIura</strong></span>
+    <span class="meta-sep">·</span>
+    <span>2026</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">8 min de lectura</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">Alquiler</span>
+  </div>
+  <div class="art-divider"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer">
+    <div class="qa-label">Respuesta rápida</div>
+    <p>El subarriendo parcial de una habitación es legal, pero <strong>solo con consentimiento previo y por escrito del casero</strong>. Sin ese permiso, el propietario puede rescindir tu contrato de inmediato. Además, nunca podrás cobrar por la habitación más de lo que tú pagas por el piso completo.</p>
+  </div>
+
+  <!-- SECCIÓN 1 -->
+  <h2><span>1.</span> La tentación de compartir gastos: <span>por qué hacerlo a escondidas es una ruleta rusa</span></h2>
+  <p>Alquilar una habitación a un compañero de piso es una práctica extendidísima. El problema no es hacerlo, sino hacerlo <strong>sin contárselo al casero</strong>. Muchos inquilinos asumen que es algo privado que no le afecta al propietario. Error. Para la ley, meter a alguien en el piso sin permiso equivale a ceder el uso parcial del inmueble, y eso tiene consecuencias muy concretas.</p>
+
+  <div class="warn-box">
+    <div class="warn-title">La consecuencia más grave: la rescisión inmediata</div>
+    <p>El <strong>Artículo 27.2.c de la LAU</strong> es taxativo: el subarriendo o la cesión no consentidos son causa de resolución del contrato. El casero no necesita esperar ni negociar. Si descubre que hay alguien viviendo en el piso sin su permiso escrito, puede iniciar un procedimiento de desahucio de inmediato. Tú pierdes el piso y el subarrendatario también.</p>
+  </div>
+
+  <p>La situación se complica especialmente cuando el subarrendatario paga por Bizum, Transferencia o en efectivo y esos movimientos quedan registrados. Un banco o una declaración de la renta pueden destapar la situación sin que nadie lo busque explícitamente.</p>
+
+  <!-- SECCIÓN 2 -->
+  <h2><span>2.</span> La regla de oro del Art. 8: <span>el permiso siempre por escrito</span></h2>
+  <p>La LAU permite el subarriendo parcial, pero lo rodea de condiciones que no admiten interpretación libre.</p>
+
+  <div class="info-box">
+    <div class="info-title">La Ley en la mano — Artículo 8.2 LAU</div>
+    <p>«La vivienda arrendada solo podrá subarrendarse de forma <strong>parcial</strong> y previo <strong>consentimiento escrito del arrendador</strong>. El subarriendo se regirá por lo dispuesto en el presente Título para el arrendamiento cuando la parte de la finca subarrendada se destine por el subarrendatario a la finalidad indicada en el artículo 2.1. El precio del subarriendo no podrá exceder, en ningún caso, del que corresponda al arrendamiento.»</p>
+  </div>
+
+  <p>La clave del artículo son dos palabras: <strong>«consentimiento escrito»</strong>. No vale un acuerdo verbal, no vale que el casero sepa de oídas que tienes compañero de piso. Necesitas un documento. En la práctica, dos opciones funcionan:</p>
+
+  <ol class="steps">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Anexo al contrato (opción ideal)</strong>
+        <p>Un breve documento firmado por ambas partes que autorice expresamente el subarriendo parcial de la habitación, identificando al subarrendatario y la renta pactada. Es la opción más segura y la más difícil de impugnar.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Mensaje escrito con autorización expresa (opción mínima)</strong>
+        <p>Un WhatsApp, un email o cualquier mensaje donde el casero diga explícitamente que autoriza el subarriendo de la habitación. Un «vale» o un «sin problema» a la pregunta «¿puedo alquilar la habitación de invitados?» puede servir, pero es mucho más vulnerable en un litigio. Guarda siempre la captura de pantalla con fecha visible.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="juris-box">
+    <div class="juris-title">¿El subarriendo total está completamente prohibido?</div>
+    <p>Sí. El Artículo 8.2 solo permite el subarriendo <strong>parcial</strong>. Si el inquilino cede el uso de toda la vivienda a un tercero —por ejemplo, se va de viaje seis meses y deja a alguien viviendo en el piso completo a cambio de dinero— eso es subarriendo total y está prohibido sin importar si el casero lo sabe o no. La única excepción sería una cesión del contrato con consentimiento escrito del arrendador, que es un trámite diferente.</p>
+  </div>
+
+  <!-- SECCIÓN 3 -->
+  <h2><span>3.</span> El límite económico: <span>¿puedes cobrar más de lo que pagas?</span></h2>
+  <p>Esta es la limitación que más sorprende a la gente. La ley no solo regula el permiso, también regula el precio. Y el principio es claro: <strong>el inquilino no puede lucrarse con el subarriendo a costa del propietario</strong>.</p>
+
+  <blockquote>
+    «El precio del subarriendo no podrá exceder, en ningún caso, del que corresponda al arrendamiento.»
+    <cite>— Artículo 8.2, Ley de Arrendamientos Urbanos (LAU)</cite>
+  </blockquote>
+
+  <p>En términos prácticos, si tú pagas <strong>800 €/mes</strong> por el piso completo, la suma de lo que cobras por todas las habitaciones subarrendadas no puede superar esos 800 €. Lo que sí puedes hacer es repartir el coste del alquiler entre varios compañeros, siempre que el total no exceda la renta que tú pagas.</p>
+
+  <table class="split-table">
+    <thead>
+      <tr>
+        <th>✅ Legal</th>
+        <th>🚫 Ilegal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pagas 800 €. Alquilas una habitación por 350 €. Tú te quedas con el resto de la casa pagando 450 €.</td>
+        <td>Pagas 800 €. Alquilas dos habitaciones por 500 € cada una (1.000 € en total). Lucrarte con 200 € al mes.</td>
+      </tr>
+      <tr>
+        <td>Pagas 1.000 €. Tienes dos compañeros y cada uno paga 333 €. Total: 999 € ≤ 1.000 €.</td>
+        <td>Subarrendar el piso completo a un tercero mientras tú no resides allí, aunque sea por el mismo precio.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECCIÓN 4 -->
+  <h2><span>4.</span> El chivato de Hacienda: <span>cómo el empadronamiento destapa el pastel</span></h2>
+  <p>Muchos inquilinos creen que el subarriendo informal es invisible. No lo es. Hay dos vías por las que la situación puede salir a la luz sin que nadie lo haya buscado activamente.</p>
+
+  <ol class="steps">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>El empadronamiento del compañero</strong>
+        <p>Cuando el subarrendatario se empadrona en el piso, ese dato es público en el Padrón Municipal. El casero puede consultarlo, y si descubre que hay una persona empadronada que él no conoce, puede iniciar las averiguaciones. Además, empadronarse genera rastros en servicios sociales, sanidad y otras administraciones.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>La declaración de la renta del subarrendatario</strong>
+        <p>Si el compañero de piso incluye el alquiler de la habitación en su declaración del IRPF (como deducción por alquiler de vivienda habitual o simplemente como gasto), Hacienda cruza esos datos con los del propietario del inmueble. Si el casero no ha declarado ese ingreso de subarriendo y no estaba al corriente de la situación, se abre una discrepancia fiscal que puede disparar una inspección.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>¿Cómo tributa el dinero del subarriendo?</strong>
+        <p>El inquilino que subarrienda una habitación obtiene un <strong>rendimiento del capital inmobiliario</strong> que debe declarar en su IRPF. Puede deducir la parte proporcional de los gastos que soporta (alquiler, suministros…) correspondientes a la parte subarrendada. No declararlo es una infracción tributaria independiente del problema con el casero.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="juris-box">
+    <div class="juris-title">Consejo práctico: regulariza antes de que lo descubran</div>
+    <p>Si ya tienes a alguien viviendo en el piso sin permiso del casero, lo más inteligente es regularizar la situación cuanto antes: pide el permiso por escrito, formalizad un contrato de subarriendo y declarad los ingresos en el IRPF. La mayoría de los propietarios prefieren la transparencia antes que el conflicto, especialmente si la convivencia funciona bien y los pagos están al día.</p>
+  </div>
+
+  <div class="article-tags">
+    <span class="tag">#Subarriendo</span>
+    <span class="tag">#RealquilarHabitación</span>
+    <span class="tag">#Artículo8LAU</span>
+    <span class="tag">#Artículo27LAU</span>
+    <span class="tag">#IRPF</span>
+    <span class="tag">#CompañeroDePiso</span>
+    <span class="tag">#LeyVivienda</span>
+  </div>
+
+</main>
+
+<section class="article-cta">
+  <div class="cta-box">
+    <h3>¿Quieres alquilar una habitación <em>sin arriesgarte</em>?</h3>
+    <p>Te ayudamos a redactar el anexo de subarriendo y a gestionar el permiso del casero correctamente para que estés cubierto por la ley.</p>
+    <a href="portal.html" class="btn btn-primary">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 OpenLexIura · Información legal divulgativa. No constituye asesoramiento jurídico individualizado.</p>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)});
+const ring=document.querySelector('.cursor-ring'),dot=document.querySelector('.cursor-dot');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)}animRing();
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
