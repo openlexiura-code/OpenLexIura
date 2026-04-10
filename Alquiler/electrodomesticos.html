@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>La rotura de electrodomésticos: ¿quién paga? · OpenLexIura</title>
+<meta name="description" content="La caldera se rompe, la lavadora no arranca. ¿Lo pagas tú o el casero? La respuesta depende de la antigüedad del aparato y de lo que diga el técnico.">
+<link rel="icon" type="image/jpeg" href="../Icono.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5ef;--bg-2:#eef1f6;--text:#1f2937;--muted:#64748b;--brand:#2563eb;--line:rgba(37,99,235,.14);--line-2:rgba(15,23,42,.08);--shadow:0 24px 80px rgba(0,0,0,.45);--radius:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:radial-gradient(circle at 20% 10%,rgba(37,99,235,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,23,42,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(37,99,235,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(37,99,235,.10)}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(37,99,235,.22),0 10px 30px rgba(0,0,0,.35)}
+.nav-links{display:flex;align-items:center;gap:1.4rem}
+.nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+.nav-links a:hover{color:var(--brand)}
+.nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05))}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(37,99,235,.14),0 10px 24px rgba(0,0,0,.2)}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+.article-hero>*{position:relative;z-index:1}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8)}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+.article-title em{font-style:italic;color:var(--brand)}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+.article-meta span{display:flex;align-items:center;gap:.35rem}
+.meta-sep{color:rgba(15,23,42,.18)}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+.article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+.article-body h2 span{color:var(--brand);font-style:italic}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem}
+.article-body strong{font-weight:700;color:#111827}
+.article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(37,99,235,.25);transition:.2s ease}
+.article-body a:hover{border-bottom-color:var(--brand)}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+.article-body ul li::before{content:'•';color:var(--brand);position:absolute;left:-1rem}
+.article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+.article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f6faff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+.article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic}
+.article-body blockquote cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30)}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.quick-answer .qa-label::before{content:'⏱';font-size:.9rem}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+.quick-answer strong{color:#fff;font-weight:700}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f0f7ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.info-box .info-title::before{content:'⚖';width:28px;height:28px;border-radius:50%;background:rgba(37,99,235,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+.info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.juris-box .juris-title::before{content:'🧑d⚖️';font-size:.95rem}
+.juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+.split-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+.split-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem}
+.split-table th:first-child{background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff}
+.split-table th:last-child{background:linear-gradient(135deg,#dc2626,#f87171);color:#fff}
+.split-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6}
+.split-table tr:nth-child(even) td:first-child{background:rgba(22,163,74,.04)}
+.split-table tr:nth-child(even) td:last-child{background:rgba(220,38,38,.04)}
+.split-table tr:last-child td{border-bottom:none}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+.tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+.tag:hover{border-color:rgba(37,99,235,.34);color:var(--brand)}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(242,248,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+.cta-box h3 em{font-style:italic;color:var(--brand)}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(37,99,235,.18);font-weight:600;transition:.25s ease;font-family:'Inter',sans-serif}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35)}
+.btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(37,99,235,.28)}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(43,111,232,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(135,206,250,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#2b6fe8;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(43,111,232,.75)}
+@media(max-width:640px){nav{padding:1rem 1.1rem}.nav-links{display:none}.article-hero{padding:7.5rem 1.2rem 3rem}.article-body{padding:2.5rem 1.2rem 4rem}}
+</style>
+</head>
+<body>
+
+<div class="cursor-ring" id="ring"></div>
+<div class="cursor-dot" id="dot"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="../index.html"><img src="Icono.jpg" alt="OpenLexIura"><span>OpenLexIura</span></a>
+  <div class="nav-links">
+    <a href="../index.html#inicio">Inicio</a>
+    <a href="../consultas.html#consultas">Consultas</a>
+    <a class="nav-cta" href="../portal.html">Acceder al portal</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill">Alquiler · Reparaciones</div>
+  <h1 class="article-title">La rotura de <em>electrodomésticos</em></h1>
+  <p class="article-lead">Las grandes averías: ¿quién paga cuando se rompe la caldera o la lavadora?</p>
+  <div class="article-meta">
+    <span><strong>OpenLexIura</strong></span>
+    <span class="meta-sep">·</span>
+    <span>2026</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">8 min de lectura</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">Alquiler</span>
+  </div>
+  <div class="art-divider"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p>La regla general es clara: el casero paga las averías necesarias para que la vivienda sea <strong>habitable</strong>. Si el aparato se rompió por desgaste o por su antigüedad, lo paga el propietario. Solo si hay negligencia o mal uso del inquilino, el coste recae sobre él.</p>
+  </div>
+
+  <p class="reveal">Hace frío, la caldera hace un ruido raro y de repente deja de funcionar. ¿Son 500 € que salen de tu bolsillo o del bolsillo del casero? Hay que romper el mito de que <em>"el que lo rompe lo paga"</em> cuando hablamos de electrodomésticos viejos que han llegado al final de su vida útil.</p>
+
+  <!-- SECCIÓN 1 -->
+  <h2 class="reveal">La regla del <span>Artículo 21.1 LAU</span>: el casero debe garantizar la habitabilidad</h2>
+
+  <p class="reveal">La Ley de Arrendamientos Urbanos es rotunda en este punto. El propietario no puede simplemente despreocuparse de los electrodomésticos que entregó con el piso y dejar que sean un problema del inquilino cuando se estropeen.</p>
+
+  <div class="info-box reveal">
+    <p class="info-title">La Ley en la mano</p>
+    <p>El <strong>Artículo 21.1 de la LAU</strong> obliga al arrendador a <em>"realizar, sin derecho a elevar por ello la renta, todas las reparaciones que sean necesarias para conservar la vivienda en las condiciones de habitabilidad para servir al uso convenido"</em>. Una vivienda sin agua caliente, sin calefacción o sin lavadora funcional —cuando estos elementos se entregaron con el contrato— no cumple las condiciones de habitabilidad pactadas.</p>
+  </div>
+
+  <p class="reveal">Esto significa que si la caldera, el frigorífico o la lavadora que el casero entregó con el piso se averían, la obligación de repararlos o sustituirlos es <strong>del propietario</strong>, salvo que se demuestre que la avería fue causada por un mal uso del inquilino.</p>
+
+  <!-- SECCIÓN 2 -->
+  <h2 class="reveal">El dictamen del técnico: <span>la pieza clave</span></h2>
+
+  <p class="reveal">El informe del técnico o del servicio de asistencia técnica (SAT) es el documento que lo decide todo. No importa lo que diga el casero ni lo que diga el inquilino: lo que importa es lo que <strong>dictamina el técnico sobre la causa de la avería</strong>.</p>
+
+  <table class="split-table reveal">
+    <thead>
+      <tr>
+        <th>✔ El casero paga</th>
+        <th>✘ El inquilino paga</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Desgaste natural de las piezas por el tiempo</td>
+        <td>Objeto extraño introducido en la lavadora (piedras, monedas)</td>
+      </tr>
+      <tr>
+        <td>Fin de la vida útil del aparato</td>
+        <td>Golpe físico comprobado (caldera rota por impacto)</td>
+      </tr>
+      <tr>
+        <td>Fallo eléctrico no provocado por el usuario</td>
+        <td>Uso contrario a las instrucciones del fabricante</td>
+      </tr>
+      <tr>
+        <td>Corrosión o deterioro progresivo del motor</td>
+        <td>Carga excesiva sistemática documentada</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="reveal">Cuando el técnico llame a tu puerta, asegúrate de que en su informe quede <strong>escrita la causa de la avería</strong>, no solo la solución. Una factura que diga solo <em>"sustitución de motor"</em> no es lo mismo que una que diga <em>"sustitución de motor por desgaste y agotamiento de vida útil"</em>. La segunda es tu defensa legal.</p>
+
+  <!-- SECCIÓN 3 -->
+  <h2 class="reveal">La antigüedad del aparato: <span>la vida útil según los jueces</span></h2>
+
+  <p class="reveal">Este es el punto donde la jurisprudencia es especialmente valiosa para el inquilino. Los tribunales llevan años construyendo doctrina sobre la <em>"vida útil"</em> de los electrodomésticos, y los criterios son bastante claros.</p>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Lo que dicen los Jueces (Jurisprudencia)</p>
+    <p>Varias Audiencias Provinciales —entre ellas las de <strong>Madrid, Valencia y Sevilla</strong>— han establecido de forma reiterada que cuando un electrodoméstico supera su vida útil media (calculada generalmente en <strong>10-12 años para calderas y lavadoras</strong>), su avería se presume producida por desgaste natural, no por mal uso del inquilino. El arrendador no puede trasladar al arrendatario el coste del envejecimiento de los aparatos que él mismo entregó con la vivienda. Esta doctrina aplica aunque el inquilino lo haya usado con normalidad.</p>
+  </div>
+
+  <p class="reveal">Como referencia orientativa, los plazos de vida útil que manejan los tribunales son aproximadamente:</p>
+
+  <ul class="reveal">
+    <li><strong>Caldera de gas:</strong> 10-15 años</li>
+    <li><strong>Lavadora y lavavajillas:</strong> 10-12 años</li>
+    <li><strong>Frigorífico:</strong> 12-15 años</li>
+    <li><strong>Aire acondicionado:</strong> 10-12 años</li>
+    <li><strong>Horno y vitrocerámica:</strong> 10-15 años</li>
+  </ul>
+
+  <p class="reveal">Si el aparato supera esos años y se avería, los jueces consideran que ha llegado al final de su vida útil. El casero debe repararlo o sustituirlo a su cargo.</p>
+
+  <blockquote class="reveal">
+    El arrendador no puede pretender que el arrendatario soporte el coste derivado del agotamiento natural de los electrodomésticos entregados con la vivienda, pues ello equivaldría a trasladar al inquilino la carga del envejecimiento del patrimonio del propietario.
+    <cite>— Doctrina de Audiencias Provinciales (Madrid, Valencia, Sevilla)</cite>
+  </blockquote>
+
+  <!-- SECCIÓN 4 -->
+  <h2 class="reveal">¿Qué pasa si el casero <span>tarda semanas en arreglarlo</span>?</h2>
+
+  <p class="reveal">Esta es otra situación frecuente: el casero reconoce que es su responsabilidad, pero no actúa. Pasan días, pasan semanas y tú sigues sin agua caliente o sin calefacción en pleno invierno. La LAU te da opciones concretas.</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Aviso formal por escrito</strong>
+        <p>Comunica la avería al casero por <strong>email o WhatsApp</strong> el mismo día que se produce. Guarda la prueba de envío. Si no reacciona en un plazo razonable (48-72 horas para averías que afectan a la habitabilidad), pasa al siguiente paso.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Burofax con plazo de actuación</strong>
+        <p>Envía un burofax concediendo un plazo concreto para reparar (5-10 días). Si hay niños o personas mayores en el hogar, el plazo puede ser más urgente. El burofax deja constancia fehaciente y es el paso previo imprescindible para cualquier acción legal.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Reparación por el inquilino con repercusión al casero</strong>
+        <p>El <strong>Artículo 21.3 de la LAU</strong> permite que el inquilino realice por sí mismo las reparaciones urgentes necesarias para evitar un daño inminente o una molestia grave, y exija su importe al arrendador. Esto incluye contratar al técnico y descontar el coste de la renta siguiente, siempre con facturas y comunicación previa documentada.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>Reducción de renta o resolución del contrato</strong>
+        <p>En casos graves y prolongados, los tribunales han admitido que el inquilino solicite una <strong>reducción proporcional de la renta</strong> por el período en que el inmueble no reunía condiciones de habitabilidad, e incluso la resolución del contrato sin penalización.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="article-tags reveal">
+    <span class="tag">Electrodomésticos</span>
+    <span class="tag">LAU Art. 21</span>
+    <span class="tag">Habitabilidad</span>
+    <span class="tag">Vida útil</span>
+    <span class="tag">Caldera</span>
+    <span class="tag">Alquiler</span>
+  </div>
+
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Tu casero no quiere <em>arreglar la avería</em>?</h3>
+    <p>Te ayudamos a redactar el requerimiento formal y a conocer todas tus opciones legales antes de tener que ir al juzgado.</p>
+    <a href="../consultas.html" class="btn btn-primary">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 OpenLexIura · Información jurídica divulgativa, no asesoramiento legal profesional</p>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+const ring=document.getElementById('ring'),dot=document.getElementById('dot');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+</script>
+</body>
+</html>
