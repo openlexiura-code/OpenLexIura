@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Subidas anuales del alquiler: el índice del INE y el adiós al IPC | OpenLexIura</title>
+  <meta name="description" content="¿Cuánto te pueden subir el alquiler cada año? El IPC ya no manda. Explicamos el nuevo Índice del INE, el preaviso obligatorio y las reglas especiales en zonas tensionadas.">
+  <link rel="icon" type="image/jpeg" href="../Icono.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f7fa;
+      --bg-2: #eaf0f8;
+      --text: #1f2937;
+      --muted: #64748b;
+      --brand: #1d4ed8;
+      --brand-dark: #1e40af;
+      --brand-light: #60a5fa;
+      --line: rgba(29,78,216,.14);
+      --line-2: rgba(15,23,42,.08);
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --radius: 24px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(29,78,216,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,23,42,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(29,78,216,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+    nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(29,78,216,.10)}
+    .nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+    .nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(29,78,216,.22),0 10px 30px rgba(0,0,0,.35)}
+    .nav-links{display:flex;align-items:center;gap:1.4rem}
+    .nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+    .nav-links a:hover{color:var(--brand)}
+    .nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(29,78,216,.22);border-radius:999px;background:linear-gradient(180deg,rgba(29,78,216,.10),rgba(29,78,216,.05))}
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(29,78,216,.14),0 10px 24px rgba(0,0,0,.2)}
+
+    .article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:1}
+    .article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(29,78,216,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+    .cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(29,78,216,.20);background:rgba(29,78,216,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+    .cat-pill::before{content:'●';color:var(--brand)}
+    .article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+    .article-title em{font-style:italic;color:var(--brand)}
+    .article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+    .article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+    .article-meta span{display:flex;align-items:center;gap:.35rem}
+    .meta-sep{color:rgba(15,23,42,.18)}
+    .meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+    .art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+
+    .article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+    .article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+    .article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+    .article-body h2 span{color:var(--brand);font-style:italic}
+    .article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem}
+    .article-body strong{font-weight:700;color:#111827}
+    .article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(29,78,216,.25);transition:.2s ease}
+    .article-body a:hover{border-bottom-color:var(--brand)}
+    .article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+    .article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+    .article-body ul li::before{content:'▸';color:var(--brand);position:absolute;left:-1rem}
+
+    .quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#1d4ed8,#60a5fa);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(29,78,216,.30)}
+    .quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+    .quick-answer .qa-label::before{content:'⚡'}
+    .quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+    .quick-answer strong{color:#fff;font-weight:700}
+
+    .info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(29,78,216,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+    .info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .info-box .info-title::before{content:'⚖️';width:28px;height:28px;border-radius:50%;background:rgba(29,78,216,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+    .info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+
+    .juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .juris-box .juris-title::before{content:'📋';font-size:.95rem}
+    .juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+
+    .warn-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:1px solid rgba(234,88,12,.20);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+    .warn-box .warn-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#9a3412;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+    .warn-box .warn-title::before{content:'⚠️';font-size:.95rem}
+    .warn-box p{margin-bottom:0;font-size:1rem;color:#7c2d12;line-height:1.75}
+
+    .article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(29,78,216,.06),rgba(29,78,216,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic}
+    .article-body blockquote cite{display:block;margin-top:.6rem;font-family:Inter,sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+
+    .summary-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+    .summary-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem}
+    .summary-table th:first-child{background:linear-gradient(135deg,#1e40af,#60a5fa);color:#fff}
+    .summary-table th:last-child{background:linear-gradient(135deg,#1e3a5f,#6366f1);color:#fff}
+    .summary-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6}
+    .summary-table tr:nth-child(even) td:first-child{background:rgba(29,78,216,.04)}
+    .summary-table tr:nth-child(even) td:last-child{background:rgba(99,102,241,.04)}
+    .summary-table tr:last-child td{border-bottom:none}
+
+    .article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+    .article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(29,78,216,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    .step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#60a5fa);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+    .step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+    .step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+
+    .article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+    .tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+    .tag:hover{border-color:rgba(29,78,216,.34);color:var(--brand)}
+
+    .article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+    .cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(29,78,216,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+    .cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+    .cta-box h3 em{font-style:italic;color:var(--brand)}
+    .cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(29,78,216,.18);font-weight:600;transition:.25s ease;font-family:Inter,sans-serif}
+    .btn-primary{background:linear-gradient(135deg,#1d4ed8,#60a5fa);color:#fff !important;box-shadow:0 16px 40px rgba(29,78,216,.35)}
+    .btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(29,78,216,.28)}
+
+    footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    .cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(29,78,216,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(96,165,250,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+    .cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#1d4ed8;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(29,78,216,.75)}
+
+    @media(max-width:640px){
+      nav{padding:1rem 1.1rem}
+      .nav-links{display:none}
+      .article-hero{padding:7.5rem 1.2rem 3rem}
+      .article-body{padding:2.5rem 1.2rem 4rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <nav id="nav">
+    <a class="nav-logo" href="../index.html">
+      <img src="Icono.png" alt="OpenLexIura">
+      <span>OpenLexIura</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Inicio</a>
+      <a href="../consultas.html">Consultas</a>
+      <a class="nav-cta" href="../portal.html">Acceder al portal</a>
+    </div>
+  </nav>
+
+  <header class="article-hero">
+    <div class="cat-pill">Alquiler · Actualización de Renta</div>
+    <h1 class="article-title">El laberinto<br>de <em>la inflación</em></h1>
+    <p class="article-lead">El IPC ya no manda en tu alquiler. Explicamos el nuevo Índice del INE, cuándo puede subir el casero la renta y cómo tiene que avisarte</p>
+    <div class="article-meta">
+      <span><strong>OpenLexIura</strong></span>
+      <span class="meta-sep">·</span>
+      <span>2026</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">9 min de lectura</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-badge">Alquiler</span>
+    </div>
+    <div class="art-divider"></div>
+  </header>
+
+  <main class="article-body">
+
+    <div class="quick-answer">
+      <div class="qa-label">Respuesta rápida</div>
+      <p>Si tu contrato <strong>no incluye una cláusula de actualización</strong>, el casero <strong>no puede subir la renta ni un céntimo</strong>. Si la incluye, el límite ya no es el IPC: desde 2025 en adelante rige el <strong>Índice de Referencia del INE</strong>, y el aviso debe llegar con al menos un mes de antelación y por escrito.</p>
+    </div>
+
+    <!-- SECCIÓN 1 -->
+    <h2><span>1.</span> La regla de oro: si el contrato no lo dice, la cuota se congela</h2>
+    <p>El punto de partida es el <strong>Artículo 18.1 de la LAU</strong>. Su mensaje es diáfano: la actualización de la renta durante los primeros cinco años de contrato solo puede producirse <em>si las partes lo pactaron expresamente en el contrato</em>. Si ese pacto no existe, la renta queda congelada exactamente en la cifra que figura en el documento que firmaste el primer día.</p>
+
+    <div class="info-box">
+      <div class="info-title">La Ley en la mano — Artículo 18.1 LAU</div>
+      <p>«Durante la vigencia del contrato, la renta solo podrá ser actualizada por el arrendador o el arrendatario en la fecha en que se cumpla cada año de vigencia del contrato, en los términos pactados por las partes. En defecto de pacto expreso, <strong>no se aplicará actualización de renta a los contratos de arrendamiento</strong>.»</p>
+    </div>
+
+    <p>En la práctica, la inmensa mayoría de los contratos actuales sí incluyen esa cláusula —normalmente en una línea que dice algo como «la renta se actualizará anualmente conforme al índice de referencia vigente»—. Pero si el tuyo no la tiene, guarda este artículo: es tu escudo legal ante cualquier intento de subida.</p>
+
+    <div class="warn-box">
+      <div class="warn-title">Ojo con los contratos antiguos</div>
+      <p>Los contratos firmados antes del 26 de mayo de 2023 (fecha de entrada en vigor de la Ley 12/2023) siguen rigiéndose por las reglas que tenían cuando se firmaron. Si el tuyo era anterior a esa fecha y referenciaba el IPC, esa cláusula sigue siendo válida, aunque con los topes transitorios que se aplicaron en 2023 y 2024 (máximo 2% en 2023, máximo 3% en 2024 según la Disposición Final Sexta de la Ley 12/2023).</p>
+    </div>
+
+    <!-- SECCIÓN 2 -->
+    <h2><span>2.</span> Adiós al IPC: el nuevo Índice del INE</h2>
+    <p>Durante décadas, la subida anual del alquiler iba ligada al Índice de Precios al Consumo (IPC). Con la inflación disparada en 2022 y 2023, aquello se convirtió en una bomba para millones de inquilinos. La <strong>Ley de Vivienda (Ley 12/2023, de 24 de mayo)</strong> cortó ese vínculo de raíz.</p>
+
+    <div class="info-box">
+      <div class="info-title">La Ley en la mano — Disposición Final Sexta, Ley 12/2023 + Disposición Adicional Undécima LAU</div>
+      <p>La Ley 12/2023 encargó al <strong>Instituto Nacional de Estadística (INE)</strong> la creación de un nuevo índice específico para el alquiler residencial, que debía estar listo <strong>antes del 31 de diciembre de 2024</strong>. Ese índice se fija como el <strong>límite de referencia</strong> a los efectos del Artículo 18 de la LAU, con el objetivo expreso de «evitar incrementos desproporcionados en la renta de los contratos de arrendamiento». El IPC, por tanto, deja de ser el mecanismo de actualización legal a partir de 2025.</p>
+    </div>
+
+    <p>El nuevo Índice de Referencia del INE se calcula con una metodología propia que tiene en cuenta la evolución real del mercado del alquiler y no solo la inflación general. Su valor se publica mensualmente en la web del INE y es el tope máximo que el arrendador puede aplicar. El casero <strong>no puede superar ese porcentaje</strong>, aunque en el contrato se pactara algo diferente.</p>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Periodo</th>
+          <th>Límite de actualización</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hasta 31/12/2023</td>
+          <td>Máximo 2% (tope COVID-Ucrania)</td>
+        </tr>
+        <tr>
+          <td>01/01/2024 – 31/12/2024</td>
+          <td>Máximo 3% (Disp. Final Sexta Ley 12/2023)</td>
+        </tr>
+        <tr>
+          <td>Desde 01/01/2025 en adelante</td>
+          <td><strong>Nuevo Índice de Referencia del INE</strong> (IPC desvinculado)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SECCIÓN 3 -->
+    <h2><span>3.</span> El aviso del casero: cómo tiene que notificarte</h2>
+    <p>Saber que existe un límite está bien, pero hay que entender también el procedimiento. Una subida mal comunicada no tiene validez legal. El artículo 18 de la LAU, interpretado conjuntamente con las obligaciones generales del contrato, establece un protocolo claro que el arrendador debe cumplir.</p>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Preaviso con un mes de antelación, como mínimo</strong>
+          <p>El casero debe comunicarte la subida <strong>antes de que se cumpla el aniversario del contrato</strong> en el que se va a aplicar. Si el contrato se firmó el 1 de octubre, la notificación debe llegarte como máximo el 1 de septiembre. Un WhatsApp enviado el 28 de septiembre para una subida del 1 de octubre no es válido.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Por escrito y con el porcentaje concreto</strong>
+          <p>No vale una llamada de teléfono ni un mensaje verbal. La comunicación debe realizarse <strong>por escrito</strong> —correo electrónico con acuse de recibo, burofax, carta certificada o cualquier medio que deje constancia fehaciente— y debe indicar expresamente el <strong>porcentaje de actualización</strong> que se pretende aplicar.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Si pides el certificado del INE, tienen que dártelo</strong>
+          <p>El inquilino tiene derecho a solicitar al arrendador que acompañe la notificación del <strong>certificado oficial del INE</strong> que acredita el valor del índice aplicado. Si el casero no lo aporta cuando se lo pides, puedes impugnar la subida por falta de justificación.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="juris-box">
+      <div class="juris-title">¿Qué pasa si el casero no me avisa bien?</div>
+      <p>Si la notificación llega tarde (con menos de un mes), sin indicar el porcentaje o no deja constancia escrita, la actualización <strong>no entra en vigor</strong> en esa anualidad. No estás obligado a pagar la subida hasta que el arrendador realice la comunicación correctamente. Guarda siempre copia de toda la correspondencia con tu casero.</p>
+    </div>
+
+    <!-- SECCIÓN 4 -->
+    <h2><span>4.</span> Gran tenedor y Zonas Tensionadas: las restricciones extra</h2>
+    <p>Para determinados propietarios y en determinadas zonas del país, la Ley de Vivienda de 2023 añade una capa de protección adicional. No se trata de matices: son reglas completamente distintas que pueden impedir cualquier subida.</p>
+
+    <h3>¿Qué es una Zona de Mercado Residencial Tensionado?</h3>
+    <p>Es un ámbito territorial declarado formalmente por la Comunidad Autónoma competente porque el mercado del alquiler sufre un desequilibrio grave entre oferta y demanda. La declaración tiene un plazo máximo de vigencia de tres años, renovable. En España, a fecha de 2026, varias ciudades y barrios de Cataluña, País Vasco, Baleares y Madrid tienen zonas declaradas o en proceso de declaración.</p>
+
+    <h3>¿Qué es un Gran Tenedor?</h3>
+    <p>Según el <strong>Artículo 3.k de la Ley 12/2023</strong>, es la persona física o jurídica titular de <strong>más de 10 inmuebles urbanos de uso residencial</strong> (excluyendo garajes y trasteros) o una superficie construida residencial superior a <strong>1.500 m²</strong>. En zonas tensionadas, las Comunidades Autónomas pueden bajar ese umbral a partir de <strong>5 inmuebles</strong>.</p>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Situación</th>
+          <th>Regla de actualización</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Contrato en vigor / casero particular / zona normal</td>
+          <td>Máximo: Índice INE (desde 2025)</td>
+        </tr>
+        <tr>
+          <td>Nuevo contrato / zona tensionada / casero NO gran tenedor</td>
+          <td>Renta del contrato anterior + cláusula de actualización aplicada. No puede superar el índice INE.</td>
+        </tr>
+        <tr>
+          <td>Nuevo contrato / zona tensionada / casero ES gran tenedor</td>
+          <td>Tope estricto: <strong>índice de precios de referencia de la zona</strong> (sistema de índices de precios de referencia autonómico), que puede ser inferior al INE.</td>
+        </tr>
+        <tr>
+          <td>Contrato en prórroga extraordinaria (zona tensionada)</td>
+          <td>Mismas condiciones económicas del contrato que se prorroga. Sin subidas posibles.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <blockquote>
+      «En los contratos de arrendamiento de vivienda sujetos a la presente ley en los que el arrendador sea un gran tenedor de vivienda […] la renta pactada al inicio del nuevo contrato no podrá exceder del límite máximo del precio aplicable conforme al sistema de índices de precios de referencia.»
+      <cite>— Artículo 17.7 LAU (redacción introducida por la Ley 12/2023)</cite>
+    </blockquote>
+
+    <div class="article-tags">
+      <span class="tag">#SubidaAlquiler</span>
+      <span class="tag">#ÍndiceINE</span>
+      <span class="tag">#LeyVivienda2023</span>
+      <span class="tag">#ZonasTensionadas</span>
+      <span class="tag">#GranTenedor</span>
+      <span class="tag">#LAU</span>
+      <span class="tag">#Artículo18</span>
+    </div>
+
+  </main>
+
+  <section class="article-cta">
+    <div class="cta-box">
+      <h3>¿Tu casero te ha subido la renta sin avisarte bien?</h3>
+      <p>Consulta tu situación concreta con nuestros expertos. Analizamos tu contrato, comprobamos si el índice aplicado es correcto y te decimos si puedes impugnar la subida.</p>
+      <a href="../consultas.html" class="btn btn-primary">Consultar mi caso →</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 OpenLexIura · Información legal divulgativa. No constituye asesoramiento jurídico individualizado.</p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    const ring = document.querySelector('.cursor-ring');
+    const dot = document.querySelector('.cursor-dot');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+    function animRing() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); }
+    animRing();
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
