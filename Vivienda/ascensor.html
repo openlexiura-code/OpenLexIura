@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagar el ascensor si vivo en el bajo | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);color:#1e3a5f;margin:2.2rem 0 .8rem;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;}
+.juris-box .juris-title::before{content:"⚖️";margin-right:.4rem;}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.superpoder-box{padding:1.6rem;border-radius:var(--radius);background:linear-gradient(135deg,#1e3a5f,#1e40af);color:#fff;margin:2rem 0;box-shadow:0 8px 32px rgba(37,99,235,.30);}
+.superpoder-box .sp-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#bfdbfe;margin-bottom:.8rem;}
+.superpoder-box p{font-size:1rem;line-height:1.75;color:#e0f2fe;margin-bottom:.6rem;}
+.superpoder-box p:last-child{margin-bottom:0;}
+.superpoder-box strong{color:#93c5fd;}
+.vs-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.vs-card{padding:1.4rem;border-radius:var(--radius);border:1px solid var(--line);}
+.vs-card.win{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.2);}
+.vs-card.lose{background:linear-gradient(180deg,#fff1f2,#ffe4e6);border-color:rgba(220,38,38,.2);}
+.vs-card .vs-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;margin-bottom:.6rem;}
+.vs-card.win .vs-title{color:#15803d;}
+.vs-card.lose .vs-title{color:#dc2626;}
+.vs-card p{font-size:.93rem;color:#374151;line-height:1.6;margin:0;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.vs-box{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Vivienda · Artículo 5</div>
+  <h1 class="article-title reveal">Pagar el ascensor<br><em>si vivo en el bajo</em></h1>
+  <p class="article-lead reveal">La comunidad aprueba instalar un ascensor por 80.000 €. El del bajo dice "yo no lo uso nunca, yo no pago". Y tiene razón en parte, pero solo en parte. La ley distingue entre instalar el ascensor y mantenerlo, y la diferencia puede suponer miles de euros.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">9 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Vivienda · Comunidad</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>LPH art. 9.1.e:</strong> La instalación inicial del ascensor la pagan <strong>todos según cuota de participación</strong>, incluyendo bajos y locales. Lo que sí pueden evitar es la cuota mensual de mantenimiento si los Estatutos lo recogen. Una persona mayor de 70 años o con discapacidad puede forzar la instalación si la derrama no supera <strong>12 mensualidades ordinarias</strong>.</p>
+  </div>
+
+  <p class="reveal">La guerra del ascensor es la batalla vecinal más repetida en España. Y los bandos suelen estar equivocados a medias. El propietario del bajo que dice "no pago nada" se equivoca con la instalación pero puede tener razón con el mantenimiento. El quinto piso que dice "paga igual que yo" tiene razón con la instalación pero puede estar equivocado con la cuota mensual. La clave es distinguir ambas situaciones.</p>
+
+  <h2 class="reveal">1. Tu casa vale más: <span>por qué pagas la instalación aunque no lo uses</span></h2>
+  <p class="reveal">El <strong>art. 9.1.e LPH</strong> establece que todos los propietarios deben contribuir a los gastos generales según su cuota de participación. El ascensor es un <strong>elemento común del edificio</strong>, igual que el tejado o la fachada. Y su instalación tiene un efecto que beneficia a todos: <strong>revaloriza el inmueble</strong>.</p>
+  <p class="reveal">El Tribunal Supremo lo ha reiterado en múltiples sentencias: aunque el propietario del bajo nunca vaya a usar el ascensor personalmente, el precio de venta de su piso sube si el edificio tiene ascensor. Ese beneficio patrimonial justifica que contribuya a su instalación. Negarse no es solo improcedente: la comunidad puede demandarle y ejecutar el embargo de su propiedad para cobrar la derrama.</p>
+
+  <blockquote class="blockquote-law reveal">
+    "Cada propietario debe contribuir, con arreglo a la cuota de participación fijada en el título, a los gastos generales para el adecuado sostenimiento del inmueble, sus servicios, tributos, cargas y responsabilidades que no sean susceptibles de individualización."
+    <cite>Art. 9.1.e Ley de Propiedad Horizontal</cite>
+  </blockquote>
+
+  <h2 class="reveal">2. El matiz vital: <span>instalación vs. mantenimiento</span></h2>
+  <p class="reveal">Aquí está la distinción que cambia todo, y que muchos administradores de fincas no explican correctamente:</p>
+
+  <div class="vs-box reveal">
+    <div class="vs-card lose">
+      <p class="vs-title">❌ No puedes librarte de esto</p>
+      <p><strong>Derrama de instalación:</strong> El coste de construir e instalar el ascensor por primera vez. Es obra de mejora y revalorización del edificio. Todos pagan según cuota. No hay excepción posible aunque lo digan los estatutos.</p>
+    </div>
+    <div class="vs-card win">
+      <p class="vs-title">✅ Puedes librarte si los estatutos lo recogen</p>
+      <p><strong>Cuota mensual de mantenimiento:</strong> La luz de la cabina, el contrato de mantenimiento, las revisiones anuales. Si los Estatutos de la comunidad (el título constitutivo) eximen expresamente a bajos y locales de estas cuotas, esa exención es válida y vinculante.</p>
+    </div>
+  </div>
+
+  <div class="info-box reveal">
+    <p class="info-title">Cómo saber si tus Estatutos te eximen</p>
+    <p>Busca el <strong>Título Constitutivo de la Comunidad</strong> (está inscrito en el Registro de la Propiedad) y en los Estatutos adjuntos. Busca cláusulas como "los propietarios de locales y planta baja quedan exentos de los gastos de conservación, mantenimiento y uso del ascensor". Si existe esa cláusula, el bajo no paga la cuota mensual.</p>
+    <p>Si no existe esa cláusula en los Estatutos, el bajo paga todo igual que el resto.</p>
+  </div>
+
+  <h2 class="reveal">3. El superpoder de <span>los mayores de 70 años</span></h2>
+
+  <div class="superpoder-box reveal">
+    <p class="sp-title">🦽 Una sola persona puede cambiar el edificio</p>
+    <p>El <strong>art. 10.1.b LPH</strong> establece que si en el edificio vive, trabaja o presta voluntariado una <strong>persona con discapacidad o mayor de 70 años</strong>, la instalación del ascensor (o rampa, o dispositivo de accesibilidad) es <strong>obligatoria sin necesidad de votación en junta</strong>.</p>
+    <p>El único límite: que el coste de la obra, <strong>descontadas las subvenciones disponibles</strong>, no supere el importe de <strong>12 mensualidades ordinarias de gastos comunes</strong>.</p>
+    <p>Si el coste supera ese límite, la instalación sigue siendo obligatoria para la comunidad, pero los propietarios que votaron en contra tienen derecho a no pagar el exceso.</p>
+  </div>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Subvenciones: un factor que cambia el cálculo</p>
+    <p>El art. 10.1.b LPH dice "coste descontadas las subvenciones". Esto es clave porque muchos ayuntamientos y comunidades autónomas ofrecen subvenciones para instalación de ascensores en edificios sin él. Si la subvención cubre suficiente parte del coste, la obra puede quedar dentro del umbral de las 12 mensualidades y ser por tanto obligatoria.</p>
+    <p>Antes de asumir que el coste es inasumible, investiga las ayudas disponibles en tu municipio. Muchas comunidades de vecinos se ahorran decenas de miles de euros.</p>
+  </div>
+
+  <h2 class="reveal">4. Locales comerciales: <span>las reglas específicas</span></h2>
+  <p class="reveal">Los locales a pie de calle son el caso más complejo. La posición del Tribunal Supremo ha sido consistente: si el local <strong>tiene acceso al portal</strong> del edificio, paga la instalación según su cuota de participación. Si el local <strong>no tiene acceso al portal</strong> (solo tiene entrada directa a la calle), algunos tribunales han admitido excepciones, aunque la tendencia mayoritaria sigue siendo la obligación de pago.</p>
+  <p class="reveal">La solución más segura para los locales es que su exención figure expresamente en los Estatutos desde el momento de la constitución de la comunidad, o que se modifiquen los Estatutos por unanimidad para incluirla. Sin esa base documental, el local está expuesto a la misma obligación que el resto.</p>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Ascensor</a>
+    <a class="tag" href="#">LPH</a>
+    <a class="tag" href="#">Art. 9.1.e</a>
+    <a class="tag" href="#">Art. 10.1.b</a>
+    <a class="tag" href="#">Derrama</a>
+    <a class="tag" href="#">Accesibilidad</a>
+    <a class="tag" href="#">Estatutos comunidad</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Tu comunidad ha aprobado un ascensor y <em>tienes dudas sobre si debes pagar</em>?</h3>
+    <p>Cuéntanos en qué planta vives, si es local o vivienda y qué dicen los Estatutos de tu comunidad. Te orientamos.</p>
+    <a class="btn-primary" href="portal-vivienda.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

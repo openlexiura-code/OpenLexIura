@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerrar la terraza o tirar un tabique | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.vs-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.vs-card{padding:1.4rem;border-radius:var(--radius);border:1px solid var(--line);}
+.vs-card.win{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.2);}
+.vs-card.lose{background:linear-gradient(180deg,#fff1f2,#ffe4e6);border-color:rgba(220,38,38,.2);}
+.vs-card .vs-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;margin-bottom:.7rem;}
+.vs-card.win .vs-title{color:#15803d;}
+.vs-card.lose .vs-title{color:#dc2626;}
+.vs-card ul{margin:0;display:flex;flex-direction:column;gap:.5rem;}
+.vs-card ul li{list-style:none;font-size:.92rem;color:#374151;line-height:1.5;position:relative;padding-left:.9rem;}
+.vs-card ul li::before{position:absolute;left:0;}
+.vs-card.win ul li::before{content:'✓';color:#15803d;}
+.vs-card.lose ul li::before{content:'✗';color:#dc2626;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;}
+.juris-box .juris-title::before{content:"⚖️";margin-right:.4rem;}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.agravio-box{padding:1.6rem;border-radius:var(--radius);background:linear-gradient(135deg,#1e3a5f,#1e40af);color:#fff;margin:2rem 0;box-shadow:0 8px 32px rgba(37,99,235,.30);}
+.agravio-box .ag-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#bfdbfe;margin-bottom:.8rem;}
+.agravio-box p{font-size:1rem;line-height:1.75;color:#e0f2fe;margin-bottom:.6rem;}
+.agravio-box p:last-child{margin-bottom:0;}
+.agravio-box strong{color:#93c5fd;}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:1px solid rgba(220,38,38,.2);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;}
+.alerta-box p{margin-bottom:.6rem;font-size:1rem;color:#7f1d1d;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.vs-box{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Vivienda · Artículo 8</div>
+  <h1 class="article-title reveal">Cerrar la terraza<br><em>o tirar un tabique</em></h1>
+  <p class="article-lead reveal">Quieres ampliar el salón cerrando la terraza con aluminio. La casa es tuya y tú la pagas. Pero al mes siguiente el administrador te manda una carta amenazando con una demanda. ¿Quién tiene razón? Depende de si tocas dentro o fuera. Y hay una baza que mucha gente ignora.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">9 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Vivienda · Comunidad</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>LPH art. 7.1 y 10.3:</strong> Tirar un tabique interior → solo licencia municipal. Cerrar terraza o tocar fachada → necesitas el voto favorable de <strong>3/5 partes de propietarios y cuotas</strong>. Pero si hay cerramientos similares en el edificio desde hace años, tienes la <strong>doctrina del agravio comparativo</strong> como escudo.</p>
+  </div>
+
+  <p class="reveal">La reforma más deseada de España: cerrar la terraza para ganar unos metros de salón o añadir un toldo de un color diferente. Y el conflicto más evitable de España: hacerlo sin pedir permiso porque "la casa es mía". La ley distingue con precisión dónde termina tu derecho de propietario y dónde empieza el derecho colectivo de la comunidad. Conocer esa línea antes de llamar al carpintero puede ahorrarte tener que demoler lo que acabas de construir.</p>
+
+  <h2 class="reveal">1. De puertas para adentro<br><span>vs. de puertas para afuera</span></h2>
+  <p class="reveal">Esta es la distinción fundamental. La ley te da una libertad casi total para lo que nadie ve desde fuera, y te exige permiso comunitario para lo que cambia la cara del edificio:</p>
+
+  <div class="vs-box reveal">
+    <div class="vs-card win">
+      <p class="vs-title">✅ Solo necesitas licencia municipal</p>
+      <ul>
+        <li>Tirar o mover tabiques interiores no estructurales</li>
+        <li>Cambiar el suelo, los azulejos o los baños</li>
+        <li>Redistribuir las habitaciones</li>
+        <li>Hacer una cocina abierta al salón</li>
+        <li>Cambiar ventanas por otras del mismo tipo y color</li>
+      </ul>
+    </div>
+    <div class="vs-card lose">
+      <p class="vs-title">❌ Necesitas permiso de la comunidad (3/5)</p>
+      <ul>
+        <li>Cerrar una terraza descubierta con aluminio o cristal</li>
+        <li>Cambiar el color o material de la fachada exterior</li>
+        <li>Instalar un toldo de color diferente al del edificio</li>
+        <li>Abrir o ampliar ventanas en la fachada exterior</li>
+        <li>Añadir elementos visibles desde la calle (aparatos de aire, antenas)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="reveal">2. El mito de <span>"mi terraza es mía"</span></h2>
+  <p class="reveal">El error más común: confundir el uso de la terraza con su titularidad. Normalmente la terraza es tu terraza en el sentido de que tienes derecho de uso exclusivo, pero estructural y jurídicamente es un <strong>elemento común del edificio</strong>: forma parte de la cubierta o del forjado que protege al vecino de abajo. Y la fachada exterior es, por definición, un elemento común que define la estética del edificio en su conjunto.</p>
+  <p class="reveal">El <strong>art. 7.1 LPH</strong> lo dice con claridad: el propietario puede modificar sus elementos arquitectónicos siempre que no altere la <strong>configuración o estado exteriores</strong> del edificio. Cerrar una terraza descubierta con aluminio altera el estado exterior. Sin permiso comunitario, la comunidad puede demandar y el juez puede obligarte a desmantelarlo, aunque tengas licencia urbanística del Ayuntamiento. La licencia municipal y el permiso comunitario son cosas distintas e independientes [web:105][web:106].</p>
+
+  <blockquote class="blockquote-law reveal">
+    "El propietario de cada piso o local podrá modificar los elementos arquitectónicos, instalaciones o servicios de aquél cuando no menoscabe o altere la seguridad del edificio, su estructura general, su configuración o estado exteriores."
+    <cite>Art. 7.1 Ley de Propiedad Horizontal</cite>
+  </blockquote>
+
+  <h2 class="reveal">3. La regla de los 3/5: <span>cómo conseguir el permiso</span></h2>
+  <p class="reveal">Para obras que alteran la fachada, el <strong>art. 10.3 LPH</strong> exige una mayoría cualificada: el voto favorable de las <strong>3/5 partes del total de propietarios que representen, a su vez, las 3/5 partes de las cuotas de participación</strong>. No es mayoría simple: es una mayoría reforzada.</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>ANTES DE CONTRATAR AL CARPINTERO: solicita junta</strong>
+        <p>Pide al presidente que incluya en el orden del día de la próxima junta ordinaria (o convoca junta extraordinaria) el punto "Autorización para cerramiento de terraza en piso [X]". Adjunta planos o imágenes del tipo de cerramiento previsto y el material y color a utilizar.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>FACILITA EL SÍ: propón el mismo modelo que ya existe</strong>
+        <p>Si en el edificio ya hay otros cerramientos, adopta exactamente el mismo tipo de aluminio y color. Los vecinos tienen muchos menos argumentos para votar en contra si el tuyo es idéntico a los que ya hay. La uniformidad estética es la clave que los jueces examinan.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>CONSIGUE LA MAYORÍA: 3/5 de propietarios y cuotas</strong>
+        <p>Habla con los vecinos antes de la junta. Necesitas que al menos 3 de cada 5 propietarios (que representen 3/5 de las cuotas) voten a favor. El acuerdo debe constar en acta. Con ese acuerdo, más la licencia municipal, tienes cobertura total.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>SOLICITA LA LICENCIA MUNICIPAL después del permiso comunitario</strong>
+        <p>Con el acuerdo de junta en mano, tramita la licencia de obra menor en el Ayuntamiento. Recuerda: la licencia municipal no suple el permiso comunitario, son dos trámites independientes y ambos son obligatorios.</p>
+      </div>
+    </li>
+  </ol>
+
+  <h2 class="reveal">4. La carta del agravio comparativo: <span>tu escudo si ya lo hiciste</span></h2>
+  <p class="reveal">Quizá ya cerraste la terraza y ahora la comunidad te amenaza con demandar. Antes de tirar nada, comprueba el estado del edificio: si hay más cerramientos similares y la comunidad no ha actuado contra ellos, tienes una defensa sólida.</p>
+
+  <div class="agravio-box reveal">
+    <p class="ag-title">📋 La doctrina del agravio comparativo</p>
+    <p>El Tribunal Supremo y las Audiencias Provinciales han establecido de forma reiterada que una comunidad de propietarios que durante años no ha actuado contra cerramientos similares, o que incluso ha negado de forma tácita interponer demandas contra otros vecinos en la misma situación, <strong>no puede después demandar selectivamente</strong> a un propietario concreto sin incurrir en un agravio comparativo contrario al principio de igualdad y en un abuso de derecho [web:108][web:109].</p>
+    <p>En la práctica: si en tu edificio hay 5 terrazas cerradas con aluminio y la comunidad solo te demanda a ti, tu abogado presentará como prueba las fotografías de esas terrazas, las actas de juntas anteriores donde nunca se acordó demandar a esos vecinos, y la solicitud de que se aplique la doctrina del agravio comparativo. Con esa prueba, la demanda suele archivarse o desestimarse.</p>
+    <p><strong>Importante:</strong> La doctrina del agravio comparativo no funciona si los demás cerramientos tenían autorización y el tuyo no, o si el tuyo es visualmente diferente (más grande, distinto material, color disonante). Los tribunales miran la comparación real caso a caso [web:105][web:107].</p>
+  </div>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Lo más reciente del Tribunal Supremo (2025)</p>
+    <p>El TS ha reiterado en 2025 que ni siquiera la licencia urbanística concedida por el Ayuntamiento excusa al propietario de obtener la autorización comunitaria cuando la obra afecta a elementos comunes. Una sentencia de noviembre de 2025 ordenó la demolición de un cerramiento de terraza a pesar de que la obra contaba con licencia municipal, porque rompía "absolutamente la uniformidad estética de la urbanización y privaba de vistas frontales al resto de los vecinos" [web:105][web:106].</p>
+    <p>Conclusión práctica: la licencia municipal es necesaria pero no suficiente. El permiso comunitario es tan o más importante que el del Ayuntamiento.</p>
+  </div>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Cerrar terraza</a>
+    <a class="tag" href="#">LPH art. 7.1</a>
+    <a class="tag" href="#">LPH art. 10.3</a>
+    <a class="tag" href="#">Agravio comparativo</a>
+    <a class="tag" href="#">Fachada edificio</a>
+    <a class="tag" href="#">Reforma comunidad</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Quieres cerrar tu terraza o <em>ya te han mandado una carta</em>?</h3>
+    <p>Cuéntanos si ya hay cerramientos similares en tu edificio, si pediste permiso y qué dice exactamente la carta del administrador. Te decimos exactamente qué opciones tienes.</p>
+    <a class="btn-primary" href="portal-vivienda.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

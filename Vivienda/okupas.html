@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Okupas: La regla de las 48h y la realidad legal | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.mito-box{padding:1.8rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:2px solid rgba(220,38,38,.25);margin:2rem 0;text-align:center;}
+.mito-box .mito-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dc2626;margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;gap:.4rem;}
+.mito-box .mito-label::before{content:"❌";}
+.mito-box .mito-text{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#7f1d1d;line-height:1.3;font-style:italic;margin-bottom:.8rem;}
+.mito-box .mito-real{font-size:1rem;color:#991b1b;line-height:1.7;margin:0;}
+.vs-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.vs-card{padding:1.5rem;border-radius:var(--radius);border:1px solid var(--line);}
+.vs-card.morada{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.25);}
+.vs-card.usurpacion{background:linear-gradient(180deg,#fff1f2,#ffe4e6);border-color:rgba(220,38,38,.25);}
+.vs-card .vs-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;margin-bottom:.4rem;}
+.vs-card.morada .vs-title{color:#15803d;}
+.vs-card.usurpacion .vs-title{color:#dc2626;}
+.vs-card .vs-art{font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.7rem;padding:.2rem .6rem;border-radius:999px;display:inline-block;}
+.vs-card.morada .vs-art{background:rgba(22,163,74,.12);color:#15803d;}
+.vs-card.usurpacion .vs-art{background:rgba(220,38,38,.10);color:#dc2626;}
+.vs-card p{font-size:.93rem;line-height:1.65;color:#374151;margin-bottom:.5rem;}
+.vs-card p:last-child{margin-bottom:0;}
+.vs-card ul{margin:0;display:flex;flex-direction:column;gap:.4rem;}
+.vs-card ul li{list-style:none;font-size:.9rem;color:#374151;line-height:1.5;position:relative;padding-left:.9rem;}
+.vs-card ul li::before{position:absolute;left:0;}
+.vs-card.morada ul li::before{content:'→';color:#15803d;}
+.vs-card.usurpacion ul li::before{content:'→';color:#dc2626;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.protocolo-box{padding:1.6rem;border-radius:var(--radius);background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;margin:2rem 0;box-shadow:0 8px 32px rgba(220,38,38,.30);}
+.protocolo-box .pr-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fecaca;margin-bottom:.8rem;}
+.protocolo-box p{font-size:1rem;line-height:1.75;color:#fee2e2;margin-bottom:.6rem;}
+.protocolo-box p:last-child{margin-bottom:0;}
+.protocolo-box strong{color:#fca5a5;}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:1px solid rgba(220,38,38,.2);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;}
+.alerta-box p{margin-bottom:.6rem;font-size:1rem;color:#7f1d1d;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+.pruebas-morada{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
+.pm-card{padding:1rem;border-radius:var(--radius);background:#fff;border:1px solid var(--line);text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.pm-card .pm-icon{font-size:2rem;margin-bottom:.4rem;}
+.pm-card .pm-name{font-weight:700;font-size:.92rem;color:#0f172a;margin-bottom:.3rem;}
+.pm-card p{font-size:.82rem;color:var(--muted);line-height:1.5;margin:0;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.vs-box{grid-template-columns:1fr;}.pruebas-morada{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Vivienda · Artículo 10</div>
+  <h1 class="article-title reveal">Okupas en tu casa:<br><em>La regla de las 48h</em></h1>
+  <p class="article-lead reveal">El mito más extendido de España: "Si pasan 48 horas, la policía ya no puede echarlo y tienes que aguantar años de juicios." Es mentira. No existe ninguna ley que diga eso. Hay dos tipos de ocupación radicalmente distintos y uno de ellos permite a la policía actuar de forma inmediata, pase el tiempo que pase.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">9 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Vivienda · Penal</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>Art. 202 CP:</strong> Si han entrado en tu casa (la que usas), es <strong>allanamiento de morada</strong>: delito, desalojo policial inmediato, sin importar si pasaron 4 horas o 4 meses. El mito de las 48h no existe en ninguna ley española. <strong>Llama al 112, demuestra que es tu morada y la policía actúa.</strong></p>
+  </div>
+
+  <div class="mito-box reveal">
+    <div class="mito-label">Mito desmentido</div>
+    <p class="mito-text">"Si pasan 48 horas, ya no pueden echarlos y tienes que ir a juicio"</p>
+    <p class="mito-real">No existe ningún artículo, ley, decreto ni reglamento en el ordenamiento jurídico español que establezca que pasadas 48 horas un okupa consolida su derecho. Ninguno. Es una leyenda urbana que se ha repetido tanto que la gente la da por cierta. La realidad legal es radicalmente diferente, y depende de un único factor: si ese inmueble es tu morada o no.</p>
+  </div>
+
+  <h2 class="reveal">1. La distinción que lo cambia todo: <span>morada vs. piso vacío</span></h2>
+  <p class="reveal">El Código Penal español tipifica dos delitos completamente distintos relacionados con la ocupación, y las consecuencias de uno y otro son radicalmente diferentes. El error que genera el mito es mezclar ambos casos como si fueran el mismo:</p>
+
+  <div class="vs-box reveal">
+    <div class="vs-card morada">
+      <p class="vs-title">🏠 Allanamiento de Morada</p>
+      <span class="vs-art">Art. 202 Código Penal</span>
+      <p>Entrar o mantenerse en la vivienda de otra persona <strong>sin su consentimiento</strong>. Da igual si es la vivienda habitual o la casa de la playa donde tienes tus cosas. Lo decisivo es que el inmueble está equipado para la vida y su titular lo usa.</p>
+      <ul>
+        <li>Pena de 6 meses a 2 años de prisión (4 años si hay violencia)</li>
+        <li>La policía puede y debe desalojar de forma <strong>inmediata</strong></li>
+        <li>No hay ningún plazo: el delito es flagrante mientras el okupa permanezca</li>
+        <li>El propietario no necesita autorización judicial previa</li>
+      </ul>
+    </div>
+    <div class="vs-card usurpacion">
+      <p class="vs-title">🏚️ Usurpación de Inmueble</p>
+      <span class="vs-art">Art. 245 Código Penal</span>
+      <p>Ocupar un inmueble que <strong>no es morada</strong>: piso vacío de un banco, vivienda sin muebles ni suministros, solar, garaje sin uso. El titular no lo usa ni lo tiene equipado para vivir.</p>
+      <ul>
+        <li>Pena de multa (mucho menor que el allanamiento)</li>
+        <li>La policía <strong>no puede entrar sin orden judicial</strong></li>
+        <li>Requiere proceso judicial que puede durar meses</li>
+        <li>Es aquí donde la lentitud judicial genera la frustración generalizada</li>
+      </ul>
+    </div>
+  </div>
+
+  <blockquote class="blockquote-law reveal">
+    "El particular que, sin habitar en ella, ocupare con violencia o intimidación en las personas una cosa inmueble o usurpare un derecho real inmobiliario de pertenencia ajena, será castigado con la pena de prisión de uno a dos años."
+    <cite>Art. 245.1 CP (Usurpación con violencia) · Art. 202 CP (Allanamiento de morada): hasta 2 años o 4 con violencia</cite>
+  </blockquote>
+
+  <h2 class="reveal">2. El allanamiento de morada: <span>por qué la policía actúa al instante</span></h2>
+  <p class="reveal">Cuando alguien ocupa tu morada, el delito es <strong>permanente y flagrante</strong> durante todo el tiempo que el okupa permanece dentro. El concepto de flagrancia delictiva no caduca a las 48 horas: la jurisprudencia ha establecido que mientras el okupa esté dentro de tu morada, el delito sigue cometiéndose, y por tanto la policía puede intervenir sin necesidad de orden judicial en cualquier momento [web:114].</p>
+  <p class="reveal">¿Qué es tu "morada"? No solo tu domicilio habitual. También tu apartamento de verano donde tienes ropa, muebles y efectos personales. El criterio es que el inmueble esté <strong>equipado para la vida humana y que su titular lo use

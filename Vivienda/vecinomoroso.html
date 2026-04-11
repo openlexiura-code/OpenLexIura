@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El vecino moroso y las derramas impagadas | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;}
+.juris-box .juris-title::before{content:"⚖️";margin-right:.4rem;}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:1px solid rgba(220,38,38,.2);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;}
+.alerta-box p{margin-bottom:.6rem;font-size:1rem;color:#7f1d1d;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Vivienda · Artículo 6</div>
+  <h1 class="article-title reveal">El vecino moroso<br><em>y las derramas impagadas</em></h1>
+  <p class="article-lead reveal">Uno no paga y los demás tenemos que cubrir el seguro del edificio o la factura de la luz de la escalera. La tentación de colgar su nombre en el ascensor es enorme. Pero eso convertiría a la comunidad en la infractora. Hay una vía legal que es rápida, eficaz y legal.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">9 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Vivienda · Comunidad</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>LPH art. 21:</strong> Proceso Monitorio de comunidad → aprueba deuda en junta → burofax al moroso → juzgado sin abogado (cantidades pequeñas) → <strong>embargo de cuentas o piso</strong>. El moroso pierde el voto en junta pero no puede ser avergonzado públicamente: multas AEPD por lista en el tablón.</p>
+  </div>
+
+  <p class="reveal">La morosidad en comunidades de vecinos es una de las fuentes de conflicto más frecuentes y más mal gestionadas de España. Los vecinos que sí pagan se desesperan. El presidente no sabe qué puede hacer. Y mientras tanto el moroso sigue usando el ascensor, el portal iluminado y el seguro que pagan los demás.</p>
+
+  <h2 class="reveal">1. Lo que NO debes hacer jamás: <span>las venganzas que se vuelven en tu contra</span></h2>
+  <p class="reveal">La frustración lleva a la comunidad a tomar medidas que parecen lógicas pero son ilegales y pueden generar multas o demandas:</p>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">🚨 Estas acciones son ILEGALES</p>
+    <p><strong>Poner la lista de morosos en el tablón, ascensor o portal:</strong> Es una infracción grave de la Ley Orgánica de Protección de Datos (LOPD). La AEPD ha sancionado comunidades con multas de miles de euros. El nombre de un deudor no puede exhibirse públicamente.</p>
+    <p><strong>Cortarle el agua, la luz o el acceso a zonas comunes:</strong> El moroso tiene derecho a acceder a su propiedad y a los suministros. Impedir el acceso o cortar servicios puede ser constitutivo de coacciones o delito.</p>
+    <p><strong>Prohibirle usar la piscina o el garaje comunitario:</strong> Solo un juez puede privar a un propietario del uso de elementos comunes, no la junta por mayoría.</p>
+  </div>
+
+  <h2 class="reveal">2. Los castigos legales <span>que sí están permitidos</span></h2>
+  <p class="reveal">La ley sí prevé consecuencias para el moroso que se pueden aplicar sin ir al juzgado:</p>
+  <ul>
+    <li><strong>Pérdida del derecho a voto en junta (art. 15.2 LPH):</strong> El propietario moroso puede asistir a la junta y hablar, pero no puede votar ni sus votos cuentan para las mayorías. Este es el único "castigo" automático que prevé la LPH.</li>
+    <li><strong>Inscripción en el acta de la junta:</strong> La deuda puede constar en el acta (documento interno de la comunidad), lo que le afecta si quiere vender su piso, ya que el notario comprueba si hay deudas con la comunidad.</li>
+    <li><strong>Afección real del piso:</strong> La deuda con la comunidad constituye una carga real sobre el inmueble. Si el moroso vende, el comprador se subroga en la deuda. Muchas ventas se complican o se frustran por deudas comunitarias.</li>
+  </ul>
+
+  <div class="info-box reveal">
+    <p class="info-title">Sí puedes comunicarlo internamente</p>
+    <p>Lo que prohíbe la LOPD es la exposición pública. Pero en el acta de la junta, en comunicaciones internas a los propietarios (email cifrado a la comunidad), o en el certificado de deuda para el Registro de la Propiedad, la deuda sí puede constar. Es la diferencia entre gestión interna y exposición pública.</p>
+  </div>
+
+  <h2 class="reveal">3. El juicio rápido: <span>el proceso monitorio paso a paso</span></h2>
+  <p class="reveal">El <strong>art. 21 LPH</strong> prevé un proceso judicial especialmente ágil para recuperar deudas de comunidad: el Proceso Monitorio. Es más rápido y sencillo que un juicio ordinario y, para cantidades pequeñas, no requiere abogado ni procurador obligatorios.</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>JUNTA EXTRAORDINARIA: aprobación de la deuda</strong>
+        <p>Convoca junta extraordinaria con el único punto en el orden del día: "Aprobación de la liquidación de la deuda de D./Dña. [X] y autorización al presidente para reclamarla judicialmente". La junta aprueba el importe exacto de la deuda (con los votos de los que sí pagan, sin contar el del moroso).</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>NOTIFICACIÓN FEHACIENTE AL MOROSO</strong>
+        <p>El acuerdo de la junta y el certificado de deuda deben notificarse al moroso fehacientemente. Si está localizable: burofax a su domicilio conocido. Si no: notificación en el tablón de la comunidad durante tres días (art. 9.1.h LPH).</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>DEMANDA MONITORIA EN EL JUZGADO</strong>
+        <p>El presidente (o el administrador con poderes) presenta la petición inicial del proceso monitorio en el juzgado de primera instancia del lugar del inmueble. Documentos: certificado de deuda, acta de junta, notificación al moroso. Para deudas hasta 2.000 € no hace falta abogado.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>EL JUEZ NOTIFICA AL MOROSO: paga o se opone</strong>
+        <p>El juez da traslado al moroso con un plazo de 20 días para pagar o presentar oposición. Si no hace nada (lo más frecuente), el juez dicta auto de ejecución y se puede proceder al <strong>embargo de cuentas bancarias, nómina o incluso el propio piso</strong>.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">El privilegio del crédito comunitario</p>
+    <p>Las deudas con la comunidad tienen un <strong>privilegio especial</strong> frente a otros acreedores: en caso de ejecución hipotecaria o embargo del piso del moroso, la comunidad de propietarios cobra con preferencia la deuda de los últimos tres años (art. 9.1.e LPH in fine).</p>
+    <p>Esto significa que si el banco ejecuta la hipoteca del moroso, la comunidad puede reclamar en ese proceso y cobrar antes que otros acreedores ordinarios.</p>
+  </div>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Vecino moroso</a>
+    <a class="tag" href="#">LPH art. 21</a>
+    <a class="tag" href="#">Proceso monitorio</a>
+    <a class="tag" href="#">LOPD</a>
+    <a class="tag" href="#">Derrama impagada</a>
+    <a class="tag" href="#">Embargo</a>
+    <a class="tag" href="#">Comunidad vecinos</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Tienes un vecino que <em>lleva meses sin pagar</em> las cuotas?</h3>
+    <p>Cuéntanos el importe, cuánto tiempo lleva en mora y si ya habéis celebrado junta. Te trazamos el plan de acción exacto.</p>
+    <a class="btn-primary" href="portal-vivienda.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La factura del notario: ¿Quién paga qué? | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.juris-box .juris-title::before{content:"⚖️";}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.gastos-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:2rem 0;}
+.gastos-col{border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);}
+.gastos-col-header{padding:1rem 1.3rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:.5rem;}
+.gastos-col.comprador .gastos-col-header{background:linear-gradient(135deg,var(--brand),var(--brand-2));}
+.gastos-col.vendedor .gastos-col-header{background:linear-gradient(135deg,#059669,#34d399);}
+.gastos-col-body{background:#fff;padding:1rem 1.3rem;display:flex;flex-direction:column;gap:.6rem;}
+.gasto-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.95rem;color:#374151;line-height:1.5;padding:.5rem 0;border-bottom:1px solid rgba(15,23,42,.06);}
+.gasto-item:last-child{border-bottom:none;}
+.gasto-item .gasto-icon{flex-shrink:0;margin-top:.1rem;}
+.ibi-box{padding:1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#1e3a5f,#1e40af);color:#fff;margin:2rem 0;box-shadow:0 8px 32px rgba(37,99,235,.30);}
+.ibi-box .ibi-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#bfdbfe;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.ibi-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.8rem;}
+.ibi-card{background:rgba(255,255,255,.1);border-radius:16px;padding:1rem;text-align:center;}
+.ibi-card strong{display:block;font-size:1.1rem;color:#93c5fd;margin-bottom:.3rem;}
+.ibi-card p{font-size:.87rem;color:#e0f2fe;margin:0;line-height:1.5;}
+.ibi-example{background:rgba(255,255,255,.08);border-radius:12px;padding:1rem;margin-top:.8rem;font-size:.93rem;color:#e0f2fe;line-height:1.6;}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:1px solid rgba(220,38,38,.2);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;}
+.alerta-box p{margin-bottom:.6rem;font-size:1rem;color:#7f1d1d;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.gastos-grid{grid-template-columns:1fr;}.ibi-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Vivienda · Artículo 3</div>
+  <h1 class="article-title reveal">La factura del notario:<br><em>¿Quién paga qué?</em></h1>
+  <p class="article-lead reveal">El notario lee a toda velocidad. Luego llega la provisión de fondos y el comprador ve miles de euros en impuestos que no esperaba, mientras el vendedor parece que se va de rositas. Este artículo es la guía definitiva para saber quién paga cada cosa, y qué intentos de colarle algo al comprador son ilegales.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">8 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Vivienda</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>CC art. 1455:</strong> Vendedor paga matriz escritura, comprador paga primera copia y registro. Pero en la práctica casi todo lo paga el comprador si se pacta. Lo que <strong>nunca puede pagar el comprador:</strong> la plusvalía municipal, la cancelación de hipoteca anterior del vendedor y el IBI de meses en que el vendedor fue propietario.</p>
+  </div>
+
+  <p class="reveal">Comprar una vivienda cuesta más de lo que dice el precio del anuncio. La regla general es reservar entre un 10% y un 13% adicional sobre el precio de compra para cubrir impuestos y gastos. Pero dentro de esa horquilla, hay partidas que son tuyas sí o sí, y hay partidas que algunos vendedores e inmobiliarias intentan cargarte sin que sepas que no les corresponde.</p>
+
+  <h2 class="reveal">1. La frase trampa: <span>"gastos según ley"</span></h2>
+  <p class="reveal">Muchos contratos de compraventa incluyen la cláusula "los gastos e impuestos se abonarán según lo establecido en la ley". Parece neutral. No lo es: el <strong>art. 1455 CC</strong> dice que el vendedor paga la escritura matriz (el original que queda en notaría) y el comprador paga la primera copia y sus copias adicionales.</p>
+  <p class="reveal">Sin embargo, en la práctica casi todos los contratos inmobiliarios incluyen la cláusula "todos los gastos notariales y registrales a cargo del comprador", lo cual es perfectamente legal si se pacta expresamente. Si firmaste eso, lo pagás. Por eso es importante leer el contrato antes de firmar, no el día de la notaría.</p>
+
+  <blockquote class="blockquote-law reveal">
+    "Los gastos de otorgamiento de escrituras serán de cuenta del vendedor, y los de la primera copia y los demás posteriores a la venta serán de cuenta del comprador."
+    <cite>Art. 1455 Código Civil (regla supletoria)</cite>
+  </blockquote>
+
+  <h2 class="reveal">2. La lista de gastos: <span>quién paga cada euro</span></h2>
+
+  <div class="gastos-grid reveal">
+    <div class="gastos-col comprador">
+      <div class="gastos-col-header">🏠 Comprador paga</div>
+      <div class="gastos-col-body">
+        <div class="gasto-item"><span class="gasto-icon">💰</span><span><strong>ITP</strong> (segunda mano): 6-10% del precio según comunidad autónoma. Es el impuesto más grande.</span></div>
+        <div class="gasto-item"><span class="gasto-icon">💰</span><span><strong>IVA + AJD</strong> (obra nueva): IVA al 10% (4% VPO) + AJD 0,5-2% según comunidad.</span></div>
+        <div class="gasto-item"><span class="gasto-icon">📋</span><span><strong>Inscripción en el Registro de la Propiedad.</strong></span></div>
+        <div class="gasto-item"><span class="gasto-icon">📋</span><span><strong>Primera copia de la escritura</strong> (notaría).</span></div>
+        <div class="gasto-item"><span class="gasto-icon">📋</span><span><strong>Gestoría</strong> (si se usa para tramitar el registro).</span></div>
+      </div>
+    </div>
+    <div class="gastos-col vendedor">
+      <div class="gastos-col-header">💼 Vendedor paga</div>
+      <div class="gastos-col-body">
+        <div class="gasto-item"><span class="gasto-icon">💰</span><span><strong>Plusvalía municipal</strong> (IIVTNU): impuesto sobre el incremento del valor del suelo urbano.</span></div>
+        <div class="gasto-item"><span class="gasto-icon">💰</span><span><strong>IRPF</strong>: declara la ganancia patrimonial en su renta anual.</span></div>
+        <div class="gasto-item"><span class="gasto-icon">📋</span><span><strong>Cancelación de su hipoteca anterior</strong> (notaría + registro).</span></div>
+        <div class="gasto-item"><span class="gasto-icon">📋</span><span><strong>Certificado de eficiencia energética</strong> (obligatorio para vender).</span></div>
+        <div class="gasto-item"><span class="gasto-icon">📋</span><span><strong>Cédula de habitabilidad</strong> (en comunidades donde se exige).</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box reveal">
+    <p class="info-title">El ITP varía mucho según la comunidad autónoma</p>
+    <p>El ITP (Impuesto de Transmisiones Patrimoniales) lo gestiona cada comunidad y los tipos varían sensiblemente: Madrid aplica el 6%, mientras que otras comunidades como Extremadura o Cataluña llegan al 10%. Antes de negociar precio, calcula el ITP de tu comunidad: puede suponer diferencias de varios miles de euros en la provisión de fondos [web:66][web:72].</p>
+  </div>
+
+  <h2 class="reveal">3. Lo que NO debes dejar <span>que te cuelen</span></h2>
+  <p class="reveal">Estas son las partidas que algunos vendedores o inmobiliarias intentan trasladar al comprador, ya sea en el cont

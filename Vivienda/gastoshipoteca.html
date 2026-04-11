@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recuperar los gastos de tu hipoteca | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.devolucion-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:2rem 0;}
+.dev-card{padding:1.4rem;border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:.5rem;}
+.dev-pct{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:700;line-height:1;color:var(--brand);}
+.dev-name{font-weight:700;font-size:1rem;color:#0f172a;}
+.dev-desc{font-size:.87rem;color:var(--muted);line-height:1.5;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;}
+.juris-box .juris-title::before{content:"⚖️";margin-right:.4rem;}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.modelo-box{padding:1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#1e3a5f,#1e40af);color:#e0f2fe;margin:2rem 0;box-shadow:0 8px 32px rgba(37,99,235,.30);}
+.modelo-box .modelo-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#bfdbfe;margin-bottom:.8rem;}
+.modelo-box .modelo-title::before{content:"📋";margin-right:.4rem;}
+.modelo-box p{font-size:.97rem;line-height:1.75;font-style:italic;color:#e0f2fe;margin-bottom:.5rem;}
+.modelo-box .modelo-nota{font-size:.85rem;color:#93c5fd;font-style:normal;margin-top:.8rem;border-top:1px solid rgba(255,255,255,.15);padding-top:.8rem;margin-bottom:0;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.devolucion-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Vivienda · Artículo 4</div>
+  <h1 class="article-title reveal">Recuperar los gastos<br><em>de tu hipoteca</em></h1>
+  <p class="article-lead reveal">El banco te dijo que o pagabas tú los gastos de notaría, gestoría, registro y tasación, o no había hipoteca. Millones de españoles pagaron. Los tribunales europeos y el Tribunal Supremo llevan años diciéndoles que ese dinero es suyo. Aquí está la guía para recuperarlo.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">9 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Vivienda · Hipotecas</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p>Si firmaste hipoteca <strong>antes de junio de 2019</strong>: tienes derecho a recuperar el <strong>50% de notaría + 100% de gestoría + 100% de registro + 100% de tasación</strong>. Para una hipoteca media, entre <strong>1.200 y 1.800 €</strong>. El plazo para reclamar todavía está abierto gracias al TJUE.</p>
+  </div>
+
+  <p class="reveal">Durante décadas, los bancos incluyeron en las escrituras hipotecarias una cláusula que imponía al cliente el pago del 100% de todos los gastos de formalización del préstamo: notaría, registro, gestoría, tasación e incluso el Impuesto de Actos Jurídicos Documentados. Nadie negociaba esa cláusula. Era un "lo tomas o lo dejas". Y en 2015, el Tribunal Supremo dijo que eso era abusivo.</p>
+
+  <h2 class="reveal">1. Por qué tienes derecho <span>a recuperar ese dinero</span></h2>
+  <p class="reveal">La cláusula que te cargaba todos los gastos fue declarada nula por ser <strong>abusiva</strong>: el banco la imponía sin negociación, en su exclusivo beneficio. La Directiva europea sobre cláusulas abusivas (93/13/CEE) y el TRLGDCU establecen que las cláusulas no negociadas individualmente que generan un desequilibrio importante son nulas de pleno derecho.</p>
+  <p class="reveal">El Tribunal Supremo fijó en sus sentencias de 2020 y 2021 exactamente qué corresponde a cada parte. Si firmaste antes del <strong>16 de junio de 2019</strong> (entrada en vigor de la nueva Ley Hipotecaria), aplica ese reparto. Si firmaste después, la nueva ley ya asigna los gastos correctamente por defecto.</p>
+
+  <h2 class="reveal">2. La lista de la devolución: <span>qué y cuánto te deben</span></h2>
+
+  <div class="devolucion-grid reveal">
+    <div class="dev-card">
+      <div class="dev-pct">50%</div>
+      <div class="dev-name">Gastos de Notaría</div>
+      <div class="dev-desc">La mitad te corresponde a ti; la otra mitad la debió pagar el banco. Sentencia TS 457/2020.</div>
+    </div>
+    <div class="dev-card">
+      <div class="dev-pct">100%</div>
+      <div class="dev-name">Gastos de Gestoría</div>
+      <div class="dev-desc">Los pagaste tú enteros pero correspondían al banco, que es quien necesita la gestión del registro. Sentencia TS 555/2020.</div>
+    </div>
+    <div class="dev-card">
+      <div class="dev-pct">100%</div>
+      <div class="dev-name">Registro de la Propiedad</div>
+      <div class="dev-desc">El banco es quien quiere inscribir la hipoteca como garantía. Ese coste le corresponde íntegramente. Sentencia TS 457/2020.</div>
+    </div>
+    <div class="dev-card">
+      <div class="dev-pct">100%</div>
+      <div class="dev-name">Tasación</div>
+      <div class="dev-desc">Es el banco quien necesita saber el valor de la garantía. Tú no eres quien solicita la tasación en beneficio propio. Sentencia TS 35/2021.</div>
+    </div>
+  </div>
+
+  <div class="info-box reveal">
+    <p class="info-title">¿Cuánto dinero son en la práctica?</p>
+    <p>Para una hipoteca media de 150.000 €, el importe recuperable suele rondar los <strong>1.200 a 1.500 €</strong>. Para hipotecas de 200.000 €, entre 1.500 y 1.800 €. A esto hay que sumarle los <strong>intereses legales del dinero</strong> desde la fecha en que pagaste, lo que incrementa la cantidad final.</p>
+    <p>Si el banco pierde el juicio (lo habitual en casos claros), además paga las <strong>costas procesales</strong>: tus honorarios de abogado y procurador.</p>
+  </div>
+
+  <div class="info-box reveal">
+    <p class="info-title">El AJD: el impuesto que depende de cuándo firmaste</p>
+    <p>El Impuesto de Actos Jurídicos Documentados (AJD) es el más cuantioso de todos. La regla es: si firmaste <strong>antes del 10 de noviembre de 2018</strong>, lo pagaste tú y no puedes reclamarlo. Si firmaste <strong>desde el 10 de noviembre de 2018</strong> en adelante, ya lo pagó el banco y no hay nada que reclamar en este concepto. Esa fecha fue el detonante político que aceleró la nueva Ley Hipotecaria.</p>
+  </div>
+
+  <h2 class="reveal">3. El mito de <span>"ya es tarde para reclamar"</span></h2>
+  <p class="reveal">Los bancos han esgrimido sistemáticamente la prescripción como escudo: "Han pasado más de 5 años desde que firmaste, ya no puedes reclamar." El <strong>TJUE respondió a esto en abril de 2024</strong> con una sentencia de consecuencias enormes.</p>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">TJUE 2024: el reloj no empieza cuando firmaste</p>
+    <p>El Tribunal de Justicia de la UE estableció que el plazo de prescripción para reclamar no puede empezar a contar desde la fecha de firma de la hipoteca, porque en ese momento el consumidor no podía saber que la cláusula era abusiva. El plazo empieza cuando el consumidor <strong>tiene conocimiento real</strong> de que la cláusula es nula.</p>
+    <p>El Tribunal Supremo español ha aplicado esta doctrina señalando el <strong>21 de enero de 2016</strong> (fecha de la sentencia del TS que reconoció el carácter abusivo) como dies a quo para la mayoría de reclamantes. Desde esa fecha, el plazo es de 5 años por el art. 1964 CC, lo que en principio sitúa el límite en 2021. Sin embargo, la interacción con la doctrina del TJUE ha llevado a muchos tribunales españoles a admitir reclamaciones más tardías cuando el consumidor no tuvo acceso real a esa información.</p>
+    <p>Conclusión práctica: <strong>si no has reclamado, hazlo ya</strong>. No asumas que estás fuera de plazo sin consultarlo.</p>
+  </div>
+
+  <h2 class="reveal">4. Guía de acción: <span>cómo reclamar paso a paso</span></h2>
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>RECOPILA LAS FACTURAS (o solicita copias)</strong>
+        <p>Busca las facturas de notaría, gestoría, registro y tasación que te entregaron semanas después de firmar. Si no las tienes, puedes pedirlas directamente a la notaría, al Registro de la Propiedad, a la gestoría y a la tasadora. También pueden constar desglosadas en la propia escritura de hipoteca.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>RECLAMACIÓN AL SAC DEL BANCO (paso previo obligatorio)</strong>
+        <p>Presenta escrito al Servicio de Atención al Cliente del banco reclamando la devolución, citando las sentencias del TS y la nulidad de la cláusula de gastos. El banco tiene <strong>60 días</strong> para responder. En muchos casos directamente niegan o no contestan, lo cual es el paso necesario para ir a juicio.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>SI NIEGAN: DEMANDA JUDICIAL con abogado</strong>
+        <p>La acción judicial para nulidad de cláusula abusiva requiere abogado y procurador. La buena noticia: si el banco pierde (lo habitual), paga las costas. Muchos despachos trabajan en estos casos a éxito, sin cobrar si no se gana.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>ALTERNATIVA: Banco de España</strong>
+        <p>Si el banco resuelve en contra o no responde, puedes acudir al Servicio de Reclamaciones del Banco de España. No es vinculante para el banco, pero su resolución favorable tiene peso en juicio y a veces impulsa acuerdos extrajudiciales.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="modelo-box reveal">
+    <p class="modelo-title">Texto básico para la reclamación al SAC</p>
+    <p>"D./Dña. [NOMBRE], con DNI [X], titular del préstamo hipotecario nº [X] suscrito en fecha [X] con [NOMBRE DEL BANCO], solicita la devolución de los importes indebidamente cobrados en concepto de gastos de constitución del préstamo hipotecario, conforme a las Sentencias del Tribunal Supremo nº 457/2020, 555/2020 y 35/2021, que declaran nula por abusiva la cláusula de gastos incluida en la escritura de préstamo hipotecario, y en aplicación de la Directiva 93/13/CEE sobre cláusulas abusivas. En concreto, se reclaman los siguientes importes: [DETALLE CON FACTURAS]."</p>
+    <p class="modelo-nota">Adjunta siempre copia de las facturas, tu DNI y la primera página de la escritura de hipoteca. Envía por correo certificado o por la vía telemática oficial del banco, conservando acuse de recibo.</p>
+  </div>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Gastos hipoteca</a>
+    <a class="tag" href="#">Cláusula abusiva</a>
+    <a class="tag" href="#">TS 457/2020</a>
+    <a class="tag" href="#">TJUE 2024</a>
+    <a class="tag" href="#">Notaría</a>
+    <a class="tag" href="#">Gestoría</a>
+    <a class="tag" href="#">Registro</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Tienes la escritura de tu hipoteca <em>guardada en algún cajón</em>?</h3>
+    <p>Cuéntanos cuándo firmaste y con qué banco. Te orientamos sobre si tienes derecho a reclamar y cuánto podrías recuperar.</p>
+    <a class="btn-primary" href="portal-vivienda.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

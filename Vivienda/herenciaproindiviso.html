@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heredar a medias: El infierno del Proindiviso | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;}
+.juris-box .juris-title::before{content:"⚖️";margin-right:.4rem;}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.nuclear-box{padding:1.6rem;border-radius:var(--radius);background:linear-gradient(135deg,#1e3a5f,#1e40af);color:#fff;margin:2rem 0;box-shadow:0 8px 32px rgba(37,99,235,.30);}
+.nuclear-box .nu-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#bfdbfe;margin-bottom:.8rem;}
+.nuclear-box p{font-size:1rem;line-height:1.75;color:#e0f2fe;margin-bottom:.6rem;}
+.nuclear-box p:last-child{margin-bottom:0;}
+.nuclear-box strong{color:#93c5fd;}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:1px solid rgba(220,38,38,.2);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;}
+.alerta-box p{margin-bottom:.6rem;font-size:1rem;color:#7f1d1d;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+.salidas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
+.salida-card{padding:1.3rem 1rem;border-radius:var(--radius);background:#fff;border:1px solid var(--line);text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.salida-card .s-icon{font-size:2.2rem;margin-bottom:.5rem;}
+.salida-card .s-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#0f172a;margin-bottom:.4rem;}
+.salida-card .s-tag{display:inline-block;padding:.2rem .6rem;border-radius:999px;font-size:.75rem;font-weight:700;margin-bottom:.5rem;}
+.salida-card .s-tag.optima{background:rgba(22,163,74,.12);color:#15803d;}
+.salida-card .s-tag.buena{background:rgba(37,99,235,.10);color:var(--brand);}
+.salida-card .s-tag.ultima{background:rgba(220,38,38,.10);color:#dc2626;}
+.salida-card p{font-size:.85rem;color:#374151;line-height:1.5;margin:0;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.salidas-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Vivienda · Artículo 9</div>
+  <h1 class="article-title reveal">Heredar a medias:<br><em>El infierno del Proindiviso</em></h1>
+  <p class="article-lead reveal">Tres hermanos heredan la casa de sus padres. Dos quieren venderla. El tercero se niega, no quiere pagar la parte de los otros y encima se ha instalado a vivir allí gratis. La ley lleva décadas diciéndolo: nadie puede obligarte a permanecer en esa situación. Aquí están las salidas.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">10 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Vivienda · Herencias</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>CC art. 400:</strong> Ningún copropietario está obligado a permanecer en la comunidad. Si tu hermano se niega a vender y vive allí gratis, tienes dos vías: <strong>desahucio por precario</strong> para echarlo y <strong>acción de división de cosa común</strong> para forzar la venta. Si no hay acuerdo, el juez ordena subasta pública, lo que suele hacer perder dinero a todos.</p>
+  </div>
+
+  <p class="reveal">El proindiviso es una de las situaciones patrimoniales más angustiosas que existen: eres dueño de una parte de algo que no puedes usar libremente, que no puedes vender sin la firma de los demás, y del que no puedes salir si el otro no quiere. O eso parece. Porque el Código Civil lleva más de un siglo reconociendo que nadie tiene por qué soportar indefinidamente esa trampa.</p>
+
+  <blockquote class="blockquote-law reveal">
+    "Ningún copropietario estará obligado a permanecer en la comunidad. Cada uno de ellos podrá pedir en cualquier tiempo que se divida la cosa común."
+    <cite>Art. 400 Código Civil</cite>
+  </blockquote>
+
+  <h2 class="reveal">1. La trampa del Proindiviso: <span>qué significa y cuál es tu poder</span></h2>
+  <p class="reveal">Cuando heredas una casa al 33% con tus dos hermanos, no tienes un trozo físico de la casa. Los tres tenéis el 100% del derecho sobre el 100% de la casa. Esto significa que <strong>ninguno puede vender sin la firma de los demás</strong>, ninguno puede alquilar sin acuerdo y ninguno puede hacer reformas unilateralmente.</p>
+  <p class="reveal">Pero el art. 400 CC te da el arma definitiva: el derecho a <strong>pedir en cualquier momento la disolución de esa comunidad</strong>. No necesitas justificarlo, no necesitas que los demás estén de acuerdo con disolver. La ley te protege porque considera que una situación de copropiedad forzada indefinida es contraria a los principios de la propiedad privada. Tu hermano puede negarse a vender, pero no puede negarse a que se disuelva el proindiviso.</p>
+
+  <h2 class="reveal">2. El hermano "okupa": <span>cómo sacarlo si vive allí gratis</span></h2>
+  <p class="reveal">El problema más frecuente y más irritante: uno de los herederos se instala en la casa sin pagar nada a los demás, como si fuera suya en exclusiva. Este escenario tiene nombre jurídico: <strong>precario</strong>. Y tiene solución judicial.</p>
+
+  <div class="info-box reveal">
+    <p class="info-title">¿Qué es el precario y por qué te protege?</p>
+    <p>La jurisprudencia del Tribunal Supremo establece que cuando un coheredero ocupa en exclusiva un bien que pertenece a varios, sin pagar renta ni tener autorización del resto, está en situación de <strong>precario</strong>. Los otros copropietarios pueden interponer una demanda de <strong>desahucio por precario</strong> para obtener el lanzamiento judicial del ocupante y recuperar la posesión compartida del inmueble.</p>
+    <p>El desahucio por precario en casos de herencia tiene un plazo de resolución más corto que un desahucio ordinario y no requiere que el demandante tenga la posesión exclusiva del inmueble, solo que acredite su titularidad parcial y la ocupación sin título del otro heredero.</p>
+  </div>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">La indemnización por uso exclusivo</p>
+    <p>Aunque no llegues a interponer el desahucio, la jurisprudencia también te permite reclamar una <strong>indemnización económica por el uso exclusivo no autorizado</strong>. El copropietario que vive en el inmueble gratis está obteniendo un beneficio económico a costa de los demás. Los tribunales fijan esa indemnización en proporción al valor de mercado del alquiler del inmueble multiplicado por la cuota de participación de los perjudicados. Si el piso vale 900 €/mes de alquiler y tú tienes el 33%, tu hermano te debe 300 €/mes desde que empezó a vivir allí.</p>
+  </div>
+
+  <h2 class="reveal">3. Las salidas del laberinto: <span>de mejor a peor</span></h2>
+
+  <div class="salidas-grid reveal">
+    <div class="salida-card">
+      <div class="s-icon">🤝</div>
+      <div class="s-name">Venta a tercero</div>
+      <span class="s-tag optima">Óptima</span>
+      <p>Los tres firmáis la venta al mejor precio del mercado y repartís el dinero. Requiere acuerdo unánime pero es la que más dinero genera para todos.</p>
+    </div>
+    <div class="salida-card">
+      <div class="s-icon">🏠</div>
+      <div class="s-name">Extinción de condominio</div>
+      <span class="s-tag buena">Buena</span>
+      <p>El hermano que quiere quedarse compra las partes de los otros a precio de tasación. Ventaja fiscal: solo paga AJD, no ITP. Evita la subasta.</p>
+    </div>
+    <div class="salida-card">
+      <div class="s-icon">⚖️</div>
+      <div class="s-name">Subasta judicial</div>
+      <span class="s-tag ultima">Última opción</span>
+      <p>El juez ordena la venta en subasta pública. Suele obtener precio muy por debajo del mercado. Todos pierden dinero frente a una venta normal.</p>
+    </div>
+  </div>
+
+  <div class="info-box reveal">
+    <p class="info-title">El Pacto Andorrano: la solución más elegante si solo sois dos</p>
+    <p>Cuando la disputa es entre dos personas y ninguna se fía de la tasación del otro, existe una solución brillante: <strong>uno fija el precio</strong> y <strong>el otro elige si compra o vende a ese precio</strong>. El primero tiene incentivo para fijar un precio justo (ni demasiado alto ni demasiado bajo) porque no sabe qué rol le tocará jugar. Es un mecanismo de equilibrio que funciona sorprendentemente bien en conflictos familiares [web:116].</p>
+  </div>
+
+  <h2 class="reveal">4. La vía judicial: <span>cómo funciona la demanda de división</span></h2>
+  <p class="reveal">Cuando el acuerdo es imposible, tienes derecho a presentar una <strong>demanda de Acción de División de la Cosa Común</strong> (<em>actio communi dividundo</em>). Esta acción es irrenunciable: el hermano obstaculizador no puede impedirla ni siquiera alegando que quiere quedarse en la casa.</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>INTENTA EL ACUERDO ANTES: carta formal con propuesta concreta</strong>
+        <p>Antes de ir a juicio, envía burofax a los coherederos con una propuesta concreta: precio de venta a tercero o precio de extinción de condominio. El juicio es lento y caro; este paso también sirve como prueba de buena fe procesal.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>INTERPÓN LA DEMANDA DE DIVISIÓN DE COSA COMÚN</strong>
+        <p>Se presenta en el juzgado de primera instancia del lugar donde está el inmueble. El objeto de la demanda es disolver el proindiviso. Como el piso no se puede partir físicamente en trozos, el juez ordenará su venta. Solo necesitas acreditar tu titularidad (escritura de herencia o adjudicación de herencia) y la imposibilidad de acuerdo.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>DURANTE EL PROCESO: negocia la venta extrajudicial</strong>
+        <p>Una vez presentada la demanda, el hermano obstaculizador suele reaccionar. El inminente riesgo de subasta pública (que a él también le perjudica) actúa como palanca negociadora. Muchos proindivisos se resuelven extrajudicialmente cuando la demanda ya está admitida.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>SI NO HAY ACUERDO: el juez ordena la subasta pública</strong>
+        <p>El inmueble sale a subasta con un precio de salida fijado por el juzgado (normalmente la tasación pericial). En las subastas judiciales los precios finales son habitualmente un 20-30% inferiores al valor de mercado. Por eso la subasta es la solución que más perjudica a todos, incluido el hermano que no quería vender [web:110][web:113][web:116].</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">🚨 El coste fiscal de la extinción de condominio</p>
+    <p>La extinción de condominio es fiscalmente mucho más ventajosa que una compraventa ordinaria: el hermano que compra las partes de los otros solo paga el <strong>Impuesto de Actos Jurídicos Documentados (AJD)</strong>, que oscila entre el 0,5% y el 2% del precio según la comunidad autónoma. En una compraventa ordinaria, pagaría el ITP (6-10%). Para un piso de 200.000 €, la diferencia puede ser de 8.000 a 16.000 €. Es un argumento poderoso para convencer al hermano reticente de que esta vía le sale mucho más barata que la compra posterior a un tercero.</p>
+  </div>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Proindiviso</a>
+    <a class="tag" href="#">Art. 400 CC</a>
+    <a class="tag" href="#">División cosa común</a>
+    <a class="tag" href="#">Herencia</a>
+    <a class="tag" href="#">Desahucio precario</a>
+    <a class="tag" href="#">Extinción condominio</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Compartes la propiedad de una casa <em>y no hay forma de llegar a un acuerdo</em>?</h3>
+    <p>Cuéntanos cuántos copropietarios sois, qué porcentaje tiene cada uno y si alguno vive en el inmueble. Te decimos cuál es la vía más rápida y menos costosa para salir de esa situación.</p>
+    <a class="btn-primary" href="portal-vivienda.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

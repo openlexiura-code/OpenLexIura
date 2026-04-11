@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vicios ocultos: Las sorpresas al mes de comprar | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);color:#1e3a5f;margin:2.2rem 0 .8rem;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.juris-box .juris-title::before{content:"⚖️";}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:1px solid rgba(220,38,38,.2);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;}
+.alerta-box p{margin-bottom:.6rem;font-size:1rem;color:#7f1d1d;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+.vs-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.vs-card{padding:1.4rem;border-radius:var(--radius);border:1px solid var(--line);}
+.vs-card.win{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.2);}
+.vs-card.lose{background:linear-gradient(180deg,#fff1f2,#ffe4e6);border-color:rgba(220,38,38,.2);}
+.vs-card .vs-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;margin-bottom:.8rem;}
+.vs-card.win .vs-title{color:#15803d;}
+.vs-card.lose .vs-title{color:#dc2626;}
+.vs-card ul{margin:0;display:flex;flex-direction:column;gap:.5rem;}
+.vs-card ul li{list-style:none;font-size:.93rem;color:#374151;line-height:1.5;position:relative;padding-left:.9rem;}
+.vs-card ul li::before{position:absolute;left:0;}
+.vs-card.win ul li::before{content:'✓';color:#15803d;}
+.vs-card.lose ul li::before{content:'✗';color:#dc2626;}
+.reloj-box{display:flex;align-items:center;gap:1.5rem;padding:1.6rem;border-radius:var(--radius);background:linear-gradient(135deg,#1e3a5f,#1e40af);color:#fff;margin:2rem 0;box-shadow:0 8px 32px rgba(37,99,235,.30);}
+.reloj-icon{font-size:3.5rem;flex-shrink:0;}
+.reloj-text strong{display:block;font-size:1.3rem;margin-bottom:.4rem;color:#bfdbfe;}
+.reloj-text p{font-size:.97rem;line-height:1.6;margin:0;color:#e0f2fe;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.vs-box{grid-template-columns:1fr;}.reloj-box{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Vivienda · Artículo 2</div>
+  <h1 class="article-title reveal">Vicios ocultos:<br><em>Las sorpresas al mes de comprar</em></h1>
+  <p class="article-lead reveal">Lleváis tres semanas en la casa nueva. Llueve y la pared del salón se empapa. El vendedor dice: "Tú la viste antes de comprar, ahora es tu problema." Mentira. Si el defecto estaba tapado, el vendedor paga. Tienes 6 meses y la ley de tu lado.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">9 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Vivienda</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>CC arts. 1484-1486:</strong> El vendedor responde de los defectos ocultos aunque no los conociera. Tienes derecho a <strong>deshacer la compra (acción redhibitoria) o a que te devuelvan dinero (quanti minoris)</strong>. Plazo fatal: <strong>6 meses desde la entrega de llaves (art. 1490)</strong>. Este plazo no se interrumpe con un burofax: solo se para con demanda judicial.</p>
+  </div>
+
+  <p class="reveal">En la compra de segunda mano, el mito del "tú la viste" es la excusa favorita de vendedores y abogados de parte. Pero el Código Civil lleva vigente desde 1889 diciéndonos lo contrario: el vendedor tiene obligación de saneamiento por vicios ocultos, independientemente de si él mismo los conocía o no. Lo que importa es si el defecto era visible a simple vista el día de la visita.</p>
+
+  <h2 class="reveal">1. La trampa del <span>"tú ya la viste"</span></h2>
+  <p class="reveal">Que el comprador haya visitado la vivienda antes de comprarla no exime al vendedor de los vicios ocultos. La ley distingue con precisión: el vendedor solo se libra de lo que era <strong>visible y apreciable a simple vista</strong> en el momento de la visita. Todo lo demás sigue siendo su responsabilidad.</p>
+  <p class="reveal">Una filtración tapada con pintura nueva. Tuberías con corrosión interna. Humedades en el forjado escondidas bajo el falso techo. Un sistema eléctrico fuera de norma tapiado detrás de un armario empotrado. Ninguno de esos problemas "se veía". Y todos generan responsabilidad del vendedor.</p>
+
+  <h2 class="reveal">2. ¿Qué es un vicio oculto? <span>Los 3 requisitos</span></h2>
+  <p class="reveal">Los tribunales aplican un test de tres condiciones para determinar si un defecto da lugar a la acción por vicios ocultos [web:65][web:68]:</p>
+
+  <div class="vs-box reveal">
+    <div class="vs-card win">
+      <p class="vs-title">✅ Sí son vicios ocultos</p>
+      <ul>
+        <li>Tuberías con corrosión interna no visible</li>
+        <li>Filtraciones tapadas con pintura o yeso reciente</li>
+        <li>Humedades estructurales en muros o forjado</li>
+        <li>Aluminio anodizado con rotura de puente térmico oculta</li>
+        <li>Instalación eléctrica fuera de normativa, tapada</li>
+        <li>Cimientos o estructura con vicios constructivos</li>
+      </ul>
+    </div>
+    <div class="vs-card lose">
+      <p class="vs-title">❌ No son vicios ocultos</p>
+      <ul>
+        <li>Azulejos rotos visibles durante la visita</li>
+        <li>Caldera vieja que funciona pero es obsoleta</li>
+        <li>Ventanas en mal estado a la vista</li>
+        <li>Zona común del edificio en mal estado</li>
+        <li>Orientación, ruido o luz que podías comprobar</li>
+        <li>Defectos que el comprador conocía al firmar</li>
+      </ul>
+    </div>
+  </div>
+
+  <blockquote class="blockquote-law reveal">
+    "El vendedor estará obligado al saneamiento por los defectos ocultos que tuviere la cosa vendida, si la hacen impropia para el uso a que se la destina, o si disminuyen de tal modo este uso que, de haberlos conocido el comprador, no la habría adquirido o habría dado menos precio por ella."
+    <cite>Art. 1484 Código Civil</cite>
+  </blockquote>
+
+  <h2 class="reveal">3. El reloj de los 6 meses: <span>el plazo más peligroso del derecho inmobiliario</span></h2>
+
+  <div class="reloj-box reveal">
+    <div class="reloj-icon">⏱️</div>
+    <div class="reloj-text">
+      <strong>6 meses desde la entrega de llaves. Ni un día más.</strong>
+      <p>El art. 1490 CC fija un plazo de <strong>caducidad</strong>, no de prescripción. Esto significa que no se puede interrumpir ni suspender. Un burofax enviado al mes 5 no para el reloj. Solo presentar la demanda judicial detiene el plazo. Si llega el mes 7 sin demanda, has perdido el derecho para siempre.</p>
+    </div>
+  </div>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">🚨 El error más caro: quejarse por WhatsApp durante meses</p>
+    <p>El Tribunal Supremo ha confirmado que el plazo de 6 meses del art. 1490 CC es de <strong>caducidad</strong>: no lo interrumpe ninguna comunicación extrajudicial, ni burofaxes, ni conversaciones con el vendedor, ni reclamaciones a la inmobiliaria [web:71].</p>
+    <p>La única forma de parar el reloj es presentar la demanda. Si llevas 4 meses enviando mensajes sin resultado, ve al abogado hoy.</p>
+  </div>
+
+  <h2 class="reveal">4. Tus dos opciones: <span>deshacer o cobrar</span></h2>
+  <p class="reveal">El <strong>art. 1486 CC</strong> da al comprador la posibilidad de elegir entre dos acciones, y puedes optar por la que más te convenga según la gravedad del defecto:</p>
+  <ul>
+    <li><strong>Acción redhibitoria:</strong> Deshaces la compraventa. Devuelves la casa y el vendedor te devuelve el precio, los gastos del contrato y los gastos ocasionados por la compra (notaría, registro, impuestos). Es la opción nuclear, para defectos gravísimos.</li>
+    <li><strong>Acción quanti minoris:</strong> Te quedas la casa pero el vendedor te devuelve una parte proporcional del precio equivalente al coste de reparar el defecto. Es la más habitual: contratas un perito, este cuantifica la reparación, y reclamas esa cantidad.</li>
+  </ul>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Lo que dicen los tribunales</p>
+    <p>El Tribunal Supremo ha reiterado que el vendedor responde incluso si desconocía el vicio, salvo pacto expreso contrario en el contrato. Las cláusulas del tipo "vendido en el estado en que se encuentra" o "el comprador renuncia a cualquier reclamación" son parcialmente nulas cuando se refieren a vicios no manifestados.</p>
+    <p>Para que el peritaje sea útil en juicio debe acreditar: que el defecto existía antes de la firma notarial (fecha del origen) y que no era apreciable a simple vista durante una visita ordinaria.</p>
+  </div>
+
+  <h2 class="reveal">5. Plan de ataque: <span>los 3 pasos</span></h2>
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>PERITO URGENTE (arquitecto técnico o aparejador)</strong>
+        <p>Es el paso más importante. El perito debe emitir un informe que certifique: (a) qué es el defecto, (b) por qué no era visible a simple vista, (c) que su origen es anterior a la compra. Sin este informe, no tienes caso. Encárgalo en los primeros días de descubrir el problema.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>BUROFAX AL VENDEDOR con las dos opciones</strong>
+        <p>Una vez tengas el informe pericial, envía burofax certificado al vendedor ofreciendo las dos acciones del art. 1486 CC: deshacer la compra o abonar el coste de reparación. Dale un plazo razonable (10-15 días) para responder. Adjunta el informe pericial.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>DEMANDA CIVIL si no hay acuerdo (y hazlo antes del mes 6)</strong>
+        <p>Si el vendedor no responde o no acepta, presenta demanda civil. Tienes las pruebas: informe pericial, burofax, escritura de compraventa, fecha de entrega de llaves. Con un buen peritaje, estas demandas se ganan con alta frecuencia.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Vicios ocultos</a>
+    <a class="tag" href="#">Art. 1484 CC</a>
+    <a class="tag" href="#">Art. 1490 CC</a>
+    <a class="tag" href="#">6 meses</a>
+    <a class="tag" href="#">Caducidad</a>
+    <a class="tag" href="#">Perito</a>
+    <a class="tag" href="#">Segunda mano</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Llevas poco tiempo en tu casa nueva y <em>has descubierto un problema grave</em>?</h3>
+    <p>Cuéntanos cuándo recibiste las llaves, qué has encontrado y si tienes fotos o presupuestos de reparación. Te decimos si tienes caso y en cuánto tiempo debes actuar.</p>
+    <a class="btn-primary" href="portal-vivienda.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
