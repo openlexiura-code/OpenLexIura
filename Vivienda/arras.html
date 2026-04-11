@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El contrato de arras y el "no" del banco | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);color:#1e3a5f;margin:2.2rem 0 .8rem;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.juris-box .juris-title::before{content:"⚖️";}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:1px solid rgba(220,38,38,.2);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;}
+.alerta-box p{margin-bottom:.6rem;font-size:1rem;color:#7f1d1d;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+.arras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
+.arras-card{padding:1.4rem 1rem;border-radius:var(--radius);text-align:center;border:1px solid var(--line);}
+.arras-card.conf{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.2);}
+.arras-card.penal{background:linear-gradient(180deg,#fefce8,#fef9c3);border-color:rgba(202,138,4,.2);}
+.arras-card.penit{background:linear-gradient(180deg,#eff6ff,#dbeafe);border-color:rgba(37,99,235,.2);}
+.arras-card .arras-icon{font-size:2rem;margin-bottom:.5rem;}
+.arras-card .arras-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;margin-bottom:.5rem;}
+.arras-card.conf .arras-name{color:#15803d;}
+.arras-card.penal .arras-name{color:#92400e;}
+.arras-card.penit .arras-name{color:var(--brand);}
+.arras-card p{font-size:.85rem;color:#374151;line-height:1.5;margin:0;}
+.clausula-box{padding:1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#1e3a5f,#1e40af);color:#e0f2fe;margin:2rem 0;box-shadow:0 8px 32px rgba(37,99,235,.30);}
+.clausula-box .clausula-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#bfdbfe;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;}
+.clausula-box .clausula-title::before{content:"📋";}
+.clausula-box p{font-size:.97rem;line-height:1.7;font-style:italic;color:#e0f2fe;margin-bottom:.6rem;}
+.clausula-box .clausula-nota{font-size:.85rem;color:#93c5fd;font-style:normal;margin-top:.8rem;border-top:1px solid rgba(255,255,255,.15);padding-top:.8rem;margin-bottom:0;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.arras-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Vivienda · Artículo 1</div>
+  <h1 class="article-title reveal">El contrato de arras<br><em>y el "no" del banco</em></h1>
+  <p class="article-lead reveal">Llevas meses buscando. Encontraste la casa. La inmobiliaria te presiona para firmar el contrato de arras esta semana o "se la lleva otro". Das 20.000 €. El banco te deniega la hipoteca. Y el vendedor no te coge el teléfono. Este es el mapa legal para que eso no te pase.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">10 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Vivienda</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>CC art. 1454:</strong> Arras penitenciales → si el banco dice "no" y no hay cláusula suspensiva, <strong>pierdes el dinero</strong>. La única protección es exigir una <strong>cláusula condicionada a la concesión de financiación</strong> antes de firmar. Sin ella, estás desprotegido por ley.</p>
+  </div>
+
+  <p class="reveal">El contrato de arras es el documento más importante y menos leído de la compra de una vivienda. Se firma con prisa, a menudo con un modelo genérico descargado de internet o facilitado por la inmobiliaria (que trabaja para el vendedor, no para ti), y puede costarte decenas de miles de euros si algo sale mal.</p>
+
+  <h2 class="reveal">1. El peligro de <span>firmar a ciegas</span></h2>
+  <p class="reveal">El error más común: creer que si el banco no te da la hipoteca, automáticamente recuperas las arras porque "no es culpa tuya". Eso es falso en el Derecho Civil español. Si no tienes la hipoteca aprobada antes de firmar el contrato de arras, y el banco dice "no" después, <strong>eres tú quien está incumpliendo el contrato</strong> desde el punto de vista legal, y el vendedor puede quedarse con tu dinero.</p>
+  <p class="reveal">La ley no protege por defecto al comprador que necesita financiación. La ley solo protege a quien negoció correctamente su contrato. Y eso empieza por entender los tres tipos de arras.</p>
+
+  <h2 class="reveal">2. Los tres tipos de arras: <span>en qué te estás metiendo</span></h2>
+
+  <div class="arras-grid reveal">
+    <div class="arras-card conf">
+      <div class="arras-icon">🤝</div>
+      <p class="arras-name">Confirmatorias</p>
+      <p>Señal de que el contrato existe. Si alguien se echa atrás, el otro puede exigir el cumplimiento forzoso o daños. No hay penalización automática.</p>
+    </div>
+    <div class="arras-card penal">
+      <div class="arras-icon">⚠️</div>
+      <p class="arras-name">Penales</p>
+      <p>Fijan una penalización por incumplimiento, pero permiten también exigir la ejecución del contrato. Poco habituales en vivienda.</p>
+    </div>
+    <div class="arras-card penit">
+      <div class="arras-icon">🔑</div>
+      <p class="arras-name">Penitenciales</p>
+      <p><strong>El 95% de los casos.</strong> Comprador se echa atrás: pierde lo dado. Vendedor se echa atrás: devuelve el doble. Ninguna parte puede forzar el cumplimiento.</p>
+    </div>
+  </div>
+
+  <blockquote class="blockquote-law reveal">
+    "Si hubiesen mediado arras o señal en el contrato de compra y venta, podrá rescindirse el contrato allanándose el comprador a perderlas, o el vendedor a devolverlas duplicadas."
+    <cite>Art. 1454 Código Civil</cite>
+  </blockquote>
+
+  <p class="reveal">Las arras penitenciales son las más usadas porque dan seguridad a ambas partes: el vendedor sabe que si el comprador se raja, cobra; el comprador sabe que si el vendedor encuentra uno mejor, le devuelven el doble. El problema aparece cuando el comprador necesita hipoteca y el banco dice que no: es el comprador quien "se raja", y pierde.</p>
+
+  <h2 class="reveal">3. La cláusula salvavidas: <span>el texto exacto que debes exigir</span></h2>
+  <p class="reveal">La solución se llama <strong>cláusula suspensiva de financiación</strong>. Es un párrafo adicional que convierte la obtención de la hipoteca en condición necesaria para que el contrato sea válido. Sin hipoteca aprobada, no hay contrato, y las arras se devuelven íntegramente [web:60][web:61].</p>
+  <p class="reveal">Muchas inmobiliarias se resisten a incluirla porque favorece al comprador. Si te dicen "es que no se suele hacer" o "no es necesario": es mentira. Exígela. Si no la incluyen, no firmes.</p>
+
+  <div class="clausula-box reveal">
+    <p class="clausula-title">Texto de la cláusula suspensiva (cópialo y exígelo)</p>
+    <p>"En el específico caso de que la parte compradora, habiendo iniciado los trámites para obtener financiación en una entidad bancaria para la concesión de préstamo hipotecario, le sea denegada dicha operación por la entidad financiera por causas ajenas a la voluntad del comprador, la parte vendedora se compromete a la devolución de la totalidad de las cantidades entregadas en concepto de arras, sin que quepa por ninguna de las partes reclamarse nada más en concepto de daños y perjuicios. El comprador deberá acreditar la denegación mediante comunicación escrita de la entidad bancaria, y dispone de un plazo de [30] días naturales desde la comunicación de denegación para notificarlo fehacientemente al vendedor."</p>
+    <p class="clausula-nota">Adapta los plazos a tu situación. Lo ideal es que el plazo para conseguir hipoteca sea de 30-60 días y el plazo para notificar la denegación no sea inferior a 10 días hábiles.</p>
+  </div>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Excepción: compradores en Cataluña</p>
+    <p>El <strong>art. 621-49 del Código Civil Catalán</strong> establece una protección que no existe en el resto de España: si el comprador necesita financiación para la compra y el banco la deniega, tiene derecho a recuperar las arras aunque no haya incluido ninguna cláusula expresa en el contrato. La condición de financiación se presume implícita.</p>
+    <p>Si estás comprando en Cataluña, esta protección existe por ley. Fuera de Cataluña, debes negociarla y escribirla en el contrato.</p>
+  </div>
+
+  <h2 class="reveal">4. Me han denegado la hipoteca: <span>qué hacer ahora</span></h2>
+  <p class="reveal">Si ya firmaste con cláusula suspensiva y el banco dice "no", tienes un camino claro. Si firmaste sin ella, el panorama es más complicado pero no necesariamente sin salida (algunos jueces han aplicado la buena fe para recuperar arras en casos muy concretos). En ambos casos, actúa rápido:</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>OBTÉN LA DENEGACIÓN POR ESCRITO DEL BANCO</strong>
+        <p>No vale una llamada ni un email informal. Pide una comunicación escrita oficial de la entidad bancaria que acredite la denegación. Es tu único documento útil.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>NOTIFICA AL VENDEDOR POR BUROFAX (con acuse de recibo)</strong>
+        <p>Envía burofax certificado al vendedor adjuntando la denegación bancaria y citando la cláusula suspensiva del contrato. La fecha del burofax es tu prueba de que notificaste en plazo. No uses WhatsApp ni email para esto.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>PLAZO DE DEVOLUCIÓN: exige fecha por escrito</strong>
+        <p>El vendedor debe devolver el dinero en el plazo pactado en la cláusula. Si no lo hace, puedes reclamar judicialmente más los intereses de demora.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>SI NO DEVUELVE: demanda civil + medidas cautelares</strong>
+        <p>La acción para reclamar arras tiene un plazo de prescripción de 5 años (art. 1964 CC). Pero actúa antes. Un abogado inmobiliario puede solicitar el embargo preventivo de bienes del vendedor mientras dura el juicio.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">🚨 El error que comete la mayoría</p>
+    <p>Llamar al vendedor o a la inmobiliaria, explicar la situación, y esperar que "sean razonables". <strong>La razonabilidad no para los plazos legales</strong>. Cada día que pasa sin notificación fehaciente puede usarse en tu contra. Burofax primero, conversaciones después.</p>
+  </div>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Arras penitenciales</a>
+    <a class="tag" href="#">Art. 1454 CC</a>
+    <a class="tag" href="#">Cláusula suspensiva</a>
+    <a class="tag" href="#">Hipoteca denegada</a>
+    <a class="tag" href="#">Código Civil Catalán</a>
+    <a class="tag" href="#">Compraventa vivienda</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿El banco te denegó la hipoteca <em>después de firmar las arras</em>?</h3>
+    <p>Cuéntanos qué dice tu contrato, cuánto diste y en qué fecha. Te decimos si tienes opciones para recuperar el dinero.</p>
+    <a class="btn-primary" href="portal-vivienda.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
