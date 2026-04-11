@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comprar por internet: El superpoder de los 14 días | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#f97316;--brand-2:#fb923c;--text:#1f2937;--muted:#64748b;--line:rgba(249,115,22,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f7f5ef 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(249,115,22,.1);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(249,115,22,.22);border-radius:999px;background:linear-gradient(180deg,rgba(249,115,22,.10),rgba(249,115,22,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(249,115,22,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(249,115,22,.20);background:rgba(249,115,22,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(249,115,22,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(249,115,22,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff7ed);border:1px solid rgba(249,115,22,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff7ed);border:1px solid rgba(249,115,22,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.juris-box .juris-title::before{content:"⚖️";}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(249,115,22,.06),rgba(249,115,22,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.split-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.97rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10);}
+.split-table th{padding:1rem 1.2rem;text-align:left;font-weight:700;font-size:.9rem;}
+.split-table th:first-child{background:linear-gradient(135deg,#16a34a,#4ade80);color:#fff;}
+.split-table th:last-child{background:linear-gradient(135deg,#dc2626,#f87171);color:#fff;}
+.split-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(15,23,42,.07);color:#374151;vertical-align:top;font-size:.97rem;line-height:1.6;}
+.split-table tr:last-child td{border-bottom:none;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,247,237,.94));border:1px solid rgba(249,115,22,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(249,115,22,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-consumo.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Compras y Garantías · Artículo 4</div>
+  <h1 class="article-title reveal">Comprar por internet:<br><em>El superpoder de los 14 días</em></h1>
+  <p class="article-lead reveal">Compraste unos zapatos, llegaron y no te convencen. La tienda dice "solo cambiamos si hay defecto" o "el producto debe estar sin abrir". Todo eso es ilegal. Tienes un derecho que la mayoría de tiendas online prefiere que no conozcas.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">8 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Compras y Garantías</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>TRLGDCU arts. 102-108:</strong> 14 días naturales desde que recibes el paquete para devolver SIN dar explicaciones. Si la tienda no te informó de este derecho antes de comprar, el plazo sube a <strong>12 meses + 14 días (art. 105)</strong>. La tienda devuelve todo el dinero incluido envío inicial.</p>
+  </div>
+
+  <p class="reveal">El comercio online ha cambiado nuestros hábitos de compra, pero también ha traído una nueva industria de excusas para no devolver el dinero. La Directiva Europea de Derechos del Consumidor y su trasposición en el TRLGDCU crearon un escudo potente: el <strong>Derecho de Desistimiento</strong>. Pocas personas lo usan porque pocas saben que existe.</p>
+
+  <h2 class="reveal">1. Tu botón de <span>arrepentimiento</span></h2>
+  <p class="reveal">El desistimiento es exactamente eso: el derecho a cambiar de opinión. <strong>No necesitas excusa alguna</strong>. No tienes que decir que está roto, que te queda mal o que llegó tarde. Basta con comunicar a la tienda que ejerces tu derecho de desistimiento dentro de los 14 días naturales desde que recibiste el paquete.</p>
+  <p class="reveal">Es importante distinguir los 14 días: empiezan a contar desde que recibes físicamente el producto en casa, no desde que lo compraste ni desde que te enviaron la confirmación de pedido. Si compraste el lunes y llegó el jueves, los 14 días empiezan el jueves.</p>
+
+  <div class="info-box reveal">
+    <p class="info-title">El castigo legal por no informarte</p>
+    <p>El art. 105 TRLGDCU establece que si la tienda online <strong>no te informó claramente</strong> del derecho de desistimiento antes de realizar la compra (en la web, visible y comprensible), el plazo no es de 14 días sino de <strong>12 meses y 14 días</strong>.</p>
+    <p>Revisa si en el proceso de compra de la tienda hay información sobre devoluciones. Si no la encontraste fácilmente, tienes un año entero para ejercer el derecho.</p>
+  </div>
+
+  <h2 class="reveal">2. Quién paga los <span>gastos de envío</span></h2>
+  <p class="reveal">Esta es la confusión más habitual. La ley tiene una respuesta clara pero con matices que conviene conocer:</p>
+
+  <table class="split-table reveal">
+    <thead>
+      <tr>
+        <th>✅ Te devuelven</th>
+        <th>❌ Lo pagas tú</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>El precio del producto</td>
+        <td>Los gastos de envío de devolución</td>
+      </tr>
+      <tr>
+        <td>Los gastos de envío originales (tarifa estándar)</td>
+        <td>El sobrecoste si elegiste envío exprés</td>
+      </tr>
+      <tr>
+        <td>Los gastos de devolución si la tienda no lo especificó en su web</td>
+        <td>Nada más</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="reveal">El truco más habitual: la tienda te dice "usa nuestra empresa de mensajería" a un precio inflado (15-20 €). No estás obligado. Puedes mandar el paquete por Correos o cualquier empresa, aunque asumes el riesgo si se pierde. Guarda siempre el justificante de envío.</p>
+
+  <h2 class="reveal">3. Las excusas ilegales <span>que usan las tiendas</span></h2>
+  <p class="reveal">Estos son los argumentos más comunes para no aceptar devoluciones, y por qué todos son ilegales:</p>
+
+  <ul>
+    <li><strong>"El producto debe estar sin usar y sin abrir":</strong> FALSO. Puedes abrir la caja, sacar el móvil y encenderlo para ver si funciona, ponerte los zapatos en casa para ver si son cómodos. La ley permite "manipulación necesaria para comprobar el producto". Lo que no puedes es usarlo de forma que lo deteriore.</li>
+    <li><strong>"Necesitas el embalaje original":</strong> FALSO. No existe ninguna obligación legal de conservar la caja. Puedes devolver el producto en cualquier embalaje que lo proteja durante el envío.</li>
+    <li><strong>"Solo hacemos cambios, no devoluciones":</strong> ILEGAL. El desistimiento implica reembolso íntegro del dinero, no crédito en tienda ni cambio.</li>
+    <li><strong>"El descuento de la oferta no es reembolsable":</strong> ILEGAL. Se devuelve exactamente lo que pagaste, sin descuentos adicionales.</li>
+  </ul>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Lo que dicen los tribunales</p>
+    <p>La Audiencia Provincial de Madrid ha sancionado a tiendas online que condicionaban la devolución a que el producto llegara "en perfectas condiciones y embalaje original". El Tribunal considera estas cláusulas nulas por contravenir el TRLGDCU.</p>
+    <p>La AEPD y las Juntas de Consumo de varias comunidades autónomas han multado a tiendas de moda online por no informar correctamente del derecho de desistimiento en el proceso de compra.</p>
+  </div>
+
+  <h2 class="reveal">4. La lista negra: <span>lo que NO puedes devolver</span></h2>
+  <p class="reveal">El art. 103 TRLGDCU establece excepciones donde el derecho de desistimiento no aplica. Son estas y solo estas:</p>
+  <ul>
+    <li><strong>Productos personalizados:</strong> Una camiseta con tu nombre, una joya con grabado, un traje a medida.</li>
+    <li><strong>Bienes perecederos:</strong> Comida, flores, productos con fecha de caducidad próxima.</li>
+    <li><strong>Servicios ya ejecutados:</strong> Si contrataste un fontanero y ya hizo el trabajo.</li>
+    <li><strong>Billetes de transporte, hoteles, espectáculos:</strong> Con fecha determinada.</li>
+    <li><strong>Precintados por higiene una vez abiertos:</strong> Ropa interior, cosméticos, cepillos de dientes, auriculares intraurales.</li>
+    <li><strong>Software y videojuegos físicos desprecintados:</strong> Una vez roto el precinto.</li>
+    <li><strong>Prensa y revistas.</strong></li>
+  </ul>
+
+  <h2 class="reveal">5. Cómo ejercerlo: <span>la hoja de ruta</span></h2>
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>NOTIFICA EN LOS 14 DÍAS (por escrito)</strong>
+        <p>Email a atención al cliente indicando: "Ejercito mi derecho de desistimiento del pedido nº X recibido el día Y, conforme al art. 102 TRLGDCU". Guarda copia con fecha. No necesitas dar ningún motivo.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>DEVUELVE EN LOS 14 DÍAS SIGUIENTES</strong>
+        <p>Desde que notificas, tienes 14 días más para enviar el producto. Usa Correos o cualquier servicio. Guarda el justificante de entrega.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>REEMBOLSO EN 14 DÍAS (desde que reciben)</strong>
+        <p>La tienda tiene 14 días desde que recibe el producto para reembolsarte. Si no lo hacen: reclamación SAC → Junta Arbitral de Consumo → demanda verbal (gratis si es menos de 2.000 €).</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Desistimiento</a>
+    <a class="tag" href="#">14 días</a>
+    <a class="tag" href="#">TRLGDCU</a>
+    <a class="tag" href="#">Devolución online</a>
+    <a class="tag" href="#">Art. 102-108</a>
+    <a class="tag" href="#">Gastos de envío</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Una tienda online <em>se niega a aceptar tu devolución</em>?</h3>
+    <p>Cuéntanos qué excusa te han dado. Te orientamos si es ilegal y qué pasos dar para recuperar tu dinero.</p>
+    <a class="btn-primary" href="portal-consumo.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

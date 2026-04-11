@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancelar el gimnasio o el móvil sin penalizaciones | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#f97316;--brand-2:#fb923c;--text:#1f2937;--muted:#64748b;--line:rgba(249,115,22,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f7f5ef 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(249,115,22,.1);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(249,115,22,.22);border-radius:999px;background:linear-gradient(180deg,rgba(249,115,22,.10),rgba(249,115,22,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(249,115,22,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(249,115,22,.20);background:rgba(249,115,22,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(249,115,22,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);color:#1e3a5f;margin:2.2rem 0 .8rem;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(249,115,22,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff7ed);border:1px solid rgba(249,115,22,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff7ed);border:1px solid rgba(249,115,22,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.juris-box .juris-title::before{content:"⚖️";}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(249,115,22,.06),rgba(249,115,22,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:1px solid rgba(220,38,38,.2);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.alerta-box p{margin-bottom:.6rem;font-size:1rem;color:#7f1d1d;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,247,237,.94));border:1px solid rgba(249,115,22,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(249,115,22,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-consumo.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Servicios y Contratos · Artículo 7</div>
+  <h1 class="article-title reveal">Cancelar el gimnasio o el móvil<br><em>sin penalizaciones</em></h1>
+  <p class="article-lead reveal">Te diste de alta en el gimnasio con un clic en internet. Pero para darte de baja te exigen carta notarial, burofax y 30 días de preaviso. Siguen pasándote recibos meses después. Todo eso puede ser ilegal, y tienes herramientas muy concretas para frenarlo.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">9 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Servicios y Contratos</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>TRLGDCU art. 62.3:</strong> Prohibidas las "trabas injustificadas" para darse de baja. Si contrataste online, puedes cancelar online. <strong>Ley General de Telecomunicaciones:</strong> permanencias máximo 24 meses y la penalización debe ser proporcional al tiempo restante, nunca una tarifa fija.</p>
+  </div>
+
+  <p class="reveal">Gimnasios, compañías de móvil, empresas de alarmas, plataformas de streaming con trampa: todos usan la misma estrategia. La captación es fácil, rápida y tentadora. La salida es un laberinto diseñado para que te rindas y sigas pagando. La ley española y europea llevan años recortando ese laberinto. Aquí está el mapa.</p>
+
+  <h2 class="reveal">1. La puerta de salida: <span>si entraste con un clic, sales con un clic</span></h2>
+  <p class="reveal">El <strong>art. 62.3 del TRLGDCU</strong> es una de las normas más directas del derecho de consumo español: prohíbe expresamente que las empresas impongan <strong>"obstáculos onerosos o desproporcionados"</strong> para ejercer los derechos del consumidor, incluyendo la cancelación del contrato.</p>
+  <p class="reveal">La interpretación práctica que aplican los tribunales y las autoridades de consumo es clara: <strong>el mecanismo para darse de baja debe ser, como mínimo, igual de sencillo que el mecanismo para contratar</strong>. Si contrataste el gimnasio rellenando un formulario en su web en cinco minutos, no pueden exigirte que vayas en persona a firmar la baja, ni que envíes un burofax notarial.</p>
+
+  <blockquote class="blockquote-law reveal">
+    "Los contratos con los consumidores no podrán incluir ninguna disposición que imponga obstáculos onerosos o desproporcionados para el ejercicio de los derechos reconocidos en este texto refundido."
+    <cite>Art. 62.3 TRLGDCU</cite>
+  </blockquote>
+
+  <div class="info-box reveal">
+    <p class="info-title">La regla del canal simétrico</p>
+    <p>Si te diste de alta por teléfono: baja por teléfono. Si fue por web: baja por web o email. Si fue en tienda física: pueden exigirte presencia física, pero no pueden añadir pasos extra (notario, burofax, carta certificada) que no existían al contratar.</p>
+    <p>Las empresas que incumplen esto se exponen a sanciones de la autoridad de consumo correspondiente. Denuncia ante tu comunidad autónoma si te lo exigen.</p>
+  </div>
+
+  <h2 class="reveal">2. El mito de la permanencia <span>inquebrantable</span></h2>
+  <p class="reveal">Las permanencias existen y son legales, pero tienen límites muy concretos que las empresas suelen saltarse o disimular en la letra pequeña.</p>
+
+  <h3 class="reveal">Compañías de telecomunicaciones</h3>
+  <p class="reveal">La <strong>Ley General de Telecomunicaciones</strong> fija el máximo en <strong>24 meses</strong> de permanencia. Pasado ese plazo, eres libre sin coste alguno. Dentro del plazo, la penalización por irte antes debe ser <strong>proporcional al tiempo que reste</strong>: si te quedan 2 semanas para acabar una permanencia de 12 meses, no pueden cobrarte lo mismo que si te vas el primer mes. Una penalización fija independiente del tiempo restante es ilegal.</p>
+
+  <h3 class="reveal">Gimnasios y servicios similares</h3>
+  <p class="reveal">Muchos contratos de gimnasio incluyen cláusulas de permanencia de 6 o 12 meses. Son válidas si estaban claramente informadas antes de firmar. Pero hay causas que permiten cancelar antes <strong>sin penalización</strong> aunque estés en permanencia [web:30][web:32]:</p>
+  <ul>
+    <li><strong>Enfermedad o lesión</strong> que impida la práctica deportiva (con certificado médico)</li>
+    <li><strong>Cambio de residencia</strong> a municipio donde el gimnasio no opera</li>
+    <li><strong>Modificación unilateral de las condiciones</strong> (horarios, precios, servicios) sin tu consentimiento previo</li>
+    <li><strong>Cierre prolongado</strong> del establecimiento sin causa justificada</li>
+  </ul>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">🚨 El orden importa: primero la baja, luego el banco</p>
+    <p>El error más común y más caro: cancelar la domiciliación en el banco ANTES de comunicar la baja formalmente. Si haces eso, la empresa puede reclamarte las cuotas "impagadas" como deuda legítima e incluso incluirte en ASNEF.</p>
+    <p><strong>La secuencia correcta:</strong> 1) Comunica la baja por escrito y guarda prueba → 2) Espera confirmación o fecha efectiva → 3) Entonces cancela la domiciliación si siguen cobrando.</p>
+  </div>
+
+  <h2 class="reveal">3. El superpoder de tu banco: <span>devolver recibos y bloquear cobros</span></h2>
+  <p class="reveal">Si ya diste de baja correctamente y la empresa sigue pasando recibos al banco, tienes dos herramientas legales potentes:</p>
+
+  <h3 class="reveal">Devolución de recibos SEPA (8 semanas)</h3>
+  <p class="reveal">La <strong>Ley de Servicios de Pago (RD-ley 19/2018)</strong> garantiza que puedes devolver cualquier recibo domiciliado (cargo SEPA) en un plazo de <strong>8 semanas</strong> desde el cargo, sin necesidad de dar explicaciones al banco. Es un derecho automático. Ve a tu oficina o app bancaria y pide la devolución del cargo.</p>
+
+  <h3 class="reveal">Bloqueo de cobros futuros</h3>
+  <p class="reveal">Puedes pedir a tu banco que bloquee futuros cargos de esa empresa concreta. Es un servicio que todos los bancos están obligados a ofrecer. Una vez bloqueada la empresa en tu mandato SEPA, no pueden volverte a cobrar aunque intenten pasar recibos.</p>
+
+  <div class="info-box reveal">
+    <p class="info-title">Importante: devolver no cancela la deuda</p>
+    <p>Devolver el recibo al banco no significa que la deuda desaparezca jurídicamente. Si la empresa considera que el cobro era legítimo, puede reclamarte por otra vía. Por eso es fundamental que primero hayas dado de baja correctamente y puedas demostrarlo con prueba escrita. La devolución es una herramienta de presión, no una varita mágica.</p>
+  </div>
+
+  <h2 class="reveal">4. La amenaza de ASNEF: <span>qué hacer si te meten en morosos</span></h2>
+  <p class="reveal">La táctica final de muchas empresas: si dejas de pagar (aunque sea por una baja correctamente tramitada), te incluyen en ficheros de morosos como <strong>ASNEF o RAI</strong>. Esto puede bloquear tu acceso a créditos, hipotecas o incluso contratos de alquiler.</p>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Tribunal Supremo: la deuda "controvertida" no va a ASNEF</p>
+    <p>El TS ha establecido que incluir a alguien en un fichero de morosos por una deuda que el consumidor ha impugnado formalmente (es decir, que está siendo discutida) atenta contra el <strong>Derecho al Honor</strong> del art. 18 CE y puede dar lugar a indemnizaciones.</p>
+    <p>Si enviaste la baja, tienes prueba de ello, y la empresa te mete en ASNEF igualmente: tienes acción de cancelación del dato y posible reclamación de daños y perjuicios (incluyendo daño moral) ante los tribunales.</p>
+  </div>
+
+  <h2 class="reveal">5. La hoja de ruta completa: <span>paso a paso</span></h2>
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>COMUNICA LA BAJA POR ESCRITO Y GUARDA PRUEBA</strong>
+        <p>Email certificado, formulario web (captura de pantalla), burofax si persisten. Fecha y contenido deben quedar documentados. Sin prueba, no tienes nada.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>SI PONEN TRABAS: cita el art. 62.3 TRLGDCU</strong>
+        <p>Por escrito: "Les comunico que las exigencias adicionales al proceso de contratación constituyen obstáculos prohibidos por el art. 62.3 TRLGDCU. Denunciaré ante la autoridad de consumo competente si no se tramita la baja."</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>DEVUELVE RECIBOS Y BLOQUEA EN EL BANCO</strong>
+        <p>Solo si ya tienes la baja tramitada y documentada. Devolución SEPA en 8 semanas + bloqueo de mandato futuro.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>DENUNCIA ANTE CONSUMO + ORGANISMOS SECTORIALES</strong>
+        <p>Telecomunicaciones: MINECO / CNMC. Gimnasios: Consumo autonómico. Alarmas: también CNMC. Las multas a empresas pueden ser de miles de euros.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <strong>SI TE METEN EN ASNEF: reclamación inmediata</strong>
+        <p>Escribe a ASNEF (asnef@equifax.es) adjuntando prueba de que la deuda es controvertida. Si no cancelan el dato en 10 días: demanda por vulneración del Derecho al Honor + daños.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Cancelar contrato</a>
+    <a class="tag" href="#">Gimnasio</a>
+    <a class="tag" href="#">Telefonía</a>
+    <a class="tag" href="#">Art. 62.3 TRLGDCU</a>
+    <a class="tag" href="#">Permanencias</a>
+    <a class="tag" href="#">ASNEF</a>
+    <a class="tag" href="#">SEPA</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Una empresa <em>sigue cobrándote tras la baja</em>?</h3>
+    <p>Cuéntanos cómo diste de baja, qué pruebas tienes y qué están haciendo. Te decimos si tienes caso y el siguiente paso exacto.</p>
+    <a class="btn-primary" href="portal-consumo.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

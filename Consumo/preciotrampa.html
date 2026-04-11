@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precios trampa: ¿La etiqueta o la caja? | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#f97316;--brand-2:#fb923c;--text:#1f2937;--muted:#64748b;--line:rgba(249,115,22,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f7f5ef 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(249,115,22,.1);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(249,115,22,.22);border-radius:999px;background:linear-gradient(180deg,rgba(249,115,22,.10),rgba(249,115,22,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(249,115,22,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(249,115,22,.20);background:rgba(249,115,22,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(249,115,22,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#1e3a5f;margin:2.2rem 0 .8rem;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(249,115,22,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff7ed);border:1px solid rgba(249,115,22,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff7ed);border:1px solid rgba(249,115,22,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.juris-box .juris-title::before{content:"⚖️";}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(249,115,22,.06),rgba(249,115,22,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.vs-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.vs-card{padding:1.4rem;border-radius:var(--radius);border:1px solid var(--line);}
+.vs-card.win{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.2);}
+.vs-card.lose{background:linear-gradient(180deg,#fff1f2,#ffe4e6);border-color:rgba(220,38,38,.2);}
+.vs-card .vs-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;margin-bottom:.6rem;}
+.vs-card.win .vs-title{color:#15803d;}
+.vs-card.lose .vs-title{color:#dc2626;}
+.vs-card p{font-size:.93rem;color:#374151;line-height:1.6;margin:0;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,247,237,.94));border:1px solid rgba(249,115,22,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(249,115,22,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.vs-box{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-consumo.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Compras y Garantías · Artículo 6</div>
+  <h1 class="article-title reveal">Precios trampa:<br><em>¿La etiqueta o la caja?</em></h1>
+  <p class="article-lead reveal">El cartel del supermercado decía 2,50 €. En caja te cobran 3,80 €. La cajera dice "el sistema manda" o "la oferta caducó ayer". No. El precio que viste es el que debes pagar. La ley es clara y está de tu parte.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">7 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Compras y Garantías</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>TRLGDCU art. 61.2:</strong> La oferta, promoción y publicidad son <strong>vinculantes</strong>. Forman parte del contrato. Si hay discrepancia entre precio etiqueta y caja registradora, tienes derecho a que te apliquen <strong>el precio más bajo</strong>.</p>
+  </div>
+
+  <p class="reveal">Parece una batalla pequeña —1,30 € de diferencia en el supermercado— pero el principio detrás es importante: en España, como en toda la UE, el precio que el comercio exhibe públicamente es una <strong>oferta vinculante</strong>. Una vez la aceptas cogiendo el producto, hay contrato. Y el precio de ese contrato es el que estaba en la estantería.</p>
+
+  <h2 class="reveal">1. El precio de la estantería <span>es el que manda</span></h2>
+  <p class="reveal">El fundamento legal está en el <strong>art. 61.2 del TRLGDCU</strong>: "El contenido de la oferta, promoción o publicidad, las prestaciones propias de cada bien o servicio, las condiciones jurídicas o económicas y garantías ofrecidas serán exigibles por los consumidores y usuarios."</p>
+  <p class="reveal">Complementa esta norma la <strong>Ley de Ordenación del Comercio Minorista (Ley 7/1996)</strong>, que obliga a los comercios a exhibir el precio de venta al público de forma inequívoca, fácilmente identificable y claramente legible. Si el precio mostrado y el cobrado difieren, prevalece el más favorable al consumidor.</p>
+
+  <blockquote class="blockquote-law reveal">
+    "El contenido de la oferta, promoción o publicidad [...] será exigible por los consumidores y usuarios, aun cuando no figure expresamente en el contrato celebrado."
+    <cite>Art. 61.2 TRLGDCU</cite>
+  </blockquote>
+
+  <h2 class="reveal">2. "El sistema dice otra cosa": <span>cómo actuar sin dramas</span></h2>
+  <p class="reveal">Lo más habitual es descubrirlo en caja. No hace falta montar un espectáculo. Este es el protocolo efectivo:</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>FOTO A LA ETIQUETA antes de ir a caja</strong>
+        <p>Fotografía el cartel de la estantería con el precio visible y, si puedes, el producto al lado. La foto tiene metadatos de fecha y hora: es prueba perfecta.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>RECLAMAR EN CAJA con calma</strong>
+        <p>Di: "En la estantería marcaba X euros. Exijo que me apliquen ese precio conforme al art. 61.2 del TRLGDCU." No es agresivo, es legal. Pide hablar con el encargado si la cajera no puede resolverlo.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>HOJA DE RECLAMACIONES (si no ceden)</strong>
+        <p>Todos los comercios están obligados a tenerla y a dártela si la pides. Es el documento que activa el control de las autoridades de consumo. Describe el producto, el precio etiquetado, el cobrado y adjunta la foto.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>DENUNCIA EN CONSUMO DE TU COMUNIDAD</strong>
+        <p>Presenta la hoja en la Oficina de Consumo o en la sede electrónica de tu comunidad autónoma. Las sanciones a los comercios por esta infracción van de 300 € a 3.000 € según la normativa autonómica.</p>
+      </div>
+    </li>
+  </ol>
+
+  <h2 class="reveal">3. Errores creíbles vs. <span>errores absurdos</span></h2>
+  <p class="reveal">La ley no obliga a los comercios a vender productos a precios claramente erróneos. Los tribunales aplican los principios de <strong>buena fe contractual</strong> y <strong>enriquecimiento injusto</strong>. La distinción clave es si el error era "manifiesto y reconocible":</p>
+
+  <div class="vs-box reveal">
+    <div class="vs-card win">
+      <p class="vs-title">✅ Puedes exigirlo</p>
+      <p>Jersey marcado a 20 € en vez de 30 €. Televisor 400 € etiquetado a 380 €. Oferta del catálogo que el sistema no ha cargado. Precio en web diferente al de tienda física.</p>
+    </div>
+    <div class="vs-card lose">
+      <p class="vs-title">❌ No puedes exigirlo</p>
+      <p>Televisor de 2.000 € etiquetado a 2 € por error informático evidente. Coche de 30.000 € a 30 € en web por fallo de sistema. El error es tan grosero que cualquier persona de buena fe sabe que es involuntario.</p>
+    </div>
+  </div>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Lo que dicen los tribunales</p>
+    <p>El TS y las Audiencias distinguen entre el error "excusable" (un precio ligeramente incorrecto que un consumidor normal podría creer real) y el "inexcusable" (precio tan alejado del mercado que nadie de buena fe podría considerarlo genuino).</p>
+    <p>El caso más famoso en España: una gran cadena de electrónica publicó por error una cámara de fotos a 0,01 €. Los tribunales dieron la razón a la tienda: cualquier consumidor razonable sabe que ese precio es un error técnico.</p>
+  </div>
+
+  <h2 class="reveal">4. El poder de los folletos: <span>prueba legal en tu buzón</span></h2>
+  <p class="reveal">Los catálogos de ofertas que las cadenas reparten en buzones son <strong>publicidad comercial vinculante</strong>. Si el folleto de tu supermercado dice "leche a 0,89 € del lunes al domingo", y el domingo te cobran 1,20 €, tienes el mismo derecho que con la etiqueta de estantería.</p>
+
+  <div class="info-box reveal">
+    <p class="info-title">Guarda los folletos y capturas de web</p>
+    <p>Un folleto físico con fecha, o una captura de pantalla de la oferta en la web del comercio, son pruebas válidas ante consumo y ante un juzgado. Si compras online, descarga siempre el resumen de pedido en el que aparece el precio antes de finalizar la compra.</p>
+    <p>Las ofertas en redes sociales (Instagram, Facebook) publicadas por el propio comercio también son publicidad vinculante si incluyen precio y condiciones concretas.</p>
+  </div>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Precio etiqueta</a>
+    <a class="tag" href="#">TRLGDCU</a>
+    <a class="tag" href="#">Art. 61.2</a>
+    <a class="tag" href="#">Publicidad vinculante</a>
+    <a class="tag" href="#">Hoja reclamaciones</a>
+    <a class="tag" href="#">Consumo</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Un comercio <em>se niega a aplicar el precio etiquetado</em>?</h3>
+    <p>Cuéntanos qué pasó, en qué tienda y si tienes foto de la etiqueta. Te decimos si tienes caso y cómo presentar la reclamación.</p>
+    <a class="btn-primary" href="portal-consumo.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

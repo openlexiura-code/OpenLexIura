@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Falsas inversiones en criptomonedas: chiringuitos financieros · OpenLexIura</title>
+<meta name="description" content="Te prometieron rentabilidades imposibles y ahora no puedes retirar el dinero. Qué dice la ley, cómo rastrear fondos en cripto y por qué debes unirte a otros afectados.">
+<link rel="icon" type="image/jpeg" href="../Icono.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5ef;--bg-2:#f5f0e8;--text:#1f2937;--muted:#64748b;--brand:#ea580c;--line:rgba(234,88,12,.14);--line-2:rgba(15,23,42,.08);--shadow:0 24px 80px rgba(0,0,0,.45);--radius:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:radial-gradient(circle at 20% 10%,rgba(234,88,12,.07),transparent 28%),radial-gradient(circle at 80% 5%,rgba(15,23,42,.04),transparent 24%),radial-gradient(circle at 50% 100%,rgba(234,88,12,.05),transparent 30%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:#1f2937;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.35s ease;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom-color:rgba(234,88,12,.10)}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(234,88,12,.22),0 10px 30px rgba(0,0,0,.35)}
+.nav-links{display:flex;align-items:center;gap:1.4rem}
+.nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+.nav-links a:hover{color:var(--brand)}
+.nav-cta{padding:.8rem 1.2rem;border:1px solid rgba(234,88,12,.22);border-radius:999px;background:linear-gradient(180deg,rgba(234,88,12,.10),rgba(234,88,12,.05))}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(234,88,12,.14),0 10px 24px rgba(0,0,0,.2)}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;position:relative}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(234,88,12,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0}
+.article-hero>*{position:relative;z-index:1}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(234,88,12,.20);background:rgba(234,88,12,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;animation:rise .9s ease both .05s}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(234,88,12,.8)}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;animation:rise .9s ease both .12s}
+.article-title em{font-style:italic;color:var(--brand)}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;animation:rise .9s ease both .22s}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);animation:rise .9s ease both .30s}
+.article-meta span{display:flex;align-items:center;gap:.35rem}
+.meta-sep{color:rgba(15,23,42,.18)}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;animation:rise .9s ease both .38s}
+.article-body{max-width:740px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem}
+.article-body h2 span{color:var(--brand);font-style:italic}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;color:#4a1505;margin:2.2rem 0 .8rem}
+.article-body strong{font-weight:700;color:#111827}
+.article-body a{color:var(--brand);font-weight:500;border-bottom:1px solid rgba(234,88,12,.25);transition:.2s ease}
+.article-body a:hover{border-bottom-color:var(--brand)}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative}
+.article-body ul li::before{content:'•';color:var(--brand);position:absolute;left:-1rem}
+.article-body ol.steps{list-style:none;margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:1.1rem}
+.article-body ol.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff8f5);border:1px solid rgba(234,88,12,.10);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#ea580c,#fb923c);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151}
+.article-body blockquote{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(234,88,12,.06),rgba(234,88,12,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#4a1505;font-style:italic}
+.article-body blockquote cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted)}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,#ea580c,#f97316);color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(234,88,12,.30)}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.quick-answer .qa-label::before{content:'⚠️';font-size:.9rem}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;opacity:.95}
+.quick-answer strong{color:#fff;font-weight:700}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff8f5);border:1px solid rgba(234,88,12,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.info-box .info-title::before{content:'⚖';width:28px;height:28px;border-radius:50%;background:rgba(234,88,12,.10);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-style:normal}
+.info-box p{margin-bottom:0;font-size:1rem;color:#374151;line-height:1.75}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);box-shadow:0 8px 24px rgba(0,0,0,.08);margin:2rem 0}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.juris-box .juris-title::before{content:'🧑‍⚖️';font-size:.95rem}
+.juris-box p{margin-bottom:0;font-size:1rem;color:#713f12;line-height:1.75}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line-2)}
+.tag{padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;transition:.2s ease}
+.tag:hover{border-color:rgba(234,88,12,.34);color:var(--brand)}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,248,242,.94));border:1px solid rgba(234,88,12,.14);border-radius:30px;padding:3rem 2rem;box-shadow:var(--shadow)}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem}
+.cta-box h3 em{font-style:italic;color:var(--brand)}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;border:1px solid rgba(234,88,12,.18);font-weight:600;transition:.25s ease;font-family:'Inter',sans-serif}
+.btn-primary{background:linear-gradient(135deg,#ea580c,#fb923c);color:#fff !important;box-shadow:0 16px 40px rgba(234,88,12,.35)}
+.btn-primary:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 20px 44px rgba(234,88,12,.28)}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid var(--line-2);font-size:.9rem}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(234,88,12,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(251,146,60,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s,height .08s,opacity .08s,transform .08s,border-radius .08s}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#ea580c;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(234,88,12,.75)}
+@media(max-width:640px){nav{padding:1rem 1.1rem}.nav-links{display:none}.article-hero{padding:7.5rem 1.2rem 3rem}.article-body{padding:2.5rem 1.2rem 4rem}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="../Icono.png" alt="OpenLexIura"><span>OpenLexIura</span></a>
+  <div class="nav-links">
+    <a href="index.html#temas">Temas</a>
+    <a href="index.html#consultas">Consultas</a>
+    <a class="nav-cta" href="portal.html">Acceder al portal</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill">Fraude · Inversiones</div>
+  <h1 class="article-title">Falsas inversiones<br>en <em>criptomonedas</em></h1>
+  <p class="article-lead">Te prometieron rentabilidades del 20% mensual. Ahora no puedes retirar el dinero y la plataforma ha desaparecido. Esto es lo que debes hacer.</p>
+  <div class="article-meta">
+    <span><strong>OpenLexIura</strong></span>
+    <span class="meta-sep">·</span>
+    <span>2026</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">9 min de lectura</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-badge">Chiringuitos financieros</span>
+  </div>
+  <div class="art-divider"></div>
+</header>
+
+<main class="article-body">
+
+  <!-- RESPUESTA RÁPIDA -->
+  <div class="quick-answer reveal">
+    <div class="qa-label">Lo primero que debes saber</div>
+    <p>Ir solo a comisaría rara vez funciona en este tipo de fraudes. La clave es <strong>unirse a otros afectados</strong>, presentar una querella conjunta y acudir a unidades especializadas como la <strong>UDEF</strong>. No actúes aislado.</p>
+  </div>
+
+  <p class="reveal">Un perfil en redes sociales con la foto de un famoso te promete doblar tus ahorros. Una plataforma con gráficos en tiempo real muestra cómo tu "inversión" crece semana a semana. Cuando intentas retirar el dinero, aparecen comisiones inesperadas, bloqueos técnicos y, finalmente, silencio total. Si estás en esta situación, has sido víctima de un <strong>"chiringuito financiero"</strong>, uno de los fraudes económicos más devastadores y complejos de perseguir.</p>
+
+  <!-- SECCIÓN 1 -->
+  <h2 class="reveal">El gancho de la riqueza rápida: <span>cómo identificar un chiringuito financiero</span></h2>
+
+  <p class="reveal">Los chiringuitos financieros operan siguiendo un patrón reconocible. Saber identificarlos es la primera línea de defensa:</p>
+
+  <ul class="reveal">
+    <li><strong>Rentabilidades garantizadas e irreales:</strong> ninguna inversión legítima puede garantizar un rendimiento fijo del 10%, 20% o más al mes. Si lo prometen, es una señal de alarma inmediata.</li>
+    <li><strong>Llamadas insistentes y presión para invertir "ahora":</strong> los operadores llaman repetidamente, crean urgencia artificial y piden que no lo comentes con nadie.</li>
+    <li><strong>Uso de imagen de famosos sin autorización:</strong> anuncios en redes que simulan endorsements de personajes públicos, generados con inteligencia artificial o con imágenes robadas.</li>
+    <li><strong>Plataforma sin registro en la CNMV:</strong> cualquier entidad que ofrezca servicios de inversión en España debe estar registrada en la <strong>Comisión Nacional del Mercado de Valores (CNMV)</strong>.</li>
+    <li><strong>Dificultad para retirar fondos:</strong> cuando intentas sacar tu dinero, surgen excusas: comisiones de "liberación", impuestos previos, verificaciones interminables.</li>
+  </ul>
+
+  <div class="info-box reveal">
+    <p class="info-title">La Ley en la mano</p>
+    <p>La <strong>Ley de los Mercados de Valores y de los Servicios de Inversión</strong> exige que cualquier entidad que opere en España como intermediaria financiera esté autorizada y supervisada por la CNMV. Operar sin esta autorización es ilegal. La CNMV publica y actualiza periódicamente una <strong>lista negra de entidades no autorizadas</strong>: consúltala antes de invertir en cualquier plataforma que no conozcas.</p>
+  </div>
+
+  <!-- SECCIÓN 2 -->
+  <h2 class="reveal">El agujero negro de las criptomonedas: <span>por qué tu dinero es tan difícil de recuperar</span></h2>
+
+  <p class="reveal">Cuando una víctima transfiere dinero a estas plataformas, este se convierte rápidamente en criptomonedas y se mueve a través de múltiples billeteras digitales. El destino final suele ser una <strong>billetera fría (cold wallet)</strong> ubicada fuera de la Unión Europea o en paraísos fiscales sin obligación de cooperar con la justicia española.</p>
+
+  <blockquote class="reveal">
+    A diferencia del secreto bancario tradicional, la blockchain es pública y auditable. El problema no es rastrear los movimientos, sino que los fondos terminan en jurisdicciones donde ninguna orden judicial española tiene efecto directo.
+    <cite>— Análisis de unidades especializadas en cibercrimen financiero</cite>
+  </blockquote>
+
+  <p class="reveal">Esto no significa que sea imposible recuperar el dinero, pero sí que requiere una estrategia legal distinta a la de otras estafas: la cooperación judicial internacional, la querella colectiva y el trabajo conjunto con analistas blockchain especializados son las herramientas que realmente funcionan.</p>
+
+  <!-- SECCIÓN 3 -->
+  <h2 class="reveal">La estafa agravada: <span>qué dice el Código Penal y el papel de la CNMV</span></h2>
+
+  <p class="reveal">El nivel de pena depende de la magnitud del fraude, y en los chiringuitos financieros las cifras suelen ser altas:</p>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Lo que dicen los Jueces (Jurisprudencia)</p>
+    <p>El <strong>artículo 250 del Código Penal</strong> regula la <strong>estafa agravada</strong>. Cuando el valor de lo defraudado supera los <strong>50.000 €</strong> —algo habitual en este tipo de fraudes donde las víctimas invierten sus ahorros de vida— las penas oscilan entre <strong>uno y seis años de prisión</strong>. Los grandes fraudes piramidales con criptoactivos que afectan a miles de personas en varios países suelen terminar siendo investigados por la <strong>Audiencia Nacional</strong>, precisamente por su carácter de trama organizada de dimensión internacional.</p>
+  </div>
+
+  <p class="reveal">La <strong>CNMV</strong> no solo publica listas negras: también puede interponer denuncias penales contra los responsables de chiringuitos financieros y colabora activamente con Europol y otras autoridades europeas en la persecución de estas tramas.</p>
+
+  <!-- SECCIÓN 4 -->
+  <h2 class="reveal">El plan de acción: <span>por qué no debes actuar solo</span></h2>
+
+  <p class="reveal">A diferencia de otras estafas, aquí una denuncia individual en comisaría tiene un impacto muy limitado. La escala y la complejidad de estas tramas requieren una respuesta coordinada:</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Documenta absolutamente todo</strong>
+        <p>Guarda capturas de la plataforma, contratos, promesas de rentabilidad, conversaciones con los operadores, extractos de los movimientos bancarios y cualquier comunicación recibida. Una vez que la plataforma desaparece, estos datos son irrecuperables.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Consulta la lista negra de la CNMV y denuncia ante ella</strong>
+        <p>Verifica si la plataforma aparece en el registro de entidades no autorizadas de la CNMV. Si no aparece o si está en la lista negra, presenta una denuncia formal ante la propia CNMV: tienen competencia directa para investigar este tipo de fraudes.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Únete a plataformas de afectados y presenta querella colectiva</strong>
+        <p>Busca foros, grupos de Telegram o asociaciones de víctimas del mismo fraude. La querella conjunta concentra las cantidades defraudadas, eleva la gravedad del delito y hace que el caso llegue a la Audiencia Nacional, donde los recursos de investigación son muy superiores a los de un juzgado local.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>Acude a la UDEF (Unidad de Delincuencia Económica y Fiscal)</strong>
+        <p>La <strong>UDEF</strong> de la Policía Nacional es la unidad especializada en delitos económicos complejos. Una denuncia presentada directamente ante ellos, con toda la documentación organizada, tiene muchas más probabilidades de derivar en una investigación real que una denuncia genérica en comisaría.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Criptomonedas</a>
+    <a class="tag" href="#">Chiringuito financiero</a>
+    <a class="tag" href="#">CNMV</a>
+    <a class="tag" href="#">Estafa agravada</a>
+    <a class="tag" href="#">UDEF</a>
+    <a class="tag" href="#">Inversión fraudulenta</a>
+  </div>
+
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Has perdido dinero en una <em>plataforma fraudulenta</em>?</h3>
+    <p>Cuéntanos tu caso. Te orientamos sobre cómo organizarte con otros afectados y los pasos legales que realmente pueden marcar la diferencia.</p>
+    <a class="btn btn-primary" href="portal.html">Hacer mi consulta ahora →</a>
+  </div>
+</section>
+
+<footer>2026 · OpenLexIura · El derecho para ciudadanos</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10));
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const cursorRing=document.createElement('div');cursorRing.className='cursor-ring';
+const cursorDot=document.createElement('div');cursorDot.className='cursor-dot';
+document.body.appendChild(cursorRing);document.body.appendChild(cursorDot);
+document.body.style.cursor='none';document.documentElement.style.cursor='none';
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+window.addEventListener('mouseleave',()=>{cursorRing.style.opacity='0';cursorDot.style.opacity='0'});
+window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+(function follow(){rx+=(mx-rx)*.55;ry+=(my-ry)*.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)})();
+document.querySelectorAll('a,button,input').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(251,146,60,.09)'});
+  el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La ley de los 3 años de garantía | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#f97316;--brand-2:#fb923c;--text:#1f2937;--muted:#64748b;--line:rgba(249,115,22,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f7f5ef 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(249,115,22,.1);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(249,115,22,.22);border-radius:999px;background:linear-gradient(180deg,rgba(249,115,22,.10),rgba(249,115,22,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(249,115,22,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(249,115,22,.20);background:rgba(249,115,22,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(249,115,22,.8);}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
+.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(249,115,22,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.quick-answer .qa-label::before{content:"⚡";}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;font-weight:700;}
+.steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
+.steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff7ed);border:1px solid rgba(249,115,22,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
+.step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff7ed);border:1px solid rgba(249,115,22,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.juris-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fefce8,#fef9c3);border:1px solid rgba(202,138,4,.25);margin:2rem 0;}
+.juris-box .juris-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#78350f;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.juris-box .juris-title::before{content:"⚖️";}
+.juris-box p{margin-bottom:.6rem;font-size:1rem;color:#713f12;line-height:1.75;}
+.juris-box p:last-child{margin-bottom:0;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(249,115,22,.06),rgba(249,115,22,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.timeline{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.tl-item{display:grid;grid-template-columns:120px 1fr;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid var(--line);}
+.tl-item:last-child{border-bottom:none;}
+.tl-badge{display:inline-flex;align-items:center;justify-content:center;padding:.5rem .8rem;border-radius:12px;font-weight:700;font-size:.85rem;text-align:center;line-height:1.2;}
+.tl-badge.green{background:rgba(22,163,74,.12);color:#15803d;border:1px solid rgba(22,163,74,.25);}
+.tl-badge.orange{background:rgba(249,115,22,.12);color:var(--brand);border:1px solid var(--line);}
+.tl-badge.red{background:rgba(220,38,38,.10);color:#dc2626;border:1px solid rgba(220,38,38,.2);}
+.tl-content strong{display:block;font-size:1rem;color:#0f172a;margin-bottom:.3rem;}
+.tl-content p{font-size:.95rem;color:#374151;margin:0;line-height:1.6;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,247,237,.94));border:1px solid rgba(249,115,22,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(249,115,22,.35);transition:.25s ease;}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){.article-hero{padding:7.5rem 1.2rem 3rem;}.article-body{padding:2.5rem 1.2rem 4rem;}.tl-item{grid-template-columns:90px 1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-consumo.html">← Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Compras y Garantías · Artículo 5</div>
+  <h1 class="article-title reveal">La ley de los <em>3 años de garantía</em></h1>
+  <p class="article-lead reveal">Compraste un electrodoméstico hace 18 meses y se ha roto. La tienda dice "ya no tiene garantía" o "habrá sido mal uso". Ambas cosas son, casi con toda probabilidad, falsas. Desde 2022 las reglas cambiaron y la mayoría de vendedores todavía espera que no lo sepas.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
+    <span>2026</span><span class="meta-sep">·</span>
+    <span class="meta-badge">9 min lectura</span><span class="meta-sep">·</span>
+    <span class="meta-badge">Compras y Garantías</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">Respuesta rápida</div>
+    <p><strong>TRLGDCU art. 114 (modificado RD-ley 7/2021):</strong> Productos nuevos comprados desde el 1/1/2022 → <strong>3 años de garantía legal</strong>. Primeros 2 años: si se rompe, la tienda debe demostrar que fue "mal uso tuyo". Tú no tienes que demostrar nada.</p>
+  </div>
+
+  <p class="reveal">El mito de los "2 años de garantía" ya es historia. La normativa europea —transpuesta en España— amplió el plazo a 3 años para compras a partir de enero de 2022. Pero el cambio más importante no es el año extra: es quién tiene que demostrar qué cuando el producto falla.</p>
+
+  <h2 class="reveal">1. La nueva regla de <span>los 3 años</span></h2>
+  <p class="reveal">La garantía legal (la que existe por ley, independientemente de lo que diga el vendedor) funciona así para productos nuevos:</p>
+
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-badge green">Año 1<br>Meses 1-12</div>
+      <div class="tl-content">
+        <strong>Garantía plena. Presunción total a tu favor.</strong>
+        <p>Cualquier defecto se presume de fábrica. La tienda repara, sustituye o reembolsa sin poner pegas.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-badge green">Año 2<br>Meses 13-24</div>
+      <div class="tl-content">
+        <strong>Garantía plena. Aún presunción a tu favor.</strong>
+        <p>La tienda sigue siendo quien debe demostrar que tú lo rompiste. No basta con decirlo: necesitan informe técnico pericial.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-badge orange">Año 3<br>Meses 25-36</div>
+      <div class="tl-content">
+        <strong>Garantía activa. La carga de prueba cambia.</strong>
+        <p>Ahora sí corresponde al consumidor demostrar que el defecto existía al comprar el producto. Más difícil, pero el derecho sigue existiendo.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-badge red">Año 4+<br>Mes 37 en adelante</div>
+      <div class="tl-content">
+        <strong>Garantía legal terminada.</strong>
+        <p>Solo aplica la garantía comercial voluntaria que hubiera ofrecido el fabricante.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box reveal">
+    <p class="info-title">No necesitas el ticket si pagaste con tarjeta</p>
+    <p>El extracto bancario o el cargo en tarjeta es prueba suficiente de la fecha de compra. No estás obligado a conservar el ticket de papel ni la caja original del producto.</p>
+    <p>Si compraste en tienda online, el email de confirmación del pedido vale perfectamente.</p>
+  </div>
+
+  <h2 class="reveal">2. El escudo de los 2 años: <span>la carga de la prueba</span></h2>
+  <p class="reveal">Este es el punto más poderoso y el más desconocido. El <strong>art. 114.2 TRLGDCU</strong> establece una presunción legal: si el producto falla dentro de los primeros 24 meses desde la compra, la ley <em>presume automáticamente</em> que el defecto existía cuando lo compraste.</p>
+  <p class="reveal">¿Qué significa esto en la práctica? Que <strong>no tienes que demostrar nada</strong>. Es la tienda o el fabricante quien, si quiere librarse de su obligación, debe contratar a un perito técnico que demuestre de forma fehaciente que el fallo fue por mal uso, accidente o negligencia del consumidor.</p>
+
+  <blockquote class="blockquote-law reveal">
+    "Salvo prueba en contrario, se presumirá que las faltas de conformidad que se manifiesten en los dos años siguientes a la entrega del bien ya existían cuando se entregó."
+    <cite>Art. 114.2 TRLGDCU (redacción RD-ley 7/2021)</cite>
+  </blockquote>
+
+  <div class="juris-box reveal">
+    <p class="juris-title">Lo que dicen los tribunales</p>
+    <p>El Tribunal Supremo ha reiterado que la inversión de la carga de la prueba es real y vinculante. No basta con que el técnico del servicio oficial diga "ha sido golpeado": necesita un informe pericial que lo acredite con datos técnicos objetivos.</p>
+    <p>Varias Audiencias Provinciales han condenado a tiendas que rechazaban garantías dentro del plazo basándose únicamente en la "opinión" de su propio servicio técnico, sin pericial independiente.</p>
+  </div>
+
+  <h2 class="reveal">3. ¿Me lo arreglan o me <span>dan uno nuevo?</span></h2>
+  <p class="reveal">El <strong>art. 118 TRLGDCU</strong> establece que <strong>eres tú quien elige</strong> entre reparación o sustitución, no la tienda. La única excepción es que una opción resulte "desproporcionadamente onerosa" comparada con la otra, algo que la tienda debe justificar.</p>
+  <ul>
+    <li>Si eliges reparación: debe hacerse en <strong>plazo razonable</strong> y sin causarte perjuicios. Si el servicio técnico tarda meses, puedes reclamar.</li>
+    <li>Si la reparación falla o el mismo defecto reaparece: puedes pedir la sustitución directamente.</li>
+    <li>Si ni reparación ni sustitución son posibles en plazo razonable: tienes derecho a <strong>reducción del precio o rescisión del contrato</strong> (devolución del dinero).</li>
+  </ul>
+
+  <h2 class="reveal">4. Compras de segunda mano: <span>las reglas cambian</span></h2>
+  <p class="reveal">Muchas personas no saben que el origen del producto de segunda mano lo cambia todo jurídicamente:</p>
+
+  <div class="info-box reveal">
+    <p class="info-title">Segunda mano en tienda (Cash Converters, concesionario…)</p>
+    <p>Aunque el producto sea de segunda mano, si lo compras a <strong>una empresa o profesional</strong>, tienes derecho a garantía. El mínimo legal es de <strong>1 año</strong> (el vendedor puede ofrecer más). Se aplica el TRLGDCU.</p>
+  </div>
+
+  <div class="info-box reveal">
+    <p class="info-title">Segunda mano entre particulares (Wallapop, vecino…)</p>
+    <p>Si compras a <strong>un particular</strong>, no aplica la garantía de consumo del TRLGDCU. Se rige por los <strong>vicios ocultos del Código Civil (arts. 1484-1490)</strong>: el vendedor responde de defectos ocultos que el producto tenía al venderse, pero el plazo para reclamar es solo de <strong>6 meses</strong> desde la entrega.</p>
+    <p>Además, es mucho más difícil probar que el defecto era previo a la compra cuando compras a un particular sin factura ni garantía escrita.</p>
+  </div>
+
+  <h2 class="reveal">5. Hoja de ruta: <span>cómo reclamar</span></h2>
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>RECLAMA AL VENDEDOR (no al fabricante)</strong>
+        <p>La garantía legal la debe el vendedor, no el fabricante. Dirígete a la tienda donde compraste. Cita expresamente el "art. 114 TRLGDCU" y la fecha de compra.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>SI NIEGAN: pide el informe pericial por escrito</strong>
+        <p>Si dicen "fue mal uso", exige el informe técnico que lo acredita. Si no lo tienen, su negativa es ilegal.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>HOJA DE RECLAMACIONES + CONSUMO</strong>
+        <p>Pide hoja de reclamaciones en la tienda (obligatoria por ley). Preséntala en la Oficina de Consumo de tu comunidad autónoma.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>JUNTA ARBITRAL DE CONSUMO (gratis y rápido)</strong>
+        <p>Si la tienda está adherida al Sistema Arbitral de Consumo, puedes resolver el conflicto sin abogado ni juzgado en pocas semanas.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Garantía</a>
+    <a class="tag" href="#">3 años</a>
+    <a class="tag" href="#">TRLGDCU</a>
+    <a class="tag" href="#">RD-ley 7/2021</a>
+    <a class="tag" href="#">Carga de la prueba</a>
+    <a class="tag" href="#">Segunda mano</a>
+    <a class="tag" href="#">Art. 114</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿La tienda dice que tu producto <em>ya no tiene garantía</em>?</h3>
+    <p>Cuéntanos cuándo lo compraste y qué avería tiene. Te decimos si aún estás en plazo y cómo reclamar.</p>
+    <a class="btn-primary" href="portal-consumo.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>2026 · <a href="../index.html">OpenLexIura</a> · El derecho en el idioma de la calle</footer>
+
+<script>
+const io = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
