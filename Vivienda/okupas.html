@@ -9,17 +9,17 @@
 <style>
 :root{--brand:#2563eb;--brand-2:#3b82f6;--text:#1f2937;--muted:#64748b;--line:rgba(37,99,235,.14);--radius:24px;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
+body{font-family:"Inter",sans-serif;background:linear-gradient(180deg,#f0f4ff 0%,#eef1f6 100%);color:var(--text);min-height:100vh;}
 a{text-decoration:none;color:inherit;}
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(37,99,235,.10);}
-.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:700;}
 .nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
 .nav-back{padding:.65rem 1.1rem;border:1px solid rgba(37,99,235,.22);border-radius:999px;background:linear-gradient(180deg,rgba(37,99,235,.10),rgba(37,99,235,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
 .article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
-.article-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.article-hero::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(37,99,235,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
 .cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(37,99,235,.20);background:rgba(37,99,235,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
-.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
-.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.cat-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(37,99,235,.8);}
+.article-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
 .article-title em{font-style:italic;color:var(--brand);}
 .article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:58ch;margin:0 auto 2rem;position:relative;z-index:1;}
 .article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
@@ -28,57 +28,54 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;backgro
 .art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
 .article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
 .article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
-.article-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
 .article-body h2 span{color:var(--brand);font-style:italic;}
 .article-body strong{font-weight:700;color:#111827;}
 .article-body ul{margin:0 0 1.6rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
 .article-body ul li{list-style:none;padding-left:.5rem;position:relative;}
-.article-body ul li::before{content:'›';color:var(--brand);position:absolute;left:-1rem;}
+.article-body ul li::before{content:"\203A";color:var(--brand);position:absolute;left:-1rem;}
 .quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(37,99,235,.30);}
 .quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
-.quick-answer .qa-label::before{content:"⚡";}
 .quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
 .quick-answer strong{color:#fff;font-weight:700;}
 .mito-box{padding:1.8rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:2px solid rgba(220,38,38,.25);margin:2rem 0;text-align:center;}
 .mito-box .mito-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dc2626;margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;gap:.4rem;}
-.mito-box .mito-label::before{content:"❌";}
-.mito-box .mito-text{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#7f1d1d;line-height:1.3;font-style:italic;margin-bottom:.8rem;}
+.mito-box .mito-text{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:#7f1d1d;line-height:1.3;font-style:italic;margin-bottom:.8rem;}
 .mito-box .mito-real{font-size:1rem;color:#991b1b;line-height:1.7;margin:0;}
 .vs-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
 .vs-card{padding:1.5rem;border-radius:var(--radius);border:1px solid var(--line);}
 .vs-card.morada{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.25);}
 .vs-card.usurpacion{background:linear-gradient(180deg,#fff1f2,#ffe4e6);border-color:rgba(220,38,38,.25);}
-.vs-card .vs-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;margin-bottom:.4rem;}
+.vs-card .vs-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:700;margin-bottom:.4rem;}
 .vs-card.morada .vs-title{color:#15803d;}
 .vs-card.usurpacion .vs-title{color:#dc2626;}
 .vs-card .vs-art{font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.7rem;padding:.2rem .6rem;border-radius:999px;display:inline-block;}
 .vs-card.morada .vs-art{background:rgba(22,163,74,.12);color:#15803d;}
 .vs-card.usurpacion .vs-art{background:rgba(220,38,38,.10);color:#dc2626;}
 .vs-card p{font-size:.93rem;line-height:1.65;color:#374151;margin-bottom:.5rem;}
-.vs-card p:last-child{margin-bottom:0;}
 .vs-card ul{margin:0;display:flex;flex-direction:column;gap:.4rem;}
 .vs-card ul li{list-style:none;font-size:.9rem;color:#374151;line-height:1.5;position:relative;padding-left:.9rem;}
-.vs-card ul li::before{position:absolute;left:0;}
-.vs-card.morada ul li::before{content:'→';color:#15803d;}
-.vs-card.usurpacion ul li::before{content:'→';color:#dc2626;}
+.vs-card ul li::before{position:absolute;left:0;content:"\2192";}
+.vs-card.morada ul li::before{color:#15803d;}
+.vs-card.usurpacion ul li::before{color:#dc2626;}
+.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:"Cormorant Garamond",serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
+.blockquote-law cite{display:block;margin-top:.6rem;font-family:"Inter",sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
+.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
+.info-box .info-title{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;}
+.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
 .steps{list-style:none;display:flex;flex-direction:column;gap:1.1rem;margin:0 0 1.6rem 0;}
 .steps li{display:grid;grid-template-columns:42px 1fr;gap:.9rem;align-items:start;padding:1.1rem 1.3rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.10);box-shadow:0 4px 16px rgba(0,0,0,.06);}
 .step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
 .step-body strong{display:block;font-size:1.05rem;margin-bottom:.3rem;color:#0f172a;}
 .step-body p{font-size:.97rem;margin:0;line-height:1.7;color:#374151;}
-.blockquote-law{margin:2rem 0;padding:1.4rem 1.6rem;border-left:3px solid var(--brand);background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-radius:0 var(--radius) var(--radius) 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;line-height:1.6;color:#1e3a5f;font-style:italic;}
-.blockquote-law cite{display:block;margin-top:.6rem;font-family:'Inter',sans-serif;font-style:normal;font-size:.82rem;color:var(--muted);}
-.info-box{padding:1.5rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#eff6ff);border:1px solid rgba(37,99,235,.14);box-shadow:0 8px 32px rgba(0,0,0,.10);margin:2rem 0;}
-.info-box .info-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--brand);margin-bottom:.7rem;}
-.info-box p{margin-bottom:.6rem;font-size:1rem;color:#374151;line-height:1.75;}
-.info-box p:last-child{margin-bottom:0;}
 .protocolo-box{padding:1.6rem;border-radius:var(--radius);background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;margin:2rem 0;box-shadow:0 8px 32px rgba(220,38,38,.30);}
-.protocolo-box .pr-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fecaca;margin-bottom:.8rem;}
+.protocolo-box .pr-title{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:#fecaca;margin-bottom:.8rem;}
 .protocolo-box p{font-size:1rem;line-height:1.75;color:#fee2e2;margin-bottom:.6rem;}
 .protocolo-box p:last-child{margin-bottom:0;}
 .protocolo-box strong{color:#fca5a5;}
 .alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff1f2,#ffe4e6);border:1px solid rgba(220,38,38,.2);margin:2rem 0;}
-.alerta-box .alerta-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;}
+.alerta-box .alerta-title{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:700;color:#991b1b;margin-bottom:.7rem;}
 .alerta-box p{margin-bottom:.6rem;font-size:1rem;color:#7f1d1d;line-height:1.75;}
 .alerta-box p:last-child{margin-bottom:0;}
 .pruebas-morada{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
@@ -90,7 +87,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;backgro
 .tag{display:inline-block;padding:.55rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.84rem;}
 .article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
 .cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(239,246,255,.94));border:1px solid rgba(37,99,235,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
-.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.02em;margin-bottom:.8rem;}
 .cta-box h3 em{font-style:italic;color:var(--brand);}
 .cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
 .btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(37,99,235,.35);transition:.25s ease;}
@@ -103,18 +100,18 @@ footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid 
 <body>
 <nav>
   <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
-  <a class="nav-back" href="portal-vivienda.html">← Volver al portal</a>
+  <a class="nav-back" href="portal-vivienda.html">&larr; Volver al portal</a>
 </nav>
 
 <header class="article-hero">
-  <div class="cat-pill reveal">Vivienda · Artículo 10</div>
+  <div class="cat-pill reveal">Vivienda &middot; Art&iacute;culo 10</div>
   <h1 class="article-title reveal">Okupas en tu casa:<br><em>La regla de las 48h</em></h1>
-  <p class="article-lead reveal">El mito más extendido de España: "Si pasan 48 horas, la policía ya no puede echarlo y tienes que aguantar años de juicios." Es mentira. No existe ninguna ley que diga eso. Hay dos tipos de ocupación radicalmente distintos y uno de ellos permite a la policía actuar de forma inmediata, pase el tiempo que pase.</p>
+  <p class="article-lead reveal">El mito m&aacute;s extendido de Espa&ntilde;a: &ldquo;Si pasan 48 horas, la polic&iacute;a ya no puede echarlo y tienes que aguantar a&ntilde;os de juicios.&rdquo; Es mentira. No existe ninguna ley que diga eso. Hay dos tipos de ocupaci&oacute;n radicalmente distintos y uno permite a la polic&iacute;a actuar de forma inmediata, pase el tiempo que pase.</p>
   <div class="article-meta reveal">
-    <span><strong>OpenLexIura</strong></span><span class="meta-sep">·</span>
-    <span>2026</span><span class="meta-sep">·</span>
-    <span class="meta-badge">9 min lectura</span><span class="meta-sep">·</span>
-    <span class="meta-badge">Vivienda · Penal</span>
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">&middot;</span>
+    <span>2026</span><span class="meta-sep">&middot;</span>
+    <span class="meta-badge">9 min lectura</span><span class="meta-sep">&middot;</span>
+    <span class="meta-badge">Vivienda &middot; Penal</span>
   </div>
   <div class="art-divider reveal"></div>
 </header>
@@ -122,49 +119,161 @@ footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid 
 <main class="article-body">
 
   <div class="quick-answer reveal">
-    <div class="qa-label">Respuesta rápida</div>
-    <p><strong>Art. 202 CP:</strong> Si han entrado en tu casa (la que usas), es <strong>allanamiento de morada</strong>: delito, desalojo policial inmediato, sin importar si pasaron 4 horas o 4 meses. El mito de las 48h no existe en ninguna ley española. <strong>Llama al 112, demuestra que es tu morada y la policía actúa.</strong></p>
+    <div class="qa-label">&#9889; Respuesta r&aacute;pida</div>
+    <p><strong>Art. 202 CP:</strong> Si han entrado en tu casa (la que usas), es <strong>allanamiento de morada</strong>: delito, desalojo policial inmediato, sin importar si pasaron 4 horas o 4 meses. El mito de las 48h no existe en ninguna ley espa&ntilde;ola. <strong>Llama al 112, demuestra que es tu morada y la polic&iacute;a act&uacute;a.</strong></p>
   </div>
 
   <div class="mito-box reveal">
-    <div class="mito-label">Mito desmentido</div>
-    <p class="mito-text">"Si pasan 48 horas, ya no pueden echarlos y tienes que ir a juicio"</p>
-    <p class="mito-real">No existe ningún artículo, ley, decreto ni reglamento en el ordenamiento jurídico español que establezca que pasadas 48 horas un okupa consolida su derecho. Ninguno. Es una leyenda urbana que se ha repetido tanto que la gente la da por cierta. La realidad legal es radicalmente diferente, y depende de un único factor: si ese inmueble es tu morada o no.</p>
+    <div class="mito-label">&#10060; Mito desmentido</div>
+    <p class="mito-text">&ldquo;Si pasan 48 horas, ya no pueden echarlos y tienes que ir a juicio&rdquo;</p>
+    <p class="mito-real">No existe ning&uacute;n art&iacute;culo, ley, decreto ni reglamento en el ordenamiento jur&iacute;dico espa&ntilde;ol que establezca que pasadas 48 horas un okupa consolida su derecho. <strong>Ninguno.</strong> Es una leyenda urbana repetida hasta convertirse en &ldquo;verdad popular&rdquo;. La realidad legal depende de un &uacute;nico factor: si ese inmueble es tu morada o no.</p>
   </div>
 
-  <h2 class="reveal">1. La distinción que lo cambia todo: <span>morada vs. piso vacío</span></h2>
-  <p class="reveal">El Código Penal español tipifica dos delitos completamente distintos relacionados con la ocupación, y las consecuencias de uno y otro son radicalmente diferentes. El error que genera el mito es mezclar ambos casos como si fueran el mismo:</p>
+  <h2 class="reveal">1. La distinci&oacute;n que lo cambia todo: <span>morada vs. piso vac&iacute;o</span></h2>
+  <p class="reveal">El C&oacute;digo Penal tipifica dos delitos completamente distintos, con consecuencias radicalmente diferentes. El error que genera el mito es tratarlos como si fueran el mismo caso:</p>
 
   <div class="vs-box reveal">
     <div class="vs-card morada">
-      <p class="vs-title">🏠 Allanamiento de Morada</p>
-      <span class="vs-art">Art. 202 Código Penal</span>
-      <p>Entrar o mantenerse en la vivienda de otra persona <strong>sin su consentimiento</strong>. Da igual si es la vivienda habitual o la casa de la playa donde tienes tus cosas. Lo decisivo es que el inmueble está equipado para la vida y su titular lo usa.</p>
+      <p class="vs-title">&#127968; Allanamiento de Morada</p>
+      <span class="vs-art">Art. 202 C&oacute;digo Penal</span>
+      <p>Entrar o mantenerse en la vivienda de otra persona <strong>sin su consentimiento</strong>. Incluye la casa habitual y la casa de la playa donde tienes tus cosas. Lo decisivo es que el inmueble est&aacute; equipado para la vida y su titular lo usa.</p>
       <ul>
-        <li>Pena de 6 meses a 2 años de prisión (4 años si hay violencia)</li>
-        <li>La policía puede y debe desalojar de forma <strong>inmediata</strong></li>
-        <li>No hay ningún plazo: el delito es flagrante mientras el okupa permanezca</li>
-        <li>El propietario no necesita autorización judicial previa</li>
+        <li>Pena de 6 meses a 2 a&ntilde;os de prisi&oacute;n (4 a&ntilde;os si hay violencia)</li>
+        <li>La polic&iacute;a puede y debe desalojar de forma <strong>inmediata</strong></li>
+        <li>No hay ning&uacute;n plazo: el delito es flagrante mientras el okupa permanezca</li>
+        <li>No se necesita autorizaci&oacute;n judicial previa</li>
       </ul>
     </div>
     <div class="vs-card usurpacion">
-      <p class="vs-title">🏚️ Usurpación de Inmueble</p>
-      <span class="vs-art">Art. 245 Código Penal</span>
-      <p>Ocupar un inmueble que <strong>no es morada</strong>: piso vacío de un banco, vivienda sin muebles ni suministros, solar, garaje sin uso. El titular no lo usa ni lo tiene equipado para vivir.</p>
+      <p class="vs-title">&#127968; Usurpaci&oacute;n de Inmueble</p>
+      <span class="vs-art">Art. 245 C&oacute;digo Penal</span>
+      <p>Ocupar un inmueble que <strong>no es morada</strong>: piso vac&iacute;o de un banco, vivienda sin muebles ni suministros, solar, garaje sin uso. El titular no lo habita ni lo tiene equipado para vivir.</p>
       <ul>
         <li>Pena de multa (mucho menor que el allanamiento)</li>
-        <li>La policía <strong>no puede entrar sin orden judicial</strong></li>
+        <li>La polic&iacute;a <strong>no puede entrar sin orden judicial</strong></li>
         <li>Requiere proceso judicial que puede durar meses</li>
-        <li>Es aquí donde la lentitud judicial genera la frustración generalizada</li>
+        <li>Aqu&iacute; es donde la lentitud judicial genera la frustraci&oacute;n generalizada</li>
       </ul>
     </div>
   </div>
 
   <blockquote class="blockquote-law reveal">
-    "El particular que, sin habitar en ella, ocupare con violencia o intimidación en las personas una cosa inmueble o usurpare un derecho real inmobiliario de pertenencia ajena, será castigado con la pena de prisión de uno a dos años."
-    <cite>Art. 245.1 CP (Usurpación con violencia) · Art. 202 CP (Allanamiento de morada): hasta 2 años o 4 con violencia</cite>
+    &ldquo;El que entrare en morada ajena o se mantuviere en ella contra la voluntad de su morador, ser&aacute; castigado con la pena de prisi&oacute;n de seis meses a dos a&ntilde;os.&rdquo;
+    <cite>Art. 202.1 C&oacute;digo Penal &mdash; Allanamiento de morada</cite>
   </blockquote>
 
-  <h2 class="reveal">2. El allanamiento de morada: <span>por qué la policía actúa al instante</span></h2>
-  <p class="reveal">Cuando alguien ocupa tu morada, el delito es <strong>permanente y flagrante</strong> durante todo el tiempo que el okupa permanece dentro. El concepto de flagrancia delictiva no caduca a las 48 horas: la jurisprudencia ha establecido que mientras el okupa esté dentro de tu morada, el delito sigue cometiéndose, y por tanto la policía puede intervenir sin necesidad de orden judicial en cualquier momento [web:114].</p>
-  <p class="reveal">¿Qué es tu "morada"? No solo tu domicilio habitual. También tu apartamento de verano donde tienes ropa, muebles y efectos personales. El criterio es que el inmueble esté <strong>equipado para la vida humana y que su titular lo use
+  <h2 class="reveal">2. Tu morada incluye <span>la casa de la playa</span></h2>
+  <p class="reveal">El concepto legal de &ldquo;morada&rdquo; es m&aacute;s amplio de lo que mucha gente cree. No se limita al domicilio donde tienes el padr&oacute;n. El Tribunal Supremo ha establecido que es morada cualquier espacio en el que una persona desarrolla su vida privada de forma habitual o peri&oacute;dica, y donde conserva efectos personales que reflejan su privacidad.</p>
+  <p class="reveal">Esto incluye: el apartamento de veraneo con tu ropa y tus muebles, la segunda residencia que usas los fines de semana, o incluso una habitaci&oacute;n de hotel reservada. Si tienes tus cosas all&iacute; y demuestras que lo usas con regularidad, es tu morada a efectos del art. 202 CP. <strong>No tienes que estar viviendo f&iacute;sicamente en ese momento para que sea tu morada.</strong></p>
+
+  <div class="info-box reveal">
+    <p class="info-title">La Instrucci&oacute;n 1/2020 de la Fiscal&iacute;a General del Estado</p>
+    <p>La Fiscal&iacute;a General del Estado aclar&oacute; en 2020 los criterios de actuaci&oacute;n de las Fuerzas y Cuerpos de Seguridad: ante un allanamiento de morada (art. 202 CP), el desalojo y la detenci&oacute;n son <strong>medidas cautelares urgentes e inmediatas</strong> que no requieren orden judicial previa, porque el delito es flagrante mientras el okupa permanezca en el interior.</p>
+    <p>La instrucci&oacute;n tambi&eacute;n establece que no existe ninguna norma que limite la actuaci&oacute;n policial a un plazo de 24, 48 o 72 horas. Ese plazo no existe. Lo que exige la ley es que el propietario demuestre que el inmueble es su morada.</p>
+  </div>
+
+  <h2 class="reveal">3. Tu protocolo de emergencia: <span>lo que debes hacer en los pr&oacute;ximos 30 minutos</span></h2>
+  <p class="reveal">Llegas a casa, tu llave no entra, oyes ruido dentro o ves la cerradura forzada. Esta es la secuencia exacta de acciones:</p>
+
+  <div class="protocolo-box reveal">
+    <p class="pr-title">&#128721; Protocolo de emergencia &mdash; Allanamiento de morada</p>
+    <p><strong>1. LLAMA AL 112 DE INMEDIATO.</strong> No esperes. No intentes entrar. No hables con los ocupantes. Llama al 112 e indica que han entrado en tu morada sin tu consentimiento.</p>
+    <p><strong>2. NO CORTES LA LUZ NI EL AGUA.</strong> Si interrumpes los suministros t&uacute; mismo, puedes cometer un delito de coacciones. Deja los suministros como est&aacute;n hasta que la polic&iacute;a resuelva la situaci&oacute;n.</p>
+    <p><strong>3. DEMUESTRA QUE ES TU MORADA.</strong> Ten preparado en el m&oacute;vil: fotos del interior con tus cosas, facturas de suministros a tu nombre, padr&oacute;n municipal, contrato de propiedad o alquiler, recibos del seguro del hogar. Cuantas m&aacute;s pruebas, mejor.</p>
+    <p><strong>4. NO INTERACCIONES CON LOS OCUPANTES.</strong> No les amenaces, no les insultes, no intentes negociar. Cualquier interacci&oacute;n puede complicar la actuaci&oacute;n policial y en casos extremos podr&iacute;a usarse en tu contra.</p>
+  </div>
+
+  <h2 class="reveal">4. Las pruebas que demuestran <span>que es tu morada</span></h2>
+
+  <div class="pruebas-morada reveal">
+    <div class="pm-card">
+      <div class="pm-icon">&#128196;</div>
+      <div class="pm-name">Padr&oacute;n municipal</div>
+      <p>La prueba m&aacute;s directa para la vivienda habitual. Si est&aacute;s empadronado, la polic&iacute;a lo verifica al instante.</p>
+    </div>
+    <div class="pm-card">
+      <div class="pm-icon">&#9889;</div>
+      <div class="pm-name">Facturas de suministros</div>
+      <p>Luz, agua, gas o internet a tu nombre en esa direcci&oacute;n. Imprescindible para la segunda residencia.</p>
+    </div>
+    <div class="pm-card">
+      <div class="pm-icon">&#128247;</div>
+      <div class="pm-name">Fotos del interior</div>
+      <p>Im&aacute;genes con fecha que muestren tus efectos personales: ropa, libros, utensilios, documentos personales.</p>
+    </div>
+    <div class="pm-card">
+      <div class="pm-icon">&#128176;</div>
+      <div class="pm-name">Recibos del IBI o seguro</div>
+      <p>El recibo del Impuesto de Bienes Inmuebles o la p&oacute;liza del seguro del hogar acreditan la titularidad.</p>
+    </div>
+    <div class="pm-card">
+      <div class="pm-icon">&#128205;</div>
+      <div class="pm-name">Escritura o contrato</div>
+      <p>La escritura de propiedad o el contrato de alquiler. Guardarlo en el m&oacute;vil o en la nube es muy recomendable.</p>
+    </div>
+    <div class="pm-card">
+      <div class="pm-icon">&#128100;</div>
+      <div class="pm-name">Testigos o vecinos</div>
+      <p>Los vecinos que pueden confirmar que t&uacute; eres quien vive all&iacute; son un recurso valios&iacute;simo en el momento del hecho.</p>
+    </div>
+  </div>
+
+  <h2 class="reveal">5. Si la polic&iacute;a no act&uacute;a: <span>qu&eacute; hacer a continuaci&oacute;n</span></h2>
+  <p class="reveal">En la pr&aacute;ctica, la mayor&iacute;a de desalojos por allanamiento de morada se resuelven en pocas horas con la presencia policial. Pero si hay dudas sobre si el inmueble es morada o si los ocupantes alegan alg&uacute;n tipo de derecho, la polic&iacute;a puede derivar el caso a la v&iacute;a judicial. En ese caso:</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>DENUNCIA PENAL INMEDIATA por allanamiento de morada</strong>
+        <p>Presenta denuncia en el juzgado de guardia o en comisa&iacute;a, aportando todas las pruebas de que es tu morada. El juzgado de guardia puede dictar orden de desalojo de forma urgente, a veces el mismo d&iacute;a.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>SOLICITA MEDIDAS CAUTELARES URGENTES al juez</strong>
+        <p>Tu abogado puede pedir al juez que dicte auto de desalojo inmediato como medida cautelar penal, sin esperar al juicio. En casos de allanamiento de morada acreditado, los juzgados suelen resolver en horas o d&iacute;as.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>DEMANDA CIVIL de desahucio si la v&iacute;a penal no prospera</strong>
+        <p>Si el caso se califica como usurpaci&oacute;n (art. 245 CP) en vez de allanamiento, paralelamente puedes presentar demanda civil de desahucio por prec&aacute;rio o tutela sumaria de la posesi&oacute;n. Es m&aacute;s lenta que la v&iacute;a penal pero es la alternativa cuando el inmueble no es morada habitual.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">&#128680; El error m&aacute;s peligroso: tomarse la justicia por tu mano</p>
+    <p>Cambiar la cerradura mientras los ocupantes est&aacute;n dentro, cortar los suministros o intentar echarlos f&iacute;sicamente puede convertirte a ti en el infractor. El delito de coacciones (art. 172 CP) se aplica cuando se impide a alguien hacer lo que la ley no proh&iacute;be. Aunque los ocupantes est&eacute;n cometiendo un delito, la respuesta proporcional y legal es la policial y judicial, no la autotutela.</p>
+    <p>Documenta todo, llama al 112 y deja que el sistema act&uacute;e. Es m&aacute;s r&aacute;pido de lo que el mito de las 48 horas te har&iacute;a creer.</p>
+  </div>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Ocupaci&oacute;n ilegal</a>
+    <a class="tag" href="#">Allanamiento morada</a>
+    <a class="tag" href="#">Art. 202 CP</a>
+    <a class="tag" href="#">Art. 245 CP</a>
+    <a class="tag" href="#">Mito 48 horas</a>
+    <a class="tag" href="#">Desalojo inmediato</a>
+  </div>
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>&iquest;Han entrado en tu casa o <em>en tu segunda residencia</em>?</h3>
+    <p>Cu&eacute;ntanos si es tu vivienda habitual o una segunda residencia, si tienes pruebas de que es tu morada y qu&eacute; te ha dicho la polic&iacute;a. Te decimos exactamente c&oacute;mo actuar.</p>
+    <a class="btn-primary" href="portal-vivienda.html">Consultar mi caso &rarr;</a>
+  </div>
+</section>
+
+<footer>2026 &middot; <a href="../index.html">OpenLexIura</a> &middot; El derecho en el idioma de la calle</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.10});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
