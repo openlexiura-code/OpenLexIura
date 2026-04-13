@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-<head> 
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>OpenLexIura · El derecho en el idioma de la calle</title>
@@ -278,6 +285,39 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 .res-cat{font-size:.78rem;color:#2563eb;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
 .res-resumen{font-size:.87rem;color:#64748b;line-height:1.5;margin-top:.1rem}
 .search-no-results{padding:1.2rem 1.25rem;color:#64748b;font-size:.92rem;text-align:center}
+
+    /* ── BANNER COOKIES ── */
+    #oli-cookie-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#12121a;border-top:2px solid #C9A84C;padding:1.2rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 24px rgba(0,0,0,.5)}
+    #oli-cookie-banner.visible{display:block}
+    .oli-banner-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+    .oli-banner-text{flex:1;min-width:260px;font-size:.88rem;color:#b0b0c8;line-height:1.6}
+    .oli-banner-text strong{color:#C9A84C}
+    .oli-banner-text a{color:#C9A84C}
+    .oli-banner-actions{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+    .oli-btn{padding:.55rem 1.3rem;border-radius:4px;font-size:.85rem;cursor:pointer;border:none;transition:opacity .2s;white-space:nowrap;font-family:'Inter',sans-serif}
+    .oli-btn:hover{opacity:.85}
+    .oli-btn-accept{background:#C9A84C;color:#0a0a0f;font-weight:700}
+    .oli-btn-reject{background:transparent;color:#b0b0c8;border:1px solid #3a3a54}
+    .oli-btn-config{background:transparent;color:#C9A84C;border:1px solid #C9A84C}
+    #oli-config-panel{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100000;background:#1a1a26;border-top:2px solid #C9A84C;padding:1.8rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6)}
+    #oli-config-panel.visible{display:block}
+    .oli-config-inner{max-width:700px;margin:0 auto}
+    .oli-config-inner h3{color:#C9A84C;font-size:1rem;margin-bottom:1rem;letter-spacing:.05em;text-transform:uppercase}
+    .oli-toggle-row{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid #2a2a40}
+    .oli-toggle-row:last-of-type{border-bottom:none}
+    .oli-toggle-label{color:#e8e8f0;font-size:.9rem}
+    .oli-toggle-desc{color:#7070a0;font-size:.78rem;margin-top:.2rem}
+    .oli-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+    .oli-switch input{opacity:0;width:0;height:0}
+    .oli-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#2a2a40;border-radius:24px;transition:.3s}
+    .oli-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:#7070a0;border-radius:50%;transition:.3s}
+    input:checked+.oli-slider{background:#C9A84C}
+    input:checked+.oli-slider:before{transform:translateX(20px);background:#0a0a0f}
+    input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
+    .oli-config-actions{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
+    #oli-cookie-btn{display:none;position:fixed;bottom:1.2rem;left:1.2rem;z-index:99998;background:#1a1a26;border:1px solid #C9A84C;color:#C9A84C;font-size:1.2rem;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:background .2s;line-height:40px;text-align:center}
+    #oli-cookie-btn:hover{background:#C9A84C;color:#0a0a0f}
+    #oli-cookie-btn.visible{display:block}
 </style>
 
 <style>
@@ -313,6 +353,10 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <nav id="nav">
   <a class="nav-logo" href="#inicio"><img src="Icono.png" alt="OpenLexIura"><span>OpenLexIura</span></a>
   <div class="nav-links" id="nav-links">
@@ -413,7 +457,12 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
   </div>
 </section>
 
-<footer>2026 · OpenLexIura · El derecho para ciudadanos</footer>
+<footer style="text-align:center;padding:2rem 1rem;font-size:.82rem;color:#64748b;border-top:1px solid rgba(37,99,235,.1);margin-top:2rem;">
+  © 2026 <strong>OpenLexIura</strong> · El derecho para ciudadanos &nbsp;·&nbsp;
+  <a href="aviso-legal.html" style="color:#2563eb;text-decoration:underline;">Aviso Legal</a> &nbsp;·&nbsp;
+  <a href="politica-privacidad.html" style="color:#2563eb;text-decoration:underline;">Privacidad</a> &nbsp;·&nbsp;
+  <a href="politica-cookies.html" style="color:#2563eb;text-decoration:underline;">Cookies</a>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
 <script>
@@ -511,5 +560,78 @@ document.querySelectorAll('a,button,input,.card').forEach(el=>{el.addEventListen
 })();
 
 </script>
+
+  <!-- ═══ BANNER COOKIES OpenLexIura ═══ -->
+  <div id="oli-cookie-banner">
+    <div class="oli-banner-inner">
+      <div class="oli-banner-text">
+        <strong>🍪 Usamos cookies</strong><br>
+        Utilizamos cookies técnicas y analíticas (Google Analytics) para mejorar tu experiencia.
+        <a href="politica-cookies.html">Más información</a>
+      </div>
+      <div class="oli-banner-actions">
+        <button class="oli-btn oli-btn-config" onclick="openConfig()">Configurar</button>
+        <button class="oli-btn oli-btn-reject" onclick="rejectAll()">Rechazar</button>
+        <button class="oli-btn oli-btn-accept" onclick="acceptAll()">Aceptar todo</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="oli-config-panel">
+    <div class="oli-config-inner">
+      <h3>Preferencias de cookies</h3>
+      <div class="oli-toggle-row">
+        <div>
+          <div class="oli-toggle-label">🔒 Cookies técnicas</div>
+          <div class="oli-toggle-desc">Necesarias para el funcionamiento del sitio. No pueden desactivarse.</div>
+        </div>
+        <label class="oli-switch"><input type="checkbox" checked disabled><span class="oli-slider"></span></label>
+      </div>
+      <div class="oli-toggle-row">
+        <div>
+          <div class="oli-toggle-label">📊 Cookies analíticas</div>
+          <div class="oli-toggle-desc">Google Analytics — miden el tráfico de forma anónima.</div>
+        </div>
+        <label class="oli-switch"><input type="checkbox" id="oli-analytics-toggle"><span class="oli-slider"></span></label>
+      </div>
+      <div class="oli-config-actions">
+        <button class="oli-btn oli-btn-reject" onclick="rejectAll()">Rechazar todas</button>
+        <button class="oli-btn oli-btn-accept" onclick="saveConfig()">Guardar preferencias</button>
+      </div>
+    </div>
+  </div>
+
+  <button id="oli-cookie-btn" title="Preferencias de cookies" onclick="reopenBanner()">🍪</button>
+
+  <script>
+    var banner=document.getElementById('oli-cookie-banner'),
+        panel=document.getElementById('oli-config-panel'),
+        floatBtn=document.getElementById('oli-cookie-btn'),
+        aToggle=document.getElementById('oli-analytics-toggle');
+    window.addEventListener('DOMContentLoaded',function(){
+      var c=localStorage.getItem('oli_cookie_consent');
+      if(!c){showBanner();}
+      else{floatBtn.classList.add('visible');if(JSON.parse(c).analytics)enableGA();}
+    });
+    function showBanner(){banner.classList.add('visible');panel.classList.remove('visible');}
+    function openConfig(){
+      panel.classList.add('visible');banner.classList.remove('visible');
+      var c=localStorage.getItem('oli_cookie_consent');
+      if(c)aToggle.checked=JSON.parse(c).analytics;
+    }
+    function acceptAll(){savePrefs({analytics:true});enableGA();close_();}
+    function rejectAll(){savePrefs({analytics:false});close_();}
+    function saveConfig(){var ok=aToggle.checked;savePrefs({analytics:ok});if(ok)enableGA();close_();}
+    function savePrefs(p){p.date=new Date().toISOString();localStorage.setItem('oli_cookie_consent',JSON.stringify(p));}
+    function close_(){banner.classList.remove('visible');panel.classList.remove('visible');floatBtn.classList.add('visible');}
+    function reopenBanner(){floatBtn.classList.remove('visible');showBanner();}
+    function enableGA(){
+      if(window._ga4ok)return;window._ga4ok=true;
+      // GA4 se gestiona desde GTM — aquí activamos el consentimiento para GTM
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({'event':'cookie_consent_analytics'});
+    }
+  </script>
+
 </body>
 </html>
