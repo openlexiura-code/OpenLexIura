@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>OpenLexIura · El derecho en el idioma de la calle</title>
 <meta name="description" content="Entiende tus derechos y resuelve tus dudas legales sin palabras raras ni lenguaje del BOE.">
-<link rel="icon" type="image/jpeg" href="Icono.png" />
+<link rel="icon" type="image/png" href="Icono.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -209,11 +209,23 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
   .nav-links{
     display:flex;flex-direction:column;align-items:stretch;gap:0;
     position:fixed;inset:0;top:0;padding:5.5rem 1.5rem 2rem;
-    background:rgba(255,255,255,.97);backdrop-filter:blur(18px);
+    background:#ffffff;
     z-index:1000;transform:translateX(100%);transition:transform .32s ease;
     border-left:1px solid rgba(37,99,235,.10);
+    overflow-y:auto;
   }
   .nav-links.open{transform:translateX(0)}
+  /* Overlay oscuro detrás del menú */
+  .nav-overlay{
+    display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);
+    z-index:999;
+  }
+  .nav-overlay.open{display:block}
+  /* Nav sólida cuando el menú está abierto */
+  nav.menu-open{
+    background:#ffffff !important;
+    backdrop-filter:none;
+  }
   .nav-links a{
     padding:1rem 0;font-size:1.1rem;border-bottom:1px solid rgba(37,99,235,.07);
     min-height:44px;display:flex;align-items:center;
@@ -313,8 +325,7 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<section class="hero" id="inicio">
+<div class="nav-overlay" id="nav-overlay"></div> id="inicio">
   <div class="hero-grid"></div>
   <div class="hero-content wrap">
     <div class="hero-copy">
@@ -389,7 +400,6 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
         </ul>
         <a href="Vivienda/okupas.html" class="cta">Resolver dudas de impagos →</a>
       </article>
-    </div></div>
     </div>
   </div>
 </section>
@@ -412,16 +422,26 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scro
 // ── Hamburger ──
 const burger = document.getElementById('nav-burger');
 const navLinks = document.getElementById('nav-links');
-burger.addEventListener('click', () => {
-  burger.classList.toggle('open');
-  navLinks.classList.toggle('open');
-  document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+const navOverlay = document.getElementById('nav-overlay');
+
+function closeMenu(){
   burger.classList.remove('open');
   navLinks.classList.remove('open');
+  navOverlay.classList.remove('open');
+  nav.classList.remove('menu-open');
   document.body.style.overflow = '';
-}));
+}
+
+burger.addEventListener('click', () => {
+  const opening = !navLinks.classList.contains('open');
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  navOverlay.classList.toggle('open');
+  nav.classList.toggle('menu-open');
+  document.body.style.overflow = opening ? 'hidden' : '';
+});
+navOverlay.addEventListener('click', closeMenu);
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
