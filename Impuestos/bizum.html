@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
+<!-- End Google Tag Manager -->
+<script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El radar de Hacienda con Bizum: ¿Se enteran de todo lo que me ingresan? | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#dc2626;--brand-2:#ef4444;--text:#1f2937;--muted:#64748b;--line:rgba(220,38,38,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Inter",sans-serif;background:linear-gradient(180deg,#fff5f5 0%,#fef1f1 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(220,38,38,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(220,38,38,.22);border-radius:999px;background:linear-gradient(180deg,rgba(220,38,38,.10),rgba(220,38,38,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(220,38,38,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(220,38,38,.20);background:rgba(220,38,38,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(220,38,38,.8);}
+.article-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:60ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:1.3rem;position:relative;}
+.article-body ul li::before{content:"→";color:var(--brand);position:absolute;left:0;}
+/* Quick answer */
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(220,38,38,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;}
+/* Mito box */
+.mito-box{padding:1.8rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:2px solid rgba(194,65,12,.28);margin:2rem 0;text-align:center;}
+.mito-box .mito-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c2410c;margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.mito-box .mito-text{font-family:"Cormorant Garamond",serif;font-size:1.55rem;color:#7c2d12;line-height:1.3;font-style:italic;margin-bottom:.9rem;}
+.mito-box .mito-real{font-size:.98rem;color:#9a3412;line-height:1.72;margin:0;}
+/* VS grid */
+.vs-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.vs-card{padding:1.5rem;border-radius:var(--radius);border:1px solid var(--line);}
+.vs-card.seguro{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.25);}
+.vs-card.peligro{background:linear-gradient(180deg,#fff5f5,#fee2e2);border-color:rgba(220,38,38,.30);}
+.vs-card .vs-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:700;margin-bottom:.3rem;}
+.vs-card.seguro .vs-title{color:#15803d;}
+.vs-card.peligro .vs-title{color:#991b1b;}
+.vs-card .vs-art{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .65rem;border-radius:999px;display:inline-block;margin-bottom:.75rem;}
+.vs-card.seguro .vs-art{background:rgba(22,163,74,.12);color:#15803d;}
+.vs-card.peligro .vs-art{background:rgba(220,38,38,.10);color:#991b1b;}
+.vs-card ul{margin:0;display:flex;flex-direction:column;gap:.45rem;}
+.vs-card ul li{list-style:none;font-size:.9rem;color:#374151;line-height:1.52;padding-left:.9rem;position:relative;}
+.vs-card ul li::before{position:absolute;left:0;}
+.vs-card.seguro ul li::before{content:"✓";color:#15803d;}
+.vs-card.peligro ul li::before{content:"✗";color:#dc2626;}
+/* Info, alerta boxes */
+.info-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff5f5);border:1px solid rgba(220,38,38,.14);box-shadow:0 6px 28px rgba(0,0,0,.08);margin:2rem 0;}
+.info-box .info-title{font-family:"Cormorant Garamond",serif;font-size:1.28rem;font-weight:700;color:var(--brand);margin-bottom:.65rem;}
+.info-box p{margin-bottom:.55rem;font-size:.98rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#1e1e1e,#2d1515);border:1px solid rgba(220,38,38,.4);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:"Cormorant Garamond",serif;font-size:1.28rem;font-weight:700;color:#fca5a5;margin-bottom:.65rem;}
+.alerta-box p{margin-bottom:.55rem;font-size:.98rem;color:#fecaca;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+/* Regulation table */
+.reg-table{width:100%;border-collapse:separate;border-spacing:0;margin:1.5rem 0 2rem;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08);}
+.reg-table th{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:.85rem 1rem;font-size:.82rem;font-weight:700;text-align:left;letter-spacing:.04em;text-transform:uppercase;}
+.reg-table td{padding:.85rem 1rem;font-size:.9rem;color:#374151;line-height:1.6;border-bottom:1px solid rgba(220,38,38,.08);}
+.reg-table tr:last-child td{border-bottom:none;}
+.reg-table tr:nth-child(even) td{background:rgba(220,38,38,.03);}
+.reg-table td:first-child{font-weight:600;color:#111827;}
+/* Steps */
+.steps{counter-reset:step;display:flex;flex-direction:column;gap:1.2rem;margin:1.5rem 0 2rem;}
+.step{display:flex;gap:1.1rem;align-items:flex-start;padding:1.2rem 1.4rem;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,.05);}
+.step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;}
+.step-body .step-title{font-weight:700;color:#111827;font-size:.98rem;margin-bottom:.3rem;}
+.step-body p{font-size:.9rem;color:#4b5563;line-height:1.65;margin:0;}
+/* Novedad badge */
+.novedad{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:999px;background:rgba(220,38,38,.12);color:#991b1b;border:1px solid rgba(220,38,38,.30);margin-left:.4rem;vertical-align:middle;}
+/* Tags */
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.5rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.83rem;}
+/* CTA */
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,245,245,.94));border:1px solid rgba(220,38,38,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3.5vw,2.5rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(220,38,38,.35);}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  .article-hero{padding:7.5rem 1.2rem 3rem;}
+  .article-body{padding:2.5rem 1.2rem 4rem;}
+  .vs-box{grid-template-columns:1fr;}
+  .reg-table{font-size:.82rem;}
+  .reg-table th,.reg-table td{padding:.65rem .7rem;}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="portal-fiscal.html">&larr; Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Impuestos &middot; Bancos &middot; Art&iacute;culo 3</div>
+  <h1 class="article-title reveal">El radar de Hacienda con Bizum:<br><em>&iquest;se enteran de todo lo que me ingresan?</em></h1>
+  <p class="article-lead reveal">Rompemos la paranoia sobre los pagos entre amigos. Conoce los l&iacute;mites legales reales en los que tu banco da el &ldquo;chivatazo&rdquo; a la Agencia Tributaria y qu&eacute; palabras de broma te pueden bloquear la cuenta.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">&middot;</span>
+    <span>Actualizado abril 2026</span><span class="meta-sep">&middot;</span>
+    <span class="meta-badge">7 min lectura</span><span class="meta-sep">&middot;</span>
+    <span class="meta-badge">Impuestos &middot; Bancos</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <!-- BLOQUE 1: Regla de oro -->
+  <div class="quick-answer reveal">
+    <div class="qa-label">&#9889; La Regla de Oro</div>
+    <p>Hacienda no tiene ni el tiempo ni los recursos para vigilar los 20&euro; que te pasa tu amigo por la cena del s&aacute;bado. Los bancos solo avisan <strong>autom&aacute;ticamente</strong> a Hacienda cuando haces transferencias de m&aacute;s de <strong>10.000&euro;</strong>, ingresos en efectivo en el cajero de m&aacute;s de <strong>3.000&euro;</strong> o cuando utilizas billetes de 500&euro;. El resto del tiempo, eres invisible.</p>
+  </div>
+
+  <p class="reveal">El sistema fiscal espa&ntilde;ol no opera mediante la fiscalizaci&oacute;n manual de cada c&eacute;ntimo que fluye por la red interbancaria. La arquitectura del control tributario se fundamenta en el an&aacute;lisis de <strong>riesgo patrimonial significativo</strong>, no en la vigilancia micro-transaccional indiscriminada.</p>
+
+  <p class="reveal">El l&iacute;mite de los 10.000 euros para transferencias est&aacute; alineado con las directivas europeas de control de movimientos de capitales. El umbral de los 3.000 euros para ingresos en efectivo responde a la necesidad de cercar la econom&iacute;a sumergida. Por debajo de estos umbrales, los intercambios cotidinanos de liquidez para sufragar gastos compartidos no alteran el patrimonio neto de forma gravable.</p>
+
+  <!-- BLOQUE 2: Mito -->
+  <div class="mito-box reveal">
+    <div class="mito-label">&#10060; Mito destruido</div>
+    <p class="mito-text">&ldquo;Si cobro el alquiler en B por Bizum, pongo de concepto &lsquo;Regalo&rsquo; y Hacienda no puede investigarme.&rdquo;</p>
+    <p class="mito-real"><strong>Falso y peligroso.</strong> A Hacienda le da exactamente igual la palabra que pongas en el concepto. Los ordenadores de la AEAT no leen palabras, leen <strong>patrones matem&aacute;ticos</strong>. Si todos los d&iacute;as 5 de cada mes recibes 800&euro;, el algoritmo detecta un &ldquo;rendimiento del capital inmobiliario no declarado&rdquo; al instante. Poner &ldquo;Regalo&rdquo; mil veces <em>incrementa</em> tu puntuaci&oacute;n de riesgo de fraude.</p>
+  </div>
+
+  <p class="reveal">El coraz&oacute;n tecnol&oacute;gico de esta fiscalizaci&oacute;n es el sistema automatizado de perfilado de riesgos, asociado con motores algor&iacute;tmicos como el conocido <strong>sistema Lince</strong>. Estos motores procesan series temporales, frecuencias de recepci&oacute;n, dispersi&oacute;n de or&iacute;genes y vol&uacute;menes agregados, operando las 24 horas del d&iacute;a, los 7 d&iacute;as de la semana. La inclusi&oacute;n reiterada de la palabra &ldquo;Regalo&rdquo; sobre un patr&oacute;n matem&aacute;tico r&iacute;gido incrementa dr&aacute;sticamente el <em>scoring</em> de fraude del contribuyente.</p>
+
+  <!-- BLOQUE 3: Comparativa -->
+  <h2 class="reveal">1. Uso de Bizum: <span>Personal vs. Profesional</span></h2>
+  <p class="reveal">La frontera entre el uso personal y el uso profesional de las herramientas de pago digital es el epicentro de la nueva arquitectura regulatoria en Espa&ntilde;a. Comprender esta dicotom&iacute;a es esencial para evitar contingencias fiscales severas:</p>
+
+  <div class="vs-box reveal">
+    <div class="vs-card seguro">
+      <p class="vs-title">&#128077; Uso Personal &mdash; Sin riesgo</p>
+      <span class="vs-art">Zona segura</span>
+      <ul>
+        <li>Pagar a medias <strong>un regalo</strong> de grupo</li>
+        <li>Dividir la cuenta de <strong>un restaurante</strong></li>
+        <li>Enviarle la <strong>paga a tu hijo</strong></li>
+        <li>Pagar la <strong>loter&iacute;a de la oficina</strong></li>
+        <li>Reembolsos de gastos <strong>compartidos estor&aacute;dicos</strong></li>
+        <li>Por muchos movimientos que hagas, <strong>no hay riesgo fiscal</strong></li>
+      </ul>
+    </div>
+    <div class="vs-card peligro">
+      <p class="vs-title">&#128680; Uso Profesional &mdash; Peligro</p>
+      <span class="vs-art">Zona de riesgo</span>
+      <ul>
+        <li>Fontanero, masajista o <strong>Instagram shop</strong> cobrando sin factura</li>
+        <li>Recibir pagos <strong>peri&oacute;dicos</strong> de m&uacute;ltiples desconocidos</li>
+        <li>Cobrar <strong>alquiler en B</strong> por m&oacute;vil personal</li>
+        <li>Prestar <strong>servicios informales</strong> regularmente</li>
+        <li>El cruce de datos detectar&aacute; la <strong>evasion de IVA</strong></li>
+        <li>Sanciones de hasta el <strong>150% de lo ocultado</strong></li>
+      </ul>
+    </div>
+     <section id="ai-analyzer" class="bg-indigo-950 text-indigo-50 rounded-3xl p-8 md:p-12 shadow-xl border border-indigo-800 relative overflow-hidden max-w-3xl mx-auto my-12">
+    <div class="max-w-3xl mx-auto relative z-10">
+        <div class="inline-block bg-indigo-900 text-indigo-200 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider border border-indigo-700">
+            Powered by Gemini AI
+        </div>
+        <h2 class="text-3xl font-bold mb-4 text-white flex items-center gap-3">
+            ✨ Analizador de Riesgo Inteligente
+        </h2>
+        <p class="text-indigo-200 text-lg mb-8">
+            ¿Tienes dudas sobre un pago concreto? Introduce los datos y nuestra IA simulará ser el algoritmo del banco para decirte si tu movimiento levantaría sospechas o si estás en la zona segura.
+        </p>
+
+        <div class="bg-indigo-900/50 p-6 rounded-2xl border border-indigo-800/50 backdrop-blur-sm mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium text-indigo-300 mb-1">Concepto del Bizum</label>
+                    <input type="text" id="ai-concepto" placeholder="Ej: Cena sábado, Clases..." class="w-full bg-indigo-950 border border-indigo-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-400">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-indigo-300 mb-1">Importe Medio (€)</label>
+                    <input type="number" id="ai-importe" placeholder="Ej: 25" class="w-full bg-indigo-950 border border-indigo-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-400">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-indigo-300 mb-1">Frecuencia</label>
+                    <select id="ai-frecuencia" class="w-full bg-indigo-950 border border-indigo-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-400">
+                        <option value="Puntual (una vez al año)">Puntual (una vez al año)</option>
+                        <option value="Ocasional (1-2 veces al mes)">Ocasional (1-2 veces al mes)</option>
+                        <option value="Frecuente (varias veces a la semana)">Frecuente (varias veces a la semana)</option>
+                        <option value="Diario">Diario</option>
+                    </select>
+                </div>
+            </div>
+            <button id="btn-analizar" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-4 rounded-xl transition-colors flex justify-center items-center gap-2">
+                <span>✨</span> Analizar Movimiento
+            </button>
+        </div>
+
+        <!-- Contenedor de Resultados -->
+        <div id="ai-resultado-container" class="hidden">
+            <div id="ai-loading" class="text-center py-6 hidden">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-white mb-2"></div>
+                <p class="text-indigo-300">Los algoritmos están analizando tu perfil...</p>
+            </div>
+            <div id="ai-resultado" class="bg-white p-6 rounded-2xl shadow-inner text-stone-800 hidden">
+                <!-- Se llena por JS -->
+            </div>
+            <div id="ai-error" class="bg-rose-100 text-rose-800 p-4 rounded-xl border border-rose-300 hidden text-center">
+                <p>Hubo un problema de conexión al analizar el riesgo. Inténtalo de nuevo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+  </div>
+
+  <!-- BLOQUE 4: Nuevo marco regulatorio 2026 -->
+  <h2 class="reveal">2. El cambio que lo <span>transforma todo en 2026</span></h2>
+  <p class="reveal">El <strong>Real Decreto 253/2025</strong> (BOE), con plenos efectos desde el <strong>1 de enero de 2026</strong>, ha suprimido cualquier zona gris. Antes, las entidades financieras estaban eximidas de reportar operaciones inferiores a 3.000&euro; al a&ntilde;o. Ese margen ya no existe.</p>
+
+  <div class="info-box reveal">
+    <p class="info-title">&#128203; Los nuevos modelos de reporte obligatorio</p>
+    <p><strong>Modelo 170 (mensual):</strong> Desde el primer c&eacute;ntimo cobrado, los bancos deben informar a la AEAT de todo empresario o profesional que use sistemas de pago digital, desglosando terminales, n&uacute;meros de comercio, cuentas receptoras e importe exacto mensual.</p>
+    <p><strong>Modelo 174 (anual):</strong> Declaraci&oacute;n informativa que detalla pormenorizadamente todos los abonos, cargos y retiradas de tarjetas (cr&eacute;dito, d&eacute;bito, prepago, virtuales) que superen <strong>25.000&euro; anuales</strong>.</p>
+    <p>Las entidades diferencian expl&iacute;citamente en sus env&iacute;os a Hacienda la facturaci&oacute;n por <strong>tarjetas tradicionales</strong> de la vehiculizada mediante <strong>Bizum u otros sistemas m&oacute;viles</strong>.</p>
+  </div>
+
+  <table class="reg-table reveal">
+    <thead>
+      <tr>
+        <th>Par&aacute;metro</th>
+        <th>R&eacute;gimen anterior (hasta 2025)</th>
+        <th>Nuevo r&eacute;gimen (RD 253/2025)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Umbral m&iacute;nimo de reporte</td>
+        <td>Solo cobros superiores a 3.000&euro;/a&ntilde;o por comercio</td>
+        <td>Sin umbral. Reporte desde el primer euro</td>
+      </tr>
+      <tr>
+        <td>Periodicidad de la informaci&oacute;n</td>
+        <td>Resumen anual de operaciones consolidadas</td>
+        <td>Reporte mensual exhaustivo (Modelo 170)</td>
+      </tr>
+      <tr>
+        <td>Detalle del canal de pago</td>
+        <td>Datos agregados sin desglose espec&iacute;fico</td>
+        <td>Diferenciaci&oacute;n expl&iacute;cita tarjeta vs. Bizum</td>
+      </tr>
+      <tr>
+        <td>Control de alto volumen</td>
+        <td>Reportes gen&eacute;ricos bajo demanda inspectora</td>
+        <td>Modelo 174 anual obligatorio (&gt;25.000&euro;)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- BLOQUE 5: Alerta bromas -->
+  <div class="alerta-box reveal">
+    <p class="alerta-title">&#128680; El peligro de las bromas en el concepto</p>
+    <p>No pongas jam&aacute;s conceptos de broma como <strong>&ldquo;Armas&rdquo;, &ldquo;Secuestro&rdquo;, &ldquo;Drogas&rdquo;</strong> o &ldquo;Para la mafia&rdquo;. Los bancos est&aacute;n sometidos a la <strong>Ley 10/2010 de Prevenci&oacute;n del Blanqueo de Capitales</strong> y tienen robots leyendo todas las transferencias.</p>
+    <p>Si el robot detecta una de estas palabras clave, el banco <strong>bloquear&aacute; tu cuenta y tus tarjetas autom&aacute;ticamente</strong>, sin previo aviso (principio de <em>tipping-off</em>). Te ver&aacute;s obligado a ir a la sucursal con papeles a justificar el origen del dinero. En casos m&aacute;s graves, el banco debe reportar al <strong>SEPBLAC</strong> (Unidad de Inteligencia Financiera de Espa&ntilde;a), lo que puede paralizar tus activos durante semanas.</p>
+  </div>
+
+  <!-- BLOQUE 6: Qué hacer con dinero familiar -->
+  <h2 class="reveal">3. Si un familiar te da <span>un dinero importante</span></h2>
+  <p class="reveal">La ayuda econ&oacute;mica entre familiares es habitual en Espa&ntilde;a, pero no hacerlo correctamente puede derivar en una inspecci&oacute;n por <strong>incrementos patrimoniales no justificados</strong>. Sigue este protocolo para blindarte:</p>
+
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <p class="step-title">Olvida el efectivo</p>
+        <p>Si tu madre te quiere dar 4.000&euro; para el coche, no dejes que te los d&eacute; en un sobre ni los ingreses en el cajero de golpe. Cualquier ingreso en efectivo &ge; 3.000&euro; genera <strong>reporte autom&aacute;tico a la AEAT</strong>. El banco documentar&aacute; el capital como un flujo sin justificaci&oacute;n causal, y revertir esa presunci&oacute;n es una prueba dif&iacute;cil.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <p class="step-title">Transferencia bancaria con concepto claro</p>
+        <p>Que te haga una <strong>transferencia SEPA normal</strong>. En el concepto debe poner la verdad exacta: <em>&ldquo;Pr&eacute;stamo para adquisici&oacute;n de veh&iacute;culo a inter&eacute;s 0%&rdquo;</em> o <em>&ldquo;Donaci&oacute;n inter vivos para vivienda&rdquo;</em>. Esta nitidez desactiva los algoritmos de sospecha y establece la naturaleza jur&iacute;dica del traspaso.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <p class="step-title">Haz los papeles</p>
+        <p>Si es m&aacute;s de 3.000&euro;, tienes dos caminos: (A) un <strong>contrato de pr&eacute;stamo a inter&eacute;s cero</strong> + presentar el Modelo 600 (sale a 0&euro; a pagar, pero te blinda legalmente); o (B) liquidar el <strong>Impuesto de Donaciones</strong> en tu comunidad aut&oacute;noma, que entre padres e hijos suele estar bonificado al 99% y sale casi gratis.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOQUE 7: Donaciones por CC.AA. -->
+  <h2 class="reveal">4. Donaciones entre familiares: <span>el mapa por comunidad (2026)</span></h2>
+  <p class="reveal">El Impuesto sobre Sucesiones y Donaciones es competencia auton&oacute;mica, lo que genera una disparidad enorme seg&uacute;n d&oacute;nde vivas. En 2026, la mayor&iacute;a de las comunidades ofrecen bonificaciones enormemente generosas para las donaciones directas entre padres e hijos:</p>
+
+  <table class="reg-table reveal">
+    <thead>
+      <tr>
+        <th>Comunidad Aut&oacute;noma</th>
+        <th>Bonificaci&oacute;n (hijos/padres)</th>
+        <th>Requisito formal clave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Andaluc&iacute;a</td>
+        <td>99% de la cuota (fiscalidad efectiva ~1%)</td>
+        <td>Escritura p&uacute;blica si &gt;5.000&euro;; doc. privado basta si &lt;5.000&euro;</td>
+      </tr>
+      <tr>
+        <td>Comunidad Valenciana</td>
+        <td>99% para c&oacute;nyuge, padres e hijos</td>
+        <td>Documento p&uacute;blico y justificaci&oacute;n del origen de los fondos</td>
+      </tr>
+      <tr>
+        <td>Castilla y Le&oacute;n</td>
+        <td>99% entre descendientes, ascendientes y c&oacute;nyuges</td>
+        <td>Justificaci&oacute;n documental de la procedencia del dinero</td>
+      </tr>
+      <tr>
+        <td>Cantabria</td>
+        <td>100% (l&iacute;nea directa y c&oacute;nyuges), 50% hermanos</td>
+        <td>Obligaci&oacute;n formal de presentar el modelo aunque la cuota sea 0&euro;</td>
+      </tr>
+      <tr>
+        <td>Murcia</td>
+        <td>99% entre c&oacute;nyuges, hijos y padres</td>
+        <td>Acreditaci&oacute;n de la trazabilidad bancaria de la aportaci&oacute;n</td>
+      </tr>
+      <tr>
+        <td>Catalu&ntilde;a</td>
+        <td>Sin bonificaci&oacute;n general: tarifa propia del 5% al 9%</td>
+        <td>Escritura p&uacute;blica obligatoria en el plazo de un mes</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box reveal">
+    <p class="info-title">&#9888;&#65039; Cuidado si donas un inmueble, no dinero</p>
+    <p>La donaci&oacute;n de un piso o local genera un impacto fiscal adicional sobre el <strong>donante</strong>: si el valor actual es superior al precio de compra, aflora una <strong>Ganancia Patrimonial</strong> que el donante debe tributar en su IRPF del ejercicio siguiente.</p>
+    <p>Adem&aacute;s, la transmisi&oacute;n de la propiedad activa la <strong>Plusval&iacute;a Municipal</strong>, a cargo del receptor, que debe liquidarse en un plazo m&aacute;ximo de <strong>30 d&iacute;as h&aacute;biles</strong> desde la escritura de donaci&oacute;n. Las cuantidades pueden ser miles de euros.</p>
+  </div>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Bizum y Hacienda</a>
+    <a class="tag" href="#">Control fiscal 2026</a>
+    <a class="tag" href="#">Modelo 170</a>
+    <a class="tag" href="#">Modelo 174</a>
+    <a class="tag" href="#">Blanqueo de capitales</a>
+    <a class="tag" href="#">Donaciones entre familiares</a>
+    <a class="tag" href="#">Pr&eacute;stamo sin intereses</a>
+    <a class="tag" href="#">Impuesto donaciones</a>
+    <a class="tag" href="#">RD 253/2025</a>
+    <a class="tag" href="#">Econom&iacute;a sumergida</a>
+    <a class="tag" href="#">SEPBLAC</a>
+    <a class="tag" href="#">Autom&oacute;nomo e IVA</a>
+  </div>
+
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>&iquest;Cobras por Bizum sin factura o has recibido <em>dinero de un familiar</em>?</h3>
+    <p>Cu&eacute;ntanos tu caso. Te decimos c&oacute;mo regularizar tu situaci&oacute;n antes de que Hacienda llame a tu puerta.</p>
+    <a class="btn-primary" href="portal-fiscal.html">Consultar mi caso &rarr;</a>
+  </div>
+</section>
+
+<footer>2026 &middot; <a href="../index.html">OpenLexIura</a> &middot; El derecho en el idioma de la calle</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.10});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+<script>
+  const apiKey = ""; // ¡Recuerda configurar tu API Key si lo sacas de este entorno!
+
+// Función que hace la llamada a Gemini
+async function fetchGeminiAnalysis(concepto, importe, frecuencia) {
+    const prompt = `Eres un sistema de análisis de riesgo de blanqueo de capitales y evasión fiscal de un banco español. 
+    Analiza esta transacción de Bizum:
+    - Concepto: "${concepto}"
+    - Importe: ${importe}€
+    - Frecuencia: ${frecuencia}
+    
+    Evalúa el riesgo de que esto sea una actividad profesional no declarada, una broma de mal gusto que activa alertas de blanqueo, o si es algo completamente normal.
+    Si el concepto es de broma grave (drogas, armas, mafia, sicario, secuestro), el nivel debe ser siempre ALTO por políticas de blanqueo.`;
+
+    const payload = {
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: {
+            responseMimeType: "application/json",
+            responseSchema: {
+                type: "OBJECT",
+                properties: {
+                    nivel: { type: "STRING", description: "Bajo, Medio, o Alto" },
+                    explicacion: { type: "STRING", description: "Explicación concisa" }
+                },
+                required: ["nivel", "explicacion"]
+            }
+        }
+    };
+
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+    const maxRetries = 5;
+    let delay = 1000;
+
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
+            const result = await response.json();
+            const textContent = result.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (!textContent) throw new Error("Respuesta inválida");
+
+            return JSON.parse(textContent);
+        } catch (error) {
+            if (i === maxRetries - 1) throw error;
+            await new Promise(res => setTimeout(res, delay));
+            delay *= 2;
+        }
+    }
+}
+
+// Inicializar los botones y eventos
+document.addEventListener('DOMContentLoaded', () => {
+    const btnAnalizar = document.getElementById('btn-analizar');
+    if (!btnAnalizar) return; // Por si el botón no está en esta página
+    
+    const inputConcepto = document.getElementById('ai-concepto');
+    const inputImporte = document.getElementById('ai-importe');
+    const inputFrecuencia = document.getElementById('ai-frecuencia');
+    const containerResultado = document.getElementById('ai-resultado-container');
+    const loadingUI = document.getElementById('ai-loading');
+    const resultadoUI = document.getElementById('ai-resultado');
+    const errorUI = document.getElementById('ai-error');
+
+    btnAnalizar.addEventListener('click', async () => {
+        const concepto = inputConcepto.value.trim() || 'Sin concepto';
+        const importe = inputImporte.value || 0;
+        const frecuencia = inputFrecuencia.value;
+
+        containerResultado.classList.remove('hidden');
+        loadingUI.classList.remove('hidden');
+        resultadoUI.classList.add('hidden');
+        errorUI.classList.add('hidden');
+        btnAnalizar.disabled = true;
+        btnAnalizar.classList.add('opacity-50', 'cursor-not-allowed');
+
+        try {
+            const analisis = await fetchGeminiAnalysis(concepto, importe, frecuencia);
+            
+            let bgColor, textColor, icon;
+            if (analisis.nivel.toLowerCase().includes('alto')) {
+                bgColor = 'bg-rose-100'; textColor = 'text-rose-800'; icon = '🚨 Riesgo Alto';
+            } else if (analisis.nivel.toLowerCase().includes('medio')) {
+                bgColor = 'bg-amber-100'; textColor = 'text-amber-800'; icon = '⚠️ Riesgo Medio';
+            } else {
+                bgColor = 'bg-emerald-100'; textColor = 'text-emerald-800'; icon = '✅ Riesgo Bajo';
+            }
+
+            resultadoUI.innerHTML = `
+                <div class="flex flex-col md:flex-row gap-4 items-center md:items-start">
+                    <div class="${bgColor} ${textColor} font-bold px-4 py-2 rounded-xl border-2 border-current shrink-0 text-center">
+                        ${icon}
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-stone-900 mb-1">Veredicto del Algoritmo:</h4>
+                        <p class="text-stone-600">${analisis.explicacion}</p>
+                    </div>
+                </div>
+            `;
+            
+            resultadoUI.classList.remove('hidden');
+        } catch (error) {
+            errorUI.classList.remove('hidden');
+        } finally {
+            loadingUI.classList.add('hidden');
+            btnAnalizar.disabled = false;
+            btnAnalizar.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+    });
+});
+</script>
+</body>
+</html>
