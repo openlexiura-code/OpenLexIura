@@ -188,58 +188,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>Sanciones de hasta el <strong>150% de lo ocultado</strong></li>
       </ul>
     </div>
-     <section id="ai-analyzer" class="bg-indigo-950 text-indigo-50 rounded-3xl p-8 md:p-12 shadow-xl border border-indigo-800 relative overflow-hidden max-w-3xl mx-auto my-12">
-    <div class="max-w-3xl mx-auto relative z-10">
-        <div class="inline-block bg-indigo-900 text-indigo-200 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider border border-indigo-700">
-            Powered by Gemini AI
-        </div>
-        <h2 class="text-3xl font-bold mb-4 text-white flex items-center gap-3">
-            ✨ Analizador de Riesgo Inteligente
-        </h2>
-        <p class="text-indigo-200 text-lg mb-8">
-            ¿Tienes dudas sobre un pago concreto? Introduce los datos y nuestra IA simulará ser el algoritmo del banco para decirte si tu movimiento levantaría sospechas o si estás en la zona segura.
-        </p>
+             <section id="el-algoritmo" class="bg-white rounded-3xl p-8 md:p-12 shadow-md border border-stone-100">
+            <div class="max-w-3xl mx-auto mb-10 text-center">
+                <h2 class="text-3xl font-bold mb-4">Desmintiendo el Mito: El Algoritmo</h2>
+                <p class="text-stone-600 text-lg mb-6">
+                    Mucha gente cree que poniendo <em>"Regalo"</em> o <em>"Cena"</em> en el concepto, Hacienda no puede investigar cobros en B. <strong>La realidad es muy distinta.</strong> A la Agencia Tributaria le da igual la palabra. Sus ordenadores buscan <strong>patrones matemáticos de actividad económica no declarada</strong>. Explora el gráfico para entender cómo te ve el radar.
+                </p>
+            </div>
 
-        <div class="bg-indigo-900/50 p-6 rounded-2xl border border-indigo-800/50 backdrop-blur-sm mb-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div>
-                    <label class="block text-sm font-medium text-indigo-300 mb-1">Concepto del Bizum</label>
-                    <input type="text" id="ai-concepto" placeholder="Ej: Cena sábado, Clases..." class="w-full bg-indigo-950 border border-indigo-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-400">
+            <div class="flex flex-col md:flex-row gap-8 items-center bg-stone-50 p-6 rounded-2xl border border-stone-200">
+                <div class="w-full md:w-1/3 space-y-4">
+                    <div class="p-4 bg-emerald-100 border border-emerald-300 rounded-xl">
+                        <h4 class="font-bold text-emerald-800 flex items-center gap-2"><span>🟢</span> Zona Segura</h4>
+                        <p class="text-sm text-emerald-700 mt-1">Pocas transferencias, importes variables (ej. amigos, cenas).</p>
+                    </div>
+                    <div class="p-4 bg-amber-100 border border-amber-300 rounded-xl">
+                        <h4 class="font-bold text-amber-800 flex items-center gap-2"><span>🟠</span> Zona de Riesgo</h4>
+                        <p class="text-sm text-amber-700 mt-1">Alta frecuencia, importes repetitivos (ej. cobrar clases particulares).</p>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-indigo-300 mb-1">Importe Medio (€)</label>
-                    <input type="number" id="ai-importe" placeholder="Ej: 25" class="w-full bg-indigo-950 border border-indigo-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-400">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-indigo-300 mb-1">Frecuencia</label>
-                    <select id="ai-frecuencia" class="w-full bg-indigo-950 border border-indigo-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-400">
-                        <option value="Puntual (una vez al año)">Puntual (una vez al año)</option>
-                        <option value="Ocasional (1-2 veces al mes)">Ocasional (1-2 veces al mes)</option>
-                        <option value="Frecuente (varias veces a la semana)">Frecuente (varias veces a la semana)</option>
-                        <option value="Diario">Diario</option>
-                    </select>
+                
+                <div class="w-full md:w-2/3">
+                    <div class="chart-container">
+                        <canvas id="patronChart"></canvas>
+                    </div>
                 </div>
             </div>
-            <button id="btn-analizar" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-4 rounded-xl transition-colors flex justify-center items-center gap-2">
-                <span>✨</span> Analizar Movimiento
-            </button>
-        </div>
+        </section>
 
-        <!-- Contenedor de Resultados -->
-        <div id="ai-resultado-container" class="hidden">
-            <div id="ai-loading" class="text-center py-6 hidden">
-                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-white mb-2"></div>
-                <p class="text-indigo-300">Los algoritmos están analizando tu perfil...</p>
-            </div>
-            <div id="ai-resultado" class="bg-white p-6 rounded-2xl shadow-inner text-stone-800 hidden">
-                <!-- Se llena por JS -->
-            </div>
-            <div id="ai-error" class="bg-rose-100 text-rose-800 p-4 rounded-xl border border-rose-300 hidden text-center">
-                <p>Hubo un problema de conexión al analizar el riesgo. Inténtalo de nuevo.</p>
-            </div>
-        </div>
-    </div>
-</section>
   </div>
 
   <!-- BLOQUE 4: Nuevo marco regulatorio 2026 -->
