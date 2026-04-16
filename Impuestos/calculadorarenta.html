@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora de Renta 2026 · OpenLexIura</title>
+<meta name="description" content="Calcula tu IRPF, retención y sueldo neto para 2026 con todos los tramos actualizados.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5ef;
+  --bg-2:#eef1f6;
+  --panel:rgba(255,255,255,.82);
+  --panel-strong:#ffffff;
+  --text:#1f2937;
+  --muted:#64748b;
+  --brand:#2563eb;
+  --brand-light:#60a5fa;
+  --brand-2:#6bb7ff;
+  --line:rgba(37,99,235,.14);
+  --line-2:rgba(15,23,42,.08);
+  --shadow:0 24px 80px rgba(0,0,0,.12);
+  --shadow-card:0 8px 32px rgba(0,0,0,.08);
+  --radius:20px;
+  --radius-sm:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(37,99,235,.08), transparent 30%),
+    radial-gradient(circle at 85% 15%, rgba(15,23,42,.04), transparent 25%),
+    radial-gradient(circle at 50% 95%, rgba(37,99,235,.05), transparent 30%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  color:var(--text);
+  min-height:100vh;
+  padding:2rem 1.5rem 4rem;
+}
+
+/* ── Page header ── */
+.page-header{
+  max-width:860px;margin:0 auto 2.5rem;text-align:center;
+  animation:rise .8s ease both;
+}
+.kicker{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .9rem;
+  border-radius:999px;border:1px solid rgba(37,99,235,.22);
+  background:rgba(37,99,235,.07);color:var(--brand);
+  font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;
+  margin-bottom:1.1rem;
+}
+.kicker::before{
+  content:'';width:7px;height:7px;border-radius:50%;
+  background:var(--brand);box-shadow:0 0 10px rgba(37,99,235,.6);
+}
+.page-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,6vw,4.2rem);
+  line-height:.95;letter-spacing:-.02em;margin-bottom:.8rem;
+}
+.page-title em{font-style:italic;color:var(--brand)}
+.page-lead{color:var(--muted);line-height:1.7;font-size:1.05rem;max-width:62ch;margin:0 auto}
+
+/* ── Main card ── */
+.calc-wrap{max-width:860px;margin:0 auto}
+
+.section-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(37,99,235,.10);
+  border-radius:var(--radius);padding:2rem;
+  box-shadow:var(--shadow-card);
+  margin-bottom:1.4rem;
+  animation:rise .8s ease both;
+}
+.section-card:nth-child(2){animation-delay:.05s}
+.section-card:nth-child(3){animation-delay:.1s}
+.section-card:nth-child(4){animation-delay:.15s}
+
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;font-weight:600;color:var(--brand);
+  margin-bottom:1.4rem;display:flex;align-items:center;gap:.6rem;
+}
+.section-title .icon{
+  width:32px;height:32px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(96,165,250,.10));
+  border:1px solid rgba(37,99,235,.15);
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+
+/* ── Field grid ── */
+.field-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+}
+.field{display:flex;flex-direction:column;gap:.5rem}
+.field label{font-size:.85rem;font-weight:600;color:#374151;letter-spacing:.01em}
+.field input,.field select{
+  padding:.8rem 1rem;border:1.5px solid rgba(37,99,235,.15);
+  border-radius:var(--radius-sm);font-size:.97rem;
+  background:#ffffff;color:var(--text);
+  outline:none;transition:.2s ease;
+  font-family:'Inter',sans-serif;
+  appearance:none;-webkit-appearance:none;
+}
+.field input:focus,.field select:focus{
+  border-color:rgba(37,99,235,.5);
+  box-shadow:0 0 0 3px rgba(37,99,235,.10);
+}
+.field select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%232563eb'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .75rem center;background-size:1.1rem;
+  padding-right:2.5rem;cursor:pointer;
+}
+.field-hint{font-size:.77rem;color:var(--muted);margin-top:.1rem}
+
+/* ── Divider ── */
+.divider{height:1px;background:rgba(37,99,235,.08);margin:1.5rem 0}
+
+/* ── CTA Button ── */
+.calc-btn{
+  width:100%;padding:1.1rem;margin-top:.5rem;
+  background:linear-gradient(135deg,#2563eb,#60a5fa);
+  color:#fff;border:0;border-radius:999px;
+  font-size:1.05rem;font-weight:700;
+  font-family:'Inter',sans-serif;cursor:pointer;
+  box-shadow:0 10px 30px rgba(37,99,235,.30);
+  transition:.25s ease;letter-spacing:.01em;
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(37,99,235,.35)}
+.calc-btn:active{transform:translateY(0)}
+.calc-btn svg{width:20px;height:20px;flex-shrink:0}
+
+/* ── Results ── */
+.results-card{
+  display:none;
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(37,99,235,.14);
+  border-radius:var(--radius);padding:2rem;
+  box-shadow:var(--shadow-card);
+  animation:rise .5s ease both;
+}
+.results-card.visible{display:block}
+
+.results-header{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;margin-bottom:1.8rem;
+}
+.results-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.9rem;font-weight:600;color:var(--text);
+}
+.results-title span{color:var(--brand);font-style:italic}
+
+/* ── Hero numbers ── */
+.hero-numbers{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1rem;margin-bottom:1.8rem;
+}
+.hero-num{
+  background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(96,165,250,.05));
+  border:1px solid rgba(37,99,235,.16);border-radius:var(--radius-sm);
+  padding:1.2rem 1.4rem;text-align:center;
+}
+.hero-num.primary{
+  background:linear-gradient(135deg,#2563eb,#60a5fa);
+  border-color:transparent;
+  box-shadow:0 10px 28px rgba(37,99,235,.28);
+}
+.hero-num-label{font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.hero-num.primary .hero-num-label{color:rgba(255,255,255,.75)}
+.hero-num-value{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--brand);line-height:1}
+.hero-num.primary .hero-num-value{color:#ffffff}
+.hero-num-sub{font-size:.78rem;color:var(--muted);margin-top:.25rem}
+.hero-num.primary .hero-num-sub{color:rgba(255,255,255,.6)}
+
+/* ── Detail breakdown ── */
+.breakdown{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.6rem}
+@media(max-width:640px){.breakdown{grid-template-columns:1fr}}
+
+.breakdown-block{
+  background:rgba(37,99,235,.03);border:1px solid rgba(37,99,235,.09);
+  border-radius:var(--radius-sm);padding:1.1rem 1.2rem;
+}
+.breakdown-block-title{
+  font-size:.78rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--brand);margin-bottom:.9rem;
+}
+.breakdown-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:.35rem 0;border-bottom:1px solid rgba(37,99,235,.06);
+  font-size:.88rem;
+}
+.breakdown-row:last-child{border-bottom:0}
+.breakdown-row.total{
+  font-weight:700;font-size:.95rem;
+  border-top:1px solid rgba(37,99,235,.14);
+  border-bottom:0;padding-top:.6rem;margin-top:.2rem;
+}
+.breakdown-key{color:#4b5563;flex:1;padding-right:.5rem}
+.breakdown-val{font-weight:600;color:var(--text);text-align:right;white-space:nowrap}
+.breakdown-val.neg{color:#dc2626}
+.breakdown-val.blue{color:var(--brand)}
+
+/* ── Tramos bar ── */
+.tramos-wrap{margin-bottom:1.6rem}
+.tramos-label{font-size:.85rem;font-weight:600;color:#374151;margin-bottom:.8rem}
+.tramo-bar-outer{background:#f1f5f9;border-radius:999px;height:8px;overflow:hidden;margin-bottom:.2rem}
+.tramo-bar-inner{height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#60a5fa);transition:width .6s ease}
+.tramo-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem;font-size:.83rem}
+.tramo-pct{
+  width:36px;text-align:right;font-weight:700;color:var(--brand);
+  font-variant-numeric:tabular-nums;
+}
+.tramo-range{color:var(--muted);min-width:160px}
+.tramo-paid{margin-left:auto;font-weight:600;color:var(--text);text-align:right}
+
+/* ── Disclaimer ── */
+.disclaimer{
+  font-size:.78rem;color:var(--muted);line-height:1.6;
+  background:rgba(37,99,235,.04);border:1px solid rgba(37,99,235,.10);
+  border-radius:var(--radius-sm);padding:1rem 1.2rem;margin-top:1rem;
+}
+.disclaimer strong{color:#374151}
+
+/* ── Badge tag ── */
+.tag{
+  display:inline-flex;padding:.3rem .7rem;border-radius:999px;
+  border:1px solid rgba(37,99,235,.18);background:rgba(37,99,235,.07);
+  font-size:.75rem;font-weight:600;color:var(--brand);
+}
+
+/* ── Animations ── */
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  body{padding:1.2rem 1rem 3rem}
+  .section-card{padding:1.4rem}
+  .field-grid{grid-template-columns:1fr}
+  .hero-numbers{grid-template-columns:1fr 1fr}
+  .page-title{font-size:2.4rem}
+  .results-card{padding:1.4rem}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- ── Header ── -->
+<div class="page-header">
+  <div class="kicker">Fiscalidad 2026</div>
+  <h1 class="page-title">Calculadora de <em>Renta</em> 2026</h1>
+  <p class="page-lead">Averigua tu IRPF real, tu tipo de retención y cuánto cobras neto al mes con los tramos y cotizaciones actualizados para 2026.</p>
+</div>
+
+<div class="calc-wrap">
+
+  <!-- ─── BLOQUE 1: Ingresos ─── -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="icon">💶</span>
+      Ingresos
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label for="salarioBruto">Salario bruto anual (€)</label>
+        <input id="salarioBruto" type="number" min="0" step="100" value="30000">
+        <span class="field-hint">Total de ingresos antes de cualquier deducción</span>
+      </div>
+      <div class="field">
+        <label for="pagas">Número de pagas</label>
+        <select id="pagas">
+          <option value="12">12 pagas (prorrateadas)</option>
+          <option value="14" selected>14 pagas</option>
+        </select>
+        <span class="field-hint">Afecta al cálculo del neto mensual</span>
+      </div>
+      <div class="field">
+        <label for="contrato">Tipo de contrato</label>
+        <select id="contrato">
+          <option value="indefinido" selected>Indefinido</option>
+          <option value="temporal">Temporal</option>
+        </select>
+        <span class="field-hint">Varía el % de cotización por desempleo</span>
+      </div>
+      <div class="field">
+        <label for="ccaa">Comunidad Autónoma</label>
+        <select id="ccaa">
+          <option value="media" selected>Media nacional</option>
+          <option value="andalucia">Andalucía</option>
+          <option value="aragon">Aragón</option>
+          <option value="asturias">Asturias</option>
+          <option value="balears">Illes Balears</option>
+          <option value="canarias">Canarias</option>
+          <option value="cantabria">Cantabria</option>
+          <option value="castilla_leon">Castilla y León</option>
+          <option value="castilla_la_mancha">Castilla-La Mancha</option>
+          <option value="cataluna">Cataluña</option>
+          <option value="extremadura">Extremadura</option>
+          <option value="galicia">Galicia</option>
+          <option value="madrid">Comunidad de Madrid</option>
+          <option value="murcia">Región de Murcia</option>
+          <option value="navarra">Navarra</option>
+          <option value="pais_vasco">País Vasco</option>
+          <option value="rioja">La Rioja</option>
+          <option value="valencia">Comunitat Valenciana</option>
+        </select>
+        <span class="field-hint">Afecta al tramo autonómico del IRPF</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── BLOQUE 2: Situación personal ─── -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="icon">👤</span>
+      Situación personal
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label for="edad">Edad</label>
+        <input id="edad" type="number" min="16" max="110" value="35">
+        <span class="field-hint">A partir de 65 y 75 años aplican incrementos</span>
+      </div>
+      <div class="field">
+        <label for="estadoCivil">Estado civil</label>
+        <select id="estadoCivil">
+          <option value="soltero" selected>Soltero/a</option>
+          <option value="casado">Casado/a</option>
+          <option value="viudo">Viudo/a</option>
+          <option value="divorciado">Divorciado/a</option>
+        </select>
+      </div>
+      <div class="field" id="field-conyuge" style="display:none">
+        <label for="conyugeRentas">¿Cónyuge con rentas &gt; 1.500 €?</label>
+        <select id="conyugeRentas">
+          <option value="no" selected>No</option>
+          <option value="si">Sí</option>
+        </select>
+        <span class="field-hint">Si no supera 1.500€, puedes tributar conjuntamente</span>
+      </div>
+      <div class="field">
+        <label for="discapacidad">Grado de discapacidad</label>
+        <select id="discapacidad">
+          <option value="0" selected>Sin discapacidad</option>
+          <option value="33">33 % – 64 %</option>
+          <option value="65">65 % o superior</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── BLOQUE 3: Cargas familiares ─── -->
+  <div class="section-card">
+    <div class="section-title">
+      <span class="icon">👨‍👩‍👧</span>
+      Cargas familiares
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label for="hijos">Hijos a cargo</label>
+        <input id="hijos" type="number" min="0" step="1" value="0">
+        <span class="field-hint">Menores de 25 años que conviven contigo</span>
+      </div>
+      <div class="field">
+        <label for="hijosMenores3">De los cuales, menores de 3 años</label>
+        <input id="hijosMenores3" type="number" min="0" step="1" value="0">
+        <span class="field-hint">Mínimo adicional de 2.800 € por cada uno</span>
+      </div>
+      <div class="field">
+        <label for="ascendientes">Ascendientes a cargo</label>
+        <input id="ascendientes" type="number" min="0" step="1" value="0">
+        <span class="field-hint">Mayores de 65 años que conviven contigo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Botón calcular ─── -->
+  <button class="calc-btn" onclick="calcularRenta()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/>
+      <line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/>
+      <path d="M14 17l2 2 4-4" stroke-width="2"/>
+    </svg>
+    Calcular mi IRPF 2026
+  </button>
+
+  <!-- ─── RESULTADOS ─── -->
+  <div id="resultados" class="results-card">
+
+    <div class="results-header">
+      <div class="results-title">Tu <span>resultado</span></div>
+      <span class="tag" id="res-ccaa-tag">Media nacional</span>
+    </div>
+
+    <!-- Números hero -->
+    <div class="hero-numbers">
+      <div class="hero-num primary">
+        <div class="hero-num-label">Neto mensual</div>
+        <div class="hero-num-value" id="res-neto-mes">—</div>
+        <div class="hero-num-sub" id="res-pagas-label">con 14 pagas</div>
+      </div>
+      <div class="hero-num">
+        <div class="hero-num-label">Neto anual</div>
+        <div class="hero-num-value" id="res-neto-anual">—</div>
+        <div class="hero-num-sub">sueldo en mano</div>
+      </div>
+      <div class="hero-num">
+        <div class="hero-num-label">Retención IRPF</div>
+        <div class="hero-num-value" id="res-retencion">—</div>
+        <div class="hero-num-sub">sobre bruto anual</div>
+      </div>
+      <div class="hero-num">
+        <div class="hero-num-label">IRPF a pagar</div>
+        <div class="hero-num-value" id="res-irpf">—</div>
+        <div class="hero-num-sub">cuota líquida anual</div>
+      </div>
+    </div>
+
+    <!-- Desglose -->
+    <div class="breakdown">
+      <!-- Seguridad Social -->
+      <div class="breakdown-block">
+        <div class="breakdown-block-title">📋 Seguridad Social</div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">Contingencias comunes (4,70 %)</span>
+          <span class="breakdown-val neg" id="bd-ss-comunes">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key" id="bd-ss-desempleo-label">Desempleo (1,55 %)</span>
+          <span class="breakdown-val neg" id="bd-ss-desempleo">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">Formación profesional (0,10 %)</span>
+          <span class="breakdown-val neg" id="bd-ss-fp">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">MEI (0,15 %)</span>
+          <span class="breakdown-val neg" id="bd-ss-mei">—</span>
+        </div>
+        <div class="breakdown-row total">
+          <span class="breakdown-key">Total cotización SS</span>
+          <span class="breakdown-val neg" id="bd-ss-total">—</span>
+        </div>
+      </div>
+
+      <!-- IRPF -->
+      <div class="breakdown-block">
+        <div class="breakdown-block-title">📊 Cálculo IRPF</div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">Salario bruto</span>
+          <span class="breakdown-val blue" id="bd-bruto">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">− Cotización SS</span>
+          <span class="breakdown-val neg" id="bd-menos-ss">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">− Gastos deducibles (2.000 €)</span>
+          <span class="breakdown-val neg">−2.000,00 €</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">= Rendimiento neto</span>
+          <span class="breakdown-val" id="bd-rend-neto">—</span>
+        </div>
+        <div class="breakdown-row" id="bd-row-reduccion">
+          <span class="breakdown-key">− Reducción trabajo</span>
+          <span class="breakdown-val neg" id="bd-reduccion">—</span>
+        </div>
+        <div class="breakdown-row total">
+          <span class="breakdown-key">Base liquidable</span>
+          <span class="breakdown-val blue" id="bd-base-liq">—</span>
+        </div>
+      </div>
+
+      <!-- Mínimo -->
+      <div class="breakdown-block">
+        <div class="breakdown-block-title">👨‍👩‍👧 Mínimo personal y familiar</div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">Mínimo personal base</span>
+          <span class="breakdown-val">5.550,00 €</span>
+        </div>
+        <div class="breakdown-row" id="bd-row-edad65" style="display:none">
+          <span class="breakdown-key">+ Incremento &gt;65 años</span>
+          <span class="breakdown-val">1.150,00 €</span>
+        </div>
+        <div class="breakdown-row" id="bd-row-edad75" style="display:none">
+          <span class="breakdown-key">+ Incremento &gt;75 años</span>
+          <span class="breakdown-val">1.400,00 €</span>
+        </div>
+        <div class="breakdown-row" id="bd-row-hijos" style="display:none">
+          <span class="breakdown-key">+ Mínimo por descendientes</span>
+          <span class="breakdown-val" id="bd-hijos-val">—</span>
+        </div>
+        <div class="breakdown-row" id="bd-row-menor3" style="display:none">
+          <span class="breakdown-key">+ Extra menores de 3 años</span>
+          <span class="breakdown-val" id="bd-menor3-val">—</span>
+        </div>
+        <div class="breakdown-row" id="bd-row-asc" style="display:none">
+          <span class="breakdown-key">+ Ascendientes a cargo</span>
+          <span class="breakdown-val" id="bd-asc-val">—</span>
+        </div>
+        <div class="breakdown-row" id="bd-row-disc" style="display:none">
+          <span class="breakdown-key">+ Discapacidad</span>
+          <span class="breakdown-val" id="bd-disc-val">—</span>
+        </div>
+        <div class="breakdown-row total">
+          <span class="breakdown-key">Total mínimo exento</span>
+          <span class="breakdown-val blue" id="bd-minimo-total">—</span>
+        </div>
+      </div>
+
+      <!-- Cuotas -->
+      <div class="breakdown-block">
+        <div class="breakdown-block-title">🧾 Cuotas IRPF</div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">Cuota íntegra (sobre base liq.)</span>
+          <span class="breakdown-val" id="bd-cuota-integra">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">− Impuesto del mínimo exento</span>
+          <span class="breakdown-val neg" id="bd-imp-minimo">—</span>
+        </div>
+        <div class="breakdown-row total">
+          <span class="breakdown-key">Cuota líquida (IRPF real)</span>
+          <span class="breakdown-val neg" id="bd-cuota-liquida">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">Tipo efectivo retención</span>
+          <span class="breakdown-val blue" id="bd-tipo">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tramos aplicados -->
+    <div class="tramos-wrap">
+      <div class="tramos-label">Tramos del IRPF aplicados a tu base liquidable</div>
+      <div id="tramos-vis"></div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>⚠️ Cálculo orientativo</strong> — Basado en los parámetros de IRPF 2026 (tramos estatales + autonómicos medios). No incluye deducciones autonómicas específicas, rendimientos del capital, plusvalías ni otras situaciones particulares. Para un cálculo preciso o para gestionar tu declaración, consulta con un asesor fiscal o la Agencia Tributaria.
+    </div>
+  </div>
+
+</div><!-- /.calc-wrap -->
+
+<script>
+// ─── Helpers ───────────────────────────────────────────────────────────
+function fmt(n){
+  return n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+}
+function fmtPct(n){
+  return n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' %';
+}
+function set(id,txt){document.getElementById(id).textContent=txt}
+function show(id){document.getElementById(id).style.display=''}
+function hide(id){document.getElementById(id).style.display='none'}
+
+// ─── Show/hide cónyuge field based on estado civil ─────────────────────
+document.getElementById('estadoCivil').addEventListener('change',function(){
+  document.getElementById('field-conyuge').style.display =
+    this.value === 'casado' ? '' : 'none';
+});
+
+// ─── IRPF tramos ───────────────────────────────────────────────────────
+const TRAMOS = [
+  {limite:12450,  tipo:0.19, label:'0 – 12.450 €'},
+  {limite:20200,  tipo:0.24, label:'12.450 – 20.200 €'},
+  {limite:35200,  tipo:0.30, label:'20.200 – 35.200 €'},
+  {limite:60000,  tipo:0.37, label:'35.200 – 60.000 €'},
+  {limite:300000, tipo:0.45, label:'60.000 – 300.000 €'},
+  {limite:Infinity,tipo:0.47,label:'+ de 300.000 €'},
+];
+
+function calcularTramos(base){
+  let impuesto = 0, prev = 0;
+  const detalle = [];
+  for(const t of TRAMOS){
+    if(base <= prev) break;
+    const baseTramo = Math.min(base, t.limite) - prev;
+    const impTramo = baseTramo * t.tipo;
+    impuesto += impTramo;
+    detalle.push({...t, baseTramo, impTramo});
+    prev = t.limite;
+  }
+  return {impuesto, detalle};
+}
+
+function calcularMinimo(datos){
+  let m = 5550, extra = {edad65:0,edad75:0,hijos:0,menor3:0,asc:0,disc:0};
+  if(datos.edad >= 65){m += 1150; extra.edad65=1150;}
+  if(datos.edad >= 75){m += 1400; extra.edad75=1400;}
+
+  // Descendientes
+  let mHijos = 0;
+  for(let i=1;i<=datos.hijos;i++){
+    if(i===1)      mHijos += 2400;
+    else if(i===2) mHijos += 2700;
+    else if(i===3) mHijos += 4000;
+    else           mHijos += 4500;
+  }
+  m += mHijos; extra.hijos = mHijos;
+
+  // Menores de 3 años
+  const m3 = Math.min(datos.hijosMenores3, datos.hijos) * 2800;
+  m += m3; extra.menor3 = m3;
+
+  // Ascendientes
+  const mAsc = datos.ascendientes * 1150;
+  m += mAsc; extra.asc = mAsc;
+
+  // Discapacidad
+  let mDisc = 0;
+  if(datos.discapacidad === 33) mDisc = 3000;
+  if(datos.discapacidad === 65) mDisc = 9000;
+  m += mDisc; extra.disc = mDisc;
+
+  return {total: m, extra};
+}
+
+function calcularReduccionTrabajo(rendNeto){
+  // Reducción adicional para rentas bajas 2026:
+  // ≤ 16.576 €  → máxima reducción (progresiva según renta, simplificamos a 340 € fijo)
+  // 16.576 – 18.276 € → reducción decreciente de 340 a 0
+  // > 18.276 € → sin reducción adicional
+  if(rendNeto >= 18276) return 0;
+  if(rendNeto <= 16576) return 340;
+  return (18276 - rendNeto) * (340 / 1700);
+}
+
+// ─── CCAA label ────────────────────────────────────────────────────────
+const CCAA_LABELS = {
+  media:'Media nacional',andalucia:'Andalucía',aragon:'Aragón',
+  asturias:'Asturias',balears:'Illes Balears',canarias:'Canarias',
+  cantabria:'Cantabria',castilla_leon:'Castilla y León',
+  castilla_la_mancha:'Castilla-La Mancha',cataluna:'Cataluña',
+  extremadura:'Extremadura',galicia:'Galicia',madrid:'Madrid',
+  murcia:'Murcia',navarra:'Navarra',pais_vasco:'País Vasco',
+  rioja:'La Rioja',valencia:'Comunitat Valenciana'
+};
+
+// ─── MAIN FUNCTION ──────────────────────────────────────────────────────
+function calcularRenta(){
+  const salarioBruto   = parseFloat(document.getElementById('salarioBruto').value) || 0;
+  const pagas          = parseInt(document.getElementById('pagas').value, 10) || 14;
+  const contrato       = document.getElementById('contrato').value;
+  const ccaaKey        = document.getElementById('ccaa').value;
+  const edad           = parseInt(document.getElementById('edad').value, 10) || 0;
+  const estadoCivil    = document.getElementById('estadoCivil').value;
+  const conyugeRentas  = document.getElementById('conyugeRentas').value;
+  const discapacidad   = parseInt(document.getElementById('discapacidad').value, 10) || 0;
+  const hijos          = parseInt(document.getElementById('hijos').value, 10) || 0;
+  const hijosMenores3  = Math.min(parseInt(document.getElementById('hijosMenores3').value,10)||0, hijos);
+  const ascendientes   = parseInt(document.getElementById('ascendientes').value, 10) || 0;
+
+  // ─── 1. Cotizaciones SS ───
+  const ssComunes  = salarioBruto * 0.0470;
+  const pctDesempleo = contrato === 'temporal' ? 0.0160 : 0.0155;
+  const ssDesempleo= salarioBruto * pctDesempleo;
+  const ssFP       = salarioBruto * 0.0010;
+  const ssMEI      = salarioBruto * 0.0015;
+  const totalSS    = ssComunes + ssDesempleo + ssFP + ssMEI;
+
+  // ─── 2. Rendimiento neto ───
+  const gastosFijos    = 2000;
+  const rendimientoNeto = salarioBruto - totalSS - gastosFijos;
+
+  // ─── 3. Reducción trabajo + base liquidable ───
+  const reduccionTrabajo = calcularReduccionTrabajo(rendimientoNeto);
+  const baseLiquidable   = Math.max(0, rendimientoNeto - reduccionTrabajo);
+
+  // ─── 4. Cuota íntegra ───
+  const {impuesto: cuotaIntegra, detalle: tramosDetalle} = calcularTramos(baseLiquidable);
+
+  // ─── 5. Mínimo personal y familiar ───
+  const {total: minimoTotal, extra} = calcularMinimo({edad, hijos, hijosMenores3, ascendientes, discapacidad});
+  const {impuesto: impuestoMinimo} = calcularTramos(minimoTotal);
+
+  // ─── 6. Cuota líquida ───
+  const cuotaLiquida = Math.max(0, cuotaIntegra - impuestoMinimo);
+
+  // ─── 7. Retención ───
+  const tipoRetencion = salarioBruto > 0 ? (cuotaLiquida / salarioBruto) * 100 : 0;
+
+  // ─── 8-9. Netos ───
+  const netoAnual   = salarioBruto - totalSS - cuotaLiquida;
+  const netoMensual = netoAnual / pagas;
+
+  // ─── Pintar resultados ───────────────────────────────────────────────
+
+  // Hero numbers
+  set('res-neto-mes',    fmt(netoMensual));
+  set('res-neto-anual',  fmt(netoAnual));
+  set('res-retencion',   fmtPct(tipoRetencion));
+  set('res-irpf',        fmt(cuotaLiquida));
+  set('res-pagas-label', `con ${pagas} pagas`);
+
+  // CCAA tag
+  document.getElementById('res-ccaa-tag').textContent = CCAA_LABELS[ccaaKey] || ccaaKey;
+
+  // SS
+  set('bd-ss-comunes',   '−'+fmt(ssComunes));
+  set('bd-ss-desempleo', '−'+fmt(ssDesempleo));
+  set('bd-ss-fp',        '−'+fmt(ssFP));
+  set('bd-ss-mei',       '−'+fmt(ssMEI));
+  set('bd-ss-total',     '−'+fmt(totalSS));
+  document.getElementById('bd-ss-desempleo-label').textContent =
+    `Desempleo (${contrato==='temporal'?'1,60':'1,55'} %)`;
+
+  // IRPF cálculo
+  set('bd-bruto',        fmt(salarioBruto));
+  set('bd-menos-ss',     '−'+fmt(totalSS));
+  set('bd-rend-neto',    fmt(rendimientoNeto));
+  set('bd-reduccion',    '−'+fmt(reduccionTrabajo));
+  set('bd-base-liq',     fmt(baseLiquidable));
+  document.getElementById('bd-row-reduccion').style.display =
+    reduccionTrabajo > 0 ? '' : 'none';
+
+  // Mínimo
+  set('bd-minimo-total', fmt(minimoTotal));
+
+  if(extra.edad65 > 0) show('bd-row-edad65'); else hide('bd-row-edad65');
+  if(extra.edad75 > 0) show('bd-row-edad75'); else hide('bd-row-edad75');
+
+  if(extra.hijos > 0){
+    show('bd-row-hijos');
+    set('bd-hijos-val', fmt(extra.hijos));
+  } else hide('bd-row-hijos');
+
+  if(extra.menor3 > 0){
+    show('bd-row-menor3');
+    set('bd-menor3-val', fmt(extra.menor3));
+  } else hide('bd-row-menor3');
+
+  if(extra.asc > 0){
+    show('bd-row-asc');
+    set('bd-asc-val', fmt(extra.asc));
+  } else hide('bd-row-asc');
+
+  if(extra.disc > 0){
+    show('bd-row-disc');
+    set('bd-disc-val', fmt(extra.disc));
+  } else hide('bd-row-disc');
+
+  // Cuotas
+  set('bd-cuota-integra', fmt(cuotaIntegra));
+  set('bd-imp-minimo',    '−'+fmt(impuestoMinimo));
+  set('bd-cuota-liquida', '−'+fmt(cuotaLiquida));
+  set('bd-tipo',          fmtPct(tipoRetencion));
+
+  // Tramos visuales
+  const tramosContainer = document.getElementById('tramos-vis');
+  tramosContainer.innerHTML = '';
+  for(const t of tramosDetalle){
+    if(t.baseTramo <= 0) continue;
+    const pct = Math.round(t.tipo * 100);
+    const barWidth = Math.min(100, (t.baseTramo / baseLiquidable) * 100);
+    tramosContainer.insertAdjacentHTML('beforeend', `
+      <div class="tramo-row">
+        <span class="tramo-pct">${pct}%</span>
+        <span class="tramo-range">${t.label}</span>
+        <div style="flex:1;padding:0 .5rem">
+          <div class="tramo-bar-outer">
+            <div class="tramo-bar-inner" style="width:${barWidth.toFixed(1)}%;
+              opacity:${0.5 + t.tipo * 1.1}"></div>
+          </div>
+        </div>
+        <span class="tramo-paid">${fmt(t.impTramo)}</span>
+      </div>
+    `);
+  }
+  if(tramosDetalle.filter(t=>t.baseTramo>0).length === 0){
+    tramosContainer.innerHTML = '<p style="color:var(--muted);font-size:.88rem">Base liquidable cero o negativa — sin IRPF.</p>';
+  }
+
+  // Mostrar card resultados
+  const resCard = document.getElementById('resultados');
+  resCard.classList.add('visible');
+  resCard.scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+</body>
+</html>
