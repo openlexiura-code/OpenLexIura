@@ -33,6 +33,77 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --radius:20px;
   --radius-sm:12px;
 }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 2rem; transition: .35s ease;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(18px);
+  border-bottom-color: rgba(37, 99, 235, .10);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: .85rem; font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 700; letter-spacing: .02em; text-decoration: none;
+}
+.nav-logo img { width: 38px; height: 38px; border-radius: 999px; object-fit: cover; box-shadow: 0 0 0 1px rgba(37, 99, 235, .22), 0 10px 30px rgba(0, 0, 0, .35); }
+.nav-logo span { color: #1f2937; } /* Sustituido var(--brand) por el color base oscuro del documento */
+
+.nav-links { display: flex; align-items: center; gap: 1.4rem; }
+.nav-links a { color: #1f2937; font-size: .95rem; transition: .2s ease; text-decoration: none; }
+.nav-links a:hover { color: #1d4ed8; }
+
+.nav-cta {
+  padding: .8rem 1.2rem; border: 1px solid rgba(37, 99, 235, .22); border-radius: 999px;
+  background: linear-gradient(180deg, rgba(37, 99, 235, .10), rgba(37, 99, 235, .05));
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(37, 99, 235, .14), 0 10px 24px rgba(0, 0, 0, .2); }
+
+/* ── Botón Hamburguesa Móvil ── */
+.nav-burger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: .5rem; z-index: 1100;
+  width: 44px; height: 44px;
+}
+.nav-burger span {
+  display: block; width: 24px; height: 2px; background: #1f2937; border-radius: 2px;
+  transition: transform .28s ease, opacity .28s ease;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Adaptación a Pantallas Pequeñas (Móviles) ── */
+@media (max-width: 640px) {
+  nav { padding: 1rem 1.1rem; }
+  .nav-burger { display: flex; }
+  .nav-links {
+    display: flex; flex-direction: column; align-items: stretch; gap: 0;
+    position: fixed; inset: 0; top: 0; padding: 5.5rem 1.5rem 2rem;
+    background: #ffffff;
+    z-index: 1000; transform: translateX(100%); transition: transform .32s ease;
+    border-left: 1px solid rgba(37, 99, 235, .10);
+    overflow-y: auto;
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, .45);
+    z-index: 999;
+  }
+  .nav-overlay.open { display: block; }
+  nav.menu-open { background: #ffffff !important; backdrop-filter: none; }
+  .nav-links a {
+    padding: 1rem 0; font-size: 1.1rem; border-bottom: 1px solid rgba(37, 99, 235, .07);
+    min-height: 44px; display: flex; align-items: center;
+  }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav-cta {
+    margin-top: 1rem; justify-content: center; border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #60a5fa); color: #fff !important;
+  }
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -811,6 +882,33 @@ function calcularRenta(){
   resCard.classList.add('visible');
   resCard.scrollIntoView({behavior:'smooth', block:'start'});
 }
+  const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+
+// ── Lógica del Menú Hamburguesa ──
+const burger = document.getElementById('nav-burger');
+const navLinks = document.getElementById('nav-links');
+const navOverlay = document.getElementById('nav-overlay');
+
+function closeMenu() {
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+  navOverlay.classList.remove('open');
+  nav.classList.remove('menu-open');
+  document.body.style.overflow = '';
+}
+
+burger.addEventListener('click', () => {
+  const opening = !navLinks.classList.contains('open');
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  navOverlay.classList.toggle('open');
+  nav.classList.toggle('menu-open');
+  document.body.style.overflow = opening ? 'hidden' : '';
+});
+
+navOverlay.addEventListener('click', closeMenu);
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 </script>
 </body>
 </html>
