@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
-<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OpenLexIura · Consumo</title>
+<title>OpenLexIura · Impuestos y Fiscalidad</title>
 <link rel="icon" type="image/png" href="../Icono.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#c62828;--bg-2:#8e1b1b;--panel:rgba(255,255,255,.78);--panel-strong:#ffffff;
-  --text:#1f2937;--muted:#64748b;--brand:#f97316;--brand-2:#fb923c;
-  --line:rgba(249,115,22,.14);--line-2:rgba(15,23,42,.08);
+  --bg:#fbf5f5;--bg-2:#fef2f2;--panel:rgba(255,255,255,.78);--panel-strong:#ffffff;
+  --text:#1f2937;--muted:#64748b;--brand:#dc2626;--brand-2:#ef4444;
+  --line:rgba(220,38,38,.14);--line-2:rgba(15,23,42,.08);
   --shadow:0 24px 80px rgba(0,0,0,.12);--radius:20px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -27,53 +20,53 @@ html{scroll-behavior:smooth}
 body{
   font-family:'Inter',sans-serif;
   background:
-    radial-gradient(circle at 20% 20%, rgba(249,115,22,.09), transparent 28%),
-    radial-gradient(circle at 80% 15%, rgba(15,23,42,.05), transparent 24%),
-    radial-gradient(circle at 50% 100%, rgba(249,115,22,.06), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(220,38,38,.07), transparent 28%),
+    radial-gradient(circle at 80% 15%, rgba(15,23,42,.04), transparent 24%),
+    radial-gradient(circle at 50% 100%, rgba(220,38,38,.05), transparent 30%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
   color:#1f2937;min-height:100vh;overflow-x:hidden;
 }
 a{text-decoration:none;color:inherit}
 
 /* ── CURSOR ── */
-.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(249,115,22,.35);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(52,211,153,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s linear,height .08s linear,border-color .08s linear,opacity .08s linear,transform .08s linear}
-.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#10b981;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(16,185,129,.75)}
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(220,38,38,.35);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(239,68,68,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s linear,height .08s linear,border-color .08s linear,opacity .08s linear,transform .08s linear}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#b91c1c;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(185,28,28,.75)}
 
 /* ── PARTICLES CANVAS ── */
 #particleCanvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;transition:.4s ease;border-bottom:1px solid transparent}
-nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-bottom-color:rgba(249,115,22,.12);box-shadow:0 2px 32px rgba(0,0,0,.08)}
+nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-bottom-color:rgba(220,38,38,.12);box-shadow:0 2px 32px rgba(0,0,0,.08)}
 .nav-logo{display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em;cursor:pointer}
 .nav-logo-img{width:42px;height:42px;border-radius:999px;object-fit:cover;
-  box-shadow:0 0 0 1.5px rgba(249,115,22,.3),0 8px 28px rgba(0,0,0,.22);
+  box-shadow:0 0 0 1.5px rgba(220,38,38,.3),0 8px 28px rgba(0,0,0,.22);
   transition:transform .35s ease,box-shadow .35s ease;
   animation:logoPulse 4s ease-in-out infinite}
-.nav-logo:hover .nav-logo-img{transform:scale(1.08) rotate(-4deg);box-shadow:0 0 0 2px rgba(249,115,22,.5),0 12px 36px rgba(249,115,22,.25)}
-@keyframes logoPulse{0%,100%{box-shadow:0 0 0 1.5px rgba(249,115,22,.3),0 8px 28px rgba(0,0,0,.22)}50%{box-shadow:0 0 0 3px rgba(249,115,22,.18),0 8px 28px rgba(249,115,22,.18)}}
+.nav-logo:hover .nav-logo-img{transform:scale(1.08) rotate(-4deg);box-shadow:0 0 0 2px rgba(220,38,38,.5),0 12px 36px rgba(220,38,38,.25)}
+@keyframes logoPulse{0%,100%{box-shadow:0 0 0 1.5px rgba(220,38,38,.3),0 8px 28px rgba(0,0,0,.22)}50%{box-shadow:0 0 0 3px rgba(220,38,38,.18),0 8px 28px rgba(220,38,38,.18)}}
 .nav-links{display:flex;align-items:center;gap:1.4rem}
 .nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--brand);border-radius:999px;transition:width .25s ease}
 .nav-links a:hover{color:var(--brand)}
 .nav-links a:hover::after{width:100%}
 .nav-links a.active{color:var(--brand);font-weight:600}
-.nav-back{display:flex;align-items:center;gap:.5rem;padding:.65rem 1.1rem;border:1px solid rgba(249,115,22,.22);border-radius:999px;background:linear-gradient(180deg,rgba(16,185,129,.10),rgba(16,185,129,.05));font-size:.88rem;color:var(--brand);font-weight:500;transition:all .2s}
-.nav-back:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(249,115,22,.18),0 10px 24px rgba(16,185,129,.15);color:var(--brand)}
+.nav-back{display:flex;align-items:center;gap:.5rem;padding:.65rem 1.1rem;border:1px solid rgba(220,38,38,.22);border-radius:999px;background:linear-gradient(180deg,rgba(220,38,38,.10),rgba(220,38,38,.05));font-size:.88rem;color:var(--brand);font-weight:500;transition:all .2s}
+.nav-back:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(220,38,38,.18),0 10px 24px rgba(220,38,38,.15);color:var(--brand)}
 .nav-back::after{display:none!important}
 
 /* ── HERO ── */
 .portal-hero{padding:10rem 1.5rem 3rem;text-align:center;position:relative;overflow:hidden;z-index:1}
 .portal-hero::before{
   content:'';position:absolute;width:600px;height:600px;
-  background:radial-gradient(circle,rgba(16,185,129,.13),transparent 65%);
+  background:radial-gradient(circle,rgba(220,38,38,.09),transparent 65%);
   top:-160px;left:50%;transform:translateX(-50%);
   border-radius:50%;filter:blur(30px);pointer-events:none;
   animation:floatA 18s ease-in-out infinite;
 }
 .hero-grid{
   position:absolute;inset:0;
-  background-image:linear-gradient(rgba(16,185,129,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,.05) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(220,38,38,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(220,38,38,.04) 1px,transparent 1px);
   background-size:72px 72px;
   mask-image:radial-gradient(circle at center,black 0%,black 40%,transparent 80%);
   opacity:.35;pointer-events:none;
@@ -86,7 +79,7 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
   display:inline-flex;align-items:center;gap:.5rem;
   font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;
   background:rgba(255,255,255,.55);backdrop-filter:blur(10px);
-  border:1px solid rgba(249,115,22,.12);border-radius:999px;
+  border:1px solid rgba(220,38,38,.12);border-radius:999px;
   padding:.45rem 1rem;
   animation:rise .7s cubic-bezier(.22,1,.36,1) both .1s;
 }
@@ -103,9 +96,9 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 .hero-logo-wrap img{
   width:80px;height:80px;border-radius:999px;object-fit:cover;
   box-shadow:
-    0 0 0 2px rgba(249,115,22,.25),
-    0 0 0 8px rgba(16,185,129,.07),
-    0 20px 60px rgba(249,115,22,.22),
+    0 0 0 2px rgba(220,38,38,.25),
+    0 0 0 8px rgba(220,38,38,.07),
+    0 20px 60px rgba(220,38,38,.22),
     0 4px 20px rgba(0,0,0,.18);
   animation:heroImgFloat 7s ease-in-out infinite .5s;
 }
@@ -114,22 +107,22 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
   background:var(--brand);color:#fff;border-radius:999px;
   font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
   padding:.28rem .8rem;white-space:nowrap;
-  box-shadow:0 4px 14px rgba(249,115,22,.35);
+  box-shadow:0 4px 14px rgba(220,38,38,.35);
 }
 .hero-logo-ring{
   position:absolute;inset:-14px;border-radius:50%;
-  border:1px solid rgba(249,115,22,.18);
+  border:1px solid rgba(220,38,38,.18);
   animation:ringRotate 28s linear infinite;
 }
 .hero-logo-ring::after{
   content:'';position:absolute;width:8px;height:8px;
   background:var(--brand);border-radius:50%;
   top:4px;left:50%;transform:translateX(-50%);
-  box-shadow:0 0 10px rgba(16,185,129,.8);
+  box-shadow:0 0 10px rgba(220,38,38,.8);
 }
 .hero-logo-ring2{
   position:absolute;inset:-26px;border-radius:50%;
-  border:1px dashed rgba(16,185,129,.10);
+  border:1px dashed rgba(220,38,38,.10);
   animation:ringRotate 48s linear infinite reverse;
 }
 @keyframes heroLogoIn{from{opacity:0;transform:translateY(30px) scale(.88)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -161,7 +154,7 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 .stat-item{text-align:center}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:#0f172a;line-height:1}
 .stat-lbl{font-size:.75rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:.15rem}
-.stat-sep{width:1px;height:32px;background:rgba(249,115,22,.2)}
+.stat-sep{width:1px;height:32px;background:rgba(220,38,38,.2)}
 
 /* ── BUSCADOR ── */
 .search-wrap{
@@ -171,16 +164,16 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 }
 .search-wrap input{
   width:100%;background:rgba(255,255,255,.92);
-  border:1px solid rgba(249,115,22,.2);border-radius:999px;
+  border:1px solid rgba(220,38,38,.2);border-radius:999px;
   padding:.95rem 1.5rem .95rem 3.4rem;
   color:#1f2937;font-size:1rem;outline:none;
-  box-shadow:0 4px 28px rgba(16,185,129,.10),0 1px 0 rgba(255,255,255,.8) inset;
+  box-shadow:0 4px 28px rgba(220,38,38,.08),0 1px 0 rgba(255,255,255,.8) inset;
   transition:border-color .2s,box-shadow .25s,background .2s;
   backdrop-filter:blur(10px);
 }
 .search-wrap input:focus{
-  border-color:rgba(249,115,22,.5);background:rgba(255,255,255,.98);
-  box-shadow:0 0 0 3px rgba(249,115,22,.12),0 8px 36px rgba(249,115,22,.14);
+  border-color:rgba(220,38,38,.5);background:rgba(255,255,255,.98);
+  box-shadow:0 0 0 3px rgba(220,38,38,.12),0 8px 36px rgba(220,38,38,.14);
 }
 .search-wrap input::placeholder{color:#94a3b8}
 .search-icon{position:absolute;left:1.15rem;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;transition:color .2s}
@@ -197,9 +190,9 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
   margin-top:2rem;
 }
 .seccion-label:first-of-type{margin-top:0}
-.seccion-label::before{content:'';display:inline-block;width:18px;height:1px;background:rgba(249,115,22,.3)}
+.seccion-label::before{content:'';display:inline-block;width:18px;height:1px;background:rgba(220,38,38,.3)}
 .seccion-badge{
-  background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.2);
+  background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);
   border-radius:999px;padding:.2rem .7rem;font-size:.68rem;color:var(--brand);font-weight:700;
 }
 
@@ -208,7 +201,7 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 /* ── ARTICLE CARD ── */
 .art-card{
   background:rgba(255,255,255,.74);
-  border:1px solid rgba(249,115,22,.09);
+  border:1px solid rgba(220,38,38,.09);
   border-radius:var(--radius);padding:1.55rem 1.65rem;
   transition:all .3s cubic-bezier(.22,1,.36,1);
   position:relative;overflow:hidden;
@@ -225,13 +218,13 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 }
 .art-card::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(249,115,22,.06),transparent 60%);
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(220,38,38,.05),transparent 60%);
   opacity:0;transition:opacity .3s;pointer-events:none;border-radius:var(--radius);
 }
 .art-card:hover{
-  border-color:rgba(249,115,22,.22);
+  border-color:rgba(220,38,38,.22);
   transform:translateY(-5px) scale(1.01);
-  box-shadow:0 24px 64px rgba(249,115,22,.14),0 4px 20px rgba(0,0,0,.07);
+  box-shadow:0 24px 64px rgba(220,38,38,.12),0 4px 20px rgba(0,0,0,.06);
   background:rgba(255,255,255,.97);
 }
 .art-card:hover::before{opacity:1}
@@ -242,11 +235,11 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 .art-num{
   display:inline-flex;align-items:center;justify-content:center;
   width:30px;height:30px;border-radius:10px;
-  background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.18);
+  background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.18);
   font-size:.75rem;font-weight:800;color:var(--brand);
   flex-shrink:0;transition:transform .3s,box-shadow .3s;
 }
-.art-card:hover .art-num{transform:scale(1.1) rotate(-5deg);box-shadow:0 6px 18px rgba(249,115,22,.22)}
+.art-card:hover .art-num{transform:scale(1.1) rotate(-5deg);box-shadow:0 6px 18px rgba(220,38,38,.22)}
 
 .art-top{display:flex;align-items:flex-start;gap:.75rem}
 .art-emoji{font-size:1.5rem;line-height:1;flex-shrink:0;margin-top:.1rem}
@@ -263,8 +256,8 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 .art-tag{
   display:inline-block;font-size:.67rem;font-weight:700;letter-spacing:.04em;
   text-transform:uppercase;color:var(--brand);
-  background:rgba(249,115,22,.08);border-radius:999px;
-  padding:.18rem .55rem;border:1px solid rgba(16,185,129,.15);
+  background:rgba(220,38,38,.08);border-radius:999px;
+  padding:.18rem .55rem;border:1px solid rgba(220,38,38,.15);
   align-self:flex-start;
 }
 
@@ -290,10 +283,7 @@ footer a:hover{opacity:.7}
 </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
 <canvas id="particleCanvas"></canvas>
 
 <nav id="nav">
@@ -315,22 +305,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="breadcrumb">
     <a href="../portal.html">Portal Legal</a>
     <span class="breadcrumb-sep">›</span>
-    <span>Consumo</span>
+    <span>Impuestos</span>
   </div>
 
   <div class="hero-logo-wrap">
     <div class="hero-logo-ring2"></div>
     <div class="hero-logo-ring"></div>
     <img id="heroLogo" src="../Icono.png" alt="OpenLexIura">
-    <span class="hero-area-badge">🔑 Consumo</span>
+    <span class="hero-area-badge">💼 Impuestos</span>
   </div>
 
   <h1>Impuestos y <em>Fiscalidad</em></h1>
-  <p class="hero-sub">Declaración de la renta, cuestiones frecuentes, sanciones de Hacienda, recursos, reclamaciones.</p>
+  <p class="hero-sub">Tus obligaciones fiscales explicadas sin lenguaje de Hacienda. Desde la Declaración de la Renta y los Bizum, hasta las ventas por internet.</p>
 
   <div class="stats-bar">
     <div class="stat-item">
-      <div class="stat-num" id="sArticles">16</div>
+      <div class="stat-num" id="sArticles">3</div>
       <div class="stat-lbl">Artículos</div>
     </div>
     <div class="stat-sep"></div>
@@ -340,38 +330,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <div class="stat-num">LIRPF</div>
+      <div class="stat-num">LGT y IRPF</div>
       <div class="stat-lbl">Ley aplicable</div>
     </div>
   </div>
 
   <div class="search-wrap">
     <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="articleSearch" placeholder="Busca: fianza, mascotas, lavadora, subarriendo…" oninput="filterArticles(this.value)" autocomplete="off">
+    <input type="text" id="articleSearch" placeholder="Busca: IRPF, Bizum, Wallapop, pagadores…" oninput="filterArticles(this.value)" autocomplete="off">
     <span class="search-count" id="searchCount"></span>
   </div>
 </section>
 
 <div class="content-wrap" id="contentWrap">
 
-  <!-- BLOQUE 1 -->
   <p class="seccion-label" data-block="1">
-    Entrar al piso
-    <span class="seccion-badge">Firmas y dinero inicial</span>
+    Declaración de la Renta
+    <span class="seccion-badge">IRPF y deducciones</span>
   </p>
   <div class="articles-grid" id="grid-1"></div>
 
-  <!-- BLOQUE 2 -->
   <p class="seccion-label" data-block="2">
-    Vivir en el piso
-    <span class="seccion-badge">El día a día</span>
+    Bancos y Transferencias
+    <span class="seccion-badge">Bizum y Alertas</span>
   </p>
   <div class="articles-grid" id="grid-2"></div>
 
-  <!-- BLOQUE 3 -->
   <p class="seccion-label" data-block="3">
-    Dejar el piso
-    <span class="seccion-badge">El final del contrato</span>
+    Ventas e Ingresos Extra
+    <span class="seccion-badge">Wallapop, Vinted y DAC7</span>
   </p>
   <div class="articles-grid" id="grid-3"></div>
 
@@ -415,7 +402,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const pulse=Math.sin(t*p.pSpeed*100+p.pulse)*.5+.5;
       ctx.beginPath();
       ctx.arc(p.x*W,p.y*H,p.r*(0.7+pulse*0.5),0,Math.PI*2);
-      ctx.fillStyle=`rgba(16,185,129,${p.o*(0.5+pulse*0.5)})`;
+      ctx.fillStyle=`rgba(220,38,38,${p.o*(0.5+pulse*0.5)})`;
       ctx.fill();
     });
     requestAnimationFrame(draw);
@@ -434,7 +421,7 @@ window.addEventListener('mouseleave',()=>{cursorRing.style.opacity='0';cursorDot
 window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
 (function follow(){rx+=(mx-rx)*0.55;ry+=(my-ry)*0.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)})();
 function bindCursor(el){
-  el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(52,211,153,.09)'});
+  el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(239,68,68,.09)'});
   el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'});
 }
 
@@ -453,16 +440,11 @@ document.addEventListener('mousemove',e=>{
   });
 });
 
-/* ── DATOS ── */
+/* ── DATOS DE ARTÍCULOS FISCALES ── */
 const ARTICLES = [
-  { id: 1, block: 1, emoji: '💳', titulo: 'Me han vaciado la cuenta por un SMS', subtitulo: '¿Es culpa mía por pinchar en el enlace o el banco está obligado a devolverme el dinero?', desc: 'Phishing y responsabilidad bancaria: cuándo puedes reclamar, qué pruebas guardar y cómo actuar en las primeras horas.', tags: ['phishing', 'banco', 'SMS', 'fraude'], url: 'phishing.html' },
-  { id: 2, block: 1, emoji: '🛍️', titulo: 'El timo de Wallapop y Bizum', subtitulo: 'Pagué por adelantado y me han bloqueado. Cómo denunciar y si es posible recuperar el dinero.', desc: 'Cuándo el engaño encaja en estafa, qué mensajes y capturas conservar y qué pasos seguir para intentar recuperar el importe.', tags: ['wallapop', 'bizum', 'estafa', 'denuncia'], url: 'estafabizum.html' },
-  { id: 3, block: 1, emoji: '🪙', titulo: 'Falsas inversiones en criptomonedas', subtitulo: 'Cómo detectar chiringuitos financieros y qué hacer si no te dejan sacar el dinero.', desc: 'Señales de alerta, riesgos típicos y actuación rápida si has enviado tus ahorros a una plataforma sospechosa.', tags: ['cripto', 'inversiones', 'fraude', 'retirada'], url: 'fraudeinversionescrypto.html' },
-  { id: 4, block: 2, emoji: '📦', titulo: 'Comprar por internet: el superpoder de los 14 días', subtitulo: 'Explicación clara del derecho de desistimiento y quién paga los gastos de envío.', desc: 'Puedes devolver casi cualquier compra online sin dar explicaciones. Aprende plazos, excepciones y costes de devolución.', tags: ['desistimiento', 'online', '14 días', 'devolución'], url: 'devolucionesonline.html' },
-  { id: 5, block: 2, emoji: '🛠️', titulo: 'La ley de los 3 años de garantía', subtitulo: 'Qué cubre realmente la garantía de un producto nuevo y qué pasa con segunda mano.', desc: 'Aclara qué puedes exigir, cuándo responde el vendedor y por qué no necesitas conservar la caja original para reclamar.', tags: ['garantía', 'segunda mano', 'reparación', 'reembolso'], url: 'garantiasegundamano.html' },
-  { id: 6, block: 2, emoji: '🏷️', titulo: 'Precios trampa: la etiqueta o la caja', subtitulo: 'Si en la estantería pone 2 € pero en caja te cobran 3 €, qué precio debe aplicarse.', desc: 'Tus derechos cuando el precio mostrado y el cobrado no coinciden, y cómo reclamar en el momento.', tags: ['precio', 'supermercado', 'etiqueta', 'reclamación'], url: 'preciotrampa.html' },
-  { id: 7, block: 3, emoji: '🏋️', titulo: 'Cancelar el gimnasio o el móvil sin penalizaciones', subtitulo: 'Qué hacer si siguen pasando recibos después de darte de baja.', desc: 'Cómo bloquear pagos en el banco legalmente y cuándo una permanencia puede ser abusiva o no oponible.', tags: ['baja', 'recibos', 'permanencia', 'banco'], url: 'darsedebaja.html' },
-  { id: 8, block: 3, emoji: '✈️', titulo: 'Vuelos cancelados o retrasados', subtitulo: 'La guía sencilla del Reglamento Europeo 261/2004 para saber si te tocan 250 €, 400 € o 600 €.', desc: 'Indemnizaciones, supuestos excluidos y cómo reclamarlas sin intermediarios ni comisiones.', tags: ['vuelos', 'retraso', 'cancelación', 'indemnización'], url: 'reclamaciónretrasovuelos.html' }
+  { id: 1, block: 1, emoji: '📄', titulo: 'El mito de los dos pagadores en la Renta', subtitulo: '¿De verdad me va a crujir Hacienda si cobro el paro y luego trabajo?', desc: 'Descubre por qué tener dos pagadores no significa pagar más impuestos, cómo funcionan los límites legales (22.000€ vs 15.800€).', tags: ['IRPF', 'Renta', 'pagadores'], url: 'Impuestos/dos-pagadores.html' },
+  { id: 2, block: 2, emoji: '💸', titulo: 'El radar de Hacienda con Bizum', subtitulo: '¿Se enteran si me pasan el dinero de una cena o si mi madre me ingresa 1.000€?', desc: 'Conoce los límites legales reales en los que los bancos envían alertas a la Agencia Tributaria y los conceptos bloqueados.', tags: ['Bizum', 'banco', 'transferencias'], url: 'Impuestos/bizum.html' },
+  { id: 3, block: 3, emoji: '📦', titulo: 'Vender por internet y la directiva DAC7', subtitulo: '¿Tengo que pagar impuestos por lo que saco vendiendo mi ropa en Vinted?', desc: 'Cuándo están obligadas las plataformas a chivarse a Hacienda, y por qué vender tu ropa usada sigue sin pagar impuestos.', tags: ['Wallapop', 'DAC7', 'Vinted'], url: 'Impuestos/dac7.html' }
 ];
 
 /* ── RENDER ── */
