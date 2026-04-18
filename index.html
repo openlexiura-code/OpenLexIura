@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>OpenLexIura · El derecho en el idioma de la calle</title>
@@ -92,8 +94,8 @@ nav.scrolled{
 }
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(37,99,235,.14), 0 10px 24px rgba(0,0,0,.2)}
 .hero{
-  position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  padding:8rem 1.5rem 5rem;overflow:visible;
+  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:9rem 1.5rem 5rem;overflow:visible;
 }
 .hero::before,
 .hero::after{
@@ -108,7 +110,7 @@ nav.scrolled{
   background-size:72px 72px;mask-image:radial-gradient(circle at center, black 0%, black 45%, transparent 85%);
   opacity:.25;pointer-events:none;transform:perspective(900px) rotateX(58deg) translateY(30%);
 }
-.hero-content{position:relative;z-index:2;max-width:1040px;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;margin:auto 0}
+.hero-content{position:relative;z-index:2;max-width:1040px;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center}
 .hero-copy{padding:1rem 0}
 .kicker{
   display:inline-flex;align-items:center;gap:.55rem;padding:.55rem .9rem;border-radius:999px;
@@ -264,7 +266,7 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
     margin-top:1rem;justify-content:center;border-radius:12px;
     background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff !important;
   }
-  .hero{padding:5.5rem 1.2rem 3rem}
+  .hero{padding:7rem 1.2rem 3rem}
   .hero-art{display:none}
   h1{font-size:clamp(2.8rem,14vw,4rem)}
   .sub{font-size:1rem}
@@ -531,5 +533,123 @@ function follow(){rx+=(mx-rx)*0.55;ry+=(my-ry)*0.55;cursorRing.style.left=rx+'px
 follow();
 document.querySelectorAll('a,button,input,.card').forEach(el=>{el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(91,188,255,.09)'});el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'})});
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10));
+const burger=document.getElementById('nav-burger');
+const navLinks=document.getElementById('nav-links');
+const navOverlay=document.getElementById('nav-overlay');
+function closeMenu(){burger.classList.remove('open');navLinks.classList.remove('open');navOverlay.classList.remove('open');nav.classList.remove('menu-open');document.body.style.overflow='';}
+burger.addEventListener('click',()=>{const opening=!navLinks.classList.contains('open');burger.classList.toggle('open');navLinks.classList.toggle('open');navOverlay.classList.toggle('open');nav.classList.toggle('menu-open');document.body.style.overflow=opening?'hidden':'';});
+navOverlay.addEventListener('click',closeMenu);
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const cursorRing=document.createElement('div');cursorRing.className='cursor-ring';
+const cursorDot=document.createElement('div');cursorDot.className='cursor-dot';
+document.body.appendChild(cursorRing);document.body.appendChild(cursorDot);
+document.body.style.cursor='none';document.documentElement.style.cursor='none';
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+window.addEventListener('mouseleave',()=>{cursorRing.style.opacity='0';cursorDot.style.opacity='0'});
+window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+function follow(){rx+=(mx-rx)*0.55;ry+=(my-ry)*0.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)}
+follow();
+document.querySelectorAll('a,button,input,.card').forEach(el=>{el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(91,188,255,.09)'});el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'})});
+
+(function(){
+  const BASE='https://openlexiura.es/';
+  const searchData=[{"titulo":"Los meses por adelantado","categoria":"Alquiler y Arrendamientos","resumen":"¿Cuántos meses de fianza y garantías adicionales me puede exigir el casero por ley? La LAU fija un mes de fianza legal, pero el casero puede pedir garantías adicionales. Descubre los límites exactos que marca la ley.","tags":["fianza","garantías","LAU"],"url":"Alquiler/fianza.html"},{"titulo":"El IBI y la Comunidad","categoria":"Alquiler y Arrendamientos","resumen":"¿Quién tiene que pagar realmente el IBI, la tasa de basuras y los gastos de la escalera? Quién asume cada gasto depende de lo pactado en contrato y de la ley.","tags":["IBI","comunidad","gastos"],"url":"Alquiler/ibi.html"},{"titulo":"Mascotas en casa","categoria":"Alquiler y Arrendamientos","resumen":"¿Me pueden prohibir legalmente tener perro o gato en el piso de alquiler? La reforma de la LAU de 2023 cambió las reglas. Conoce tu derecho a tener mascotas y los límites que sí pueden pactar casero e inquilino.","tags":["mascotas","perro","gato","LAU 2023"],"url":"Alquiler/mascotas.html"},{"titulo":"El inventario salvavidas","categoria":"Alquiler y Arrendamientos","resumen":"Por qué debes hacer fotos y firmar un inventario el primer día (y cómo hacerlo bien). Un inventario bien hecho puede salvarte miles de euros al final del contrato.","tags":["inventario","fotos","entrada"],"url":"Alquiler/inventario.html"},{"titulo":"La rotura de electrodomésticos","categoria":"Alquiler y Arrendamientos","resumen":"Se ha roto la lavadora, el termo o la caldera, ¿quién tiene que pagar la reparación? La regla general: el propietario paga las averías de habitabilidad, el inquilino los desperfectos por mal uso.","tags":["electrodomésticos","reparación","avería","caldera"],"url":"Alquiler/electrodomesticos.html"},{"titulo":"Pequeños arreglos","categoria":"Alquiler y Arrendamientos","resumen":"Grifos que gotean, bombillas y persianas atascadas: dónde está el límite de lo que paga el inquilino. La ley distingue entre reparaciones urgentes y pequeñas reparaciones de desgaste.","tags":["reparaciones","grifo","bombilla","desgaste"],"url":"Alquiler/arreglos.html"},{"titulo":"Privacidad y llaves","categoria":"Alquiler y Arrendamientos","resumen":"¿Puede el casero entrar al piso para ver cómo está si tiene un juego de llaves? El domicilio es inviolable. Conoce tus derechos y qué hacer si el propietario entra sin permiso.","tags":["privacidad","llaves","domicilio","acceso"],"url":"Alquiler/llaves.html"},{"titulo":"Subidas anuales","categoria":"Alquiler y Arrendamientos","resumen":"¿Cuánto me pueden subir el precio del alquiler cada año con la ley actual? Los límites a la actualización anual de la renta han cambiado varias veces. Descubre qué índice aplica hoy y cómo calcular la subida máxima.","tags":["subida","renta","IPC","actualización"],"url":"Alquiler/subidas.html"},{"titulo":"Venta del piso","categoria":"Alquiler y Arrendamientos","resumen":"Mi casero ha puesto a la venta el piso en el que vivo, ¿me pueden echar si lo compra otra persona? Tienes derecho de tanteo y retracto, y el nuevo propietario debe respetar tu contrato en la mayoría de casos.","tags":["venta","nuevo propietario","tanteo","retracto"],"url":"Alquiler/venta.html"},{"titulo":"Subarriendo de habitaciones","categoria":"Alquiler y Arrendamientos","resumen":"¿Puedo alquilar una de las habitaciones de mi piso a otra persona para pagar menos? El subarriendo parcial está regulado por la LAU pero requiere permiso del propietario.","tags":["subarriendo","habitaciones","compañero","permiso"],"url":"Alquiler/subarriendo.html"},{"titulo":"Irse antes de tiempo","categoria":"Alquiler y Arrendamientos","resumen":"¿Con cuánto tiempo tengo que avisar para dejar el piso y qué penalización me pueden cobrar? La ley establece un preaviso mínimo y limita la indemnización que puede reclamarte el propietario.","tags":["preaviso","penalización","desistimiento","salida"],"url":"Alquiler/irseantes.html"},{"titulo":"La duración real del contrato","categoria":"Alquiler y Arrendamientos","resumen":"He firmado un contrato de 1 año, ¿tengo derecho a quedarme más tiempo si quiero? Aunque el contrato diga 1 año, la LAU te da derecho a renovarlo hasta 5 o 7 años según el propietario.","tags":["duración","prórroga","5 años","7 años"],"url":"Alquiler/12-contrato.html"},{"titulo":"Recuperación por necesidad","categoria":"Alquiler y Arrendamientos","resumen":"¿Me puede echar el casero antes de que acabe el contrato porque dice que necesita el piso para su hijo? La cláusula de necesidad tiene requisitos muy estrictos. Aprende cuándo es válida y cómo defenderte.","tags":["necesidad","hijo","propietario","desahucio"],"url":"Alquiler/recuperacion.html"},{"titulo":"Pintura y limpieza final","categoria":"Alquiler y Arrendamientos","resumen":"¿Me pueden obligar a dejar el piso recién pintado o pagar una limpieza profesional al irme? Depende del estado en que se entregó y lo que diga el contrato. Conoce qué es desgaste normal y qué es abusivo.","tags":["pintura","limpieza","salida","desperfectos"],"url":"Alquiler/limpieza.html"},{"titulo":"La devolución de la fianza","categoria":"Alquiler y Arrendamientos","resumen":"¿Cuánto tiempo tiene el propietario para devolver el dinero y qué hacer si no responde? El propietario tiene un plazo legal para devolver la fianza. Si no lo cumple, te debe intereses.","tags":["fianza","devolución","plazo","reclamación"],"url":"Alquiler/devolucionfianza.html"},{"titulo":"Inquilinos que no pagan","categoria":"Alquiler y Arrendamientos","resumen":"Qué hacer (y qué NO hacer bajo ningún concepto, como cortar la luz) si el inquilino deja de pagar. Cortar suministros es delito. Aprende el procedimiento legal correcto para reclamar impagos.","tags":["impago","desahucio","propietario","suministros"],"url":"Alquiler/impago.html"},{"titulo":"Me han vaciado la cuenta por un SMS","categoria":"Consumo","resumen":"¿Es culpa tuya por pinchar en el enlace o el banco debe devolverte el dinero? Descubre cómo te protege la Ley de Servicios de Pago ante el phishing y los pasos para reclamar.","tags":["phishing","banco","sms","estafa","tarjeta"],"url":"Consumo/phishing.html"},{"titulo":"El timo de Wallapop y Bizum","categoria":"Consumo","resumen":"Pagué por adelantado y me han bloqueado. Conoce la frontera de los 400€ entre delito leve y grave, y por qué tu banco no puede cancelar una transferencia por Bizum.","tags":["bizum","wallapop","estafa","segunda mano","fraude"],"url":"Consumo/estafabizum.html"},{"titulo":"Falsas inversiones en criptomonedas","categoria":"Consumo","resumen":"Te prometieron rentabilidades imposibles y ahora no puedes retirar el dinero. Qué dice la ley, cómo rastrear fondos y por qué debes unirte a otros afectados.","tags":["criptomonedas","inversión","chiringuito","fraude","bitcoin"],"url":"Consumo/fraudeinversionescrypto.html"},{"titulo":"Comprar por internet: El superpoder de los 14 días","categoria":"Consumo","resumen":"Explicación clara del Derecho de Desistimiento. Por qué puedes devolver casi cualquier compra online sin dar explicaciones y quién paga los gastos de envío.","tags":["devolución","online","desistimiento","compras","internet"],"url":"Consumo/devolucionesonline.html"},{"titulo":"La ley de los 3 años de garantía","categoria":"Consumo","resumen":"Qué cubre realmente la garantía de un producto nuevo, qué pasa con los productos de segunda mano y la regla vital de la carga de la prueba durante los primeros 2 años.","tags":["garantía","reparación","segunda mano","defecto","roto"],"url":"Consumo/garantiasegundamano.html"},{"titulo":"Precios trampa: ¿La etiqueta o la caja?","categoria":"Consumo","resumen":"Si en la estantería marca 2€ pero en la caja te cobran 3€, la ley está de tu parte. Descubre tus derechos sobre la publicidad vinculante y los precios marcados.","tags":["precio","etiqueta","supermercado","oferta","ticket"],"url":"Consumo/preciotrampa.html"},{"titulo":"Cancelar el gimnasio o el móvil sin penalizaciones","categoria":"Consumo","resumen":"Qué hacer si te siguen pasando recibos después de darte de baja, el mito de las permanencias abusivas y tu derecho a devolver recibos del banco en 8 semanas.","tags":["baja","gimnasio","teléfono","permanencia","recibo","cancelar"],"url":"Consumo/darsedebaja.html"},{"titulo":"Vuelos cancelados o retrasados","categoria":"Consumo","resumen":"La guía definitiva del Reglamento Europeo 261/2004 para saber si te tocan 250€, 400€ o 600€ de indemnización y cómo pedirlos tú mismo sin pagar a intermediarios.","tags":["vuelo","retraso","cancelación","aerolínea","indemnización","viaje"],"url":"Consumo/reclamacionretrasovuelos.html"}];
+
+  const fuse=new Fuse(searchData,{keys:[{name:'titulo',weight:0.5},{name:'resumen',weight:0.35},{name:'categoria',weight:0.15},{name:'tags',weight:0.15}],threshold:0.4,minMatchCharLength:2,includeScore:true});
+  const inp=document.getElementById('search-input');
+  const box=document.getElementById('search-results');
+  if(!inp||!box)return;
+  inp.addEventListener('input',function(){
+    const q=this.value.trim();
+    if(!q||!fuse){box.classList.remove('active');return;}
+    const res=fuse.search(q).slice(0,6);
+    if(!res.length){box.innerHTML='<div class="search-no-results">Sin resultados. Prueba con otras palabras.</div>';}
+    else{box.innerHTML=res.map(r=>'<a class="search-result-item" href="'+BASE+r.item.url+'" target="_blank"><span class="res-cat">'+r.item.categoria+'</span><span class="res-titulo">'+r.item.titulo+'</span><span class="res-resumen">'+r.item.resumen+'</span></a>').join('');}
+    box.classList.add('active');
+  });
+  document.addEventListener('click',e=>{const wrap=document.getElementById('search-wrap');if(wrap&&!wrap.contains(e.target))box.classList.remove('active');});
+  inp.addEventListener('keydown',e=>{if(e.key==='Escape')box.classList.remove('active');});
+})();
+</script>
+
+  <!-- ═══ BANNER COOKIES OpenLexIura ═══ -->
+  <div id="oli-cookie-banner">
+    <div class="oli-banner-inner">
+      <div class="oli-banner-text">
+        <strong>🍪 Usamos cookies</strong><br>
+        Utilizamos cookies técnicas y analíticas (Google Analytics) para mejorar tu experiencia.
+        <a href="politica-cookies.html">Más información</a>
+      </div>
+      <div class="oli-banner-actions">
+        <button class="oli-btn oli-btn-config" onclick="openConfig()">Configurar</button>
+        <button class="oli-btn oli-btn-reject" onclick="rejectAll()">Rechazar</button>
+        <button class="oli-btn oli-btn-accept" onclick="acceptAll()">Aceptar todo</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="oli-config-panel">
+    <div class="oli-config-inner">
+      <h3>Preferencias de cookies</h3>
+      <div class="oli-toggle-row">
+        <div>
+          <div class="oli-toggle-label">🔒 Cookies técnicas</div>
+          <div class="oli-toggle-desc">Necesarias para el funcionamiento del sitio. No pueden desactivarse.</div>
+        </div>
+        <label class="oli-switch"><input type="checkbox" checked disabled><span class="oli-slider"></span></label>
+      </div>
+      <div class="oli-toggle-row">
+        <div>
+          <div class="oli-toggle-label">📊 Cookies analíticas</div>
+          <div class="oli-toggle-desc">Google Analytics — miden el tráfico de forma anónima.</div>
+        </div>
+        <label class="oli-switch"><input type="checkbox" id="oli-analytics-toggle"><span class="oli-slider"></span></label>
+      </div>
+      <div class="oli-config-actions">
+        <button class="oli-btn oli-btn-reject" onclick="rejectAll()">Rechazar todas</button>
+        <button class="oli-btn oli-btn-accept" onclick="saveConfig()">Guardar preferencias</button>
+      </div>
+    </div>
+  </div>
+
+  <button id="oli-cookie-btn" title="Preferencias de cookies" onclick="reopenBanner()">🍪</button>
+
+  <script>
+    var banner=document.getElementById('oli-cookie-banner'),
+        panel=document.getElementById('oli-config-panel'),
+        floatBtn=document.getElementById('oli-cookie-btn'),
+        aToggle=document.getElementById('oli-analytics-toggle');
+    window.addEventListener('DOMContentLoaded',function(){
+      var c=localStorage.getItem('oli_cookie_consent');
+      if(!c){showBanner();}
+      else{floatBtn.classList.add('visible');if(JSON.parse(c).analytics)enableGA();}
+    });
+    function showBanner(){banner.classList.add('visible');panel.classList.remove('visible');}
+    function openConfig(){
+      panel.classList.add('visible');banner.classList.remove('visible');
+      var c=localStorage.getItem('oli_cookie_consent');
+      if(c)aToggle.checked=JSON.parse(c).analytics;
+    }
+    function acceptAll(){savePrefs({analytics:true});enableGA();close_();}
+    function rejectAll(){savePrefs({analytics:false});close_();}
+    function saveConfig(){var ok=aToggle.checked;savePrefs({analytics:ok});if(ok)enableGA();close_();}
+    function savePrefs(p){p.date=new Date().toISOString();localStorage.setItem('oli_cookie_consent',JSON.stringify(p));}
+    function close_(){banner.classList.remove('visible');panel.classList.remove('visible');floatBtn.classList.add('visible');}
+    function reopenBanner(){floatBtn.classList.remove('visible');showBanner();}
+    function enableGA(){
+      if(window._ga4ok)return;window._ga4ok=true;
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({'event':'cookie_consent_analytics'});
+    }
+  </script>
+
 </body>
 </html>
