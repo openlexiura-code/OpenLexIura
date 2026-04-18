@@ -12,7 +12,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>OpenLexIura · El derecho en el idioma de la calle</title>
 <meta name="description" content="Entiende tus derechos y resuelve tus dudas legales sin palabras raras ni lenguaje del BOE.">
+<link rel="canonical" href="https://openlexiura.es/">
 <link rel="icon" type="image/jpeg" href="Icono.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "OpenLexIura",
+  "url": "https://openlexiura.es/",
+  "logo": "https://openlexiura.es/Icono.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "OpenLexIura",
+  "url": "https://openlexiura.es/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://openlexiura.es/portal.html?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -181,6 +204,13 @@ h1 em{font-style:italic;color:var(--brand)}
 footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(15,23,42,.08)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.article-link{display:block;background:linear-gradient(180deg,#ffffff,#f8fbff);border:1px solid rgba(37,99,235,.10);border-radius:20px;padding:1.25rem;box-shadow:0 24px 60px rgba(0,0,0,.10);transition:.25s ease}
+.article-link:hover{transform:translateY(-4px);border-color:rgba(37,99,235,.24);box-shadow:0 24px 60px rgba(0,0,0,.14)}
+.article-link strong{display:block;font-size:1.05rem;color:#1f2937;margin-bottom:.45rem}
+.article-link span{display:block;color:#64748b;line-height:1.55;font-size:.95rem}
+.mobile-sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:1200;display:none;justify-content:center;padding:.85rem 1rem calc(.85rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-top:1px solid rgba(37,99,235,.12);box-shadow:0 -8px 32px rgba(0,0,0,.12)}
+.mobile-sticky-cta .btn{width:min(100%,420px);min-height:52px;box-shadow:0 16px 40px rgba(37,99,235,.24)}
 @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes floatA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18px,24px) scale(1.06)}}
 @keyframes floatB{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-18px,-22px) scale(1.05)}}
@@ -188,7 +218,6 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 @keyframes spinReverse{to{transform:rotate(-360deg)}}
 @keyframes pulse{0%,100%{transform:translateY(-2px) scale(1)}50%{transform:translateY(-2px) scale(1.02)}}
 @keyframes twinkle{0%,100%{opacity:.35;transform:scale(.9)}50%{opacity:1;transform:scale(1.15)}}
-/* ── Hamburger button ── */
 .nav-burger{
   display:none;flex-direction:column;justify-content:center;gap:5px;
   background:none;border:none;cursor:pointer;padding:.5rem;z-index:1100;
@@ -201,15 +230,12 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-/* ── Tablet ── */
 @media (max-width: 980px){
   .hero-content{grid-template-columns:1fr}
   .hero-art{order:-1;min-height:380px}
   .grid{grid-template-columns:repeat(2,1fr)}
+  .articles-grid{grid-template-columns:repeat(2,1fr)}
 }
-
-/* ── Mobile ── */
 @media (max-width: 640px){
   nav{padding:1rem 1.1rem}
   .nav-burger{display:flex}
@@ -222,13 +248,11 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
     overflow-y:auto;
   }
   .nav-links.open{transform:translateX(0)}
-  /* Overlay oscuro detrás del menú */
   .nav-overlay{
     display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);
     z-index:999;
   }
   .nav-overlay.open{display:block}
-  /* Nav sólida cuando el menú está abierto */
   nav.menu-open{
     background:#ffffff !important;
     backdrop-filter:none;
@@ -256,6 +280,7 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
   .badge{font-size:.82rem;padding:.55rem .8rem}
   .section{padding:3rem 1.2rem}
   .grid{grid-template-columns:1fr;gap:.85rem}
+  .articles-grid{grid-template-columns:1fr}
   .card{padding:1.25rem;min-height:auto}
   .card h3{font-size:1.4rem}
   .title{font-size:clamp(1.9rem,8vw,2.6rem)}
@@ -263,9 +288,10 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
   .bottom{padding:3rem 1.2rem}
   .bottom-box{padding:2rem 1.2rem;border-radius:20px}
   .bottom-box .btn{width:100%;justify-content:center}
+  .mobile-sticky-cta{display:flex}
+  body{padding-bottom:5.5rem}
   .cursor-ring,.cursor-dot{display:none}
 }
-
 .search{position:relative}
 .search-results{
   position:absolute;top:calc(100% + 8px);left:0;right:0;
@@ -285,42 +311,37 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 .res-cat{font-size:.78rem;color:#2563eb;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
 .res-resumen{font-size:.87rem;color:#64748b;line-height:1.5;margin-top:.1rem}
 .search-no-results{padding:1.2rem 1.25rem;color:#64748b;font-size:.92rem;text-align:center}
-
-    /* ── BANNER COOKIES ── */
-    #oli-cookie-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#12121a;border-top:2px solid #C9A84C;padding:1.2rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 24px rgba(0,0,0,.5)}
-    #oli-cookie-banner.visible{display:block}
-    .oli-banner-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-    .oli-banner-text{flex:1;min-width:260px;font-size:.88rem;color:#b0b0c8;line-height:1.6}
-    .oli-banner-text strong{color:#C9A84C}
-    .oli-banner-text a{color:#C9A84C}
-    .oli-banner-actions{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
-    .oli-btn{padding:.55rem 1.3rem;border-radius:4px;font-size:.85rem;cursor:pointer;border:none;transition:opacity .2s;white-space:nowrap;font-family:'Inter',sans-serif}
-    .oli-btn:hover{opacity:.85}
-    .oli-btn-accept{background:#C9A84C;color:#0a0a0f;font-weight:700}
-    .oli-btn-reject{background:transparent;color:#b0b0c8;border:1px solid #3a3a54}
-    .oli-btn-config{background:transparent;color:#C9A84C;border:1px solid #C9A84C}
-    #oli-config-panel{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100000;background:#1a1a26;border-top:2px solid #C9A84C;padding:1.8rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6)}
-    #oli-config-panel.visible{display:block}
-    .oli-config-inner{max-width:700px;margin:0 auto}
-    .oli-config-inner h3{color:#C9A84C;font-size:1rem;margin-bottom:1rem;letter-spacing:.05em;text-transform:uppercase}
-    .oli-toggle-row{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid #2a2a40}
-    .oli-toggle-row:last-of-type{border-bottom:none}
-    .oli-toggle-label{color:#e8e8f0;font-size:.9rem}
-    .oli-toggle-desc{color:#7070a0;font-size:.78rem;margin-top:.2rem}
-    .oli-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
-    .oli-switch input{opacity:0;width:0;height:0}
-    .oli-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#2a2a40;border-radius:24px;transition:.3s}
-    .oli-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:#7070a0;border-radius:50%;transition:.3s}
-    input:checked+.oli-slider{background:#C9A84C}
-    input:checked+.oli-slider:before{transform:translateX(20px);background:#0a0a0f}
-    input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
-    .oli-config-actions{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
-    #oli-cookie-btn{display:none;position:fixed;bottom:1.2rem;left:1.2rem;z-index:99998;background:#1a1a26;border:1px solid #C9A84C;color:#C9A84C;font-size:1.2rem;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:background .2s;line-height:40px;text-align:center}
-    #oli-cookie-btn:hover{background:#C9A84C;color:#0a0a0f}
-    #oli-cookie-btn.visible{display:block}
-</style>
-
-<style>
+#oli-cookie-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#12121a;border-top:2px solid #C9A84C;padding:1.2rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 24px rgba(0,0,0,.5)}
+#oli-cookie-banner.visible{display:block}
+.oli-banner-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.oli-banner-text{flex:1;min-width:260px;font-size:.88rem;color:#b0b0c8;line-height:1.6}
+.oli-banner-text strong{color:#C9A84C}
+.oli-banner-text a{color:#C9A84C}
+.oli-banner-actions{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+.oli-btn{padding:.55rem 1.3rem;border-radius:4px;font-size:.85rem;cursor:pointer;border:none;transition:opacity .2s;white-space:nowrap;font-family:'Inter',sans-serif}
+.oli-btn:hover{opacity:.85}
+.oli-btn-accept{background:#C9A84C;color:#0a0a0f;font-weight:700}
+.oli-btn-reject{background:transparent;color:#b0b0c8;border:1px solid #3a3a54}
+.oli-btn-config{background:transparent;color:#C9A84C;border:1px solid #C9A84C}
+#oli-config-panel{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100000;background:#1a1a26;border-top:2px solid #C9A84C;padding:1.8rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6)}
+#oli-config-panel.visible{display:block}
+.oli-config-inner{max-width:700px;margin:0 auto}
+.oli-config-inner h3{color:#C9A84C;font-size:1rem;margin-bottom:1rem;letter-spacing:.05em;text-transform:uppercase}
+.oli-toggle-row{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid #2a2a40}
+.oli-toggle-row:last-of-type{border-bottom:none}
+.oli-toggle-label{color:#e8e8f0;font-size:.9rem}
+.oli-toggle-desc{color:#7070a0;font-size:.78rem;margin-top:.2rem}
+.oli-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+.oli-switch input{opacity:0;width:0;height:0}
+.oli-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#2a2a40;border-radius:24px;transition:.3s}
+.oli-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:#7070a0;border-radius:50%;transition:.3s}
+input:checked+.oli-slider{background:#C9A84C}
+input:checked+.oli-slider:before{transform:translateX(20px);background:#0a0a0f}
+input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
+.oli-config-actions{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
+#oli-cookie-btn{display:none;position:fixed;bottom:1.2rem;left:1.2rem;z-index:99998;background:#1a1a26;border:1px solid #C9A84C;color:#C9A84C;font-size:1.2rem;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:background .2s;line-height:40px;text-align:center}
+#oli-cookie-btn:hover{background:#C9A84C;color:#0a0a0f}
+#oli-cookie-btn.visible{display:block}
 .cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(43,111,232,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(135,206,250,.12), inset 0 0 6px rgba(255,255,255,.22);transition:width .08s linear,height .08s linear,border-color .08s linear,opacity .08s linear,transform .08s linear}
 .cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#2b6fe8;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(43,111,232,.75)}
 .card:hover .cta,.btn:hover,.nav-links a:hover{color:#1d4ed8}
@@ -328,35 +349,11 @@ footer{padding:1.5rem;color:#64748b;text-align:center;border-top:1px solid rgba(
 .bottom-box .title,.bottom-box p{color:#1f2937}
 .hero::before{background:radial-gradient(circle, rgba(135,206,250,.28), transparent 60%)}
 .hero::after{background:radial-gradient(circle, rgba(43,111,232,.08), transparent 70%)}
-
-.search{position:relative}
-.search-results{
-  position:absolute;top:calc(100% + 8px);left:0;right:0;
-  background:#ffffff;border:1px solid rgba(37,99,235,.18);
-  border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.18);
-  z-index:9999;overflow:hidden;display:none;max-height:380px;overflow-y:auto;
-}
-.search-results.active{display:block}
-.search-result-item{
-  display:flex;flex-direction:column;gap:.25rem;
-  padding:1rem 1.25rem;border-bottom:1px solid rgba(37,99,235,.07);
-  cursor:pointer;transition:.18s ease;text-decoration:none;color:inherit;
-}
-.search-result-item:last-child{border-bottom:none}
-.search-result-item:hover{background:rgba(37,99,235,.05)}
-.res-titulo{font-weight:600;color:#1f2937;font-size:.97rem}
-.res-cat{font-size:.78rem;color:#2563eb;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
-.res-resumen{font-size:.87rem;color:#64748b;line-height:1.5;margin-top:.1rem}
-.search-no-results{padding:1.2rem 1.25rem;color:#64748b;font-size:.92rem;text-align:center}
 </style>
-
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav id="nav">
   <a class="nav-logo" href="#inicio"><img src="Icono.png" alt="OpenLexIura"><span>OpenLexIura</span></a>
   <div class="nav-links" id="nav-links">
@@ -379,7 +376,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="sub">Entiende tus derechos y resuelve dudas sobre alquileres, despidos, herencias o compras con una experiencia visual mucho más elegante, moderna y memorable.</p>
       <div class="actions">
         <a class="btn btn-primary" href="portal.html">Buscar mi problema legal</a>
-        <a class="btn btn-secondary" href="#temas">Ver áreas clave</a>
+        <a class="btn btn-secondary" href="consultas.html">Hacer mi consulta ahora</a>
       </div>
       <div class="search" id="search-wrap">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -387,7 +384,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="search-results" id="search-results"></div>
       </div>
     </div>
-
     <div class="hero-art">
       <div class="art-shell">
         <div class="art-logo">
@@ -401,10 +397,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
 <section class="section" id="temas">
   <div class="wrap">
-    <h2 class="title reveal">Encuentra respuestas <span>directas</span></h2>
+    <h2 class="title reveal">Respuestas claras a tus dudas legales: <span>alquiler, vivienda, consumo, impuestos</span></h2>
     <p class="lead reveal">Diseño de alto contraste, brillo dorado y animaciones suaves para que la web se sienta más sólida, premium y confiable desde el primer segundo.</p>
     <div class="grid">
       <article class="card reveal">
@@ -448,7 +443,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
+<section class="section" id="articulos">
+  <div class="wrap">
+    <h2 class="title reveal">Artículos <span>más leídos</span></h2>
+    <p class="lead reveal">Una selección de temas con intención alta de consulta: problemas urgentes, dinero, vivienda y reclamaciones frecuentes.</p>
+    <div class="articles-grid">
+      <a class="article-link reveal" href="Alquiler/impago.html">
+        <strong>Inquilinos que no pagan</strong>
+        <span>Qué hacer ante un impago sin cometer errores como cortar suministros.</span>
+      </a>
+      <a class="article-link reveal" href="Alquiler/devolucionfianza.html">
+        <strong>La devolución de la fianza</strong>
+        <span>Plazos legales, intereses y cómo reclamar si el casero no devuelve el dinero.</span>
+      </a>
+      <a class="article-link reveal" href="Vivienda/portal.html">
+        <strong>Gastos de hipoteca y compraventa</strong>
+        <span>Notaría, tasación y reparto correcto de gastos al comprar vivienda.</span>
+      </a>
+      <a class="article-link reveal" href="Vivienda/okupas.html">
+        <strong>Okupas, allanamiento e impagos</strong>
+        <span>Diferencias legales clave y pasos para actuar con seguridad jurídica.</span>
+      </a>
+      <a class="article-link reveal" href="Consumo/phishing.html">
+        <strong>Me han vaciado la cuenta por un SMS</strong>
+        <span>Phishing bancario, devolución del dinero y pasos para reclamar.</span>
+      </a>
+      <a class="article-link reveal" href="Consumo/estafabizum.html">
+        <strong>Bizum, Wallapop y Hacienda</strong>
+        <span>Fraudes, pagos entre particulares y dudas frecuentes sobre control fiscal.</span>
+      </a>
+    </div>
+  </div>
+</section>
 <section class="bottom">
   <div class="bottom-box reveal">
     <h2 class="title" style="margin-bottom:1rem;">Deja de buscar en foros</h2>
@@ -456,24 +482,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="btn btn-primary" href="consultas.html">Hacer mi consulta ahora</a>
   </div>
 </section>
-
 <footer style="text-align:center;padding:2rem 1rem;font-size:.82rem;color:#64748b;border-top:1px solid rgba(37,99,235,.1);margin-top:2rem;">
   © 2026 <strong>OpenLexIura</strong> · El derecho para ciudadanos &nbsp;·&nbsp;
   <a href="aviso-legal.html" style="color:#2563eb;text-decoration:underline;">Aviso Legal</a> &nbsp;·&nbsp;
   <a href="politica-privacidad.html" style="color:#2563eb;text-decoration:underline;">Privacidad</a> &nbsp;·&nbsp;
-  <a href="politica-cookies.html" style="color:#2563eb;text-decoration:underline;">Cookies</a>
+  <a href="politica-cookies.html" style="color:#2563eb;text-decoration:underline;">Cookies</a> &nbsp;·&nbsp;
+  <a href="sitemap.xml" style="color:#2563eb;text-decoration:underline;">Sitemap</a>
 </footer>
-
+<div class="mobile-sticky-cta">
+  <a class="btn btn-primary" href="consultas.html">Consulta tu caso (gratis 24 h)</a>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
 <script>
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10));
-
-// ── Hamburger ──
 const burger = document.getElementById('nav-burger');
 const navLinks = document.getElementById('nav-links');
 const navOverlay = document.getElementById('nav-overlay');
-
 function closeMenu(){
   burger.classList.remove('open');
   navLinks.classList.remove('open');
@@ -481,7 +506,6 @@ function closeMenu(){
   nav.classList.remove('menu-open');
   document.body.style.overflow = '';
 }
-
 burger.addEventListener('click', () => {
   const opening = !navLinks.classList.contains('open');
   burger.classList.toggle('open');
@@ -494,7 +518,6 @@ navOverlay.addEventListener('click', closeMenu);
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
 const cursorRing=document.createElement('div');
 cursorRing.className='cursor-ring';
 const cursorDot=document.createElement('div');
@@ -509,129 +532,6 @@ window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot
 function follow(){rx+=(mx-rx)*0.55;ry+=(my-ry)*0.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)}
 follow();
 document.querySelectorAll('a,button,input,.card').forEach(el=>{el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(91,188,255,.09)'});el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'})});
-
-// ── Buscador Fuse.js ──────────────────────────────────────────
-(function(){
-  const BASE = 'https://openlexiura.es/';
-
-  const searchData = [{"titulo":"Los meses por adelantado","categoria":"Alquiler y Arrendamientos","resumen":"¿Cuántos meses de fianza y garantías adicionales me puede exigir el casero por ley? La LAU fija un mes de fianza legal, pero el casero puede pedir garantías adicionales. Descubre los límites exactos que marca la ley.","tags":["fianza","garantías","LAU"],"url":"Alquiler/fianza.html"},{"titulo":"El IBI y la Comunidad","categoria":"Alquiler y Arrendamientos","resumen":"¿Quién tiene que pagar realmente el IBI, la tasa de basuras y los gastos de la escalera? Quién asume cada gasto depende de lo pactado en contrato y de la ley.","tags":["IBI","comunidad","gastos"],"url":"Alquiler/ibi.html"},{"titulo":"Mascotas en casa","categoria":"Alquiler y Arrendamientos","resumen":"¿Me pueden prohibir legalmente tener perro o gato en el piso de alquiler? La reforma de la LAU de 2023 cambió las reglas. Conoce tu derecho a tener mascotas y los límites que sí pueden pactar casero e inquilino.","tags":["mascotas","perro","gato","LAU 2023"],"url":"Alquiler/mascotas.html"},{"titulo":"El inventario salvavidas","categoria":"Alquiler y Arrendamientos","resumen":"Por qué debes hacer fotos y firmar un inventario el primer día (y cómo hacerlo bien). Un inventario bien hecho puede salvarte miles de euros al final del contrato.","tags":["inventario","fotos","entrada"],"url":"Alquiler/inventario.html"},{"titulo":"La rotura de electrodomésticos","categoria":"Alquiler y Arrendamientos","resumen":"Se ha roto la lavadora, el termo o la caldera, ¿quién tiene que pagar la reparación? La regla general: el propietario paga las averías de habitabilidad, el inquilino los desperfectos por mal uso.","tags":["electrodomésticos","reparación","avería","caldera"],"url":"Alquiler/electrodomesticos.html"},{"titulo":"Pequeños arreglos","categoria":"Alquiler y Arrendamientos","resumen":"Grifos que gotean, bombillas y persianas atascadas: dónde está el límite de lo que paga el inquilino. La ley distingue entre reparaciones urgentes y pequeñas reparaciones de desgaste.","tags":["reparaciones","grifo","bombilla","desgaste"],"url":"Alquiler/arreglos.html"},{"titulo":"Privacidad y llaves","categoria":"Alquiler y Arrendamientos","resumen":"¿Puede el casero entrar al piso para \"ver cómo está\" si tiene un juego de llaves? El domicilio es inviolable. Conoce tus derechos y qué hacer si el propietario entra sin permiso.","tags":["privacidad","llaves","domicilio","acceso"],"url":"Alquiler/llaves.html"},{"titulo":"Subidas anuales","categoria":"Alquiler y Arrendamientos","resumen":"¿Cuánto me pueden subir el precio del alquiler cada año con la ley actual? Los límites a la actualización anual de la renta han cambiado varias veces. Descubre qué índice aplica hoy y cómo calcular la subida máxima.","tags":["subida","renta","IPC","actualización"],"url":"Alquiler/subidas.html"},{"titulo":"Venta del piso","categoria":"Alquiler y Arrendamientos","resumen":"Mi casero ha puesto a la venta el piso en el que vivo, ¿me pueden echar si lo compra otra persona? Tienes derecho de tanteo y retracto, y el nuevo propietario debe respetar tu contrato en la mayoría de casos.","tags":["venta","nuevo propietario","tanteo","retracto"],"url":"Alquiler/venta.html"},{"titulo":"Subarriendo de habitaciones","categoria":"Alquiler y Arrendamientos","resumen":"¿Puedo alquilar una de las habitaciones de mi piso a otra persona para pagar menos? El subarriendo parcial está regulado por la LAU pero requiere permiso del propietario.","tags":["subarriendo","habitaciones","compañero","permiso"],"url":"Alquiler/subarriendo.html"},{"titulo":"Irse antes de tiempo","categoria":"Alquiler y Arrendamientos","resumen":"¿Con cuánto tiempo tengo que avisar para dejar el piso y qué penalización me pueden cobrar? La ley establece un preaviso mínimo y limita la indemnización que puede reclamarte el propietario.","tags":["preaviso","penalización","desistimiento","salida"],"url":"Alquiler/irseantes.html"},{"titulo":"La duración real del contrato","categoria":"Alquiler y Arrendamientos","resumen":"He firmado un contrato de 1 año, ¿tengo derecho a quedarme más tiempo si quiero? Aunque el contrato diga 1 año, la LAU te da derecho a renovarlo hasta 5 o 7 años según el propietario.","tags":["duración","prórroga","5 años","7 años"],"url":"Alquiler/12-contrato.html"},{"titulo":"Recuperación por necesidad","categoria":"Alquiler y Arrendamientos","resumen":"¿Me puede echar el casero antes de que acabe el contrato porque dice que necesita el piso para su hijo? La cláusula de necesidad tiene requisitos muy estrictos. Aprende cuándo es válida y cómo defenderte.","tags":["necesidad","hijo","propietario","desahucio"],"url":"Alquiler/recuperacion.html"},{"titulo":"Pintura y limpieza final","categoria":"Alquiler y Arrendamientos","resumen":"¿Me pueden obligar a dejar el piso recién pintado o pagar una limpieza profesional al irme? Depende del estado en que se entregó y lo que diga el contrato. Conoce qué es desgaste normal y qué es abusivo.","tags":["pintura","limpieza","salida","desperfectos"],"url":"Alquiler/limpieza.html"},{"titulo":"La devolución de la fianza","categoria":"Alquiler y Arrendamientos","resumen":"¿Cuánto tiempo tiene el propietario para devolver el dinero y qué hacer si no responde? El propietario tiene un plazo legal para devolver la fianza. Si no lo cumple, te debe intereses.","tags":["fianza","devolución","plazo","reclamación"],"url":"Alquiler/devolucionfianza.html"},{"titulo":"Inquilinos que no pagan","categoria":"Alquiler y Arrendamientos","resumen":"Qué hacer (y qué NO hacer bajo ningún concepto, como cortar la luz) si el inquilino deja de pagar. Cortar suministros es delito. Aprende el procedimiento legal correcto para reclamar impagos.","tags":["impago","desahucio","propietario","suministros"],"url":"Alquiler/impago.html"},{"titulo":"Me han vaciado la cuenta por un SMS","categoria":"Consumo","resumen":"¿Es culpa tuya por pinchar en el enlace o el banco debe devolverte el dinero? Descubre cómo te protege la Ley de Servicios de Pago ante el phishing y los pasos para reclamar.","tags":["phishing","banco","sms","estafa","tarjeta"],"url":"Consumo/phishing.html"},{"titulo":"El timo de Wallapop y Bizum","categoria":"Consumo","resumen":"Pagué por adelantado y me han bloqueado. Conoce la frontera de los 400€ entre delito leve y grave, y por qué tu banco no puede cancelar una transferencia por Bizum.","tags":["bizum","wallapop","estafa","segunda mano","fraude"],"url":"Consumo/estafabizum.html"},{"titulo":"Falsas inversiones en criptomonedas","categoria":"Consumo","resumen":"Te prometieron rentabilidades imposibles y ahora no puedes retirar el dinero. Qué dice la ley, cómo rastrear fondos y por qué debes unirte a otros afectados (chiringuitos financieros).","tags":["criptomonedas","inversión","chiringuito","fraude","bitcoin"],"url":"Consumo/fraudeinversionescrypto.html"},{"titulo":"Comprar por internet: El superpoder de los 14 días","categoria":"Consumo","resumen":"Explicación clara del 'Derecho de Desistimiento'. Por qué puedes devolver casi cualquier compra online sin dar explicaciones y quién paga los gastos de envío.","tags":["devolución","online","desistimiento","compras","internet"],"url":"Consumo/devolucionesonline.html"},{"titulo":"La ley de los 3 años de garantía","categoria":"Consumo","resumen":"Qué cubre realmente la garantía de un producto nuevo, qué pasa con los productos de segunda mano y la regla vital de la 'carga de la prueba' durante los primeros 2 años.","tags":["garantía","reparación","segunda mano","defecto","roto"],"url":"Consumo/garantiasegundamano.html"},{"titulo":"Precios trampa: ¿La etiqueta o la caja?","categoria":"Consumo","resumen":"Si en la estantería marca 2€ pero en la caja te cobran 3€, la ley está de tu parte. Descubre tus derechos sobre la publicidad vinculante y los precios marcados.","tags":["precio","etiqueta","supermercado","oferta","ticket"],"url":"Consumo/preciotrampa.html"},{"titulo":"Cancelar el gimnasio o el móvil sin penalizaciones","categoria":"Consumo","resumen":"Qué hacer si te siguen pasando recibos después de darte de baja, el mito de las permanencias abusivas y tu derecho a devolver recibos del banco en 8 semanas.","tags":["baja","gimnasio","teléfono","permanencia","recibo","cancelar"],"url":"Consumo/darsedebaja.html"},{"titulo":"Vuelos cancelados o retrasados","categoria":"Consumo","resumen":"La guía definitiva del Reglamento Europeo 261/2004 para saber si te tocan 250€, 400€ o 600€ de indemnización y cómo pedirlos tú mismo sin pagar a intermediarios.","tags":["vuelo","retraso","cancelación","aerolínea","indemnización","viaje"],"url":"Consumo/reclamacionretrasovuelos.html"}];
-
-  const fuse = new Fuse(searchData, {
-        keys: [
-          { name: 'titulo',    weight: 0.5  },
-          { name: 'resumen',   weight: 0.35 },
-          { name: 'categoria', weight: 0.15 },
-          { name: 'tags',      weight: 0.15 }
-        ],
-        threshold: 0.4,
-        minMatchCharLength: 2,
-        includeScore: true
-      });
-
-  const inp = document.getElementById('search-input');
-  const box = document.getElementById('search-results');
-  if(!inp || !box) return;
-
-  inp.addEventListener('input', function(){
-    const q = this.value.trim();
-    if(!q || !fuse){ box.classList.remove('active'); return; }
-    const res = fuse.search(q).slice(0,6);
-    if(!res.length){
-      box.innerHTML = '<div class="search-no-results">Sin resultados. Prueba con otras palabras.</div>';
-    } else {
-      box.innerHTML = res.map(r => `
-        <a class="search-result-item" href="${BASE}${r.item.url}" target="_blank">
-          <span class="res-cat">${r.item.categoria}</span>
-          <span class="res-titulo">${r.item.titulo}</span>
-          <span class="res-resumen">${r.item.resumen}</span>
-        </a>`).join('');
-    }
-    box.classList.add('active');
-  });
-
-  document.addEventListener('click', e => {
-    const wrap = document.getElementById('search-wrap');
-    if(wrap && !wrap.contains(e.target)) box.classList.remove('active');
-  });
-
-  inp.addEventListener('keydown', e => {
-    if(e.key === 'Escape') box.classList.remove('active');
-  });
-})();
-
 </script>
-
-  <!-- ═══ BANNER COOKIES OpenLexIura ═══ -->
-  <div id="oli-cookie-banner">
-    <div class="oli-banner-inner">
-      <div class="oli-banner-text">
-        <strong>🍪 Usamos cookies</strong><br>
-        Utilizamos cookies técnicas y analíticas (Google Analytics) para mejorar tu experiencia.
-        <a href="politica-cookies.html">Más información</a>
-      </div>
-      <div class="oli-banner-actions">
-        <button class="oli-btn oli-btn-config" onclick="openConfig()">Configurar</button>
-        <button class="oli-btn oli-btn-reject" onclick="rejectAll()">Rechazar</button>
-        <button class="oli-btn oli-btn-accept" onclick="acceptAll()">Aceptar todo</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="oli-config-panel">
-    <div class="oli-config-inner">
-      <h3>Preferencias de cookies</h3>
-      <div class="oli-toggle-row">
-        <div>
-          <div class="oli-toggle-label">🔒 Cookies técnicas</div>
-          <div class="oli-toggle-desc">Necesarias para el funcionamiento del sitio. No pueden desactivarse.</div>
-        </div>
-        <label class="oli-switch"><input type="checkbox" checked disabled><span class="oli-slider"></span></label>
-      </div>
-      <div class="oli-toggle-row">
-        <div>
-          <div class="oli-toggle-label">📊 Cookies analíticas</div>
-          <div class="oli-toggle-desc">Google Analytics — miden el tráfico de forma anónima.</div>
-        </div>
-        <label class="oli-switch"><input type="checkbox" id="oli-analytics-toggle"><span class="oli-slider"></span></label>
-      </div>
-      <div class="oli-config-actions">
-        <button class="oli-btn oli-btn-reject" onclick="rejectAll()">Rechazar todas</button>
-        <button class="oli-btn oli-btn-accept" onclick="saveConfig()">Guardar preferencias</button>
-      </div>
-    </div>
-  </div>
-
-  <button id="oli-cookie-btn" title="Preferencias de cookies" onclick="reopenBanner()">🍪</button>
-
-  <script>
-    var banner=document.getElementById('oli-cookie-banner'),
-        panel=document.getElementById('oli-config-panel'),
-        floatBtn=document.getElementById('oli-cookie-btn'),
-        aToggle=document.getElementById('oli-analytics-toggle');
-    window.addEventListener('DOMContentLoaded',function(){
-      var c=localStorage.getItem('oli_cookie_consent');
-      if(!c){showBanner();}
-      else{floatBtn.classList.add('visible');if(JSON.parse(c).analytics)enableGA();}
-    });
-    function showBanner(){banner.classList.add('visible');panel.classList.remove('visible');}
-    function openConfig(){
-      panel.classList.add('visible');banner.classList.remove('visible');
-      var c=localStorage.getItem('oli_cookie_consent');
-      if(c)aToggle.checked=JSON.parse(c).analytics;
-    }
-    function acceptAll(){savePrefs({analytics:true});enableGA();close_();}
-    function rejectAll(){savePrefs({analytics:false});close_();}
-    function saveConfig(){var ok=aToggle.checked;savePrefs({analytics:ok});if(ok)enableGA();close_();}
-    function savePrefs(p){p.date=new Date().toISOString();localStorage.setItem('oli_cookie_consent',JSON.stringify(p));}
-    function close_(){banner.classList.remove('visible');panel.classList.remove('visible');floatBtn.classList.add('visible');}
-    function reopenBanner(){floatBtn.classList.remove('visible');showBanner();}
-    function enableGA(){
-      if(window._ga4ok)return;window._ga4ok=true;
-      // GA4 se gestiona desde GTM — aquí activamos el consentimiento para GTM
-      window.dataLayer=window.dataLayer||[];
-      window.dataLayer.push({'event':'cookie_consent_analytics'});
-    }
-  </script>
-
 </body>
 </html>
