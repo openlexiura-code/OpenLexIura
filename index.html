@@ -351,6 +351,7 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
 .hero::after{background:radial-gradient(circle, rgba(43,111,232,.08), transparent 70%)}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -371,7 +372,6 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
   <div class="hero-grid"></div>
   <div class="hero-content wrap">
     <div class="hero-copy">
-      <div class="kicker">Derecho claro, sin burocracia</div>
       <h1>El derecho en el idioma de la <em>calle</em></h1>
       <p class="sub">Entiende tus derechos y resuelve dudas sobre alquileres, despidos, herencias o compras con una experiencia visual mucho más elegante, moderna y memorable.</p>
       <div class="actions">
@@ -492,8 +492,8 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
 <div class="mobile-sticky-cta">
   <a class="btn btn-primary" href="consultas.html">Consulta tu caso (gratis 24 h)</a>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
 <script>
+document.addEventListener("DOMContentLoaded",function(){
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10));
 const burger = document.getElementById('nav-burger');
@@ -534,7 +534,6 @@ follow();
 document.querySelectorAll('a,button,input,.card').forEach(el=>{el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(91,188,255,.09)'});el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'})});
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
 <script>
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10));
@@ -578,6 +577,7 @@ document.querySelectorAll('a,button,input,.card').forEach(el=>{el.addEventListen
   document.addEventListener('click',e=>{const wrap=document.getElementById('search-wrap');if(wrap&&!wrap.contains(e.target))box.classList.remove('active');});
   inp.addEventListener('keydown',e=>{if(e.key==='Escape')box.classList.remove('active');});
 })();
+}); // end DOMContentLoaded
 </script>
 
   <!-- ═══ BANNER COOKIES OpenLexIura ═══ -->
