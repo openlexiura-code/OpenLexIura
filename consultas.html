@@ -329,15 +329,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- RESUMEN -->
       <div class="resumen-box" id="resumenBox"></div>
 
-      <div class="field">
-        <label for="email">Tu correo electrónico</label>
-        <input type="email" id="email" placeholder="ejemplo@correo.com" oninput="checkStep5()">
-      </div>
-      <div class="btn-row" style="flex-direction:column;gap:.75rem">
-        <button class="btn btn-submit" id="btn5" onclick="enviar()" disabled>✉️ Enviar consulta</button>
-        <button class="btn btn-back" onclick="goTo(4)" style="align-self:center">← Atrás</button>
-      </div>
-    </div>
+      <div class="field" style="margin-bottom:.75rem">
+  <label style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:#374151;font-weight:400;cursor:pointer;line-height:1.5">
+    <input type="checkbox" id="rgpd" onchange="checkStep5()" style="margin-top:3px;accent-color:#2563eb;flex-shrink:0">
+    <span>He leído y acepto la <a href="Legal/privacidad.html" style="color:#2563eb;text-decoration:underline">política de privacidad</a> y consiento el tratamiento de mis datos para recibir orientación legal.</span>
+  </label>
+</div>
+     <div class="btn-row" style="flex-direction:column;gap:.75rem">
+  <button class="btn btn-submit" id="btn5" onclick="enviar()" disabled>✉️ Enviar consulta</button>
+  <p style="font-size:.78rem;color:#94a3b8;text-align:center;margin-top:-.2rem">
+    🔒 Gratis, sin compromiso — respuesta en 24 h (L-V)
+  </p>
+  <button class="btn btn-back" onclick="goTo(4)" style="align-self:center">← Atrás</button>
+</div>
 
   </div><!-- /form-card -->
 
@@ -345,7 +349,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="success-screen" id="successScreen">
     <div class="success-icon">✅</div>
     <h2>Consulta enviada</h2>
-    <p>Hemos recibido tu consulta. Revisaremos los detalles y te enviaremos una orientación legal a tu correo en breve.</p>
+    <p>Hemos recibido tu consulta. Te enviaremos la orientación legal a tu correo en un plazo de 24 h (L-V).</p>
     <a href="index.html">← Volver al inicio</a>
   </div>
 
@@ -424,7 +428,8 @@ function checkStep3(){
 function checkStep5(){
   const v=document.getElementById('email').value;
   state.email=v;
-  document.getElementById('btn5').disabled=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  const rgpd=document.getElementById('rgpd')?.checked || false;
+  document.getElementById('btn5').disabled=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || !rgpd;
 }
 
 /* ── RESUMEN PASO 5 ── */
