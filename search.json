@@ -306,4 +306,64 @@
     ],
     "url": "trabajo/excedencia.html"
   }
+    {
+    "titulo": "Heredar sin testamento",
+    "categoria": "Herencias y Sucesiones",
+    "resumen": "Cuando no hay testamento, el Código Civil determina quién hereda y en qué proporción. Te explicamos el orden de herederos, los derechos del cónyuge viudo y cómo hacer la declaración de herederos ab intestato.",
+    "tags": [
+      "sucesión intestada",
+      "ab intestato",
+      "declaración herederos",
+      "orden herederos"
+    ],
+    "url": "Herencias/heredar-sin-testamento.html"
+  },
+  {
+    "titulo": "Impuesto de Sucesiones",
+    "categoria": "Herencias y Sucesiones",
+    "resumen": "El Impuesto de Sucesiones varía enormemente según la comunidad autónoma. Te explicamos los plazos, las bonificaciones por región y cuánto pagarías en la Comunidad Valenciana.",
+    "tags": [
+      "impuesto sucesiones",
+      "bonificación",
+      "comunidad autónoma",
+      "plazo"
+    ],
+    "url": "Herencias/impuesto-sucesiones.html"
+  },
+  {
+    "titulo": "La legítima",
+    "categoria": "Herencias y Sucesiones",
+    "resumen": "La legítima es la porción mínima que la ley reserva a los herederos forzosos. Te explicamos cuánto corresponde a hijos, padres y cónyuge, cómo se calcula y qué pasa con las parejas de hecho en la Comunidad Valenciana.",
+    "tags": [
+      "legítima",
+      "herederos forzosos",
+      "tercio mejora",
+      "cautela sociniana"
+    ],
+    "url": "Herencias/legitima.html"
+  },
+  {
+    "titulo": "Plazo para aceptar una herencia",
+    "categoria": "Herencias y Sucesiones",
+    "resumen": "En España no hay un plazo civil obligatorio para aceptar o renunciar a una herencia, pero el Impuesto de Sucesiones debe pagarse en 6 meses. Te explicamos el requerimiento notarial de 30 días, la aceptación a beneficio de inventario y cómo solicitar prórroga.",
+    "tags": [
+      "plazo herencia",
+      "aceptación",
+      "beneficio inventario",
+      "renuncia"
+    ],
+    "url": "Herencias/plazo-aceptar-herencia.html"
+  },
+  {
+    "titulo": "Desheredación: causas y límites",
+    "categoria": "Herencias y Sucesiones",
+    "resumen": "Un padre puede desheredar a un hijo, pero solo por causas tasadas en el Código Civil. Te explicamos qué dice la ley, cómo ha evolucionado la jurisprudencia del Tribunal Supremo sobre el maltrato psicológico y cómo impugnar una desheredación injusta.",
+    "tags": [
+      "desheredación",
+      "maltrato psicológico",
+      "Tribunal Supremo",
+      "impugnar testamento"
+    ],
+    "url": "Herencias/desheredar-hijo.html"
+  }
 ]
