@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>¿Me han despedido sin causa? El despido improcedente en España · OpenLexIura</title>
+<meta name="description" content="Tu empresa te ha despedido pero no puedes reclamar sin saber si es procedente, improcedente o nulo. Te explicamos la diferencia, cuándo tienes 33 días de indemnización y el plazo de 20 días hábiles para demandar.">
+<link rel="canonical" href="https://openlexiura.es/Trabajo/despidoimprocedente.html"/>
+<link rel="icon" type="image/png" href="../Icono.png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué indemnización me corresponde si mi despido es improcedente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si el despido es declarado improcedente, la empresa debe elegir entre readmitirte o pagarte 33 días de salario por año trabajado, con un máximo de 24 mensualidades (art. 56 ET). Para contratos anteriores al 12 de febrero de 2012, el tramo hasta esa fecha se calcula a 45 días/año."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es el plazo para impugnar un despido improcedente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El plazo es de 20 días hábiles desde la fecha de comunicación del despido (art. 59.3 ET). Es un plazo de caducidad: si no se actúa en ese tiempo, el despido queda firme aunque fuera improcedente. La presentación de la papeleta de conciliación ante el SMAC interrumpe el plazo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuándo es nulo un despido en lugar de improcedente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El despido es nulo cuando afecta a derechos fundamentales o existe discriminación. Los supuestos más frecuentes son: embarazo, maternidad o paternidad, reducción de jornada por cuidado de menores, baja por enfermedad cuando la empresa motiva el despido en la enfermedad (Ley 15/2022), o ejercicio de derechos sindicales. La consecuencia es la readmisión obligatoria más salarios de tramitación."
+      }
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fdf2f2;
+  --bg-2:#fbe9e9;
+  --text:#1f2937;
+  --muted:#64748b;
+  --brand:#dc2626;
+  --line:rgba(220,38,38,.14);
+  --line-2:rgba(15,23,42,.08);
+  --shadow:0 24px 80px rgba(0,0,0,.45);
+  --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(220,38,38,.07), transparent 28%),
+    radial-gradient(circle at 80% 15%, rgba(15,23,42,.04), transparent 24%),
+    radial-gradient(circle at 50% 100%, rgba(220,38,38,.05), transparent 30%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 2rem;transition:.35s ease;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(18px);
+  border-bottom-color:var(--line);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:700;letter-spacing:.02em;
+}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(220,38,38,.22), 0 10px 30px rgba(0,0,0,.28)}
+.nav-logo span{color:var(--brand)}
+.nav-links{display:flex;align-items:center;gap:1.4rem}
+.nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+.nav-links a:hover{color:var(--brand)}
+.nav-cta{
+  padding:.8rem 1.2rem;border:1px solid rgba(220,38,38,.22);border-radius:999px;
+  background:linear-gradient(180deg, rgba(220,38,38,.10), rgba(220,38,38,.05));
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(220,38,38,.14), 0 10px 24px rgba(0,0,0,.15)}
+.nav-burger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  background:none;border:none;cursor:pointer;padding:.5rem;z-index:1100;
+  width:44px;height:44px;
+}
+.nav-burger span{
+  display:block;width:24px;height:2px;background:#1f2937;border-radius:2px;
+  transition:transform .28s ease, opacity .28s ease;
+}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── ARTICLE HERO ── */
+.article-hero{
+  padding:8rem 1.5rem 4rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.article-hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(220,38,38,.10), transparent 55%),
+    radial-gradient(circle at 70% 20%, rgba(220,38,38,.07), transparent 45%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;max-width:780px;margin:0 auto}
+.cat-pill{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;
+  border-radius:999px;border:1px solid rgba(220,38,38,.25);
+  background:rgba(220,38,38,.08);color:var(--brand);
+  font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:1.4rem;animation:rise .8s ease both .05s;
+}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(220,38,38,.7)}
+.article-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,6vw,5.2rem);
+  line-height:.95;letter-spacing:-.025em;
+  margin-bottom:1.2rem;animation:rise .8s ease both .12s;
+}
+.article-title em{font-style:italic;color:var(--brand)}
+.article-lead{
+  font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;
+  color:#374151;max-width:62ch;margin:0 auto 2rem;
+  animation:rise .8s ease both .2s;
+}
+.article-meta{
+  display:flex;align-items:center;justify-content:center;gap:1.2rem;
+  flex-wrap:wrap;color:var(--muted);font-size:.85rem;
+  animation:rise .8s ease both .28s;
+}
+.article-meta span{display:flex;align-items:center;gap:.35rem}
+
+/* ── ARTICLE BODY ── */
+.article-body{
+  max-width:780px;margin:0 auto;padding:2rem 1.5rem 4rem;
+}
+
+/* quick-answer */
+.quick-answer{
+  background:linear-gradient(135deg, rgba(220,38,38,.06), rgba(220,38,38,.03));
+  border:1px solid rgba(220,38,38,.18);border-left:4px solid var(--brand);
+  border-radius:16px;padding:1.5rem 1.6rem;margin-bottom:2.8rem;
+}
+.quick-answer-label{
+  font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--brand);margin-bottom:.6rem;
+}
+.quick-answer p{line-height:1.75;color:#1f2937}
+.quick-answer strong{color:var(--brand)}
+
+/* section headings */
+.article-body h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.7rem,3.5vw,2.5rem);
+  line-height:1.1;letter-spacing:-.02em;
+  margin:2.8rem 0 1rem;
+}
+.article-body h2 span{color:var(--brand);font-style:italic}
+.article-body h3{
+  font-size:1.08rem;font-weight:700;margin:1.6rem 0 .6rem;color:#1f2937;
+}
+.article-body p{line-height:1.78;margin-bottom:1rem;color:#374151}
+.article-body ul,.article-body ol{padding-left:1.3rem;margin-bottom:1rem}
+.article-body li{line-height:1.75;margin-bottom:.5rem;color:#374151}
+.article-body strong{color:#1f2937}
+
+/* info-box */
+.info-box{
+  background:rgba(220,38,38,.05);
+  border:1px solid rgba(220,38,38,.15);
+  border-radius:14px;padding:1.3rem 1.5rem;margin:1.6rem 0;
+}
+.info-box-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:.5rem}
+.info-box p,.info-box li{color:#374151;line-height:1.72}
+
+/* juris-box */
+.juris-box{
+  background:linear-gradient(135deg, #fff5f5, #fff);
+  border:1px solid rgba(220,38,38,.18);
+  border-radius:14px;padding:1.3rem 1.5rem;margin:1.6rem 0;
+  position:relative;
+}
+.juris-box::before{
+  content:'⚖️';position:absolute;top:1rem;right:1.2rem;font-size:1.4rem;opacity:.5;
+}
+.juris-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:.55rem}
+.juris-box blockquote{
+  border-left:3px solid var(--brand);padding-left:1rem;
+  color:#374151;font-style:italic;line-height:1.72;margin:.6rem 0;
+}
+
+/* warn-box */
+.warn-box{
+  background:linear-gradient(135deg, rgba(220,38,38,.08), rgba(220,38,38,.03));
+  border:2px solid rgba(220,38,38,.30);
+  border-radius:14px;padding:1.3rem 1.5rem;margin:1.6rem 0;
+}
+.warn-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:.5rem}
+.warn-box p,.warn-box li{color:#1f2937;line-height:1.72}
+.warn-box strong{color:var(--brand)}
+
+/* split-table */
+.split-table{width:100%;border-collapse:collapse;margin:1.6rem 0;font-size:.93rem}
+.split-table th{
+  background:rgba(220,38,38,.08);color:var(--brand);
+  font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+  padding:.75rem 1rem;text-align:left;border-bottom:2px solid rgba(220,38,38,.15);
+}
+.split-table td{
+  padding:.75rem 1rem;border-bottom:1px solid rgba(220,38,38,.09);
+  color:#374151;line-height:1.6;vertical-align:top;
+}
+.split-table tr:last-child td{border-bottom:none}
+.split-table tr:hover td{background:rgba(220,38,38,.03)}
+
+/* steps */
+ol.steps{list-style:none;padding:0;margin:1.4rem 0;counter-reset:steps}
+ol.steps li{
+  counter-increment:steps;
+  display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start;
+}
+ol.steps li::before{
+  content:counter(steps);
+  flex-shrink:0;width:32px;height:32px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  font-weight:700;font-size:.88rem;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:.1rem;box-shadow:0 4px 14px rgba(220,38,38,.35);
+}
+ol.steps li div{flex:1}
+ol.steps li strong{display:block;color:#1f2937;margin-bottom:.2rem}
+ol.steps li p{margin:0;color:#374151;line-height:1.7;font-size:.95rem}
+
+/* formula box */
+.formula-box{
+  background:#fff;border:1px solid rgba(220,38,38,.18);
+  border-radius:14px;padding:1.3rem 1.5rem;margin:1.4rem 0;
+  font-family:'Courier New', monospace;font-size:.92rem;
+}
+.formula-box .formula-label{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:.6rem}
+.formula-box p{font-family:'Courier New',monospace;color:#1f2937;line-height:1.85;margin:0}
+.formula-box em{font-style:normal;color:var(--brand);font-weight:700}
+
+/* tags */
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:2.5rem 0 0}
+.tag{
+  padding:.45rem .85rem;border-radius:999px;
+  background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.14);
+  color:var(--brand);font-size:.8rem;font-weight:500;
+}
+
+/* CTA section */
+.article-cta{
+  background:linear-gradient(135deg, rgba(220,38,38,.07), rgba(220,38,38,.03));
+  border-top:1px solid rgba(220,38,38,.12);
+  padding:3.5rem 1.5rem;text-align:center;
+}
+.cta-box{
+  max-width:640px;margin:0 auto;
+  background:#fff;border:1px solid rgba(220,38,38,.16);
+  border-radius:24px;padding:2.5rem 2rem;
+  box-shadow:0 24px 70px rgba(0,0,0,.10);
+}
+.cta-box h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.4rem);
+  line-height:1.1;margin-bottom:1rem;
+}
+.cta-box h3 em{font-style:italic;color:var(--brand)}
+.cta-box p{color:#374151;line-height:1.75;margin-bottom:1.6rem}
+.btn-brand{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:1rem 2rem;border-radius:999px;
+  background:linear-gradient(135deg, #dc2626, #ef4444);
+  color:#fff;font-weight:700;font-size:1.02rem;
+  box-shadow:0 14px 36px rgba(220,38,38,.35);
+  transition:.25s ease;border:none;cursor:pointer;text-decoration:none;
+}
+.btn-brand:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 18px 40px rgba(220,38,38,.30);color:#fff}
+
+/* footer */
+footer{
+  padding:1.5rem;color:var(--muted);text-align:center;
+  border-top:1px solid var(--line-2);font-size:.85rem;
+}
+
+/* cursor */
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(220,38,38,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(220,38,38,.12), inset 0 0 6px rgba(255,255,255,.22);transition:width .08s linear,height .08s linear,border-color .08s linear,opacity .08s linear,transform .08s linear}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:var(--brand);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(220,38,38,.75)}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* mobile */
+@media(max-width:640px){
+  nav{padding:1rem 1.1rem}
+  .nav-burger{display:flex}
+  .nav-links{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:fixed;inset:0;top:0;padding:5.5rem 1.5rem 2rem;
+    background:#fff;z-index:1000;transform:translateX(100%);
+    transition:transform .32s ease;border-left:1px solid var(--line);
+    overflow-y:auto;
+  }
+  .nav-links.open{transform:translateX(0)}
+  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.42);z-index:999;}
+  .nav-overlay.open{display:block}
+  nav.menu-open{background:#fff !important;backdrop-filter:none}
+  .nav-links a{padding:1rem 0;font-size:1.1rem;border-bottom:1px solid rgba(220,38,38,.07);min-height:44px;display:flex;align-items:center}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-cta{margin-top:1rem;justify-content:center;border-radius:12px;background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff !important}
+  .article-hero{padding:7rem 1.2rem 2.5rem}
+  .article-body{padding:1.5rem 1.2rem 3rem}
+  .split-table{font-size:.8rem}
+  .split-table th,.split-table td{padding:.6rem .7rem}
+  .cta-box{padding:2rem 1.2rem}
+  .cursor-ring,.cursor-dot{display:none}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">
+    <img src="../Icono.png" alt="OpenLexIura">
+    <span>OpenLexIura</span>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Inicio</a>
+    <a href="../consultas.html">Consultas</a>
+    <a class="nav-cta" href="portal.html">Acceder al portal</a>
+  </div>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<!-- ── HERO ── -->
+<header class="article-hero">
+  <div class="hero-inner">
+    <div class="cat-pill">Trabajo · Despido</div>
+    <h1 class="article-title">Me han despedido.<br>¿Y <em>ahora qué?</em></h1>
+    <p class="article-lead">La empresa dice que hay "causas". Tú crees que no. Hay un plazo de 20 días hábiles para actuar. Esto es lo que dice el Estatuto de los Trabajadores y lo que debes hacer hoy.</p>
+    <div class="article-meta">
+      <span>📋 Estatuto de los Trabajadores</span>
+      <span>·</span>
+      <span>⏱ Lectura: 7 min</span>
+      <span>·</span>
+      <span>Actualizado 2025</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main class="article-body">
+
+  <!-- RESPUESTA RÁPIDA -->
+  <div class="quick-answer reveal">
+    <div class="quick-answer-label">Respuesta rápida</div>
+    <p>El despido improcedente obliga a la empresa a elegir entre readmitirte o pagarte <strong>33 días de salario por año trabajado</strong>, con un máximo de 24 mensualidades (art. 56 ET). El plazo para impugnarlo es de <strong>20 días hábiles</strong> desde la carta de despido. Si no actúas en ese plazo, el despido queda firme aunque fuera injusto.</p>
+  </div>
+
+  <!-- H2 1: Las tres caras del despido -->
+  <h2 class="reveal">Las <span>tres caras</span> del despido</h2>
+  <p class="reveal">Cuando una empresa despide a un trabajador, la ley española contempla tres posibles calificaciones. De cuál se trate depende todo: si cobras indemnización, cuánto, y si tienes que volver al trabajo.</p>
+
+  <table class="split-table reveal">
+    <thead>
+      <tr>
+        <th>Tipo de despido</th>
+        <th>Consecuencia</th>
+        <th>Indemnización</th>
+        <th>Salarios de tramitación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Procedente</strong></td>
+        <td>La empresa acredita la causa alegada</td>
+        <td>0 € (disciplinario) / 20 días/año máx. 12 mens. (objetivo)</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><strong>Improcedente</strong></td>
+        <td>La empresa no acredita la causa o hay defecto de forma</td>
+        <td>33 días/año, máx. 24 mensualidades</td>
+        <td>Solo si hay readmisión (representantes sindicales siempre)</td>
+      </tr>
+      <tr>
+        <td><strong>Nulo</strong></td>
+        <td>Afecta derechos fundamentales, embarazo, baja, discriminación…</td>
+        <td>Readmisión obligatoria + salarios de tramitación + posible indemnización adicional</td>
+        <td>Sí, desde el despido hasta la sentencia</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box reveal">
+    <div class="info-box-label">Importante</div>
+    <p>En el despido disciplinario <strong>procedente</strong> no hay indemnización. En el despido objetivo procedente (causas económicas, técnicas, organizativas o de producción) la indemnización es de 20 días por año con un máximo de 12 mensualidades. No confundas ambas modalidades.</p>
+  </div>
+
+  <!-- H2 2: Cuándo es improcedente -->
+  <h2 class="reveal">Cuándo es <span>improcedente</span><br>las causas más frecuentes</h2>
+  <p class="reveal">El despido improcedente surge cuando la empresa no puede acreditar ante un juez la causa que alegó en la carta de despido, o cuando incurrió en algún defecto formal que la ley sanciona con la improcedencia. Estos son los casos más habituales:</p>
+
+  <div class="info-box reveal">
+    <div class="info-box-label">Causas frecuentes de improcedencia</div>
+    <ul>
+      <li><strong>Carta de despido sin hechos concretos (art. 55.1 ET):</strong> La carta debe describir los hechos que motivan el despido con precisión suficiente para que el trabajador pueda defenderse. El Tribunal Supremo, en la STS 1250/2024 de 18 de noviembre, ha exigido además el trámite de audiencia previa en determinados supuestos.</li>
+      <li><strong>Causas disciplinarias no acreditadas en juicio:</strong> La empresa alega una falta grave pero en el juicio no consigue probarlo. El juez declara el despido improcedente.</li>
+      <li><strong>Despido objetivo sin causa económica real:</strong> Se invoca la causa objetiva (pérdidas, reducción de ingresos) pero la empresa no aporta documentación que la justifique o la situación económica no encaja con el requisito legal.</li>
+      <li><strong>Defecto de forma en despido objetivo:</strong> Ausencia del preaviso de 15 días (art. 53.1.c ET), o no poner la indemnización de 20 días a disposición del trabajador en el momento de la comunicación (art. 53.1.b ET). Estos defectos formales convierten automáticamente el despido en improcedente.</li>
+    </ul>
+  </div>
+
+  <div class="juris-box reveal">
+    <div class="juris-label">Marco legal</div>
+    <blockquote>«El despido disciplinario del trabajador podrá ser impugnado por este dentro de los veinte días hábiles siguientes a aquel en que se hubiera producido.» <strong>— Art. 59.3 Estatuto de los Trabajadores</strong></blockquote>
+    <blockquote>«El despido nulo tendrá el efecto de la readmisión inmediata del trabajador, con abono de los salarios dejados de percibir.» <strong>— Art. 55.6 Estatuto de los Trabajadores</strong></blockquote>
+  </div>
+
+  <!-- H2 3: Los 20 días hábiles -->
+  <h2 class="reveal">Los <span>20 días hábiles</span><br>el plazo que lo cambia todo</h2>
+
+  <div class="warn-box reveal">
+    <div class="warn-label">⚠ Atención: plazo de caducidad</div>
+    <p>El art. 59.3 ET establece un plazo de <strong>caducidad</strong> de <strong>20 días hábiles</strong> desde la fecha de la carta de despido. No es un plazo de prescripción: <strong>no se interrumpe con ninguna gestión administrativa ordinaria</strong>. Si vence sin haber presentado la papeleta de conciliación, el despido queda firme de forma definitiva aunque fuera injusto.</p>
+    <p style="margin-top:.8rem">Solo se interrumpe (y pausa durante su tramitación) con la presentación de la <strong>papeleta de conciliación ante el SMAC/CEMAC</strong>. El acto de conciliación posterior suspende el cómputo del plazo; una vez celebrado o declarado sin efecto, el plazo reanuda su curso.</p>
+  </div>
+
+  <h3>Pasos exactos para no perder el derecho</h3>
+  <ol class="steps reveal">
+    <li>
+      <div>
+        <strong>Guarda la carta de despido</strong>
+        <p>La fecha que consta en ella es el punto de partida del plazo. Si te la dieron en mano, firma un acuse de recibo y quédate con una copia. Si llegó por burofax, guarda el sobre y el contenido. Sin carta firmada, la empresa tiene dificultades para probar la fecha exacta del despido.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Presenta la papeleta de conciliación en el SMAC/CEMAC</strong>
+        <p>Es el Servicio de Mediación, Arbitraje y Conciliación de tu Comunidad Autónoma. El trámite es gratuito, no necesitas abogado y lo puedes hacer en persona o telemáticamente. La mera presentación interrumpe el plazo de los 20 días hábiles. Hazlo en cuanto tengas la carta: no esperes.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Acude al acto de conciliación</strong>
+        <p>El SMAC convoca a ambas partes. En ese momento la empresa puede ofertar un acuerdo (una indemnización pactada) o no llegar a un acuerdo. Si no hay acuerdo o la empresa no comparece, el acto se levanta "sin avenencia" y podrás interponer la demanda judicial. Si hay acuerdo, asegúrate de que la cantidad es justa antes de firmar: una vez firmado, el derecho a reclamar queda extinguido.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Interpón la demanda ante el Juzgado de lo Social (LRJS)</strong>
+        <p>Para la demanda judicial sí se recomienda contar con abogado laboralista. El Juzgado de lo Social declarará el despido procedente, improcedente o nulo. La empresa deberá optar entre readmisión o indemnización (salvo nulidad, donde la readmisión es obligatoria). Los plazos medios varían entre 3 y 12 meses según la carga del juzgado.</p>
+      </div>
+    </li>
+  </ol>
+
+  <!-- H2 4: Cómo se calcula la indemnización -->
+  <h2 class="reveal">Cómo se calcula <span>la indemnización</span><br>33 vs. 20 días</h2>
+  <p class="reveal">El cálculo parece sencillo pero tiene matices importantes: la antigüedad total, el salario bruto real (con pagas extra) y la fecha de inicio del contrato determinan si aplica el régimen del doble tramo.</p>
+
+  <div class="juris-box reveal">
+    <div class="juris-label">Base legal</div>
+    <p><strong>Despido improcedente (art. 56 ET):</strong> 33 días de salario por año de servicio, con un máximo de <strong>24 mensualidades</strong>.</p>
+    <p style="margin-top:.7rem"><strong>Despido objetivo procedente (art. 53 ET):</strong> 20 días de salario por año de servicio, con un máximo de <strong>12 mensualidades</strong>.</p>
+    <p style="margin-top:.7rem"><strong>Contratos anteriores al 12/02/2012 (Disposición Transitoria 5.ª ET):</strong> el tramo hasta esa fecha se calcula a 45 días/año (máx. 42 mensualidades del total), y el tramo posterior a 33 días/año. El tope global sigue siendo 24 mensualidades.</p>
+  </div>
+
+  <div class="formula-box reveal">
+    <div class="formula-label">Fórmula de cálculo</div>
+    <p><em>Salario diario</em> = (Salario bruto anual + Pagas extra) ÷ 365</p>
+    <p><em>Indemnización</em> = Salario diario × 33 × Años trabajados</p>
+  </div>
+
+  <div class="info-box reveal">
+    <div class="info-box-label">Ejemplo numérico</div>
+    <p><strong>Datos:</strong> Trabajador con 5 años de antigüedad, contrato posterior a 2012, salario de 1.500 €/mes + 2 pagas extra de 1.500 € cada una.</p>
+    <ul style="margin-top:.6rem">
+      <li>Salario bruto anual: (1.500 × 12) + 3.000 = <strong>21.000 €</strong></li>
+      <li>Salario diario: 21.000 ÷ 365 = <strong>57,53 €</strong></li>
+      <li>Indemnización: 57,53 × 33 × 5 = <strong>9.492 €</strong></li>
+    </ul>
+    <p style="margin-top:.8rem">Recuerda incluir en el salario regulador todos los conceptos salariales fijos (plus de transporte si es regular, plus de productividad garantizado, etc.). La empresa a veces calcula la indemnización de forma incompleta.</p>
+  </div>
+
+  <!-- H2 5: El despido nulo -->
+  <h2 class="reveal">El despido nulo: <span>cuando la indemnización</span><br>no basta</h2>
+  <p class="reveal">El despido nulo no es una versión agravada del improcedente: es una categoría diferente con consecuencias radicalmente distintas. La empresa no tiene opción de indemnizar: <strong>debe readmitir</strong>.</p>
+
+  <div class="warn-box reveal">
+    <div class="warn-label">Causas de nulidad</div>
+    <ul>
+      <li><strong>Embarazo:</strong> Desde el inicio del embarazo hasta la reincorporación tras la maternidad (aunque la empresa no supiera del embarazo).</li>
+      <li><strong>Maternidad / paternidad:</strong> Durante el permiso de nacimiento y en los 12 meses posteriores a la reincorporación.</li>
+      <li><strong>Reducción de jornada por cuidado:</strong> De menores hasta 12 años, familiar dependiente o víctima de violencia de género.</li>
+      <li><strong>Baja por enfermedad (Ley 15/2022):</strong> La nueva Ley de Igualdad de Trato y No Discriminación tipifica la enfermedad como causa de discriminación. Si la empresa motiva el despido, directa o indirectamente, en la enfermedad o situación de incapacidad temporal del trabajador, el despido es <strong>nulo</strong>.</li>
+      <li><strong>Ejercicio de derechos sindicales:</strong> Despidos vinculados a la afiliación sindical, representación de trabajadores o actividad sindical.</li>
+      <li><strong>Discriminación:</strong> Por razón de sexo, origen racial, religión, discapacidad, orientación sexual u otra causa protegida.</li>
+    </ul>
+  </div>
+
+  <div class="juris-box reveal">
+    <div class="juris-label">Ley 15/2022 y despido durante IT</div>
+    <blockquote>«Nadie podrá ser discriminado por razón de enfermedad o condición de salud, estado serológico o predisposición genética a sufrir patologías y trastornos.» <strong>— Art. 2.1.h Ley 15/2022, de Igualdad de Trato y No Discriminación</strong></blockquote>
+    <p style="margin-top:.8rem">El Tribunal Supremo y los Juzgados de lo Social han comenzado a declarar nulos los despidos producidos durante una baja por incapacidad temporal cuando la empresa no acredita una causa ajena a la enfermedad. Antes de la Ley 15/2022 estos despidos solían calificarse de improcedentes; ahora la tendencia jurisprudencial apunta a la nulidad.</p>
+  </div>
+
+  <p class="reveal">En el despido nulo, la empresa está obligada a:</p>
+  <ul class="reveal">
+    <li><strong>Readmitir</strong> al trabajador en las mismas condiciones anteriores al despido.</li>
+    <li><strong>Abonar los salarios de tramitación</strong>: todas las mensualidades no cobradas desde la fecha del despido hasta la sentencia o la readmisión efectiva.</li>
+    <li>Hacer frente a una posible <strong>indemnización adicional</strong> por daños y perjuicios si el trabajador acredita daño moral u otro perjuicio derivado de la vulneración del derecho fundamental.</li>
+  </ul>
+
+  <!-- TAGS -->
+  <div class="article-tags reveal">
+    <span class="tag">#DespidoImprocedente</span>
+    <span class="tag">#Art56ET</span>
+    <span class="tag">#20DíasHábiles</span>
+    <span class="tag">#IndemnizaciónDespido</span>
+    <span class="tag">#SMAC</span>
+    <span class="tag">#DespidoNulo</span>
+    <span class="tag">#Ley15/2022</span>
+  </div>
+
+</main>
+
+<!-- ── CTA ── -->
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Te acaban de dar <em>la carta de despido</em>?</h3>
+    <p>El plazo de 20 días hábiles empieza a correr hoy. Cuéntanos tu caso y te orientamos sobre si tu despido es improcedente, si puedes reclamar más y los pasos exactos para no perder el derecho.</p>
+    <a class="btn-brand" href="../consultas.html">Consultar mi caso →</a>
+  </div>
+</section>
+
+<footer>© 2026 OpenLexIura · Información legal divulgativa. No constituye asesoramiento jurídico individualizado.</footer>
+
+<!-- ── SCRIPTS ── -->
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+
+// Mobile burger
+const burger = document.getElementById('nav-burger');
+const navLinks = document.getElementById('nav-links');
+const navOverlay = document.getElementById('nav-overlay');
+function closeMenu(){
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+  navOverlay.classList.remove('open');
+  nav.classList.remove('menu-open');
+  document.body.style.overflow = '';
+}
+burger.addEventListener('click', () => {
+  const opening = !navLinks.classList.contains('open');
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  navOverlay.classList.toggle('open');
+  nav.classList.toggle('menu-open');
+  document.body.style.overflow = opening ? 'hidden' : '';
+});
+navOverlay.addEventListener('click', closeMenu);
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+// Reveal on scroll
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if(e.isIntersecting) e.target.classList.add('visible');
+}), {threshold: .10});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Custom cursor
+const cursorRing = document.createElement('div');
+cursorRing.className = 'cursor-ring';
+const cursorDot = document.createElement('div');
+cursorDot.className = 'cursor-dot';
+document.body.appendChild(cursorRing);
+document.body.appendChild(cursorDot);
+document.body.style.cursor = 'none';
+document.documentElement.style.cursor = 'none';
+let mx = 0, my = 0, rx = 0, ry = 0;
+window.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursorRing.style.opacity = '1';
+  cursorDot.style.opacity = '1';
+});
+window.addEventListener('mouseleave', () => {
+  cursorRing.style.opacity = '0';
+  cursorDot.style.opacity = '0';
+});
+window.addEventListener('mouseenter', () => {
+  cursorRing.style.opacity = '1';
+  cursorDot.style.opacity = '1';
+});
+function follow(){
+  rx += (mx - rx) * 0.55;
+  ry += (my - ry) * 0.55;
+  cursorRing.style.left = rx + 'px';
+  cursorRing.style.top = ry + 'px';
+  cursorDot.style.left = mx + 'px';
+  cursorDot.style.top = my + 'px';
+  requestAnimationFrame(follow);
+}
+follow();
+document.querySelectorAll('a,button,.tag').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursorRing.style.transform = 'translate(-50%,-50%) scale(1.28)';
+    cursorRing.style.borderRadius = '999px';
+    cursorRing.style.background = 'rgba(220,38,38,.09)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursorRing.style.transform = 'translate(-50%,-50%) scale(1)';
+    cursorRing.style.borderRadius = '50%';
+    cursorRing.style.background = 'transparent';
+  });
+});
+</script>
+
+<!-- ═══ BANNER COOKIES OpenLexIura ═══ -->
+<style>
+#oli-cookie-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#12121a;border-top:2px solid #C9A84C;padding:1.2rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 24px rgba(0,0,0,.5)}
+#oli-cookie-banner.visible{display:block}
+.oli-banner-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.oli-banner-text{flex:1;min-width:260px;font-size:.88rem;color:#b0b0c8;line-height:1.6}
+.oli-banner-text strong{color:#C9A84C}
+.oli-banner-text a{color:#C9A84C}
+.oli-banner-actions{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+.oli-btn{padding:.55rem 1.3rem;border-radius:4px;font-size:.85rem;cursor:pointer;border:none;transition:opacity .2s;white-space:nowrap;font-family:'Inter',sans-serif}
+.oli-btn:hover{opacity:.85}
+.oli-btn-accept{background:#C9A84C;color:#0a0a0f;font-weight:700}
+.oli-btn-reject{background:transparent;color:#b0b0c8;border:1px solid #3a3a54}
+.oli-btn-config{background:transparent;color:#C9A84C;border:1px solid #C9A84C}
+#oli-config-panel{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100000;background:#1a1a26;border-top:2px solid #C9A84C;padding:1.8rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6)}
+#oli-config-panel.visible{display:block}
+.oli-config-inner{max-width:700px;margin:0 auto}
+.oli-config-inner h3{color:#C9A84C;font-size:1rem;margin-bottom:1rem;letter-spacing:.05em;text-transform:uppercase}
+.oli-toggle-row{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid #2a2a40}
+.oli-toggle-row:last-of-type{border-bottom:none}
+.oli-toggle-label{color:#e8e8f0;font-size:.9rem}
+.oli-toggle-desc{color:#7070a0;font-size:.78rem;margin-top:.2rem}
+.oli-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+.oli-switch input{opacity:0;width:0;height:0}
+.oli-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#2a2a40;border-radius:24px;transition:.3s}
+.oli-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:#7070a0;border-radius:50%;transition:.3s}
+input:checked+.oli-slider{background:#C9A84C}
+input:checked+.oli-slider:before{transform:translateX(20px);background:#0a0a0f}
+input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
+.oli-config-actions{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
+#oli-cookie-btn{display:none;position:fixed;bottom:1.2rem;left:1.2rem;z-index:99998;background:#1a1a26;border:1px solid #C9A84C;color:#C9A84C;font-size:1.2rem;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:background .2s;line-height:40px;text-align:center}
+#oli-cookie-btn:hover{background:#C9A84C;color:#0a0a0f}
+#oli-cookie-btn.visible{display:block}
+</style>
+<div id="oli-cookie-banner">
+  <div class="oli-banner-inner">
+    <div class="oli-banner-text">
+      <strong>🍪 Usamos cookies</strong><br>
+      Utilizamos cookies técnicas y analíticas (Google Analytics) para mejorar tu experiencia.
+      <a href="../politica-cookies.html">Más información</a>
+    </div>
+    <div class="oli-banner-actions">
+      <button class="oli-btn oli-btn-config" onclick="openConfig()">Configurar</button>
+      <button class="oli-btn oli-btn-reject" onclick="rejectAll()">Rechazar</button>
+      <button class="oli-btn oli-btn-accept" onclick="acceptAll()">Aceptar todo</button>
+    </div>
+  </div>
+</div>
+
+<div id="oli-config-panel">
+  <div class="oli-config-inner">
+    <h3>Preferencias de cookies</h3>
+    <div class="oli-toggle-row">
+      <div>
+        <div class="oli-toggle-label">🔒 Cookies técnicas</div>
+        <div class="oli-toggle-desc">Necesarias para el funcionamiento del sitio. No pueden desactivarse.</div>
+      </div>
+      <label class="oli-switch"><input type="checkbox" checked disabled><span class="oli-slider"></span></label>
+    </div>
+    <div class="oli-toggle-row">
+      <div>
+        <div class="oli-toggle-label">📊 Cookies analíticas</div>
+        <div class="oli-toggle-desc">Google Analytics — miden el tráfico de forma anónima.</div>
+      </div>
+      <label class="oli-switch"><input type="checkbox" id="oli-analytics-toggle"><span class="oli-slider"></span></label>
+    </div>
+    <div class="oli-config-actions">
+      <button class="oli-btn oli-btn-reject" onclick="rejectAll()">Rechazar todas</button>
+      <button class="oli-btn oli-btn-accept" onclick="saveConfig()">Guardar preferencias</button>
+    </div>
+  </div>
+</div>
+
+<button id="oli-cookie-btn" title="Preferencias de cookies" onclick="reopenBanner()">🍪</button>
+
+<script>
+var banner=document.getElementById('oli-cookie-banner'),
+    panel=document.getElementById('oli-config-panel'),
+    floatBtn=document.getElementById('oli-cookie-btn'),
+    aToggle=document.getElementById('oli-analytics-toggle');
+window.addEventListener('DOMContentLoaded',function(){
+  var c=localStorage.getItem('oli_cookie_consent');
+  if(!c){showBanner();}
+  else{floatBtn.classList.add('visible');if(JSON.parse(c).analytics)enableGA();}
+});
+function showBanner(){banner.classList.add('visible');panel.classList.remove('visible');}
+function openConfig(){
+  panel.classList.add('visible');banner.classList.remove('visible');
+  var c=localStorage.getItem('oli_cookie_consent');
+  if(c)aToggle.checked=JSON.parse(c).analytics;
+}
+function acceptAll(){savePrefs({analytics:true});enableGA();close_();}
+function rejectAll(){savePrefs({analytics:false});close_();}
+function saveConfig(){var ok=aToggle.checked;savePrefs({analytics:ok});if(ok)enableGA();close_();}
+function savePrefs(p){p.date=new Date().toISOString();localStorage.setItem('oli_cookie_consent',JSON.stringify(p));}
+function close_(){banner.classList.remove('visible');panel.classList.remove('visible');floatBtn.classList.add('visible');}
+function reopenBanner(){floatBtn.classList.remove('visible');showBanner();}
+function enableGA(){
+  if(window._ga4ok)return;window._ga4ok=true;
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({'event':'cookie_consent_analytics'});
+}
+</script>
+
+</body>
+</html>
