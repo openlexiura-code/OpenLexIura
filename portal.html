@@ -291,16 +291,18 @@ footer a:hover{opacity:.7}
     {"@type":"ListItem","position":1,"name":"Vivienda y Propiedad","url":"https://www.openlexiura.es/Vivienda/portal.html"},
     {"@type":"ListItem","position":2,"name":"Alquiler y Arrendamientos","url":"https://www.openlexiura.es/Alquiler/portal.html"},
     {"@type":"ListItem","position":3,"name":"Consumo y Compras","url":"https://www.openlexiura.es/Consumo/portal.html"},
+    "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Vivienda y Propiedad","url":"https://www.openlexiura.es/Vivienda/portal.html"},
+    {"@type":"ListItem","position":2,"name":"Alquiler y Arrendamientos","url":"https://www.openlexiura.es/Alquiler/portal.html"},
+    {"@type":"ListItem","position":3,"name":"Consumo y Compras","url":"https://www.openlexiura.es/Consumo/portal.html"},
     {"@type":"ListItem","position":4,"name":"Impuestos y Fiscalidad","url":"https://www.openlexiura.es/Impuestos/portal.html"},
-    {"@type":"ListItem","position":5,"name":"Herencias y Sucesiones","url":"https://www.openlexiura.es/Herencia/portal.html"},
-    {"@type":"ListItem","position":6,"name":"Tráfico y Accidentes","url":"https://www.openlexiura.es/Multas/portal.html"},
-    {"@type":"ListItem","position":7,"name":"Seguridad Social","url":"https://www.openlexiura.es/SSocial/portal.html"},
-    {"@type":"ListItem","position":8,"name":"Derechos del Trabajador","url":"https://www.openlexiura.es/Trabajo/portal.html"}
+    {"@type":"ListItem","position":5,"name":"Derechos del Trabajador","url":"https://www.openlexiura.es/Trabajo/portal.html"},
+    {"@type":"ListItem","position":6,"name":"Herencias y Sucesiones","url":"https://www.openlexiura.es/Herencias/portal.html"},
+    {"@type":"ListItem","position":7,"name":"Divorcio y Familia","url":"https://www.openlexiura.es/Divorcio-Familia/portal.html"},
+    {"@type":"ListItem","position":8,"name":"Accidentes y Tráfico","url":"https://www.openlexiura.es/Accidentes-Multas/portal.html"},
+    {"@type":"ListItem","position":9,"name":"Deudas y Recobro","url":"https://www.openlexiura.es/Deudas/portal.html"},
+    {"@type":"ListItem","position":10,"name":"Extranjería e Inmigración","url":"https://www.openlexiura.es/Extranjeria/portal.html"}
   ]
-}
-</script>
-</head>
-<body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -343,18 +345,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="areas-grid" id="areasGrid"></div>
   <p class="no-results" id="noResults">No se encontraron áreas para esa búsqueda. Prueba con otras palabras.</p>
 
-  <div class="coming-soon-block">
-    <h2 class="section-label" style="margin-top:3rem">Áreas próximamente</h2>
-    <div class="coming-soon-grid">
-      <div class="coming-card">💼 <span>Trabajo y Empleo</span></div>
-      <div class="coming-card">👨‍👩‍👧 <span>Familia y Divorcio</span></div>
-      <div class="coming-card">⚖️ <span>Penal</span></div>
-      <div class="coming-card">✈️ <span>Extranjería</span></div>
-      <div class="coming-card">🚗 <span>Accidentes</span></div>
-    </div>
-    <p style="font-size:.85rem;color:var(--muted);margin-top:1.2rem">¿Te interesa alguna de estas áreas?</p>
-    <a href="consultas.html" class="coming-cta">Avísame cuando esté lista →</a>
-  </div>
+  
 </div>
 
 <footer>
@@ -435,14 +426,36 @@ document.addEventListener('mousemove',e=>{
 
 /* ── DATOS ── */
 const AREAS=[
-  {id:'Vivienda/portal.html',  icon:'🏠',color:'#2563eb',titulo:'Vivienda y Propiedad',      desc:'Compraventa, hipotecas, comunidades de propietarios y derechos del comprador.',     url:'Vivienda/portal.html'},
-  {id:'Alquiler/portal.html',  icon:'🔑',color:'#10b981',titulo:'Alquiler y Arrendamientos', desc:'Contratos de alquiler, fianzas, desahucios y derechos del inquilino y propietario.',url:'Alquiler/portal.html'},
-  {id:'Consumo/portal.html',   icon:'🛒',color:'#f59e0b',titulo:'Consumo y Compras',          desc:'Devoluciones, garantías, fraudes, comercio electrónico y defensa del consumidor.',  url:'Consumo/portal.html'},
-  {id:'Impuestos/portal.html', icon:'📊',color:'#ef4444',titulo:'Impuestos y Fiscalidad',     desc:'IRPF, IVA, declaración de la renta, sanciones de Hacienda y recursos fiscales.',   url:'Impuestos/portal.html'},
-  {id:'Herencias/portal.html',  icon:'📜',color:'#d97706',titulo:'Herencias y Sucesiones',     desc:'Testamentos, reparto de herencia, legítimas, aceptación o renuncia.',               url:'Herencia/portal.html'},
-  {id:'Trafico/portal.html',   icon:'🚗',color:'#84cc16',titulo:'Tráfico y Accidentes',       desc:'Multas, accidentes, seguros, puntos del carné y recursos ante la DGT.',            url:'Multas/portal.html'},
-  {id:'ssocial',    icon:'🛡️', color:'#3a9e6f', titulo:'Seguridad Social',            desc:'Prestaciones por desempleo, pensiones, afiliación, bajas médicas y cotización.',       url:'SSocial/portal.html'},
-  {id:'trabajo', icon:'💼', color:'#8b5cf6', titulo:'Derechos del Trabajador', desc:'Despidos, nóminas, falsos autónomos y delitos contra la Seguridad Social.', url:'Trabajo/portal.html'},
+  {id:'Vivienda/portal.html', icon:'🏠',color:'#2563eb',titulo:'Vivienda y Propiedad',
+    desc:'Compraventa, hipotecas, comunidades de propietarios y derechos del comprador.',
+    url:'Vivienda/portal.html'},
+  {id:'Alquiler/portal.html', icon:'🔑',color:'#10b981',titulo:'Alquiler y Arrendamientos',
+    desc:'Contratos de alquiler, fianzas, desahucios y derechos del inquilino y propietario.',
+    url:'Alquiler/portal.html'},
+  {id:'Consumo/portal.html', icon:'🛒',color:'#f59e0b',titulo:'Consumo y Compras',
+    desc:'Devoluciones, garantías, fraudes, comercio electrónico y defensa del consumidor.',
+    url:'Consumo/portal.html'},
+  {id:'Impuestos/portal.html', icon:'📊',color:'#ef4444',titulo:'Impuestos y Fiscalidad',
+    desc:'IRPF, IVA, declaración de la renta, sanciones de Hacienda y recursos fiscales.',
+    url:'Impuestos/portal.html'},
+  {id:'Trabajo/portal.html', icon:'💼',color:'#8b5cf6',titulo:'Derechos del Trabajador',
+    desc:'Despidos, nóminas, falsos autónomos, ERTE y delitos contra la Seguridad Social.',
+    url:'Trabajo/portal.html'},
+  {id:'Herencias/portal.html', icon:'📜',color:'#7c3aed',titulo:'Herencias y Sucesiones',
+    desc:'Heredar sin testamento, impuesto de sucesiones, legítimas y plazos de aceptación.',
+    url:'Herencias/portal.html'},
+  {id:'Divorcio-Familia/portal.html', icon:'👨‍👩‍👧',color:'#db2777',titulo:'Divorcio y Familia',
+    desc:'Divorcio express, custodia compartida, pensión de alimentos y modificación de medidas.',
+    url:'Divorcio-Familia/portal.html'},
+  {id:'Accidentes-Multas/portal.html', icon:'🚗',color:'#d97706',titulo:'Accidentes y Tráfico',
+    desc:'Parte amistoso, baremo de lesiones 2026, seguro que no paga y atropello de peatón.',
+    url:'Accidentes-Multas/portal.html'},
+  {id:'Deudas/portal.html', icon:'💳',color:'#0891b2',titulo:'Deudas y Recobro',
+    desc:'Cómo salir de ASNEF, prescripción de deudas, empresa de recobro y Segunda Oportunidad.',
+    url:'Deudas/portal.html'},
+  {id:'Extranjeria/portal.html', icon:'🌍',color:'#059669',titulo:'Extranjería e Inmigración',
+    desc:'NIE, arraigo social, reagrupación familiar y nacionalidad por residencia en España.',
+    url:'Extranjeria/portal.html'},
 ];
 
 function hexBg(hex){return hex+'18'}
