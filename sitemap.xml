@@ -41,4 +41,21 @@
   <url><loc>https://openlexiura.es/Vivienda/obrascomunidad.html</loc></url>
   <url><loc>https://openlexiura.es/Vivienda/okupas.html</loc></url>
   <url><loc>https://openlexiura.es/Vivienda/ruidosvecinos.html</loc></url>
+  <url><loc>https://openlexiura.es/Vivienda/vecinomoroso.html</loc></url>
+  <url><loc>https://openlexiura.es/Vivienda/viciosocultos.html</loc></url>
+
+  <url><loc>https://openlexiura.es/Impuestos/portal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://openlexiura.es/Impuestos/bizum.html</loc></url>
+  <url><loc>https://openlexiura.es/Impuestos/calculadorarenta.html</loc></url>
+
+  <url><loc>https://openlexiura.es/Trabajo/portal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://openlexiura.es/Trabajo/despidoimprocedente.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/cartadespido.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/indemnizacion.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/finiquito.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/horasextras.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/periodoprueba.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/baja.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/acoso.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/excedencia.html</loc></url>
 </urlset>
