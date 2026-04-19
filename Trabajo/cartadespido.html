@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>La carta de despido disciplinario: cuándo es nula y cuándo no vale nada · OpenLexIura</title>
+<meta name="description" content="La empresa te manda una carta de despido. Antes de rendirte, revisa estos 5 puntos: si falta alguno, el despido puede ser improcedente o incluso nulo. Te explicamos qué exige el artículo 55 del Estatuto.">
+<link rel="canonical" href="https://openlexiura.es/Trabajo/cartadespido.html"/>
+<link rel="icon" type="image/png" href="../Icono.png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "La carta de despido disciplinario: cuándo es nula y cuándo no vale nada",
+  "description": "La empresa te manda una carta de despido. Antes de rendirte, revisa estos 5 puntos: si falta alguno, el despido puede ser improcedente o incluso nulo. Te explicamos qué exige el artículo 55 del Estatuto.",
+  "author": {"@type": "Organization", "name": "OpenLexIura"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "OpenLexIura",
+    "logo": {"@type": "ImageObject", "url": "https://openlexiura.es/Icono.png"}
+  },
+  "url": "https://openlexiura.es/Trabajo/cartadespido.html",
+  "inLanguage": "es",
+  "about": [
+    {"@type": "Thing", "name": "Despido disciplinario"},
+    {"@type": "Thing", "name": "Carta de despido"},
+    {"@type": "Thing", "name": "Artículo 55 Estatuto de los Trabajadores"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué debe contener la carta de despido disciplinario?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La carta de despido disciplinario debe contener: comunicación por escrito, descripción concreta de los hechos imputados (qué, cuándo y cómo), y la fecha de efectos del despido. Desde la STS 1250/2024 de 18 de noviembre, también es necesario un trámite previo de audiencia al trabajador. Si falta cualquiera de estos elementos, el despido es improcedente (art. 55.4 ET)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuándo es nulo un despido disciplinario?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El despido disciplinario es nulo cuando encubre una discriminación (art. 14 CE), cuando afecta a una trabajadora embarazada (art. 55.5 ET), durante reducción de jornada por cuidado de menor o familiar, durante baja por IT si la causa real es la enfermedad (Ley 15/2022), o durante el ejercicio de derechos sindicales. La consecuencia es la readmisión obligatoria más salarios de tramitación."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es el plazo para impugnar un despido disciplinario?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El plazo es de 20 días hábiles desde la fecha de la carta de despido (art. 59.3 ET). Es un plazo de caducidad. Primero hay que presentar papeleta de conciliación ante el SMAC, lo que suspende el plazo mientras se tramita. Si no se actúa en ese tiempo, el despido queda firme aunque fuera nulo."
+      }
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fdf2f2;
+  --bg-2:#fbe9e9;
+  --text:#1f2937;
+  --muted:#64748b;
+  --brand:#dc2626;
+  --line:rgba(220,38,38,.14);
+  --line-2:rgba(15,23,42,.08);
+  --shadow:0 24px 80px rgba(0,0,0,.45);
+  --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(220,38,38,.07), transparent 28%),
+    radial-gradient(circle at 80% 15%, rgba(15,23,42,.04), transparent 24%),
+    radial-gradient(circle at 50% 100%, rgba(220,38,38,.05), transparent 30%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 2rem;transition:.35s ease;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(18px);
+  border-bottom-color:var(--line);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:.85rem;font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:700;letter-spacing:.02em;
+}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(220,38,38,.22), 0 10px 30px rgba(0,0,0,.28)}
+.nav-logo span{color:var(--brand)}
+.nav-links{display:flex;align-items:center;gap:1.4rem}
+.nav-links a{color:#1f2937;font-size:.95rem;transition:.2s ease}
+.nav-links a:hover{color:var(--brand)}
+.nav-cta{
+  padding:.8rem 1.2rem;border:1px solid rgba(220,38,38,.22);border-radius:999px;
+  background:linear-gradient(180deg, rgba(220,38,38,.10), rgba(220,38,38,.05));
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(220,38,38,.14), 0 10px 24px rgba(0,0,0,.15)}
+.nav-burger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  background:none;border:none;cursor:pointer;padding:.5rem;z-index:1100;
+  width:44px;height:44px;
+}
+.nav-burger span{
+  display:block;width:24px;height:2px;background:#1f2937;border-radius:2px;
+  transition:transform .28s ease, opacity .28s ease;
+}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── ARTICLE HERO ── */
+.article-hero{
+  padding:8rem 1.5rem 4rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.article-hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(220,38,38,.10), transparent 55%),
+    radial-gradient(circle at 70% 20%, rgba(220,38,38,.07), transparent 45%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;max-width:780px;margin:0 auto}
+.cat-pill{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;
+  border-radius:999px;border:1px solid rgba(220,38,38,.25);
+  background:rgba(220,38,38,.08);color:var(--brand);
+  font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:1.4rem;animation:rise .8s ease both .05s;
+}
+.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(220,38,38,.7)}
+.article-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,6vw,5.2rem);
+  line-height:.95;letter-spacing:-.025em;
+  margin-bottom:1.2rem;animation:rise .8s ease both .12s;
+}
+.article-title em{font-style:italic;color:var(--brand)}
+.article-lead{
+  font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;
+  color:#374151;max-width:62ch;margin:0 auto 2rem;
+  animation:rise .8s ease both .2s;
+}
+.article-meta{
+  display:flex;align-items:center;justify-content:center;gap:1.2rem;
+  flex-wrap:wrap;color:var(--muted);font-size:.85rem;
+  animation:rise .8s ease both .28s;
+}
+.article-meta span{display:flex;align-items:center;gap:.35rem}
+
+/* ── ARTICLE BODY ── */
+.article-body{
+  max-width:780px;margin:0 auto;padding:2rem 1.5rem 4rem;
+}
+
+/* quick-answer */
+.quick-answer{
+  background:linear-gradient(135deg, rgba(220,38,38,.06), rgba(220,38,38,.03));
+  border:1px solid rgba(220,38,38,.18);border-left:4px solid var(--brand);
+  border-radius:16px;padding:1.5rem 1.6rem;margin-bottom:2.8rem;
+}
+.quick-answer-label{
+  font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--brand);margin-bottom:.6rem;
+}
+.quick-answer p{line-height:1.75;color:#1f2937}
+.quick-answer strong{color:var(--brand)}
+
+/* section headings */
+.article-body h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.7rem,3.5vw,2.5rem);
+  line-height:1.1;letter-spacing:-.02em;
+  margin:2.8rem 0 1rem;
+}
+.article-body h2 span{color:var(--brand);font-style:italic}
+.article-body h3{
+  font-size:1.08rem;font-weight:700;margin:1.6rem 0 .6rem;color:#1f2937;
+}
+.article-body p{line-height:1.78;margin-bottom:1rem;color:#374151}
+.article-body ul,.article-body ol{padding-left:1.3rem;margin-bottom:1rem}
+.article-body li{line-height:1.75;margin-bottom:.5rem;color:#374151}
+.article-body strong{color:#1f2937}
+
+/* info-box */
+.info-box{
+  background:rgba(220,38,38,.05);
+  border:1px solid rgba(220,38,38,.15);
+  border-radius:14px;padding:1.3rem 1.5rem;margin:1.6rem 0;
+}
+.info-box-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:.5rem}
+.info-box p,.info-box li{color:#374151;line-height:1.72}
+.info-box ol{padding-left:1.3rem;margin-bottom:0}
+.info-box ol li{margin-bottom:.45rem}
+.info-note{
+  margin-top:1rem;padding:.85rem 1rem;
+  background:rgba(220,38,38,.07);border-radius:10px;
+  border-left:3px solid var(--brand);
+  font-size:.92rem;color:#374151;line-height:1.65;
+}
+
+/* juris-box */
+.juris-box{
+  background:linear-gradient(135deg, #fff5f5, #fff);
+  border:1px solid rgba(220,38,38,.18);
+  border-radius:14px;padding:1.3rem 1.5rem;margin:1.6rem 0;
+  position:relative;
+}
+.juris-box::before{
+  content:'⚖️';position:absolute;top:1rem;right:1.2rem;font-size:1.4rem;opacity:.5;
+}
+.juris-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:.55rem}
+.juris-box blockquote{
+  border-left:3px solid var(--brand);padding-left:1rem;
+  color:#374151;font-style:italic;line-height:1.72;margin:.6rem 0;
+}
+.juris-box ul{list-style:none;padding:0;margin:.4rem 0}
+.juris-box ul li{
+  padding:.45rem 0;border-bottom:1px solid rgba(220,38,38,.08);
+  color:#374151;font-size:.95rem;line-height:1.65;
+  display:flex;gap:.6rem;align-items:baseline;
+}
+.juris-box ul li:last-child{border-bottom:none}
+.juris-box ul li::before{content:'⚖';font-size:.82rem;flex-shrink:0}
+
+/* warn-box */
+.warn-box{
+  background:linear-gradient(135deg, rgba(220,38,38,.08), rgba(220,38,38,.03));
+  border:2px solid rgba(220,38,38,.30);
+  border-radius:14px;padding:1.3rem 1.5rem;margin:1.6rem 0;
+}
+.warn-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:.5rem}
+.warn-box p,.warn-box li{color:#1f2937;line-height:1.72}
+.warn-box strong{color:var(--brand)}
+.warn-box ul{list-style:none;padding:0;margin:.5rem 0}
+.warn-box ul li{
+  display:flex;gap:.6rem;align-items:baseline;
+  padding:.4rem 0;border-bottom:1px solid rgba(220,38,38,.09);
+  font-size:.95rem;color:#1f2937;line-height:1.6;
+}
+.warn-box ul li:last-child{border-bottom:none}
+.warn-box ul li::before{content:'▸';color:var(--brand);font-size:.85rem;flex-shrink:0}
+.warn-consequence{
+  margin-top:1rem;padding:.9rem 1rem;
+  background:rgba(220,38,38,.09);border-radius:10px;
+  border-left:3px solid var(--brand);
+  font-size:.93rem;color:#1f2937;line-height:1.7;
+}
+
+/* split-table */
+.split-table{width:100%;border-collapse:collapse;margin:1.6rem 0;font-size:.93rem}
+.split-table th{
+  background:rgba(220,38,38,.08);color:var(--brand);
+  font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+  padding:.75rem 1rem;text-align:left;border-bottom:2px solid rgba(220,38,38,.15);
+}
+.split-table td{
+  padding:.75rem 1rem;border-bottom:1px solid rgba(220,38,38,.09);
+  color:#374151;line-height:1.6;vertical-align:top;
+}
+.split-table tr:last-child td{border-bottom:none}
+.split-table tr:hover td{background:rgba(220,38,38,.03)}
+
+/* steps */
+ol.steps{list-style:none;padding:0;margin:1.4rem 0;counter-reset:steps}
+ol.steps li{
+  counter-increment:steps;
+  display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start;
+}
+ol.steps li::before{
+  content:counter(steps);
+  flex-shrink:0;width:32px;height:32px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  font-weight:700;font-size:.88rem;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:.1rem;box-shadow:0 4px 14px rgba(220,38,38,.35);
+}
+ol.steps li div{flex:1}
+ol.steps li strong{display:block;color:#1f2937;margin-bottom:.2rem}
+ol.steps li p{margin:0;color:#374151;line-height:1.7;font-size:.95rem}
+
+/* tags */
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:2.5rem 0 0}
+.tag{
+  padding:.45rem .85rem;border-radius:999px;
+  background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.14);
+  color:var(--brand);font-size:.8rem;font-weight:500;
+}
+
+/* CTA section */
+.article-cta{
+  background:linear-gradient(135deg, rgba(220,38,38,.07), rgba(220,38,38,.03));
+  border-top:1px solid rgba(220,38,38,.12);
+  padding:3.5rem 1.5rem;text-align:center;
+}
+.cta-box{
+  max-width:640px;margin:0 auto;
+  background:#fff;border:1px solid rgba(220,38,38,.16);
+  border-radius:24px;padding:2.5rem 2rem;
+  box-shadow:0 24px 70px rgba(0,0,0,.10);
+}
+.cta-box h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.4rem);
+  line-height:1.1;margin-bottom:1rem;
+}
+.cta-box h3 em{font-style:italic;color:var(--brand)}
+.cta-box p{color:#374151;line-height:1.75;margin-bottom:1.6rem}
+.btn-brand{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:1rem 2rem;border-radius:999px;
+  background:linear-gradient(135deg, #dc2626, #ef4444);
+  color:#fff;font-weight:700;font-size:1.02rem;
+  box-shadow:0 14px 36px rgba(220,38,38,.35);
+  transition:.25s ease;border:none;cursor:pointer;text-decoration:none;
+}
+.btn-brand:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 18px 40px rgba(220,38,38,.30);color:#fff}
+
+/* footer */
+footer{
+  padding:1.5rem;color:var(--muted);text-align:center;
+  border-top:1px solid var(--line-2);font-size:.85rem;
+}
+footer a{color:var(--brand);text-decoration:underline}
+
+/* cursor */
+.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(220,38,38,.28);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(220,38,38,.12), inset 0 0 6px rgba(255,255,255,.22);transition:width .08s linear,height .08s linear,border-color .08s linear,opacity .08s linear,transform .08s linear}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:var(--brand);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(220,38,38,.75)}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* mobile */
+@media(max-width:640px){
+  nav{padding:1rem 1.1rem}
+  .nav-burger{display:flex}
+  .nav-links{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:fixed;inset:0;top:0;padding:5.5rem 1.5rem 2rem;
+    background:#fff;z-index:1000;transform:translateX(100%);
+    transition:transform .32s ease;border-left:1px solid var(--line);
+    overflow-y:auto;
+  }
+  .nav-links.open{transform:translateX(0)}
+  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.42);z-index:999;}
+  .nav-overlay.open{display:block}
+  nav.menu-open{background:#fff !important;backdrop-filter:none}
+  .nav-links a{padding:1rem 0;font-size:1.1rem;border-bottom:1px solid rgba(220,38,38,.07);min-height:44px;display:flex;align-items:center}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-cta{margin-top:1rem;justify-content:center;border-radius:12px;background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff !important}
+  .article-hero{padding:7rem 1.2rem 2.5rem}
+  .article-body{padding:1.5rem 1.2rem 3rem}
+  .split-table{font-size:.8rem}
+  .split-table th,.split-table td{padding:.6rem .7rem}
+  .cta-box{padding:2rem 1.2rem}
+  .cursor-ring,.cursor-dot{display:none}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">
+    <img src="../Icono.png" alt="OpenLexIura">
+    <span>OpenLexIura</span>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Inicio</a>
+    <a href="../consultas.html">Consultas</a>
+    <a class="nav-cta" href="portal.html">Acceder al portal</a>
+  </div>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<!-- ── HERO ── -->
+<header class="article-hero">
+  <div class="hero-inner">
+    <div class="cat-pill">Trabajo · Despido disciplinario</div>
+    <h1 class="article-title">La carta de despido.<br><em>Cinco errores que la tumban</em></h1>
+    <p class="article-lead">La empresa no puede despedirte con un "ya no eres necesario". El despido disciplinario tiene requisitos muy concretos en forma y contenido. Si alguno falla, el despido es improcedente — o incluso nulo.</p>
+    <div class="article-meta">
+      <span>📋 Art. 54 y 55 ET · STS 1250/2024</span>
+      <span>·</span>
+      <span>⏱ Lectura: 8 min</span>
+      <span>·</span>
+      <span>Actualizado 2025</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main class="article-body">
+
+  <!-- RESPUESTA RÁPIDA -->
+  <div class="quick-answer reveal">
+    <div class="quick-answer-label">Respuesta rápida</div>
+    <p>El despido disciplinario debe comunicarse por escrito, con los hechos concretos que lo motivan y la fecha de efectos (art. 55.1 ET). Si la carta no cumple estos requisitos, el despido es automáticamente <strong>improcedente</strong> (art. 55.4 ET). Si hay vulneración de derechos fundamentales, es <strong>nulo</strong>.</p>
+  </div>
+
+  <!-- H2 1: CAUSAS LEGALES -->
+  <h2 class="reveal">Las causas legales del <span>despido disciplinario</span></h2>
+  <p class="reveal">El despido disciplinario no puede invocarse por cualquier motivo. El artículo 54 del Estatuto de los Trabajadores establece un listado <strong>tasado y cerrado</strong> de causas. Si la empresa alega una causa diferente o no encuadrable en este listado, el despido es directamente improcedente.</p>
+
+  <div class="info-box reveal">
+    <div class="info-box-label">Art. 54 ET — Causas tasadas</div>
+    <ol>
+      <li>Faltas repetidas e injustificadas de asistencia o puntualidad</li>
+      <li>Indisciplina o desobediencia en el trabajo</li>
+      <li>Ofensas verbales o físicas al empresario, sus familiares o a los compañeros de trabajo</li>
+      <li>Transgresión de la buena fe contractual y abuso de confianza en el desempeño del trabajo</li>
+      <li>Disminución continuada y voluntaria del rendimiento de trabajo</li>
+      <li>Embriaguez habitual o toxicomanía con repercusión negativa en el trabajo</li>
+      <li>Acoso laboral por razón de origen racial o étnico, religión o convicciones, discapacidad, edad u orientación sexual, y el acoso sexual o por razón de sexo al empresario o a las personas que trabajan en la empresa</li>
+    </ol>
+    <div class="info-note">
+      <strong>Importante:</strong> la falta debe ser <strong>grave y culpable</strong>. No cabe el despido disciplinario por error o negligencia menor. La gravedad tiene que demostrarse; no se presume.
+    </div>
+  </div>
+
+  <!-- H2 2: REQUISITOS FORMALES -->
+  <h2 class="reveal">Los <span>5 requisitos formales</span> que debe cumplir la carta</h2>
+  <p class="reveal">Aunque la causa exista, la carta puede convertir el despido en improcedente si presenta defectos formales. El artículo 55.1 ET es muy exigente y la jurisprudencia del Tribunal Supremo lo es aún más. Revisa estos cinco puntos uno a uno:</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div>
+        <strong>Comunicación por escrito</strong>
+        <p>El despido verbal es directamente improcedente (art. 55.1 ET). La empresa puede no entregar la carta en mano — puede remitirla por burofax u otro medio fehaciente — pero siempre debe acreditar la entrega. Sin prueba de entrega, el despido no produce efectos válidos.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Descripción de los hechos concretos</strong>
+        <p>No vale "incumplimiento de sus obligaciones" ni fórmulas genéricas. La carta debe detallar <strong>qué ocurrió, cuándo y cómo</strong>. Si los hechos son vagos, imprecisos o no permiten al trabajador preparar su defensa, el despido es <strong>improcedente</strong>. Este es el defecto más frecuente en la práctica.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Fecha de efectos</strong>
+        <p>Debe constar expresamente en la carta. No es válido que el despido quede en el aire sin fijar cuándo deja de prestar servicios el trabajador. Si la fecha de efectos falta o es ambigua → <strong>improcedente</strong>.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Trámite de audiencia previo (STS 1250/2024, 18 de noviembre)</strong>
+        <p>Novedad esencial: desde la sentencia del Tribunal Supremo de noviembre de 2024, el empleador debe conceder al trabajador un <strong>trámite previo de audiencia</strong> para que pueda alegar sobre los hechos imputados antes de ser despedido. Si se omite este trámite → <strong>improcedente</strong>. Esta doctrina supone un cambio muy relevante respecto a la práctica anterior y afecta a todos los sectores.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Expediente contradictorio para representantes sindicales</strong>
+        <p>Para los <strong>delegados de personal, miembros del comité de empresa y delegados sindicales</strong>, la apertura de expediente contradictorio es obligatoria antes de despedir (art. 55.1 ET in fine). Su omisión convierte el despido en improcedente con independencia de la causa invocada.</p>
+      </div>
+    </li>
+  </ol>
+
+  <!-- H2 3: DESPIDO NULO -->
+  <h2 class="reveal">Cuándo el despido es <span>NULO</span> (más que improcedente)</h2>
+  <p class="reveal">La nulidad es más grave que la improcedencia. No hay elección entre readmisión e indemnización: la empresa <strong>está obligada a readmitir</strong> al trabajador. Los casos más frecuentes son:</p>
+
+  <div class="warn-box reveal">
+    <div class="warn-label">⚠ Causas de nulidad</div>
+    <ul>
+      <li>Cuando la causa real encubre una <strong>discriminación prohibida</strong> por el art. 14 de la Constitución (por razón de sexo, raza, religión, orientación sexual, etc.)</li>
+      <li>Despido a <strong>trabajadora embarazada</strong>: presunción de nulidad aunque la empresa no supiera del embarazo (art. 55.5 ET)</li>
+      <li>Durante <strong>reducción de jornada por cuidado</strong> de menor o familiar dependiente</li>
+      <li>Durante <strong>baja por incapacidad temporal</strong> si la causa real del despido es la enfermedad (Ley 15/2022 de igualdad de trato)</li>
+      <li>Durante el ejercicio de <strong>derechos sindicales</strong> o con posterioridad a una acción judicial del trabajador contra la empresa</li>
+    </ul>
+    <div class="warn-consequence">
+      <strong>Consecuencia del despido nulo:</strong> readmisión obligatoria + salarios de tramitación desde la fecha del despido hasta la sentencia. La empresa no puede optar por pagar indemnización en lugar de readmitir, como sí puede hacer en el despido improcedente.
+    </div>
+  </div>
+
+  <!-- H2 4: 20 DÍAS -->
+  <h2 class="reveal">Los <span>20 días hábiles</span> para impugnar</h2>
+  <p class="reveal">El plazo para actuar es corto y no se puede recuperar una vez vencido. La inacción equivale a aceptar el despido, aunque la carta sea nula por defectos formales.</p>
+
+  <div class="juris-box reveal">
+    <div class="juris-label">Art. 59.3 ET — Caducidad</div>
+    <ul>
+      <li>Plazo de <strong>20 días hábiles</strong> desde la fecha de la carta de despido (los días inhábiles judiciales no cuentan)</li>
+      <li>Paso 1: presentar <strong>papeleta de conciliación</strong> ante el SMAC (Servicio de Mediación, Arbitraje y Conciliación) — suspende el plazo mientras se tramita</li>
+      <li>Paso 2: si no hay acuerdo en el SMAC, presentar <strong>demanda ante el Juzgado de lo Social</strong></li>
+    </ul>
+  </div>
+
+  <table class="split-table reveal">
+    <thead>
+      <tr>
+        <th>¿Qué pasa si no actúas en 20 días?</th>
+        <th>¿Qué pasa si presentas papeleta?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>El despido <strong>deviene firme</strong> de forma definitiva</td>
+        <td>El plazo queda <strong>suspendido</strong> mientras dura la conciliación</td>
+      </tr>
+      <tr>
+        <td>Pierdes el derecho a impugnar aunque el despido fuera nulo</td>
+        <td>Puedes negociar un acuerdo económico o ir a juicio</td>
+      </tr>
+      <tr>
+        <td>No puedes reclamar indemnización ni salarios de tramitación</td>
+        <td>El juez revisará tanto la causa como la forma de la carta</td>
+      </tr>
+      <tr>
+        <td>Cualquier defecto formal de la carta queda saneado</td>
+        <td>Si hay defecto formal: el despido es declarado improcedente</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- H2 5: CONSERVAR PRUEBAS -->
+  <h2 class="reveal">Cómo conservar pruebas <span>desde el primer momento</span></h2>
+  <p class="reveal">Las pruebas se deterioran o desaparecen con rapidez. Actúa desde el minuto cero para poder acreditar cualquier irregularidad ante el juzgado:</p>
+
+  <ol class="steps reveal">
+    <li>
+      <div>
+        <strong>Guarda la carta original y haz copias</strong>
+        <p>Fotocopia, fotografía o escaneo en alta calidad. Conserva también el sobre si te la entregaron por correo certificado o burofax — puede acreditar la fecha real de recepción.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Anota la fecha exacta en que te la entregaron</strong>
+        <p>La fecha de entrega marca el inicio del plazo de los 20 días hábiles. Puede no coincidir con la fecha que figura en la propia carta.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>No firmes "recibí conforme" — solo "recibí" y la fecha</strong>
+        <p>Si firmas "conforme" podrías estar reconociendo la validez del despido o de los hechos imputados. Firma únicamente como acuse de recibo, con la fecha del día en que la recibes.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Busca mensajes, correos o conversaciones que contradigan los hechos</strong>
+        <p>Si la carta alega hechos falsos o exagerados, recopila ahora todos los correos internos, WhatsApps, capturas de pantalla o documentos que los contradigan. El acceso a los sistemas de la empresa puede cerrarse en cuestión de horas.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Recopila testigos</strong>
+        <p>Anota el nombre y los datos de contacto de compañeros que conozcan los hechos o hayan presenciado algo relevante. Un testigo que cambia de empresa o pierde el contacto es un testigo perdido para el juicio.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Contacta con el delegado de personal o sindicato si lo hay</strong>
+        <p>El delegado de personal tiene derecho a ser informado y puede asesorarte o representarte en el proceso. Actúa antes de que pasen los primeros días.</p>
+      </div>
+    </li>
+  </ol>
+
+  <!-- TAGS -->
+  <div class="article-tags reveal">
+    <span class="tag">#CartaDespido</span>
+    <span class="tag">#Art55ET</span>
+    <span class="tag">#Art54ET</span>
+    <span class="tag">#DespidoDisciplinario</span>
+    <span class="tag">#DespidoNulo</span>
+    <span class="tag">#STS1250/2024</span>
+    <span class="tag">#TrámiteAudiencia</span>
+  </div>
+
+</main>
+
+<!-- ── CTA ── -->
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>¿Tienes la carta de despido <em>en la mano</em>?</h3>
+    <p>Los primeros días son los más importantes. Cuéntanos qué dice la carta, cuándo la recibiste y en qué circunstancias. Te orientamos sobre si hay algún defecto que la tumbe.</p>
+    <a href="../consultas.html" class="btn-brand">Analizar mi carta de despido →</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  © 2026 OpenLexIura · Información legal divulgativa. No constituye asesoramiento jurídico individualizado. &nbsp;·&nbsp;
+  <a href="../aviso-legal.html">Aviso Legal</a> &nbsp;·&nbsp;
+  <a href="../politica-privacidad.html">Privacidad</a> &nbsp;·&nbsp;
+  <a href="../politica-cookies.html">Cookies</a>
+</footer>
+
+<script>
+/* NAV */
+const nav=document.getElementById('nav');
+const navLinks=document.getElementById('nav-links');
+const burger=document.getElementById('nav-burger');
+const navOverlay=document.getElementById('nav-overlay');
+
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10));
+
+function closeMenu(){
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+  navOverlay.classList.remove('open');
+  nav.classList.remove('menu-open');
+  document.body.style.overflow='';
+}
+burger.addEventListener('click',()=>{
+  const opening=!navLinks.classList.contains('open');
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  navOverlay.classList.toggle('open');
+  nav.classList.toggle('menu-open');
+  document.body.style.overflow=opening?'hidden':'';
+});
+navOverlay.addEventListener('click',closeMenu);
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+/* REVEAL */
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* CURSOR */
+const cursorRing=document.createElement('div');cursorRing.className='cursor-ring';
+const cursorDot=document.createElement('div');cursorDot.className='cursor-dot';
+document.body.appendChild(cursorRing);document.body.appendChild(cursorDot);
+document.body.style.cursor='none';document.documentElement.style.cursor='none';
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+window.addEventListener('mouseleave',()=>{cursorRing.style.opacity='0';cursorDot.style.opacity='0'});
+window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
+function follow(){rx+=(mx-rx)*.55;ry+=(my-ry)*.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)}
+follow();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.background='rgba(220,38,38,.09)'});
+  el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.background='transparent'});
+});
+</script>
+</body>
+</html>
