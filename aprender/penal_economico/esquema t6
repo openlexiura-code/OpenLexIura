@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Esquema completo – Delitos contra los derechos de los trabajadores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+      margin: 20px;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+    h1, h2, h3 {
+      color: #1f2933;
+    }
+    h1 {
+      border-bottom: 2px solid #4b5563;
+      padding-bottom: 4px;
+    }
+    h2 {
+      margin-top: 32px;
+      border-bottom: 1px solid #d1d5db;
+      padding-bottom: 3px;
+    }
+    .bloque {
+      margin-bottom: 20px;
+      padding: 12px 16px;
+      border-radius: 6px;
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+    }
+    .titulo-bloque {
+      font-weight: bold;
+      color: #374151;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    ul {
+      margin-top: 4px;
+      margin-bottom: 0;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .keyword {
+      font-weight: bold;
+      color: #111827;
+    }
+    .art {
+      font-weight: bold;
+      color: #2563eb;
+    }
+    .alerta {
+      color: #b91c1c;
+      font-weight: bold;
+    }
+    .ok {
+      color: #047857;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 6px 8px;
+      vertical-align: top;
+    }
+    th {
+      background-color: #e5e7eb;
+      text-align: left;
+    }
+    .t-small {
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Esquema completo – Delitos contra los derechos de los trabajadores</h1>
+
+<h2>Parte I – Esquema general</h2>
+
+<div class="bloque">
+  <div class="titulo-bloque">1. Bien jurídico y estructura general</div>
+  <ul>
+    <li><span class="keyword">Bien jurídico</span>: intereses del trabajador en cuanto tal, con dimensión <strong>supraindividual</strong> (colectivo de trabajadores por cuenta ajena).</li>
+    <li><span class="keyword">Sujeto pasivo</span>: uno o varios trabajadores (incluidos extranjeros sin permiso, prostitutas explotadas, empleados públicos).</li>
+    <li><span class="keyword">Sujeto activo típico</span>: empresario o sus delegados; delitos especiales propios.</li>
+  </ul>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">2. Mapa de artículos clave</div>
+  <ul>
+    <li><span class="art">311.1</span>: imposición de condiciones irregulares mediante engaño o abuso de necesidad.</li>
+    <li><span class="art">311.3</span>: contratación plural sin alta/permiso (&gt;100: 25%; 10–100: 50%; 5–10: totalidad).</li>
+    <li><span class="art">311 bis</span>: empleo reiterado de extranjeros sin permiso y empleo de menor (extranjero &gt;16) sin permiso.</li>
+    <li><span class="art">312.1</span>: tráfico ilegal de mano de obra (interpretación: cosificación explotadora, con lucro y engaño/violencia/abuso).</li>
+    <li><span class="art">312.2</span>: empleo de extranjeros sin permiso en condiciones gravemente lesivas.</li>
+    <li><span class="art">313</span>: emigración mediante engaño laboral (pseudo estafa).</li>
+    <li><span class="art">314</span>: grave discriminación en el empleo + requerimiento/sanción + no restablecer igualdad ni reparar daños.</li>
+    <li><span class="art">315</span>: libertad sindical y derecho de huelga; engaño/abuso de necesidad + agravación por coacciones.</li>
+    <li><span class="art">316–317</span>: seguridad de los trabajadores (delito de peligro grave + modalidad imprudente grave).</li>
+    <li><span class="art">318</span>: extensión de responsabilidad a administradores, encargados y omitentes.</li>
+    <li><span class="art">318 bis</span>: delitos contra derechos de ciudadanos extranjeros (Título XV bis).</li>
+  </ul>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">3. 311.1 y 312.2 – Explotación laboral</div>
+  <ul>
+    <li><span class="art">311.1</span>: clave = <span class="keyword">abuso de situación de necesidad</span>; resultado amplísimo → interpretar restrictivamente (LISOS: infracciones muy graves como suelo).</li>
+    <li><span class="keyword">Consumación</span>: cuando se <strong>empieza a trabajar</strong> en las condiciones irregulares.</li>
+    <li><span class="art">312.2</span>: no exige engaño/abuso/violencia; protege al <strong>extranjero sin permiso</strong>, que sí tiene derechos laborales.</li>
+    <li><span class="keyword">Concurso 311.1 + 312.2</span>: concurso de normas (alternatividad); especialidad de cada uno.</li>
+  </ul>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">4. Seguridad de los trabajadores – arts. 316 y 317</div>
+  <ul>
+    <li><span class="keyword">Naturaleza 316</span>: delito de <strong>peligro grave</strong> (tipo penal en blanco, remisión a PRL).</li>
+    <li><span class="keyword">Sujeto activo</span>: “legalmente obligados” = interpretación restrictiva → empresario principalmente.</li>
+    <li><span class="keyword">Peligro grave</span>: TS se conforma con probabilidad relevante de daño; doctrina restrictiva pide peligro concreto casi irreversible.</li>
+    <li><span class="art">317</span>: única modalidad imprudente del Título XV; exige <strong>imprudencia grave</strong>.</li>
+  </ul>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">5. Contratación irregular y oferta falsa</div>
+  <ul>
+    <li><span class="art">311.3</span>: contratación plural sin alta/permiso; desvalor en el <strong>porcentaje</strong> de plantilla (protege también competencia).</li>
+    <li><span class="art">311 bis</span>: responde a exigencias de la UE; exceso de criminalización según el manual, sobre todo en el menor.</li>
+    <li><span class="art">312.1</span>: tipo críptico → interpretación: tráfico explotador (ánimo de lucro + engaño/violencia/abuso + fines de explotación).</li>
+    <li><span class="art">312.2 y 313</span>: “estafas laborales” → engaño, error y perjuicio (abandono de trabajo o emigración).</li>
+    <li><span class="keyword">Pluralidad de víctimas</span>: 312.2 (plural “personas”) → un solo delito; 313 (singular “persona”) → un delito por cada emigrado.</li>
+  </ul>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">6. Libertad sindical y derecho de huelga – art. 315</div>
+  <ul>
+    <li><span class="art">315</span>: impedir o limitar libertad sindical / derecho de huelga mediante engaño o abuso de necesidad; agravación por coacciones.</li>
+    <li><span class="keyword">Ejemplos típicos</span>: represalias antisindicales graves, sindicatos “amarillos”, sustitución irregular de huelguistas, cierre patronal neutralizador.</li>
+    <li><span class="keyword">STC 104/2011</span>: solo cabe sanción penal cuando la conducta se sitúa <strong>fuera del contenido esencial</strong> del derecho y lo desnaturaliza.</li>
+  </ul>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">7. Persona jurídica: Título XV vs Título XV bis</div>
+  <ul>
+    <li><span class="alerta">Título XV</span>: NO hay cláusula general de responsabilidad penal de la persona jurídica; se acude al <span class="art">318</span> para imputar a personas físicas (administradores, encargados, omitentes) y al <span class="art">129</span> para consecuencias accesorias a entes sin personalidad.</li>
+    <li><span class="ok">Título XV bis</span> (<span class="art">318 bis.5</span>): SÍ responsabilidad penal de la persona jurídica (vía 31 bis) → multa 2–5 años o triple a quíntuplo del beneficio + posibles penas 33.7 b)–g).</li>
+  </ul>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">8. Consentimiento del trabajador y estado de necesidad</div>
+  <ul>
+    <li><span class="alerta">Consentimiento</span>: no tiene efecto exonerante ni atenuante en este Título (ni excluye lesión ni transfiere el riesgo a la víctima).</li>
+    <li>Está normalmente <strong>viciado</strong> (engaño, abuso, violencia), existe dependencia estructural y la ley laboral (art. 3 ET) declara indisponibles los derechos mínimos.</li>
+    <li><span class="alerta">Estado de necesidad del empresario</span> (“si cumplo cierro”): no justifica el delito; el conflicto ya está ponderado en la normativa laboral (ERE, modificaciones, suspensión, etc.).</li>
+  </ul>
+</div>
+
+<h2>Parte II – Esquema de concursos (tablas)</h2>
+
+<div class="bloque">
+  <div class="titulo-bloque">A. 316–317 con homicidio y lesiones imprudentes</div>
+  <table class="t-small">
+    <thead>
+      <tr>
+        <th>Situación fáctica</th>
+        <th>Calificación típica</th>
+        <th>Clave a recordar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Un solo trabajador en grave peligro y resulta lesionado o muerto.</td>
+        <td>Solo homicidio/lesiones imprudentes (desplazan al <span class="art">316</span>).</td>
+        <td>Concurso de normas (art. 8.3 CP); el peligro queda absorbido por el resultado.</td>
+      </tr>
+      <tr>
+        <td>Varios trabajadores en grave peligro; uno o varios lesionados/muertos y otros solo en peligro.</td>
+        <td>Concurso ideal homicidio/lesiones imprudentes + <span class="art">316</span>.</td>
+        <td>Se sanciona a la vez el resultado y el peligro para los demás.</td>
+      </tr>
+      <tr>
+        <td>Peligro grave sin ningún resultado lesivo.</td>
+        <td>Solo <span class="art">316</span> (o <span class="art">317</span> si imprudente grave).</td>
+        <td>Delito de peligro puro; no entra homicidio/lesiones.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">B. Explotación laboral y trata (311.1, 312.2, 312.1, 177 bis)</div>
+  <table class="t-small">
+    <thead>
+      <tr>
+        <th>Combinación</th>
+        <th>Solución típica</th>
+        <th>Idea clave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="art">311.1</span> + <span class="art">312.2</span> (explotación de extranjero sin permiso con abuso de necesidad).</td>
+        <td>Concurso de normas (alternatividad) entre 311.1 y 312.2.</td>
+        <td>Cada tipo añade un matiz (explotación general vs extranjería); se elige el más adecuado/sancionador.</td>
+      </tr>
+      <tr>
+        <td><span class="art">312.2</span> + coacciones para prostitución.</td>
+        <td>Concurso real 312.2 + coacciones/delitos sexuales.</td>
+        <td>Pluralidad de bienes: derechos laborales + libertad sexual.</td>
+      </tr>
+      <tr>
+        <td><span class="art">312.1</span> sin fines de trabajo forzoso/esclavitud/servidumbre.</td>
+        <td>Solo 312.1, interpretado como tráfico explotador de mano de obra.</td>
+        <td>Se aproxima a la trata pero sin alcanzar las finalidades intensas del 177 bis.</td>
+      </tr>
+      <tr>
+        <td><span class="art">312.1</span> o <span class="art">312.2</span> con fines de 177 bis (trabajo forzoso, esclavitud, etc.).</td>
+        <td>En la práctica, se admite concurso (real) con <span class="art">177 bis</span>.</td>
+        <td>Se protegen bienes laborales y de libertad/dignidad personal.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">C. Oferta falsa, emigración y ayuda a inmigración (312.2, 313, 318 bis)</div>
+  <table class="t-small">
+    <thead>
+      <tr>
+        <th>Supuesto</th>
+        <th>Calificación</th>
+        <th>Punto clave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ofertas falsas de empleo que inducen a abandonar un puesto previo (<span class="art">312.2</span>, primer inciso).</td>
+        <td>Delito único, aunque afecte a varios trabajadores.</td>
+        <td>El plural “personas” apunta a un solo delito; estructura de estafa laboral.</td>
+      </tr>
+      <tr>
+        <td>Emigración mediante engaño (<span class="art">313</span>), con varias personas desplazadas.</td>
+        <td>Un delito por cada persona emigrada.</td>
+        <td>El singular “persona” sugiere multiplicación de delitos; también cabe delito continuado en la práctica.</td>
+      </tr>
+      <tr>
+        <td>Engaño laboral que provoca emigración + vulneración de normativa de inmigración (<span class="art">313</span> y <span class="art">318 bis</span>).</td>
+        <td>Art. 313 desplaza al 318 bis básico por especialidad.</td>
+        <td>Se atiende a la pena más grave cuando se dan agravantes en 318 bis.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="bloque">
+  <div class="titulo-bloque">D. Persona jurídica (Título XV vs XV bis)</div>
+  <table class="t-small">
+    <thead>
+      <tr>
+        <th>Ámbito</th>
+        <th>Responsabilidad PJ</th>
+        <th>Quién responde y cómo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Título XV – Delitos contra derechos de los trabajadores.</td>
+        <td>No hay cláusula general de responsabilidad penal de PJ.</td>
+        <td>Responden administradores, encargados y omitentes vía <span class="art">318</span>; para entes sin personalidad, consecuencias accesorias del <span class="art">129</span>.</td>
+      </tr>
+      <tr>
+        <td>Título XV bis – Delitos contra derechos de ciudadanos extranjeros.</td>
+        <td>Sí hay responsabilidad penal de PJ (art. <span class="art">318 bis.5</span> + 31 bis).</td>
+        <td>Multa 2–5 años o triple a quíntuplo del beneficio + penas 33.7 b)–g) (disolución, clausura, suspensión, etc.).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
