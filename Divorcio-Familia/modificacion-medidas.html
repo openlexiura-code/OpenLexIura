@@ -138,12 +138,14 @@ nav.scrolled {
 .nav-cta { padding: .65rem 1.1rem; border: 1px solid rgba(124,58,237,.22); border-radius: 999px; background: linear-gradient(180deg, rgba(124,58,237,.10), rgba(124,58,237,.05)); font-weight: 600; font-size: .88rem; color: var(--brand) !important; transition: transform .2s, box-shadow .2s; }
 .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(124,58,237,.18), 0 8px 20px rgba(124,58,237,.12); }
 .progress-bar { position: fixed; top: 0; left: 0; z-index: 1100; height: 3px; width: 0%; background: linear-gradient(90deg, var(--brand), #a78bfa); transition: width .1s linear; }
-.breadcrumb { max-width: 860px; margin: 0 auto; padding: 7.5rem 1.5rem .5rem; display: flex; align-items: center; gap: .5rem; font-size: .82rem; color: var(--muted); flex-wrap: wrap; }
+nav[aria-label="Ruta de navegación"] { position: sticky; top: 57px; z-index: 900; background: rgba(245,243,255,.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(124,58,237,.10); }
+.breadcrumb { max-width: 860px; margin: 0 auto; padding: .55rem 1.5rem; display: flex; align-items: center; gap: .5rem; font-size: .82rem; color: var(--muted); flex-wrap: wrap; list-style: none; }
 .breadcrumb a { color: var(--muted); }
 .breadcrumb a:hover { color: var(--brand); }
-.breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.breadcrumb li:last-child { color: var(--text); font-weight: 500; }
+.breadcrumb li:last-child a { color: var(--text); font-weight: 500; pointer-events: none; }
 .breadcrumb-sep { color: var(--muted); }
-.article-hero { padding: 2rem 1.5rem 3rem; max-width: 860px; margin: 0 auto; }
+.article-hero { padding: 3.5rem 1.5rem 3rem; max-width: 860px; margin: 0 auto; }
 .cat-pill { display: inline-flex; align-items: center; gap: .5rem; padding: .42rem .85rem; border-radius: 999px; border: 1px solid rgba(124,58,237,.22); background: rgba(124,58,237,.07); color: var(--brand); font-size: .78rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 1.4rem; }
 .cat-pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 10px rgba(124,58,237,.6); }
 .article-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: .95; letter-spacing: -.03em; margin-bottom: 1.2rem; }
@@ -231,12 +233,14 @@ footer .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex
   </div>
 </nav>
 
-<nav aria-label="Ruta de navegación" class="breadcrumb">
-  <a href="../index.html">Inicio</a>
-  <span class="breadcrumb-sep">›</span>
-  <a href="../Divorcio-Familia/index.html">Divorcio-Familia</a>
-  <span class="breadcrumb-sep">›</span>
-  <span>Modificación de medidas</span>
+<nav aria-label="Ruta de navegación">
+  <ol class="breadcrumb">
+    <li><a href="../index.html">Inicio</a></li>
+    <span class="breadcrumb-sep" aria-hidden="true">›</span>
+    <li><a href="../Divorcio-Familia/index.html">Divorcio-Familia</a></li>
+    <span class="breadcrumb-sep" aria-hidden="true">›</span>
+    <li><a href="modificacion-medidas.html" aria-current="page">Modificación de medidas</a></li>
+  </ol>
 </nav>
 
 <header class="article-hero">
