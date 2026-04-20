@@ -3,368 +3,462 @@
     "titulo": "Los meses por adelantado",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Cuántos meses de fianza y garantías adicionales me puede exigir el casero por ley? La LAU fija un mes de fianza legal, pero el casero puede pedir garantías adicionales. Descubre los límites exactos que marca la ley.",
-    "tags": [
-      "fianza",
-      "garantías",
-      "LAU"
-    ],
-    "url": "alquiler/fianza.html"
+    "tags": ["fianza", "garantías", "LAU"],
+    "url": "Alquiler/fianza.html"
   },
   {
     "titulo": "El IBI y la Comunidad",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Quién tiene que pagar realmente el IBI, la tasa de basuras y los gastos de la escalera? Quién asume cada gasto depende de lo pactado en contrato y de la ley.",
-    "tags": [
-      "IBI",
-      "comunidad",
-      "gastos"
-    ],
-    "url": "alquiler/ibi.html"
+    "tags": ["IBI", "comunidad", "gastos"],
+    "url": "Alquiler/ibi.html"
   },
   {
     "titulo": "Mascotas en casa",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Me pueden prohibir legalmente tener perro o gato en el piso de alquiler? La reforma de la LAU de 2023 cambió las reglas. Conoce tu derecho a tener mascotas y los límites que sí pueden pactar casero e inquilino.",
-    "tags": [
-      "mascotas",
-      "perro",
-      "gato",
-      "LAU 2023"
-    ],
-    "url": "alquiler/mascotas.html"
+    "tags": ["mascotas", "perro", "gato", "LAU 2023"],
+    "url": "Alquiler/mascotas.html"
   },
   {
     "titulo": "El inventario salvavidas",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "Por qué debes hacer fotos y firmar un inventario el primer día (y cómo hacerlo bien). Un inventario bien hecho puede salvarte miles de euros al final del contrato.",
-    "tags": [
-      "inventario",
-      "fotos",
-      "entrada"
-    ],
-    "url": "alquiler/inventario.html"
+    "tags": ["inventario", "fotos", "entrada"],
+    "url": "Alquiler/inventario.html"
   },
   {
     "titulo": "La rotura de electrodomésticos",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "Se ha roto la lavadora, el termo o la caldera, ¿quién tiene que pagar la reparación? La regla general: el propietario paga las averías de habitabilidad, el inquilino los desperfectos por mal uso.",
-    "tags": [
-      "electrodomésticos",
-      "reparación",
-      "avería",
-      "caldera"
-    ],
-    "url": "alquiler/electrodomesticos.html"
+    "tags": ["electrodomésticos", "reparación", "avería", "caldera"],
+    "url": "Alquiler/electrodomesticos.html"
   },
   {
     "titulo": "Pequeños arreglos",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "Grifos que gotean, bombillas y persianas atascadas: dónde está el límite de lo que paga el inquilino. La ley distingue entre reparaciones urgentes y pequeñas reparaciones de desgaste.",
-    "tags": [
-      "reparaciones",
-      "grifo",
-      "bombilla",
-      "desgaste"
-    ],
-    "url": "alquiler/arreglos.html"
+    "tags": ["reparaciones", "grifo", "bombilla", "desgaste"],
+    "url": "Alquiler/arreglos.html"
   },
   {
     "titulo": "Privacidad y llaves",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Puede el casero entrar al piso para \"ver cómo está\" si tiene un juego de llaves? El domicilio es inviolable. Conoce tus derechos y qué hacer si el propietario entra sin permiso.",
-    "tags": [
-      "privacidad",
-      "llaves",
-      "domicilio",
-      "acceso"
-    ],
-    "url": "alquiler/llaves.html"
+    "tags": ["privacidad", "llaves", "domicilio", "acceso"],
+    "url": "Alquiler/llaves.html"
   },
   {
     "titulo": "Subidas anuales",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Cuánto me pueden subir el precio del alquiler cada año con la ley actual? Los límites a la actualización anual de la renta han cambiado varias veces. Descubre qué índice aplica hoy y cómo calcular la subida máxima.",
-    "tags": [
-      "subida",
-      "renta",
-      "IPC",
-      "actualización"
-    ],
-    "url": "alquiler/subidas.html"
+    "tags": ["subida", "renta", "IPC", "actualización"],
+    "url": "Alquiler/subidas.html"
   },
   {
     "titulo": "Venta del piso",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "Mi casero ha puesto a la venta el piso en el que vivo, ¿me pueden echar si lo compra otra persona? Tienes derecho de tanteo y retracto, y el nuevo propietario debe respetar tu contrato en la mayoría de casos.",
-    "tags": [
-      "venta",
-      "nuevo propietario",
-      "tanteo",
-      "retracto"
-    ],
-    "url": "alquiler/venta.html"
+    "tags": ["venta", "nuevo propietario", "tanteo", "retracto"],
+    "url": "Alquiler/venta.html"
   },
   {
     "titulo": "Subarriendo de habitaciones",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Puedo alquilar una de las habitaciones de mi piso a otra persona para pagar menos? El subarriendo parcial está regulado por la LAU pero requiere permiso del propietario.",
-    "tags": [
-      "subarriendo",
-      "habitaciones",
-      "compañero",
-      "permiso"
-    ],
-    "url": "alquiler/subarriendo.html"
+    "tags": ["subarriendo", "habitaciones", "compañero", "permiso"],
+    "url": "Alquiler/subarriendo.html"
   },
   {
     "titulo": "Irse antes de tiempo",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Con cuánto tiempo tengo que avisar para dejar el piso y qué penalización me pueden cobrar? La ley establece un preaviso mínimo y limita la indemnización que puede reclamarte el propietario.",
-    "tags": [
-      "preaviso",
-      "penalización",
-      "desistimiento",
-      "salida"
-    ],
-    "url": "alquiler/irseantes.html"
+    "tags": ["preaviso", "penalización", "desistimiento", "salida"],
+    "url": "Alquiler/irseantes.html"
   },
   {
     "titulo": "La duración real del contrato",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "He firmado un contrato de 1 año, ¿tengo derecho a quedarme más tiempo si quiero? Aunque el contrato diga 1 año, la LAU te da derecho a renovarlo hasta 5 o 7 años según el propietario.",
-    "tags": [
-      "duración",
-      "prórroga",
-      "5 años",
-      "7 años"
-    ],
-    "url": "alquiler/12-contrato.html"
+    "tags": ["duración", "prórroga", "5 años", "7 años"],
+    "url": "Alquiler/contrato.html"
   },
   {
     "titulo": "Recuperación por necesidad",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Me puede echar el casero antes de que acabe el contrato porque dice que necesita el piso para su hijo? La cláusula de necesidad tiene requisitos muy estrictos. Aprende cuándo es válida y cómo defenderte.",
-    "tags": [
-      "necesidad",
-      "hijo",
-      "propietario",
-      "desahucio"
-    ],
-    "url": "alquiler/recuperacion.html"
+    "tags": ["necesidad", "hijo", "propietario", "desahucio"],
+    "url": "Alquiler/recuperacion.html"
   },
   {
     "titulo": "Pintura y limpieza final",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Me pueden obligar a dejar el piso recién pintado o pagar una limpieza profesional al irme? Depende del estado en que se entregó y lo que diga el contrato. Conoce qué es desgaste normal y qué es abusivo.",
-    "tags": [
-      "pintura",
-      "limpieza",
-      "salida",
-      "desperfectos"
-    ],
-    "url": "alquiler/limpieza.html"
+    "tags": ["pintura", "limpieza", "salida", "desperfectos"],
+    "url": "Alquiler/limpieza.html"
   },
   {
     "titulo": "La devolución de la fianza",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "¿Cuánto tiempo tiene el propietario para devolver el dinero y qué hacer si no responde? El propietario tiene un plazo legal para devolver la fianza. Si no lo cumple, te debe intereses.",
-    "tags": [
-      "fianza",
-      "devolución",
-      "plazo",
-      "reclamación"
-    ],
-    "url": "alquiler/devolucionfianza.html"
+    "tags": ["fianza", "devolución", "plazo", "reclamación"],
+    "url": "Alquiler/devolucionfianza.html"
   },
   {
     "titulo": "Inquilinos que no pagan",
     "categoria": "Alquiler y Arrendamientos",
     "resumen": "Qué hacer (y qué NO hacer bajo ningún concepto, como cortar la luz) si el inquilino deja de pagar. Cortar suministros es delito. Aprende el procedimiento legal correcto para reclamar impagos.",
-    "tags": [
-      "impago",
-      "desahucio",
-      "propietario",
-      "suministros"
-    ],
-    "url": "alquiler/impago.html"
+    "tags": ["impago", "desahucio", "propietario", "suministros"],
+    "url": "Alquiler/impago.html"
   },
   {
     "titulo": "Despido improcedente",
     "categoria": "Trabajo y Derechos del Trabajador",
     "resumen": "¿Me han despedido sin causa real? Te explicamos cuándo el despido es improcedente, cuánto te corresponde (33 días/año) y el plazo de 20 días hábiles para impugnarlo.",
-    "tags": [
-      "despido",
-      "improcedente",
-      "33 días",
-      "indemnización",
-      "SMAC"
-    ],
-    "url": "trabajo/despidoimprocedente.html"
+    "tags": ["despido", "improcedente", "33 días", "indemnización", "SMAC"],
+    "url": "Trabajo/despidoimprocedente.html"
   },
   {
     "titulo": "La carta de despido disciplinario",
     "categoria": "Trabajo y Derechos del Trabajador",
     "resumen": "Cinco defectos formales que convierten la carta de despido en improcedente o nulo. Art. 55 ET y STS 1250/2024 sobre el trámite de audiencia previo.",
-    "tags": [
-      "carta despido",
-      "disciplinario",
-      "art. 55 ET",
-      "nulo",
-      "improcedente"
-    ],
-    "url": "trabajo/cartadespido.html"
+    "tags": ["carta despido", "disciplinario", "art. 55 ET", "nulo", "improcedente"],
+    "url": "Trabajo/cartadespido.html"
   },
   {
     "titulo": "Indemnización: 33 días o 20 días",
     "categoria": "Trabajo y Derechos del Trabajador",
     "resumen": "Cuándo te corresponden 33 días por año (improcedente) o 20 días (objetivo) y cómo calcular tu indemnización, incluyendo el tramo de 45 días para contratos anteriores a 2012.",
-    "tags": [
-      "indemnización",
-      "33 días",
-      "20 días",
-      "45 días",
-      "cálculo",
-      "despido"
-    ],
-    "url": "trabajo/indemnizacion.html"
+    "tags": ["indemnización", "33 días", "20 días", "45 días", "cálculo", "despido"],
+    "url": "Trabajo/indemnizacion.html"
   },
   {
     "titulo": "El finiquito mal calculado",
     "categoria": "Trabajo y Derechos del Trabajador",
     "resumen": "El finiquito debe incluir vacaciones, pagas extras prorrateadas, horas extras pendientes e indemnización si procede. Aprende a detectar errores y reclamar en 1 año.",
-    "tags": [
-      "finiquito",
-      "vacaciones",
-      "pagas extras",
-      "liquidación",
-      "reclamación"
-    ],
-    "url": "trabajo/finiquito.html"
+    "tags": ["finiquito", "vacaciones", "pagas extras", "liquidación", "reclamación"],
+    "url": "Trabajo/finiquito.html"
+  },
+  {
+    "titulo": "Calculadora de finiquito",
+    "categoria": "Trabajo y Derechos del Trabajador",
+    "resumen": "Calcula online cuánto te corresponde cobrar en el finiquito: días de vacaciones pendientes, pagas extras prorrateadas e indemnización por despido según tu tipo de contrato.",
+    "tags": ["calculadora", "finiquito", "indemnización", "vacaciones", "herramienta"],
+    "url": "Trabajo/calculadorafiniquito.html"
   },
   {
     "titulo": "Horas extras sin pagar",
     "categoria": "Trabajo y Derechos del Trabajador",
     "resumen": "Límite de 80 horas extras anuales. Desde 2019 la empresa tiene obligación de registro de jornada. Plazo de 1 año para reclamar y cómo acreditarlas.",
-    "tags": [
-      "horas extras",
-      "registro jornada",
-      "art. 35 ET",
-      "reclamación",
-      "Inspección Trabajo"
-    ],
-    "url": "trabajo/horasextras.html"
+    "tags": ["horas extras", "registro jornada", "art. 35 ET", "reclamación", "Inspección Trabajo"],
+    "url": "Trabajo/horasextras.html"
   },
   {
     "titulo": "El período de prueba",
     "categoria": "Trabajo y Derechos del Trabajador",
     "resumen": "Durante el período de prueba el cese es libre — salvo que seas trabajadora embarazada, estés de baja o ejercas derechos sindicales. En esos casos puede ser nulo.",
-    "tags": [
-      "período prueba",
-      "cese",
-      "embarazo",
-      "nulo",
-      "art. 14 ET"
-    ],
-    "url": "trabajo/periodoprueba.html"
+    "tags": ["período prueba", "cese", "embarazo", "nulo", "art. 14 ET"],
+    "url": "Trabajo/periodoprueba.html"
   },
   {
     "titulo": "La baja por enfermedad",
     "categoria": "Trabajo y Derechos del Trabajador",
     "resumen": "Cuánto cobras (60% días 4-20, 75% desde día 21), cuánto dura (hasta 545 días) y la Ley 15/2022 que convierte en nulo el despido motivado por la enfermedad.",
-    "tags": [
-      "baja",
-      "IT",
-      "incapacidad temporal",
-      "Ley 15/2022",
-      "despido baja"
-    ],
-    "url": "trabajo/baja.html"
+    "tags": ["baja", "IT", "incapacidad temporal", "Ley 15/2022", "despido baja"],
+    "url": "Trabajo/baja.html"
   },
   {
     "titulo": "Acoso laboral",
     "categoria": "Trabajo y Derechos del Trabajador",
     "resumen": "El mobbing tiene 4 requisitos jurídicos precisos. Cómo documentarlo, las 4 vías para actuar (protocolo, Inspección, art. 50 ET, demanda) y qué es la dimisión justificada.",
-    "tags": [
-      "acoso laboral",
-      "mobbing",
-      "art. 50 ET",
-      "dimisión justificada",
-      "Inspección Trabajo"
-    ],
-    "url": "trabajo/acoso.html"
+    "tags": ["acoso laboral", "mobbing", "art. 50 ET", "dimisión justificada", "Inspección Trabajo"],
+    "url": "Trabajo/acoso.html"
   },
   {
     "titulo": "La excedencia voluntaria",
     "categoria": "Trabajo y Derechos del Trabajador",
     "resumen": "Art. 46.2 ET: entre 4 meses y 5 años con 1 año de antigüedad mínima. No conservas el puesto, solo tienes derecho preferente de reingreso. Cómo solicitarla y volver.",
-    "tags": [
-      "excedencia",
-      "voluntaria",
-      "art. 46 ET",
-      "reingreso",
-      "suspensión contrato"
-    ],
-    "url": "trabajo/excedencia.html"
+    "tags": ["excedencia", "voluntaria", "art. 46 ET", "reingreso", "suspensión contrato"],
+    "url": "Trabajo/excedencia.html"
   },
-    {
+  {
     "titulo": "Heredar sin testamento",
     "categoria": "Herencias y Sucesiones",
     "resumen": "Cuando no hay testamento, el Código Civil determina quién hereda y en qué proporción. Te explicamos el orden de herederos, los derechos del cónyuge viudo y cómo hacer la declaración de herederos ab intestato.",
-    "tags": [
-      "sucesión intestada",
-      "ab intestato",
-      "declaración herederos",
-      "orden herederos"
-    ],
+    "tags": ["sucesión intestada", "ab intestato", "declaración herederos", "orden herederos"],
     "url": "Herencias/heredar-sin-testamento.html"
   },
   {
     "titulo": "Impuesto de Sucesiones",
     "categoria": "Herencias y Sucesiones",
     "resumen": "El Impuesto de Sucesiones varía enormemente según la comunidad autónoma. Te explicamos los plazos, las bonificaciones por región y cuánto pagarías en la Comunidad Valenciana.",
-    "tags": [
-      "impuesto sucesiones",
-      "bonificación",
-      "comunidad autónoma",
-      "plazo"
-    ],
+    "tags": ["impuesto sucesiones", "bonificación", "comunidad autónoma", "plazo"],
     "url": "Herencias/impuesto-sucesiones.html"
   },
   {
     "titulo": "La legítima",
     "categoria": "Herencias y Sucesiones",
     "resumen": "La legítima es la porción mínima que la ley reserva a los herederos forzosos. Te explicamos cuánto corresponde a hijos, padres y cónyuge, cómo se calcula y qué pasa con las parejas de hecho en la Comunidad Valenciana.",
-    "tags": [
-      "legítima",
-      "herederos forzosos",
-      "tercio mejora",
-      "cautela sociniana"
-    ],
+    "tags": ["legítima", "herederos forzosos", "tercio mejora", "cautela sociniana"],
     "url": "Herencias/legitima.html"
   },
   {
     "titulo": "Plazo para aceptar una herencia",
     "categoria": "Herencias y Sucesiones",
     "resumen": "En España no hay un plazo civil obligatorio para aceptar o renunciar a una herencia, pero el Impuesto de Sucesiones debe pagarse en 6 meses. Te explicamos el requerimiento notarial de 30 días, la aceptación a beneficio de inventario y cómo solicitar prórroga.",
-    "tags": [
-      "plazo herencia",
-      "aceptación",
-      "beneficio inventario",
-      "renuncia"
-    ],
+    "tags": ["plazo herencia", "aceptación", "beneficio inventario", "renuncia"],
     "url": "Herencias/plazo-aceptar-herencia.html"
   },
-  
   {
     "titulo": "Desheredación: causas y límites",
     "categoria": "Herencias y Sucesiones",
     "resumen": "Un padre puede desheredar a un hijo, pero solo por causas tasadas en el Código Civil. Te explicamos qué dice la ley, cómo ha evolucionado la jurisprudencia del Tribunal Supremo sobre el maltrato psicológico y cómo impugnar una desheredación injusta.",
-    "tags": [
-      "desheredación",
-      "maltrato psicológico",
-      "Tribunal Supremo",
-      "impugnar testamento"
-    ],
+    "tags": ["desheredación", "maltrato psicológico", "Tribunal Supremo", "impugnar testamento"],
     "url": "Herencias/desheredar-hijo.html"
+  },
+  {
+    "titulo": "Atropello de peatón",
+    "categoria": "Accidentes y Multas",
+    "resumen": "Si te ha atropellado un vehículo, la ley presume la culpa del conductor. Te explicamos cómo funciona la responsabilidad civil, cuánto puedes reclamar según el Baremo de Tráfico 2026 y qué pasos dar para cobrar tu indemnización.",
+    "tags": ["atropello", "peatón", "LRCSCVM", "baremo 2026", "indemnización tráfico"],
+    "url": "Accidentes-Multas/atropello-peaton.html"
+  },
+  {
+    "titulo": "Baremo de lesiones 2026",
+    "categoria": "Accidentes y Multas",
+    "resumen": "Cuánto vale cada punto de secuela, qué cuantías diarias corresponden a cada grado de perjuicio y cómo se calcula la indemnización total tras un accidente de tráfico con el Baremo actualizado al 2,9% del IPC.",
+    "tags": ["baremo", "lesiones", "secuelas", "puntos", "indemnización 2026"],
+    "url": "Accidentes-Multas/baremo-lesiones-2026.html"
+  },
+  {
+    "titulo": "El parte amistoso",
+    "categoria": "Accidentes y Multas",
+    "resumen": "Cómo rellenar correctamente el parte amistoso tras un accidente de tráfico, qué errores pueden costarte la cobertura del seguro y qué hacer si el otro conductor se niega a firmarlo.",
+    "tags": ["parte amistoso", "accidente", "seguro", "declaración amistosa"],
+    "url": "Accidentes-Multas/parte-amistoso.html"
+  },
+  {
+    "titulo": "Cuando el seguro no paga",
+    "categoria": "Accidentes y Multas",
+    "resumen": "La aseguradora rechaza tu siniestro o te ofrece mucho menos de lo que te corresponde. Conoce las causas de rechazo más habituales, cómo impugnarlas y cuándo merece la pena llevar el caso a juicio.",
+    "tags": ["seguro no paga", "rechazo siniestro", "reclamación seguro", "mora aseguradora"],
+    "url": "Accidentes-Multas/seguro-no-paga.html"
+  },
+  {
+    "titulo": "Darse de baja de un servicio",
+    "categoria": "Consumo y Protección al Consumidor",
+    "resumen": "Cómo cancelar un contrato de telefonía, gimnasio o suscripción online cuando la empresa pone trabas. La ley obliga a que la baja sea tan fácil como el alta. Te explicamos el procedimiento paso a paso.",
+    "tags": ["baja", "cancelación", "contrato", "telefonía", "consumidor"],
+    "url": "Consumo/darsedebaja.html"
+  },
+  {
+    "titulo": "Devoluciones en compras online",
+    "categoria": "Consumo y Protección al Consumidor",
+    "resumen": "Tienes 14 días naturales para desistir de cualquier compra online sin dar explicaciones. Te explicamos cómo ejercer el derecho de desistimiento, qué gastos puede cobrarte la tienda y qué hacer si no te devuelven el dinero.",
+    "tags": ["devolución", "desistimiento", "compra online", "14 días", "e-commerce"],
+    "url": "Consumo/devolucionesonline.html"
+  },
+  {
+    "titulo": "Estafa por Bizum",
+    "categoria": "Consumo y Protección al Consumidor",
+    "resumen": "Te han engañado y has enviado dinero por Bizum a un estafador. Qué pasos dar en las primeras horas, cómo reclamar al banco y cuándo puedes recuperar el dinero según la nueva normativa de pagos.",
+    "tags": ["estafa", "Bizum", "fraude", "reclamación banco", "pagos instantáneos"],
+    "url": "Consumo/estafabizum.html"
+  },
+  {
+    "titulo": "Fraude en inversiones y crypto",
+    "categoria": "Consumo y Protección al Consumidor",
+    "resumen": "Has perdido dinero en una plataforma de inversión fraudulenta o en un esquema piramidal de criptomonedas. Te explicamos las vías legales para intentar recuperarlo y cómo identificar a los responsables.",
+    "tags": ["fraude inversión", "crypto", "estafa", "CNMV", "recuperar dinero"],
+    "url": "Consumo/fraudeinversionescrypto.html"
+  },
+  {
+    "titulo": "Garantía en productos de segunda mano",
+    "categoria": "Consumo y Protección al Consumidor",
+    "resumen": "¿Qué garantía tiene un producto comprado de segunda mano a un particular o a una empresa? La LGDCU reformada en 2022 establece plazos distintos según quién vende. Conoce tus derechos.",
+    "tags": ["garantía", "segunda mano", "LGDCU", "vicios ocultos", "consumidor"],
+    "url": "Consumo/garantiasegundamano.html"
+  },
+  {
+    "titulo": "Phishing y robo de datos bancarios",
+    "categoria": "Consumo y Protección al Consumidor",
+    "resumen": "Han accedido a tu cuenta bancaria mediante phishing o smishing. La directiva PSD2 obliga al banco a devolverte el dinero salvo que hayas actuado con negligencia grave. Te explicamos cómo reclamar y en qué plazos.",
+    "tags": ["phishing", "smishing", "fraude bancario", "PSD2", "reclamación banco"],
+    "url": "Consumo/phishing.html"
+  },
+  {
+    "titulo": "Precio trampa y publicidad engañosa",
+    "categoria": "Consumo y Protección al Consumidor",
+    "resumen": "La tienda te cobra más de lo que anunciaba o el precio final incluye cargos ocultos. La Ley de Competencia Desleal y la LGDCU prohíben estas prácticas. Aprende a reclamar y dónde denunciar.",
+    "tags": ["precio trampa", "publicidad engañosa", "cargos ocultos", "LGDCU", "denuncia"],
+    "url": "Consumo/preciotrampa.html"
+  },
+  {
+    "titulo": "Reclamación por retraso de vuelos",
+    "categoria": "Consumo y Protección al Consumidor",
+    "resumen": "Tu vuelo se ha retrasado más de 3 horas o ha sido cancelado. El Reglamento CE 261/2004 te da derecho a compensaciones de hasta 600 €. Te explicamos cuándo aplica, cuánto corresponde y cómo reclamar a la aerolínea.",
+    "tags": ["retraso vuelo", "cancelación", "compensación", "Reglamento 261/2004", "aerolínea"],
+    "url": "Consumo/reclamaciónretrasovuelos.html"
+  },
+  {
+    "titulo": "Arras y señal en la compra de vivienda",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "Has firmado un contrato de arras para comprar una casa. ¿Qué pasa si te echas atrás? ¿Y si lo hace el vendedor? Te explicamos los tres tipos de arras y sus consecuencias jurídicas según el Código Civil.",
+    "tags": ["arras", "señal", "contrato", "compraventa", "vivienda"],
+    "url": "Vivienda/arras.html"
+  },
+  {
+    "titulo": "El ascensor en la comunidad",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "¿Puede la comunidad de propietarios instalarte un ascensor en contra de tu voluntad y obligarte a pagar? La LPH regula las mayorías necesarias y los límites de la cuota de instalación que pueden exigirte.",
+    "tags": ["ascensor", "comunidad de propietarios", "LPH", "cuota", "instalación"],
+    "url": "Vivienda/ascensor.html"
+  },
+  {
+    "titulo": "Gastos de hipoteca: qué paga el banco",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "Desde la reforma de 2019, el banco paga el AJD, la gestoría y el registro. El comprador solo abona la tasación y la copia notarial. Te explicamos cómo reclamar si firmaste antes de la sentencia del Supremo.",
+    "tags": ["gastos hipoteca", "AJD", "banco", "reclamación", "Ley Hipotecaria"],
+    "url": "Vivienda/gastoshipoteca.html"
+  },
+  {
+    "titulo": "Gastos de notaría en la compraventa",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "¿Quién paga al notario, al registrador y al gestor cuando compras una vivienda? El Código Civil y la Ley Hipotecaria distribuyen estos gastos entre comprador y vendedor de forma diferente según el tipo de gasto.",
+    "tags": ["notaría", "gastos compraventa", "registro", "gestoría", "vivienda"],
+    "url": "Vivienda/gastosnotario.html"
+  },
+  {
+    "titulo": "Herencia en proindiviso",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "Has heredado una vivienda junto a otros familiares y no os ponéis de acuerdo. Te explicamos cómo funciona el proindiviso, cuándo puedes pedir la división de la cosa común y qué es la acción de división.",
+    "tags": ["proindiviso", "herencia", "división", "copropietarios", "acción división"],
+    "url": "Vivienda/herenciaproindiviso.html"
+  },
+  {
+    "titulo": "Obras en la comunidad",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "La comunidad quiere hacer obras costosas y tú no estás de acuerdo. ¿Pueden obligarte a pagar? Te explicamos las mayorías que exige la LPH para aprobar obras, cuándo son obligatorias y cómo impugnar acuerdos abusivos.",
+    "tags": ["obras comunidad", "LPH", "mayoría", "derrama", "impugnar acuerdo"],
+    "url": "Vivienda/obrascomunidad.html"
+  },
+  {
+    "titulo": "Okupas en tu vivienda",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "Han ocupado tu vivienda. Te explicamos la diferencia entre allanamiento de morada y usurpación, el procedimiento de desahucio exprés, los plazos reales y qué hacer en las primeras 48 horas para actuar con eficacia.",
+    "tags": ["okupas", "usurpación", "desahucio exprés", "allanamiento", "propiedad"],
+    "url": "Vivienda/okupas.html"
+  },
+  {
+    "titulo": "Ruidos de vecinos",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "Tu vecino genera ruidos por encima de los límites legales. Te explicamos las vías disponibles: reclamación a la comunidad, denuncia municipal, interdicto civil y demanda por daños, con los umbrales de decibelios que marca la ley.",
+    "tags": ["ruidos", "vecinos", "ordenanza municipal", "decibelios", "interdicto"],
+    "url": "Vivienda/ruidosvecinos.html"
+  },
+  {
+    "titulo": "Vecino moroso en la comunidad",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "Un propietario no paga las cuotas de comunidad desde hace meses. Te explicamos el procedimiento monitorio especial de la LPH, cómo obtener un embargo preventivo y si el moroso puede votar en junta.",
+    "tags": ["moroso", "comunidad de propietarios", "monitorio", "embargo", "cuotas"],
+    "url": "Vivienda/vecinomoroso.html"
+  },
+  {
+    "titulo": "Vicios ocultos en la vivienda",
+    "categoria": "Vivienda y Propiedad",
+    "resumen": "Has comprado una vivienda y aparecen defectos graves que no te dijeron. El Código Civil te da 6 meses para reclamar al vendedor por vicios ocultos. Te explicamos qué se considera vicio oculto y cómo probarlo.",
+    "tags": ["vicios ocultos", "compraventa", "defectos", "reclamación", "art. 1490 CC"],
+    "url": "Vivienda/viciosocultos.html"
+  },
+  {
+    "titulo": "Bizum y el IRPF",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "¿Hacienda puede ver tus transferencias por Bizum? ¿Cuándo tributan y cuándo no? Te explicamos qué importes están exentos, cuándo debes declarar una transferencia como donación y cómo actúa la Agencia Tributaria.",
+    "tags": ["Bizum", "IRPF", "Hacienda", "donación", "transferencia"],
+    "url": "Impuestos/bizum.html"
+  },
+  {
+    "titulo": "Calculadora de la renta",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "Calcula de forma orientativa cuánto pagarás (o te devolverán) en la declaración de la renta según tus ingresos, situación familiar y comunidad autónoma.",
+    "tags": ["calculadora renta", "IRPF", "declaración", "devolución", "herramienta"],
+    "url": "Impuestos/calculadorarenta.html"
+  },
+  {
+    "titulo": "Salir del fichero ASNEF",
+    "categoria": "Deudas y Morosidad",
+    "resumen": "Apareces en ASNEF o en otro fichero de morosos y quieres salir. Te explicamos cuándo la inclusión es ilegal, cómo ejercer el derecho de cancelación ante la AEPD y qué ocurre con la deuda prescrita.",
+    "tags": ["ASNEF", "fichero morosos", "cancelación", "AEPD", "deuda prescrita"],
+    "url": "Deudas/asnef-como-salir.html"
+  },
+  {
+    "titulo": "Empresas de recobro: tus derechos",
+    "categoria": "Deudas y Morosidad",
+    "resumen": "Una empresa de recobro te llama o te envía cartas intimidatorias. Te explicamos qué pueden y qué no pueden hacer legalmente, cuándo sus prácticas son constitutivas de acoso y cómo denunciarlas ante la AEPD o el juzgado.",
+    "tags": ["empresa recobro", "acoso", "deuda", "AEPD", "cobradores"],
+    "url": "Deudas/empresa-recobro.html"
+  },
+  {
+    "titulo": "Prescripción de deudas",
+    "categoria": "Deudas y Morosidad",
+    "resumen": "Las deudas no son eternas. Te explicamos los plazos de prescripción según el tipo de deuda (5 años para deudas ordinarias, 3 para las mercantiles), qué actos interrumpen el plazo y cómo alegarla ante una demanda.",
+    "tags": ["prescripción", "deuda", "plazo", "5 años", "interrupción prescripción"],
+    "url": "Deudas/prescripcion-deudas.html"
+  },
+  {
+    "titulo": "Ley de Segunda Oportunidad",
+    "categoria": "Deudas y Morosidad",
+    "resumen": "Si eres una persona física con deudas que no puedes pagar, la Ley de Segunda Oportunidad te permite cancelarlas judicialmente. Te explicamos los requisitos, el proceso concursal simplificado y qué deudas no se pueden exonerar.",
+    "tags": ["segunda oportunidad", "exoneración deudas", "concurso", "insolvencia", "BEPI"],
+    "url": "Deudas/segunda-oportunidad.html"
+  },
+  {
+    "titulo": "Divorcio exprés",
+    "categoria": "Divorcio y Familia",
+    "resumen": "El divorcio de mutuo acuerdo puede tramitarse en pocas semanas ante notario o juzgado. Te explicamos los requisitos, los documentos necesarios, los costes aproximados y cuándo es obligatorio el procedimiento judicial.",
+    "tags": ["divorcio", "mutuo acuerdo", "notario", "separación", "matrimonio"],
+    "url": "Divorcio-Familia/divorcio-express.html"
+  },
+  {
+    "titulo": "Custodia compartida",
+    "categoria": "Divorcio y Familia",
+    "resumen": "¿Cómo se decide la custodia de los hijos tras el divorcio? Te explicamos cuándo los tribunales otorgan custodia compartida, cómo se reparten las vacaciones y gastos extraordinarios, y en qué situaciones se deniega.",
+    "tags": ["custodia compartida", "hijos", "divorcio", "guarda custodia", "régimen visitas"],
+    "url": "Divorcio-Familia/custodia-compartida.html"
+  },
+  {
+    "titulo": "Pensión de alimentos",
+    "categoria": "Divorcio y Familia",
+    "resumen": "¿Cómo se calcula la pensión de alimentos para los hijos tras una separación? Te explicamos los factores que tienen en cuenta los jueces, cuándo se puede modificar y qué ocurre si el progenitor obligado deja de pagar.",
+    "tags": ["pensión alimentos", "hijos", "divorcio", "impago", "modificación"],
+    "url": "Divorcio-Familia/pension-alimentos.html"
+  },
+  {
+    "titulo": "El convenio regulador",
+    "categoria": "Divorcio y Familia",
+    "resumen": "El convenio regulador es el acuerdo que regula los efectos del divorcio: custodia, pensiones, uso de la vivienda y liquidación de gananciales. Te explicamos qué debe incluir y qué cláusulas pueden ser rechazadas por el juez.",
+    "tags": ["convenio regulador", "divorcio", "custodia", "pensión", "gananciales"],
+    "url": "Divorcio-Familia/convenio-regulador.html"
+  },
+  {
+    "titulo": "Modificación de medidas",
+    "categoria": "Divorcio y Familia",
+    "resumen": "Las circunstancias cambian tras el divorcio y quieres modificar la custodia o la pensión acordada. Te explicamos qué es un cambio sustancial de circunstancias, cómo solicitarlo al juzgado y qué pruebas necesitas.",
+    "tags": ["modificación medidas", "cambio circunstancias", "custodia", "pensión", "divorcio"],
+    "url": "Divorcio-Familia/modificacion-medidas.html"
+  },
+  {
+    "titulo": "Arraigo social: cómo obtenerlo",
+    "categoria": "Extranjería e Inmigración",
+    "resumen": "El arraigo social te permite regularizar tu situación en España si llevas más de 2 años en el país. Te explicamos los requisitos exactos, los documentos necesarios, los errores más comunes y cómo preparar el expediente.",
+    "tags": ["arraigo social", "residencia", "extranjería", "regularización", "NIE"],
+    "url": "Extranjeria/arraigo-social.html"
+  },
+  {
+    "titulo": "El NIE: qué es y cómo obtenerlo",
+    "categoria": "Extranjería e Inmigración",
+    "resumen": "El NIE es el número de identificación obligatorio para cualquier trámite legal o económico en España si eres extranjero. Te explicamos para qué sirve, cómo solicitarlo en España o en el consulado y cuánto tarda.",
+    "tags": ["NIE", "número identificación extranjero", "trámite", "consulado", "extranjería"],
+    "url": "Extranjeria/nie.html"
   }
 ]
