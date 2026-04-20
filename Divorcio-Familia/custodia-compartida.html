@@ -74,6 +74,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </script>
 
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Inicio",
+      "item":"https://openlexiura.es/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"Divorcio-Familia",
+      "item":"https://openlexiura.es/Divorcio-Familia/"
+    },
+    {
+      "@type":"ListItem",
+      "position":3,
+      "name":"Custodia compartida"
+    }
+  ]
+}
+</script>
+
 <!-- Article Schema -->
 <script type="application/ld+json">
 {
@@ -126,6 +153,7 @@ body{
   min-height:100vh;
   overflow-x:hidden;
   line-height:1.65;
+  padding-top:57px; /* altura del nav fijo */
 }
 
 /* NAV */
@@ -173,20 +201,29 @@ nav.scrolled{
 }
 
 /* BREADCRUMB */
+nav[aria-label="Ruta de navegación"]{
+  position:sticky;top:57px;z-index:900;
+  background:rgba(245,243,255,.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(124,58,237,.10);
+}
 .breadcrumb{
   max-width:860px;margin:0 auto;
-  padding:7.5rem 1.5rem .5rem;
+  padding:.55rem 1.5rem;
   display:flex;align-items:center;gap:.5rem;
   font-size:.82rem;color:var(--muted);flex-wrap:wrap;
+  list-style:none;
 }
 .breadcrumb a{color:var(--muted);}
 .breadcrumb a:hover{color:var(--brand);}
-.breadcrumb span:last-child{color:var(--text);font-weight:500;}
+.breadcrumb li:last-child{color:var(--text);font-weight:500;}
+.breadcrumb li:last-child a{color:var(--text);font-weight:500;pointer-events:none;}
 .breadcrumb-sep{color:var(--muted);}
 
 /* HERO */
 .article-hero{
-  padding:2rem 1.5rem 3rem;
+  padding:3.5rem 1.5rem 3rem;
   max-width:860px;margin:0 auto;
 }
 .cat-pill{
@@ -476,12 +513,14 @@ footer .footer-links{
   </div>
 </nav>
 
-<nav aria-label="Ruta de navegación" class="breadcrumb">
-  <a href="../index.html">Inicio</a>
-  <span class="breadcrumb-sep">›</span>
-  <a href="../Divorcio-Familia/index.html">Divorcio-Familia</a>
-  <span class="breadcrumb-sep">›</span>
-  <span>Custodia compartida</span>
+<nav aria-label="Ruta de navegación">
+  <ol class="breadcrumb">
+    <li><a href="../index.html">Inicio</a></li>
+    <span class="breadcrumb-sep" aria-hidden="true">›</span>
+    <li><a href="../Divorcio-Familia/index.html">Divorcio-Familia</a></li>
+    <span class="breadcrumb-sep" aria-hidden="true">›</span>
+    <li><a href="custodia-compartida.html" aria-current="page">Custodia compartida</a></li>
+  </ol>
 </nav>
 
 <header class="article-hero">
