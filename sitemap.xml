@@ -22,6 +22,25 @@
   <url><loc>https://openlexiura.es/Alquiler/subidas.html</loc></url>
   <url><loc>https://openlexiura.es/Alquiler/venta.html</loc></url>
 
+  <url><loc>https://openlexiura.es/Trabajo/portal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://openlexiura.es/Trabajo/acoso.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/baja.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/calculadorafiniquito.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/cartadespido.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/despidoimprocedente.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/excedencia.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/finiquito.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/horasextras.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/indemnizacion.html</loc></url>
+  <url><loc>https://openlexiura.es/Trabajo/periodoprueba.html</loc></url>
+
+  <url><loc>https://openlexiura.es/Herencias/portal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://openlexiura.es/Herencias/desheredar-hijo.html</loc></url>
+  <url><loc>https://openlexiura.es/Herencias/heredar-sin-testamento.html</loc></url>
+  <url><loc>https://openlexiura.es/Herencias/impuesto-sucesiones.html</loc></url>
+  <url><loc>https://openlexiura.es/Herencias/legitima.html</loc></url>
+  <url><loc>https://openlexiura.es/Herencias/plazo-aceptar-herencia.html</loc></url>
+
   <url><loc>https://openlexiura.es/Consumo/portal.html</loc><priority>0.8</priority></url>
   <url><loc>https://openlexiura.es/Consumo/darsedebaja.html</loc></url>
   <url><loc>https://openlexiura.es/Consumo/devolucionesonline.html</loc></url>
@@ -30,7 +49,7 @@
   <url><loc>https://openlexiura.es/Consumo/garantiasegundamano.html</loc></url>
   <url><loc>https://openlexiura.es/Consumo/phishing.html</loc></url>
   <url><loc>https://openlexiura.es/Consumo/preciotrampa.html</loc></url>
-  <url><loc>https://openlexiura.es/Consumo/reclamacionretrasovuelos.html</loc></url>
+  <url><loc>https://openlexiura.es/Consumo/reclamaciónretrasovuelos.html</loc></url>
 
   <url><loc>https://openlexiura.es/Vivienda/portal.html</loc><priority>0.8</priority></url>
   <url><loc>https://openlexiura.es/Vivienda/arras.html</loc></url>
@@ -48,14 +67,26 @@
   <url><loc>https://openlexiura.es/Impuestos/bizum.html</loc></url>
   <url><loc>https://openlexiura.es/Impuestos/calculadorarenta.html</loc></url>
 
-  <url><loc>https://openlexiura.es/Trabajo/portal.html</loc><priority>0.8</priority></url>
-  <url><loc>https://openlexiura.es/Trabajo/despidoimprocedente.html</loc></url>
-  <url><loc>https://openlexiura.es/Trabajo/cartadespido.html</loc></url>
-  <url><loc>https://openlexiura.es/Trabajo/indemnizacion.html</loc></url>
-  <url><loc>https://openlexiura.es/Trabajo/finiquito.html</loc></url>
-  <url><loc>https://openlexiura.es/Trabajo/horasextras.html</loc></url>
-  <url><loc>https://openlexiura.es/Trabajo/periodoprueba.html</loc></url>
-  <url><loc>https://openlexiura.es/Trabajo/baja.html</loc></url>
-  <url><loc>https://openlexiura.es/Trabajo/acoso.html</loc></url>
-  <url><loc>https://openlexiura.es/Trabajo/excedencia.html</loc></url>
+  <url><loc>https://openlexiura.es/Deudas/portal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://openlexiura.es/Deudas/asnef-como-salir.html</loc></url>
+  <url><loc>https://openlexiura.es/Deudas/empresa-recobro.html</loc></url>
+  <url><loc>https://openlexiura.es/Deudas/prescripcion-deudas.html</loc></url>
+  <url><loc>https://openlexiura.es/Deudas/segunda-oportunidad.html</loc></url>
+
+  <url><loc>https://openlexiura.es/Divorcio-Familia/portal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://openlexiura.es/Divorcio-Familia/convenio-regulador.html</loc></url>
+  <url><loc>https://openlexiura.es/Divorcio-Familia/custodia-compartida.html</loc></url>
+  <url><loc>https://openlexiura.es/Divorcio-Familia/divorcio-express.html</loc></url>
+  <url><loc>https://openlexiura.es/Divorcio-Familia/modificacion-medidas.html</loc></url>
+  <url><loc>https://openlexiura.es/Divorcio-Familia/pension-alimentos.html</loc></url>
+
+  <url><loc>https://openlexiura.es/Extranjeria/portal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://openlexiura.es/Extranjeria/arraigo-social.html</loc></url>
+  <url><loc>https://openlexiura.es/Extranjeria/nie.html</loc></url>
+
+  <url><loc>https://openlexiura.es/Accidentes-Multas/portal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://openlexiura.es/Accidentes-Multas/atropello-peaton.html</loc></url>
+  <url><loc>https://openlexiura.es/Accidentes-Multas/baremo-lesiones-2026.html</loc></url>
+  <url><loc>https://openlexiura.es/Accidentes-Multas/parte-amistoso.html</loc></url>
+  <url><loc>https://openlexiura.es/Accidentes-Multas/seguro-no-paga.html</loc></url>
 </urlset>
