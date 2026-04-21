@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
+<!-- End Google Tag Manager -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayuda familiar para comprar la vivienda: donación o préstamo, fiscalidad y riesgos | OpenLexIura</title>
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#dc2626;--brand-2:#ef4444;--text:#1f2937;--muted:#64748b;--line:rgba(220,38,38,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Inter",sans-serif;background:linear-gradient(180deg,#fff5f5 0%,#fef1f1 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(220,38,38,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(220,38,38,.22);border-radius:999px;background:linear-gradient(180deg,rgba(220,38,38,.10),rgba(220,38,38,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(220,38,38,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(220,38,38,.20);background:rgba(220,38,38,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(220,38,38,.8);}
+.article-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:60ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:1.3rem;position:relative;}
+.article-body ul li::before{content:"→";color:var(--brand);position:absolute;left:0;}
+/* Quick answer */
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(220,38,38,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0;}
+.quick-answer strong{color:#fff;}
+/* Mito box */
+.mito-box{padding:1.8rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:2px solid rgba(194,65,12,.28);margin:2rem 0;text-align:center;}
+.mito-box .mito-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c2410c;margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.mito-box .mito-text{font-family:"Cormorant Garamond",serif;font-size:1.55rem;color:#7c2d12;line-height:1.3;font-style:italic;margin-bottom:.9rem;}
+.mito-box .mito-real{font-size:.98rem;color:#9a3412;line-height:1.72;margin:0;}
+/* VS grid */
+.vs-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.vs-card{padding:1.5rem;border-radius:var(--radius);border:1px solid var(--line);}
+.vs-card.seguro{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.25);}
+.vs-card.peligro{background:linear-gradient(180deg,#fff5f5,#fee2e2);border-color:rgba(220,38,38,.30);}
+.vs-card .vs-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:700;margin-bottom:.3rem;}
+.vs-card.seguro .vs-title{color:#15803d;}
+.vs-card.peligro .vs-title{color:#991b1b;}
+.vs-card .vs-art{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .65rem;border-radius:999px;display:inline-block;margin-bottom:.75rem;}
+.vs-card.seguro .vs-art{background:rgba(22,163,74,.12);color:#15803d;}
+.vs-card.peligro .vs-art{background:rgba(220,38,38,.10);color:#991b1b;}
+.vs-card ul{margin:0;display:flex;flex-direction:column;gap:.45rem;}
+.vs-card ul li{list-style:none;font-size:.9rem;color:#374151;line-height:1.52;padding-left:.9rem;position:relative;}
+.vs-card ul li::before{position:absolute;left:0;}
+.vs-card.seguro ul li::before{content:"✓";color:#15803d;}
+.vs-card.peligro ul li::before{content:"✗";color:#dc2626;}
+/* Info, alerta boxes */
+.info-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff5f5);border:1px solid rgba(220,38,38,.14);box-shadow:0 6px 28px rgba(0,0,0,.08);margin:2rem 0;}
+.info-box .info-title{font-family:"Cormorant Garamond",serif;font-size:1.28rem;font-weight:700;color:var(--brand);margin-bottom:.65rem;}
+.info-box p{margin-bottom:.55rem;font-size:.98rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#1e1e1e,#2d1515);border:1px solid rgba(220,38,38,.4);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:"Cormorant Garamond",serif;font-size:1.28rem;font-weight:700;color:#fca5a5;margin-bottom:.65rem;}
+.alerta-box p{margin-bottom:.55rem;font-size:.98rem;color:#fecaca;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+/* Regulation table */
+.reg-table{width:100%;border-collapse:separate;border-spacing:0;margin:1.5rem 0 2rem;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08);}
+.reg-table th{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:.85rem 1rem;font-size:.82rem;font-weight:700;text-align:left;letter-spacing:.04em;text-transform:uppercase;}
+.reg-table td{padding:.85rem 1rem;font-size:.9rem;color:#374151;line-height:1.6;border-bottom:1px solid rgba(220,38,38,.08);}
+.reg-table tr:last-child td{border-bottom:none;}
+.reg-table tr:nth-child(even) td{background:rgba(220,38,38,.03);}
+.reg-table td:first-child{font-weight:600;color:#111827;}
+/* Steps */
+.steps{counter-reset:step;display:flex;flex-direction:column;gap:1.2rem;margin:1.5rem 0 2rem;}
+.step{display:flex;gap:1.1rem;align-items:flex-start;padding:1.2rem 1.4rem;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,.05);}
+.step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;}
+.step-body .step-title{font-weight:700;color:#111827;font-size:.98rem;margin-bottom:.3rem;}
+.step-body p{font-size:.9rem;color:#4b5563;line-height:1.65;margin:0;}
+/* Novedad badge */
+.novedad{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:999px;background:rgba(220,38,38,.12);color:#991b1b;border:1px solid rgba(220,38,38,.30);margin-left:.4rem;vertical-align:middle;}
+/* Tags */
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.5rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.83rem;}
+/* CTA */
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,245,245,.94));border:1px solid rgba(220,38,38,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3.5vw,2.5rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(220,38,38,.35);}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+/* Simulador */
+.simulador-box{background:linear-gradient(180deg,#fff,#fdf2f2);border:1px solid rgba(220,38,38,.18);border-radius:var(--radius);padding:2rem;margin:2.5rem 0;box-shadow:0 8px 32px rgba(0,0,0,.08);}
+.simulador-box h3{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:700;color:#0f172a;margin-bottom:.5rem;}
+.simulador-box .sim-sub{font-size:.95rem;color:#6b7280;margin-bottom:1.4rem;}
+.sim-row{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.1rem;}
+.sim-label{font-size:.88rem;font-weight:600;color:#374151;}
+.sim-input,.sim-select{width:100%;padding:.7rem 1rem;border-radius:12px;border:1px solid rgba(220,38,38,.20);font-size:.97rem;font-family:"Inter",sans-serif;background:#fff;color:#111827;outline:none;transition:border-color .2s;}
+.sim-input:focus,.sim-select:focus{border-color:var(--brand);}
+.sim-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:.6rem;padding:.85rem 1.5rem;border-radius:999px;font-weight:700;font-size:.95rem;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(220,38,38,.30);}
+.sim-btn:disabled{opacity:.55;cursor:not-allowed;}
+.sim-result{margin-top:1.4rem;padding:1.2rem 1.5rem;border-radius:16px;background:#fff;border:1px solid var(--line);font-size:.97rem;line-height:1.75;color:#374151;display:none;}
+.sim-result.visible{display:block;}
+.sim-result strong{color:#111827;}
+.sim-loading{display:none;align-items:center;gap:.7rem;margin-top:1rem;color:var(--muted);font-size:.9rem;}
+.sim-loading.visible{display:flex;}
+.sim-spinner{width:20px;height:20px;border:2.5px solid rgba(220,38,38,.3);border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.chart-container{position:relative;width:100%;height:360px;}
+@media(max-width:640px){
+  .article-hero{padding:7.5rem 1.2rem 3rem;}
+  .article-body{padding:2.5rem 1.2rem 4rem;}
+  .vs-box{grid-template-columns:1fr;}
+  .reg-table{font-size:.82rem;}
+  .reg-table th,.reg-table td{padding:.65rem .7rem;}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav>
+  <a class="nav-logo" href="index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="../portal.html">&larr; Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="cat-pill reveal">Impuestos &middot; Vivienda &middot; Fiscalidad Familiar</div>
+  <h1 class="article-title reveal">La ayuda familiar para la vivienda:<br><em>&iquest;donaci&oacute;n o pr&eacute;stamo?</em></h1>
+  <p class="article-lead reveal">Tus padres te transfieren dinero para la entrada del piso. Crees que es un asunto de familia. Hacienda tiene otra opini&oacute;n. Te explicamos los riesgos reales, los dos caminos legales y el protocolo exacto para no acabar pagando el triple.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">&middot;</span>
+    <span>Actualizado abril 2026</span><span class="meta-sep">&middot;</span>
+    <span class="meta-badge">12 min lectura</span><span class="meta-sep">&middot;</span>
+    <span class="meta-badge">Impuestos &middot; Vivienda</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">&#9889; La Regla de Oro</div>
+    <p>El dinero de tus padres para la entrada no es invisible. Cuando firmes ante notario, Hacienda lo sabe al instante. Si no puedes justificar de d&oacute;nde sali&oacute; ese dinero con un documento legal en regla, te lo gravar&aacute;n como <strong>ganancia patrimonial no justificada</strong> a los tipos marginales m&aacute;s altos del IRPF. La soluci&oacute;n es sencilla: formaliza la operaci&oacute;n correctamente, ya sea como <strong>donaci&oacute;n</strong> o como <strong>pr&eacute;stamo</strong>.</p>
+  </div>
+
+  <p class="reveal">En el mercado inmobiliario espa&ntilde;ol de 2024&ndash;2026, comprar la primera vivienda exige un desembolso inicial de entre el <strong>20% del precio m&aacute;s un 10% adicional</strong> en impuestos y gastos. Para un piso de 150.000&euro;, eso son 45.000&euro; que el banco no financia. La &ldquo;ayuda familiar para la entrada&rdquo; ha pasado de ser una excepci&oacute;n a ser un mecanismo estructural en Espa&ntilde;a, y la Agencia Tributaria lo sabe perfectamente.</p>
+
+  <p class="reveal">El ordenamiento jur&iacute;dico reconoce dos figuras para articular esta transferencia: la <strong>donaci&oacute;n inter vivos</strong> (te lo dan y punto) y el <strong>pr&eacute;stamo familiar</strong> (te lo dan y lo devuelves). La elecci&oacute;n tiene consecuencias fiscales radicalmente distintas. Lo que no existe es una tercera opci&oacute;n: la transferencia silenciosa sin papeles.</p>
+
+  <div class="mito-box reveal">
+    <div class="mito-label">&#10060; Mito destruido</div>
+    <p class="mito-text">&ldquo;Si me lo mandan por transferencias peque&ntilde;as de menos de 3.000&euro;, Hacienda no se entera.&rdquo;</p>
+    <p class="mito-real"><strong>Falso y muy peligroso.</strong> El problema no aparece cuando recibes el dinero, sino cuando vas al notario a firmar la compraventa. En ese momento, Hacienda recibe autom&aacute;ticamente la Ficha &Uacute;nica Notarial y sus algoritmos cruzan tu patrimonio con tus n&oacute;minas. Si no cuadra, te investigan. El fraccionamiento en pagos peque&ntilde;os no resuelve nada.</p>
+  </div>
+
+  <h2 class="reveal">1. Por qu&eacute; el notario <span>activa la alarma</span></h2>
+
+  <p class="reveal">El notariado espa&ntilde;ol est&aacute; obligado por ley a remitir a Hacienda el <strong>&Iacute;ndice &Uacute;nico Informatizado</strong> y la <strong>Ficha &Uacute;nica Notarial</strong> de cada escritura de compraventa. En tiempo real, la AEAT sabe que has comprado un piso, por cu&aacute;nto y cu&aacute;nto pusiste de entrada propia.</p>
+
+  <p class="reveal">A continuaci&oacute;n, el algoritmo de la Agencia Tributaria hace una sencilla ecuaci&oacute;n patrimonial: ¿pod&iacute;as haber ahorrado t&uacute; solo esa cantidad con tus ingresos declarados en los &uacute;ltimos a&ntilde;os? Si la respuesta es no, se genera autom&aacute;ticamente una <strong>alerta de discrepancia</strong>. Lo que viene despu&eacute;s es un requerimiento de la AEAT exigi&eacute;ndote que justifiques el origen del dinero.</p>
+
+  <div class="info-box reveal">
+    <p class="info-title">&#128203; La inversi&oacute;n de la carga de la prueba</p>
+    <p>Una vez que Hacienda detecta el incremento patrimonial, t&uacute; eres quien debe demostrar de d&oacute;nde vino el dinero. <strong>No es suficiente con mostrar el extracto bancario</strong> que acredita que la transferencia vino de la cuenta de tus padres. Lo que la AEAT exige es el t&iacute;tulo jur&iacute;dico que justifica esa transferencia: una escritura de donaci&oacute;n liquidada, o un contrato de pr&eacute;stamo con Modelo 600 presentado en plazo.</p>
+    <p>Si no puedes acreditarlo, el importe completo se integra en tu Base Liquidable General del IRPF y tributa a los tipos marginales m&aacute;s altos, que pueden superar el 47%.</p>
+  </div>
+
+  <h2 class="reveal">2. Las dos v&iacute;as legales: <span>donaci&oacute;n vs. pr&eacute;stamo</span></h2>
+
+  <p class="reveal">Ambas opciones son completamente legales. Cada una tiene sus costes, sus requisitos formales y sus riesgos si no se ejecuta correctamente:</p>
+
+  <div class="vs-box reveal">
+    <div class="vs-card seguro">
+      <p class="vs-title">&#127873; Donaci&oacute;n inter vivos</p>
+      <span class="vs-art">Te lo dan a fondo perdido</span>
+      <ul>
+        <li>Requiere <strong>escritura p&uacute;blica</strong> ante notario</li>
+        <li>Tributa en el <strong>Impuesto de Donaciones</strong> (ISD)</li>
+        <li>En Madrid, Valencia, Andaluc&iacute;a o Baleares: <strong>bonificaci&oacute;n del 99%&ndash;100%</strong></li>
+        <li>Coste efectivo: <strong>casi cero</strong> en la mayor parte de Espa&ntilde;a</li>
+        <li>Una vez liquidada, <strong>cero riesgo futuro</strong></li>
+        <li>Si donas dinero (no un inmueble), el donante <strong>no paga IRPF</strong></li>
+      </ul>
+    </div>
+    <div class="vs-card peligro">
+      <p class="vs-title">&#128196; Pr&eacute;stamo familiar al 0%</p>
+      <span class="vs-art">Lo devuelves en cuotas</span>
+      <ul>
+        <li>Puede formalizarse en <strong>documento privado</strong></li>
+        <li>Requiere presentar el <strong>Modelo 600</strong> en 30 d&iacute;as</li>
+        <li>Debe incluir cuadro de amortizaci&oacute;n real y realista</li>
+        <li>Las <strong>devoluciones deben quedar bancariamente probadas</strong></li>
+        <li>Si no se devuelve, Hacienda lo recalifica como <strong>donaci&oacute;n encubierta</strong></li>
+        <li>Riesgo de inspecci&oacute;n durante <strong>toda la vida del pr&eacute;stamo</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="reveal">3. El mapa auton&oacute;mico de <span>la donaci&oacute;n (2024&ndash;2026)</span></h2>
+
+  <p class="reveal">El Impuesto sobre Sucesiones y Donaciones est&aacute; cedido a las comunidades aut&oacute;nomas. La diferencia entre vivir en una u otra puede suponer miles de euros. En las jurisdicciones m&aacute;s favorables, donar dinero directamente es <strong>pr&aacute;cticamente gratis</strong> si se cumplen los requisitos formales:</p>
+
+  <table class="reg-table reveal">
+    <thead>
+      <tr>
+        <th>Comunidad Aut&oacute;noma</th>
+        <th>Bonificaci&oacute;n (padres a hijos)</th>
+        <th>Requisito formal clave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Comunitat Valenciana</td>
+        <td>99% de la cuota &mdash; exenci&oacute;n de facto. Reducci&oacute;n en base de hasta 150.000&euro; para primera vivienda si el donatario tiene menos de 35 a&ntilde;os.</td>
+        <td>Escritura p&uacute;blica notarial obligatoria. Fondos bancarizados con trazabilidad.</td>
+      </tr>
+      <tr>
+        <td>Illes Balears</td>
+        <td>100% de deducci&oacute;n sobre la cuota l&iacute;quida (normativa reciente)</td>
+        <td>Modelo 651 en 30 d&iacute;as h&aacute;biles. Escritura notarial imperativa. Sin efectivo.</td>
+      </tr>
+      <tr>
+        <td>Comunidad de Madrid</td>
+        <td>99% de la cuota</td>
+        <td>Formalizar en documento p&uacute;blico ante notario.</td>
+      </tr>
+      <tr>
+        <td>Andaluc&iacute;a</td>
+        <td>99% para c&oacute;nyuges y parientes directos</td>
+        <td>Escritura p&uacute;blica y trazabilidad estricta.</td>
+      </tr>
+      <tr>
+        <td>Catalu&ntilde;a / Pa&iacute;s Vasco</td>
+        <td>Sin bonificaci&oacute;n general: tarifa propia del 5% al 9%</td>
+        <td>Escritura notarial. Plazo de un mes.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box reveal">
+    <p class="info-title">&#9888;&#65039; La trampa del IRPF del donante: dona dinero, no inmuebles</p>
+    <p>Si tus padres deciden donarte directamente un piso en lugar de dinero, la operaci&oacute;n genera una <strong>ganancia patrimonial en su IRPF</strong>: la diferencia entre el precio al que compraron el inmueble y su valor actual tributa en la base del ahorro a tipos de hasta el 28%.</p>
+    <p>Por ejemplo, si compraron por 150.000&euro; y ahora vale 350.000&euro;, deben declarar 200.000&euro; de ganancia, aunque el hijo no pague nada en el Impuesto de Donaciones. <strong>La estrategia &oacute;ptima es siempre la transferencia de liquidez</strong>, no la donaci&oacute;n de inmuebles revalorizados.</p>
+  </div>
+
+  <h2 class="reveal">4. El protocolo del pr&eacute;stamo: <span>c&oacute;mo blindarte paso a paso</span></h2>
+
+  <p class="reveal">Si optas por articular la ayuda como pr&eacute;stamo familiar &mdash;porque en tu comunidad el Impuesto de Donaciones es alto, o porque los padres quieren recuperar el dinero realmente&mdash; el cumplimiento del protocolo es innegociable. Un papel privado sin registrar es papel mojado frente a Hacienda.</p>
+
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <p class="step-title">Redacta el contrato con rigor jur&iacute;dico</p>
+        <p>El documento debe incluir: nombres y DNI de ambas partes, importe exacto, fecha, cl&aacute;usula expresa de <strong>&ldquo;inter&eacute;s pactado del 0%&rdquo;</strong> y un cuadro de amortizaci&oacute;n detallado con cuotas y plazos realistas. Las cuotas deben ser compatibles con el salario real del prestatario. Firmas en todas las p&aacute;ginas.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <p class="step-title">Haz la transferencia con el concepto correcto</p>
+        <p>El dinero debe moverse por <strong>transferencia bancaria</strong>, nunca en efectivo. En el concepto escribe literalmente: <em>&ldquo;Pr&eacute;stamo personal sin intereses seg&uacute;n contrato&rdquo;</em> o similar. Esta anotaci&oacute;n refuerza la coherencia entre el negocio jur&iacute;dico y el flujo bancario.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <p class="step-title">Presenta el Modelo 600 en 30 d&iacute;as</p>
+        <p>El prestatario (el hijo) debe presentar el contrato acompa&ntilde;ado del <strong>Modelo 600</strong> ante la administraci&oacute;n tributaria auton&oacute;mica correspondiente, marcando la casilla &ldquo;Sujeto pero Exento&rdquo;. La cuota a pagar es <strong>cero euros</strong>, pero el justificante con CSV (C&oacute;digo Seguro de Verificaci&oacute;n) es la prueba que blinda la fecha del contrato frente a Hacienda.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <p class="step-title">Devuelve el dinero puntualmente y guarda los justificantes</p>
+        <p>Configura una <strong>transferencia autom&aacute;tica peri&oacute;dica</strong> con el concepto &ldquo;Devoluci&oacute;n Cuota Pr&eacute;stamo Familiar&rdquo;. Conserva <em>todos</em> los justificantes bancarios hasta la &uacute;ltima cuota. Si Hacienda investiga en 3 &oacute; 4 a&ntilde;os, esos extractos son tu defensa definitiva.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">&#128680; La gran trampa: el pr&eacute;stamo que nunca se devuelve</p>
+    <p>Firmar el contrato y presentar el Modelo 600 <strong>no extingue el riesgo fiscal</strong>. Hacienda puede comprobar en cualquier momento si las cuotas se est&aacute;n pagando realmente. Si el padre o la madre no ha reclamado ni un solo pago y no existen transferencias de devoluci&oacute;n, la Inspecci&oacute;n recalifica la operaci&oacute;n como una <strong>donaci&oacute;n simulada</strong>.</p>
+    <p>El Tribunal Supremo ha avalado sistem&aacute;ticamente estas recalificaciones en 2024 y 2025. La consecuencia: el impuesto de donaciones que no se pag&oacute;, m&aacute;s intereses de demora al 4,0625% anual, m&aacute;s una sanci&oacute;n de entre el 50% y el 150% de la cuota defraudada.</p>
+  </div>
+
+  <h2 class="reveal">5. Prescripci&oacute;n y sanciones: <span>la deuda que no caduca</span></h2>
+
+  <p class="reveal">La Ley General Tributaria fija en <strong>cuatro a&ntilde;os</strong> el plazo de prescripci&oacute;n para que Hacienda reclame una deuda. Pero en los pr&eacute;stamos simulados, el TEAC ha establecido una doctrina que convierte ese plazo en una ilusi&oacute;n: el reloj no empieza a correr desde la firma del contrato, sino desde que la Administraci&oacute;n dispone de datos suficientes para apreciar la donaci&oacute;n real.</p>
+
+  <p class="reveal">En la pr&aacute;ctica, cada mensualidad no pagada es un nuevo acto de liberalidad. Cada actuaci&oacute;n inspectora reinicia el plazo. La consecuencia es que un pr&eacute;stamo familiar simulado genera una <strong>deuda tributaria latente y virtualmente imprescriptible</strong> hasta que se pague la &uacute;ltima cuota te&oacute;rica del contrato.</p>
+
+  <table class="reg-table reveal">
+    <thead>
+      <tr>
+        <th>Calificaci&oacute;n de la infracci&oacute;n</th>
+        <th>Multa sobre la cuota defraudada</th>
+        <th>Cu&aacute;ndo se aplica</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Infracci&oacute;n Leve</td>
+        <td>50%</td>
+        <td>Base inferior a 3.000&euro; o ausencia de ocultaci&oacute;n dolosa probada.</td>
+      </tr>
+      <tr>
+        <td>Infracci&oacute;n Grave</td>
+        <td>100%</td>
+        <td>Existe ocultaci&oacute;n. El uso de un contrato de pr&eacute;stamo simulado se tipifica autom&aacute;ticamente como ocultaci&oacute;n. La multa duplica la deuda original.</td>
+      </tr>
+      <tr>
+        <td>Infracci&oacute;n Muy Grave</td>
+        <td>150%</td>
+        <td>Medios fraudulentos manifiestos o cuantías exorbitantes. La multa equivale al triple de la factura tributaria original.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="reveal">A estos importes hay que sumar los <strong>intereses de demora al 4,0625% anual</strong> desde la fecha en que debi&oacute; presentarse el impuesto. En un expediente revisado 48 meses despu&eacute;s, el recargo por intereses supera el 16% de la deuda base. Una operaci&oacute;n pensada para ahorrar unos cientos de euros puede acabar costando el total del capital recibido.</p>
+
+  <!-- Simulador IA -->
+  <section class="simulador-box reveal" id="simulador">
+    <h3>&#129302; Consulta tu caso al asesor</h3>
+    <p class="sim-sub">D&iacute;nos la situaci&oacute;n y te explicamos cu&aacute;l es la v&iacute;a m&aacute;s segura y eficiente para tu comunidad aut&oacute;noma.</p>
+
+    <div class="sim-row">
+      <label class="sim-label" for="sim-ca">Tu comunidad aut&oacute;noma</label>
+      <select class="sim-select" id="sim-ca">
+        <option value="">Selecciona...</option>
+        <option>Comunitat Valenciana</option>
+        <option>Comunidad de Madrid</option>
+        <option>Andaluc&iacute;a</option>
+        <option>Illes Balears</option>
+        <option>Catalu&ntilde;a</option>
+        <option>Pa&iacute;s Vasco</option>
+        <option>Galicia</option>
+        <option>Castilla y Le&oacute;n</option>
+        <option>Canarias</option>
+        <option>Otra comunidad</option>
+      </select>
+    </div>
+    <div class="sim-row">
+      <label class="sim-label" for="sim-importe">Importe de la ayuda familiar (&euro;)</label>
+      <input class="sim-input" type="number" id="sim-importe" placeholder="Ej: 30000" min="1000" max="500000">
+    </div>
+    <div class="sim-row">
+      <label class="sim-label" for="sim-tipo">¿C&oacute;mo quieren articularlo?</label>
+      <select class="sim-select" id="sim-tipo">
+        <option value="">Selecciona...</option>
+        <option>Donaci&oacute;n (a fondo perdido)</option>
+        <option>Pr&eacute;stamo (lo devolver&eacute; en cuotas)</option>
+        <option>A&uacute;n no lo hemos decidido</option>
+        <option>Ya he hecho la transferencia sin papeles</option>
+      </select>
+    </div>
+    <button class="sim-btn" id="sim-btn" onclick="analizarCaso()">Analizar mi situaci&oacute;n &rarr;</button>
+
+    <div class="sim-loading" id="sim-loading">
+      <div class="sim-spinner"></div>
+      <span>Consultando con el asesor...</span>
+    </div>
+    <div class="sim-result" id="sim-result"></div>
+  </section>
+
+  <!-- Gráfico visual -->
+  <section class="bg-white rounded-3xl p-6 md:p-8 shadow-md border border-stone-100 my-10 reveal">
+    <div class="mb-6 text-center">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#0f172a;letter-spacing:-.02em;margin-bottom:.6rem;">El coste real de saltarse los papeles</h2>
+      <p style="color:#6b7280;font-size:.97rem;line-height:1.7;">Simulaci&oacute;n sobre una ayuda familiar de <strong>30.000&euro;</strong> descubierta 4 a&ntilde;os despu&eacute;s. Lo que empieza como &ldquo;ahorrar tr&aacute;mites&rdquo; puede acabar costando m&aacute;s que el capital recibido.</p>
+    </div>
+    <div class="chart-container">
+      <canvas id="costeChart"></canvas>
+    </div>
+  </section>
+
+  <div class="article-tags reveal">
+    <a class="tag" href="#">Ayuda familiar vivienda</a>
+    <a class="tag" href="#">Donaci&oacute;n inter vivos</a>
+    <a class="tag" href="#">Pr&eacute;stamo familiar</a>
+    <a class="tag" href="#">Modelo 600</a>
+    <a class="tag" href="#">Impuesto Donaciones</a>
+    <a class="tag" href="#">ISD</a>
+    <a class="tag" href="#">Ganancia patrimonial no justificada</a>
+    <a class="tag" href="#">AEAT fiscalidad 2026</a>
+    <a class="tag" href="#">Primera vivienda</a>
+    <a class="tag" href="#">Simulaci&oacute;n contractual</a>
+    <a class="tag" href="#">Comunitat Valenciana</a>
+    <a class="tag" href="#">Art&iacute;culo 1227 CC</a>
+  </div>
+
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>&iquest;Has recibido dinero de un familiar para la vivienda <em>sin hacer los papeles</em>?</em></h3>
+    <p>Todav&iacute;a estás a tiempo de regularizar la situaci&oacute;n. Cu&eacute;ntanos tu caso y te decimos c&oacute;mo proceder antes de que Hacienda detecte la discrepancia.</p>
+    <a class="btn-primary" href="consultas.html">Consultar mi caso &rarr;</a>
+  </div>
+</section>
+
+<footer>2026 &middot; <a href="../index.html">OpenLexIura</a> &middot; El derecho en el idioma de la calle</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.10});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+
+<script>
+// --- Gráfico de coste ---
+document.addEventListener('DOMContentLoaded', () => {
+  const ctx = document.getElementById('costeChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['V&iacute;a legal\n(donaci&oacute;n)','Capital\nrecibido','Cuota ISD\nsin bonif.','Intereses\ndemora (4 a&ntilde;os)','Sanci&oacute;n\n(infr. grave)','COSTE\nTOTAL'],
+      datasets: [{
+        label: 'Euros',
+        data: [300, 30000, 9000, 4800, 9000, 22800],
+        backgroundColor: [
+          'rgba(22,163,74,0.75)',
+          'rgba(59,130,246,0.65)',
+          'rgba(220,38,38,0.65)',
+          'rgba(245,158,11,0.7)',
+          'rgba(239,68,68,0.8)',
+          'rgba(153,27,27,0.9)'
+        ],
+        borderRadius: 10,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.raw.toLocaleString('es-ES')} €`
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false } },
+        y: {
+          ticks: { callback: v => v.toLocaleString('es-ES') + ' €' },
+          grid: { color: 'rgba(0,0,0,.06)' }
+        }
+      }
+    }
+  });
+});
+</script>
+
+<script>
+// --- Simulador IA con Anthropic API ---
+async function analizarCaso() {
+  const ca = document.getElementById('sim-ca').value;
+  const importe = document.getElementById('sim-importe').value;
+  const tipo = document.getElementById('sim-tipo').value;
+
+  if (!ca || !importe || !tipo) {
+    alert('Por favor, completa todos los campos antes de analizar.');
+    return;
+  }
+
+  const btn = document.getElementById('sim-btn');
+  const loading = document.getElementById('sim-loading');
+  const result = document.getElementById('sim-result');
+
+  btn.disabled = true;
+  loading.classList.add('visible');
+  result.classList.remove('visible');
+  result.innerHTML = '';
+
+  const prompt = `Eres un asesor fiscal y jurídico español especializado en fiscalidad de la vivienda y transmisiones patrimoniales entre familiares. Responde siempre en español claro, sin tecnicismos innecesarios, como si hablaras con una persona normal.
+
+El usuario tiene esta situación:
+- Comunidad autónoma: ${ca}
+- Importe de la ayuda familiar: ${importe}€
+- Tipo de operación planteada: ${tipo}
+
+Proporciona un análisis breve y práctico (máximo 5 párrafos cortos o secciones con viñetas) que incluya:
+1. Cuál es la opción más ventajosa fiscalmente en esa comunidad autónoma concreta
+2. Cuánto pagaría aproximadamente si lo formaliza correctamente (donación o préstamo)
+3. Cuál es el riesgo si no hace nada (ganancia patrimonial no justificada)
+4. Los pasos concretos que debe dar ahora mismo
+
+Sé directo, útil y sin rodeos. Usa formato con saltos de línea y negritas HTML (<strong>) para los puntos clave.`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await response.json();
+    const texto = data.content?.map(b => b.text || '').join('') || 'No se pudo obtener respuesta.';
+
+    result.innerHTML = texto.replace(/\n/g, '<br>');
+    result.classList.add('visible');
+  } catch (e) {
+    result.innerHTML = '<strong>Error al conectar con el asesor.</strong> Por favor, inténtalo de nuevo en unos momentos.';
+    result.classList.add('visible');
+  } finally {
+    btn.disabled = false;
+    loading.classList.remove('visible');
+  }
+}
+</script>
+</body>
+</html>
