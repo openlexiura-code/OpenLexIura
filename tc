@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Esquema comparativo – Hacienda / Blanqueo / Seguridad trabajadores</title>
+</head>
+<body>
+
+<!-- Esquema comparativo de delitos: Hacienda/Seguridad Social – Blanqueo – Seguridad trabajadores -->
+
+<table border="1" cellspacing="0" cellpadding="6">
+  <thead>
+    <tr>
+      <th>APARTADO</th>
+      <th>Delitos contra Hacienda Pública<br>(Art. 305 CP) y contra la Seguridad Social<br>(Art. 307 y 307 ter CP)</th>
+      <th>Blanqueo de Capitales<br>(Art. 301 CP)</th>
+      <th>Seguridad de los Trabajadores<br>(Arts. 316 y 317 CP)</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- 1. DELITO -->
+    <tr>
+      <td><strong>1. Delito</strong></td>
+      <td>
+        <strong>Hacienda (305 CP):</strong> defraudar a la Hacienda Pública mediante engaño u ocultación, superando un umbral anual, en tributos, retenciones, devoluciones u otros beneficios fiscales.<br>
+        <strong>Seguridad Social (307 CP):</strong> obtener o disfrutar indebidamente prestaciones o eludir el pago de cuotas/recargos, superando el umbral acumulado de varios años.<br>
+        <strong>Fraude en prestaciones (307 ter CP):</strong> simulación de relación laboral o empresa ficticia para obtener prestaciones de desempleo u otras prestaciones de Seguridad Social.
+      </td>
+      <td>
+        Realizar actos de <strong>adquisición, posesión, utilización, conversión, transmisión</strong> u ocultación de bienes de origen delictivo, con la finalidad de ocultar o encubrir su origen, integrándolos en el tráfico jurídico y económico aparente como lícitos.
+      </td>
+      <td>
+        <strong>Art. 316 CP:</strong> delito de <strong>peligro</strong> que sanciona al legalmente obligado que, infringiendo normas de prevención de riesgos laborales, no facilita los medios necesarios para que los trabajadores desarrollen su actividad con medidas de seguridad e higiene adecuadas, generando un <strong>peligro grave</strong> para su vida, salud o integridad.<br>
+        <strong>Art. 317 CP:</strong> modalidad imprudente del anterior, cuando el hecho se comete por imprudencia grave.
+      </td>
+    </tr>
+
+    <!-- 2. AUTORÍA Y PARTICIPACIÓN POSIBLE -->
+    <tr>
+      <td><strong>2. Autoría y participación posible</strong></td>
+      <td>
+        <strong>Sujeto activo:</strong> contribuyente obligado frente a Hacienda o responsable frente a la Seguridad Social (persona física o jurídica). La empresa puede responder como persona jurídica (art. 310 bis CP, en delitos fiscales).<br>
+        <strong>Personas físicas:</strong> administrador, representante legal, asesores que colaboren dolosamente, etc.<br>
+        <strong>Participación:</strong> posible autoría, coautoría, inducción y cooperación necesaria en los términos generales de la parte general del CP.
+      </td>
+      <td>
+        <strong>Delito común:</strong> puede cometerlo cualquier persona física que intervenga en operaciones con bienes de origen delictivo (titulares, intermediarios, testaferros, “mulas financieras”, etc.).<br>
+        <strong>Autoblanqueo:</strong> el propio autor del delito previo puede ser sujeto activo siempre que la operación de blanqueo vaya más allá del mero autoencubrimiento y afecte al sistema económico u organización criminal.<br>
+        <strong>Personas jurídicas:</strong> responden conforme a los arts. 31 bis y 302.2 CP por permitir el blanqueo en su beneficio.
+      </td>
+      <td>
+        <strong>Sujeto activo principal:</strong> empresario como garante originario de la seguridad según la Ley de Prevención de Riesgos Laborales.<br>
+        <strong>Extensión subjetiva (art. 318 CP):</strong> administradores, encargados del servicio u omitentes que, con delegación efectiva, conocieran el riesgo y pudieran remediarlo.<br>
+        <strong>Participación:</strong> caben coautoría, omisión impropia por garantes, y las formas de participación generales.
+      </td>
+    </tr>
+
+    <!-- 3. TIPO OBJETIVO -->
+    <tr>
+      <td><strong>3. Tipo objetivo</strong></td>
+      <td>
+        <strong>Conducta:</strong> emplear engaño, simulación u ocultación relevantes (facturas falsas, entramados societarios, “empresas pantalla”, testaferros) para defraudar tributos o cuotas.<br>
+        <strong>Resultado:</strong> perjuicio económico a Hacienda o Seguridad Social que supere la cuantía umbral, calculada por período legal (año natural o cuatro años).<br>
+        <strong>Fraude en prestaciones (307 ter):</strong> simulación de contratación/empresas para generar un derecho aparente a prestaciones, por cualquier cuantía.
+      </td>
+      <td>
+        <strong>Conductas (301.1 y 301.2 CP):</strong> adquirir, poseer, utilizar, convertir, transmitir u ocultar/encubrir bienes sabiendo su origen delictivo.<br>
+        Requiere <strong>vocación de inserción en el tráfico jurídico</strong> (no mero consumo privado) y operaciones orientadas a dificultar el rastro de los bienes.<br>
+        <strong>Objeto material:</strong> bienes, derechos, valores o activos con valor económico, incluyendo bienes sustitutivos; se excluyen bienes jurídicamente inidóneos para el tráfico lícito.
+      </td>
+      <td>
+        <strong>Infracción de normas de prevención:</strong> vulneración de normas concretas de seguridad e higiene (leyes, reglamentos, normas técnicas, convenios colectivos).<br>
+        <strong>No facilitar medios necesarios:</strong> falta de equipos de protección, formación, información o control efectivo del uso de las medidas de seguridad.<br>
+        <strong>Resultado de peligro:</strong> situación de <strong>peligro grave y concreto</strong>, con alta probabilidad de daño, que supera el riesgo permitido.
+      </td>
+    </tr>
+
+    <!-- 4. TIPO SUBJETIVO -->
+    <tr>
+      <td><strong>4. Tipo subjetivo</strong></td>
+      <td>
+        <strong>Modalidad dolosa básica:</strong> exige dolo, con conocimiento de la obligación tributaria o de cotización y voluntad de defraudar mediante ocultación o simulación.<br>
+        <strong>Elemento tendencial:</strong> ánimo defraudatorio, no se sancionan simples errores u omisiones sin engaño relevante.
+      </td>
+      <td>
+        <strong>Dolo (arts. 301.1 y 301.2):</strong> conciencia del origen delictivo de los bienes y de que con la operación se está ocultando o encubriendo ese origen.<br>
+        Se admite <strong>dolo eventual</strong>: asunción consciente de un alto riesgo sobre el origen ilícito, ignorancia deliberada, incumplimiento grave de deberes de comprobación.<br>
+        <strong>Imprudencia grave (301.3):</strong> falta de diligencia debiendo y pudiendo conocer la procedencia delictiva; puede cometerla cualquier ciudadano.
+      </td>
+      <td>
+        <strong>Art. 316 CP:</strong> exige dolo, entendiendo por tal la conciencia de la infracción de normas de seguridad o de la omisión de medios, aceptando el peligro grave generado.<br>
+        <strong>Art. 317 CP:</strong> recoge la <strong>imprudencia grave</strong>, única modalidad imprudente tipificada en el Título XV; el sujeto infringe gravemente deberes de cuidado en materia de seguridad.
+      </td>
+    </tr>
+
+    <!-- 5. UMBRAL DE CUANTÍA -->
+    <tr>
+      <td><strong>5. Umbral de cuantía (si hay)</strong></td>
+      <td>
+        <strong>Hacienda (305 CP):</strong> la cuota defraudada debe superar los <strong>120.000 €</strong> por cada año natural (1 de enero–31 de diciembre).<br>
+        <strong>Seguridad Social (307 CP):</strong> se exige superar los <strong>50.000 €</strong>, calculados acumulando las cuotas defraudadas durante hasta cuatro años consecutivos.<br>
+        <strong>Fraude en prestaciones (307 ter CP):</strong> no existe umbral mínimo; cualquier cuantía es penalmente típica si concurren los elementos del tipo.
+      </td>
+      <td>
+        No existe umbral cuantitativo legal; el tipo se configura sin mínimo.<br>
+        La jurisprudencia aplica el <strong>principio de insignificancia</strong> para excluir supuestos de cuantía irrelevante o socialmente insignificante.
+      </td>
+      <td>
+        No existe umbral de cuantía económica ni límite numérico de trabajadores; el tipo se centra en la <strong>creación de peligro grave</strong>, independientemente del coste de las medidas omitidas.
+      </td>
+    </tr>
+
+    <!-- 6. TIPOS AGRAVADOS / ATENUADOS -->
+    <tr>
+      <td><strong>6. Tipo agravado, atenuado y sus requisitos</strong></td>
+      <td>
+        <strong>Agravados:</strong><br>
+        – <em>Delito fiscal</em>: cuantías superiores a determinados umbrales (p.ej. más de 600.000 €) conllevan pena superior en grado y circunstancias agravantes específicas.<br>
+        – <em>Seguridad Social</em>: pueden existir agravaciones por intervención de organización criminal o uso de entramados especialmente complejos.<br>
+        <strong>Regularización voluntaria:</strong> el pago íntegro de la deuda (cuota, intereses y recargos) antes de notificación de inspección o querella produce <strong>atipicidad sobrevenida</strong>, eliminando el delito.
+      </td>
+      <td>
+        <strong>Tipo básico doloso:</strong> 6 meses a 6 años de prisión, multa del tanto al triplo y, en su caso, inhabilitación profesional (art. 303 CP).<br>
+        <strong>Imprudente (301.3):</strong> 6 meses a 2 años de prisión, multa del tanto al triplo e inhabilitación.<br>
+        <strong>Agravados:</strong> pena en <strong>mitad superior</strong> cuando los bienes proceden de delitos como tráfico de drogas, corrupción pública o urbanística, o pertenencia a organización dedicada al blanqueo; y <strong>superior en grado</strong> para jefes o administradores de la organización.
+      </td>
+      <td>
+        <strong>Art. 316 CP (doloso):</strong> pena básica sin modalidades agravadas específicas en el precepto; la gravedad puede valorarse en la individualización de la pena (número de trabajadores, intensidad del peligro, etc.).<br>
+        <strong>Art. 317 CP (imprudente):</strong> prevé la <strong>pena inferior en grado</strong> respecto al art. 316, operando como tipo atenuado cuando el hecho se comete por imprudencia grave.
+      </td>
+    </tr>
+
+    <!-- 7. CAUSAS DE EXIMENTE -->
+    <tr>
+      <td><strong>7. Causas de eximente</strong></td>
+      <td>
+        <strong>Regularización voluntaria:</strong> si el obligado <strong>reconoce toda la deuda y paga íntegramente</strong> cuota, intereses y recargos <strong>antes</strong> de la notificación formal de inspección o de la querella, desaparece la tipicidad penal (atipicidad sobrevenida).<br>
+        Fuera de este supuesto rigen las causas generales de exención (estado de necesidad, error invencible, etc.).
+      </td>
+      <td>
+        No existe eximente específica en la regulación del art. 301 CP.<br>
+        Se aplican las eximentes generales (error invencible sobre la procedencia lícita, fuerza mayor, etc.) de la parte general del CP.
+      </td>
+      <td>
+        No hay eximentes específicas propias del tipo; el <strong>consentimiento del trabajador</strong> carece de eficacia justificante y no exime de responsabilidad penal.<br>
+        Solo resultan aplicables las eximentes generales (estado de necesidad, fuerza mayor, etc.) en su caso.
+      </td>
+    </tr>
+
+    <!-- 8. CONCURSOS POSIBLES -->
+    <tr>
+      <td><strong>8. Concursos posibles</strong></td>
+      <td>
+        <strong>Con la vía administrativa:</strong> por debajo de los umbrales, los hechos constituyen mera infracción administrativa sancionable con multa, sin concurso penal.<br>
+        <strong>Con blanqueo:</strong> posible concurso con blanqueo de la cuota tributaria defraudada, tratándose esta de “bien” a efectos del art. 301 CP, aunque existe debate doctrinal sobre bis in idem.<br>
+        <strong>Con delitos societarios y de falsedad documental:</strong> frecuentes concursos con falsedad en documento mercantil, delitos societarios, etc.
+      </td>
+      <td>
+        <strong>Con delito previo:</strong> se discute el concurso con receptación y encubrimiento; rige criterio de especialidad o consunción por norma más grave.<br>
+        <strong>Con delitos fiscales:</strong> la cuota defraudada puede ser objeto de blanqueo (postura mayoritaria), generándose concurso entre art. 305 y 301 CP.<br>
+        <strong>Delito continuado:</strong> pluralidad de operaciones se concibe como una sola infracción global, dada la fragmentación típica de las maniobras de blanqueo.
+      </td>
+      <td>
+        <strong>Con homicidio/lesiones imprudentes:</strong><br>
+        – Si el único trabajador en peligro sufre lesión o muerte, el delito de resultado desplaza al de peligro (concurso de normas, art. 8.3 CP).<br>
+        – Si además hay otros trabajadores que solo sufren peligro grave, procede concurso ideal entre el delito de peligro y los delitos de resultado, para abarcar todo el desvalor.
+      </td>
+    </tr>
+
+    <!-- 9. CIRCUNSTANCIAS MODIFICATIVAS -->
+    <tr>
+      <td><strong>9. Circunstancias modificativas de la responsabilidad posibles</strong></td>
+      <td>
+        Aplicables las circunstancias generales: agravantes (reincidencia, prevalimiento, cuantía especialmente elevada, etc.) y atenuantes (reparación del daño, confesión, dilaciones indebidas).<br>
+        La regularización posterior a la querella no exime, pero puede operar como <strong>atenuante muy cualificada</strong> al suponer reparación íntegra del daño.
+      </td>
+      <td>
+        Circunstancias generales: atenuantes de reparación del daño (devolución de bienes, colaboración con la justicia), confesión, dilaciones, etc.<br>
+        Agravantes: pertenencia a organización criminal, profesionalidad, uso de estructuras complejas o internacionales pueden ser valoradas en la individualización de la pena o integrarse en el tipo agravado.
+      </td>
+      <td>
+        Se aplican las modificativas generales (reincidencia, reparación, confesión, etc.).<br>
+        La existencia de múltiples trabajadores afectados, prolongación temporal del riesgo o desprecio reiterado de requerimientos administrativos pueden influir en la graduación de la pena.
+      </td>
+    </tr>
+
+    <!-- 10. PENAS APLICABLES -->
+    <tr>
+      <td><strong>10. Penas aplicables</strong></td>
+      <td>
+        <strong>Hacienda (305 CP):</strong> pena base de <strong>1 a 5 años de prisión</strong> y multa, con agravación a <strong>2 a 6 años</strong> en supuestos de especial gravedad (p.ej. cuantía superior a 600.000 €).<br>
+        <strong>Seguridad Social (307 CP):</strong> también <strong>1 a 5 años de prisión</strong> y multa en los supuestos típicos.<br>
+        <strong>Fraude en prestaciones (307 ter CP):</strong> penas de prisión y multa, sin necesidad de umbral mínimo, adaptadas a la gravedad del fraude.<br>
+        <strong>Personas jurídicas:</strong> multas que pueden llegar a multiplicar por cuatro lo defraudado, inhabilitación para subvenciones y contratación pública entre 3 y 6 años.
+      </td>
+      <td>
+        <strong>Tipo básico doloso:</strong> prisión de <strong>6 meses a 6 años</strong>, multa del tanto al triplo del valor de los bienes y <strong>inhabilitación profesional de 1 a 3 años</strong> para determinados profesionales (funcionarios, financieros, sanitarios, educadores).<br>
+        <strong>Imprudente:</strong> prisión de <strong>6 meses a 2 años</strong> y multa del tanto al triplo.<br>
+        <strong>Agravados:</strong> pena en mitad superior o superior en grado en los supuestos previstos (origen en delitos especialmente graves, jefatura de organización, etc.).
+      </td>
+      <td>
+        <strong>Art. 316 CP:</strong> pena de <strong>prisión de 6 meses a 3 años</strong> y <strong>multa de 6 a 12 meses</strong>.<br>
+        <strong>Art. 317 CP:</strong> cuando el delito del art. 316 se comete por imprudencia grave se impone la <strong>pena inferior en grado</strong> a la anterior.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
