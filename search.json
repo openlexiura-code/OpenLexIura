@@ -385,6 +385,69 @@
     "url": "Impuestos/calculadorarenta.html"
   },
   {
+    "titulo": "El mito de los dos pagadores",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "Tener dos pagadores (empresa + paro) no significa pagar más impuestos. Te explicamos por qué el SEPE retiene tan poco, cuándo estás obligado a declarar (umbral 15.800 € vs 22.000 €) y cómo evitar el susto en mayo.",
+    "tags": ["dos pagadores", "IRPF 2026", "límite 15.800€", "SEPE", "obligación declarar", "Modelo 145"],
+    "url": "Impuestos/dos-pagadores.html"
+  },
+  {
+    "titulo": "Deducciones de la Renta en la Comunitat Valenciana",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "El borrador de Hacienda nunca incluye las deducciones autonómicas. Descubre qué gastos te devuelve la Generalitat: gimnasio, dentista, gafas, alquiler, material escolar y más, ahora con el límite ampliado a 60.000 € de ingresos.",
+    "tags": ["deducciones IRPF 2026", "Comunitat Valenciana", "gimnasio deducible", "dentista deducible", "alquiler deducible", "Renta Web"],
+    "url": "Impuestos/deduccionesrenta.html"
+  },
+  {
+    "titulo": "Hijos que trabajan en verano: la trampa de la Renta familiar",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "Si tu hijo gana más de 1.800 € y presenta su declaración para recuperar unas retenciones pequeñas, los padres pierden automáticamente la deducción por descendientes. Un error que puede costar más de 1.000 € a la familia.",
+    "tags": ["deducción descendientes", "hijo trabaja verano", "frontera 1.800€", "límite 8.000€", "declaración conjunta", "IRPF 2026"],
+    "url": "Impuestos/declaracion-hijos.html"
+  },
+  {
+    "titulo": "Criptomonedas y la Renta",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "Vender, intercambiar o cobrar por minar criptomonedas genera una ganancia patrimonial que debes declarar en el IRPF. Te explicamos cómo calcular el beneficio, qué formulario usar y las obligaciones del modelo 721.",
+    "tags": ["criptomonedas", "Bitcoin", "ganancia patrimonial", "IRPF", "modelo 721", "DAC7"],
+    "url": "Impuestos/criptomonedas.html"
+  },
+  {
+    "titulo": "Vinted y Wallapop: la DAC7 y Hacienda",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "Desde 2024, las plataformas como Vinted, Wallapop o Airbnb están obligadas a enviar tus datos de ventas a Hacienda. Te explicamos cuándo tributan tus ventas de segunda mano, qué es la DAC7 y cómo distinguir venta ocasional de actividad económica.",
+    "tags": ["Vinted", "Wallapop", "DAC7", "segunda mano", "Hacienda", "IRPF plataformas"],
+    "url": "Impuestos/vinted-y-wallapop-dac7.html"
+  },
+  {
+    "titulo": "Premios y loterías: qué paga Hacienda",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "Los premios de lotería, quinielas y apuestas tributan de forma distinta. Los de la ONCE y Lotería Nacional están exentos hasta 40.000 €; por encima pagan un 20% en retención. Los premios de apuestas online se suman a tu base del IRPF.",
+    "tags": ["premios lotería", "Hacienda", "exención 40.000€", "IRPF", "apuestas online", "quiniela"],
+    "url": "Impuestos/premios-loterias.html"
+  },
+  {
+    "titulo": "El préstamo familiar y Hacienda",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "Prestar dinero a un familiar sin formalizar el contrato puede interpretarse como una donación encubierta. Hacienda puede liquidarte el Impuesto de Donaciones. Te explicamos cómo documentar el préstamo con el Modelo 600 y protegerte.",
+    "tags": ["préstamo familiar", "donación encubierta", "Modelo 600", "Hacienda", "IRPF", "intereses"],
+    "url": "Impuestos/prestamo-familiar.html"
+  },
+  {
+    "titulo": "Trabajos esporádicos y la Renta",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "Cobrar por hacer páginas web, dar clases particulares o cualquier ingreso puntual tiene consecuencias fiscales. Descubre cuándo estás obligado a declararlo, si debes darte de alta en autónomos y cuándo aplica la retención del 15%.",
+    "tags": ["trabajos esporádicos", "actividad económica", "autónomos", "retención 15%", "IRPF", "freelance"],
+    "url": "Impuestos/trabajos-esporadicos.html"
+  },
+  {
+    "titulo": "Error en la Renta: cómo rectificarla",
+    "categoria": "Impuestos y Fiscalidad",
+    "resumen": "Has presentado la declaración con un error o te has olvidado de una deducción. La rectificación de autoliquidación sustituye a la declaración complementaria para reclamar a favor. Hacienda tiene 6 meses para contestar y 4 años para revisarte a ti.",
+    "tags": ["error renta", "rectificación autoliquidación", "declaración complementaria", "IRPF", "4 años Hacienda", "plazo rectificación"],
+    "url": "Impuestos/error-renta.html"
+  },
+  {
     "titulo": "Salir del fichero ASNEF",
     "categoria": "Deudas y Morosidad",
     "resumen": "Apareces en ASNEF o en otro fichero de morosos y quieres salir. Te explicamos cuándo la inclusión es ilegal, cómo ejercer el derecho de cancelación ante la AEPD y qué ocurre con la deuda prescrita.",
@@ -460,68 +523,5 @@
     "resumen": "El NIE es el número de identificación obligatorio para cualquier trámite legal o económico en España si eres extranjero. Te explicamos para qué sirve, cómo solicitarlo en España o en el consulado y cuánto tarda.",
     "tags": ["NIE", "número identificación extranjero", "trámite", "consulado", "extranjería"],
     "url": "Extranjeria/nie.html"
-  },
-  {
-  "titulo": "El mito de los dos pagadores",
-  "categoria": "Impuestos y Fiscalidad",
-  "resumen": "Tener dos pagadores (empresa + paro) no significa pagar más impuestos. Te explicamos por qué el SEPE retiene tan poco, cuándo estás obligado a declarar (umbral 15.800 € vs 22.000 €) y cómo evitar el susto en mayo.",
-  "tags": ["dos pagadores", "IRPF 2026", "límite 15.800€", "SEPE", "obligación declarar", "Modelo 145"],
-  "url": "Impuestos/dos-pagadores.html"
-},
-{
-  "titulo": "Deducciones de la Renta en la Comunitat Valenciana",
-  "categoria": "Impuestos y Fiscalidad",
-  "resumen": "El borrador de Hacienda nunca incluye las deducciones autonómicas. Descubre qué gastos te devuelve la Generalitat: gimnasio, dentista, gafas, alquiler, material escolar y más, ahora con el límite ampliado a 60.000 € de ingresos.",
-  "tags": ["deducciones IRPF 2026", "Comunitat Valenciana", "gimnasio deducible", "dentista deducible", "alquiler deducible", "Renta Web"],
-  "url": "Impuestos/deduccionesrenta.html"
-},
-{
-  "titulo": "Hijos que trabajan en verano: la trampa de la Renta familiar",
-  "categoria": "Impuestos y Fiscalidad",
-  "resumen": "Si tu hijo gana más de 1.800 € y presenta su declaración para recuperar unas retenciones pequeñas, los padres pierden automáticamente la deducción por descendientes. Un error que puede costar más de 1.000 € a la familia.",
-  "tags": ["deducción descendientes", "hijo trabaja verano", "frontera 1.800€", "límite 8.000€", "declaración conjunta", "IRPF 2026"],
-  "url": "Impuestos/declaracion-hijos.html"
-},
-{
-  "titulo": "Criptomonedas y la Renta",
-  "categoria": "Impuestos y Fiscalidad",
-  "resumen": "Vender, intercambiar o cobrar por minar criptomonedas genera una ganancia patrimonial que debes declarar en el IRPF. Te explicamos cómo calcular el beneficio, qué formulario usar y las obligaciones del modelo 721.",
-  "tags": ["criptomonedas", "Bitcoin", "ganancia patrimonial", "IRPF", "modelo 721", "DAC7"],
-  "url": "Impuestos/criptomonedas.html"
-},
-{
-  "titulo": "Vinted y Wallapop: la DAC7 y Hacienda",
-  "categoria": "Impuestos y Fiscalidad",
-  "resumen": "Desde 2024, las plataformas como Vinted, Wallapop o Airbnb están obligadas a enviar tus datos de ventas a Hacienda. Te explicamos cuándo tributan tus ventas de segunda mano, qué es la DAC7 y cómo distinguir venta ocasional de actividad económica.",
-  "tags": ["Vinted", "Wallapop", "DAC7", "segunda mano", "Hacienda", "IRPF plataformas"],
-  "url": "Impuestos/vinted-y-wallapop-dac7.html"
-},
-{
-  "titulo": "Premios y loterías: qué paga Hacienda",
-  "categoria": "Impuestos y Fiscalidad",
-  "resumen": "Los premios de lotería, quinielas y apuestas tributan de forma distinta. Los de la ONCE y Lotería Nacional están exentos hasta 40.000 €; por encima pagan un 20% en retención. Los premios de apuestas online se suman a tu base del IRPF.",
-  "tags": ["premios lotería", "Hacienda", "exención 40.000€", "IRPF", "apuestas online", "quiniela"],
-  "url": "Impuestos/premios-loterias.html"
-},
-{
-  "titulo": "El préstamo familiar y Hacienda",
-  "categoria": "Impuestos y Fiscalidad",
-  "resumen": "Prestar dinero a un familiar sin formalizar el contrato puede interpretarse como una donación encubierta. Hacienda puede liquidarte el Impuesto de Donaciones. Te explicamos cómo documentar el préstamo con el Modelo 600 y protegerte.",
-  "tags": ["préstamo familiar", "donación encubierta", "Modelo 600", "Hacienda", "IRPF", "intereses"],
-  "url": "Impuestos/prestamo-familiar.html"
-},
-{
-  "titulo": "Trabajos esporádicos y la Renta",
-  "categoria": "Impuestos y Fiscalidad",
-  "resumen": "Cobrar por hacer páginas web, dar clases particulares o cualquier ingreso puntual tiene consecuencias fiscales. Descubre cuándo estás obligado a declararlo, si debes darte de alta en autónomos y cuándo aplica la retención del 15%.",
-  "tags": ["trabajos esporádicos", "actividad económica", "autónomos", "retención 15%", "IRPF", "freelance"],
-  "url": "Impuestos/trabajos-esporadicos.html"
-},
-{
-  "titulo": "Error en la Renta: cómo rectificarla",
-  "categoria": "Impuestos y Fiscalidad",
-  "resumen": "Has presentado la declaración con un error o te has olvidado de una deducción. La rectificación de autoliquidación sustituye a la declaración complementaria para reclamar a favor. Hacienda tiene 6 meses para contestar y 4 años para revisarte a ti.",
-  "tags": ["error renta", "rectificación autoliquidación", "declaración complementaria", "IRPF", "4 años Hacienda", "plazo rectificación"],
-  "url": "Impuestos/error-renta.html"
-}
+  }
 ]
