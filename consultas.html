@@ -12,6 +12,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OpenLexIura · Hacer una Consulta</title>
 <meta name="description" content="Envía tu consulta legal orientativa gratis. Abogados especializados en alquiler, vivienda, consumo, impuestos y trabajo te responden en 24 h (L-V).">
+<!-- FIX 4: noindex para que Google no indexe el formulario -->
+<meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="Icono.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -169,6 +171,7 @@ footer a:hover{opacity:.7}
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
 <nav id="nav">
   <a class="nav-logo" href="index.html"><img src="Icono.png" alt="OpenLexIura"><span>OpenLexIura</span></a>
   <div class="nav-links">
@@ -318,7 +321,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- PASO 5 -->
+    <!-- PASO 5: FIX 1 — añadido input email + FIX 2 — anidado corregido -->
     <div class="step" id="step5">
       <div class="step-label">Paso 5 de 5</div>
       <h2>¿Dónde te enviamos la respuesta?</h2>
@@ -329,19 +332,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- RESUMEN -->
       <div class="resumen-box" id="resumenBox"></div>
 
+      <!-- FIX 1: campo email que faltaba -->
+      <div class="field">
+        <label for="email">Tu correo electrónico</label>
+        <input type="email" id="email" placeholder="tucorreo@ejemplo.com" oninput="checkStep5()">
+      </div>
+
       <div class="field" style="margin-bottom:.75rem">
-  <label style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:#374151;font-weight:400;cursor:pointer;line-height:1.5">
-    <input type="checkbox" id="rgpd" onchange="checkStep5()" style="margin-top:3px;accent-color:#2563eb;flex-shrink:0">
-    <span>He leído y acepto la <a href="Legal/privacidad.html" style="color:#2563eb;text-decoration:underline">política de privacidad</a> y consiento el tratamiento de mis datos para recibir orientación legal.</span>
-  </label>
-</div>
-     <div class="btn-row" style="flex-direction:column;gap:.75rem">
-  <button class="btn btn-submit" id="btn5" onclick="enviar()" disabled>✉️ Enviar consulta</button>
-  <p style="font-size:.78rem;color:#94a3b8;text-align:center;margin-top:-.2rem">
-    🔒 Gratis, sin compromiso — respuesta en 24 h (L-V)
-  </p>
-  <button class="btn btn-back" onclick="goTo(4)" style="align-self:center">← Atrás</button>
-</div>
+        <label style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:#374151;font-weight:400;cursor:pointer;line-height:1.5">
+          <input type="checkbox" id="rgpd" onchange="checkStep5()" style="margin-top:3px;accent-color:#2563eb;flex-shrink:0">
+          <span>He leído y acepto la <a href="Legal/privacidad.html" style="color:#2563eb;text-decoration:underline">política de privacidad</a> y consiento el tratamiento de mis datos para recibir orientación legal.</span>
+        </label>
+      </div>
+
+      <div class="btn-row" style="flex-direction:column;gap:.75rem">
+        <button class="btn btn-submit" id="btn5" onclick="enviar()" disabled>✉️ Enviar consulta</button>
+        <p style="font-size:.78rem;color:#94a3b8;text-align:center;margin-top:-.2rem">
+          🔒 Gratis, sin compromiso — respuesta en 24 h (L-V)
+        </p>
+        <button class="btn btn-back" onclick="goTo(4)" style="align-self:center">← Atrás</button>
+      </div>
+    </div><!-- /step5 — FIX 2: cierre correcto -->
 
   </div><!-- /form-card -->
 
@@ -360,88 +371,108 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script>
-/* ── CURSOR ── */
-const cursorRing=document.createElement('div');cursorRing.className='cursor-ring';
-const cursorDot=document.createElement('div');cursorDot.className='cursor-dot';
-document.body.appendChild(cursorRing);document.body.appendChild(cursorDot);
-document.body.style.cursor='none';document.documentElement.style.cursor='none';
-let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
-window.addEventListener('mouseleave',()=>{cursorRing.style.opacity='0';cursorDot.style.opacity='0'});
-window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
-function follow(){rx+=(mx-rx)*0.55;ry+=(my-ry)*0.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)}
-follow();
-document.querySelectorAll('a,button,input,select,textarea,.pill-opt,.radio-opt').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=(['INPUT','SELECT','TEXTAREA'].includes(el.tagName)||el.classList.contains('pill-opt'))?'10px':'999px';cursorRing.style.background='rgba(91,188,255,.09)'});
-  el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'});
-});
+/* ── FIX 5: cursor solo en dispositivos con ratón ── */
+if (!window.matchMedia('(pointer: coarse)').matches) {
+  const cursorRing = document.createElement('div'); cursorRing.className = 'cursor-ring';
+  const cursorDot  = document.createElement('div'); cursorDot.className  = 'cursor-dot';
+  document.body.appendChild(cursorRing);
+  document.body.appendChild(cursorDot);
+  document.body.style.cursor = 'none';
+  document.documentElement.style.cursor = 'none';
+  let mx=0, my=0, rx=0, ry=0;
+  window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursorRing.style.opacity='1'; cursorDot.style.opacity='1'; });
+  window.addEventListener('mouseleave', () => { cursorRing.style.opacity='0'; cursorDot.style.opacity='0'; });
+  window.addEventListener('mouseenter', () => { cursorRing.style.opacity='1'; cursorDot.style.opacity='1'; });
+  function follow() {
+    rx += (mx-rx)*0.55; ry += (my-ry)*0.55;
+    cursorRing.style.left=rx+'px'; cursorRing.style.top=ry+'px';
+    cursorDot.style.left=mx+'px';  cursorDot.style.top=my+'px';
+    requestAnimationFrame(follow);
+  }
+  follow();
+  document.querySelectorAll('a,button,input,select,textarea,.pill-opt,.radio-opt').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursorRing.style.transform = 'translate(-50%,-50%) scale(1.28)';
+      cursorRing.style.borderRadius = (['INPUT','SELECT','TEXTAREA'].includes(el.tagName) || el.classList.contains('pill-opt')) ? '10px' : '999px';
+      cursorRing.style.background = 'rgba(91,188,255,.09)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursorRing.style.transform = 'translate(-50%,-50%) scale(1)';
+      cursorRing.style.borderRadius = '50%';
+      cursorRing.style.background = 'transparent';
+    });
+  });
+}
 
 /* ── NAV SCROLL ── */
-const navEl=document.getElementById('nav');
-window.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',scrollY>40),{passive:true});
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', scrollY > 40), {passive:true});
 
 /* ── ESTADO ── */
-const state={area:'',partes:[],resumen:'',doc:'',tiempo:'',intento:'',extra:'',email:''};
-let currentStep=1;
+const state = {area:'', partes:[], resumen:'', doc:'', tiempo:'', intento:'', extra:'', email:''};
+let currentStep = 1;
+
+/* ── FIX 3: access_key en variable separada ── */
+const WEB3_KEY = 'f437af6d-917e-4b98-98db-97bd4b4f164b';
 
 /* ── PROGRESS ── */
-const FILLS=[0,25,50,75,100];
-function updateProgress(step){
-  document.querySelectorAll('.step-dot').forEach((d,i)=>{
-    d.classList.toggle('done', i+1<step);
-    d.classList.toggle('active', i+1===step);
+const FILLS = [0, 25, 50, 75, 100];
+function updateProgress(step) {
+  document.querySelectorAll('.step-dot').forEach((d, i) => {
+    d.classList.toggle('done',   i+1 < step);
+    d.classList.toggle('active', i+1 === step);
   });
-  document.querySelectorAll('.progress-labels span').forEach((s,i)=>{
-    s.classList.toggle('active-label', i+1===step);
+  document.querySelectorAll('.progress-labels span').forEach((s, i) => {
+    s.classList.toggle('active-label', i+1 === step);
   });
-  document.getElementById('progressFill').style.width=FILLS[step-1]+'%';
+  document.getElementById('progressFill').style.width = FILLS[step-1] + '%';
 }
 
 /* ── NAVEGACIÓN ── */
-function goTo(n){
-  document.getElementById('step'+currentStep).classList.remove('active');
-  currentStep=n;
-  document.getElementById('step'+n).classList.add('active');
+function goTo(n) {
+  document.getElementById('step' + currentStep).classList.remove('active');
+  currentStep = n;
+  document.getElementById('step' + n).classList.add('active');
   updateProgress(n);
-  if(n===5) buildResumen();
-  window.scrollTo({top:0,behavior:'smooth'});
+  if (n === 5) buildResumen();
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 /* ── VALIDACIONES ── */
-function checkStep1(){
-  state.area=document.getElementById('area').value;
-  document.getElementById('btn1').disabled=!state.area;
+function checkStep1() {
+  state.area = document.getElementById('area').value;
+  document.getElementById('btn1').disabled = !state.area;
 }
-function togglePill(el){
+function togglePill(el) {
   el.classList.toggle('selected');
-  state.partes=Array.from(document.querySelectorAll('.pill-opt.selected')).map(p=>p.textContent);
-  document.getElementById('btn2').disabled=state.partes.length===0;
+  state.partes = Array.from(document.querySelectorAll('.pill-opt.selected')).map(p => p.textContent);
+  document.getElementById('btn2').disabled = state.partes.length === 0;
 }
-function checkStep3(){
-  const v=document.getElementById('resumen').value;
-  state.resumen=v;
-  const cc=document.getElementById('charCount');
-  cc.textContent=v.length+' / 100';
-  cc.classList.toggle('warn',v.length>90);
-  document.getElementById('btn3').disabled=v.trim().length<5;
+function checkStep3() {
+  const v = document.getElementById('resumen').value;
+  state.resumen = v;
+  const cc = document.getElementById('charCount');
+  cc.textContent = v.length + ' / 100';
+  cc.classList.toggle('warn', v.length > 90);
+  document.getElementById('btn3').disabled = v.trim().length < 5;
 }
-function checkStep5(){
-  const v=document.getElementById('email').value;
-  state.email=v;
-  const rgpd=document.getElementById('rgpd')?.checked || false;
-  document.getElementById('btn5').disabled=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || !rgpd;
+function checkStep5() {
+  const v    = document.getElementById('email').value;
+  const rgpd = document.getElementById('rgpd').checked;
+  state.email = v;
+  document.getElementById('btn5').disabled = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || !rgpd;
 }
 
 /* ── RESUMEN PASO 5 ── */
-function buildResumen(){
-  const doc=document.querySelector('input[name="doc"]:checked');
-  const tiempo=document.querySelector('input[name="tiempo"]:checked');
-  const intento=document.querySelector('input[name="intento"]:checked');
-  state.doc=doc?doc.value:'—';
-  state.tiempo=tiempo?tiempo.value:'—';
-  state.intento=intento?intento.value:'—';
-  state.extra=document.getElementById('extra').value||'—';
-  document.getElementById('resumenBox').innerHTML=`
+function buildResumen() {
+  const doc     = document.querySelector('input[name="doc"]:checked');
+  const tiempo  = document.querySelector('input[name="tiempo"]:checked');
+  const intento = document.querySelector('input[name="intento"]:checked');
+  state.doc     = doc     ? doc.value     : '—';
+  state.tiempo  = tiempo  ? tiempo.value  : '—';
+  state.intento = intento ? intento.value : '—';
+  state.extra   = document.getElementById('extra').value || '—';
+  document.getElementById('resumenBox').innerHTML = `
     <div class="resumen-row"><span class="resumen-key">Área</span><span class="resumen-val">${state.area}</span></div>
     <div class="resumen-row"><span class="resumen-key">Implicados</span><span class="resumen-val">${state.partes.join(', ')}</span></div>
     <div class="resumen-row"><span class="resumen-key">Problema</span><span class="resumen-val">${state.resumen}</span></div>
@@ -452,45 +483,45 @@ function buildResumen(){
 }
 
 /* ── ENVÍO Web3Forms ── */
-function enviar(){
+function enviar() {
   const btn = document.getElementById('btn5');
   btn.disabled = true;
   btn.textContent = 'Enviando…';
 
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
     body: JSON.stringify({
-      access_key:  'f437af6d-917e-4b98-98db-97bd4b4f164b',
-      subject:     '📋 Nueva consulta legal — ' + state.area,
-      from_name:   'OpenLexIura · Consultas',
-      area:        state.area,
-      implicados:  state.partes.join(', '),
-      problema:    state.resumen,
-      documento:   state.doc,
-      tiempo:      state.tiempo,
+      access_key:       WEB3_KEY,
+      subject:          '📋 Nueva consulta legal — ' + state.area,
+      from_name:        'OpenLexIura · Consultas',
+      area:             state.area,
+      implicados:       state.partes.join(', '),
+      problema:         state.resumen,
+      documento:        state.doc,
+      tiempo:           state.tiempo,
       intentos_previos: state.intento,
       detalles_extra:   state.extra,
       email_usuario:    state.email,
-      replyto:     state.email
+      replyto:          state.email
     })
   })
   .then(r => r.json())
   .then(data => {
-    if(data.success){
-      document.getElementById('formCard').style.display='none';
+    if (data.success) {
+      document.getElementById('formCard').style.display = 'none';
       document.getElementById('successScreen').classList.add('active');
-      document.querySelector('.progress-wrap').style.display='none';
-      document.querySelector('.page-header').style.display='none';
+      document.querySelector('.progress-wrap').style.display = 'none';
+      document.querySelector('.page-header').style.display = 'none';
     } else {
-      btn.disabled=false;
-      btn.textContent='✉️ Enviar consulta';
+      btn.disabled = false;
+      btn.textContent = '✉️ Enviar consulta';
       alert('Error al enviar. Inténtalo de nuevo.');
     }
   })
-  .catch(()=>{
-    btn.disabled=false;
-    btn.textContent='✉️ Enviar consulta';
+  .catch(() => {
+    btn.disabled = false;
+    btn.textContent = '✉️ Enviar consulta';
     alert('Error de conexión. Comprueba tu internet e inténtalo de nuevo.');
   });
 }
