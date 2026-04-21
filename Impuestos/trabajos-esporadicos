@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clases particulares y autónomo: ¿obligatorio darse de alta? | OpenLexIura</title>
+<meta name="description" content="Dar clases por 200 €/mes no siempre obliga a darse de alta como autónomo. Descubre qué dice la ley, la STS 941/2025 y qué debes declarar a Hacienda sí o sí.">
+<link rel="icon" type="image/png" href="../Icono.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Doy clases particulares por 200 €/mes: ¿tengo que hacerme autónomo?",
+      "description": "Dar clases por 200 €/mes no siempre obliga a darse de alta como autónomo. Descubre qué dice la ley, la STS 941/2025 y qué debes declarar a Hacienda sí o sí.",
+      "author": {"@type": "Organization", "name": "OpenLexIura"},
+      "publisher": {"@type": "Organization", "name": "OpenLexIura", "url": "https://openlexiura.es"},
+      "datePublished": "2026-04-21",
+      "dateModified": "2026-04-21",
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://openlexiura.es/Impuestos/clases-particulares-autonomo.html"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Puedo dar clases particulares sin ser autónomo?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Técnicamente sí, si la actividad es esporádica y no habitual. Pero debes declarar los ingresos a Hacienda siempre, desde el primer euro, presentando el alta censal y declarándolos en el IRPF anual."}
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si solo doy clases en verano?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Una actividad estival puntual es más fácil de argumentar como esporádica frente al RETA. Aun así, debes presentar el alta censal en la AEAT y declarar los ingresos en el IRPF anual (modelo 100)."}
+        },
+        {
+          "@type": "Question",
+          "name": "¿Las clases de inglés están exentas de IVA?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Sí. El inglés está incluido en los planes de estudios oficiales del sistema educativo español, por lo que la exención del art. 20.Uno.10 de la Ley del IVA aplica. No repercutes IVA al alumno, pero tampoco puedes deducir el IVA soportado."}
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto me costaría el RETA si me doy de alta?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Con tarifa plana (primeros 12 meses, si no fuiste autónomo en los 2 años anteriores): 80 €/mes, prorrogada por RD Ley 3/2026 para 2026. Sin tarifa plana: aproximadamente 200 €/mes para el tramo de rendimientos netos inferiores a 670 €/mes."}
+        },
+        {
+          "@type": "Question",
+          "name": "¿La AEAT va a cruzar datos con la Seguridad Social?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Sí. Si presentas el modelo 130 o declaras los ingresos en el IRPF, la TGSS puede conocer tu actividad. Ambas administraciones comparten información y el cruce de datos es una realidad operativa. Estar al día en Hacienda no te protege de una inspección de la TGSS."}
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué es lo mínimo que debo hacer si doy clases por 200 €/mes?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Lo mínimo indiscutible: alta censal en la AEAT (modelo 036 o 037) y declarar los ingresos en el IRPF anual (modelo 100). El alta en el RETA depende de la habitualidad de tu actividad y es la decisión que más merece consultar con un gestor o abogado laboralista."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--brand:#dc2626;--brand-2:#ef4444;--text:#1f2937;--muted:#64748b;--line:rgba(220,38,38,.14);--radius:24px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Inter",sans-serif;background:linear-gradient(180deg,#fff5f5 0%,#fef1f1 100%);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;background:rgba(255,255,255,.85);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(220,38,38,.10);}
+.nav-logo{display:flex;align-items:center;gap:.85rem;font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:700;}
+.nav-logo img{width:38px;height:38px;border-radius:999px;object-fit:cover;}
+.nav-back{padding:.65rem 1.1rem;border:1px solid rgba(220,38,38,.22);border-radius:999px;background:linear-gradient(180deg,rgba(220,38,38,.10),rgba(220,38,38,.05));font-size:.88rem;color:var(--brand);font-weight:500;}
+.article-hero{padding:9rem 1.5rem 4rem;max-width:860px;margin:auto;text-align:center;position:relative;}
+.article-hero::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle at 50% 30%,rgba(220,38,38,.10),transparent 68%);filter:blur(28px);pointer-events:none;z-index:0;}
+.cat-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(220,38,38,.20);background:rgba(220,38,38,.06);color:var(--brand);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:1.4rem;}
+.cat-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px rgba(220,38,38,.8);}
+.article-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;position:relative;z-index:1;}
+.article-title em{font-style:italic;color:var(--brand);}
+.article-lead{font-size:clamp(1rem,2vw,1.22rem);line-height:1.75;color:#374151;max-width:60ch;margin:0 auto 2rem;position:relative;z-index:1;}
+.article-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.9rem;font-size:.88rem;color:var(--muted);}
+.meta-sep{color:rgba(15,23,42,.18);}
+.meta-badge{padding:.35rem .8rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.82rem;font-weight:500;}
+.art-divider{margin:2.5rem auto 0;width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);border-radius:999px;}
+.breadcrumb{font-size:.82rem;color:var(--muted);margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center;gap:.4rem;flex-wrap:wrap;position:relative;z-index:1;}
+.breadcrumb a{color:var(--brand);font-weight:500;}
+.breadcrumb span{color:rgba(15,23,42,.25);}
+.article-body{max-width:740px;margin:auto;padding:3.5rem 1.5rem 5rem;}
+.article-body p{font-size:1.08rem;line-height:1.85;color:#374151;margin-bottom:1.6rem;}
+.article-body h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.025em;color:#0f172a;margin:3rem 0 1rem;}
+.article-body h2 span{color:var(--brand);font-style:italic;}
+.article-body h3{font-family:"Inter",sans-serif;font-size:1.15rem;font-weight:700;color:#111827;margin:2.2rem 0 .8rem;border-left:3px solid var(--brand);padding-left:.9rem;}
+.article-body strong{font-weight:700;color:#111827;}
+.article-body ul{margin:0 0 1.6rem 0;display:flex;flex-direction:column;gap:.7rem;color:#374151;font-size:1.06rem;line-height:1.75;}
+.article-body ul li{list-style:none;padding-left:1.3rem;position:relative;}
+.article-body ul li::before{content:"→";color:var(--brand);position:absolute;left:0;}
+.quick-answer{padding:1.5rem 1.8rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;margin:0 0 2.5rem;box-shadow:0 12px 36px rgba(220,38,38,.30);}
+.quick-answer .qa-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+.quick-answer p{font-size:1.1rem;line-height:1.7;margin:0 0 .7rem;}
+.quick-answer p:last-child{margin-bottom:0;}
+.quick-answer strong{color:#fff;}
+.mito-box{padding:1.8rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff7ed,#ffedd5);border:2px solid rgba(194,65,12,.28);margin:2rem 0;text-align:center;}
+.mito-box .mito-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c2410c;margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.mito-box .mito-text{font-family:"Cormorant Garamond",serif;font-size:1.55rem;color:#7c2d12;line-height:1.3;font-style:italic;margin-bottom:.9rem;}
+.mito-box .mito-real{font-size:.98rem;color:#9a3412;line-height:1.72;margin:0;}
+.vs-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.vs-card{padding:1.5rem;border-radius:var(--radius);border:1px solid var(--line);}
+.vs-card.seguro{background:linear-gradient(180deg,#f0fdf4,#dcfce7);border-color:rgba(22,163,74,.25);}
+.vs-card.peligro{background:linear-gradient(180deg,#fff5f5,#fee2e2);border-color:rgba(220,38,38,.30);}
+.vs-card .vs-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:700;margin-bottom:.3rem;}
+.vs-card.seguro .vs-title{color:#15803d;}
+.vs-card.peligro .vs-title{color:#991b1b;}
+.vs-card .vs-art{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .65rem;border-radius:999px;display:inline-block;margin-bottom:.75rem;}
+.vs-card.seguro .vs-art{background:rgba(22,163,74,.12);color:#15803d;}
+.vs-card.peligro .vs-art{background:rgba(220,38,38,.10);color:#991b1b;}
+.vs-card ul{margin:0;display:flex;flex-direction:column;gap:.45rem;}
+.vs-card ul li{list-style:none;font-size:.9rem;color:#374151;line-height:1.52;padding-left:.9rem;position:relative;}
+.vs-card ul li::before{position:absolute;left:0;}
+.vs-card.seguro ul li::before{content:"✓";color:#15803d;}
+.vs-card.peligro ul li::before{content:"✗";color:#dc2626;}
+.info-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fff5f5);border:1px solid rgba(220,38,38,.14);box-shadow:0 6px 28px rgba(0,0,0,.08);margin:2rem 0;}
+.info-box .info-title{font-family:"Cormorant Garamond",serif;font-size:1.28rem;font-weight:700;color:var(--brand);margin-bottom:.65rem;}
+.info-box p{margin-bottom:.55rem;font-size:.98rem;color:#374151;line-height:1.75;}
+.info-box p:last-child{margin-bottom:0;}
+.alerta-box{padding:1.4rem 1.6rem;border-radius:var(--radius);background:linear-gradient(180deg,#1e1e1e,#2d1515);border:1px solid rgba(220,38,38,.4);margin:2rem 0;}
+.alerta-box .alerta-title{font-family:"Cormorant Garamond",serif;font-size:1.28rem;font-weight:700;color:#fca5a5;margin-bottom:.65rem;}
+.alerta-box p{margin-bottom:.55rem;font-size:.98rem;color:#fecaca;line-height:1.75;}
+.alerta-box p:last-child{margin-bottom:0;}
+.reg-table{width:100%;border-collapse:separate;border-spacing:0;margin:1.5rem 0 2rem;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08);}
+.reg-table th{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:.85rem 1rem;font-size:.82rem;font-weight:700;text-align:left;letter-spacing:.04em;text-transform:uppercase;}
+.reg-table td{padding:.85rem 1rem;font-size:.9rem;color:#374151;line-height:1.6;border-bottom:1px solid rgba(220,38,38,.08);}
+.reg-table tr:last-child td{border-bottom:none;}
+.reg-table tr:nth-child(even) td{background:rgba(220,38,38,.03);}
+.reg-table td:first-child{font-weight:600;color:#111827;}
+.steps{counter-reset:step;display:flex;flex-direction:column;gap:1.2rem;margin:1.5rem 0 2rem;}
+.step{display:flex;gap:1.1rem;align-items:flex-start;padding:1.2rem 1.4rem;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,.05);}
+.step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;}
+.step-body .step-title{font-weight:700;color:#111827;font-size:.98rem;margin-bottom:.3rem;}
+.step-body p{font-size:.9rem;color:#4b5563;line-height:1.65;margin:0;}
+.novedad{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:999px;background:rgba(220,38,38,.12);color:#991b1b;border:1px solid rgba(220,38,38,.30);margin-left:.4rem;vertical-align:middle;}
+.article-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:3rem 0 2rem;padding-top:2rem;border-top:1px solid var(--line);}
+.tag{display:inline-block;padding:.5rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:.83rem;}
+.article-cta{max-width:740px;margin:0 auto 5rem;padding:0 1.5rem;}
+.cta-box{text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,245,245,.94));border:1px solid rgba(220,38,38,.14);border-radius:30px;padding:3rem 2rem;box-shadow:0 24px 80px rgba(0,0,0,.12);}
+.cta-box h3{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3.5vw,2.5rem);letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-box h3 em{font-style:italic;color:var(--brand);}
+.cta-box p{color:#4b5563;line-height:1.7;max-width:52ch;margin:0 auto 1.8rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff !important;box-shadow:0 16px 40px rgba(220,38,38,.35);}
+footer{padding:1.5rem;color:var(--muted);text-align:center;border-top:1px solid rgba(15,23,42,.08);font-size:.9rem;}
+.faq-item{border:1px solid var(--line);border-radius:16px;margin-bottom:.8rem;overflow:hidden;background:#fff;}
+.faq-question{width:100%;text-align:left;padding:1.1rem 1.4rem;font-size:1rem;font-weight:600;color:#111827;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq-question .faq-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:rgba(220,38,38,.08);color:var(--brand);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;transition:transform .3s;}
+.faq-question[aria-expanded="true"] .faq-icon{transform:rotate(45deg);}
+.faq-answer{padding:0 1.4rem;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;}
+.faq-answer.open{max-height:500px;padding:.2rem 1.4rem 1.2rem;}
+.faq-answer p{font-size:.97rem;color:#374151;line-height:1.75;margin:0;}
+.cursor-ring{position:fixed;width:38px;height:38px;border:2px solid rgba(220,38,38,.55);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:transform .12s ease,width .2s,height .2s,border-color .2s;z-index:9999;}
+.cursor-dot{position:fixed;width:7px;height:7px;background:var(--brand);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:9999;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  .article-hero{padding:7.5rem 1.2rem 3rem;}
+  .article-body{padding:2.5rem 1.2rem 4rem;}
+  .vs-box{grid-template-columns:1fr;}
+  .reg-table{font-size:.82rem;}
+  .reg-table th,.reg-table td{padding:.65rem .7rem;}
+  .cursor-ring,.cursor-dot{display:none;}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../Icono.png" alt="OpenLexIura">OpenLexIura</a>
+  <a class="nav-back" href="../portal.html">&larr; Volver al portal</a>
+</nav>
+
+<header class="article-hero">
+  <div class="breadcrumb reveal">
+    <a href="../portal.html">Portal Legal</a>
+    <span>›</span>
+    <a href="../portal.html#impuestos">Impuestos y Fiscalidad</a>
+    <span>›</span>
+    <span>Clases particulares y autónomo</span>
+  </div>
+  <div class="cat-pill reveal">Impuestos &middot; Aut&oacute;nomos &middot; Seguridad Social</div>
+  <h1 class="article-title reveal">Doy clases particulares por 200&nbsp;&euro;/mes:<br><em>&iquest;tengo que hacerme aut&oacute;nomo?</em></h1>
+  <p class="article-lead reveal">Una de las preguntas m&aacute;s frecuentes de profesores, opositores y cualquier persona que gana un dinero extra dando clases. La respuesta no es un s&iacute; o un no: depende de dos administraciones distintas que funcionan con criterios distintos.</p>
+  <div class="article-meta reveal">
+    <span><strong>OpenLexIura</strong></span><span class="meta-sep">&middot;</span>
+    <span>Actualizado abril 2026</span><span class="meta-sep">&middot;</span>
+    <span class="meta-badge">12 min lectura</span><span class="meta-sep">&middot;</span>
+    <span class="meta-badge">Impuestos &middot; Aut&oacute;nomos</span>
+  </div>
+  <div class="art-divider reveal"></div>
+</header>
+
+<main class="article-body">
+
+  <div class="quick-answer reveal">
+    <div class="qa-label">&#9889; La Regla de Oro</div>
+    <p><strong>Hacienda: s&iacute; desde el primer euro.</strong> El alta censal ante la AEAT es pr&aacute;cticamente obligatoria desde que inicias cualquier actividad econ&oacute;mica, aunque solo sean 200&nbsp;&euro;/mes.</p>
+    <p><strong>Seguridad Social (RETA): depende.</strong> El criterio no es el importe sino la <em>habitualidad</em> de la actividad. La <strong>STS 941/2025, de 10 de julio</strong>, ha fijado la doctrina vigente: superar o no el SMI (16.576&nbsp;&euro; en 2025) es un <em>indicio</em>, no una regla autom&aacute;tica.</p>
+  </div>
+
+  <h2 class="reveal">1. Dos administraciones, <span>dos criterios distintos</span></h2>
+
+  <p class="reveal">La confusi&oacute;n m&aacute;s frecuente entre quienes dan clases particulares es creer que la AEAT y la Seguridad Social funcionan bajo los mismos criterios y plazos. No es as&iacute;. Son dos organismos completamente independientes, con umbrales de activaci&oacute;n diferentes y consecuencias distintas si no cumples con cada uno de ellos.</p>
+
+  <table class="reg-table reveal">
+    <thead>
+      <tr>
+        <th>&Aacute;mbito</th>
+        <th>Organismo</th>
+        <th>Criterio de alta</th>
+        <th>Umbral</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Hacienda</td>
+        <td>AEAT</td>
+        <td>Inicio de actividad econ&oacute;mica</td>
+        <td>Desde el primer euro</td>
+      </tr>
+      <tr>
+        <td>Seguridad Social</td>
+        <td>TGSS / Inspecci&oacute;n de Trabajo</td>
+        <td>Habitualidad de la actividad</td>
+        <td>Sin umbral fijo (STS 941/2025)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box reveal">
+    <p class="info-title">&#128203; Alta censal e alta en el RETA: dos tr&aacute;mites independientes</p>
+    <p>El alta censal ante Hacienda (modelo 036 o 037) es <strong>independiente</strong> del alta en el RETA. Puedes estar dado de alta en Hacienda y no en el RETA, si la actividad es esporádica. Pero <strong>nunca al rev&eacute;s</strong>: si est&aacute;s en el RETA, obligatoriamente tienes que estar dado de alta en Hacienda también.</p>
+  </div>
+
+  <h2 class="reveal">2. &iquest;Cu&aacute;ndo nace la obligaci&oacute;n de darse de alta <span>como aut&oacute;nomo?</span></h2>
+
+  <p class="reveal">El art&iacute;culo 305.1 del Real Decreto Legislativo 8/2015 (Ley General de la Seguridad Social) y el art&iacute;culo 1 de la Ley 20/2007 (Estatuto del Trabajo Aut&oacute;nomo) establecen que la obligaci&oacute;n de alta en el RETA nace cuando se cumplen <strong>cinco requisitos simult&aacute;neamente</strong>. Si falta alguno, en principio no existe obligaci&oacute;n legal de afiliarse al RETA.</p>
+
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <p class="step-title">Habitual</p>
+        <p>La actividad se desarrolla con continuidad o reiteraci&oacute;n, no como un hecho aislado. Este es el requisito m&aacute;s debatido y el que define la obligaci&oacute;n en el caso de las clases particulares.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <p class="step-title">Personal</p>
+        <p>La actividad la realiza directamente la persona f&iacute;sica, no a trav&eacute;s de empleados, subcontratistas u otras estructuras.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <p class="step-title">Directa</p>
+        <p>Sin interposici&oacute;n de otra estructura organizativa que convierta la relaci&oacute;n en laboral por cuenta ajena.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <p class="step-title">Por cuenta propia</p>
+        <p>El prestador asume el riesgo econ&oacute;mico de la actividad: si no hay alumnos, no hay ingresos. No existe un empleador que garantice el salario.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <p class="step-title">A t&iacute;tulo lucrativo</p>
+        <p>La finalidad es obtener una contraprestaci&oacute;n econ&oacute;mica. Dar clases gratis a un familiar no entra en el RETA.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">&#9888; La clave est&aacute; en el primero</p>
+    <p>Si la actividad <strong>no es habitual</strong>, los otros cuatro requisitos son irrelevantes a efectos del RETA. Dar clases una semana para preparar un examen concreto no es habitual. Dar clases todos los mi&eacute;rcoles de septiembre a junio s&iacute; lo es.</p>
+  </div>
+
+  <h2 class="reveal">3. Habitualidad y SMI: lo que realmente dice <span>la ley tras la STS 941/2025</span></h2>
+
+  <p class="reveal">Esta es la secci&oacute;n m&aacute;s importante del art&iacute;culo. Durante a&ntilde;os circul&oacute; una interpretaci&oacute;n muy extendida —respaldada por sentencias del Tribunal Supremo de 2007 y posteriores— seg&uacute;n la cual no era necesario darse de alta en el RETA si los ingresos anuales por cuenta propia no superaban el Salario M&iacute;nimo Interprofesional. En 2025, el Tribunal Supremo ha matizado y precisado esta doctrina.</p>
+
+  <div class="mito-box reveal">
+    <div class="mito-label">&#10060; Mito destruido</div>
+    <p class="mito-text">&ldquo;Si no llego al Salario M&iacute;nimo Interprofesional, no tengo que darme de alta como aut&oacute;nomo.&rdquo;</p>
+    <p class="mito-real"><strong>Ya no es tan sencillo.</strong> La <strong>STS 941/2025, de 10 de julio (ECLI:ES:TS:2025:3484)</strong> ha fijado con car&aacute;cter vinculante que superar o no el SMI es un <em>indicio</em> de habitualidad para aut&oacute;nomos no pensionistas, no un criterio excluyente autom&aacute;tico. Lo que debe valorarse es la concurrencia real de la habitualidad, analizando las caracter&iacute;sticas de la actividad en su conjunto.</p>
+  </div>
+
+  <table class="reg-table reveal">
+    <thead>
+      <tr>
+        <th>Perfil</th>
+        <th>Criterio aplicable</th>
+        <th>Consecuencia pr&aacute;ctica</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Aut&oacute;nomo general (no pensionista)</td>
+        <td>Habitualidad real + SMI como indicio</td>
+        <td>Puede haber obligaci&oacute;n aunque no llegues al SMI si la actividad es habitual</td>
+      </tr>
+      <tr>
+        <td>Pensionista de jubilaci&oacute;n</td>
+        <td>Art. 213.4 LGSS: si ingresos netos &lt; SMI (16.576&nbsp;&euro;/a&ntilde;o en 2025)</td>
+        <td>No procede alta en RETA sin necesidad de analizar la habitualidad</td>
+      </tr>
+      <tr>
+        <td>Cualquier perfil</td>
+        <td>Rendimientos calculados en <strong>neto</strong> (ingresos &minus; gastos)</td>
+        <td>No se calculan sobre ingresos brutos</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">&#128680; La TGSS no es el Tribunal Supremo</p>
+    <p>Existe una <strong>brecha real</strong> entre lo que dicen los tribunales y lo que aplica la Administraci&oacute;n. La TGSS y la Inspecci&oacute;n de Trabajo exigen el alta siempre que detectan actividad lucrativa recurrente, sin aceptar el SMI como criterio de exclusi&oacute;n autom&aacute;tico. El riesgo pr&aacute;ctico es real aunque la jurisprudencia te ampare.</p>
+  </div>
+
+  <p class="reveal">La Administraci&oacute;n y los tribunales han identificado determinados indicios para valorar si una actividad es habitual o esporádica:</p>
+
+  <div class="vs-box reveal">
+    <div class="vs-card seguro">
+      <p class="vs-title">&#10003; Indicios de actividad ESPORÁDICA</p>
+      <span class="vs-art">Menor riesgo RETA</span>
+      <ul>
+        <li>Trabajo puntual y no recurrente</li>
+        <li>Sin organizaci&oacute;n sistem&aacute;tica de medios</li>
+        <li>Sin publicidad activa de los servicios</li>
+        <li>Ingresos muy reducidos (indicio, no regla)</li>
+        <li>Actividad accesoria a un trabajo principal</li>
+      </ul>
+    </div>
+    <div class="vs-card peligro">
+      <p class="vs-title">&#10007; Indicios de actividad HABITUAL</p>
+      <span class="vs-art">Mayor riesgo RETA</span>
+      <ul>
+        <li>Clases todos los meses del curso escolar</li>
+        <li>Horarios fijos, alumnos recurrentes</li>
+        <li>Anuncios en plataformas (Tusclasesparticulares, Superprof&hellip;)</li>
+        <li>Fuente principal de ingresos del sujeto</li>
+        <li>Material did&aacute;ctico propio, metodolog&iacute;a estructurada</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="reveal">4. Hacienda s&iacute;: obligaciones fiscales <span>desde el primer euro</span></h2>
+
+  <p class="reveal">Independientemente de si debes o no darte de alta en el RETA, las obligaciones ante la AEAT son pr&aacute;cticamente ineludibles desde el momento en que inicias cualquier actividad econ&oacute;mica. No cumplir con Hacienda tiene consecuencias propias, distintas e independientes de las de Seguridad Social.</p>
+
+  <h3>Alta censal &mdash; Modelo 036 o 037</h3>
+  <p class="reveal">Cualquier persona que inicie una actividad econ&oacute;mica debe presentar la declaraci&oacute;n censal de alta <strong>antes o el mismo d&iacute;a de inicio</strong>, conforme al procedimiento establecido por la AEAT. El modelo 037 (simplificado) est&aacute; previsto suprimirse en favor del modelo 036 como formulario &uacute;nico; conviene verificar el tr&aacute;mite vigente en la sede electr&oacute;nica de la AEAT en el momento del alta. Adem&aacute;s, es necesario seleccionar el ep&iacute;grafe correcto del IAE para la actividad de ense&ntilde;anza.</p>
+
+  <div class="info-box reveal">
+    <p class="info-title">&#128203; El alta censal es gratuita y r&aacute;pida</p>
+    <p>El alta censal es <strong>gratuita</strong> y tarda minutos en sede electr&oacute;nica. No hacerla puede generar una sanci&oacute;n fija de la AEAT, independientemente de si debes o no darte de alta en el RETA. Son obligaciones ante organismos distintos.</p>
+  </div>
+
+  <h3>IRPF &mdash; Rendimientos de actividades econ&oacute;micas</h3>
+  <p class="reveal">Conforme al art&iacute;culo 27 de la Ley 35/2006 del IRPF, los ingresos por clases particulares son <strong>rendimientos de actividades econ&oacute;micas (profesionales)</strong>. Las obligaciones formales asociadas son:</p>
+
+  <ul class="reveal">
+    <li><strong>Modelo 130 (pagos fraccionados trimestrales):</strong> obligatorio en enero, abril, julio y octubre, salvo que m&aacute;s del 70% de los ingresos del a&ntilde;o anterior hayan sido objeto de retenci&oacute;n. Si todos los alumnos son particulares (sin retenci&oacute;n), hay que presentarlo.</li>
+    <li><strong>Retenci&oacute;n IRPF en factura:</strong> solo aplica cuando el cliente es empresario o profesional (15% con car&aacute;cter general). Si se imparte clase a particulares directamente, <strong>no hay retenci&oacute;n en la factura</strong>.</li>
+    <li><strong>Modelo 100 (declaraci&oacute;n anual):</strong> los ingresos por clases deben incluirse siempre en la declaraci&oacute;n de la renta, en el apartado de rendimientos de actividades econ&oacute;micas, aunque sean peque&ntilde;os.</li>
+  </ul>
+
+  <h3>IVA &mdash; La exenci&oacute;n del art. 20.Uno.10 LIVA <span class="novedad">Buena noticia</span></h3>
+  <p class="reveal">El art&iacute;culo 20.Uno.10 de la Ley 37/1992 del IVA establece una exenci&oacute;n espec&iacute;fica para las clases a t&iacute;tulo particular prestadas por personas f&iacute;sicas sobre materias incluidas en los <strong>planes de estudios oficiales</strong> del sistema educativo espa&ntilde;ol. Esta exenci&oacute;n se aplica con considerable amplitud:</p>
+
+  <div class="vs-box reveal">
+    <div class="vs-card seguro">
+      <p class="vs-title">&#10003; EXENTO de IVA</p>
+      <span class="vs-art">Art. 20.Uno.10 LIVA</span>
+      <ul>
+        <li>Matem&aacute;ticas, lengua, ciencias, f&iacute;sica</li>
+        <li>Idiomas del curr&iacute;culo oficial (ingl&eacute;s, franc&eacute;s&hellip;)</li>
+        <li>Historia, geograf&iacute;a, biolog&iacute;a</li>
+        <li>Filosof&iacute;a, econom&iacute;a, literatura</li>
+        <li>Cualquier materia de planes de estudios oficiales</li>
+      </ul>
+    </div>
+    <div class="vs-card peligro">
+      <p class="vs-title">&#10007; IVA al 21%</p>
+      <span class="vs-art">Sin exenci&oacute;n</span>
+      <ul>
+        <li>Clases de yoga, tenis, k&aacute;rate, deportes</li>
+        <li>Formaci&oacute;n empresarial fuera del curr&iacute;culo</li>
+        <li>Actividades con ep&iacute;grafe empresarial del IAE</li>
+        <li>Cocina creativa, manualidades, hobbies</li>
+        <li>Actividades recreativas sin encaje curricular</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-box reveal">
+    <p class="info-title">&#128203; C&oacute;mo indicar la exenci&oacute;n en la factura</p>
+    <p>Si tus clases est&aacute;n exentas de IVA, <strong>no repercutes IVA al alumno</strong>, pero tampoco puedes deducir el IVA de tus compras (materiales, etc.). La factura debe incluir obligatoriamente la menci&oacute;n:</p>
+    <p><em>&ldquo;Operaci&oacute;n exenta de IVA en virtud del art.&nbsp;20.Uno.10 de la Ley 37/1992.&rdquo;</em></p>
+  </div>
+
+  <h2 class="reveal">5. El caso concreto: 200&nbsp;&euro;/mes, <span>&iquest;aut&oacute;nomo s&iacute; o aut&oacute;nomo no?</span></h2>
+
+  <p class="reveal">Imaginemos a <strong>Laura</strong>, profesora de matem&aacute;ticas que da clases a tres alumnos de bachillerato de septiembre a junio, cobrando 200&nbsp;&euro;/mes. Ingresos anuales: aproximadamente 2.000&nbsp;&euro;. Muy por debajo del SMI (16.576&nbsp;&euro; en 2025). &iquest;Tiene Laura obligaci&oacute;n de darse de alta en el RETA?</p>
+
+  <p class="reveal">La respuesta honesta es: <strong>no lo sabemos con certeza</strong>. No porque la ley sea vaga, sino porque el caso de Laura encaja en la zona gris que m&aacute;s debates genera en la pr&aacute;ctica espa&ntilde;ola. Estos son los argumentos en ambos sentidos:</p>
+
+  <table class="reg-table reveal">
+    <thead>
+      <tr>
+        <th>Posici&oacute;n</th>
+        <th>Argumento</th>
+        <th>Base</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&#9651; A favor del alta</td>
+        <td>Laura da clases durante 10 meses seguidos &rarr; continuidad temporal &rarr; habitualidad</td>
+        <td>Art. 305 LGSS</td>
+      </tr>
+      <tr>
+        <td>&#9651; A favor del alta</td>
+        <td>La TGSS aplica criterio estricto: actividad lucrativa recurrente = alta</td>
+        <td>Criterio administrativo</td>
+      </tr>
+      <tr>
+        <td>&#9651; A favor del alta</td>
+        <td>Horarios fijos + alumnos recurrentes = organizaci&oacute;n de medios propios</td>
+        <td>Indicios jurisprudenciales</td>
+      </tr>
+      <tr>
+        <td>&#9661; En contra del alta</td>
+        <td>Ingresos (2.000&nbsp;&euro;/a&ntilde;o) muy por debajo del SMI &rarr; indicio de no habitualidad</td>
+        <td>STS 941/2025</td>
+      </tr>
+      <tr>
+        <td>&#9661; En contra del alta</td>
+        <td>Actividad accesoria a trabajo principal &rarr; no es fuente principal de ingresos</td>
+        <td>Doctrina TS 1988</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alerta-box reveal">
+    <p class="alerta-title">&#9888; La zona gris real</p>
+    <p>Este es uno de los supuestos <strong>m&aacute;s debatidos</strong> de la pr&aacute;ctica espa&ntilde;ola. Ni la norma ni la jurisprudencia dan una respuesta inequ&iacute;voca. Lo que existe es un <strong>riesgo real</strong> de que la Inspecci&oacute;n de Trabajo considere la actividad habitual y exija el alta retroactiva, con el correspondiente recargo del 20% y sanci&oacute;n de entre 300 y 3.000&nbsp;&euro;.</p>
+  </div>
+
+  <h2 class="reveal">6. Alternativas pr&aacute;cticas: <span>si decides darte de alta</span></h2>
+
+  <p class="reveal">Si tras valorar los riesgos decides regularizar tu situaci&oacute;n dándote de alta en el RETA, existen varias opciones que conviene conocer antes de decidir cu&aacute;l te conviene m&aacute;s en funci&oacute;n de tu situaci&oacute;n.</p>
+
+  <ul class="reveal">
+    <li><strong>Tarifa plana:</strong> 80&nbsp;&euro;/mes durante los primeros 12 meses. Prorrogada por RD Ley 3/2026 para 2026. Solo disponible si no has sido aut&oacute;nomo en los 2 a&ntilde;os anteriores.</li>
+    <li><strong>Cuota ordinaria</strong> tras la tarifa plana: aproximadamente 200&nbsp;&euro;/mes para el tramo de rendimientos netos inferiores a 670&nbsp;&euro;/mes (base m&iacute;nima 653,59&nbsp;&euro; &times; 31,2%).</li>
+    <li><strong>Alta/baja estacional:</strong> la ley permite hasta 3 altas y 3 bajas por a&ntilde;o natural con efecto el d&iacute;a real de inicio o cese. A partir de la 4&ordf; alta/baja del a&ntilde;o, se computa por mes completo. L&iacute;mite: 1 alta y 1 baja por mes natural.</li>
+    <li><strong>Cooperativas de facturaci&oacute;n:</strong> el prestador factura a trav&eacute;s de la cooperativa pagando una comisi&oacute;n (~5-10%). No confiere los mismos derechos que el alta directa en el RETA y su uso est&aacute; en zona gris jurisprudencial.</li>
+  </ul>
+
+  <table class="reg-table reveal">
+    <thead>
+      <tr>
+        <th>Escenario</th>
+        <th>Coste mensual aprox.</th>
+        <th>Ingresos netos/mes</th>
+        <th>Observaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sin alta (riesgo)</td>
+        <td>0&nbsp;&euro;</td>
+        <td>200&nbsp;&euro;</td>
+        <td>Riesgo de regularizaci&oacute;n retroactiva</td>
+      </tr>
+      <tr>
+        <td>Alta RETA + tarifa plana (1er a&ntilde;o)</td>
+        <td>80&nbsp;&euro;</td>
+        <td>~120&nbsp;&euro;</td>
+        <td>Solo si no fue aut&oacute;noma antes</td>
+      </tr>
+      <tr>
+        <td>Alta RETA + cuota ordinaria</td>
+        <td>~200&nbsp;&euro;</td>
+        <td>~0&nbsp;&euro;</td>
+        <td>Ingresos &asymp; cuota &rarr; no rentable</td>
+      </tr>
+      <tr>
+        <td>Cooperativa de facturaci&oacute;n</td>
+        <td>~20&nbsp;&euro; (10% comisi&oacute;n)</td>
+        <td>~180&nbsp;&euro;</td>
+        <td>Zona gris, sin derechos plenos</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="reveal">7. Riesgos de no darse de alta: <span>lo que puede pasar si llaman</span></h2>
+
+  <p class="reveal">Si la TGSS o la Inspecci&oacute;n de Trabajo detectan que has ejercido una actividad considerada habitual sin estar dado de alta en el RETA, las consecuencias pueden ser significativas e inmediatas.</p>
+
+  <ul class="reveal">
+    <li><strong>Regularizaci&oacute;n de cuotas retroactiva:</strong> pago de todas las cuotas no ingresadas desde el inicio de la actividad.</li>
+    <li><strong>Recargo del 20%</strong> sobre las cuotas impagadas.</li>
+    <li><strong>Sanci&oacute;n econ&oacute;mica:</strong> entre 300 y 3.000&nbsp;&euro; en funci&oacute;n del per&iacute;odo de infracci&oacute;n y las cantidades implicadas.</li>
+    <li><strong>Cruce de datos AEAT&ndash;TGSS:</strong> estar al d&iacute;a en Hacienda no te protege de la Inspecci&oacute;n de Trabajo. Ambas administraciones comparten informaci&oacute;n de forma activa.</li>
+  </ul>
+
+  <div class="info-box reveal">
+    <p class="info-title">&#9888;&#65039; El cruce de datos es real</p>
+    <p>Si presentas el modelo 130 o incluyes los ingresos en tu IRPF, la AEAT tiene constancia de que ejerces actividad econ&oacute;mica. Ese dato puede llegar a la TGSS si se activa un cruce de informaci&oacute;n. Estar al d&iacute;a en Hacienda pero no en Seguridad Social <strong>no elimina el riesgo de inspecci&oacute;n</strong>.</p>
+  </div>
+
+  <h2 class="reveal">8. Checklist antes de <span>dar tu primera clase</span></h2>
+
+  <p class="reveal">Antes de iniciar la actividad, o de regularizar una situaci&oacute;n ya en marcha, verifica los siguientes puntos:</p>
+
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <p class="step-title">Alta censal en la AEAT (modelo 036 o 037)</p>
+        <p>Antes o el mismo d&iacute;a del inicio de la actividad. Gratuita, r&aacute;pida, obligatoria.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <p class="step-title">&iquest;Mis clases est&aacute;n exentas de IVA?</p>
+        <p>Verifica que las materias que impartes est&aacute;n incluidas en planes de estudios oficiales (art. 20.Uno.10 LIVA).</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <p class="step-title">Menci&oacute;n de exenci&oacute;n en facturas</p>
+        <p>Incluir en todas las facturas: <em>&ldquo;Operaci&oacute;n exenta de IVA en virtud del art.&nbsp;20.Uno.10 de la Ley 37/1992.&rdquo;</em></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <p class="step-title">&iquest;Mis clientes son particulares o empresas?</p>
+        <p>Particulares: sin retenci&oacute;n en factura. Empresas o profesionales: retenci&oacute;n del 15% del IRPF.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <p class="step-title">Modelo 130 trimestral</p>
+        <p>Presentarlo trimestralmente salvo que m&aacute;s del 70% de tus ingresos tengan retenci&oacute;n. Si cobras a particulares, probablemente necesitas presentarlo.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <p class="step-title">Declaraci&oacute;n de la renta anual (modelo 100)</p>
+        <p>Incluir siempre los ingresos por clases en el apartado de rendimientos de actividades econ&oacute;micas.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-body">
+        <p class="step-title">&iquest;Actividad esporádica o habitual?</p>
+        <p>Valora honestamente si das clases de forma puntual o de manera continuada con alumnos recurrentes y horarios fijos.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">8</div>
+      <div class="step-body">
+        <p class="step-title">&iquest;Superas el SMI en ingresos netos?</p>
+        <p>16.576&nbsp;&euro; en 2025. Solo es un indicio, no un umbral autom&aacute;tico (salvo pensionistas de jubilaci&oacute;n).</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">9</div>
+      <div class="step-body">
+        <p class="step-title">&iquest;Eres pensionista de jubilaci&oacute;n?</p>
+        <p>Si tus ingresos netos no superan el SMI, el art.&nbsp;213.4 LGSS establece que no procede el alta en el RETA.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">10</div>
+      <div class="step-body">
+        <p class="step-title">Valora el coste real del alta en el RETA</p>
+        <p>Con tarifa plana: 80&nbsp;&euro;/mes (40% de tus ingresos de 200&nbsp;&euro;). Sin tarifa plana: ~200&nbsp;&euro;/mes (el 100% de tus ingresos). La viabilidad econ&oacute;mica del alta depende de que incrementes la actividad.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="reveal">Preguntas frecuentes</h2>
+
+  <div class="faq-item reveal">
+    <button class="faq-question" aria-expanded="false">
+      &iquest;Puedo dar clases particulares sin ser aut&oacute;nomo?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>T&eacute;cnicamente s&iacute;, si la actividad es esporádica y no habitual en el sentido del art.&nbsp;305 LGSS. Pero debes declarar los ingresos a Hacienda siempre, desde el primer euro: presentar el alta censal y declarar los ingresos en el IRPF anual.</p>
+    </div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-question" aria-expanded="false">
+      &iquest;Qu&eacute; pasa si solo doy clases en verano?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Una actividad estival puntual es m&aacute;s f&aacute;cil de argumentar como esporádica frente al RETA, ya que la duraci&oacute;n limitada es uno de los indicios de no habitualidad. Aun as&iacute;, debes presentar el alta censal en la AEAT y declarar los ingresos en el IRPF anual (modelo 100).</p>
+    </div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-question" aria-expanded="false">
+      &iquest;Las clases de ingl&eacute;s est&aacute;n exentas de IVA?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>S&iacute;. El ingl&eacute;s est&aacute; incluido en los planes de estudios oficiales del sistema educativo espa&ntilde;ol, por lo que la exenci&oacute;n del art.&nbsp;20.Uno.10 de la Ley del IVA aplica. No repercutes IVA al alumno, pero tampoco puedes deducir el IVA soportado en tus compras.</p>
+    </div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-question" aria-expanded="false">
+      &iquest;Cu&aacute;nto me costar&iacute;a el RETA si me doy de alta?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Con tarifa plana (primeros 12 meses, si no fuiste aut&oacute;nomo en los 2 a&ntilde;os anteriores): <strong>80&nbsp;&euro;/mes</strong>, prorrogada por RD Ley 3/2026 para 2026. Sin tarifa plana: aproximadamente <strong>200&nbsp;&euro;/mes</strong> para el tramo de rendimientos netos inferiores a 670&nbsp;&euro;/mes (base m&iacute;nima &times; 31,2%).</p>
+    </div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-question" aria-expanded="false">
+      &iquest;La AEAT va a cruzar datos con la Seguridad Social?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>S&iacute;. Si presentas el modelo 130 o declaras los ingresos en el IRPF, la TGSS puede conocer tu actividad. Ambas administraciones comparten informaci&oacute;n y el cruce de datos es una realidad operativa. Estar al d&iacute;a en Hacienda <strong>no te protege</strong> de una inspecci&oacute;n de la TGSS.</p>
+    </div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-question" aria-expanded="false">
+      &iquest;Qu&eacute; es lo m&iacute;nimo que debo hacer si doy clases por 200&nbsp;&euro;/mes?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Lo m&iacute;nimo indiscutible: <strong>alta censal en la AEAT</strong> (modelo 036 o 037) y <strong>declarar los ingresos en el IRPF anual</strong> (modelo 100). El alta en el RETA depende de la habitualidad de tu actividad y es la decisi&oacute;n que m&aacute;s merece consultar con un gestor o abogado laboralista.</p>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:2.5rem;">Dar clases particulares por 200&nbsp;&euro;/mes genera una situaci&oacute;n jur&iacute;dica compleja y genuinamente incierta en cuanto al RETA. Lo que no es incierto es la obligaci&oacute;n fiscal ante Hacienda: esos ingresos hay que declararlos siempre. La STS 941/2025 ha aportado claridad jurisprudencial, pero la brecha entre los tribunales y la pr&aacute;ctica administrativa sigue siendo real.</p>
+
+  <p class="reveal">La recomendaci&oacute;n prudente: consulta con un gestor o abogado laboralista antes de decidir si te das de alta o no. Una hora de asesor&iacute;a puede ahorrarte una regularizaci&oacute;n retroactiva con recargo del 20%.</p>
+
+  <div class="article-tags reveal">
+    <span class="tag">clases particulares aut&oacute;nomo</span>
+    <span class="tag">alta RETA clases particulares</span>
+    <span class="tag">habitualidad RETA</span>
+    <span class="tag">IRPF clases particulares</span>
+    <span class="tag">IVA clases particulares exenci&oacute;n</span>
+    <span class="tag">STS 941/2025</span>
+    <span class="tag">trabajos esporádicos aut&oacute;nomo</span>
+    <span class="tag">tarifa plana 2026</span>
+    <span class="tag">modelo 130</span>
+    <span class="tag">art. 20.Uno.10 LIVA</span>
+  </div>
+
+</main>
+
+<section class="article-cta">
+  <div class="cta-box reveal">
+    <h3>&iquest;No sabes si tienes que darte de alta por tus <em>clases particulares</em>?</h3>
+    <p>Cu&eacute;ntanos tu caso: cu&aacute;ntos alumnos, cu&aacute;ntos meses al a&ntilde;o y si tienes otro trabajo. Te orientamos gratis.</p>
+    <a class="btn-primary" href="../consultas.html">Consultar mi caso &rarr;</a>
+  </div>
+</section>
+
+<footer>&copy; 2026 &middot; <a href="../index.html">OpenLexIura</a> &middot; El derecho en el idioma de la calle</footer>
+
+<!-- ARTÍCULOS RELACIONADOS SUGERIDOS PARA ENLAZADO INTERNO:
+  - bizum.html — "El radar de Hacienda con Bizum: ¿se enteran de todo?"
+  - calculadorarenta.html — "Calculadora de la Renta: estima tu declaración"
+  - ../Deudas/segunda-oportunidad.html — "Ley de Segunda Oportunidad: cancela tus deudas"
+  - ../Trabajo/autonomo-o-empleado.html — "Autónomo o empleado: diferencias legales y fiscales"
+-->
+
+<script>
+const io = new IntersectionObserver(e => e.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add("visible");
+}), { threshold: .10 });
+document.querySelectorAll(".reveal").forEach((el, i) => {
+  el.style.transitionDelay = (i % 6) * 40 + "ms";
+  io.observe(el);
+});
+</script>
+<script>
+const ring = document.getElementById("cursorRing");
+const dot = document.getElementById("cursorDot");
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener("mousemove", e => { mx = e.clientX; my = e.clientY; });
+(function loop() {
+  rx += (mx - rx) * 0.13;
+  ry += (my - ry) * 0.13;
+  if (ring) { ring.style.left = rx + "px"; ring.style.top = ry + "px"; }
+  if (dot) { dot.style.left = mx + "px"; dot.style.top = my + "px"; }
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll("a,button").forEach(el => {
+  el.addEventListener("mouseenter", () => { if (ring) { ring.style.width = "52px"; ring.style.height = "52px"; ring.style.borderColor = "rgba(220,38,38,.9)"; }});
+  el.addEventListener("mouseleave", () => { if (ring) { ring.style.width = "38px"; ring.style.height = "38px"; ring.style.borderColor = "rgba(220,38,38,.55)"; }});
+});
+</script>
+<script>
+document.querySelectorAll(".faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    document.querySelectorAll(".faq-question").forEach(b => {
+      b.setAttribute("aria-expanded", "false");
+      b.nextElementSibling.classList.remove("open");
+    });
+    if (!expanded) {
+      btn.setAttribute("aria-expanded", "true");
+      btn.nextElementSibling.classList.add("open");
+    }
+  });
+});
+</script>
+</body>
+</html>
