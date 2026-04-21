@@ -1823,9 +1823,15 @@
 
   const revealObserver = new IntersectionObserver(revealCallback, observerOptions);
 
-  document.querySelectorAll('.reveal').forEach(el => {
+    document.querySelectorAll('.reveal').forEach(el => {
     revealObserver.observe(el);
   });
+
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 800);
 </script>
 
 <script>
