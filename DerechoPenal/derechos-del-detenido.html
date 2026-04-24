@@ -55,7 +55,7 @@
           "url": "https://openlexiura.es",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://openlexiura.es/Icono.png"
+            "url": "https:Icono.png"
           }
         },
         "mainEntityOfPage": {
@@ -228,21 +228,21 @@
       scroll-behavior: smooth;
       scroll-padding-top: var(--space-20);
     }
-    body {
-      min-height: 100dvh;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      line-height: 1.7;
-      color: var(--color-text);
-      background-color: var(--color-bg);
-      cursor: none;
-    }
+   body {
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  /* cursor: none  ← línea eliminada */
+}
     img, picture, svg { display: block; max-width: 100%; height: auto; }
     h1,h2,h3,h4,h5,h6 { text-wrap: balance; line-height: 1.2; font-family: var(--font-display); }
     p, li, figcaption { text-wrap: pretty; max-width: 72ch; }
     a { color: var(--brand); text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color var(--transition), color var(--transition); }
     a:hover { text-decoration-color: currentColor; }
-    button { cursor: none; background: none; border: none; font: inherit; color: inherit; }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
     table { border-collapse: collapse; width: 100%; }
     ::selection { background: color-mix(in srgb, var(--brand) 20%, transparent); color: var(--color-text); }
     :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: var(--radius-sm); }
