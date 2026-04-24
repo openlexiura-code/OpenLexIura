@@ -1032,3 +1032,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="../buscar/?q=detencion-preventiva" class="tag">Detención preventiva</a>
           <a href="../buscar/?q=derecho-penal" class="tag">Derecho Penal</a>
           <a href="../buscar/?q=presuncion-inocencia" class="tag">Presunción de inocencia</a>
+<script>
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Theme toggle
+  const toggle = document.querySelector('[data-theme-toggle]');
+  const root = document.documentElement;
+  let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  root.setAttribute('data-theme', theme);
+  if (toggle) toggle.addEventListener('click', () => {
+    theme = theme === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', theme);
+  });
+
+  // Nav scrolled shadow
+  window.addEventListener('scroll', () => {
+    document.querySelector('.site-nav')?.classList.toggle('site-nav--scrolled', window.scrollY > 10);
+  });
+
+  // Back to top
+  const backTop = document.querySelector('.back-top');
+  window.addEventListener('scroll', () => {
+    backTop?.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      const answer = document.getElementById(btn.getAttribute('aria-controls'));
+      answer.style.maxHeight = expanded ? null : answer.scrollHeight + 'px';
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+          
