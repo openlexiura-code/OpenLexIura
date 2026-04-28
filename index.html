@@ -86,13 +86,86 @@ body::before {
 a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 
+/* ── LEGAL TOP BANNER ────────────────────────────────────── */
+#legal-top-banner {
+  position: relative;
+  z-index: 1100;
+  background: var(--brand);
+  color: rgba(255,255,255,0.92);
+  font-size: .78rem;
+  font-family: 'Inter', sans-serif;
+  padding: .45rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  letter-spacing: .01em;
+}
+#legal-top-banner.hidden { display: none; }
+.legal-banner-label {
+  font-weight: 600;
+  opacity: .7;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: .72rem;
+  white-space: nowrap;
+}
+.legal-banner-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.legal-banner-links a {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  transition: color var(--transition), border-color var(--transition);
+  white-space: nowrap;
+}
+.legal-banner-links a:hover {
+  color: #fff;
+  border-bottom-color: rgba(255,255,255,0.7);
+}
+.legal-banner-sep {
+  color: rgba(255,255,255,0.3);
+  font-size: .65rem;
+}
+.legal-banner-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: .1rem .3rem;
+  border-radius: var(--r-sm);
+  transition: color var(--transition), background var(--transition);
+  flex-shrink: 0;
+}
+.legal-banner-close:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+}
+@media (max-width: 640px) {
+  #legal-top-banner {
+    padding: .5rem 1rem;
+    font-size: .75rem;
+    gap: .6rem;
+  }
+  .legal-banner-links { gap: .65rem; }
+  .legal-banner-label { display: none; }
+}
+
 /* ── NAV ────────────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 2.5rem; height: 64px;
   background: rgba(250,249,246,0);
-  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition), top var(--transition);
   border-bottom: 1px solid transparent;
 }
 nav.scrolled {
@@ -208,6 +281,8 @@ h1 em { font-style: italic; color: var(--brand); }
 .search-wrap {
   position: relative; max-width: 520px;
   animation: rise .7s ease both .4s;
+  /* Space below so dropdown doesn't overlap the stats strip */
+  margin-bottom: 2.5rem;
 }
 .search-wrap svg {
   position: absolute; left: .9rem; top: 50%;
@@ -240,6 +315,16 @@ h1 em { font-style: italic; color: var(--brand); }
   display: none; max-height: 360px; overflow-y: auto;
 }
 .search-results.active { display: block; }
+/* Spacer visible below the input when search is active, so stats stay clear */
+.search-spacer {
+  display: none;
+  height: 0;
+  transition: height .2s ease;
+}
+.search-wrap:has(.search-results.active) + .search-spacer {
+  display: block;
+  height: 16px;
+}
 .search-result-item {
   display: flex; flex-direction: column; gap: .2rem;
   padding: .85rem 1.1rem;
@@ -257,7 +342,6 @@ h1 em { font-style: italic; color: var(--brand); }
 /* hero stats strip */
 .hero-stats {
   display: flex; flex-wrap: wrap; gap: 2rem;
-  margin-top: 2.5rem;
   padding-top: 2rem;
   border-top: 1px solid var(--divider);
   animation: rise .7s ease both .5s;
@@ -607,6 +691,19 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+<!-- BANNER LEGAL SUPERIOR -->
+<div id="legal-top-banner" role="banner" aria-label="Información legal">
+  <span class="legal-banner-label">Aviso legal</span>
+  <nav class="legal-banner-links" aria-label="Documentos legales">
+    <a href="Legal/aviso-legal.html">Aviso Legal</a>
+    <span class="legal-banner-sep" aria-hidden="true">·</span>
+    <a href="Legal/politica-privacidad.html">Política de Privacidad</a>
+    <span class="legal-banner-sep" aria-hidden="true">·</span>
+    <a href="Legal/politica-cookies.html">Política de Cookies</a>
+  </nav>
+  <button class="legal-banner-close" id="legal-banner-close" aria-label="Cerrar banner legal" title="Cerrar">✕</button>
+</div>
+
 <nav id="nav">
   <a class="nav-logo" href="#inicio">
     <img src="Icono.png" alt="OpenLexIura" width="34" height="34">
@@ -912,6 +1009,26 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  /* LEGAL TOP BANNER */
+  var legalBanner = document.getElementById('legal-top-banner');
+  var legalClose  = document.getElementById('legal-banner-close');
+  var navEl       = document.getElementById('nav');
+
+  function updateNavOffset() {
+    var bannerH = (legalBanner && !legalBanner.classList.contains('hidden'))
+      ? legalBanner.offsetHeight : 0;
+    navEl.style.top = bannerH + 'px';
+  }
+
+  if (legalClose) {
+    legalClose.addEventListener('click', function () {
+      legalBanner.classList.add('hidden');
+      updateNavOffset();
+    });
+  }
+  updateNavOffset();
+  window.addEventListener('resize', updateNavOffset);
+
   /* NAV SCROLL */
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
