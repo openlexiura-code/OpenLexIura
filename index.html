@@ -76,7 +76,6 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.6;
-  /* espacio inferior para el banner legal fijo */
   padding-bottom: var(--legal-banner-h);
 }
 body::before {
@@ -90,9 +89,16 @@ a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 
 /* ── SEARCH OVERLAY ─────────────────────────────────────── */
+/*
+  El overlay tiene z-index 8500.
+  La nav está en 9500 (siempre visible por encima).
+  El search-wrap está en 9000 (por encima del overlay).
+  Los botones del hero NO tienen z-index → quedan por debajo del overlay (oscurecidos).
+  Excepción: .hero-actions sube a 9000 para permanecer siempre clicables.
+*/
 #search-overlay {
   display: none;
-  position: fixed; inset: 0; z-index: 9000;
+  position: fixed; inset: 0; z-index: 8500;
   background: rgba(26,23,20,0.45);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
@@ -252,10 +258,14 @@ h1 em { font-style: italic; color: var(--brand); }
   margin-bottom: 2rem;
   animation: rise .7s ease both .2s;
 }
+
+/* Los botones del hero siempre visibles (por encima del overlay) */
 .hero-actions {
   display: flex; flex-wrap: wrap; gap: .75rem;
   margin-bottom: 2rem;
   animation: rise .7s ease both .3s;
+  position: relative;
+  z-index: 9000;
 }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
@@ -291,7 +301,8 @@ h1 em { font-style: italic; color: var(--brand); }
   position: relative; max-width: 520px;
   animation: rise .7s ease both .4s;
   margin-bottom: 2.5rem;
-  z-index: 9100;
+  /* Por encima del overlay para que el input y resultados sean accesibles */
+  z-index: 9000;
 }
 .search-wrap svg {
   position: absolute; left: .9rem; top: 50%;
@@ -581,7 +592,6 @@ footer {
 /* ── MOBILE STICKY ───────────────────────────────────── */
 .mobile-sticky-cta {
   position: fixed; left: 0; right: 0;
-  /* queda por encima del banner legal */
   bottom: var(--legal-banner-h);
   z-index: 1200;
   display: none; justify-content: center;
