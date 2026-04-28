@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --r-lg: 14px;
   --r-xl: 20px;
   --transition: 200ms cubic-bezier(0.16,1,0.3,1);
+  --legal-banner-h: 38px;
 }
 
 /* ── RESET ──────────────────────────────────────────────── */
@@ -75,6 +76,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.6;
+  /* espacio inferior para el banner legal fijo */
+  padding-bottom: var(--legal-banner-h);
 }
 body::before {
   content: '';
@@ -104,21 +107,23 @@ img { display: block; max-width: 100%; }
 
 /* ── LEGAL BOTTOM BANNER ─────────────────────────────────── */
 #legal-top-banner {
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 9600;
+  height: var(--legal-banner-h);
   background: var(--brand);
   color: rgba(255,255,255,0.92);
   font-size: .78rem;
   font-family: 'Inter', sans-serif;
-  padding: .45rem 2.5rem;
+  padding: 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.25rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   letter-spacing: .01em;
+  box-shadow: 0 -2px 12px rgba(26,44,144,.18);
 }
-#legal-top-banner.hidden { display: none; }
 .legal-banner-label {
   font-weight: 600;
   opacity: .7;
@@ -131,7 +136,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .legal-banner-links a {
   color: rgba(255,255,255,0.85);
@@ -148,29 +153,17 @@ img { display: block; max-width: 100%; }
   color: rgba(255,255,255,0.3);
   font-size: .65rem;
 }
-.legal-banner-close {
-  margin-left: auto;
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.6);
-  cursor: pointer;
-  font-size: 1rem;
-  line-height: 1;
-  padding: .1rem .3rem;
-  border-radius: var(--r-sm);
-  transition: color var(--transition), background var(--transition);
-  flex-shrink: 0;
-}
-.legal-banner-close:hover {
-  color: #fff;
-  background: rgba(255,255,255,0.12);
-}
 @media (max-width: 640px) {
   #legal-top-banner {
-    padding: .5rem 1rem;
+    padding: 0 1rem;
     font-size: .75rem;
     gap: .6rem;
+    height: auto;
+    min-height: var(--legal-banner-h);
+    flex-wrap: wrap;
+    padding-block: .45rem;
   }
+  body { padding-bottom: 6rem; }
   .legal-banner-links { gap: .65rem; }
   .legal-banner-label { display: none; }
 }
@@ -587,9 +580,12 @@ footer {
 
 /* ── MOBILE STICKY ───────────────────────────────────── */
 .mobile-sticky-cta {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 1200;
+  position: fixed; left: 0; right: 0;
+  /* queda por encima del banner legal */
+  bottom: var(--legal-banner-h);
+  z-index: 1200;
   display: none; justify-content: center;
-  padding: .85rem 1rem calc(.85rem + env(safe-area-inset-bottom));
+  padding: .85rem 1rem;
   background: rgba(250,249,246,.97);
   backdrop-filter: blur(12px);
   border-top: 1px solid var(--divider);
@@ -621,7 +617,7 @@ footer {
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ── COOKIES ─────────────────────────────────────────── */
-#oli-cookie-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#111009;border-top:2px solid #C9A84C;padding:1.2rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 24px rgba(0,0,0,.5)}
+#oli-cookie-banner{display:none;position:fixed;bottom:var(--legal-banner-h);left:0;right:0;z-index:99999;background:#111009;border-top:2px solid #C9A84C;padding:1.2rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 24px rgba(0,0,0,.5)}
 #oli-cookie-banner.visible{display:block}
 .oli-banner-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
 .oli-banner-text{flex:1;min-width:260px;font-size:.88rem;color:#b0b0c8;line-height:1.6}
@@ -633,7 +629,7 @@ footer {
 .oli-btn-accept{background:#C9A84C;color:#0a0a0f;font-weight:700}
 .oli-btn-reject{background:transparent;color:#b0b0c8;border:1px solid #3a3a54}
 .oli-btn-config{background:transparent;color:#C9A84C;border:1px solid #C9A84C}
-#oli-config-panel{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100000;background:#1a1a26;border-top:2px solid #C9A84C;padding:1.8rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6)}
+#oli-config-panel{display:none;position:fixed;bottom:var(--legal-banner-h);left:0;right:0;z-index:100000;background:#1a1a26;border-top:2px solid #C9A84C;padding:1.8rem 2rem;font-family:'Inter',sans-serif;box-shadow:0 -4px 32px rgba(0,0,0,.6)}
 #oli-config-panel.visible{display:block}
 .oli-config-inner{max-width:700px;margin:0 auto}
 .oli-config-inner h3{color:#C9A84C;font-size:1rem;margin-bottom:1rem;letter-spacing:.05em;text-transform:uppercase}
@@ -649,7 +645,7 @@ input:checked+.oli-slider{background:#C9A84C}
 input:checked+.oli-slider:before{transform:translateX(20px);background:#0a0a0f}
 input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
 .oli-config-actions{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
-#oli-cookie-btn{display:none;position:fixed;bottom:1.2rem;left:1.2rem;z-index:99998;background:#1a1a26;border:1px solid #C9A84C;color:#C9A84C;font-size:1.2rem;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:background .2s;line-height:40px;text-align:center}
+#oli-cookie-btn{display:none;position:fixed;bottom:calc(var(--legal-banner-h) + 1.2rem);left:1.2rem;z-index:99998;background:#1a1a26;border:1px solid #C9A84C;color:#C9A84C;font-size:1.2rem;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:background .2s;line-height:40px;text-align:center}
 #oli-cookie-btn:hover{background:#C9A84C;color:#0a0a0f}
 #oli-cookie-btn.visible{display:block}
 
@@ -696,7 +692,6 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; justify-content: center; min-height: 50px; }
   .mobile-sticky-cta { display: flex; }
-  body { padding-bottom: 5rem; }
   .trust-strip { padding: 1.25rem; }
   footer { padding: 1.5rem 1.25rem; }
   .footer-links { justify-content: center; gap: 1rem; }
@@ -958,19 +953,6 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
   </div>
 </section>
 
-<!-- BANNER LEGAL INFERIOR -->
-<div id="legal-top-banner" role="banner" aria-label="Información legal">
-  <span class="legal-banner-label">Aviso legal</span>
-  <nav class="legal-banner-links" aria-label="Documentos legales">
-    <a href="Legal/aviso-legal.html">Aviso Legal</a>
-    <span class="legal-banner-sep" aria-hidden="true">·</span>
-    <a href="Legal/politica-privacidad.html">Política de Privacidad</a>
-    <span class="legal-banner-sep" aria-hidden="true">·</span>
-    <a href="Legal/politica-cookies.html">Política de Cookies</a>
-  </nav>
-  <button class="legal-banner-close" id="legal-banner-close" aria-label="Cerrar banner legal" title="Cerrar">✕</button>
-</div>
-
 <footer>
   <span>© 2026 <strong>OpenLexIura</strong> · El derecho para ciudadanos</span>
   <nav class="footer-links" aria-label="Pie de página">
@@ -980,6 +962,18 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
 
 <div class="mobile-sticky-cta">
   <a class="btn btn-primary" href="consultas.html">Consulta tu caso (gratis 24 h)</a>
+</div>
+
+<!-- BANNER LEGAL FIJO INFERIOR -->
+<div id="legal-top-banner" role="contentinfo" aria-label="Información legal">
+  <span class="legal-banner-label">Legal</span>
+  <nav class="legal-banner-links" aria-label="Documentos legales">
+    <a href="Legal/aviso-legal.html">Aviso Legal</a>
+    <span class="legal-banner-sep" aria-hidden="true">·</span>
+    <a href="Legal/politica-privacidad.html">Política de Privacidad</a>
+    <span class="legal-banner-sep" aria-hidden="true">·</span>
+    <a href="Legal/politica-cookies.html">Política de Cookies</a>
+  </nav>
 </div>
 
 <!-- BANNER COOKIES -->
@@ -1024,15 +1018,6 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  /* LEGAL BANNER */
-  var legalBanner = document.getElementById('legal-top-banner');
-  var legalClose  = document.getElementById('legal-banner-close');
-  if (legalClose) {
-    legalClose.addEventListener('click', function () {
-      legalBanner.classList.add('hidden');
-    });
-  }
-
   /* NAV SCROLL */
   const nav = document.getElementById('nav');
   nav.style.top = '0px';
