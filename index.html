@@ -1,1 +1,835 @@
-placeholder
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MHBT9NDS');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenLexIura – Tu guía legal en español claro</title>
+  <meta name="description" content="Entiende tus derechos y resuelve dudas sobre alquileres, despidos, herencias o compras. Sin tecnicismos. Sin lenguaje del BOE." />
+  <link rel="canonical" href="https://www.openlexiura.com/" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.openlexiura.com/" />
+  <meta property="og:title" content="OpenLexIura – Tu guía legal en español claro" />
+  <meta property="og:description" content="Alquiler, vivienda, consumo, herencias y más. Contenido jurídico redactado para ciudadanos, no para abogados." />
+  <meta property="og:image" content="https://www.openlexiura.com/Icono.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.openlexiura.com/" />
+  <meta name="twitter:title" content="OpenLexIura – Tu guía legal en español claro" />
+  <meta name="twitter:description" content="Alquiler, vivienda, consumo, herencias y más. Contenido jurídico redactado para ciudadanos, no para abogados." />
+  <meta name="twitter:image" content="https://www.openlexiura.com/Icono.png" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "OpenLexIura",
+    "url": "https://www.openlexiura.com/",
+    "description": "Temas con intención alta de consulta: problemas urgentes, dinero, vivienda y reclamaciones frecuentes.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.openlexiura.com/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <style>
+    /* ── RESET & BASE ───────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f8f7f4;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    /* ── FONDO ANIMADO JURÍDICO ─────────────────────────────── */
+    #legal-bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.52;
+    }
+    .hero, .trust-strip, .section, .cta-section, footer,
+    #search-overlay, #search-wrap, .hero-actions {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── VARIABLES ──────────────────────────── */
+    :root {
+      --azul:      #1a4490;
+      --azul-dark: #0d2d6b;
+      --dorado:    #c9a84c;
+      --gris-claro:#f0eeea;
+      --texto:     #1a1a2e;
+      --texto-suave:#4a4a6a;
+      --blanco:    #ffffff;
+      --sombra:    0 4px 24px rgba(26,68,144,.12);
+    }
+
+    /* ── HEADER / NAV ───────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(26,68,144,.1);
+      padding: .75rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo-wrap { display:flex; align-items:center; gap:.65rem; text-decoration:none; }
+    .logo-icon {
+      width:36px; height:36px; border-radius:8px;
+      background: var(--azul); display:flex; align-items:center; justify-content:center;
+    }
+    .logo-icon svg { width:22px; height:22px; fill:none; stroke:#fff; stroke-width:2; }
+    .logo-text { font-size:1.15rem; font-weight:700; color:var(--azul); letter-spacing:-.02em; }
+    .logo-text span { color:var(--dorado); }
+
+    nav { display:flex; gap:.25rem; flex-wrap:wrap; }
+    nav a {
+      font-size:.8rem; font-weight:500; color:var(--texto-suave); text-decoration:none;
+      padding:.35rem .65rem; border-radius:6px; transition:all .18s;
+      white-space:nowrap;
+    }
+    nav a:hover { background:var(--gris-claro); color:var(--azul); }
+
+    .header-right { display:flex; align-items:center; gap:.5rem; }
+    .btn-buscar {
+      display:flex; align-items:center; gap:.4rem;
+      background:var(--azul); color:#fff; border:none; border-radius:8px;
+      padding:.42rem .85rem; font-size:.82rem; font-weight:600; cursor:pointer;
+      transition:background .18s;
+    }
+    .btn-buscar:hover { background:var(--azul-dark); }
+    .btn-buscar svg { width:15px; height:15px; stroke:#fff; fill:none; stroke-width:2.2; }
+
+    /* ── SEARCH OVERLAY ─────────────────────── */
+    #search-overlay {
+      display:none; position:fixed; inset:0; z-index:200;
+      background:rgba(10,20,60,.55); backdrop-filter:blur(6px);
+      align-items:flex-start; justify-content:center; padding-top:5rem;
+    }
+    #search-overlay.open { display:flex; }
+    #search-wrap {
+      background:#fff; border-radius:16px; width:min(680px,92vw);
+      box-shadow:0 20px 60px rgba(0,0,0,.22); overflow:hidden;
+    }
+    .search-top {
+      display:flex; align-items:center; gap:.75rem;
+      padding:.85rem 1.1rem; border-bottom:1px solid #eee;
+    }
+    .search-top svg { width:20px; height:20px; stroke:#999; fill:none; stroke-width:2; flex-shrink:0; }
+    #search-input {
+      flex:1; border:none; outline:none; font-size:1rem; color:var(--texto);
+      background:transparent;
+    }
+    #search-input::placeholder { color:#bbb; }
+    #btn-close-search {
+      background:none; border:none; cursor:pointer; color:#aaa; font-size:1.4rem; line-height:1;
+      transition:color .15s;
+    }
+    #btn-close-search:hover { color:var(--texto); }
+    #search-results { max-height:420px; overflow-y:auto; }
+    .sr-item {
+      display:block; padding:.75rem 1.1rem; text-decoration:none; color:var(--texto);
+      border-bottom:1px solid #f3f3f3; transition:background .15s;
+    }
+    .sr-item:hover { background:#f7f9ff; }
+    .sr-item-title { font-weight:600; font-size:.9rem; margin-bottom:.2rem; }
+    .sr-item-path { font-size:.75rem; color:var(--texto-suave); }
+    .sr-empty { padding:1.5rem; text-align:center; color:#aaa; font-size:.9rem; }
+
+    /* ── HERO ───────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #0d2d6b 0%, #1a4490 60%, #1e5cb3 100%);
+      color:#fff; text-align:center;
+      padding: clamp(3rem,7vw,6rem) 1.5rem clamp(2.5rem,5vw,5rem);
+    }
+    .hero-badge {
+      display:inline-block; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
+      color:rgba(255,255,255,.9); font-size:.75rem; font-weight:600; letter-spacing:.08em;
+      text-transform:uppercase; padding:.3rem .9rem; border-radius:20px; margin-bottom:1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem,4.5vw,3.2rem);
+      font-weight:800; line-height:1.15; margin-bottom:1rem;
+      letter-spacing:-.03em;
+    }
+    .hero h1 span { color:var(--dorado); }
+    .hero-sub {
+      font-size: clamp(.95rem,2vw,1.2rem);
+      color:rgba(255,255,255,.82); max-width:620px; margin:0 auto 2rem;
+    }
+    .hero-actions {
+      display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;
+    }
+    .btn-primary {
+      background:var(--dorado); color:#1a1a2e; font-weight:700; font-size:.95rem;
+      padding:.7rem 1.7rem; border-radius:10px; text-decoration:none;
+      border:none; cursor:pointer; transition:all .18s; display:inline-flex; align-items:center; gap:.4rem;
+    }
+    .btn-primary:hover { background:#b8943e; transform:translateY(-1px); }
+    .btn-secondary {
+      background:rgba(255,255,255,.12); color:#fff; font-weight:600; font-size:.95rem;
+      padding:.7rem 1.7rem; border-radius:10px; text-decoration:none;
+      border:1px solid rgba(255,255,255,.3); cursor:pointer; transition:all .18s;
+    }
+    .btn-secondary:hover { background:rgba(255,255,255,.2); }
+
+    /* ── TRUST STRIP ────────────────────────── */
+    .trust-strip {
+      background:#fff; border-bottom:1px solid #eee;
+      display:flex; flex-wrap:wrap; justify-content:center; gap:.25rem 2rem;
+      padding:.9rem 1.5rem; font-size:.78rem; color:var(--texto-suave); font-weight:500;
+    }
+    .trust-strip span { display:flex; align-items:center; gap:.35rem; }
+    .trust-strip span::before { content:"✓"; color:var(--azul); font-weight:700; }
+
+    /* ── SECTIONS GRID ──────────────────────── */
+    .section {
+      max-width:1160px; margin:0 auto; padding: clamp(2rem,4vw,4rem) 1.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.25rem,2.8vw,1.75rem); font-weight:700;
+      color:var(--azul); margin-bottom:.5rem; letter-spacing:-.02em;
+    }
+    .section-sub { color:var(--texto-suave); font-size:.95rem; margin-bottom:2rem; }
+
+    .topics-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(260px,100%), 1fr));
+      gap:1rem;
+    }
+    .topic-card {
+      background:#fff; border-radius:12px; padding:1.25rem 1.25rem 1rem;
+      box-shadow: 0 2px 12px rgba(26,68,144,.07);
+      border:1px solid rgba(26,68,144,.07);
+      text-decoration:none; color:inherit;
+      transition:all .2s; display:flex; flex-direction:column; gap:.6rem;
+    }
+    .topic-card:hover {
+      transform:translateY(-3px);
+      box-shadow: 0 8px 28px rgba(26,68,144,.13);
+      border-color:rgba(26,68,144,.18);
+    }
+    .topic-icon {
+      width:42px; height:42px; border-radius:10px;
+      background:var(--gris-claro); display:flex; align-items:center; justify-content:center;
+      font-size:1.3rem;
+    }
+    .topic-card h3 { font-size:.98rem; font-weight:700; color:var(--azul); line-height:1.3; }
+    .topic-card p  { font-size:.82rem; color:var(--texto-suave); line-height:1.5; flex:1; }
+    .topic-arrow   { font-size:.8rem; color:var(--dorado); font-weight:700; margin-top:.25rem; }
+
+    /* ── FEATURED ───────────────────────────── */
+    .featured-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(300px,100%),1fr));
+      gap:1rem;
+    }
+    .feat-card {
+      background:#fff; border-radius:12px; padding:1.4rem;
+      box-shadow:0 2px 12px rgba(26,68,144,.07); border:1px solid rgba(26,68,144,.07);
+      text-decoration:none; color:inherit; transition:all .2s;
+      display:flex; flex-direction:column; gap:.5rem;
+    }
+    .feat-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,68,144,.12); }
+    .feat-tag {
+      font-size:.7rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+      color:var(--azul); background:rgba(26,68,144,.08); padding:.2rem .55rem;
+      border-radius:20px; align-self:flex-start;
+    }
+    .feat-card h3 { font-size:1rem; font-weight:700; color:var(--texto); line-height:1.35; }
+    .feat-card p  { font-size:.83rem; color:var(--texto-suave); line-height:1.55; flex:1; }
+    .feat-link    { font-size:.8rem; color:var(--azul); font-weight:600; margin-top:.25rem; }
+
+    /* ── SEPARATOR ──────────────────────────── */
+    .sep { border:none; border-top:1px solid #e8e6e0; margin:0 1.5rem; }
+
+    /* ── CTA SECTION ────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg,#0d2d6b,#1a4490);
+      color:#fff; text-align:center;
+      padding: clamp(2.5rem,5vw,5rem) 1.5rem;
+    }
+    .cta-section h2 { font-size:clamp(1.4rem,3vw,2.1rem); font-weight:800; margin-bottom:.75rem; }
+    .cta-section p  { font-size:.95rem; color:rgba(255,255,255,.8); max-width:520px; margin:0 auto 2rem; }
+
+    /* ── FOOTER ─────────────────────────────── */
+    footer {
+      background:#0d1a3a; color:rgba(255,255,255,.6);
+      padding:2.5rem 1.5rem 1.5rem; font-size:.8rem;
+    }
+    .footer-inner {
+      max-width:1160px; margin:0 auto;
+      display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between;
+      padding-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,.08);
+      margin-bottom:1.25rem;
+    }
+    .footer-brand .logo-text { color:#fff; font-size:1rem; }
+    .footer-brand .logo-text span { color:var(--dorado); }
+    .footer-brand p { margin-top:.5rem; max-width:260px; line-height:1.5; }
+    .footer-links h4 { color:#fff; font-size:.85rem; font-weight:600; margin-bottom:.65rem; }
+    .footer-links ul { list-style:none; display:flex; flex-direction:column; gap:.4rem; }
+    .footer-links a  { color:rgba(255,255,255,.55); text-decoration:none; transition:color .15s; }
+    .footer-links a:hover { color:#fff; }
+    .footer-bottom { max-width:1160px; margin:0 auto; text-align:center; }
+
+    /* ── AVISO COOKIE ───────────────────────── */
+    #cookie-banner {
+      position:fixed; bottom:0; left:0; right:0; z-index:300;
+      background:#1a1a2e; color:#e0e0e0;
+      padding:1rem 1.5rem;
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      gap:1rem; font-size:.82rem;
+      border-top:2px solid var(--dorado);
+      transform:translateY(100%); transition:transform .4s ease;
+    }
+    #cookie-banner.show { transform:translateY(0); }
+    #cookie-banner p { max-width:680px; line-height:1.5; }
+    #cookie-banner a { color:var(--dorado); }
+    .cookie-btns { display:flex; gap:.6rem; flex-wrap:wrap; }
+    .btn-accept {
+      background:var(--dorado); color:#1a1a2e; border:none; border-radius:7px;
+      padding:.45rem 1.1rem; font-size:.82rem; font-weight:700; cursor:pointer; transition:background .15s;
+    }
+    .btn-accept:hover { background:#b8943e; }
+    .btn-reject {
+      background:transparent; color:#aaa; border:1px solid #444; border-radius:7px;
+      padding:.45rem 1.1rem; font-size:.82rem; cursor:pointer; transition:all .15s;
+    }
+    .btn-reject:hover { border-color:#888; color:#ddd; }
+
+    /* ── RESPONSIVE ─────────────────────────── */
+    @media (max-width:640px) {
+      header { padding:.6rem 1rem; }
+      nav { display:none; }
+      .topics-grid, .featured-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+<!-- FONDO ANIMADO JURÍDICO -->
+<canvas id="legal-bg-canvas" aria-hidden="true"></canvas>
+<script>
+(function () {
+  const canvas = document.getElementById('legal-bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], floatingTexts = [];
+  let scaleT = 0, animFrame;
+
+  function Particle() { this.reset(true); }
+  Particle.prototype.reset = function (stagger) {
+    this.x = Math.random() * W;
+    this.y = stagger ? Math.random() * H : H + 5;
+    this.r = Math.random() * 1.6 + 0.4;
+    this.speedX = (Math.random() - 0.5) * 0.18;
+    this.speedY = -(Math.random() * 0.30 + 0.08);
+    this.opacity = Math.random() * 0.40 + 0.08;
+    this.gold = Math.random() > 0.55;
+    this.life = 0;
+    this.maxLife = Math.random() * 380 + 180;
+  };
+  Particle.prototype.update = function () {
+    this.x += this.speedX; this.y += this.speedY; this.life++;
+    if (this.y < -10 || this.life > this.maxLife) this.reset(false);
+  };
+  Particle.prototype.draw = function () {
+    const fade = this.life < 40 ? this.life/40 : this.life > this.maxLife-40 ? (this.maxLife-this.life)/40 : 1;
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+    ctx.fillStyle = this.gold ? `rgba(201,168,76,${this.opacity*fade})` : `rgba(26,68,144,${this.opacity*fade*0.65})`;
+    ctx.fill();
+  };
+
+  const LEGAL_TEXTS = ['Art. 1 CE','Ley Orgánica','Título II','BOE','Art. 24','LOPJ','RDL','Art. 17','Código Civil','LEC','Estatuto','Constitución','Directiva UE','RGPD','Art. 103','TRLSC'];
+  function FloatingText() { this.reset(true); }
+  FloatingText.prototype.reset = function (stagger) {
+    this.text    = LEGAL_TEXTS[Math.floor(Math.random()*LEGAL_TEXTS.length)];
+    this.x       = Math.random()*W; this.y = stagger ? Math.random()*H : H+20;
+    this.speed   = Math.random()*0.15+0.06; this.opacity = Math.random()*0.065+0.018;
+    this.size    = Math.random()*7+9; this.drift = (Math.random()-0.5)*0.07;
+  };
+  FloatingText.prototype.update = function () {
+    this.y -= this.speed; this.x += this.drift; if (this.y < -30) this.reset(false);
+  };
+  FloatingText.prototype.draw = function () {
+    ctx.save(); ctx.globalAlpha = this.opacity; ctx.fillStyle = '#1a4490';
+    ctx.font = `${this.size}px 'Instrument Serif',Georgia,serif`;
+    ctx.fillText(this.text, this.x, this.y); ctx.restore();
+  };
+
+  function drawPillar(x, baseY, w, h) {
+    const grad = ctx.createLinearGradient(x,0,x+w,0);
+    grad.addColorStop(0,'rgba(26,68,144,0.05)'); grad.addColorStop(0.35,'rgba(26,68,144,0.09)');
+    grad.addColorStop(0.65,'rgba(26,68,144,0.09)'); grad.addColorStop(1,'rgba(26,68,144,0.04)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(x+w*0.12, baseY-h, w*0.76, h*0.80);
+    ctx.fillRect(x, baseY-h, w, h*0.05);
+    ctx.fillRect(x+w*0.06, baseY-h*0.95, w*0.88, h*0.04);
+    ctx.fillRect(x, baseY-h*0.20, w, h*0.05);
+    ctx.fillRect(x+w*0.06, baseY-h*0.14, w*0.88, h*0.04);
+    ctx.fillRect(x+w*0.12, baseY-h*0.09, w*0.76, h*0.09);
+  }
+
+  function drawScales(cx, cy, size, phase) {
+    const angle=Math.sin(scaleT+phase)*0.11, alpha=0.09, armLen=size*0.70, chainLen=size*0.52;
+    ctx.save(); ctx.translate(cx,cy);
+    ctx.strokeStyle=`rgba(201,168,76,${alpha})`; ctx.lineWidth=size*0.020; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(0,-size*0.88); ctx.lineTo(0,size*0.48); ctx.stroke();
+    ctx.fillStyle=`rgba(201,168,76,${alpha})`;
+    ctx.beginPath(); ctx.arc(0,-size*0.88,size*0.042,0,Math.PI*2); ctx.fill();
+    ctx.save(); ctx.rotate(angle);
+    ctx.beginPath(); ctx.moveTo(-armLen,0); ctx.lineTo(armLen,0); ctx.stroke();
+    ctx.beginPath(); ctx.arc(0,0,size*0.033,0,Math.PI*2); ctx.fill();
+    const leftDrop=Math.sin(scaleT+phase)*size*0.07, rightDrop=-leftDrop;
+    ctx.lineWidth=size*0.013; ctx.setLineDash([size*0.04,size*0.04]);
+    ctx.beginPath(); ctx.moveTo(-armLen,0); ctx.lineTo(-armLen,chainLen+leftDrop); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(armLen,0); ctx.lineTo(armLen,chainLen+rightDrop); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.lineWidth=size*0.020;
+    const pw=size*0.36, ph=size*0.038;
+    [-1,1].forEach((side,i)=>{
+      const drop=i===0?leftDrop:rightDrop;
+      ctx.beginPath(); ctx.ellipse(side*armLen,chainLen+drop,pw/2,ph,0,0,Math.PI*2); ctx.stroke();
+      ctx.fillStyle=`rgba(201,168,76,${alpha*0.28})`; ctx.fill();
+    });
+    ctx.restore(); ctx.restore();
+  }
+
+  function drawGrid() {
+    ctx.strokeStyle='rgba(26,68,144,0.025)'; ctx.lineWidth=0.6; const sp=90;
+    for(let x=0;x<W;x+=sp){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=sp){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  }
+
+  function initScene() {
+    particles=[]; const pc=Math.min(Math.floor((W*H)/13000),90);
+    for(let i=0;i<pc;i++) particles.push(new Particle());
+    floatingTexts=[]; const tc=Math.max(Math.floor(W/170),5);
+    for(let i=0;i<tc;i++) floatingTexts.push(new FloatingText());
+  }
+
+  function resize() { W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; initScene(); }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H); scaleT+=0.007; drawGrid();
+    const pw=Math.min(W*0.055,62), ph=H*0.73;
+    drawPillar(W*0.030-pw/2,H*0.94,pw,ph); drawPillar(W*0.075-pw/2,H*0.94,pw,ph);
+    drawPillar(W*0.925-pw/2,H*0.94,pw,ph); drawPillar(W*0.970-pw/2,H*0.94,pw,ph);
+    drawScales(W*0.50,H*0.26,Math.min(W*0.28,260),0);
+    drawScales(W*0.84,H*0.62,Math.min(W*0.11,92),Math.PI*0.6);
+    floatingTexts.forEach(t=>{t.update();t.draw()});
+    particles.forEach(p=>{p.update();p.draw()});
+    animFrame=requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize',resize); resize(); draw();
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){cancelAnimationFrame(animFrame);canvas.style.display='none';}
+})();
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHBT9NDS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   HEADER                               -->
+<!-- ╚══════════════════════════════════════╝ -->
+<header>
+  <a href="/" class="logo-wrap" aria-label="OpenLexIura inicio">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/>
+      </svg>
+    </div>
+    <span class="logo-text">Open<span>Lex</span>Iura</span>
+  </a>
+
+  <nav aria-label="Áreas jurídicas">
+    <a href="/Alquiler/alquiler.html">Alquiler</a>
+    <a href="/Trabajo/trabajo.html">Trabajo</a>
+    <a href="/Herencias/herencias.html">Herencias</a>
+    <a href="/Consumo/consumo.html">Consumo</a>
+    <a href="/DerechoPenal/derecho-penal.html">Penal</a>
+    <a href="/Impuestos/impuestos.html">Impuestos</a>
+    <a href="/Vivienda/vivienda.html">Vivienda</a>
+    <a href="/Extranjeria/extranjeria.html">Extranjería</a>
+    <a href="/aprender/aprender.html">Aprende Derecho</a>
+  </nav>
+
+  <div class="header-right">
+    <button class="btn-buscar" id="btn-open-search" aria-label="Buscar en OpenLexIura">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Buscar
+    </button>
+  </div>
+</header>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   SEARCH OVERLAY                       -->
+<!-- ╚══════════════════════════════════════╝ -->
+<div id="search-overlay" role="dialog" aria-modal="true" aria-label="Buscador">
+  <div id="search-wrap">
+    <div class="search-top">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="search-input" type="search" placeholder="Busca tu duda legal…" autocomplete="off" />
+      <button id="btn-close-search" aria-label="Cerrar buscador">×</button>
+    </div>
+    <div id="search-results" aria-live="polite"></div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   HERO                                 -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section class="hero">
+  <div class="hero-badge">Información jurídica gratuita</div>
+  <h1>Tu duda legal, resuelta<br><span>en español claro</span></h1>
+  <p class="hero-sub">Entiende tus derechos sobre alquiler, trabajo, herencias, consumo y más — sin tecnicismos ni letra pequeña.</p>
+  <div class="hero-actions">
+    <a href="#temas" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      Explorar temas
+    </a>
+    <button class="btn-secondary" id="hero-btn-search">Buscar mi duda →</button>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   TRUST STRIP                          -->
+<!-- ╚══════════════════════════════════════╝ -->
+<div class="trust-strip" role="list">
+  <span role="listitem">Contenido actualizado</span>
+  <span role="listitem">Sin registro necesario</span>
+  <span role="listitem">Lenguaje claro, sin tecnicismos</span>
+  <span role="listitem">Basado en legislación española</span>
+  <span role="listitem">Acceso gratuito</span>
+</div>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   ÁREAS TEMÁTICAS                      -->
+<!-- ╚══════════════════════════════════════╝ -->
+<main id="temas">
+<section class="section" aria-labelledby="titulo-areas">
+  <h2 class="section-title" id="titulo-areas">Áreas jurídicas</h2>
+  <p class="section-sub">Encuentra información fiable organizada por tema</p>
+
+  <div class="topics-grid">
+
+    <a href="/Alquiler/alquiler.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">🏠</div>
+      <h3>Alquiler y Vivienda</h3>
+      <p>Contratos, fianzas, subidas de renta, desahucios y derechos del inquilino.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/Trabajo/trabajo.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">💼</div>
+      <h3>Derecho Laboral</h3>
+      <p>Despidos, finiquitos, bajas, contratos y reclamaciones ante el SEPE.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/Herencias/herencias.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">📜</div>
+      <h3>Herencias y Testamentos</h3>
+      <p>Cómo heredar, qué impuestos pagar, reparto de bienes y conflictos familiares.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/Consumo/consumo.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">🛒</div>
+      <h3>Consumo y Reclamaciones</h3>
+      <p>Devoluciones, garantías, cláusulas abusivas y cómo reclamar a empresas.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/DerechoPenal/derecho-penal.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">⚖️</div>
+      <h3>Derecho Penal</h3>
+      <p>Delitos comunes, penas, denuncias, derechos del acusado y víctimas.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/Impuestos/impuestos.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">🧾</div>
+      <h3>Impuestos y Hacienda</h3>
+      <p>IRPF, IVA, declaración de la renta, sanciones y cómo recurrir a la AEAT.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/Divorcio-Familia/divorcio-familia.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">👨‍👩‍👧</div>
+      <h3>Familia y Divorcio</h3>
+      <p>Separaciones, custodia, pensión alimenticia y régimen económico matrimonial.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/Extranjeria/extranjeria.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">🌍</div>
+      <h3>Extranjería</h3>
+      <p>Residencia, visados, nacionalidad, reagrupación familiar y regularización.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/Deudas/deudas.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">💳</div>
+      <h3>Deudas y Embargos</h3>
+      <p>Cómo actuar ante deudas, embargos de nómina, Ley de Segunda Oportunidad.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/Accidentes-Multas/accidentes-multas.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">🚗</div>
+      <h3>Accidentes y Multas</h3>
+      <p>Accidentes de tráfico, reclamaciones al seguro, multas y puntos del carné.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/Vivienda/vivienda.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">🏗️</div>
+      <h3>Compraventa de Vivienda</h3>
+      <p>Hipotecas, escrituras, impuestos, vicios ocultos y reclamaciones al promotor.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+    <a href="/aprender/aprender.html" class="topic-card">
+      <div class="topic-icon" aria-hidden="true">📚</div>
+      <h3>Aprende Derecho</h3>
+      <p>Conceptos jurídicos básicos explicados para ciudadanos sin formación legal.</p>
+      <div class="topic-arrow">Ver guías →</div>
+    </a>
+
+  </div>
+</section>
+
+<hr class="sep" />
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   ARTÍCULOS DESTACADOS                 -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section class="section" aria-labelledby="titulo-destacados">
+  <h2 class="section-title" id="titulo-destacados">Consultas más frecuentes</h2>
+  <p class="section-sub">Las dudas que más nos preguntan los ciudadanos</p>
+
+  <div class="featured-grid">
+
+    <a href="/Trabajo/despido-improcedente.html" class="feat-card">
+      <span class="feat-tag">Trabajo</span>
+      <h3>Me han despedido: ¿qué puedo hacer?</h3>
+      <p>Tienes 20 días para reclamar. Te explicamos los plazos, la indemnización que te corresponde y si tu despido es procedente o improcedente.</p>
+      <span class="feat-link">Leer guía completa →</span>
+    </a>
+
+    <a href="/Alquiler/me-quieren-echar-del-piso.html" class="feat-card">
+      <span class="feat-tag">Alquiler</span>
+      <h3>¿Me pueden echar del piso de alquiler?</h3>
+      <p>Cuándo es legal un desahucio, cuánto tiempo tienes para abandonar y qué recursos puedes presentar antes de que llegue el día del lanzamiento.</p>
+      <span class="feat-link">Leer guía completa →</span>
+    </a>
+
+    <a href="/Herencias/como-renunciar-herencia.html" class="feat-card">
+      <span class="feat-tag">Herencias</span>
+      <h3>¿Puedo renunciar a una herencia con deudas?</h3>
+      <p>Sí, y en muchos casos es lo más inteligente. Te contamos el proceso, los plazos y si existe alguna alternativa para no heredar las deudas pero sí los bienes.</p>
+      <span class="feat-link">Leer guía completa →</span>
+    </a>
+
+    <a href="/Consumo/como-reclamar-a-una-empresa.html" class="feat-card">
+      <span class="feat-tag">Consumo</span>
+      <h3>Cómo reclamar a una empresa paso a paso</h3>
+      <p>Hoja de reclamaciones, OMIC, organismos de consumo y demandas civiles. Guía práctica para consumidores que no saben por dónde empezar.</p>
+      <span class="feat-link">Leer guía completa →</span>
+    </a>
+
+    <a href="/Impuestos/declaracion-renta.html" class="feat-card">
+      <span class="feat-tag">Impuestos</span>
+      <h3>Declaración de la Renta: errores frecuentes</h3>
+      <p>Los fallos más habituales al hacer el IRPF, cómo corregirlos y qué deducciones se olvidan el 80% de los contribuyentes.</p>
+      <span class="feat-link">Leer guía completa →</span>
+    </a>
+
+    <a href="/Accidentes-Multas/multa-trafico-recurso.html" class="feat-card">
+      <span class="feat-tag">Multas</span>
+      <h3>¿Cómo recurrir una multa de tráfico?</h3>
+      <p>Plazos, alegaciones y recursos disponibles. La mayoría de multas son recurribles y en muchos casos se reducen o anulan con los argumentos correctos.</p>
+      <span class="feat-link">Leer guía completa →</span>
+    </a>
+
+  </div>
+</section>
+</main>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   CTA                                  -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section class="cta-section" aria-labelledby="cta-titulo">
+  <h2 id="cta-titulo">¿No encuentras tu duda?</h2>
+  <p>Usa nuestro buscador para encontrar respuesta entre cientos de artículos jurídicos gratuitos.</p>
+  <button class="btn-primary" id="cta-btn-search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    Buscar ahora
+  </button>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   FOOTER                               -->
+<!-- ╚══════════════════════════════════════╝ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">Open<span>Lex</span>Iura</span>
+      <p>Respuestas jurídicas fiables, en lenguaje claro, sin registro ni coste. Tu duda tiene una respuesta concreta aquí.</p>
+    </div>
+    <nav class="footer-links" aria-label="Temas jurídicos">
+      <h4>Temas</h4>
+      <ul>
+        <li><a href="/Alquiler/alquiler.html">Alquiler</a></li>
+        <li><a href="/Trabajo/trabajo.html">Trabajo</a></li>
+        <li><a href="/Herencias/herencias.html">Herencias</a></li>
+        <li><a href="/Consumo/consumo.html">Consumo</a></li>
+        <li><a href="/DerechoPenal/derecho-penal.html">Derecho Penal</a></li>
+        <li><a href="/Impuestos/impuestos.html">Impuestos</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-links" aria-label="Más temas jurídicos">
+      <h4>Más temas</h4>
+      <ul>
+        <li><a href="/Divorcio-Familia/divorcio-familia.html">Familia</a></li>
+        <li><a href="/Extranjeria/extranjeria.html">Extranjería</a></li>
+        <li><a href="/Deudas/deudas.html">Deudas</a></li>
+        <li><a href="/Accidentes-Multas/accidentes-multas.html">Accidentes</a></li>
+        <li><a href="/Vivienda/vivienda.html">Vivienda</a></li>
+        <li><a href="/aprender/aprender.html">Aprende Derecho</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-links" aria-label="Información legal">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/Legal/aviso-legal.html">Aviso legal</a></li>
+        <li><a href="/Legal/politica-privacidad.html">Privacidad</a></li>
+        <li><a href="/Legal/politica-cookies.html">Cookies</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 OpenLexIura · Información jurídica general, no asesoramiento legal personalizado.</p>
+  </div>
+</footer>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   COOKIE BANNER                        -->
+<!-- ╚══════════════════════════════════════╝ -->
+<div id="cookie-banner" role="alertdialog" aria-labelledby="cookie-msg" aria-modal="false">
+  <p id="cookie-msg">
+    Usamos cookies propias y de terceros para analizar el tráfico y mejorar tu experiencia.
+    Puedes aceptarlas o rechazarlas. <a href="/Legal/politica-cookies.html">Más información</a>.
+  </p>
+  <div class="cookie-btns">
+    <button class="btn-accept" id="btn-accept-cookies">Aceptar</button>
+    <button class="btn-reject" id="btn-reject-cookies">Rechazar</button>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!--   SCRIPTS                              -->
+<!-- ╚══════════════════════════════════════╝ -->
+<script>
+/* ── COOKIE BANNER ── */
+(function(){
+  const banner = document.getElementById('cookie-banner');
+  const COOKIE_KEY = 'oli_cookie_consent';
+  const consent = localStorage.getItem(COOKIE_KEY);
+  if (!consent) { setTimeout(()=>banner.classList.add('show'), 800); }
+  document.getElementById('btn-accept-cookies').addEventListener('click',()=>{
+    localStorage.setItem(COOKIE_KEY,'accepted');
+    banner.classList.remove('show');
+    window.dataLayer=window.dataLayer||[];window.dataLayer.push({'event':'cookie_consent_analytics'});
+  });
+  document.getElementById('btn-reject-cookies').addEventListener('click',()=>{
+    localStorage.setItem(COOKIE_KEY,'rejected');
+    banner.classList.remove('show');
+  });
+})();
+
+/* ── SEARCH ── */
+(function(){
+  let searchData = null;
+  const overlay   = document.getElementById('search-overlay');
+  const input     = document.getElementById('search-input');
+  const results   = document.getElementById('search-results');
+  const openBtns  = [
+    document.getElementById('btn-open-search'),
+    document.getElementById('hero-btn-search'),
+    document.getElementById('cta-btn-search')
+  ];
+
+  function openSearch(){
+    overlay.classList.add('open');
+    input.focus();
+    if(!searchData) loadData();
+  }
+  function closeSearch(){ overlay.classList.remove('open'); input.value=''; results.innerHTML=''; }
+
+  openBtns.forEach(b=>b&&b.addEventListener('click',openSearch));
+  document.getElementById('btn-close-search').addEventListener('click',closeSearch);
+  overlay.addEventListener('click',e=>{ if(e.target===overlay) closeSearch(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSearch(); });
+
+  function loadData(){
+    fetch('/search.json')
+      .then(r=>r.json())
+      .then(d=>{ searchData=d; if(input.value.trim()) doSearch(input.value); })
+      .catch(()=>{ searchData=[]; });
+  }
+
+  input.addEventListener('input',()=>doSearch(input.value));
+
+  function doSearch(q){
+    q = q.trim().toLowerCase();
+    if(!q){ results.innerHTML=''; return; }
+    if(!searchData){ results.innerHTML='<p class="sr-empty">Cargando…</p>'; return; }
+    const hits = searchData.filter(item=>
+      (item.title||'').toLowerCase().includes(q) ||
+      (item.description||'').toLowerCase().includes(q) ||
+      (item.keywords||'').toLowerCase().includes(q)
+    ).slice(0,10);
+    if(!hits.length){ results.innerHTML='<p class="sr-empty">Sin resultados para «'+escHtml(q)+'»</p>'; return; }
+    results.innerHTML = hits.map(h=>`
+      <a href="${escHtml(h.url)}" class="sr-item">
+        <div class="sr-item-title">${escHtml(h.title)}</div>
+        <div class="sr-item-path">${escHtml(h.url)}</div>
+      </a>`).join('');
+  }
+
+  function escHtml(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+})();
+</script>
+
+<script>
+window.dataLayer=window.dataLayer||[];window.dataLayer.push({'event':'cookie_consent_analytics'});
+</script>
+
+</body>
+</html>
