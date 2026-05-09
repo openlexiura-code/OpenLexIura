@@ -68,8 +68,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       pointer-events: none;
       opacity: 0.52;
     }
-    .hero, .trust-strip, .section, .cta-section, footer,
-    #search-overlay, #search-wrap, .hero-actions {
+    .trust-strip, .section, .cta-section, footer,
+    .hero-actions {
       position: relative;
       z-index: 1;
     }
@@ -127,10 +127,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ── SEARCH OVERLAY ── */
     #search-overlay {
       display: none;
-      position: fixed; inset: 0; z-index: 8500;
-      background: rgba(26,23,20,0.45);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
+      position: fixed; inset: 0; z-index: 8000;
+      background: rgba(26,23,20,0.35);
       opacity: 0;
       transition: opacity 250ms cubic-bezier(0.16,1,0.3,1);
       cursor: pointer;
@@ -144,7 +142,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .search-wrap {
       position: relative; max-width: 520px;
       margin: 0 auto 2.5rem;
-      z-index: 9000;
     }
     .search-wrap svg {
       position: absolute; left: .9rem; top: 50%;
@@ -194,7 +191,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ── HERO ───────────────────────────────── */
     .hero {
       position: relative;
-      overflow: hidden;
+      overflow: visible;
+      z-index: 10;
       color:#fff; text-align:center;
       padding: clamp(3rem,7vw,6rem) 1.5rem clamp(2.5rem,5vw,5rem);
     }
@@ -204,6 +202,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       position: absolute;
       inset: 0;
       z-index: 0;
+      overflow: hidden;
+      border-radius: inherit;
     }
     .hero-slide {
       position: absolute;
@@ -645,7 +645,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/aprender/aprender.html">Aprende Derecho</a>
   </nav>
 
-  
+  <div class="header-right">
+    <button class="btn-buscar" id="btn-open-search" aria-label="Buscar en OpenLexIura">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Buscar
+    </button>
+  </div>
 </header>
 
 <!-- ╔══════════════════════════════════════╗ -->
@@ -965,6 +970,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     box.classList.remove('active');
     box.innerHTML = '';
     closeOverlay();
+  }
+
+  // Botón del header: scroll al hero y foco en el input
+  const btnOpen = document.getElementById('btn-open-search');
+  if (btnOpen) {
+    btnOpen.addEventListener('click', () => {
+      inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => inp.focus(), 400);
+    });
   }
 
   overlay.addEventListener('click', closeSearch);
