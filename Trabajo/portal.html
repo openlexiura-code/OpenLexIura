@@ -32,7 +32,7 @@
   <meta property="og:site_name" content="OpenLexIura">
 
   <!-- ══ TWITTER CARD ══ -->
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="https://openlexiura.es/Icono.png">
   <meta name="twitter:url" content="https://openlexiura.es/Trabajo/portal.html">
   <meta name="twitter:title" content="Derecho Laboral · OpenLexIura">
   <meta name="twitter:description" content="Despido improcedente, finiquito, horas extras, baja y más. Guía jurídica gratuita en español claro.">
@@ -119,9 +119,7 @@ body{
 }
 a{text-decoration:none;color:inherit}
 
-/* ── CURSOR ── */
-.cursor-ring{position:fixed;left:0;top:0;width:18px;height:18px;border:1px solid rgba(220,38,38,.35);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);backdrop-filter:blur(1px);box-shadow:0 0 12px rgba(239,68,68,.12),inset 0 0 6px rgba(255,255,255,.22);transition:width .08s linear,height .08s linear,border-color .08s linear,opacity .08s linear,transform .08s linear}
-.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#dc2626;border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(220,38,68,.75)}
+
 
 /* ── PARTICLES CANVAS ── */
 #particleCanvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.45}
@@ -718,21 +716,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   draw();
 })();
 
-/* ══ CURSOR PERSONALIZADO ══ */
-const cursorRing=document.createElement('div');cursorRing.className='cursor-ring';
-const cursorDot=document.createElement('div');cursorDot.className='cursor-dot';
-document.body.appendChild(cursorRing);document.body.appendChild(cursorDot);
-document.body.style.cursor='none';document.documentElement.style.cursor='none';
-let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
-window.addEventListener('mouseleave',()=>{cursorRing.style.opacity='0';cursorDot.style.opacity='0'});
-window.addEventListener('mouseenter',()=>{cursorRing.style.opacity='1';cursorDot.style.opacity='1'});
-(function follow(){rx+=(mx-rx)*0.55;ry+=(my-ry)*0.55;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(follow)})();
-function bindCursor(el){
-  el.addEventListener('mouseenter',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1.28)';cursorRing.style.borderRadius=el.tagName==='INPUT'?'10px':'999px';cursorRing.style.background='rgba(239,68,68,.09)'});
-  el.addEventListener('mouseleave',()=>{cursorRing.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderRadius='50%';cursorRing.style.background='transparent'});
-}
-
 /* nav scroll eliminado – header usa sticky */
 
 /* ══ SLIDESHOW DEL HERO ══ */
@@ -824,7 +807,6 @@ function renderAll(list){
       <span class="art-arrow" aria-hidden="true">Leer →</span>
     `;
     document.getElementById('grid-'+a.block).appendChild(card);
-    bindCursor(card);
   });
 }
 
@@ -854,7 +836,6 @@ window.addEventListener('load',()=>{
 });
 
 renderAll(ARTICLES);
-document.querySelectorAll('a,button,input').forEach(bindCursor);
 
 /* imgCards eliminados */
 </script>
