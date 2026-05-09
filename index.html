@@ -234,7 +234,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .hero-dots {
       position: absolute;
-      bottom: 1.2rem;
+      top: 1.2rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -826,7 +826,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const dots   = document.querySelectorAll('.hero-dot');
     if (!slides.length) return;
     slides.forEach(s => {
-      const url = s.style.backgroundImage.replace(/url\(['"']?(.*?)['"']?\)/, '$1');
+      const url = s.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
       const img = new Image(); img.src = url;
     });
     function goTo(n) {
