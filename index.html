@@ -117,23 +117,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .btn-buscar svg { width:15px; height:15px; stroke:#fff; fill:none; stroke-width:2.2; }
 
     /* ── SEARCH OVERLAY ── */
-    /* Solo sirve para capturar el clic fuera y cerrar el buscador.
-       Sin blur ni opacidad agresiva para no interferir con el hero. */
+    /* Capa invisible para cerrar el buscador al hacer clic fuera.
+       pointer-events: none por defecto; se activa solo cuando hay resultados
+       SIN bloquear los clics sobre los propios resultados. */
     #search-overlay {
       display: none;
-      position: fixed; inset: 0; z-index: 9400;
+      position: fixed; inset: 0; z-index: 9200;
       background: transparent;
-      cursor: pointer;
+      cursor: default;
+      pointer-events: none;
     }
     #search-overlay.active {
       display: block;
+      pointer-events: auto;
     }
 
     /* ── BARRA BUSCADORA ── */
     .search-wrap {
       position: relative; max-width: 520px;
       margin: 0 auto 2.5rem;
-      /* z-index propio para que los resultados salgan por encima del resto del hero */
+      /* z-index superior al overlay para que los resultados reciban los clics */
       z-index: 9500;
     }
     .search-wrap svg {
@@ -158,8 +161,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background: rgba(255,255,255,.18);
     }
     .search-results {
-      /* absolute respecto al search-wrap: cae justo debajo del input
-         sin depender del JS de posicionamiento ni crear solapamiento */
       position: absolute;
       top: calc(100% + 6px);
       left: 0; right: 0;
@@ -167,7 +168,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border: 1px solid rgba(26,23,20,.08);
       border-radius: 14px;
       box-shadow: 0 12px 32px rgba(26,23,20,.13), 0 4px 8px rgba(26,23,20,.06);
-      z-index: 10; overflow: hidden;
+      z-index: 9600;
+      overflow: hidden;
       display: none; max-height: 360px; overflow-y: auto;
     }
     .search-results.active { display: block; }
@@ -188,9 +190,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ── HERO ── */
     .hero {
       position: relative;
-      /* overflow visible para que el dropdown del buscador salga del hero sin recortarse */
       overflow: visible;
-      /* sin z-index explícito: evitamos crear un stacking context que atrape el search-wrap */
       color:#fff; text-align:center;
       padding: clamp(3rem,7vw,6rem) 1.5rem clamp(2.5rem,5vw,5rem);
       min-height: 30cm;
@@ -773,29 +773,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 /* ── SEARCH + OVERLAY ── */
 (function(){
   const BASE = 'https://openlexiura.es/';
-  const inp = document.getElementById('search-input');
-  const box = document.getElementById('search-results');
-  const overlay = document.getElementById('search-overlay');
-
-  // El overlay es transparente: solo captura clics fuera para cerrar
-  function openOverlay()  { overlay.style.display = 'block'; }
-  function closeOverlay() { overlay.style.display = 'none'; }
+  const inp  = document.getElementById('search-input');
+  const box  = document.getElementById('search-results');
+  const wrap = document.getElementById('search-wrap');
 
   function closeSearch() {
     box.classList.remove('active');
     box.innerHTML = '';
-    closeOverlay();
   }
 
-  ['btn-open-search', 'hero-btn-search', 'cta-btn-search'].forEach(id => {
-    const btn = document.getElementById(id);
-    if (btn) btn.addEventListener('click', () => {
-      inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => inp.focus(), 400);
-    });
+  // Cerrar al hacer clic fuera del buscador
+  document.addEventListener('click', function(e) {
+    if (!wrap.contains(e.target)) closeSearch();
   });
 
-  overlay.addEventListener('click', closeSearch);
   inp.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
 
   fetch('/search.json')
@@ -812,7 +803,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
       inp.addEventListener('input', function () {
         const q = this.value.trim();
-        if (!q) { box.classList.remove('active'); box.innerHTML = ''; closeOverlay(); return; }
+        if (!q) { box.classList.remove('active'); box.innerHTML = ''; return; }
         const res = fuse.search(q).slice(0, 6);
         box.innerHTML = res.length
           ? res.map(r =>
@@ -823,10 +814,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               '</a>').join('')
           : '<div class="search-no-results">Sin resultados. Prueba con otras palabras.</div>';
         box.classList.add('active');
-        openOverlay();
       });
       inp.addEventListener('focus', function () {
-        if (this.value.trim() && box.classList.contains('active')) openOverlay();
+        if (this.value.trim() && box.classList.contains('active')) box.classList.add('active');
       });
     })
     .catch(() => {});
