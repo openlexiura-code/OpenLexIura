@@ -798,11 +798,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSearch(); });
 
   function loadData(){
-    fetch('/search.json')
-      .then(r=>r.json())
-      .then(d=>{ searchData=d; if(input.value.trim()) doSearch(input.value); })
-      .catch(()=>{ searchData=[]; });
-  }
+  fetch('/search.json')
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(rawData => {
+      // Normaliza campos: compatible con titulo/title, resumen/description
+      const searchData = rawData.map(item => ({
+        titulo:    item.titulo    || item.title       || '',
+        resumen:   item.resumen   || item.description || '',
+        categoria: item.categoria || item.category    || item.section || '',
+        tags:      item.tags      || item.keywords    || '',
+        url:       item.url       || item.path        || '#'
+      }));
+
+      const fuse = new Fuse(searchData, {
+        keys: [
+          { name: 'titulo',    weight: 0.55 },
+          { name: 'resumen',   weight: 0.30 },
+          { name: 'tags',      weight: 0.10 },
+          { name: 'categoria', weight: 0.05 }
+        ],
+        threshold: 0.45, minMatchCharLength: 2, includeScore: true
+      });
+
+      function runSearch(q) {
+        q = q.trim();
+        if (!q) { box.classList.remove('active'); box.innerHTML = ''; closeOverlay(); return; }
+        const res = fuse.search(q).slice(0, 7);
+        box.innerHTML = res.length
+          ? res.map(r =>
+              '<a class="search-result-item" href="' + (r.item.url.startsWith('http') ? '' : BASE) + r.item.url + '">' +
+              (r.item.categoria ? '<span class="res-cat">' + r.item.categoria + '</span>' : '') +
+              '<span class="res-titulo">' + r.item.titulo + '</span>' +
+              (r.item.resumen ? '<span class="res-resumen">' + r.item.resumen + '</span>' : '') +
+              '</a>').join('')
+          : '<div class="search-no-results">Sin resultados para <strong>' + q + '</strong>.</div>';
+        box.classList.add('active');
+        openOverlay();
+      }
+
+      inp.addEventListener('input', function () { runSearch(this.value); });
+      inp.addEventListener('focus', function () {
+        if (this.value.trim() && box.classList.contains('active')) openOverlay();
+      });
+    })
+    .catch(err => {
+      // Fallback sin JSON: busca entre los enlaces del DOM
+      console.warn('search.json no disponible:', err);
+      const staticLinks = Array.from(document.querySelectorAll('a[href]')).map(a => ({
+        titulo: a.textContent.trim(), url: a.href
+      })).filter(i => i.titulo.length > 4);
+      inp.addEventListener('input', function () {
+        const q = this.value.trim().toLowerCase();
+        if (!q) { box.classList.remove('active'); box.innerHTML = ''; closeOverlay(); return; }
+        const hits = staticLinks.filter(i => i.titulo.toLowerCase().includes(q)).slice(0, 6);
+        box.innerHTML = hits.length
+          ? hits.map(h => '<a class="search-result-item" href="' + h.url + '"><span class="res-titulo">' + h.titulo + '</span></a>').join('')
+          : '<div class="search-no-results">Sin resultados para <strong>' + q + '</strong>.</div>';
+        box.classList.add('active');
+        openOverlay();
+      });
+    });
 
   input.addEventListener('input',()=>doSearch(input.value));
 
