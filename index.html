@@ -117,9 +117,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .btn-buscar svg { width:15px; height:15px; stroke:#fff; fill:none; stroke-width:2.2; }
 
     /* ── SEARCH OVERLAY ── */
-    /* Capa invisible para cerrar el buscador al hacer clic fuera.
-       pointer-events: none por defecto; se activa solo cuando hay resultados
-       SIN bloquear los clics sobre los propios resultados. */
     #search-overlay {
       display: none;
       position: fixed; inset: 0; z-index: 9200;
@@ -136,7 +133,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .search-wrap {
       position: relative; max-width: 520px;
       margin: 0 auto 2.5rem;
-      /* z-index superior al overlay para que los resultados reciban los clics */
       z-index: 9500;
     }
     .search-wrap svg {
@@ -193,7 +189,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       overflow: visible;
       color:#fff; text-align:center;
       padding: clamp(3rem,7vw,6rem) 1.5rem clamp(2.5rem,5vw,5rem);
-      min-height: 30cm;
     }
 
     .hero-slideshow {
@@ -782,7 +777,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     box.innerHTML = '';
   }
 
-  // Cerrar al hacer clic fuera del buscador
   document.addEventListener('click', function(e) {
     if (!wrap.contains(e.target)) closeSearch();
   });
