@@ -10,9 +10,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Áreas legales — Alquiler, Vivienda, Consumo e Impuestos | OpenLexIura</title>
-<meta name="description" content="Encuentra tu problema legal por área: alquiler, vivienda, consumo o impuestos. Artículos claros y consulta orientativa gratuita por email.">
-<link rel="canonical" href="https://www.openlexiura.es/portal.html">
+<title>Consultas legales en España — Alquiler, Trabajo, Impuestos y más | OpenLexIura</title>
+<meta name="description" content="Información jurídica gratuita en España organizada por área: alquiler, vivienda, derecho laboral, impuestos, herencias, divorcio y más. Artículos claros y consulta orientativa por email.">
+<link rel="canonical" href="https://openlexiura.es/portal.html">
 <link rel="icon" type="image/png" href="Icono.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,6 +117,7 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 @keyframes heroImgFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @keyframes ringRotate{to{transform:rotate(360deg)}}
 
+/* H1 SEO visible */
 .portal-hero h1{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(2.6rem,5.5vw,4.2rem);
@@ -169,7 +170,7 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 .search-count{position:absolute;right:1.3rem;top:50%;transform:translateY(-50%);font-size:.78rem;color:var(--muted);pointer-events:none;transition:opacity .2s}
 
 /* ── GRID ── */
-.areas-wrap{max-width:1140px;margin:0 auto;padding:0 1.5rem 6rem;position:relative;z-index:1}
+.areas-wrap{max-width:1140px;margin:0 auto;padding:0 1.5rem 4rem;position:relative;z-index:1}
 .section-label{
   font-size:.72rem;font-weight:700;letter-spacing:.12em;
   text-transform:uppercase;color:var(--muted);margin-bottom:1.6rem;
@@ -190,6 +191,7 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
   box-shadow:0 2px 12px rgba(0,0,0,.04),0 1px 0 rgba(255,255,255,.7) inset;
   cursor:pointer;
   animation:cardIn .5s cubic-bezier(.22,1,.36,1) both;
+  text-decoration:none;color:inherit;
 }
 .area-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
@@ -220,7 +222,7 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
   flex-shrink:0;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;
 }
 .area-card:hover .area-icon{transform:scale(1.1) rotate(-5deg);box-shadow:0 8px 24px var(--card-shadow,rgba(37,99,235,.2))}
-.area-card h2{font-size:1.06rem;font-weight:700;color:#111827;line-height:1.3}
+.area-card h3{font-size:1.06rem;font-weight:700;color:#111827;line-height:1.3}
 .area-card p{font-size:.84rem;color:var(--muted);line-height:1.6;flex:1}
 .area-arrow{
   font-size:.82rem;color:var(--brand);font-weight:600;
@@ -230,6 +232,21 @@ nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(22px);border-
 .area-card:hover .area-arrow{opacity:1;transform:translateX(0)}
 
 .no-results{color:var(--muted);font-size:.95rem;padding:3rem 0;text-align:center;display:none}
+
+/* ── TEXTO EDITORIAL ── */
+.editorial-block{
+  max-width:1140px;margin:0 auto;padding:0 1.5rem 5rem;
+  position:relative;z-index:1;
+}
+.editorial-block h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,3vw,1.9rem);font-weight:500;
+  color:#1f2937;margin-bottom:1rem;
+}
+.editorial-block p{
+  font-size:.97rem;color:var(--muted);line-height:1.8;
+  max-width:780px;margin-bottom:.9rem;
+}
 
 /* ── PRÓXIMAMENTE ── */
 .coming-soon-block{text-align:center;padding-top:1rem}
@@ -268,18 +285,47 @@ footer a:hover{opacity:.7}
   .hero-logo-wrap img{width:72px;height:72px}
 }
 </style>
+<!-- Schema: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "OpenLexIura",
+  "url": "https://openlexiura.es",
+  "logo": "https://openlexiura.es/Icono.png",
+  "description": "Información jurídica gratuita en España sobre derecho laboral, civil, fiscal, consumo y más. Artículos claros y consulta orientativa gratuita por email.",
+  "sameAs": []
+}
+</script>
+<!-- Schema: WebSite con SearchAction -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "OpenLexIura",
+  "url": "https://openlexiura.es",
+  "description": "Información jurídica gratuita en España organizada por área legal.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://openlexiura.es/portal.html?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 <!-- Schema: BreadcrumbList -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.openlexiura.es/"},
-    {"@type":"ListItem","position":2,"name":"Áreas legales","item":"https://www.openlexiura.es/portal.html"}
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://openlexiura.es/"},
+    {"@type":"ListItem","position":2,"name":"Áreas legales","item":"https://openlexiura.es/portal.html"}
   ]
 }
 </script>
-<!-- Schema: ItemList de áreas activas -->
 <!-- Schema: ItemList de áreas activas -->
 <script type="application/ld+json">
 {
@@ -287,30 +333,33 @@ footer a:hover{opacity:.7}
   "@type": "ItemList",
   "name": "Áreas legales — OpenLexIura",
   "description": "Índice de áreas jurídicas con artículos publicados en OpenLexIura",
-  "url": "https://www.openlexiura.es/portal.html",
+  "url": "https://openlexiura.es/portal.html",
   "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Vivienda y Propiedad","url":"https://www.openlexiura.es/Vivienda/portal.html"},
-    {"@type":"ListItem","position":2,"name":"Alquiler y Arrendamientos","url":"https://www.openlexiura.es/Alquiler/portal.html"},
-    {"@type":"ListItem","position":3,"name":"Consumo y Compras","url":"https://www.openlexiura.es/Consumo/portal.html"},
-    {"@type":"ListItem","position":4,"name":"Impuestos y Fiscalidad","url":"https://www.openlexiura.es/Impuestos/portal.html"},
-    {"@type":"ListItem","position":5,"name":"Derechos del Trabajador","url":"https://www.openlexiura.es/Trabajo/portal.html"},
-    {"@type":"ListItem","position":6,"name":"Herencias y Sucesiones","url":"https://www.openlexiura.es/Herencias/portal.html"},
-    {"@type":"ListItem","position":7,"name":"Divorcio y Familia","url":"https://www.openlexiura.es/Divorcio-Familia/portal.html"},
-    {"@type":"ListItem","position":8,"name":"Accidentes y Tráfico","url":"https://www.openlexiura.es/Accidentes-Multas/portal.html"},
-    {"@type":"ListItem","position":9,"name":"Deudas y Recobro","url":"https://www.openlexiura.es/Deudas/portal.html"},
-    {"@type":"ListItem","position":10,"name":"Extranjería e Inmigración","url":"https://www.openlexiura.es/Extranjeria/portal.html"}
+    {"@type":"ListItem","position":1,"name":"Vivienda y Propiedad","url":"https://openlexiura.es/Vivienda/portal.html"},
+    {"@type":"ListItem","position":2,"name":"Alquiler y Arrendamientos","url":"https://openlexiura.es/Alquiler/portal.html"},
+    {"@type":"ListItem","position":3,"name":"Consumo y Compras","url":"https://openlexiura.es/Consumo/portal.html"},
+    {"@type":"ListItem","position":4,"name":"Impuestos y Fiscalidad","url":"https://openlexiura.es/Impuestos/portal.html"},
+    {"@type":"ListItem","position":5,"name":"Derechos del Trabajador","url":"https://openlexiura.es/Trabajo/portal.html"},
+    {"@type":"ListItem","position":6,"name":"Herencias y Sucesiones","url":"https://openlexiura.es/Herencias/portal.html"},
+    {"@type":"ListItem","position":7,"name":"Divorcio y Familia","url":"https://openlexiura.es/Divorcio-Familia/portal.html"},
+    {"@type":"ListItem","position":8,"name":"Accidentes y Tráfico","url":"https://openlexiura.es/Accidentes-Multas/portal.html"},
+    {"@type":"ListItem","position":9,"name":"Deudas y Recobro","url":"https://openlexiura.es/Deudas/portal.html"},
+    {"@type":"ListItem","position":10,"name":"Extranjería e Inmigración","url":"https://openlexiura.es/Extranjeria/portal.html"}
   ]
 }
 </script>
+</head>
+<body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
 <canvas id="particleCanvas"></canvas>
 
 <nav id="nav">
   <a class="nav-logo" href="index.html">
-    <img class="nav-logo-img" id="navLogo" src="Icono.png" alt="OpenLexIura">
+    <img class="nav-logo-img" id="navLogo" src="Icono.png" alt="OpenLexIura — Información jurídica gratuita" width="42" height="42" loading="eager">
     <span>OpenLexIura</span>
   </a>
   <div class="nav-links">
@@ -320,36 +369,106 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </nav>
 
-<section class="portal-hero">
-  <div class="hero-grid"></div>
+<main>
+  <section class="portal-hero">
+    <div class="hero-grid" aria-hidden="true"></div>
 
-  <div class="hero-logo-wrap">
-    <div class="hero-logo-ring2"></div>
-    <div class="hero-logo-ring"></div>
-    <img id="heroLogo" src="Icono.png" alt="OpenLexIura">
+    <div class="hero-logo-wrap">
+      <div class="hero-logo-ring2" aria-hidden="true"></div>
+      <div class="hero-logo-ring" aria-hidden="true"></div>
+      <img id="heroLogo" src="Icono.png" alt="OpenLexIura" width="92" height="92" loading="eager">
+    </div>
+
+    <h1>Consultas legales en España — <em>Alquiler, Trabajo, Impuestos y más</em></h1>
+    <p>Selecciona el área que mejor describe tu situación para acceder a artículos jurídicos claros y una consulta orientativa gratuita por email.</p>
+
+    <form class="search-wrap" role="search" aria-label="Buscar áreas legales" onsubmit="return false;">
+      <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="portalSearch" placeholder="Busca un área: alquiler, herencia, despido, impuestos…" oninput="filterAreas(this.value)" autocomplete="off" aria-label="Buscar área legal">
+      <span class="search-count" id="searchCount" aria-live="polite"></span>
+    </form>
+  </section>
+
+  <div class="areas-wrap">
+    <h2 class="section-label">Áreas con artículos publicados</h2>
+    <div class="areas-grid" id="areasGrid">
+      <!-- Tarjetas estáticas para indexación por Google -->
+      <a class="area-card" href="Vivienda/portal.html" style="--card-color:#2563eb;--card-bg:#2563eb18;--card-border:#2563eb40;--card-shadow:#2563eb30;animation-delay:0s">
+        <div class="area-icon" aria-hidden="true">🏠</div>
+        <h3>Vivienda y Propiedad</h3>
+        <p>Compraventa, hipotecas, comunidades de propietarios y derechos del comprador.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+      <a class="area-card" href="Alquiler/portal.html" style="--card-color:#10b981;--card-bg:#10b98118;--card-border:#10b98140;--card-shadow:#10b98130;animation-delay:.045s">
+        <div class="area-icon" aria-hidden="true">🔑</div>
+        <h3>Alquiler y Arrendamientos</h3>
+        <p>Contratos de alquiler, fianzas, desahucios y derechos del inquilino y propietario.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+      <a class="area-card" href="Consumo/portal.html" style="--card-color:#f59e0b;--card-bg:#f59e0b18;--card-border:#f59e0b40;--card-shadow:#f59e0b30;animation-delay:.09s">
+        <div class="area-icon" aria-hidden="true">🛒</div>
+        <h3>Consumo y Compras</h3>
+        <p>Devoluciones, garantías, fraudes, comercio electrónico y defensa del consumidor.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+      <a class="area-card" href="Impuestos/portal.html" style="--card-color:#ef4444;--card-bg:#ef444418;--card-border:#ef444440;--card-shadow:#ef444430;animation-delay:.135s">
+        <div class="area-icon" aria-hidden="true">📊</div>
+        <h3>Impuestos y Fiscalidad</h3>
+        <p>IRPF, IVA, declaración de la renta, sanciones de Hacienda y recursos fiscales.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+      <a class="area-card" href="Trabajo/portal.html" style="--card-color:#8b5cf6;--card-bg:#8b5cf618;--card-border:#8b5cf640;--card-shadow:#8b5cf630;animation-delay:.18s">
+        <div class="area-icon" aria-hidden="true">💼</div>
+        <h3>Derechos del Trabajador</h3>
+        <p>Despidos, nóminas, falsos autónomos, excedencia voluntaria, ERTE y derechos laborales.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+      <a class="area-card" href="Herencias/portal.html" style="--card-color:#7c3aed;--card-bg:#7c3aed18;--card-border:#7c3aed40;--card-shadow:#7c3aed30;animation-delay:.225s">
+        <div class="area-icon" aria-hidden="true">📜</div>
+        <h3>Herencias y Sucesiones</h3>
+        <p>Heredar sin testamento, impuesto de sucesiones, legítimas y plazos de aceptación.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+      <a class="area-card" href="Divorcio-Familia/portal.html" style="--card-color:#db2777;--card-bg:#db277718;--card-border:#db277740;--card-shadow:#db277730;animation-delay:.27s">
+        <div class="area-icon" aria-hidden="true">👨‍👩‍👧</div>
+        <h3>Divorcio y Familia</h3>
+        <p>Divorcio express, custodia compartida, pensión de alimentos y modificación de medidas.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+      <a class="area-card" href="Accidentes-Multas/portal.html" style="--card-color:#d97706;--card-bg:#d9770618;--card-border:#d9770640;--card-shadow:#d9770630;animation-delay:.315s">
+        <div class="area-icon" aria-hidden="true">🚗</div>
+        <h3>Accidentes y Tráfico</h3>
+        <p>Parte amistoso, baremo de lesiones 2026, seguro que no paga y atropello de peatón.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+      <a class="area-card" href="Deudas/portal.html" style="--card-color:#0891b2;--card-bg:#0891b218;--card-border:#0891b240;--card-shadow:#0891b230;animation-delay:.36s">
+        <div class="area-icon" aria-hidden="true">💳</div>
+        <h3>Deudas y Recobro</h3>
+        <p>Cómo salir de ASNEF, prescripción de deudas, empresa de recobro y Segunda Oportunidad.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+      <a class="area-card" href="Extranjeria/portal.html" style="--card-color:#059669;--card-bg:#05966918;--card-border:#05966940;--card-shadow:#05966930;animation-delay:.405s">
+        <div class="area-icon" aria-hidden="true">🌍</div>
+        <h3>Extranjería e Inmigración</h3>
+        <p>NIE, arraigo social, reagrupación familiar y nacionalidad por residencia en España.</p>
+        <span class="area-arrow">Ver artículos →</span>
+      </a>
+    </div>
+    <p class="no-results" id="noResults" role="status">No se encontraron áreas para esa búsqueda. Prueba con otras palabras.</p>
   </div>
 
-  <h1>Tu problema legal, <em>organizado por área</em></h1>
-  <p>Selecciona el área que mejor describe tu situación para acceder a artículos claros y una consulta orientativa gratuita por email.</p>
-
-  <div class="search-wrap">
-    <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="portalSearch" placeholder="Busca un área: alquiler, herencia, despido, impuestos…" oninput="filterAreas(this.value)" autocomplete="off">
-    <span class="search-count" id="searchCount"></span>
-  </div>
-</section>
-
-<div class="areas-wrap">
-  <h2 class="section-label">Áreas con artículos publicados</h2>
-  <div class="areas-grid" id="areasGrid"></div>
-  <p class="no-results" id="noResults">No se encontraron áreas para esa búsqueda. Prueba con otras palabras.</p>
-
-  
-</div>
+  <!-- Texto editorial con keywords para indexación -->
+  <section class="editorial-block" aria-label="Información sobre OpenLexIura">
+    <h2>Información jurídica gratuita, clara y en el idioma de la calle</h2>
+    <p>OpenLexIura es un portal de consultas legales gratuitas en España. Nuestros artículos cubren las dudas jurídicas más frecuentes en derecho laboral, derecho civil, derecho fiscal y derecho de consumo, explicadas sin tecnicismos para que cualquier persona pueda entender sus derechos.</p>
+    <p>Si tienes un problema con tu casero, dudas sobre tu despido, necesitas saber cómo tributa una herencia o quieres reclamar a una empresa, encontrarás respuestas prácticas organizadas por área. Además, puedes enviarnos tu consulta jurídica por email de forma totalmente gratuita.</p>
+    <p>Toda la información está actualizada con la legislación española vigente en 2026 y redactada por especialistas en cada materia: Estatuto de los Trabajadores, Ley de Arrendamientos Urbanos, Ley General Tributaria y Código Civil, entre otras.</p>
+  </section>
+</main>
 
 <footer>
   <div class="footer-logo">
-    <img src="Icono.png" alt="OpenLexIura">
+    <img src="Icono.png" alt="OpenLexIura" width="26" height="26" loading="lazy">
     <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600">OpenLexIura</span>
   </div>
   2026 · <a href="index.html">OpenLexIura</a> · El derecho en el idioma de la calle
@@ -423,68 +542,38 @@ document.addEventListener('mousemove',e=>{
   });
 });
 
-/* ── DATOS ── */
+/* ── DATOS (para el filtro de búsqueda) ── */
 const AREAS=[
-  {id:'Vivienda/portal.html', icon:'🏠',color:'#2563eb',titulo:'Vivienda y Propiedad',
-    desc:'Compraventa, hipotecas, comunidades de propietarios y derechos del comprador.',
-    url:'Vivienda/portal.html'},
-  {id:'Alquiler/portal.html', icon:'🔑',color:'#10b981',titulo:'Alquiler y Arrendamientos',
-    desc:'Contratos de alquiler, fianzas, desahucios y derechos del inquilino y propietario.',
-    url:'Alquiler/portal.html'},
-  {id:'Consumo/portal.html', icon:'🛒',color:'#f59e0b',titulo:'Consumo y Compras',
-    desc:'Devoluciones, garantías, fraudes, comercio electrónico y defensa del consumidor.',
-    url:'Consumo/portal.html'},
-  {id:'Impuestos/portal.html', icon:'📊',color:'#ef4444',titulo:'Impuestos y Fiscalidad',
-    desc:'IRPF, IVA, declaración de la renta, sanciones de Hacienda y recursos fiscales.',
-    url:'Impuestos/portal.html'},
-  {id:'Trabajo/portal.html', icon:'💼',color:'#8b5cf6',titulo:'Derechos del Trabajador',
-    desc:'Despidos, nóminas, falsos autónomos, ERTE y delitos contra la Seguridad Social.',
-    url:'Trabajo/portal.html'},
-  {id:'Herencias/portal.html', icon:'📜',color:'#7c3aed',titulo:'Herencias y Sucesiones',
-    desc:'Heredar sin testamento, impuesto de sucesiones, legítimas y plazos de aceptación.',
-    url:'Herencias/portal.html'},
-  {id:'Divorcio-Familia/portal.html', icon:'👨‍👩‍👧',color:'#db2777',titulo:'Divorcio y Familia',
-    desc:'Divorcio express, custodia compartida, pensión de alimentos y modificación de medidas.',
-    url:'Divorcio-Familia/portal.html'},
-  {id:'Accidentes-Multas/portal.html', icon:'🚗',color:'#d97706',titulo:'Accidentes y Tráfico',
-    desc:'Parte amistoso, baremo de lesiones 2026, seguro que no paga y atropello de peatón.',
-    url:'Accidentes-Multas/portal.html'},
-  {id:'Deudas/portal.html', icon:'💳',color:'#0891b2',titulo:'Deudas y Recobro',
-    desc:'Cómo salir de ASNEF, prescripción de deudas, empresa de recobro y Segunda Oportunidad.',
-    url:'Deudas/portal.html'},
-  {id:'Extranjeria/portal.html', icon:'🌍',color:'#059669',titulo:'Extranjería e Inmigración',
-    desc:'NIE, arraigo social, reagrupación familiar y nacionalidad por residencia en España.',
-    url:'Extranjeria/portal.html'},
+  {titulo:'Vivienda y Propiedad',desc:'Compraventa, hipotecas, comunidades de propietarios y derechos del comprador.',url:'Vivienda/portal.html'},
+  {titulo:'Alquiler y Arrendamientos',desc:'Contratos de alquiler, fianzas, desahucios y derechos del inquilino y propietario.',url:'Alquiler/portal.html'},
+  {titulo:'Consumo y Compras',desc:'Devoluciones, garantías, fraudes, comercio electrónico y defensa del consumidor.',url:'Consumo/portal.html'},
+  {titulo:'Impuestos y Fiscalidad',desc:'IRPF, IVA, declaración de la renta, sanciones de Hacienda y recursos fiscales.',url:'Impuestos/portal.html'},
+  {titulo:'Derechos del Trabajador',desc:'Despidos, nóminas, falsos autónomos, excedencia voluntaria, ERTE y derechos laborales.',url:'Trabajo/portal.html'},
+  {titulo:'Herencias y Sucesiones',desc:'Heredar sin testamento, impuesto de sucesiones, legítimas y plazos de aceptación.',url:'Herencias/portal.html'},
+  {titulo:'Divorcio y Familia',desc:'Divorcio express, custodia compartida, pensión de alimentos y modificación de medidas.',url:'Divorcio-Familia/portal.html'},
+  {titulo:'Accidentes y Tráfico',desc:'Parte amistoso, baremo de lesiones 2026, seguro que no paga y atropello de peatón.',url:'Accidentes-Multas/portal.html'},
+  {titulo:'Deudas y Recobro',desc:'Cómo salir de ASNEF, prescripción de deudas, empresa de recobro y Segunda Oportunidad.',url:'Deudas/portal.html'},
+  {titulo:'Extranjería e Inmigración',desc:'NIE, arraigo social, reagrupación familiar y nacionalidad por residencia en España.',url:'Extranjeria/portal.html'},
 ];
-
-function hexBg(hex){return hex+'18'}
-function hexBorder(hex){return hex+'40'}
-function hexShadow(hex){return hex+'30'}
-
-function renderGrid(list){
-  const grid=document.getElementById('areasGrid');
-  const noRes=document.getElementById('noResults');
-  const cnt=document.getElementById('searchCount');
-  if(!list.length){grid.innerHTML='';noRes.style.display='block';cnt.textContent='';return}
-  noRes.style.display='none';
-  const q=document.getElementById('portalSearch').value.trim();
-  cnt.textContent=q?`${list.length} resultado${list.length!==1?'s':''}` :'';
-  grid.innerHTML=list.map((a,i)=>`
-    <div class="area-card" onclick="window.location.href='${a.url}'"
-      style="--card-color:${a.color};--card-bg:${hexBg(a.color)};--card-border:${hexBorder(a.color)};--card-shadow:${hexShadow(a.color)};animation-delay:${i*.045}s">
-      <div class="area-icon">${a.icon}</div>
-      <h2>${a.titulo}</h2>
-      <p>${a.desc}</p>
-      <span class="area-arrow">Ver artículos →</span>
-    </div>
-  `).join('');
-  document.querySelectorAll('.area-card').forEach(bindCursor);
-}
 
 function filterAreas(q){
   const query=q.toLowerCase().trim();
-  if(!query){renderGrid(AREAS);return}
-  renderGrid(AREAS.filter(a=>a.titulo.toLowerCase().includes(query)||a.desc.toLowerCase().includes(query)||a.id.includes(query)));
+  const cnt=document.getElementById('searchCount');
+  const noRes=document.getElementById('noResults');
+  const cards=document.querySelectorAll('#areasGrid .area-card');
+  if(!query){
+    cards.forEach(c=>c.classList.remove('hidden'));
+    noRes.style.display='none';cnt.textContent='';return;
+  }
+  let visible=0;
+  cards.forEach((card,i)=>{
+    const a=AREAS[i];
+    const match=a.titulo.toLowerCase().includes(query)||a.desc.toLowerCase().includes(query)||a.url.includes(query);
+    card.classList.toggle('hidden',!match);
+    if(match)visible++;
+  });
+  noRes.style.display=visible===0?'block':'none';
+  cnt.textContent=visible?`${visible} resultado${visible!==1?'s':'`}':``;
 }
 
 /* ── COUNTER ANIMATION ── */
@@ -499,10 +588,9 @@ function animateCount(el,target,suffix){
   requestAnimationFrame(step);
 }
 window.addEventListener('load',()=>{
-  setTimeout(()=>animateCount(document.getElementById('sAreas'),AREAS.length,''),500);
+  const sAreas=document.getElementById('sAreas');
+  if(sAreas)setTimeout(()=>animateCount(sAreas,AREAS.length,''),500);
 });
-
-renderGrid(AREAS);
 </script>
 </body>
 </html>
