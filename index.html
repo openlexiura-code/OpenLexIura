@@ -12,22 +12,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OpenLexIura – Tu guía legal en español claro</title>
   <meta name="description" content="Entiende tus derechos y resuelve dudas sobre alquileres, despidos, herencias o compras. Sin tecnicismos. Sin lenguaje del BOE." />
-  <link rel="canonical" href="https://www.openlexiura.es/" />
+  <link rel="canonical" href="https://www.openlexiura.com/" />
   <link rel="icon" href="favicon.png" type="image/png" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.openlexiura.es/" />
+  <meta property="og:url" content="https://www.openlexiura.com/" />
   <meta property="og:title" content="OpenLexIura – Tu guía legal en español claro" />
   <meta property="og:description" content="Alquiler, vivienda, consumo, herencias y más. Contenido jurídico redactado para ciudadanos, no para abogados." />
-  <meta property="og:image" content="https://www.openlexiura.es/Icono.png" />
+  <meta property="og:image" content="https://www.openlexiura.com/Icono.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://www.openlexiura.es/" />
+  <meta name="twitter:url" content="https://www.openlexiura.com/" />
   <meta name="twitter:title" content="OpenLexIura – Tu guía legal en español claro" />
   <meta name="twitter:description" content="Alquiler, vivienda, consumo, herencias y más. Contenido jurídico redactado para ciudadanos, no para abogados." />
-  <meta name="twitter:image" content="https://www.openlexiura.es/Icono.png" />
+  <meta name="twitter:image" content="https://www.openlexiura.com/Icono.png" />
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -35,13 +35,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "OpenLexIura",
-    "url": "https://www.openlexiura.es/",
+    "url": "https://www.openlexiura.com/",
     "description": "Temas con intención alta de consulta: problemas urgentes, dinero, vivienda y reclamaciones frecuentes.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://www.openlexiura.es/?q={search_term_string}"
+        "urlTemplate": "https://www.openlexiura.com/?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -687,7 +687,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="cta-section" aria-labelledby="cta-titulo">
   <h2 id="cta-titulo">¿No encuentras tu duda?</h2>
   <p>Usa nuestro buscador para encontrar respuesta entre cientos de artículos jurídicos gratuitos.</p>
-  <button class="btn-primary" id="cta-btn-search.json">
+  <button class="btn-primary" id="cta-btn-search">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     Buscar ahora
   </button>
@@ -774,7 +774,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 
 /* ── SEARCH ── */
-fetch('/search.json')
+(function(){
+  let searchData = null;
+  const overlay   = document.getElementById('search-overlay');
+  const input     = document.getElementById('search-input');
+  const results   = document.getElementById('search-results');
+  const openBtns  = [
+    document.getElementById('btn-open-search'),
+    document.getElementById('hero-btn-search'),
+    document.getElementById('cta-btn-search')
+  ];
+
+  function openSearch(){
+    overlay.classList.add('open');
+    input.focus();
+    if(!searchData) loadData();
+  }
+  function closeSearch(){ overlay.classList.remove('open'); input.value=''; results.innerHTML=''; }
+
+  openBtns.forEach(b=>b&&b.addEventListener('click',openSearch));
+  document.getElementById('btn-close-search').addEventListener('click',closeSearch);
+  overlay.addEventListener('click',e=>{ if(e.target===overlay) closeSearch(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSearch(); });
+
+  function loadData(){
+    fetch('/search.json')
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(rawData => {
       // Normaliza campos: compatible con titulo/title, resumen/description
@@ -834,6 +858,28 @@ fetch('/search.json')
         openOverlay();
       });
     });
+
+  input.addEventListener('input',()=>doSearch(input.value));
+
+  function doSearch(q){
+    q = q.trim().toLowerCase();
+    if(!q){ results.innerHTML=''; return; }
+    if(!searchData){ results.innerHTML='<p class="sr-empty">Cargando…</p>'; return; }
+    const hits = searchData.filter(item=>
+      (item.title||'').toLowerCase().includes(q) ||
+      (item.description||'').toLowerCase().includes(q) ||
+      (item.keywords||'').toLowerCase().includes(q)
+    ).slice(0,10);
+    if(!hits.length){ results.innerHTML='<p class="sr-empty">Sin resultados para «'+escHtml(q)+'»</p>'; return; }
+    results.innerHTML = hits.map(h=>`
+      <a href="${escHtml(h.url)}" class="sr-item">
+        <div class="sr-item-title">${escHtml(h.title)}</div>
+        <div class="sr-item-path">${escHtml(h.url)}</div>
+      </a>`).join('');
+  }
+
+  function escHtml(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+})();
 </script>
 
 <script>
