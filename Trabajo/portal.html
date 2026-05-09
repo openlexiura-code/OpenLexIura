@@ -137,9 +137,10 @@ header{
 .logo-wrap{display:flex;align-items:center;gap:.65rem;text-decoration:none}
 .logo-icon{
   width:36px;height:36px;border-radius:8px;
-  background:var(--azul);display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
 }
-.logo-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2}
+.logo-icon img{width:36px;height:36px;object-fit:cover;border-radius:8px;display:block}
 .logo-text{font-size:1.15rem;font-weight:700;color:var(--azul);letter-spacing:-.02em}
 .logo-text span{color:var(--dorado)}
 header nav{display:flex;gap:.25rem;flex-wrap:wrap}
@@ -514,9 +515,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header>
   <a href="../index.html" class="logo-wrap" aria-label="OpenLexIura inicio">
     <div class="logo-icon">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/>
-      </svg>
+      <img src="../Icono.png" alt="OpenLexIura" width="36" height="36" loading="lazy" decoding="async">
     </div>
     <span class="logo-text">Open<span>Lex</span>Iura</span>
   </a>
@@ -727,7 +726,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if(!slides.length)return;
   // preload
   slides.forEach(s=>{
-    const url=s.style.backgroundImage.replace(/url\(['"']?(.*?)['"']?\)/,'$1');
+    const url=s.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/,'$1');
     const img=new Image();img.src=url;
   });
   function goTo(n){
