@@ -117,24 +117,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .btn-buscar svg { width:15px; height:15px; stroke:#fff; fill:none; stroke-width:2.2; }
 
     /* ── SEARCH OVERLAY ── */
+    /* Solo sirve para capturar el clic fuera y cerrar el buscador.
+       Sin blur ni opacidad agresiva para no interferir con el hero. */
     #search-overlay {
       display: none;
-      position: fixed; inset: 0; z-index: 9000;
-      background: rgba(26,23,20,0.25);
-      opacity: 0;
-      transition: opacity 250ms cubic-bezier(0.16,1,0.3,1);
+      position: fixed; inset: 0; z-index: 9400;
+      background: transparent;
       cursor: pointer;
     }
     #search-overlay.active {
       display: block;
-      opacity: 1;
     }
 
     /* ── BARRA BUSCADORA ── */
     .search-wrap {
       position: relative; max-width: 520px;
       margin: 0 auto 2.5rem;
-      z-index: 2;
+      /* z-index propio para que los resultados salgan por encima del resto del hero */
+      z-index: 9500;
     }
     .search-wrap svg {
       position: absolute; left: .9rem; top: 50%;
@@ -158,14 +158,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background: rgba(255,255,255,.18);
     }
     .search-results {
-      position: fixed;
+      /* absolute respecto al search-wrap: cae justo debajo del input
+         sin depender del JS de posicionamiento ni crear solapamiento */
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0; right: 0;
       background: #fff;
       border: 1px solid rgba(26,23,20,.08);
       border-radius: 14px;
-      box-shadow: 0 12px 32px rgba(26,23,20,.09), 0 4px 8px rgba(26,23,20,.04);
-      z-index: 99999; overflow: hidden;
+      box-shadow: 0 12px 32px rgba(26,23,20,.13), 0 4px 8px rgba(26,23,20,.06);
+      z-index: 10; overflow: hidden;
       display: none; max-height: 360px; overflow-y: auto;
-      width: 520px; max-width: 92vw;
     }
     .search-results.active { display: block; }
     .search-result-item {
@@ -185,8 +188,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ── HERO ── */
     .hero {
       position: relative;
+      /* overflow visible para que el dropdown del buscador salga del hero sin recortarse */
       overflow: visible;
-      z-index: 10;
+      /* sin z-index explícito: evitamos crear un stacking context que atrape el search-wrap */
       color:#fff; text-align:center;
       padding: clamp(3rem,7vw,6rem) 1.5rem clamp(2.5rem,5vw,5rem);
     }
@@ -771,23 +775,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const box = document.getElementById('search-results');
   const overlay = document.getElementById('search-overlay');
 
-  function positionBox() {
-    const r = inp.getBoundingClientRect();
-    box.style.top   = (r.bottom + 6) + 'px';
-    box.style.left  = r.left + 'px';
-    box.style.width = r.width + 'px';
-  }
-  window.addEventListener('resize', () => { if (box.classList.contains('active')) positionBox(); });
-  window.addEventListener('scroll', () => { if (box.classList.contains('active')) positionBox(); }, { passive: true });
+  // El overlay es transparente: solo captura clics fuera para cerrar
+  function openOverlay()  { overlay.style.display = 'block'; }
+  function closeOverlay() { overlay.style.display = 'none'; }
 
-  function openOverlay() {
-    overlay.style.display = 'block';
-    requestAnimationFrame(() => overlay.classList.add('active'));
-  }
-  function closeOverlay() {
-    overlay.classList.remove('active');
-    setTimeout(() => { overlay.style.display = 'none'; }, 250);
-  }
   function closeSearch() {
     box.classList.remove('active');
     box.innerHTML = '';
@@ -829,12 +820,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               '<span class="res-resumen">' + r.item.resumen + '</span>' +
               '</a>').join('')
           : '<div class="search-no-results">Sin resultados. Prueba con otras palabras.</div>';
-        positionBox();
         box.classList.add('active');
         openOverlay();
       });
       inp.addEventListener('focus', function () {
-        if (this.value.trim() && box.classList.contains('active')) { positionBox(); openOverlay(); }
+        if (this.value.trim() && box.classList.contains('active')) openOverlay();
       });
     })
     .catch(() => {});
