@@ -545,7 +545,7 @@ h1 em { font-style: italic; font-weight: 400; color: var(--terra); }
 .card ul { list-style: none; display: flex; flex-direction: column; gap: var(--sp-3); color: var(--text-muted); font-size: var(--text-sm); font-weight: 300; line-height: 1.65; flex: 1; }
 .card li { display: flex; align-items: baseline; gap: var(--sp-3); padding-bottom: var(--sp-3); border-bottom: 1px solid var(--divider); }
 .card li:last-child { border-bottom: none; padding-bottom: 0; }
-.card li::before { content: '—'; color: var(--text-faint); flex-shrink: 0; font-size: var(--text-xs); }
+.card li::before { content: '\2014'; color: var(--text-faint); flex-shrink: 0; font-size: var(--text-xs); }
 .card li strong { color: var(--text); font-weight: 500; }
 .card-cta {
   display: inline-flex; align-items: center; gap: var(--sp-2);
@@ -1126,7 +1126,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function(){
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
+    nav.classList.toggle('scrolled', window.scrollY > 10);
   }, { passive: true });
 })();
 
@@ -1165,11 +1165,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
+  /* REVEAL ON SCROLL */
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  }), { threshold: .1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* SEARCH + OVERLAY */
+  const BASE = 'https://openlexiura.es/';
   const inp = document.getElementById('search-input');
   const box = document.getElementById('search-results');
   const overlay = document.getElementById('search-overlay');
-  const BASE = '';
 
   function openOverlay() {
     overlay.style.display = 'block';
@@ -1177,15 +1184,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function closeOverlay() {
     overlay.classList.remove('active');
-    setTimeout(() => { overlay.style.display = 'none'; }, 350);
+    setTimeout(() => { overlay.style.display = 'none'; }, 250);
   }
   function closeSearch() {
-    box.classList.remove('active'); box.innerHTML = '';
+    box.classList.remove('active');
+    box.innerHTML = '';
     closeOverlay();
   }
 
   overlay.addEventListener('click', closeSearch);
-  inp.addEventListener('keydown', e => { if(e.key === 'Escape') closeSearch(); });
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeSearch();
+  });
 
   fetch('/search.json')
     .then(r => r.json())
@@ -1199,26 +1209,31 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         threshold: 0.4, minMatchCharLength: 2, includeScore: true
       });
-      inp.addEventListener('input', function() {
+      inp.addEventListener('input', function () {
         const q = this.value.trim();
-        if(!q){ box.classList.remove('active'); box.innerHTML=''; closeOverlay(); return; }
-        const res = fuse.search(q).slice(0,6);
+        if (!q) {
+          box.classList.remove('active');
+          box.innerHTML = '';
+          closeOverlay();
+          return;
+        }
+        const res = fuse.search(q).slice(0, 6);
         box.innerHTML = res.length
           ? res.map(r =>
-              '<a class="search-result-item" href="'+BASE+r.item.url+'" role="option">'+
-              '<span class="res-cat">'+r.item.categoria+'</span>'+
-              '<span class="res-titulo">'+r.item.titulo+'</span>'+
-              '<span class="res-resumen">'+r.item.resumen+'</span>'+
+              '<a class="search-result-item" href="' + BASE + r.item.url + '">' +
+              '<span class="res-cat">' + r.item.categoria + '</span>' +
+              '<span class="res-titulo">' + r.item.titulo + '</span>' +
+              '<span class="res-resumen">' + r.item.resumen + '</span>' +
               '</a>').join('')
           : '<div class="search-no-results">Sin resultados. Prueba con otras palabras.</div>';
         box.classList.add('active');
         openOverlay();
       });
-      inp.addEventListener('focus', function() {
-        if(this.value.trim() && box.classList.contains('active')) openOverlay();
+      inp.addEventListener('focus', function () {
+        if (this.value.trim() && box.classList.contains('active')) openOverlay();
       });
     })
-    .catch(()=>{});
+    .catch(() => {});
 });
 
 var banner = document.getElementById('oli-cookie-banner'),
