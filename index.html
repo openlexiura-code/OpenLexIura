@@ -92,10 +92,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .logo-wrap { display:flex; align-items:center; gap:.65rem; text-decoration:none; }
     .logo-icon {
-      width:36px; height:36px; border-radius:8px;
-      background: var(--azul); display:flex; align-items:center; justify-content:center;
-    }
-    .logo-icon svg { width:22px; height:22px; fill:none; stroke:#fff; stroke-width:2; }
+width:36px; height:36px; border-radius:8px; object-fit:cover; display:block;
+  }
     .logo-text { font-size:1.15rem; font-weight:700; color:var(--azul); letter-spacing:-.02em; }
     .logo-text span { color:var(--dorado); }
 
@@ -452,11 +450,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <header>
   <a href="/" class="logo-wrap" aria-label="OpenLexIura inicio">
-    <div class="logo-icon">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/>
-      </svg>
-    </div>
+<img src="Icono.png" alt="OpenLexIura" class="logo-icon" style="object-fit:cover;" />
     <span class="logo-text">Open<span>Lex</span>Iura</span>
   </a>
 
@@ -650,9 +644,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="logo-wrap">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
-        </div>
+<img src="Icono.png" alt="OpenLexIura" class="logo-icon" style="object-fit:cover;" />
         <span class="logo-text">Open<span>Lex</span>Iura</span>
       </div>
       <p>Respuestas jurídicas fiables, en lenguaje claro, sin registro ni coste.</p>
