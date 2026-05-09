@@ -597,6 +597,20 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
 #oli-cookie-btn:hover{background:#C9A84C;color:#0a0a0f}
 #oli-cookie-btn.visible{display:block}
 
+/* ── FONDO ANIMADO JURÍDICO ─────────────────────────────── */
+#legal-bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.52;
+}
+.hero, .trust-strip, .section, .cta-section, footer,
+#search-overlay, #search-wrap, .hero-actions {
+  position: relative;
+  z-index: 1;
+}
+
 /* ── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 980px) {
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 6.5rem; gap: 2.5rem; }
@@ -647,6 +661,182 @@ input:disabled+.oli-slider{opacity:.5;cursor:not-allowed}
 </style>
 </head>
 <body>
+<!-- FONDO ANIMADO JURÍDICO -->
+<canvas id="legal-bg-canvas" aria-hidden="true"></canvas>
+<script>
+(function () {
+  var canvas = document.getElementById('legal-bg-canvas');
+  var ctx = canvas.getContext('2d');
+  var W, H, particles = [], floatingTexts = [];
+  var scaleT = 0;
+  var animFrame;
+
+  function Particle() { this.reset(true); }
+  Particle.prototype.reset = function (stagger) {
+    this.x = Math.random() * W;
+    this.y = stagger ? Math.random() * H : H + 5;
+    this.r = Math.random() * 1.6 + 0.4;
+    this.speedX = (Math.random() - 0.5) * 0.18;
+    this.speedY = -(Math.random() * 0.30 + 0.08);
+    this.opacity = Math.random() * 0.40 + 0.08;
+    this.gold = Math.random() > 0.55;
+    this.life = 0;
+    this.maxLife = Math.random() * 380 + 180;
+  };
+  Particle.prototype.update = function () {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life++;
+    if (this.y < -10 || this.life > this.maxLife) this.reset(false);
+  };
+  Particle.prototype.draw = function () {
+    var fade = this.life < 40 ? this.life / 40
+             : this.life > this.maxLife - 40 ? (this.maxLife - this.life) / 40 : 1;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = this.gold
+      ? 'rgba(201,168,76,' + (this.opacity * fade) + ')'
+      : 'rgba(26,68,144,' + (this.opacity * fade * 0.65) + ')';
+    ctx.fill();
+  };
+
+  var LEGAL_TEXTS = [
+    'Art. 1 CE', 'Ley Orgánica', 'Título II', 'BOE', 'Art. 24',
+    'LOPJ', 'RDL', 'Art. 17', 'Código Civil', 'LEC', 'Estatuto',
+    'Constitución', 'Directiva UE', 'RGPD', 'Art. 103', 'TRLSC'
+  ];
+  function FloatingText() { this.reset(true); }
+  FloatingText.prototype.reset = function (stagger) {
+    this.text    = LEGAL_TEXTS[Math.floor(Math.random() * LEGAL_TEXTS.length)];
+    this.x       = Math.random() * W;
+    this.y       = stagger ? Math.random() * H : H + 20;
+    this.speed   = Math.random() * 0.15 + 0.06;
+    this.opacity = Math.random() * 0.065 + 0.018;
+    this.size    = Math.random() * 7 + 9;
+    this.drift   = (Math.random() - 0.5) * 0.07;
+  };
+  FloatingText.prototype.update = function () {
+    this.y -= this.speed;
+    this.x += this.drift;
+    if (this.y < -30) this.reset(false);
+  };
+  FloatingText.prototype.draw = function () {
+    ctx.save();
+    ctx.globalAlpha = this.opacity;
+    ctx.fillStyle   = '#1a4490';
+    ctx.font        = this.size + 'px \'Instrument Serif\', Georgia, serif';
+    ctx.fillText(this.text, this.x, this.y);
+    ctx.restore();
+  };
+
+  function drawPillar(x, baseY, w, h) {
+    var grad = ctx.createLinearGradient(x, 0, x + w, 0);
+    grad.addColorStop(0,    'rgba(26,68,144,0.05)');
+    grad.addColorStop(0.35, 'rgba(26,68,144,0.09)');
+    grad.addColorStop(0.65, 'rgba(26,68,144,0.09)');
+    grad.addColorStop(1,    'rgba(26,68,144,0.04)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(x + w * 0.12, baseY - h,        w * 0.76, h * 0.80);
+    ctx.fillRect(x,            baseY - h,        w,        h * 0.05);
+    ctx.fillRect(x + w * 0.06, baseY - h * 0.95, w * 0.88, h * 0.04);
+    ctx.fillRect(x,            baseY - h * 0.20, w,        h * 0.05);
+    ctx.fillRect(x + w * 0.06, baseY - h * 0.14, w * 0.88, h * 0.04);
+    ctx.fillRect(x + w * 0.12, baseY - h * 0.09, w * 0.76, h * 0.09);
+  }
+
+  function drawScales(cx, cy, size, phase) {
+    var angle    = Math.sin(scaleT + phase) * 0.11;
+    var alpha    = 0.09;
+    var armLen   = size * 0.70;
+    var chainLen = size * 0.52;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.strokeStyle = 'rgba(201,168,76,' + alpha + ')';
+    ctx.lineWidth   = size * 0.020;
+    ctx.lineCap     = 'round';
+    ctx.beginPath();
+    ctx.moveTo(0, -size * 0.88); ctx.lineTo(0, size * 0.48); ctx.stroke();
+    ctx.fillStyle = 'rgba(201,168,76,' + alpha + ')';
+    ctx.beginPath(); ctx.arc(0, -size * 0.88, size * 0.042, 0, Math.PI * 2); ctx.fill();
+    ctx.save();
+    ctx.rotate(angle);
+    ctx.beginPath();
+    ctx.moveTo(-armLen, 0); ctx.lineTo(armLen, 0); ctx.stroke();
+    ctx.beginPath(); ctx.arc(0, 0, size * 0.033, 0, Math.PI * 2); ctx.fill();
+    var leftDrop  =  Math.sin(scaleT + phase) * size * 0.07;
+    var rightDrop = -leftDrop;
+    ctx.lineWidth = size * 0.013;
+    ctx.setLineDash([size * 0.04, size * 0.04]);
+    ctx.beginPath(); ctx.moveTo(-armLen, 0); ctx.lineTo(-armLen, chainLen + leftDrop);  ctx.stroke();
+    ctx.beginPath(); ctx.moveTo( armLen, 0); ctx.lineTo( armLen, chainLen + rightDrop); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.lineWidth = size * 0.020;
+    var pw = size * 0.36, ph = size * 0.038;
+    var sides = [-1, 1];
+    for (var i = 0; i < sides.length; i++) {
+      var side = sides[i];
+      var drop = i === 0 ? leftDrop : rightDrop;
+      ctx.beginPath();
+      ctx.ellipse(side * armLen, chainLen + drop, pw / 2, ph, 0, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(201,168,76,' + (alpha * 0.28) + ')';
+      ctx.fill();
+    }
+    ctx.restore();
+    ctx.restore();
+  }
+
+  function drawGrid() {
+    ctx.strokeStyle = 'rgba(26,68,144,0.025)';
+    ctx.lineWidth   = 0.6;
+    var sp = 90;
+    for (var x = 0; x < W; x += sp) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+    for (var y = 0; y < H; y += sp) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+  }
+
+  function initScene() {
+    particles = [];
+    var pc = Math.min(Math.floor((W * H) / 13000), 90);
+    for (var i = 0; i < pc; i++) particles.push(new Particle());
+    floatingTexts = [];
+    var tc = Math.max(Math.floor(W / 170), 5);
+    for (var j = 0; j < tc; j++) floatingTexts.push(new FloatingText());
+  }
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    initScene();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    scaleT += 0.007;
+    drawGrid();
+    var pw = Math.min(W * 0.055, 62);
+    var ph = H * 0.73;
+    drawPillar(W * 0.030 - pw / 2, H * 0.94, pw, ph);
+    drawPillar(W * 0.075 - pw / 2, H * 0.94, pw, ph);
+    drawPillar(W * 0.925 - pw / 2, H * 0.94, pw, ph);
+    drawPillar(W * 0.970 - pw / 2, H * 0.94, pw, ph);
+    drawScales(W * 0.50, H * 0.26, Math.min(W * 0.28, 260), 0);
+    drawScales(W * 0.84, H * 0.62, Math.min(W * 0.11, 92), Math.PI * 0.6);
+    for (var i = 0; i < floatingTexts.length; i++) { floatingTexts[i].update(); floatingTexts[i].draw(); }
+    for (var j = 0; j < particles.length; j++) { particles[j].update(); particles[j].draw(); }
+    animFrame = requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    cancelAnimationFrame(animFrame);
+    canvas.style.display = 'none';
+  }
+})();
+</script>
+
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- OVERLAY BUSCADOR -->
