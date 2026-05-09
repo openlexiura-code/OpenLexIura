@@ -48,6 +48,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   </script>
 
+  <!-- Fuse.js para búsqueda difusa -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
+
   <style>
     /* ── RESET & BASE ───────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,7 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       opacity: 0.52;
     }
     .hero, .trust-strip, .section, .cta-section, footer,
-    #search-overlay, #search-wrap, .hero-actions {
+    #search-overlay, .hero-search-wrap, .hero-actions {
       position: relative;
       z-index: 1;
     }
@@ -113,16 +116,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     nav a:hover { background:var(--gris-claro); color:var(--azul); }
 
     .header-right { display:flex; align-items:center; gap:.5rem; }
-    .btn-buscar {
-      display:flex; align-items:center; gap:.4rem;
-      background:var(--azul); color:#fff; border:none; border-radius:8px;
-      padding:.42rem .85rem; font-size:.82rem; font-weight:600; cursor:pointer;
-      transition:background .18s;
-    }
-    .btn-buscar:hover { background:var(--azul-dark); }
-    .btn-buscar svg { width:15px; height:15px; stroke:#fff; fill:none; stroke-width:2.2; }
 
-    /* ── SEARCH OVERLAY ─────────────────────── */
+    /* ── SEARCH OVERLAY (solo para móvil/header) ── */
     #search-overlay {
       display:none; position:fixed; inset:0; z-index:200;
       background:rgba(10,20,60,.55); backdrop-filter:blur(6px);
@@ -138,25 +133,133 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       padding:.85rem 1.1rem; border-bottom:1px solid #eee;
     }
     .search-top svg { width:20px; height:20px; stroke:#999; fill:none; stroke-width:2; flex-shrink:0; }
-    #search-input {
+    #search-input-overlay {
       flex:1; border:none; outline:none; font-size:1rem; color:var(--texto);
       background:transparent;
     }
-    #search-input::placeholder { color:#bbb; }
+    #search-input-overlay::placeholder { color:#bbb; }
     #btn-close-search {
       background:none; border:none; cursor:pointer; color:#aaa; font-size:1.4rem; line-height:1;
       transition:color .15s;
     }
     #btn-close-search:hover { color:var(--texto); }
-    #search-results { max-height:420px; overflow-y:auto; }
+    #search-results-overlay { max-height:420px; overflow-y:auto; }
+
+    /* ── BUSCADOR HERO PROMINENTE ───────────── */
+    .hero-search-wrap {
+      position: relative;
+      width: min(660px, 100%);
+      margin: 0 auto 1.5rem;
+    }
+    .hero-search-inner {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow:
+        0 4px 24px rgba(0,0,0,.18),
+        0 0 0 3px rgba(201,168,76,.25);
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .hero-search-inner:focus-within {
+      box-shadow:
+        0 6px 32px rgba(0,0,0,.22),
+        0 0 0 4px rgba(201,168,76,.45);
+    }
+    .hero-search-icon {
+      display: flex;
+      align-items: center;
+      padding: 0 .9rem 0 1.1rem;
+      color: var(--azul);
+      flex-shrink: 0;
+    }
+    .hero-search-icon svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:2.2; }
+    #hero-search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1.05rem;
+      color: var(--texto);
+      padding: 1rem 0;
+      background: transparent;
+      min-width: 0;
+    }
+    #hero-search-input::placeholder { color: #aaa; font-size:.98rem; }
+    .hero-search-btn {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--azul);
+      color: #fff;
+      border: none;
+      border-radius: 0 12px 12px 0;
+      padding: 0 1.4rem;
+      height: 100%;
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .18s;
+      white-space: nowrap;
+      align-self: stretch;
+    }
+    .hero-search-btn:hover { background: var(--azul-dark); }
+    .hero-search-btn svg { width:16px; height:16px; stroke:#fff; fill:none; stroke-width:2.2; }
+
+    /* Sugerencias de búsqueda hero */
+    .hero-search-results {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0; right: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.15);
+      overflow: hidden;
+      display: none;
+      max-height: 380px;
+      overflow-y: auto;
+      z-index: 50;
+      border: 1px solid rgba(26,68,144,.1);
+    }
+    .hero-search-results.active { display: block; }
     .sr-item {
       display:block; padding:.75rem 1.1rem; text-decoration:none; color:var(--texto);
       border-bottom:1px solid #f3f3f3; transition:background .15s;
     }
-    .sr-item:hover { background:#f7f9ff; }
-    .sr-item-title { font-weight:600; font-size:.9rem; margin-bottom:.2rem; }
-    .sr-item-path { font-size:.75rem; color:var(--texto-suave); }
+    .sr-item:last-child { border-bottom: none; }
+    .sr-item:hover { background:#f0f4ff; }
+    .sr-item-cat {
+      font-size:.7rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+      color: var(--azul); margin-bottom:.2rem;
+    }
+    .sr-item-title { font-weight:600; font-size:.92rem; color:var(--texto); margin-bottom:.15rem; }
+    .sr-item-desc  { font-size:.78rem; color:var(--texto-suave); line-height:1.4; }
     .sr-empty { padding:1.5rem; text-align:center; color:#aaa; font-size:.9rem; }
+
+    /* Chips de sugerencia rápida */
+    .hero-search-hints {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      justify-content: center;
+      margin-top: .9rem;
+    }
+    .search-hint {
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.25);
+      color: rgba(255,255,255,.88);
+      font-size: .78rem;
+      padding: .3rem .75rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all .18s;
+      white-space: nowrap;
+    }
+    .search-hint:hover {
+      background: rgba(255,255,255,.22);
+      border-color: rgba(255,255,255,.45);
+      color: #fff;
+    }
 
     /* ── HERO ───────────────────────────────── */
     .hero {
@@ -171,29 +274,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .hero h1 {
       font-size: clamp(1.9rem,4.5vw,3.2rem);
-      font-weight:800; line-height:1.15; margin-bottom:1rem;
+      font-weight:800; line-height:1.15; margin-bottom:.85rem;
       letter-spacing:-.03em;
     }
     .hero h1 span { color:var(--dorado); }
     .hero-sub {
-      font-size: clamp(.95rem,2vw,1.2rem);
-      color:rgba(255,255,255,.82); max-width:620px; margin:0 auto 2rem;
+      font-size: clamp(.95rem,2vw,1.15rem);
+      color:rgba(255,255,255,.78); max-width:580px; margin:0 auto 2rem;
     }
     .hero-actions {
       display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;
+      margin-top: 1rem;
     }
-    .btn-primary {
-      background:var(--dorado); color:#1a1a2e; font-weight:700; font-size:.95rem;
-      padding:.7rem 1.7rem; border-radius:10px; text-decoration:none;
-      border:none; cursor:pointer; transition:all .18s; display:inline-flex; align-items:center; gap:.4rem;
+    .btn-secondary-hero {
+      background:rgba(255,255,255,.12); color:#fff; font-weight:600; font-size:.9rem;
+      padding:.65rem 1.5rem; border-radius:10px; text-decoration:none;
+      border:1px solid rgba(255,255,255,.28); cursor:pointer; transition:all .18s;
+      display:inline-flex; align-items:center; gap:.4rem;
     }
-    .btn-primary:hover { background:#b8943e; transform:translateY(-1px); }
-    .btn-secondary {
-      background:rgba(255,255,255,.12); color:#fff; font-weight:600; font-size:.95rem;
-      padding:.7rem 1.7rem; border-radius:10px; text-decoration:none;
-      border:1px solid rgba(255,255,255,.3); cursor:pointer; transition:all .18s;
-    }
-    .btn-secondary:hover { background:rgba(255,255,255,.2); }
+    .btn-secondary-hero:hover { background:rgba(255,255,255,.2); }
 
     /* ── TRUST STRIP ────────────────────────── */
     .trust-strip {
@@ -273,6 +372,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .cta-section h2 { font-size:clamp(1.4rem,3vw,2.1rem); font-weight:800; margin-bottom:.75rem; }
     .cta-section p  { font-size:.95rem; color:rgba(255,255,255,.8); max-width:520px; margin:0 auto 2rem; }
+    .btn-primary {
+      background:var(--dorado); color:#1a1a2e; font-weight:700; font-size:.95rem;
+      padding:.7rem 1.7rem; border-radius:10px; text-decoration:none;
+      border:none; cursor:pointer; transition:all .18s; display:inline-flex; align-items:center; gap:.4rem;
+    }
+    .btn-primary:hover { background:#b8943e; transform:translateY(-1px); }
 
     /* ── FOOTER ─────────────────────────────── */
     footer {
@@ -324,6 +429,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       header { padding:.6rem 1rem; }
       nav { display:none; }
       .topics-grid, .featured-grid { grid-template-columns:1fr; }
+      .hero-search-btn span { display:none; }
+      .hero-search-btn { padding: 0 1rem; }
     }
   </style>
 </head>
@@ -479,40 +586,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </nav>
 
   <div class="header-right">
-    <button class="btn-buscar" id="btn-open-search" aria-label="Buscar en OpenLexIura">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      Buscar
-    </button>
+    <!-- En escritorio el buscador principal está en el hero; este es solo acceso rápido -->
   </div>
 </header>
 
 <!-- ╔══════════════════════════════════════╗ -->
-<!--   SEARCH OVERLAY                       -->
-<!-- ╚══════════════════════════════════════╝ -->
-<div id="search-overlay" role="dialog" aria-modal="true" aria-label="Buscador">
-  <div id="search-wrap">
-    <div class="search-top">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="search-input" type="search" placeholder="Busca tu duda legal…" autocomplete="off" />
-      <button id="btn-close-search" aria-label="Cerrar buscador">×</button>
-    </div>
-    <div id="search-results" aria-live="polite"></div>
-  </div>
-</div>
-
-<!-- ╔══════════════════════════════════════╗ -->
-<!--   HERO                                 -->
+<!--   HERO con BUSCADOR PROMINENTE         -->
 <!-- ╚══════════════════════════════════════╝ -->
 <section class="hero">
   <div class="hero-badge">Información jurídica gratuita</div>
   <h1>Tu duda legal, resuelta<br><span>en español claro</span></h1>
-  <p class="hero-sub">Entiende tus derechos sobre alquiler, trabajo, herencias, consumo y más — sin tecnicismos ni letra pequeña.</p>
+  <p class="hero-sub">Alquiler, trabajo, herencias, consumo y más — sin tecnicismos ni letra pequeña.</p>
+
+  <!-- BARRA DE BÚSQUEDA PROMINENTE -->
+  <div class="hero-search-wrap" role="search" aria-label="Buscar en OpenLexIura">
+    <div class="hero-search-inner">
+      <div class="hero-search-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <input
+        id="hero-search-input"
+        type="search"
+        placeholder="¿Cuál es tu duda legal? Ej: devolución de fianza..."
+        autocomplete="off"
+        aria-label="Buscar artículos jurídicos"
+      />
+      <button class="hero-search-btn" id="hero-search-btn" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span>Buscar</span>
+      </button>
+    </div>
+    <div class="hero-search-results" id="hero-search-results" aria-live="polite"></div>
+  </div>
+
+  <!-- Chips de búsqueda rápida -->
+  <div class="hero-search-hints" aria-label="Búsquedas frecuentes">
+    <button class="search-hint" data-query="despido">Despido</button>
+    <button class="search-hint" data-query="fianza alquiler">Fianza del alquiler</button>
+    <button class="search-hint" data-query="herencia deudas">Herencia con deudas</button>
+    <button class="search-hint" data-query="multa trafico">Multa de tráfico</button>
+    <button class="search-hint" data-query="declaracion renta">Declaración de la renta</button>
+  </div>
+
   <div class="hero-actions">
-    <a href="#temas" class="btn-primary">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-      Explorar temas
+    <a href="/aprender/aprender.html" class="btn-secondary-hero">
+      📚 Aprende Derecho
     </a>
-    <button class="btn-secondary" id="hero-btn-search">Buscar mi duda →</button>
   </div>
 </section>
 
@@ -687,7 +806,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="cta-section" aria-labelledby="cta-titulo">
   <h2 id="cta-titulo">¿No encuentras tu duda?</h2>
   <p>Usa nuestro buscador para encontrar respuesta entre cientos de artículos jurídicos gratuitos.</p>
-  <button class="btn-primary" id="cta-btn-search">
+  <button class="btn-primary" id="cta-btn-search" onclick="document.getElementById('hero-search-input').focus();window.scrollTo({top:0,behavior:'smooth'})">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     Buscar ahora
   </button>
@@ -773,110 +892,88 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 
-/* ── SEARCH ── */
+/* ── BUSCADOR HERO ── */
 (function(){
-  let searchData = null;
-  const overlay   = document.getElementById('search-overlay');
-  const input     = document.getElementById('search-input');
-  const results   = document.getElementById('search-results');
-  const openBtns  = [
-    document.getElementById('btn-open-search'),
-    document.getElementById('hero-btn-search'),
-    document.getElementById('cta-btn-search')
-  ];
+  const input   = document.getElementById('hero-search-input');
+  const results = document.getElementById('hero-search-results');
+  const hints   = document.querySelectorAll('.search-hint');
+  let fuse = null;
 
-  function openSearch(){
-    overlay.classList.add('open');
-    input.focus();
-    if(!searchData) loadData();
-  }
-  function closeSearch(){ overlay.classList.remove('open'); input.value=''; results.innerHTML=''; }
-
-  openBtns.forEach(b=>b&&b.addEventListener('click',openSearch));
-  document.getElementById('btn-close-search').addEventListener('click',closeSearch);
-  overlay.addEventListener('click',e=>{ if(e.target===overlay) closeSearch(); });
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSearch(); });
-
-  function loadData(){
-    fetch('/search.json')
-    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(rawData => {
-      // Normaliza campos: compatible con titulo/title, resumen/description
-      const searchData = rawData.map(item => ({
-        titulo:    item.titulo    || item.title       || '',
-        resumen:   item.resumen   || item.description || '',
-        categoria: item.categoria || item.category    || item.section || '',
-        tags:      item.tags      || item.keywords    || '',
-        url:       item.url       || item.path        || '#'
+  /* Cargar datos de búsqueda */
+  fetch('/search.json')
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(data => {
+      const items = data.map(d => ({
+        titulo:    d.titulo    || d.title       || '',
+        resumen:   d.resumen   || d.description || '',
+        categoria: d.categoria || d.category    || d.section || '',
+        tags:      d.tags      || d.keywords    || '',
+        url:       d.url       || d.path        || '#'
       }));
-
-      const fuse = new Fuse(searchData, {
+      fuse = new Fuse(items, {
         keys: [
-          { name: 'titulo',    weight: 0.55 },
-          { name: 'resumen',   weight: 0.30 },
-          { name: 'tags',      weight: 0.10 },
-          { name: 'categoria', weight: 0.05 }
+          { name:'titulo',    weight:0.55 },
+          { name:'resumen',   weight:0.28 },
+          { name:'tags',      weight:0.12 },
+          { name:'categoria', weight:0.05 }
         ],
-        threshold: 0.45, minMatchCharLength: 2, includeScore: true
-      });
-
-      function runSearch(q) {
-        q = q.trim();
-        if (!q) { box.classList.remove('active'); box.innerHTML = ''; closeOverlay(); return; }
-        const res = fuse.search(q).slice(0, 7);
-        box.innerHTML = res.length
-          ? res.map(r =>
-              '<a class="search-result-item" href="' + (r.item.url.startsWith('http') ? '' : BASE) + r.item.url + '">' +
-              (r.item.categoria ? '<span class="res-cat">' + r.item.categoria + '</span>' : '') +
-              '<span class="res-titulo">' + r.item.titulo + '</span>' +
-              (r.item.resumen ? '<span class="res-resumen">' + r.item.resumen + '</span>' : '') +
-              '</a>').join('')
-          : '<div class="search-no-results">Sin resultados para <strong>' + q + '</strong>.</div>';
-        box.classList.add('active');
-        openOverlay();
-      }
-
-      inp.addEventListener('input', function () { runSearch(this.value); });
-      inp.addEventListener('focus', function () {
-        if (this.value.trim() && box.classList.contains('active')) openOverlay();
+        threshold: 0.42, minMatchCharLength: 2, includeScore: true
       });
     })
-    .catch(err => {
-      // Fallback sin JSON: busca entre los enlaces del DOM
-      console.warn('search.json no disponible:', err);
-      const staticLinks = Array.from(document.querySelectorAll('a[href]')).map(a => ({
-        titulo: a.textContent.trim(), url: a.href
-      })).filter(i => i.titulo.length > 4);
-      inp.addEventListener('input', function () {
-        const q = this.value.trim().toLowerCase();
-        if (!q) { box.classList.remove('active'); box.innerHTML = ''; closeOverlay(); return; }
-        const hits = staticLinks.filter(i => i.titulo.toLowerCase().includes(q)).slice(0, 6);
-        box.innerHTML = hits.length
-          ? hits.map(h => '<a class="search-result-item" href="' + h.url + '"><span class="res-titulo">' + h.titulo + '</span></a>').join('')
-          : '<div class="search-no-results">Sin resultados para <strong>' + q + '</strong>.</div>';
-        box.classList.add('active');
-        openOverlay();
+    .catch(() => {
+      /* fallback: busca en los enlaces del DOM */
+      const links = Array.from(document.querySelectorAll('a[href]')).map(a=>({
+        titulo: a.textContent.trim(), url: a.href, resumen:'', categoria:''
+      })).filter(i=>i.titulo.length>4);
+      fuse = new Fuse(links, {
+        keys:[{name:'titulo',weight:1}], threshold:0.45, minMatchCharLength:2
       });
     });
 
-  input.addEventListener('input',()=>doSearch(input.value));
+  function renderResults(q) {
+    if (!q.trim()) { results.classList.remove('active'); results.innerHTML=''; return; }
+    if (!fuse)     { results.innerHTML='<p class="sr-empty">Cargando…</p>'; results.classList.add('active'); return; }
 
-  function doSearch(q){
-    q = q.trim().toLowerCase();
-    if(!q){ results.innerHTML=''; return; }
-    if(!searchData){ results.innerHTML='<p class="sr-empty">Cargando…</p>'; return; }
-    const hits = searchData.filter(item=>
-      (item.title||'').toLowerCase().includes(q) ||
-      (item.description||'').toLowerCase().includes(q) ||
-      (item.keywords||'').toLowerCase().includes(q)
-    ).slice(0,10);
-    if(!hits.length){ results.innerHTML='<p class="sr-empty">Sin resultados para «'+escHtml(q)+'»</p>'; return; }
-    results.innerHTML = hits.map(h=>`
-      <a href="${escHtml(h.url)}" class="sr-item">
-        <div class="sr-item-title">${escHtml(h.title)}</div>
-        <div class="sr-item-path">${escHtml(h.url)}</div>
-      </a>`).join('');
+    const hits = fuse.search(q.trim()).slice(0, 8);
+    if (!hits.length) {
+      results.innerHTML = `<p class="sr-empty">Sin resultados para <strong>${escHtml(q)}</strong></p>`;
+    } else {
+      results.innerHTML = hits.map(h => `
+        <a href="${escHtml(h.item.url)}" class="sr-item">
+          ${h.item.categoria ? `<div class="sr-item-cat">${escHtml(h.item.categoria)}</div>` : ''}
+          <div class="sr-item-title">${escHtml(h.item.titulo)}</div>
+          ${h.item.resumen ? `<div class="sr-item-desc">${escHtml(h.item.resumen)}</div>` : ''}
+        </a>`).join('');
+    }
+    results.classList.add('active');
   }
+
+  input.addEventListener('input', () => renderResults(input.value));
+  input.addEventListener('focus', () => { if(input.value.trim()) renderResults(input.value); });
+
+  /* Chips de sugerencia rápida */
+  hints.forEach(btn => {
+    btn.addEventListener('click', () => {
+      input.value = btn.dataset.query;
+      input.focus();
+      renderResults(btn.dataset.query);
+    });
+  });
+
+  /* Cerrar al hacer clic fuera */
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.hero-search-wrap')) {
+      results.classList.remove('active');
+    }
+  });
+
+  /* Tecla Enter: ir al primer resultado */
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const first = results.querySelector('.sr-item');
+      if (first) first.click();
+    }
+  });
 
   function escHtml(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 })();
