@@ -193,9 +193,88 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     /* ── HERO ───────────────────────────────── */
     .hero {
-      background: linear-gradient(135deg, #0d2d6b 0%, #1a4490 60%, #1e5cb3 100%);
+      position: relative;
+      overflow: hidden;
       color:#fff; text-align:center;
       padding: clamp(3rem,7vw,6rem) 1.5rem clamp(2.5rem,5vw,5rem);
+    }
+
+    /* Slideshow de imágenes de fondo */
+    .hero-slideshow {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform, opacity;
+    }
+    .hero-slide.active { opacity: 1; }
+
+    /* Ken Burns: cada slide con dirección distinta */
+    .hero-slide:nth-child(1) { animation: kb-zoom-tl 14s ease-in-out infinite alternate; }
+    .hero-slide:nth-child(2) { animation: kb-zoom-tr 14s ease-in-out infinite alternate; }
+    .hero-slide:nth-child(3) { animation: kb-zoom-br 14s ease-in-out infinite alternate; }
+
+    @keyframes kb-zoom-tl {
+      from { transform: scale(1.0) translate(0, 0); }
+      to   { transform: scale(1.13) translate(-2.5%, -1.5%); }
+    }
+    @keyframes kb-zoom-tr {
+      from { transform: scale(1.0) translate(0, 0); }
+      to   { transform: scale(1.13) translate(2.5%, -1.5%); }
+    }
+    @keyframes kb-zoom-br {
+      from { transform: scale(1.0) translate(0, 0); }
+      to   { transform: scale(1.13) translate(1.5%, 2%); }
+    }
+
+    /* Overlay degradado para legibilidad del texto */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          170deg,
+          rgba(10, 28, 78, 0.82) 0%,
+          rgba(26, 68, 144, 0.72) 55%,
+          rgba(13, 45, 107, 0.88) 100%
+        );
+      z-index: 1;
+    }
+
+    /* Indicadores de slide */
+    .hero-dots {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: .5rem;
+      z-index: 3;
+    }
+    .hero-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      border: 1px solid rgba(255,255,255,.5);
+      cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+    .hero-dot.active {
+      background: var(--dorado);
+      transform: scale(1.25);
+    }
+
+    /* Todos los hijos directos del hero por encima del overlay */
+    .hero > *:not(.hero-slideshow):not(.hero-overlay):not(.hero-dots) {
+      position: relative;
+      z-index: 2;
     }
     .hero-badge {
       display:inline-block; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
@@ -481,6 +560,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })();
 </script>
 
+<!-- ── HERO SLIDESHOW ─────────────────────────────────────────── -->
+<script>
+(function () {
+  const INTERVAL = 6000; // ms entre cambios de imagen
+  let current = 0;
+
+  function initSlideshow() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dot');
+    if (!slides.length) return;
+
+    // Precarga de imágenes para evitar parpadeo
+    slides.forEach(s => {
+      const url = s.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+      const img = new Image(); img.src = url;
+    });
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    // Avance automático
+    const timer = setInterval(() => goTo(current + 1), INTERVAL);
+
+    // Click en los dots para navegación manual
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { clearInterval(timer); goTo(i); });
+    });
+
+    // Pausa al hover sobre el hero
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.addEventListener('mouseenter', () => clearInterval(timer));
+    }
+
+    // Detener si el usuario prefiere movimiento reducido
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      clearInterval(timer);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSlideshow);
+  } else {
+    initSlideshow();
+  }
+})();
+</script>
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHBT9NDS"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -525,6 +657,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!--   HERO                                 -->
 <!-- ╚══════════════════════════════════════╝ -->
 <section class="hero">
+
+  <!-- Fondo dinámico: slideshow con Ken Burns -->
+  <div class="hero-slideshow" aria-hidden="true">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1453906971074-ce568cccbc63?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?auto=format&fit=crop&w=1920&q=80')"></div>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <!-- Indicadores -->
+  <div class="hero-dots" aria-hidden="true">
+    <span class="hero-dot active"></span>
+    <span class="hero-dot"></span>
+    <span class="hero-dot"></span>
+  </div>
   <div class="hero-badge">Información jurídica gratuita</div>
   <h1>Tu duda legal, resuelta<br><span>en español claro</span></h1>
   <p class="hero-sub">Entiende tus derechos sobre alquiler, trabajo, herencias, consumo y más — sin tecnicismos ni letra pequeña.</p>
