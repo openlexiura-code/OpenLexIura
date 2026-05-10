@@ -87,7 +87,42 @@
   --shadow:0 24px 80px rgba(0,0,0,.12);--radius:20px;
   --azul:#1a4490;--azul-dark:#0d2d6b;--dorado:#c9a84c;
   --gris-claro:#f0eeea;--texto-suave:#4a4a6a;
+  /* dark mode vars */
+  --dm-bg:#0f172a;--dm-bg-2:#1e293b;--dm-surface:rgba(30,41,59,.9);
+  --dm-text:#f1f5f9;--dm-muted:#94a3b8;--dm-border:rgba(99,179,237,.15);
+  --dm-header:rgba(15,23,42,.96);
 }
+[data-theme="dark"]{
+  --bg:var(--dm-bg);--bg-2:var(--dm-bg-2);
+  --text:var(--dm-text);--muted:var(--dm-muted);
+  --line-2:var(--dm-border);--gris-claro:rgba(30,41,59,.8);
+  --texto-suave:#94a3b8;
+}
+[data-theme="dark"] body{
+  background:
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,.12), transparent 28%),
+    radial-gradient(circle at 80% 15%, rgba(99,179,237,.06), transparent 24%),
+    radial-gradient(circle at 50% 100%, rgba(37,99,235,.08), transparent 30%),
+    linear-gradient(180deg, var(--dm-bg) 0%, var(--dm-bg-2) 100%);
+  color:var(--dm-text);
+}
+[data-theme="dark"] header{background:var(--dm-header);border-bottom-color:rgba(99,179,237,.12)}
+[data-theme="dark"] .logo-text{color:#93c5fd}
+[data-theme="dark"] header nav a{color:var(--dm-muted)}
+[data-theme="dark"] header nav a:hover,[data-theme="dark"] header nav a.active{background:rgba(30,41,59,.8);color:#93c5fd}
+[data-theme="dark"] .trust-strip{background:#1e293b;border-bottom-color:rgba(37,99,235,.15)}
+[data-theme="dark"] .trust-strip span{color:var(--dm-muted)}
+[data-theme="dark"] .area-card{background:rgba(30,41,59,.85);border-color:rgba(99,179,237,.12);color:var(--dm-text)}
+[data-theme="dark"] .area-card:hover{background:rgba(30,41,59,.98);border-color:rgba(37,99,235,.35)}
+[data-theme="dark"] .card-body h2{color:#f1f5f9}
+[data-theme="dark"] .card-body p{color:var(--dm-muted)}
+[data-theme="dark"] .card-icon-wrap{background:rgba(37,99,235,.2);border-color:rgba(37,99,235,.3)}
+[data-theme="dark"] .seccion-badge{background:rgba(37,99,235,.2);border-color:rgba(37,99,235,.3);color:#93c5fd}
+[data-theme="dark"] .editorial-block h2{color:#f1f5f9}
+[data-theme="dark"] .editorial-block p{color:var(--dm-muted)}
+[data-theme="dark"] footer{color:var(--dm-muted)}
+[data-theme="dark"] .search-wrap-bottom input{background:rgba(30,41,59,.9);border-color:rgba(99,179,237,.2);color:#f1f5f9}
+[data-theme="dark"] .search-wrap-bottom input::placeholder{color:#64748b}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -473,6 +508,32 @@ footer a:hover{opacity:.7}
   .card-arrow{display:none}
   .content-wrap{padding:2rem 1.2rem 4rem}
 }
+
+/* ══ THEME TOGGLE ══ */
+.btn-theme-toggle{
+  display:flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:8px;
+  background:var(--gris-claro);border:1px solid rgba(26,68,144,.12);
+  cursor:pointer;transition:all .2s;font-size:1rem;
+  flex-shrink:0;
+}
+.btn-theme-toggle:hover{background:rgba(37,99,235,.1);border-color:rgba(37,99,235,.25)}
+[data-theme="dark"] .btn-theme-toggle{background:rgba(30,41,59,.8);border-color:rgba(99,179,237,.2)}
+[data-theme="dark"] .btn-theme-toggle:hover{background:rgba(37,99,235,.25)}
+
+/* ══ CTA SUPERIOR (compacta) ══ */
+.cta-portal--top{
+  margin-bottom:2.8rem;
+  border-radius:18px;
+  padding:clamp(1.8rem,4vw,2.8rem) 1.5rem;
+}
+.cta-portal--top h2{font-size:clamp(1.25rem,3vw,1.7rem)}
+.cta-portal--top p:not(.cta-portal-tag){margin-bottom:1.4rem;font-size:.95rem}
+[data-theme="dark"] .cta-portal{
+  background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#1e293b 100%);
+}
+[data-theme="dark"] .cta-portal-btn{color:#1e3a8a}
+[data-theme="dark"] .cta-portal-btn:hover{background:#e0f2fe}
 </style>
 </head>
 <body>
@@ -503,6 +564,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </nav>
 
   <div class="header-right">
+    <button id="themeToggle" class="btn-theme-toggle" aria-label="Cambiar modo oscuro/claro" title="Modo oscuro">
+      <span class="toggle-icon">🌙</span>
+    </button>
     <a href="index.html" class="btn-header-home">← Inicio</a>
   </div>
 </header>
@@ -572,133 +636,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ══ CONTENIDO PRINCIPAL ══ -->
 <main class="content-wrap" id="contentWrap" aria-label="Áreas jurídicas de OpenLexIura">
 
+<!-- CTA CONSULTAS SUPERIOR -->
+<div class="cta-portal cta-portal--top">
+  <div class="cta-portal-inner">
+    <p class="cta-portal-tag">Consulta gratuita</p>
+    <h2>¿Tienes una duda legal concreta?</h2>
+    <p>Cuéntanos tu caso y te respondemos en menos de 24 horas, sin registro y sin coste.</p>
+    <a href="consultas.html" class="cta-portal-btn">Hacer una consulta gratuita →</a>
+  </div>
+</div>
+
   <!-- TODAS LAS ÁREAS -->
   <p class="seccion-label" data-block="1">
     Áreas con artículos publicados
     <span class="seccion-badge">11 áreas disponibles</span>
   </p>
-  <div class="areas-grid" id="grid-1" role="list" data-section="1">
-    <a class="area-card" href="Trabajo/portal.html" style="animation-delay:0s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">💼</div>
-      <div class="card-body"><h2>Derechos del Trabajador</h2><p>Despidos, nóminas, falsos autónomos, excedencia voluntaria, ERTE y derechos laborales.</p><span class="card-tag">laboral</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Alquiler/portal.html" style="animation-delay:.055s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">🔑</div>
-      <div class="card-body"><h2>Alquiler y Arrendamientos</h2><p>Contratos de alquiler, fianzas, desahucios y derechos del inquilino y propietario.</p><span class="card-tag">LAU</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Vivienda/portal.html" style="animation-delay:.11s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">🏠</div>
-      <div class="card-body"><h2>Vivienda y Propiedad</h2><p>Compraventa, hipotecas, comunidades de propietarios y derechos del comprador.</p><span class="card-tag">civil</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Herencias/portal.html" style="animation-delay:.165s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">📜</div>
-      <div class="card-body"><h2>Herencias y Sucesiones</h2><p>Heredar sin testamento, impuesto de sucesiones, legítimas y plazos de aceptación.</p><span class="card-tag">civil</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Impuestos/portal.html" style="animation-delay:.22s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">📊</div>
-      <div class="card-body"><h2>Impuestos y Fiscalidad</h2><p>IRPF, IVA, declaración de la renta, sanciones de Hacienda y recursos fiscales.</p><span class="card-tag">fiscal</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Consumo/portal.html" style="animation-delay:.275s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">🛒</div>
-      <div class="card-body"><h2>Consumo y Compras</h2><p>Devoluciones, garantías, fraudes, comercio electrónico y defensa del consumidor.</p><span class="card-tag">consumo</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Divorcio-Familia/portal.html" style="animation-delay:.33s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">👨‍👩‍👧</div>
-      <div class="card-body"><h2>Divorcio y Familia</h2><p>Divorcio express, custodia compartida, pensión de alimentos y modificación de medidas.</p><span class="card-tag">familia</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Deudas/portal.html" style="animation-delay:.385s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">💳</div>
-      <div class="card-body"><h2>Deudas y Recobro</h2><p>Cómo salir de ASNEF, prescripción de deudas, empresa de recobro y Segunda Oportunidad.</p><span class="card-tag">deudas</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Accidentes-Multas/portal.html" style="animation-delay:.44s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">🚗</div>
-      <div class="card-body"><h2>Accidentes y Tráfico</h2><p>Parte amistoso, baremo de lesiones 2026, seguro que no paga y atropello de peatón.</p><span class="card-tag">tráfico</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="DerechoPenal/portal.html" style="animation-delay:.495s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">⚖️</div>
-      <div class="card-body"><h2>Delitos y Derecho Penal</h2><p>Denuncias, delitos leves, antecedentes penales, defensa penal y procedimiento judicial.</p><span class="card-tag">penal</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Extranjeria/portal.html" style="animation-delay:.55s">
-      <div class="area-card-bg" style="background-image:url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=70')"></div>
-      <div class="card-icon-wrap" aria-hidden="true">🌍</div>
-      <div class="card-body"><h2>Extranjería e Inmigración</h2><p>NIE, arraigo social, reagrupación familiar y nacionalidad por residencia en España.</p><span class="card-tag">extranjería</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-  </div>
-      <div class="card-body"><h2>Derechos del Trabajador</h2><p>Despidos, nóminas, falsos autónomos, excedencia voluntaria, ERTE y derechos laborales.</p><span class="card-tag">laboral</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Alquiler/portal.html" style="animation-delay:.055s">
-      <div class="card-icon-wrap" aria-hidden="true">🔑</div>
-      <div class="card-body"><h2>Alquiler y Arrendamientos</h2><p>Contratos de alquiler, fianzas, desahucios y derechos del inquilino y propietario.</p><span class="card-tag">LAU</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Vivienda/portal.html" style="animation-delay:.11s">
-      <div class="card-icon-wrap" aria-hidden="true">🏠</div>
-      <div class="card-body"><h2>Vivienda y Propiedad</h2><p>Compraventa, hipotecas, comunidades de propietarios y derechos del comprador.</p><span class="card-tag">civil</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Herencias/portal.html" style="animation-delay:.165s">
-      <div class="card-icon-wrap" aria-hidden="true">📜</div>
-      <div class="card-body"><h2>Herencias y Sucesiones</h2><p>Heredar sin testamento, impuesto de sucesiones, legítimas y plazos de aceptación.</p><span class="card-tag">civil</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Impuestos/portal.html" style="animation-delay:.22s">
-      <div class="card-icon-wrap" aria-hidden="true">📊</div>
-      <div class="card-body"><h2>Impuestos y Fiscalidad</h2><p>IRPF, IVA, declaración de la renta, sanciones de Hacienda y recursos fiscales.</p><span class="card-tag">fiscal</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Consumo/portal.html" style="animation-delay:.275s">
-      <div class="card-icon-wrap" aria-hidden="true">🛒</div>
-      <div class="card-body"><h2>Consumo y Compras</h2><p>Devoluciones, garantías, fraudes, comercio electrónico y defensa del consumidor.</p><span class="card-tag">consumo</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Divorcio-Familia/portal.html" style="animation-delay:.33s">
-      <div class="card-icon-wrap" aria-hidden="true">👨‍👩‍👧</div>
-      <div class="card-body"><h2>Divorcio y Familia</h2><p>Divorcio express, custodia compartida, pensión de alimentos y modificación de medidas.</p><span class="card-tag">familia</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Deudas/portal.html" style="animation-delay:.385s">
-      <div class="card-icon-wrap" aria-hidden="true">💳</div>
-      <div class="card-body"><h2>Deudas y Recobro</h2><p>Cómo salir de ASNEF, prescripción de deudas, empresa de recobro y Segunda Oportunidad.</p><span class="card-tag">deudas</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Accidentes-Multas/portal.html" style="animation-delay:.44s">
-      <div class="card-icon-wrap" aria-hidden="true">🚗</div>
-      <div class="card-body"><h2>Accidentes y Tráfico</h2><p>Parte amistoso, baremo de lesiones 2026, seguro que no paga y atropello de peatón.</p><span class="card-tag">tráfico</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="DerechoPenal/portal.html" style="animation-delay:.495s">
-      <div class="card-icon-wrap" aria-hidden="true">⚖️</div>
-      <div class="card-body"><h2>Delitos y Derecho Penal</h2><p>Denuncias, delitos leves, antecedentes penales, defensa penal y procedimiento judicial.</p><span class="card-tag">penal</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-    <a class="area-card" href="Extranjeria/portal.html" style="animation-delay:.55s">
-      <div class="card-icon-wrap" aria-hidden="true">🌍</div>
-      <div class="card-body"><h2>Extranjería e Inmigración</h2><p>NIE, arraigo social, reagrupación familiar y nacionalidad por residencia en España.</p><span class="card-tag">extranjería</span></div>
-      <span class="card-arrow" aria-hidden="true">Ver →</span>
-    </a>
-  </div>
+  <div class="areas-grid" id="grid-1" role="list" data-section="1"></div>
 
   <p class="no-results" id="noResults" aria-live="polite">No se encontraron áreas para esa búsqueda. Prueba con otras palabras.</p>
 
@@ -913,7 +866,28 @@ function filterAreas(q){
   ));
 }
 
-/* cards rendered statically */
+/* ══ RENDER INICIAL ══ */
+document.addEventListener('DOMContentLoaded', () => { renderAll(AREAS); });
+
+/* ══ MODO OSCURO ══ */
+(function(){
+  const btn = document.getElementById('themeToggle');
+  const icon = btn.querySelector('.toggle-icon');
+  const saved = localStorage.getItem('theme');
+  if(saved === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); icon.textContent='☀️'; }
+  btn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){
+      document.documentElement.removeAttribute('data-theme');
+      icon.textContent='🌙';
+      localStorage.setItem('theme','light');
+    } else {
+      document.documentElement.setAttribute('data-theme','dark');
+      icon.textContent='☀️';
+      localStorage.setItem('theme','dark');
+    }
+  });
+})();
 </script>
 </body>
 </html>
