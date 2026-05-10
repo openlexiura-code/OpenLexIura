@@ -332,7 +332,7 @@ header nav a.active{background:var(--gris-claro);color:var(--azul);font-weight:6
 
 /* ══ LAYOUT ══ */
 .content-wrap{
-  max-width:960px;margin:0 auto;padding:3rem 2.5rem 6rem;
+  max-width:1140px;margin:0 auto;padding:3rem 2rem 6rem;
   position:relative;z-index:1;
 }
 
@@ -351,6 +351,16 @@ header nav a.active{background:var(--gris-claro);color:var(--azul);font-weight:6
 }
 
 /* ══ GRID DE CARDS ══ */
+.page-layout{
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:2.2rem;
+  align-items:start;
+}
+@media(max-width:860px){
+  .page-layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+}
 .areas-grid{
   display:flex;
   flex-direction:column;
@@ -521,19 +531,79 @@ footer a:hover{opacity:.7}
 [data-theme="dark"] .btn-theme-toggle{background:rgba(30,41,59,.8);border-color:rgba(99,179,237,.2)}
 [data-theme="dark"] .btn-theme-toggle:hover{background:rgba(37,99,235,.25)}
 
-/* ══ CTA SUPERIOR (compacta) ══ */
-.cta-portal--top{
-  margin-bottom:2.8rem;
-  border-radius:18px;
-  padding:clamp(1.8rem,4vw,2.8rem) 1.5rem;
+/* ══ SIDEBAR DERECHO ══ */
+.sidebar{
+  position:sticky;
+  top:80px;
+  display:flex;
+  flex-direction:column;
+  gap:1.2rem;
 }
-.cta-portal--top h2{font-size:clamp(1.25rem,3vw,1.7rem)}
-.cta-portal--top p:not(.cta-portal-tag){margin-bottom:1.4rem;font-size:.95rem}
-[data-theme="dark"] .cta-portal{
-  background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#1e293b 100%);
+.sidebar-cta{
+  background:linear-gradient(155deg,#1a4490 0%,#2563eb 60%,#0d2d6b 100%);
+  border-radius:16px;
+  padding:1.6rem 1.4rem;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
 }
-[data-theme="dark"] .cta-portal-btn{color:#1e3a8a}
-[data-theme="dark"] .cta-portal-btn:hover{background:#e0f2fe}
+.sidebar-cta::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);
+  pointer-events:none;
+}
+.sidebar-cta-tag{
+  display:inline-block;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  padding:.2rem .75rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,255,255,.9);
+  margin-bottom:.9rem;position:relative;z-index:1;
+}
+.sidebar-cta h3{
+  font-size:1.1rem;font-weight:800;line-height:1.25;
+  margin-bottom:.6rem;position:relative;z-index:1;
+}
+.sidebar-cta p{
+  font-size:.85rem;color:rgba(255,255,255,.8);
+  line-height:1.55;margin-bottom:1.2rem;
+  position:relative;z-index:1;
+}
+.sidebar-cta-btn{
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+  background:#fff;color:#1a4490;
+  padding:.7rem 1.2rem;border-radius:9px;
+  font-weight:700;font-size:.88rem;text-decoration:none;
+  box-shadow:0 6px 20px rgba(0,0,0,.18);
+  transition:all .2s ease;position:relative;z-index:1;
+}
+.sidebar-cta-btn:hover{background:#eff6ff;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.22)}
+.sidebar-info{
+  background:var(--gris-claro);
+  border:1px solid var(--line-2);
+  border-radius:14px;
+  padding:1.2rem 1.3rem;
+}
+.sidebar-info h4{
+  font-size:.78rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:.9rem;
+}
+.sidebar-info ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.sidebar-info ul li{
+  font-size:.84rem;color:var(--text);
+  display:flex;align-items:flex-start;gap:.5rem;line-height:1.4;
+}
+.sidebar-info ul li::before{content:'✓';color:#16a34a;font-weight:700;flex-shrink:0}
+[data-theme="dark"] .sidebar-cta{background:linear-gradient(155deg,#0f172a 0%,#1e3a8a 60%,#0d2d6b 100%)}
+[data-theme="dark"] .sidebar-info{background:rgba(30,41,59,.8);border-color:rgba(99,179,237,.15)}
+[data-theme="dark"] .sidebar-info h4{color:#94a3b8}
+[data-theme="dark"] .sidebar-info ul li{color:#e2e8f0}
 </style>
 </head>
 <body>
@@ -634,17 +704,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ══ CONTENIDO PRINCIPAL ══ -->
+<div class="page-layout">
 <main class="content-wrap" id="contentWrap" aria-label="Áreas jurídicas de OpenLexIura">
-
-<!-- CTA CONSULTAS SUPERIOR -->
-<div class="cta-portal cta-portal--top">
-  <div class="cta-portal-inner">
-    <p class="cta-portal-tag">Consulta gratuita</p>
-    <h2>¿Tienes una duda legal concreta?</h2>
-    <p>Cuéntanos tu caso y te respondemos en menos de 24 horas, sin registro y sin coste.</p>
-    <a href="consultas.html" class="cta-portal-btn">Hacer una consulta gratuita →</a>
-  </div>
-</div>
 
   <!-- TODAS LAS ÁREAS -->
   <p class="seccion-label" data-block="1">
@@ -668,6 +729,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
 </main>
+  <!-- SIDEBAR DERECHO -->
+  <aside class="sidebar" aria-label="Panel lateral">
+    <!-- CTA consultas -->
+    <div class="sidebar-cta">
+      <span class="sidebar-cta-tag">Consulta gratuita</span>
+      <h3>¿Tienes una duda legal?</h3>
+      <p>Cuéntanos tu caso y te respondemos en menos de 24&nbsp;horas, sin registro y sin coste.</p>
+      <a href="consultas.html" class="sidebar-cta-btn">Consultar gratis →</a>
+    </div>
+    <!-- Info de confianza -->
+    <div class="sidebar-info">
+      <h4>Por qué OpenLexIura</h4>
+      <ul>
+        <li>Información verificada por juristas</li>
+        <li>Legislación española vigente</li>
+        <li>Sin registro ni coste</li>
+        <li>Lenguaje claro, sin tecnicismos</li>
+        <li>Actualizado en 2026</li>
+      </ul>
+    </div>
+  </aside>
+</div>
 
 <!-- ══ TEXTO EDITORIAL ══ -->
 <section class="editorial-block" aria-label="Sobre OpenLexIura">
