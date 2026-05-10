@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ══ SEO PRIMARY ══ -->
-  <title>Portal Jurídico — Todas las Áreas Legales en España | OpenLexIura</title>
+  <title>Portal Jurídico: Todas las Áreas Legales | OpenLexIura</title>
   <meta name="description" content="Información jurídica gratuita en España organizada por área: alquiler, trabajo, impuestos, herencias, consumo, divorcio y más. Artículos claros sin tecnicismos. OpenLexIura.">
   <meta name="keywords" content="consultas legales España, derecho laboral, alquiler, herencias, impuestos, consumo, divorcio, extranjería, información jurídica gratuita">
   <meta name="author" content="OpenLexIura">
@@ -25,14 +25,14 @@
   <!-- ══ OPEN GRAPH ══ -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://openlexiura.es/portal.html">
-  <meta property="og:title" content="Portal Jurídico — Todas las Áreas Legales en España | OpenLexIura">
+  <meta property="og:title" content="Portal Jurídico: Todas las Áreas Legales | OpenLexIura">
   <meta property="og:description" content="Accede a información jurídica gratuita sobre alquiler, trabajo, impuestos, herencias, consumo, divorcio y más. Sin registro ni coste.">
   <meta property="og:image" content="https://openlexiura.es/Icono.png">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="OpenLexIura">
 
   <!-- ══ TWITTER CARD ══ -->
-  <meta name="twitter:card" content="https://openlexiura.es/Icono.png">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://openlexiura.es/portal.html">
   <meta name="twitter:title" content="Portal Jurídico · OpenLexIura">
   <meta name="twitter:description" content="Consultas legales gratuitas en España: alquiler, trabajo, herencias, impuestos y más. Sin registro.">
@@ -40,44 +40,95 @@
 
   <!-- ══ SCHEMA.ORG JSON-LD ══ -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type":"ListItem","position":1,"name":"Inicio","item":"https://openlexiura.es/"},
-          {"@type":"ListItem","position":2,"name":"Portal Legal","item":"https://openlexiura.es/portal.html"}
-        ]
-      },
-      {
-        "@type": "CollectionPage",
-        "name": "Portal Jurídico — Todas las Áreas Legales",
-        "description": "Información jurídica gratuita en España organizada por área: alquiler, trabajo, impuestos, herencias, consumo, divorcio, extranjería y más.",
-        "url": "https://openlexiura.es/portal.html",
-        "publisher": {"@type":"Organization","name":"OpenLexIura","url":"https://openlexiura.es/"},
-        "inLanguage": "es"
-      },
-      {
-        "@type": "ItemList",
-        "name": "Áreas legales — OpenLexIura",
-        "itemListElement": [
-          {"@type":"ListItem","position":1,"name":"Vivienda y Propiedad","url":"https://openlexiura.es/Vivienda/portal.html"},
-          {"@type":"ListItem","position":2,"name":"Alquiler y Arrendamientos","url":"https://openlexiura.es/Alquiler/portal.html"},
-          {"@type":"ListItem","position":3,"name":"Consumo y Compras","url":"https://openlexiura.es/Consumo/portal.html"},
-          {"@type":"ListItem","position":4,"name":"Impuestos y Fiscalidad","url":"https://openlexiura.es/Impuestos/portal.html"},
-          {"@type":"ListItem","position":5,"name":"Derechos del Trabajador","url":"https://openlexiura.es/Trabajo/portal.html"},
-          {"@type":"ListItem","position":6,"name":"Herencias y Sucesiones","url":"https://openlexiura.es/Herencias/portal.html"},
-          {"@type":"ListItem","position":7,"name":"Divorcio y Familia","url":"https://openlexiura.es/Divorcio-Familia/portal.html"},
-          {"@type":"ListItem","position":8,"name":"Accidentes y Tráfico","url":"https://openlexiura.es/Accidentes-Multas/portal.html"},
-          {"@type":"ListItem","position":9,"name":"Deudas y Recobro","url":"https://openlexiura.es/Deudas/portal.html"},
-          {"@type":"ListItem","position":10,"name":"Extranjería e Inmigración","url":"https://openlexiura.es/Extranjeria/portal.html"},
-          {"@type":"ListItem","position":11,"name":"Delitos y Derecho Penal","url":"https://openlexiura.es/DerechoPenal/portal.html"}
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Inicio","item":"https://openlexiura.es"},
+        {"@type":"ListItem","position":2,"name":"Portal Legal","item":"https://openlexiura.es/portal.html"}
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Portal Jurídico: Todas las Áreas Legales",
+      "description": "Información jurídica gratuita en España organizada por área: alquiler, trabajo, impuestos, herencias, consumo, divorcio, deudas, tráfico, derecho penal y extranjería.",
+      "url": "https://openlexiura.es/portal.html",
+      "inLanguage": "es",
+      "publisher": {"@type":"Organization","name":"OpenLexIura","url":"https://openlexiura.es"},
+      "hasPart": [
+        {"@type":"WebPage","name":"Trabajo","url":"https://openlexiura.es/Trabajo/portal.html"},
+        {"@type":"WebPage","name":"Alquiler","url":"https://openlexiura.es/Alquiler/portal.html"},
+        {"@type":"WebPage","name":"Vivienda","url":"https://openlexiura.es/Vivienda/portal.html"},
+        {"@type":"WebPage","name":"Herencias","url":"https://openlexiura.es/Herencias/portal.html"},
+        {"@type":"WebPage","name":"Impuestos","url":"https://openlexiura.es/Impuestos/portal.html"},
+        {"@type":"WebPage","name":"Consumo","url":"https://openlexiura.es/Consumo/portal.html"},
+        {"@type":"WebPage","name":"Divorcio y Familia","url":"https://openlexiura.es/Divorcio-Familia/portal.html"},
+        {"@type":"WebPage","name":"Deudas","url":"https://openlexiura.es/Deudas/portal.html"},
+        {"@type":"WebPage","name":"Accidentes y Tráfico","url":"https://openlexiura.es/Accidentes-Multas/portal.html"},
+        {"@type":"WebPage","name":"Derecho Penal","url":"https://openlexiura.es/DerechoPenal/portal.html"},
+        {"@type":"WebPage","name":"Extranjería","url":"https://openlexiura.es/Extranjeria/portal.html"}
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Áreas jurídicas de OpenLexIura",
+      "numberOfItems": 11,
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Derechos del Trabajador","url":"https://openlexiura.es/Trabajo/portal.html"},
+        {"@type":"ListItem","position":2,"name":"Alquiler y Arrendamientos","url":"https://openlexiura.es/Alquiler/portal.html"},
+        {"@type":"ListItem","position":3,"name":"Vivienda y Propiedad","url":"https://openlexiura.es/Vivienda/portal.html"},
+        {"@type":"ListItem","position":4,"name":"Herencias y Sucesiones","url":"https://openlexiura.es/Herencias/portal.html"},
+        {"@type":"ListItem","position":5,"name":"Impuestos y Fiscalidad","url":"https://openlexiura.es/Impuestos/portal.html"},
+        {"@type":"ListItem","position":6,"name":"Consumo y Compras","url":"https://openlexiura.es/Consumo/portal.html"},
+        {"@type":"ListItem","position":7,"name":"Divorcio y Familia","url":"https://openlexiura.es/Divorcio-Familia/portal.html"},
+        {"@type":"ListItem","position":8,"name":"Deudas y Recobro","url":"https://openlexiura.es/Deudas/portal.html"},
+        {"@type":"ListItem","position":9,"name":"Accidentes y Tráfico","url":"https://openlexiura.es/Accidentes-Multas/portal.html"},
+        {"@type":"ListItem","position":10,"name":"Delitos y Derecho Penal","url":"https://openlexiura.es/DerechoPenal/portal.html"},
+        {"@type":"ListItem","position":11,"name":"Extranjería e Inmigración","url":"https://openlexiura.es/Extranjeria/portal.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es OpenLexIura?",
+          "acceptedAnswer": {"@type":"Answer","text":"OpenLexIura es un portal de información jurídica gratuita en español orientado al ciudadano. Ofrece respuestas claras sobre alquiler, trabajo, herencias, impuestos, consumo y más áreas del derecho, sin tecnicismos y sin registro."}
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta consultar en OpenLexIura?",
+          "acceptedAnswer": {"@type":"Answer","text":"El acceso es completamente gratuito. No se requiere registro ni pago para consultar los artículos ni para enviar una consulta personalizada."}
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué áreas jurídicas cubre el portal?",
+          "acceptedAnswer": {"@type":"Answer","text":"El portal cubre 11 áreas: Trabajo, Alquiler, Vivienda, Herencias, Impuestos, Consumo, Divorcio y Familia, Deudas, Accidentes y Tráfico, Derecho Penal y Extranjería."}
+        },
+        {
+          "@type": "Question",
+          "name": "¿La información es válida para toda España?",
+          "acceptedAnswer": {"@type":"Answer","text":"Sí. Los contenidos se basan en la legislación estatal española vigente (Código Civil, Estatuto de los Trabajadores, LAU, etc.) e indican cuando existen variaciones por comunidad autónoma."}
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://openlexiura.es",
+      "name": "OpenLexIura",
+      "description": "Portal de información jurídica gratuita en español",
+      "inLanguage": "es",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {"@type":"EntryPoint","urlTemplate":"https://openlexiura.es/portal.html?q={search_term_string}"},
+        "query-input": "required name=search_term_string"
       }
-    ]
-  }
-  </script>
+    }
+  ]
+}
+</script>
 
 <style>
 :root{
@@ -604,6 +655,16 @@ footer a:hover{opacity:.7}
 [data-theme="dark"] .sidebar-info{background:rgba(30,41,59,.8);border-color:rgba(99,179,237,.15)}
 [data-theme="dark"] .sidebar-info h4{color:#94a3b8}
 [data-theme="dark"] .sidebar-info ul li{color:#e2e8f0}
+
+/* ══ SKIP LINK ══ */
+.skip-link{
+  position:absolute;top:-999px;left:1rem;
+  background:var(--azul);color:#fff;
+  padding:.6rem 1.2rem;border-radius:0 0 8px 8px;
+  font-weight:700;font-size:.9rem;text-decoration:none;
+  z-index:9999;transition:top .2s;
+}
+.skip-link:focus{top:0}
 </style>
 </head>
 <body>
@@ -611,6 +672,7 @@ footer a:hover{opacity:.7}
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+<a href="#contentWrap" class="skip-link">Saltar al contenido</a>
 <canvas id="particleCanvas"></canvas>
 
 <header>
@@ -899,7 +961,7 @@ function renderAll(list){
     card.innerHTML=`
       <div class="card-icon-wrap" aria-hidden="true">${a.icon}</div>
       <div class="card-body">
-        <h2>${a.titulo}</h2>
+        <span class="card-title" role="heading" aria-level="2">${a.titulo}</span>
         <p>${a.desc}</p>
         <span class="card-tag">${a.tag}</span>
       </div>
@@ -933,7 +995,7 @@ function filterAreas(q){
       card.setAttribute('role','listitem');
       card.href=a.url;
       card.style.animationDelay=(i*.055)+'s';
-      card.innerHTML=`<div class="area-card-bg" style="background-image:url('${a.img}')"></div><div class="card-icon-wrap" aria-hidden="true">${a.icon}</div><div class="card-body"><h2>${a.titulo}</h2><p>${a.desc}</p><span class="card-tag">${a.tag}</span></div><span class="card-arrow" aria-hidden="true">Ver →</span>`;
+      card.innerHTML=`<div class="area-card-bg" style="background-image:url('${a.img}')"></div><div class="card-icon-wrap" aria-hidden="true">${a.icon}</div><div class="card-body"><span class="card-title" role="heading" aria-level="2">${a.titulo}</span><p>${a.desc}</p><span class="card-tag">${a.tag}</span></div><span class="card-arrow" aria-hidden="true">Ver →</span>`;
       grid.appendChild(card);
     });
     document.getElementById('heroCount').textContent='';
