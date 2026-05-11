@@ -222,9 +222,9 @@ function renderAll(list){
     labels.forEach(l=>{if(+l.dataset.block===b)l.style.display=hasItems?'flex':'none'});
   });
   list.forEach((a,i)=>{
-    const card=document.createElement('div');
+    const card=document.createElement('a');
     card.className='art-card';card.style.animationDelay=(i*.04)+'s';
-    card.onclick=()=>window.location.href=a.url;
+    card.href=a.url;card.style.textDecoration='none';card.style.color='inherit';
        card.innerHTML=`<div class="art-top"><span class="art-emoji">${a.emoji}</span><div class="art-titles"><h3>${a.titulo}</h3><span class="art-tag">#${a.id} · ${a.tags[0]}</span></div></div><p>${a.subtitulo}</p><span class="art-arrow">Leer artículo →</span>`;
     document.getElementById('grid-'+a.block).appendChild(card);
     bindCursor(card);
