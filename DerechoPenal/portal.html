@@ -465,7 +465,7 @@ const ARTICULOS=[
     keywords:'delitos pena cárcel, delitos graves España, prisión permanente revisable'
   }
 ];
-
+.area-card{text-decoration:none;color:inherit;
 function hexBg(hex){return hex+'18'}
 function hexBorder(hex){return hex+'38'}
 function hexShadow(hex){return hex+'28'}
@@ -479,7 +479,7 @@ function renderGrid(list){
   const q=document.getElementById('portalSearch').value.trim();
   cnt.textContent=q?`${list.length} resultado${list.length!==1?'s':''}` :'';
   grid.innerHTML=list.map((a,i)=>`
-    <div class="area-card" onclick="window.location.href='${a.url}'"
+            <a href="${a.url}" class="area-card"
       style="--card-color:${a.color};--card-bg:${hexBg(a.color)};--card-border:${hexBorder(a.color)};--card-shadow:${hexShadow(a.color)};animation-delay:${i*.055}s">
       <div class="area-icon">${a.icon}</div>
       <span class="card-tag">${a.tag}</span>
@@ -487,7 +487,7 @@ function renderGrid(list){
       <p>${a.desc}</p>
       <p style="font-size:.78rem;color:#94a3b8;font-style:italic;line-height:1.5;border-top:1px solid rgba(0,0,0,.05);padding-top:.6rem;margin-top:.1rem">"${a.snippet}"</p>
       <span class="area-arrow">Leer artículo →</span>
-    </div>
+    </a>
   `).join('');
   document.querySelectorAll('.area-card').forEach(bindCursor);
 }
