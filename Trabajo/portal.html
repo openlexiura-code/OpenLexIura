@@ -378,6 +378,8 @@ header nav a.active{background:var(--gris-claro);color:var(--azul);font-weight:6
   cursor:pointer;
   animation:cardIn .5s cubic-bezier(.22,1,.36,1) both;
   text-align:left;
+  text-decoration:none;
+  color:inherit;
 }
 /* imagen de fondo por artículo */
 .art-card-bg{
@@ -727,7 +729,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if(!slides.length)return;
   // preload
   slides.forEach(s=>{
-    const url=s.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/,'$1');
+    const url=s.style.backgroundImage.replace(/url\(['""]?(.*?)['""]?\)/,'$1');
     const img=new Image();img.src=url;
   });
   function goTo(n){
@@ -790,11 +792,13 @@ function renderAll(list){
   });
 
   list.forEach((a,i)=>{
-    const card=document.createElement('article');
+    const card=document.createElement('a'); // Enlace real rastreable por Google
+    card.href=a.url; // URL real para que Googlebot la encuentre
     card.className='art-card';
     card.setAttribute('role','listitem');
     card.style.animationDelay=(i*.055)+'s';
-    card.onclick=()=>window.location.href=a.url;
+    card.style.textDecoration='none'; // Sin subrayado
+    card.style.color='inherit';
     card.innerHTML=`
       <div class="art-card-bg" style="background-image:url('${a.img}')"></div>
       <div class="art-left" aria-hidden="true">
