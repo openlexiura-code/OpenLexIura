@@ -53,7 +53,7 @@
     {
       "@type": "CollectionPage",
       "name": "Portal Jurídico: Todas las Áreas Legales",
-      "description": "Información jurídica gratuita en España organizada por área: alquiler, trabajo, impuestos, herencias, consumo, divorcio, deudas, tráfico, derecho penal y extranjería.",
+      "description": "Información jurídica gratuita en España organizada por área: alquiler, trabajo, impuestos, herencias, consumo, divorcio, deudas, tráfico, derecho penal, extranjería y jubilación.",
       "url": "https://openlexiura.es/portal.html",
       "inLanguage": "es",
       "publisher": {"@type":"Organization","name":"OpenLexIura","url":"https://openlexiura.es"},
@@ -68,13 +68,14 @@
         {"@type":"WebPage","name":"Deudas","url":"https://openlexiura.es/Deudas/portal.html"},
         {"@type":"WebPage","name":"Accidentes y Tráfico","url":"https://openlexiura.es/Accidentes-Multas/portal.html"},
         {"@type":"WebPage","name":"Derecho Penal","url":"https://openlexiura.es/DerechoPenal/portal.html"},
-        {"@type":"WebPage","name":"Extranjería","url":"https://openlexiura.es/Extranjeria/portal.html"}
+        {"@type":"WebPage","name":"Extranjería","url":"https://openlexiura.es/Extranjeria/portal.html"},
+        {"@type":"WebPage","name":"Jubilación y Pensiones","url":"https://openlexiura.es/jubilacion/portal.html"}
       ]
     },
     {
       "@type": "ItemList",
       "name": "Áreas jurídicas de OpenLexIura",
-      "numberOfItems": 11,
+      "numberOfItems": 12,
       "itemListElement": [
         {"@type":"ListItem","position":1,"name":"Derechos del Trabajador","url":"https://openlexiura.es/Trabajo/portal.html"},
         {"@type":"ListItem","position":2,"name":"Alquiler y Arrendamientos","url":"https://openlexiura.es/Alquiler/portal.html"},
@@ -86,7 +87,8 @@
         {"@type":"ListItem","position":8,"name":"Deudas y Recobro","url":"https://openlexiura.es/Deudas/portal.html"},
         {"@type":"ListItem","position":9,"name":"Accidentes y Tráfico","url":"https://openlexiura.es/Accidentes-Multas/portal.html"},
         {"@type":"ListItem","position":10,"name":"Delitos y Derecho Penal","url":"https://openlexiura.es/DerechoPenal/portal.html"},
-        {"@type":"ListItem","position":11,"name":"Extranjería e Inmigración","url":"https://openlexiura.es/Extranjeria/portal.html"}
+        {"@type":"ListItem","position":11,"name":"Extranjería e Inmigración","url":"https://openlexiura.es/Extranjeria/portal.html"},
+        {"@type":"ListItem","position":12,"name":"Jubilación y Pensiones","url":"https://openlexiura.es/jubilacion/portal.html"}
       ]
     },
     {
@@ -105,7 +107,7 @@
         {
           "@type": "Question",
           "name": "¿Qué áreas jurídicas cubre el portal?",
-          "acceptedAnswer": {"@type":"Answer","text":"El portal cubre 11 áreas: Trabajo, Alquiler, Vivienda, Herencias, Impuestos, Consumo, Divorcio y Familia, Deudas, Accidentes y Tráfico, Derecho Penal y Extranjería."}
+          "acceptedAnswer": {"@type":"Answer","text":"El portal cubre 12 áreas: Trabajo, Alquiler, Vivienda, Herencias, Impuestos, Consumo, Divorcio y Familia, Deudas, Accidentes y Tráfico, Derecho Penal, Extranjería y Jubilación."}
         },
         {
           "@type": "Question",
@@ -748,7 +750,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="search-wrap">
       <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="search" id="heroSearch"
-             placeholder="Busca: alquiler, despido, herencia, impuestos…"
+             placeholder="Busca: alquiler, despido, herencia, impuestos, jubilación…"
              oninput="filterAreas(this.value)" autocomplete="off"
              aria-label="Buscar área legal">
       <span class="search-count" id="heroCount" aria-live="polite"></span>
@@ -772,7 +774,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- TODAS LAS ÁREAS -->
   <p class="seccion-label" data-block="1">
     Áreas con artículos publicados
-    <span class="seccion-badge">11 áreas disponibles</span>
+    <span class="seccion-badge">12 áreas disponibles</span>
   </p>
   <div class="areas-grid" id="grid-1" role="list" data-section="1"></div>
 
@@ -929,6 +931,7 @@ const AREAS=[
   {id:9,block:1,icon:'🚗',titulo:'Accidentes y Tráfico',desc:'Parte amistoso, baremo de lesiones 2026, seguro que no paga y atropello de peatón.',tag:'tráfico',img:'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=70',url:'Accidentes-Multas/portal.html'},
   {id:10,block:1,icon:'⚖️',titulo:'Delitos y Derecho Penal',desc:'Denuncias, delitos leves, antecedentes penales, defensa penal y procedimiento judicial.',tag:'penal',img:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=70',url:'DerechoPenal/portal.html'},
   {id:11,block:1,icon:'🌍',titulo:'Extranjería e Inmigración',desc:'NIE, arraigo social, reagrupación familiar y nacionalidad por residencia en España.',tag:'extranjería',img:'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=70',url:'Extranjeria/portal.html'},
+  {id:12,block:1,icon:'🏖️',titulo:'Jubilación y Pensiones',desc:'Edad, cálculo de la pensión, jubilación anticipada, viudedad, autónomos y calculadoras interactivas 2026.',tag:'jubilación',img:'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=70',url:'jubilacion/portal.html'},
 ];
 
 /* ══ RENDER ══ */
@@ -959,6 +962,7 @@ function renderAll(list){
     card.href=a.url;
     card.style.animationDelay=(i*.055)+'s';
     card.innerHTML=`
+      <div class="area-card-bg" style="background-image:url('${a.img}')"></div>
       <div class="card-icon-wrap" aria-hidden="true">${a.icon}</div>
       <div class="card-body">
         <span class="card-title" role="heading" aria-level="2">${a.titulo}</span>
@@ -986,18 +990,7 @@ function filterAreas(q){
   document.getElementById('bottomSearch').value=q;
   const query=q.toLowerCase().trim();
   if(!query){
-    // Restaurar cards estáticas
-    const grid=document.getElementById('grid-1');
-    grid.innerHTML='';
-    AREAS.forEach((a,i)=>{
-      const card=document.createElement('a');
-      card.className='area-card';
-      card.setAttribute('role','listitem');
-      card.href=a.url;
-      card.style.animationDelay=(i*.055)+'s';
-      card.innerHTML=`<div class="area-card-bg" style="background-image:url('${a.img}')"></div><div class="card-icon-wrap" aria-hidden="true">${a.icon}</div><div class="card-body"><span class="card-title" role="heading" aria-level="2">${a.titulo}</span><p>${a.desc}</p><span class="card-tag">${a.tag}</span></div><span class="card-arrow" aria-hidden="true">Ver →</span>`;
-      grid.appendChild(card);
-    });
+    renderAll(AREAS);
     document.getElementById('heroCount').textContent='';
     document.getElementById('bottomCount').textContent='';
     document.getElementById('noResults').style.display='none';
