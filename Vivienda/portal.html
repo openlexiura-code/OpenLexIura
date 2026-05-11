@@ -565,10 +565,10 @@ function renderAll(list){
   });
 
   list.forEach((a,i)=>{
-    const card=document.createElement('div');
+    const card=document.createElement('a');
     card.className='art-card';
     card.style.animationDelay=(i*.04)+'s';
-    card.onclick=()=>window.location.href=a.url;
+    card.href=a.url;card.style.textDecoration='none';card.style.color='inherit';
     card.innerHTML=`
       <div class="art-top">
         <span class="art-emoji">${a.emoji}</span>
