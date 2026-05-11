@@ -14,6 +14,8 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://openlexiura.es/jubilacion/cuanto-me-corresponde-de-jubilacion-como-calcular-jubilacion.html">
   <meta property="og:site_name" content="OpenLexIura">
+  <link rel="icon" type="image/png" href="/Icono.png">
+  <link rel="apple-touch-icon" href="/Icono.png">
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Tengo que elegir yo entre el Método A y el Método B?","acceptedAnswer":{"@type":"Answer","text":"No. Desde enero de 2026 la Seguridad Social calcula de oficio los dos métodos y te aplica el más beneficioso."}},{"@type":"Question","name":"¿Cuántos años mínimo necesito haber cotizado?","acceptedAnswer":{"@type":"Answer","text":"Al menos 15 años cotizados, con 2 de ellos dentro de los 15 anteriores a la jubilación."}},{"@type":"Question","name":"¿Cuánto cobraré si solo he cotizado 15 años?","acceptedAnswer":{"@type":"Answer","text":"El 50 % de tu base reguladora. El porcentaje sube cada mes hasta el 100 % con 36 años y 6 meses."}},{"@type":"Question","name":"¿Cuál es la pensión máxima en 2026?","acceptedAnswer":{"@type":"Answer","text":"3.359,60 € brutos al mes en 14 pagas."}},{"@type":"Question","name":"¿Cómo me afectan los años sin cotizar?","acceptedAnswer":{"@type":"Answer","text":"Se rellenan con bases mínimas: 100 % los primeros 60 meses, 80 % del 61 al 84, 50 % el resto."}},{"@type":"Question","name":"¿Puedo cobrar más del 100 %?","acceptedAnswer":{"@type":"Answer","text":"Sí, retrasando la jubilación. Cada año extra suma un 4 % adicional."}},{"@type":"Question","name":"¿Cuándo tengo derecho al 100 %?","acceptedAnswer":{"@type":"Answer","text":"En 2026 con 36 años y 6 meses cotizados."}},{"@type":"Question","name":"¿Qué es el MEI?","acceptedAnswer":{"@type":"Answer","text":"Una cotización extra del 0,9 % para reforzar el fondo de pensiones. No aumenta tu futura pensión."}}]}</script>
 
@@ -208,12 +210,12 @@ strong{font-weight:700}
 .site-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--c-ink);font-family:var(--f-sans);font-weight:800;font-size:var(--t-sm);letter-spacing:-.02em}
 .logo-mark{
   width:30px;height:30px;
-  background:linear-gradient(135deg,var(--c-brand-mid) 0%,var(--c-brand) 100%);
   border-radius:var(--r-md);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  overflow:hidden;
   box-shadow:0 2px 8px var(--c-brand-glow);
 }
-.logo-mark svg{color:#fff}
+.logo-mark img{width:100%;height:100%;object-fit:cover}
 
 .hdr-nav{display:flex;align-items:center;gap:var(--s5);list-style:none}
 .hdr-nav a{
@@ -223,6 +225,7 @@ strong{font-weight:700}
   transition:color var(--tr),border-color var(--tr);
 }
 .hdr-nav a:hover{color:var(--c-brand);border-bottom-color:var(--c-brand)}
+.hdr-nav a.active{color:var(--c-brand);border-bottom-color:var(--c-brand)}
 
 .hdr-actions{display:flex;align-items:center;gap:var(--s2)}
 .icon-btn{
@@ -683,14 +686,13 @@ details[open] summary{
 <header class="site-header">
   <a href="https://openlexiura.es/" class="site-logo">
     <div class="logo-mark" aria-hidden="true">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-      </svg>
+      <img src="/Icono.png" alt="OpenLexIura">
     </div>
     OpenLexIura
   </a>
   <nav aria-label="Navegación principal">
     <ul class="hdr-nav">
+      <li><a href="https://openlexiura.es/jubilacion/portal.html" class="active">Jubilación</a></li>
       <li><a href="https://openlexiura.es/Trabajo/portal.html">Trabajo</a></li>
       <li><a href="https://openlexiura.es/Vivienda/portal.html">Vivienda</a></li>
       <li><a href="https://openlexiura.es/Alquiler/portal.html">Alquiler</a></li>
