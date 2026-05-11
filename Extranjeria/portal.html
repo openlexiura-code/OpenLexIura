@@ -287,10 +287,10 @@ function renderAll(list){
     labels.forEach(l=>{if(+l.dataset.block===b)l.style.display=hasItems?'flex':'none'});
   });
   list.forEach((a,i)=>{
-    const card=document.createElement('div');
+    const card=document.createElement('a');
     card.className='art-card'+(a.nuevo?' nuevo':'');
     card.style.animationDelay=(i*.04)+'s';
-    card.onclick=()=>window.location.href=a.url;
+    card.href=a.url;card.style.textDecoration='none';card.style.color='inherit';
     card.innerHTML=`
       <span class="art-nuevo-badge">Nuevo 2026</span>
       <div class="art-top">
