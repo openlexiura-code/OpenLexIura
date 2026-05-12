@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tema 8 — Defraudaciones | Derecho Penal Económico</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #13161d;
+    --card: #1a1e28;
+    --border: #252a38;
+    --red: #e63946;
+    --red-dim: #9b1b26;
+    --gold: #f4a261;
+    --gold-dim: #a0622e;
+    --teal: #2ec4b6;
+    --teal-dim: #1a7a72;
+    --blue: #4895ef;
+    --blue-dim: #1f4f8f;
+    --purple: #9b59b6;
+    --text: #e8eaf0;
+    --text-muted: #8892a4;
+    --text-dim: #5a6478;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, #0d0f14 0%, #1a0a10 50%, #0d1520 100%);
+    border-bottom: 2px solid var(--red);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '⚖';
+    position: absolute;
+    font-size: 320px;
+    opacity: 0.04;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .site-header .badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .site-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: #fff;
+  }
+  .site-header h1 span { color: var(--red); }
+  .site-header p {
+    margin-top: 16px;
+    color: var(--text-muted);
+    font-size: 15px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── NAV ── */
+  .toc {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .toc a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .toc a:hover { color: #fff; border-color: var(--red); background: rgba(230,57,70,.12); }
+
+  /* ── CONTAINER ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 70px 0 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    color: #fff;
+  }
+
+  /* ── HERO CARD (with image) ── */
+  .hero-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 36px;
+  }
+  .hero-card .hc-img {
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .hero-card .hc-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 60%, var(--card));
+  }
+  .hero-card .hc-body {
+    background: var(--card);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-card .hc-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+  .hero-card .hc-body p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  @media(max-width:700px) { .hero-card { grid-template-columns: 1fr; } }
+
+  /* ── FLOW CHAIN ── */
+  .flow-chain {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 36px 0;
+    flex-wrap: wrap;
+  }
+  .flow-step {
+    flex: 1;
+    min-width: 160px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+  }
+  .flow-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: var(--red);
+    z-index: 2;
+  }
+  .flow-step .fs-icon { font-size: 36px; margin-bottom: 10px; display: block; }
+  .flow-step .fs-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .flow-step .fs-title { font-weight: 600; color: #fff; font-size: 15px; }
+  .flow-step .fs-desc { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+
+  /* ── IMAGE GRID ── */
+  .img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 36px 0;
+  }
+  .img-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card);
+  }
+  .img-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+  .img-card .ic-body { padding: 20px; }
+  .img-card .ic-body h4 { color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .img-card .ic-body p { color: var(--text-muted); font-size: 13px; line-height: 1.6; }
+
+  /* ── LAW BLOCK ── */
+  .law-block {
+    background: linear-gradient(135deg, #0f1520, #131a2a);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .law-block .lb-art {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .law-block p { color: var(--text); font-size: 15px; font-style: italic; line-height: 1.75; }
+  .law-block strong { color: var(--gold); font-style: normal; }
+
+  /* ── PENALTY BOX ── */
+  .penalty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .penalty-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px;
+    text-align: center;
+  }
+  .penalty-card .pc-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .penalty-card .pc-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  .penalty-card .pc-detail { font-size: 14px; color: var(--text); margin-top: 10px; line-height: 1.5; }
+  .pc-red .pc-num { color: var(--red); }
+  .pc-gold .pc-num { color: var(--gold); }
+  .pc-teal .pc-num { color: var(--teal); }
+  .pc-blue .pc-num { color: var(--blue); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: rgba(230,57,70,0.08);
+    border: 1px solid rgba(230,57,70,0.3);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin: 24px 0;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .callout .co-icon { font-size: 28px; flex-shrink: 0; }
+  .callout .co-text h4 { color: var(--red); font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .callout .co-text p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+  .callout.gold { background: rgba(244,162,97,0.08); border-color: rgba(244,162,97,0.3); }
+  .callout.gold .co-text h4 { color: var(--gold); }
+  .callout.teal { background: rgba(46,196,182,0.08); border-color: rgba(46,196,182,0.3); }
+  .callout.teal .co-text h4 { color: var(--teal); }
+
+  /* ── QUOTE ── */
+  .jurisprudencia {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin: 28px 0;
+    position: relative;
+  }
+  .jurisprudencia::before {
+    content: '❝';
+    font-size: 60px;
+    color: var(--red-dim);
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    line-height: 1;
+    opacity: 0.5;
+  }
+  .jurisprudencia blockquote {
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    padding-left: 30px;
+    margin-bottom: 14px;
+  }
+  .jurisprudencia cite {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 1px;
+    padding-left: 30px;
+    display: block;
+  }
+
+  /* ── CONCURSO DIAGRAM ── */
+  .concurso-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 28px 0;
+  }
+  .concurso-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .concurso-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .concurso-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+  .concurso-card .verdict {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .verdict-dual { background: rgba(230,57,70,0.15); color: var(--red); }
+  .verdict-solo { background: rgba(46,196,182,0.15); color: var(--teal); }
+
+  /* ── TAGS ── */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    border: 1px solid;
+  }
+  .tag-r { background: rgba(230,57,70,.1); color: var(--red); border-color: rgba(230,57,70,.3); }
+  .tag-g { background: rgba(244,162,97,.1); color: var(--gold); border-color: rgba(244,162,97,.3); }
+  .tag-t { background: rgba(46,196,182,.1); color: var(--teal); border-color: rgba(46,196,182,.3); }
+  .tag-b { background: rgba(72,149,239,.1); color: var(--blue); border-color: rgba(72,149,239,.3); }
+
+  /* ── IMAGE FULL WIDTH ── */
+  .img-full {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 28px 0;
+    border: 1px solid var(--border);
+  }
+
+  /* ── SPLIT ── */
+  .split-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 28px 0;
+    align-items: start;
+  }
+  @media(max-width:700px) { .split-2, .concurso-grid { grid-template-columns: 1fr; } }
+
+  /* ── LIST STYLED ── */
+  .styled-list { list-style: none; margin: 16px 0; }
+  .styled-list li {
+    padding: 10px 0 10px 28px;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--text);
+    position: relative;
+  }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-size: 10px;
+    top: 14px;
+  }
+  .styled-list li strong { color: var(--gold); }
+
+  /* ── SCROLL PROGRESS ── */
+  #progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--red); z-index: 9999; width: 0%; transition: width 0.1s; }
+
+  /* ── HIGHLIGHT BUBBLE ── */
+  .bubble {
+    display: inline-block;
+    background: rgba(230,57,70,0.15);
+    border: 1px solid rgba(230,57,70,0.4);
+    color: var(--red);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* img-text-side */
+  .side-img {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 28px;
+    align-items: start;
+    margin: 28px 0;
+  }
+  .side-img img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  @media(max-width:700px) { .side-img { grid-template-columns: 1fr; } }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ════════════════════════════════ HEADER ════════════════════════════════ -->
+<header class="site-header">
+  <div class="badge">Derecho Penal Económico · Tema 8</div>
+  <h1>Las <span>Defraudaciones</span></h1>
+  <p>Estafa, fraude informático, estafas específicas y tipos cualificados</p>
+</header>
+
+<!-- NAV -->
+<nav class="toc">
+  <a href="#intro">Introducción</a>
+  <a href="#teoria">Teoría General</a>
+  <a href="#elementos">Elementos</a>
+  <a href="#fraude-inf">Fraude Informático</a>
+  <a href="#triangular">Estafa Triangular</a>
+  <a href="#perjuicio">Perjuicio</a>
+  <a href="#consumacion">Consumación</a>
+  <a href="#concurso">Concurso</a>
+  <a href="#cualificados">Tipos Cualificados</a>
+  <a href="#especificas">Estafas Específicas</a>
+  <a href="#pj">Personas Jurídicas</a>
+</nav>
+
+<!-- ════════════════════════════════ SECCIÓN 1 ════════════════════════════════ -->
+<section id="intro" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 01</div>
+    <h2 class="section-title">Las Defraudaciones en el<br>Derecho Penal Patrimonial</h2>
+
+    <div class="hero-card">
+      <div class="hc-img" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80');"></div>
+      <div class="hc-body">
+        <h3>¿Qué son las defraudaciones?</h3>
+        <p>A diferencia de los delitos de apoderamiento (robo, hurto) donde la conducta es física y visible, en las defraudaciones la acción del sujeto es de carácter <strong>ideal</strong>: emplea <em>fraude y engaño</em> para obtener un beneficio patrimonial ilícito. Forman parte de las infracciones patrimoniales del Código Penal (Título XIII, Capítulo VI).</p>
+      </div>
+    </div>
+
+    <div class="img-grid">
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Robo vs Estafa">
+        <div class="ic-body">
+          <h4>🦾 Delitos de Apoderamiento</h4>
+          <p>Robo y hurto: acción física, visible, directa sobre los bienes. Conducta exterior y material.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="Engaño">
+        <div class="ic-body">
+          <h4>🎭 Delitos de Defraudación</h4>
+          <p>Estafa: acción ideal, basada en el engaño. La víctima <em>entrega voluntariamente</em> por error inducido.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80" alt="Patrimonio">
+        <div class="ic-body">
+          <h4>💼 Bien Jurídico Protegido</h4>
+          <p>El patrimonio ajeno (bienes, derechos, etc.). En algunos casos puede tener relevancia socioeconómica.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <div class="co-icon">📌</div>
+      <div class="co-text">
+        <h4>Elemento común: el ENGAÑO</h4>
+        <p>Todas las figuras de defraudación comparten un elemento transversal: la conducta engañosa del autor como medio para producir un error en la víctima que le lleve a realizar una disposición patrimonial perjudicial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 2 ════════════════════════════════ -->
+<section id="teoria" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 02</div>
+    <h2 class="section-title">Teoría General de la Estafa</h2>
+
+    <div class="side-img">
+      <img src="https://images.unsplash.com/photo-1521791055366-0d553872952f?w=600&q=80" alt="Código Penal">
+      <div>
+        <div class="law-block">
+          <div class="lb-art">Artículo 248.1 Código Penal</div>
+          <p>Cometen estafa los que, con <strong>ánimo de lucro</strong>, utilizaren <strong>engaño bastante</strong> para producir <strong>error en otro</strong>, induciéndolo a realizar un <strong>acto de disposición</strong> en perjuicio propio o ajeno.</p>
+        </div>
+        <div class="callout">
+          <div class="co-icon">⚡</div>
+          <div class="co-text">
+            <h4>La cadena causal es imprescindible</h4>
+            <p>Debe existir una relación de causa-efecto entre todos los elementos. Si se rompe en cualquier eslabón, <strong>no hay estafa</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLOW CHAIN -->
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin-bottom:20px;">⛓ La cadena causal de la estafa</h3>
+    <div class="flow-chain">
+      <div class="flow-step">
+        <span class="fs-icon">🎭</span>
+        <div class="fs-label">Paso 1</div>
+        <div class="fs-title">Engaño</div>
+        <div class="fs-desc">Bastante para producir error</div>
+      </div>
+      <div class="flow-step">
+        <span class="fs-icon">😵</span>
+        <div class="fs-label">Paso 2</div>
+        <div class="fs-title">Error</div>
+        <div class="fs-desc">Suposición falsa en la víctima</div>
+      </div>
+      <div class="flow-step">
+        <span class="fs-icon">🤝</span>
+        <div class="fs-label">Paso 3</div>
+        <div class="fs-title">Disposición</div>
+        <div class="fs-desc">Acto patrimonial voluntario (pero viciado)</div>
+      </div>
+      <div class="flow-step">
+        <span class="fs-icon">💸</span>
+        <div class="fs-label">Paso 4</div>
+        <div class="fs-title">Perjuicio</div>
+        <div class="fs-desc">Daño económico al sujeto pasivo</div>
+      </div>
+      <div class="flow-step">
+        <span class="fs-icon">🏴‍☠️</span>
+        <div class="fs-label">Resultado</div>
+        <div class="fs-title">Ánimo de Lucro</div>
+        <div class="fs-desc">Beneficio para el autor</div>
+      </div>
+    </div>
+
+    <!-- Negocios jurídicos criminalizados -->
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:22px; margin:40px 0 20px;">Negocios Jurídicos Criminalizados</h3>
+
+    <div class="img-grid">
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1664575599736-c5197c684128?w=600&q=80" alt="Contrato">
+        <div class="ic-body">
+          <h4>¿Qué son?</h4>
+          <p>Expresión del Tribunal Supremo para referirse a estafas comunes cometidas en el contexto de relaciones jurídico-civiles o mercantiles. No es un subtipo específico.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=600&q=80" alt="Firma contrato">
+        <div class="ic-body">
+          <h4>¿Cómo funcionan?</h4>
+          <p>Una parte finge querer cumplir el contrato cuando en realidad disimula su intención de no hacerlo. La otra parte cumple y sufre el perjuicio.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="jurisprudencia">
+      <blockquote>"Cuando en un contrato una de las partes disimula su verdadera intención, su genuino propósito de no cumplir las prestaciones a las que contractualmente se obligó y como consecuencia de ello la parte contraria, desconocedora de tal propósito, cumple lo pactado y realiza un acto de disposición del que se lucra y beneficia el otro, nos hallamos en presencia de la estafa conocida como negocio o contrato criminalizado"</blockquote>
+      <cite>STS 416/2015, de 22 de junio</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 3 ════════════════════════════════ -->
+<section id="elementos" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 03</div>
+    <h2 class="section-title">Tipo Objetivo: Los Elementos</h2>
+
+    <!-- ENGAÑO -->
+    <div class="side-img">
+      <img src="https://images.unsplash.com/photo-1509822929464-92b567566773?w=600&q=80" alt="Máscara engaño">
+      <div>
+        <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:22px; margin-bottom:16px;">1. La Conducta Engañosa</h3>
+        <ul class="styled-list">
+          <li><strong>Definición:</strong> Simulación o disimulación capaz de inducir a error a una o varias personas.</li>
+          <li><strong>Por acción:</strong> Afirmación de hechos falsos. Ej: "soy ex ministro" (falso); "es oro macizo" (es un baño).</li>
+          <li><strong>Por omisión:</strong> Callarse defectos que, de saberse, hubieran impedido firmar. Más controvertida.</li>
+          <li><strong>El engaño debe ser "bastante":</strong> Adecuado en abstracto para producir el error en la víctima concreta.</li>
+        </ul>
+        <div class="callout">
+          <div class="co-icon">⚖️</div>
+          <div class="co-text">
+            <h4>Principio de intervención mínima</h4>
+            <p>El concepto de engaño sólo se entiende junto al resto de elementos del tipo, respetando este principio. No todo engaño es penalmente relevante.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOBLE BAREMO -->
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin:36px 0 16px;">Doble Baremo Objetivo-Subjetivo del Engaño</h3>
+    <div class="concurso-grid">
+      <div class="concurso-card">
+        <h4>🛒 Víctimas Consumidores</h4>
+        <p>El art. 51.1 CE y la legislación de consumidores obligan a proporcionar <strong>mucha más información</strong>. Los deberes de veracidad son mayores. El umbral del engaño "bastante" se alcanza más fácilmente.</p>
+        <span class="verdict verdict-dual">Mayor protección</span>
+      </div>
+      <div class="concurso-card">
+        <h4>💼 Agentes Económicos Profesionales</h4>
+        <p>Se les presupone experiencia y capacidad crítica. Los deberes de información del vendedor/prestador son menores. El umbral del engaño es más alto.</p>
+        <span class="verdict verdict-solo">Menor protección</span>
+      </div>
+    </div>
+
+    <!-- ERROR Y DISPOSICIÓN -->
+    <img class="img-full" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80" alt="Transacción bancaria">
+
+    <div class="split-2">
+      <div>
+        <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin-bottom:16px;">2. El Error</h3>
+        <p style="color:var(--text-muted); font-size:15px;">Suposición falsa ocasionada como consecuencia del engaño. Es suficiente con que en abstracto mueva a realizar la disposición. El sujeto pasivo ha de tener <strong>capacidad de disponer</strong>.</p>
+      </div>
+      <div>
+        <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin-bottom:16px;">3. La Disposición Patrimonial</h3>
+        <ul class="styled-list">
+          <li>Entrega de una cosa</li>
+          <li>Prestación de un servicio</li>
+          <li>Realizar un pago</li>
+          <li>Renunciar a un crédito</li>
+        </ul>
+        <p style="color:var(--text-muted); font-size:14px; margin-top:10px;">Existe voluntad viciada de hacer la disposición.</p>
+      </div>
+    </div>
+
+    <!-- TIPO SUBJETIVO -->
+    <div class="callout gold">
+      <div class="co-icon">🎯</div>
+      <div class="co-text">
+        <h4>Tipo Subjetivo: Ánimo de Lucro</h4>
+        <p>Es un delito patrimonial de <em>enriquecimiento</em>. El dolo debe referirse a los cuatro elementos: engaño, error, disposición patrimonial y causación del daño. El ánimo de lucro es la finalidad del autor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 4 ════════════════════════════════ -->
+<section id="fraude-inf" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 04</div>
+    <h2 class="section-title">Fraude Informático<br><small style="font-size:50%;color:var(--text-muted)">Art. 249</small></h2>
+
+    <div class="hero-card">
+      <div class="hc-img" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80');"></div>
+      <div class="hc-body">
+        <h3>¿Qué es el fraude informático?</h3>
+        <p>El art. 249 prevé este tipo específico para conductas donde no existe el engaño clásico sobre una persona, sino manipulaciones sobre <strong>sistemas informáticos</strong>. Abarcaría al hacker que accede a una cuenta bancaria y consigue una transferencia.</p>
+      </div>
+    </div>
+
+    <div class="law-block">
+      <div class="lb-art">Art. 249.1.a) — Manipulación informática</div>
+      <p>Los que, con ánimo de lucro, <strong>obstaculizando o interfiriendo</strong> en el funcionamiento de un sistema de información o <strong>introduciendo, alterando, borrando, transmitiendo o suprimiendo datos informáticos</strong>, consigan una transferencia no consentida de cualquier activo patrimonial en perjuicio de otro.</p>
+    </div>
+
+    <div class="law-block" style="border-left-color: var(--gold);">
+      <div class="lb-art" style="color:var(--gold)">Art. 249.1.b) — Instrumentos de pago</div>
+      <p>Los que, utilizando de forma <strong>fraudulenta tarjetas de crédito o débito</strong>, cheques de viaje o cualquier otro instrumento de pago material o inmaterial distinto del efectivo, realicen operaciones en perjuicio de su titular o un tercero.</p>
+    </div>
+
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin:36px 0 16px;">Actos Preparatorios Punibles (Art. 249.2)</h3>
+    <div class="img-grid">
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&q=80" alt="Hacker">
+        <div class="ic-body">
+          <h4>249.2.a) Fabricación de dispositivos</h4>
+          <p>Fabricar, importar, obtener, poseer, transportar o facilitar a terceros dispositivos, programas o datos diseñados para cometer estas estafas.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&q=80" alt="Tarjetas robadas">
+        <div class="ic-body">
+          <h4>249.2.b) Sustracción de tarjetas</h4>
+          <p>Sustraer, apropiarse o adquirir ilícitamente tarjetas de crédito/débito u otros instrumentos de pago para uso fraudulento.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&q=80" alt="Transferencia">
+        <div class="ic-body">
+          <h4>249.3 — Pena reducida</h4>
+          <p>Poseer o distribuir tarjetas/instrumentos <em>sabiendo</em> que fueron obtenidos ilícitamente: pena en su <strong>mitad inferior</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="co-icon">🤔</div>
+      <div class="co-text">
+        <h4>Debate doctrinal</h4>
+        <p>Es discutible que se equipare a la estafa los actos preparatorios o la tentativa del art. 249.2b). La doctrina discute si esta equiparación respeta el principio de proporcionalidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 5 ════════════════════════════════ -->
+<section id="triangular" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 05</div>
+    <h2 class="section-title">Sujeto Pasivo y Estafa Triangular</h2>
+
+    <div class="side-img">
+      <img src="https://images.unsplash.com/photo-1531498860502-7c67cf02f657?w=600&q=80" alt="Triángulo de personas">
+      <div>
+        <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin-bottom:16px;">La Estafa en Triángulo</h3>
+        <p style="color:var(--text-muted); font-size:15px; margin-bottom:16px;">Es aquélla en la que el <strong>sujeto engañado</strong> realiza una disposición perjudicial siendo uno <strong>distinto del titular del patrimonio afectado</strong>. El engañado ≠ el perjudicado. Podría darse incluso una cadena de engaños múltiples.</p>
+        <div class="tag-list">
+          <span class="tag tag-r">Engañado</span>
+          <span class="tag tag-g">≠</span>
+          <span class="tag tag-t">Perjudicado</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:18px; margin:28px 0 16px;">Ejemplos típicos</h3>
+    <div class="penalty-grid">
+      <div class="penalty-card pc-red">
+        <span class="pc-num">💳</span>
+        <div class="pc-label">Uso abusivo de tarjeta</div>
+        <div class="pc-detail">El comerciante (engañado) acepta el pago; el titular (perjudicado) sufre el cargo indebido.</div>
+      </div>
+      <div class="penalty-card pc-gold">
+        <span class="pc-num">⚖️</span>
+        <div class="pc-label">Estafa procesal</div>
+        <div class="pc-detail">El juez (engañado) dicta una resolución; la parte contraria (perjudicada) sufre el daño patrimonial.</div>
+      </div>
+    </div>
+
+    <img class="img-full" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80" alt="Grupo de personas">
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 6 ════════════════════════════════ -->
+<section id="perjuicio" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 06</div>
+    <h2 class="section-title">El Perjuicio Patrimonial</h2>
+
+    <div class="hero-card">
+      <div class="hc-img" style="background-image: url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80');"></div>
+      <div class="hc-body">
+        <h3>¿Qué es el perjuicio?</h3>
+        <p>La disposición patrimonial debe producir un perjuicio patrimonial sobre el engañado o un tercero. Es la lesión de elementos patrimoniales (bienes, derechos, etc.). Se determina por el <strong>valor de mercado</strong> de la cosa o prestación defraudada, no por el perjuicio global civil.</p>
+      </div>
+    </div>
+
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin:36px 0 16px;">Casos problemáticos</h3>
+    <div class="img-grid">
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1474487548417-781cb6d646b3?w=600&q=80" alt="Tren">
+        <div class="ic-body">
+          <h4>a) Viajar sin billete</h4>
+          <p>Se discute si existe perjuicio patrimonial cuando el servicio se presta pero no se paga. Caso clásico de debate doctrinal.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?w=600&q=80" alt="Negocio">
+        <div class="ic-body">
+          <h4>b) Expectativas de lucro</h4>
+          <p>Los beneficios prometidos o esperados no forman parte del patrimonio. <em>Sí</em> hay perjuicio si se compra un negocio con engaño sobre clientela, ubicación, etc.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=600&q=80" alt="Bienes ilícitos">
+        <div class="ic-body">
+          <h4>c) Bienes de origen ilícito</h4>
+          <p>Cabe la estafa incluso cuando el bien sobre el que recae la defraudación tenga origen ilícito. Ej: cabe estafa al ladrón sobre las cosas robadas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 7 ════════════════════════════════ -->
+<section id="consumacion" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 07</div>
+    <h2 class="section-title">Consumación y Tentativa</h2>
+
+    <div class="split-2">
+      <div>
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Consumación" style="width:100%; border-radius:10px; height:220px; object-fit:cover; border:1px solid var(--border); margin-bottom:20px;">
+        <div class="callout teal">
+          <div class="co-icon">✅</div>
+          <div class="co-text">
+            <h4>Consumación</h4>
+            <p>Con la <strong>producción del perjuicio patrimonial</strong>. No es necesario el efectivo provecho por parte del autor.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80" alt="Tentativa" style="width:100%; border-radius:10px; height:220px; object-fit:cover; border:1px solid var(--border); margin-bottom:20px;">
+        <div class="callout">
+          <div class="co-icon">⏸️</div>
+          <div class="co-text">
+            <h4>Tentativa</h4>
+            <p>Se inicia con la <strong>conducta engañosa</strong>. El iter criminis queda interrumpido antes de producirse el perjuicio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Penalidad base -->
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin:36px 0 16px;">Penalidad Base (Art. 248)</h3>
+    <div class="penalty-grid">
+      <div class="penalty-card pc-red">
+        <span class="pc-num">6m–3a</span>
+        <div class="pc-label">Pena general</div>
+        <div class="pc-detail">Prisión de 6 meses a 3 años. Se valoran: importe defraudado, quebranto económico, relación entre sujetos y medios empleados.</div>
+      </div>
+      <div class="penalty-card pc-gold">
+        <span class="pc-num">≤400€</span>
+        <div class="pc-label">Delito leve</div>
+        <div class="pc-detail">Si la cuantía no excede de 400 euros: multa de 1 a 3 meses. Art. 248 in fine.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 8 ════════════════════════════════ -->
+<section id="concurso" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 08</div>
+    <h2 class="section-title">Concurso con Falsedades<br>y Delito Masa</h2>
+
+    <div class="hero-card">
+      <div class="hc-img" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&q=80');"></div>
+      <div class="hc-body">
+        <h3>Estafa + Falsedad documental</h3>
+        <p>El Tribunal Supremo resuelve el concurso entre la estafa y la falsedad según el tipo de documento falsificado. La solución varía radicalmente dependiendo de si el documento es público/oficial/mercantil o privado.</p>
+      </div>
+    </div>
+
+    <div class="concurso-grid" style="margin-top:28px;">
+      <div class="concurso-card">
+        <h4>📋 Documento Público, Oficial o Mercantil</h4>
+        <p>Si el sujeto activo falsea un documento público, oficial o mercantil como <em>medio</em> para cometer la estafa:</p>
+        <p style="margin-top:10px; color:var(--text);">→ Responderá por <strong>ambos delitos</strong> en <strong>concurso medial</strong> (art. 77 CP).</p>
+        <span class="verdict verdict-dual">Estafa + Falsedad</span>
+      </div>
+      <div class="concurso-card">
+        <h4>📝 Documento Privado</h4>
+        <p>Si falsea un documento privado como medio para culminar la estafa planeada:</p>
+        <p style="margin-top:10px; color:var(--text);">→ Responderá <strong>únicamente por estafa</strong> (principio de consunción), salvo que la falsedad conlleve mayor pena (principio de alternatividad).</p>
+        <span class="verdict verdict-solo">Solo Estafa (regla general)</span>
+      </div>
+    </div>
+
+    <!-- DELITO MASA -->
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:22px; margin:40px 0 16px;">Delito Continuado y Delito Masa</h3>
+    <div class="side-img">
+      <img src="https://images.unsplash.com/photo-1591453089816-0fbb971b454c?w=600&q=80" alt="Multitud de víctimas">
+      <div>
+        <div class="callout gold">
+          <div class="co-icon">📊</div>
+          <div class="co-text">
+            <h4>El Problema</h4>
+            <p>En estafas numerosas con pequeñas cantidades y múltiples víctimas, el concurso real (art. 73) con cumplimiento simultáneo (art. 76) podía llevar a penas irrisorias. La ley lo soluciona con el art. 74.2.</p>
+          </div>
+        </div>
+        <div class="law-block" style="margin-top:16px;">
+          <div class="lb-art">Art. 74.2 CP — La solución</div>
+          <p>Se impone la pena teniendo en cuenta el <strong>perjuicio total causado</strong>. Si el hecho revistiere <strong>notoria gravedad</strong> y hubiere perjudicado a una <strong>generalidad de personas</strong>, el juez impondrá la pena superior en uno o dos grados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 9 ════════════════════════════════ -->
+<section id="cualificados" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 09</div>
+    <h2 class="section-title">Tipos Cualificados<br><small style="font-size:50%;color:var(--text-muted)">Art. 250</small></h2>
+
+    <img class="img-full" src="https://images.unsplash.com/photo-1605792657660-596af9009e82?w=1200&q=80" alt="Juicio penal">
+
+    <!-- PENAS CUALIFICADAS -->
+    <div class="penalty-grid">
+      <div class="penalty-card pc-red">
+        <span class="pc-num">1–6 a</span>
+        <div class="pc-label">Tipo básico cualificado</div>
+        <div class="pc-detail">+ Multa de 6 a 12 meses. Cuando concurren las circunstancias del art. 250.1.</div>
+      </div>
+      <div class="penalty-card pc-gold">
+        <span class="pc-num">4–8 a</span>
+        <div class="pc-label">Tipo hiperagravado</div>
+        <div class="pc-detail">+ Multa 12 a 24 meses. Concurren circunstancias 4ª, 5ª, 6ª o 7ª con la 1ª.</div>
+      </div>
+      <div class="penalty-card pc-blue">
+        <span class="pc-num">>250k€</span>
+        <div class="pc-label">Defraudación muy grave</div>
+        <div class="pc-detail">También 4 a 8 años cuando el valor de la defraudación supere los 250.000 euros.</div>
+      </div>
+    </div>
+
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin:36px 0 16px;">Las 8 Circunstancias Cualificadoras</h3>
+
+    <div class="img-grid">
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt="Vivienda">
+        <div class="ic-body">
+          <h4>1ª — Cosas de primera necesidad</h4>
+          <p>Recaiga sobre viviendas, alimentos u otros bienes de reconocida utilidad social.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=600&q=80" alt="Firma robada">
+        <div class="ic-body">
+          <h4>2ª — Abuso de firma</h4>
+          <p>Abusando de la firma de otro o sustrayendo/inutilizando procesos, expedientes o documentos públicos.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="Arte">
+        <div class="ic-body">
+          <h4>3ª — Patrimonio artístico</h4>
+          <p>Recaiga sobre bienes del patrimonio artístico, histórico, cultural o científico.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=600&q=80" alt="Víctima vulnerable">
+        <div class="ic-body">
+          <h4>4ª — Especial gravedad</h4>
+          <p>Atendiendo a la entidad del perjuicio y a la situación económica en que deje a la víctima o a su familia.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80" alt="Gran cantidad dinero">
+        <div class="ic-body">
+          <h4>5ª — Cantidad elevada</h4>
+          <p>El valor de la defraudación supere los <strong class="bubble">50.000 €</strong> o afecte a un <strong>elevado número de personas</strong>.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1521791055366-0d553872952f?w=600&q=80" alt="Relación personal">
+        <div class="ic-body">
+          <h4>6ª — Abuso de confianza</h4>
+          <p>Abuso de relaciones personales o aprovechamiento de credibilidad empresarial o profesional.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?w=600&q=80" alt="Tribunal">
+        <div class="ic-body">
+          <h4>7ª — Estafa procesal</h4>
+          <p>Manipular pruebas en un procedimiento judicial para provocar error en el juez y hacerle dictar resolución perjudicial.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1605806616949-59450ce6de7d?w=600&q=80" alt="Reincidencia">
+        <div class="ic-body">
+          <h4>8ª — Reincidencia cualificada</h4>
+          <p>Al delinquir, el culpable hubiera sido condenado ejecutoriamente al menos por <strong>3 delitos</strong> del mismo Capítulo. No se cuentan antecedentes cancelados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 10 ════════════════════════════════ -->
+<section id="especificas" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 10</div>
+    <h2 class="section-title">Estafas Específicas<br><small style="font-size:50%;color:var(--text-muted)">Art. 251 — Fraudes Inmobiliarios</small></h2>
+
+    <div class="hero-card">
+      <div class="hc-img" style="background-image: url('https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800&q=80');"></div>
+      <div class="hc-body">
+        <h3>Fraudes sobre bienes muebles e inmuebles</h3>
+        <p>El art. 251 tipifica tres figuras específicas con pena de prisión de <strong>1 a 4 años</strong>: la doble venta, la venta con cargas ocultas y el contrato simulado.</p>
+      </div>
+    </div>
+
+    <div class="img-grid" style="margin-top:28px;">
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80" alt="Venta falsa">
+        <div class="ic-body">
+          <h4>251.1º — Disposición sin facultad</h4>
+          <p>Atribuirse falsamente la facultad de disponer de un bien mueble o inmueble y <em>enajenarlo, gravarlo o arrendarlo</em>, cuando nunca se tuvo esa facultad o ya se ejercitó antes.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?w=600&q=80" alt="Cargas ocultas">
+        <div class="ic-body">
+          <h4>251.2º — Cargas ocultas / Doble venta</h4>
+          <p>Ocultar la existencia de cualquier carga sobre el bien enajenado; o habiéndola enajenado como libre, gravarla o enajenarla <em>nuevamente</em> antes de la definitiva transmisión.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="https://images.unsplash.com/photo-1529563021893-cc83c992d75d?w=600&q=80" alt="Contrato simulado">
+        <div class="ic-body">
+          <h4>251.3º — Contrato simulado</h4>
+          <p>Otorgar en perjuicio de otro un contrato simulado. La apariencia del negocio jurídico oculta la verdadera intención defraudatoria.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ SECCIÓN 11 ════════════════════════════════ -->
+<section id="pj" class="section">
+  <div class="container">
+    <div class="section-label">Módulo 11</div>
+    <h2 class="section-title">Responsabilidad de<br>Personas Jurídicas<br><small style="font-size:50%;color:var(--text-muted)">Art. 251 bis</small></h2>
+
+    <div class="side-img">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="Empresa rascacielos">
+      <div>
+        <p style="color:var(--text-muted); font-size:15px; margin-bottom:20px;">Sí cabe la comisión por persona jurídica. Cuando de acuerdo con el art. 31 bis CP una persona jurídica sea responsable de los delitos de esta Sección:</p>
+        <div class="penalty-grid" style="grid-template-columns:1fr 1fr; margin:0;">
+          <div class="penalty-card pc-red" style="text-align:left;">
+            <span class="pc-num" style="font-size:28px;">3x–5x</span>
+            <div class="pc-label">Si prisión física > 5 años</div>
+            <div class="pc-detail">Multa del triple al quíntuple de la cantidad defraudada.</div>
+          </div>
+          <div class="penalty-card pc-gold" style="text-align:left;">
+            <span class="pc-num" style="font-size:28px;">2x–4x</span>
+            <div class="pc-label">Resto de casos</div>
+            <div class="pc-detail">Multa del doble al cuádruple de la cantidad defraudada.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <div class="co-icon">⚠️</div>
+      <div class="co-text">
+        <h4>Penas adicionales (art. 66 bis)</h4>
+        <p>Los jueces y tribunales podrán asimismo imponer las penas recogidas en las letras b) a g) del apartado 7 del art. 33 CP (disolución, suspensión de actividades, clausura de establecimientos, inhabilitación para obtener subvenciones, etc.).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ RESUMEN FINAL ════════════════════════════════ -->
+<section class="section" style="background: linear-gradient(135deg, #0d0f14, #130a10);">
+  <div class="container">
+    <div class="section-label">Repaso Final</div>
+    <h2 class="section-title">Mapa Mental del Tema</h2>
+
+    <div class="img-grid">
+      <div class="img-card" style="border-color:rgba(230,57,70,0.4);">
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80" alt="Estudio">
+        <div class="ic-body">
+          <h4 style="color:var(--red);">🔑 Elementos esenciales</h4>
+          <p>Engaño bastante → Error → Disposición patrimonial → Perjuicio. Cadena causal obligatoria. Ánimo de lucro en el tipo subjetivo.</p>
+        </div>
+      </div>
+      <div class="img-card" style="border-color:rgba(72,149,239,0.4);">
+        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&q=80" alt="Digital">
+        <div class="ic-body">
+          <h4 style="color:var(--blue);">💻 Fraude informático</h4>
+          <p>Art. 249: manipulación de sistemas y uso fraudulento de instrumentos de pago. Incluye actos preparatorios punibles.</p>
+        </div>
+      </div>
+      <div class="img-card" style="border-color:rgba(244,162,97,0.4);">
+        <img src="https://images.unsplash.com/photo-1521791055366-0d553872952f?w=600&q=80" alt="Agravantes">
+        <div class="ic-body">
+          <h4 style="color:var(--gold);">⬆️ Tipos cualificados</h4>
+          <p>Art. 250: 8 circunstancias. Penas hasta 4–8 años. Hiperagravación cuando concurren circunstancias 4ª-7ª con la 1ª o defraudación > 250.000€.</p>
+        </div>
+      </div>
+      <div class="img-card" style="border-color:rgba(46,196,182,0.4);">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt="Inmobiliario">
+        <div class="ic-body">
+          <h4 style="color:var(--teal);">🏠 Estafas específicas</h4>
+          <p>Art. 251: doble venta, cargas ocultas, contrato simulado. Pena 1–4 años. Admite responsabilidad de personas jurídicas (art. 251 bis).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLA RESUMEN DE PENAS -->
+    <h3 style="color:#fff; font-family:'Playfair Display',serif; font-size:20px; margin:40px 0 20px;">Tabla Resumen de Penas</h3>
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead>
+          <tr style="background:var(--card); border-bottom:2px solid var(--red);">
+            <th style="padding:12px 16px; text-align:left; color:var(--red); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;">Supuesto</th>
+            <th style="padding:12px 16px; text-align:left; color:var(--red); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;">Artículo</th>
+            <th style="padding:12px 16px; text-align:left; color:var(--red); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;">Pena</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:12px 16px; color:var(--text);">Estafa básica</td>
+            <td style="padding:12px 16px; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">Art. 248</td>
+            <td style="padding:12px 16px; color:var(--teal);">Prisión 6 meses – 3 años</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02);">
+            <td style="padding:12px 16px; color:var(--text);">Delito leve (≤ 400€)</td>
+            <td style="padding:12px 16px; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">Art. 248 in fine</td>
+            <td style="padding:12px 16px; color:var(--teal);">Multa 1-3 meses</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:12px 16px; color:var(--text);">Fraude informático</td>
+            <td style="padding:12px 16px; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">Art. 249</td>
+            <td style="padding:12px 16px; color:var(--teal);">Prisión 6 meses – 3 años</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02);">
+            <td style="padding:12px 16px; color:var(--text);">Tipo cualificado (art. 250.1)</td>
+            <td style="padding:12px 16px; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">Art. 250.1</td>
+            <td style="padding:12px 16px; color:var(--gold);">Prisión 1-6 años + Multa 6-12 meses</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:12px 16px; color:var(--text);">Tipo hiperagravado / >250.000€</td>
+            <td style="padding:12px 16px; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">Art. 250.2</td>
+            <td style="padding:12px 16px; color:var(--red);">Prisión 4-8 años + Multa 12-24 meses</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02);">
+            <td style="padding:12px 16px; color:var(--text);">Estafas específicas (art. 251)</td>
+            <td style="padding:12px 16px; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">Art. 251</td>
+            <td style="padding:12px 16px; color:var(--gold);">Prisión 1-4 años</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 16px; color:var(--text);">Persona jurídica (pena grave física)</td>
+            <td style="padding:12px 16px; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">Art. 251 bis</td>
+            <td style="padding:12px 16px; color:var(--red);">Multa 3x – 5x defraudado</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>TEMA 8 · DEFRAUDACIONES · DERECHO PENAL ECONÓMICO &nbsp;|&nbsp; Material de estudio &nbsp;|&nbsp; Código Penal español</p>
+</footer>
+
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop / (doc.scrollHeight - doc.clientHeight);
+    document.getElementById('progress').style.width = (scrolled * 100) + '%';
+  });
+
+  // Animate sections on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.section, .img-card, .penalty-card, .concurso-card, .flow-step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
