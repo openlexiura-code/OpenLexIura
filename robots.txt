@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /aprender/
 
 Sitemap: https://openlexiura.es/sitemap.xml
