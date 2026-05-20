@@ -1,388 +1,890 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
-<!-- End Google Tag Manager -->
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Calculadora de finiquito · OpenLexIura</title>
-<meta name="description" content="Calculadora orientativa de finiquito para estimar salario pendiente, vacaciones no disfrutadas, pagas extras e indemnización según el tipo de extinción laboral.">
-<link rel="canonical" href="https://openlexiura.es/Trabajo/calculadora-finiquito.html" />
-<link rel="icon" type="image/jpeg" href="../Icono.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --brand:#dc2626; --brand-dark:#b91c1c; --brand-light:#fee2e2; --bg:#fdf2f2; --bg-2:#fbe9e9;
-  --panel:rgba(255,255,255,.86); --panel-strong:#fff; --text:#1f2937; --muted:#64748b;
-  --line:rgba(220,38,38,.14); --line-2:rgba(15,23,42,.08); --ok:#166534; --warn:#92400e;
-  --shadow-sm:0 2px 8px rgba(0,0,0,.08); --shadow:0 8px 32px rgba(0,0,0,.10); --shadow-lg:0 20px 60px rgba(0,0,0,.14);
-  --radius:20px; --radius-sm:12px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',sans-serif;
-  background:
-    radial-gradient(circle at 15% 10%, rgba(220,38,38,.07), transparent 30%),
-    radial-gradient(circle at 85% 5%, rgba(220,38,38,.05), transparent 25%),
-    radial-gradient(circle at 50% 100%, rgba(220,38,38,.04), transparent 30%),
-    linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);
-  color:var(--text); min-height:100vh; overflow-x:hidden; line-height:1.65;
-}
-a{text-decoration:none;color:inherit}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease;border-bottom:1px solid transparent}
-nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom-color:rgba(220,38,38,.12);box-shadow:0 4px 24px rgba(0,0,0,.06)}
-.nav-logo{display:flex;align-items:center;gap:.75rem;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;letter-spacing:.02em}
-.nav-logo img{width:36px;height:36px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(220,38,38,.22),0 6px 18px rgba(0,0,0,.25)}
-.nav-logo span{color:var(--brand)}
-.nav-links{display:flex;align-items:center;gap:1.4rem}
-.nav-links a{color:var(--text);font-size:.92rem;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--brand)}
-.nav-cta{padding:.65rem 1.1rem;border:1px solid rgba(220,38,38,.22);border-radius:999px;background:linear-gradient(180deg,rgba(220,38,38,.10),rgba(220,38,38,.05));font-weight:600;font-size:.88rem;color:var(--brand)!important}
-.progress-bar{position:fixed;top:0;left:0;z-index:1100;height:3px;width:0%;background:linear-gradient(90deg,var(--brand),#f87171);transition:width .1s linear}
-.breadcrumb{max-width:1160px;margin:0 auto;padding:7.5rem 1.5rem .75rem;display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted)}
-.breadcrumb a:hover{color:var(--brand)}
-.hero-single{max-width:1160px;margin:0 auto;padding:0 1.5rem 2rem}
-.hero-inner{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(10px);padding:2rem;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:start}
-.hero-text{display:flex;flex-direction:column;gap:.2rem}
-.hero-what{padding-left:2rem;border-left:1px solid var(--line)}
-.cat-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.42rem .85rem;border-radius:999px;border:1px solid rgba(220,38,38,.22);background:rgba(220,38,38,.07);color:var(--brand);font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.2rem}
-.cat-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 10px rgba(220,38,38,.6)}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4.4rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1rem}
-.hero h1 em{font-style:italic;color:var(--brand)}
-.hero p{font-size:1rem;color:#374151;max-width:62ch}
-.hero-meta{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.3rem}
-.hero-tag{display:inline-block;padding:.32rem .7rem;border-radius:999px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.15);color:var(--brand);font-size:.78rem;font-weight:600}
-.hero-side{padding:1.4rem 1.5rem;display:flex;flex-direction:column;justify-content:center}
-.side-kicker{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:.8rem}
-.side-list{display:flex;flex-direction:column;gap:.75rem}
-.side-item{display:flex;gap:.7rem;font-size:.95rem;color:#374151}
-.side-item strong{color:#111827}
-.layout{max-width:1160px;margin:0 auto;padding:0 1.5rem 4rem;display:grid;grid-template-columns:1.1fr .9fr;gap:1.5rem}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.5rem}
-.panel h2{font-family:'Cormorant Garamond',serif;font-size:2rem;line-height:1.05;margin-bottom:1rem}
-.panel h2 em{color:var(--brand);font-style:italic}
-.section-kicker{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:.7rem}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.field{display:flex;flex-direction:column;gap:.42rem}
-.field.full{grid-column:1 / -1}
-label{font-size:.86rem;font-weight:600;color:#374151}
-input,select{width:100%;padding:.9rem 1rem;border:1px solid rgba(220,38,38,.18);border-radius:14px;background:#fff;color:#111827;font:inherit;outline:none;transition:border-color .2s,box-shadow .2s}
-input:focus,select:focus{border-color:rgba(220,38,38,.48);box-shadow:0 0 0 4px rgba(220,38,38,.10)}
-.helper{font-size:.78rem;color:var(--muted)}
-.switches{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
-.check{display:flex;align-items:flex-start;gap:.65rem;padding:.9rem 1rem;border:1px solid rgba(220,38,38,.14);border-radius:14px;background:rgba(255,255,255,.75)}
-.check input{width:18px;height:18px;margin-top:.1rem}
-.actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem}
-button{cursor:pointer;border:none}
-.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:1rem 1.2rem;border-radius:999px;font-weight:700;font-size:.94rem;transition:transform .2s,box-shadow .2s}
-.btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-dark));color:#fff;box-shadow:0 14px 36px rgba(220,38,38,.24)}
-.btn-primary:hover{transform:translateY(-1px)}
-.btn-secondary{background:#fff;color:var(--brand);border:1px solid rgba(220,38,38,.18)}
-.result-card{background:#fff;border:1px solid rgba(220,38,38,.15);border-radius:18px;padding:1.15rem 1.1rem;box-shadow:var(--shadow-sm)}
-.result-card + .result-card{margin-top:1rem}
-.result-title{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:.7rem}
-.result-line{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding:.62rem 0;border-bottom:1px dashed rgba(220,38,38,.12);font-size:.93rem}
-.result-line:last-child{border-bottom:none}
-.result-label{color:#374151}
-.result-value{font-weight:700;color:#111827;white-space:nowrap;text-align:right}
-.total-box{margin-top:1rem;padding:1rem 1.1rem;border-radius:16px;background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.18);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
-.total-box strong{font-size:1rem}
-.total-box span{font-size:1.35rem;font-weight:800;color:var(--brand)}
-.note,.warn,.ok{border-radius:16px;padding:1rem 1.1rem;font-size:.92rem;line-height:1.65}
-.note{background:rgba(239,246,255,.9);border:1px solid rgba(37,99,235,.18)}
-.warn{background:rgba(254,252,232,.9);border:1px solid rgba(234,179,8,.28)}
-.ok{background:rgba(240,253,244,.9);border:1px solid rgba(34,197,94,.22)}
-.stack{display:flex;flex-direction:column;gap:1rem}
-.mini-table{width:100%;border-collapse:collapse;font-size:.9rem;overflow:hidden;border-radius:16px}
-.result-divider{height:1px;background:rgba(220,38,38,.12);margin:1.2rem 0}
-.mini-table th{background:linear-gradient(90deg,var(--brand),var(--brand-dark));color:#fff;text-align:left;padding:.8rem .9rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
-.mini-table td{padding:.8rem .9rem;border-bottom:1px solid rgba(220,38,38,.08);background:#fff;color:#374151;vertical-align:top}
-.mini-table tr:nth-child(even) td{background:rgba(220,38,38,.04)}
-.tags-strip{display:flex;flex-wrap:wrap;gap:.5rem;padding:1.2rem 0;border-top:1px solid rgba(220,38,38,.10);border-bottom:1px solid rgba(220,38,38,.10);margin-top:1.4rem}
-.tags-strip span{padding:.3rem .75rem;border-radius:999px;border:1px solid rgba(220,38,38,.16);background:rgba(220,38,38,.05);color:var(--brand);font-size:.78rem;font-weight:600}
-.alerts-strip{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
-.alert-inline{border-radius:14px;padding:.85rem 1rem;font-size:.88rem;line-height:1.6}
-.alert-inline.note{background:rgba(239,246,255,.9);border:1px solid rgba(37,99,235,.18)}
-.alert-inline.warn{background:rgba(254,252,232,.9);border:1px solid rgba(234,179,8,.28)}
-.alert-inline.ok{background:rgba(240,253,244,.9);border:1px solid rgba(34,197,94,.22)}
-.cta-section{max-width:1160px;margin:0 auto 5rem;padding:0 1.5rem}
-.cta-box{background:linear-gradient(135deg,#dc2626 0%,#b91c1c 100%);border-radius:var(--radius);padding:2.6rem 2.4rem;box-shadow:0 20px 60px rgba(220,38,38,.28);text-align:center;position:relative;overflow:hidden}
-.cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,.12), transparent 55%);pointer-events:none}
-.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;line-height:1.2;color:#fff;margin-bottom:.9rem;position:relative;z-index:1}
-.cta-box p{font-size:.98rem;line-height:1.7;color:rgba(255,255,255,.88);max-width:58ch;margin:0 auto 1.8rem;position:relative;z-index:1}
-.btn-cta{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 2rem;border-radius:999px;background:#fff;color:var(--brand)!important;font-weight:700;font-size:.97rem;box-shadow:0 8px 28px rgba(0,0,0,.18);position:relative;z-index:1}
-footer{border-top:1px solid rgba(220,38,38,.10);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.82rem;line-height:1.6}
-@media(max-width:940px){.hero-inner,.layout{grid-template-columns:1fr}.hero-single{padding-bottom:1rem}.hero-what{padding-left:0;border-left:none;border-top:1px solid var(--line);padding-top:1.2rem}}
-@media(max-width:680px){nav{padding:.9rem 1.1rem}.nav-links{display:none}.breadcrumb{padding-top:6.8rem}.hero-single,.layout,.cta-section{padding-left:1.1rem;padding-right:1.1rem}.hero-inner,.panel{padding:1.2rem}.form-grid,.switches{grid-template-columns:1fr}.total-box span{font-size:1.1rem}}
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-.hero-inner{animation:rise .7s ease both .08s}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T4XH4J5K');</script>
+  <!-- End Google Tag Manager -->
+
+  <title>Calculadora de finiquito 2026: cuánto te corresponde al irte | OpenLexIura</title>
+  <meta name="description" content="Calcula tu finiquito en segundos: salario pendiente, vacaciones no disfrutadas, pagas extras e indemnización según el tipo de despido. Herramienta gratuita y sin registro.">
+  <link rel="canonical" href="https://openlexiura.es/Trabajo/calculadorafiniquito.html">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de finiquito 2026: cuánto te corresponde al irte | OpenLexIura">
+  <meta property="og:description" content="Calcula tu finiquito gratis: salario pendiente, vacaciones, pagas extras e indemnización por despido objetivo, improcedente o fin de contrato temporal.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://openlexiura.es/Trabajo/calculadorafiniquito.html">
+  <meta property="og:site_name" content="OpenLexIura">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculadora de finiquito 2026 | OpenLexIura">
+  <meta name="twitter:description" content="Calcula tu finiquito gratis: salario pendiente, vacaciones, pagas extras e indemnización.">
+
+  <link rel="icon" type="image/png" href="../Icono.png">
+  <link rel="apple-touch-icon" href="../Icono.png">
+
+  <!-- FAQPage JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye el finiquito?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El finiquito incluye el salario pendiente del último mes, las vacaciones devengadas y no disfrutadas, la parte proporcional de pagas extras si no están prorrateadas y, en su caso, la indemnización por extinción del contrato. No incluye automáticamente la indemnización si la baja es voluntaria."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto es la indemnización por despido improcedente?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La indemnización por despido improcedente es de 33 días de salario por año trabajado, con un máximo de 24 mensualidades. Para contratos anteriores al 12 de febrero de 2012, el tramo anterior a esa fecha se calcula a 45 días por año, con un máximo conjunto de 42 mensualidades."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto es la indemnización por despido objetivo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La indemnización por despido objetivo (por causas económicas, técnicas, organizativas o de producción) es de 20 días de salario por año trabajado, con un máximo de 12 mensualidades."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tengo derecho a indemnización si me voy voluntariamente?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. La baja voluntaria no genera derecho a indemnización salvo que se deba a un incumplimiento grave del empresario (despido indirecto o dimisión provocada, art. 50 ET), en cuyo caso puede reclamarse la indemnización por despido improcedente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuándo me tienen que pagar el finiquito?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El finiquito debe pagarse en el momento de la extinción del contrato o, como máximo, dentro de los días de preaviso. Si la empresa no lo abona en plazo, el trabajador puede reclamar los intereses del 10% anual por mora (art. 29.3 ET). El plazo para reclamar cantidades pendientes es de 1 año."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo negarme a firmar el finiquito?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Puedes firmar el finiquito añadiendo 'no conforme' o directamente negarte a firmarlo. Firmar sin reservas puede interpretarse como aceptación de las cantidades y renuncia a reclamar más, aunque la jurisprudencia valora el contexto. Si tienes dudas, consulta antes de firmar."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://openlexiura.es/" },
+      { "@type": "ListItem", "position": 2, "name": "Trabajo", "item": "https://openlexiura.es/Trabajo/portal.html" },
+      { "@type": "ListItem", "position": 3, "name": "Finiquito", "item": "https://openlexiura.es/Trabajo/finiquito.html" },
+      { "@type": "ListItem", "position": 4, "name": "Calculadora de finiquito", "item": "https://openlexiura.es/Trabajo/calculadorafiniquito.html" }
+    ]
+  }
+  </script>
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+  :root {
+    --f-sans:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+    --f-serif:'Playfair Display',Georgia,serif;
+    --t-2xs:clamp(.65rem,.62rem + .15vw,.73rem);
+    --t-xs:clamp(.73rem,.69rem + .2vw,.84rem);
+    --t-sm:clamp(.84rem,.79rem + .23vw,.97rem);
+    --t-base:clamp(.97rem,.92rem + .26vw,1.08rem);
+    --t-md:clamp(1.08rem,1rem + .4vw,1.25rem);
+    --t-lg:clamp(1.25rem,1.08rem + .78vw,1.6rem);
+    --t-xl:clamp(1.6rem,1.15rem + 1.15vw,2.18rem);
+    --t-2xl:clamp(2.18rem,1.35rem + 2.3vw,3.3rem);
+    --t-hero:clamp(2.5rem,1.45rem + 4vw,4.4rem);
+    --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.25rem;
+    --s6:1.5rem;--s8:2rem;--s10:2.5rem;--s12:3rem;--s16:4rem;--s20:5rem;--s24:6rem;
+    --c-bg:#f7f6f3;--c-bg-2:#f0ede8;--c-surface:#ffffff;--c-surface-elev:#fdfcfa;
+    --c-surface-deep:#f4f2ee;--c-glass:rgba(247,246,243,.78);--c-divider:#e4e1da;
+    --c-border:#d6d1c8;--c-border-strong:#b8b2a6;--c-ink:#18160f;--c-ink-2:#3a3830;
+    --c-ink-3:#696560;--c-ink-4:#9a968e;--c-ink-5:#c2bdb5;
+    --c-brand:#163560;--c-brand-h:#102850;--c-brand-a:#0b1d3a;
+    --c-brand-light:#e6ecf6;--c-brand-mid:#2451a0;
+    --c-brand-glow:rgba(22,53,96,.16);
+    --c-accent:#b02e2e;--c-accent-h:#8e2222;
+    --c-accent-light:#faecec;--c-accent-mid:#d03c3c;--c-accent-glow:rgba(176,46,46,.13);
+    --c-warn:#74390c;--c-warn-bg:#fcf1e6;--c-ok:#276117;--c-ok-bg:#e8f3e4;
+    --c-info:#163560;--c-info-bg:#e6ecf6;
+    --c-gold:#8a6800;--c-gold-bg:#fdf6e0;
+    --r-xs:.25rem;--r-sm:.4rem;--r-md:.6rem;--r-lg:.875rem;
+    --r-xl:1.125rem;--r-2xl:1.75rem;--r-3xl:2.25rem;--r-full:9999px;
+    --sh-xs:0 1px 3px rgba(0,0,0,.05);
+    --sh-sm:0 2px 8px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.04);
+    --sh-md:0 6px 20px rgba(0,0,0,.08),0 2px 8px rgba(0,0,0,.04);
+    --sh-lg:0 14px 48px rgba(0,0,0,.1),0 4px 14px rgba(0,0,0,.05);
+    --sh-xl:0 28px 72px rgba(0,0,0,.11),0 10px 24px rgba(0,0,0,.06);
+    --w-content:1100px;--tr:200ms cubic-bezier(.16,1,.3,1);--tr-slow:440ms cubic-bezier(.16,1,.3,1);
+  }
+  [data-theme="dark"] {
+    --c-bg:#0f0e0d;--c-bg-2:#141310;--c-surface:#1a1917;--c-surface-elev:#1f1e1c;
+    --c-surface-deep:#161514;--c-glass:rgba(18,17,15,.82);--c-divider:#28261f;
+    --c-border:#302e28;--c-border-strong:#444038;--c-ink:#e6e2dc;--c-ink-2:#c6c2ba;
+    --c-ink-3:#888480;--c-ink-4:#5a5852;--c-ink-5:#3c3a34;
+    --c-brand:#5c88cc;--c-brand-h:#4870b4;--c-brand-a:#3860a0;
+    --c-brand-light:#18223a;--c-brand-mid:#4870b4;
+    --c-brand-glow:rgba(92,136,204,.2);
+    --c-accent:#df5252;--c-accent-h:#c03636;
+    --c-accent-light:#281414;--c-accent-mid:#df5252;--c-accent-glow:rgba(223,82,82,.2);
+    --c-warn:#be6a28;--c-warn-bg:#22160a;--c-ok:#58982c;--c-ok-bg:#141e0c;
+    --c-info:#5c88cc;--c-info-bg:#18223a;
+    --c-gold:#c49a20;--c-gold-bg:#201a08;
+    --sh-xs:0 1px 3px rgba(0,0,0,.28);--sh-sm:0 2px 8px rgba(0,0,0,.34),0 1px 3px rgba(0,0,0,.22);
+    --sh-md:0 6px 20px rgba(0,0,0,.4),0 2px 8px rgba(0,0,0,.22);
+    --sh-lg:0 14px 48px rgba(0,0,0,.5),0 4px 14px rgba(0,0,0,.28);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--f-sans);font-size:var(--t-base);color:var(--c-ink);background:var(--c-bg);line-height:1.8;min-height:100dvh;transition:background var(--tr-slow),color var(--tr-slow)}
+  img{display:block;max-width:100%;height:auto}
+  a{color:var(--c-brand);text-decoration:underline;text-underline-offset:3px;transition:color var(--tr)}
+  a:hover{color:var(--c-brand-h)}
+  :focus-visible{outline:2px solid var(--c-accent);outline-offset:3px;border-radius:var(--r-sm)}
+  p,li{max-width:72ch;text-wrap:pretty}
+  h1,h2,h3,h4{text-wrap:balance;line-height:1.16;font-family:var(--f-serif)}
+  strong{font-weight:700;color:var(--c-ink)}
+
+  #pgbar-track{position:fixed;top:0;left:0;width:100%;height:3px;background:var(--c-divider);z-index:2000;pointer-events:none}
+  #pgbar{height:100%;width:0;background:linear-gradient(90deg,var(--c-brand-mid),var(--c-brand));transition:width .07s linear;border-radius:0 2px 2px 0}
+
+  .site-header{position:sticky;top:0;z-index:100;background:var(--c-glass);backdrop-filter:blur(24px) saturate(200%);border-bottom:1px solid var(--c-divider);padding:0 var(--s6);height:62px;display:flex;align-items:center;justify-content:space-between;gap:var(--s4);transition:background var(--tr-slow),border-color var(--tr-slow)}
+  .site-header::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,var(--c-brand) 0%,var(--c-brand-mid) 20%,transparent 55%);opacity:.45}
+  .site-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--c-ink);font-weight:800;font-size:var(--t-sm);letter-spacing:-.025em}
+  .logo-mark{width:32px;height:32px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;box-shadow:0 2px 8px var(--c-brand-glow)}
+  .logo-mark img{width:100%;height:100%;object-fit:cover}
+  .hdr-nav{display:flex;align-items:center;gap:var(--s5);list-style:none}
+  .hdr-nav a{font-size:var(--t-xs);font-weight:600;color:var(--c-ink-3);text-decoration:none;padding:var(--s1) 0;border-bottom:2px solid transparent;transition:color var(--tr),border-color var(--tr);letter-spacing:-.01em}
+  .hdr-nav a:hover{color:var(--c-brand);border-bottom-color:var(--c-brand)}
+  .hdr-nav a.active{color:var(--c-brand);border-bottom-color:var(--c-brand)}
+  .hdr-actions{display:flex;align-items:center;gap:var(--s2)}
+  .icon-btn{background:none;border:1px solid var(--c-border);cursor:pointer;color:var(--c-ink-3);padding:8px;border-radius:var(--r-md);display:flex;align-items:center;transition:all var(--tr)}
+  .icon-btn:hover{color:var(--c-brand);background:var(--c-brand-light);border-color:var(--c-brand-light)}
+
+  .breadcrumb{max-width:var(--w-content);margin:0 auto;padding:var(--s5) var(--s6) 0;display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap;font-size:var(--t-xs);color:var(--c-ink-3)}
+  .breadcrumb a{color:var(--c-ink-4);text-decoration:none;transition:color var(--tr)}
+  .breadcrumb a:hover{color:var(--c-brand)}
+  .bc-sep{color:var(--c-ink-5);margin:0 2px}
+  .bc-cur{color:var(--c-brand);font-weight:600}
+
+  /* HERO */
+  .hero{background:var(--c-brand);position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);background-size:52px 52px;pointer-events:none}
+  .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at -5% 55%,rgba(0,0,0,.42) 0%,transparent 60%),radial-gradient(ellipse 55% 90% at 105% 5%,rgba(36,81,160,.5) 0%,transparent 52%),radial-gradient(ellipse 40% 50% at 80% 95%,rgba(11,29,58,.4) 0%,transparent 55%);pointer-events:none}
+  .hero-inner{max-width:var(--w-content);margin:0 auto;padding:clamp(3rem,8vw,5rem) var(--s6) clamp(2.5rem,6vw,4rem);position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:var(--s8)}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:var(--s2);font-size:var(--t-2xs);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+  .hero-eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--c-accent-mid);flex-shrink:0}
+  .hero-title{font-size:var(--t-hero);color:#ffffff;line-height:1.07;letter-spacing:-.025em}
+  .hero-title em{font-style:italic;color:rgba(255,255,255,.82)}
+  .hero-rule{width:0;height:3px;background:linear-gradient(90deg,var(--c-accent-mid),transparent);border-radius:2px;animation:rule-grow .9s .5s ease forwards}
+  @keyframes rule-grow{to{width:130px}}
+  .hero-lead{font-size:var(--t-md);color:rgba(255,255,255,.66);line-height:1.72;max-width:60ch}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center}
+  .meta-pill{display:inline-flex;align-items:center;gap:6px;font-size:var(--t-2xs);font-weight:600;letter-spacing:.05em;padding:5px 13px;border-radius:var(--r-full);background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.58)}
+  .meta-pill-accent{background:rgba(176,46,46,.26);border-color:rgba(176,46,46,.42);color:rgba(255,185,165,.88)}
+  .stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:var(--r-xl);overflow:hidden;border:1px solid rgba(255,255,255,.13);max-width:640px}
+  .stat-item{background:rgba(0,0,0,.2);padding:var(--s5) var(--s5) var(--s4);transition:background var(--tr)}
+  .stat-item:hover{background:rgba(255,255,255,.06)}
+  .stat-num{font-size:clamp(1.35rem,1.05rem + 1.1vw,2.05rem);color:#fff;margin-bottom:5px}
+  .stat-desc{font-size:var(--t-2xs);color:rgba(255,255,255,.46);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+
+  /* LAYOUT PRINCIPAL: calculadora + resultados */
+  .page-wrap{max-width:var(--w-content);margin:0 auto;padding:var(--s10) var(--s6) var(--s12)}
+  .main-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--s6);align-items:start}
+
+  /* PANEL BASE */
+  .panel{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-2xl);box-shadow:var(--sh-md);padding:var(--s8)}
+  .panel-kicker{font-size:var(--t-2xs);font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);margin-bottom:var(--s4)}
+  .panel h2{font-size:var(--t-xl);color:var(--c-ink);margin-bottom:var(--s6);letter-spacing:-.02em}
+  .panel h2 em{font-style:italic;color:var(--c-accent)}
+
+  /* FORMULARIO */
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5)}
+  .field{display:flex;flex-direction:column;gap:var(--s2)}
+  .field.full{grid-column:1/-1}
+  label{font-size:var(--t-xs);font-weight:600;color:var(--c-ink-2)}
+  input,select{width:100%;padding:.8rem var(--s4);border:1px solid var(--c-border);border-radius:var(--r-lg);background:var(--c-surface);color:var(--c-ink);font:inherit;font-size:var(--t-sm);outline:none;transition:border-color var(--tr),box-shadow var(--tr)}
+  input:focus,select:focus{border-color:var(--c-brand-mid);box-shadow:0 0 0 3px var(--c-brand-light)}
+  .helper{font-size:var(--t-2xs);color:var(--c-ink-4);line-height:1.5}
+  .switches{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+  .check{display:flex;align-items:flex-start;gap:var(--s3);padding:var(--s4);border:1px solid var(--c-border);border-radius:var(--r-lg);background:var(--c-surface-deep);cursor:pointer;transition:border-color var(--tr)}
+  .check:hover{border-color:color-mix(in oklch,var(--c-brand) 30%,transparent)}
+  .check input[type=checkbox]{width:16px;height:16px;margin-top:2px;accent-color:var(--c-brand);flex-shrink:0}
+  .actions{display:flex;gap:var(--s3);flex-wrap:wrap;margin-top:var(--s6)}
+  .btn-primary{display:inline-flex;align-items:center;gap:var(--s2);padding:14px var(--s8);border-radius:var(--r-full);background:linear-gradient(135deg,var(--c-brand-mid),var(--c-brand));color:#fff;font:700 var(--t-sm) var(--f-sans);border:none;cursor:pointer;box-shadow:0 6px 20px var(--c-brand-glow);transition:transform var(--tr),box-shadow var(--tr)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--c-brand-glow)}
+  .btn-secondary{display:inline-flex;align-items:center;gap:var(--s2);padding:14px var(--s6);border-radius:var(--r-full);background:var(--c-surface);color:var(--c-ink-3);font:600 var(--t-sm) var(--f-sans);border:1px solid var(--c-border);cursor:pointer;transition:all var(--tr)}
+  .btn-secondary:hover{color:var(--c-brand);border-color:color-mix(in oklch,var(--c-brand) 30%,transparent)}
+
+  /* RESULTADOS */
+  .result-stack{display:flex;flex-direction:column;gap:var(--s4);position:sticky;top:80px}
+  .result-card{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-xl);padding:var(--s5) var(--s6);box-shadow:var(--sh-sm)}
+  .result-card-title{font-size:var(--t-2xs);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c-brand);margin-bottom:var(--s4)}
+  .result-line{display:flex;justify-content:space-between;align-items:center;gap:var(--s4);padding:var(--s3) 0;border-bottom:1px dashed var(--c-divider);font-size:var(--t-sm)}
+  .result-line:last-child{border-bottom:none}
+  .result-label{color:var(--c-ink-3)}
+  .result-value{font-weight:700;color:var(--c-ink);white-space:nowrap}
+  .total-box{padding:var(--s4) var(--s5);border-radius:var(--r-lg);background:var(--c-brand-light);border:1px solid color-mix(in oklch,var(--c-brand) 22%,transparent);display:flex;justify-content:space-between;align-items:center;gap:var(--s4);flex-wrap:wrap}
+  .total-label{font-size:var(--t-sm);font-weight:700;color:var(--c-brand-h)}
+  .total-amount{font-size:var(--t-xl);font-weight:800;color:var(--c-brand)}
+  .result-divider{height:1px;background:var(--c-divider);margin:var(--s3) 0}
+
+  /* TABLA LÍMITES */
+  .mini-table-wrap{overflow-x:auto;border-radius:var(--r-lg);border:1px solid var(--c-border)}
+  .mini-table{width:100%;border-collapse:collapse;font-size:var(--t-xs)}
+  .mini-table th{background:var(--c-brand);color:#fff;text-align:left;padding:10px var(--s4);font-size:var(--t-2xs);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .mini-table td{padding:10px var(--s4);border-bottom:1px solid var(--c-divider);color:var(--c-ink-3);vertical-align:top;line-height:1.6}
+  .mini-table tbody tr:last-child td{border-bottom:none}
+  .mini-table tbody tr:nth-child(even) td{background:var(--c-surface-deep)}
+
+  /* SECCIÓN EDITORIAL */
+  .editorial{max-width:var(--w-content);margin:0 auto;padding:0 var(--s6) var(--s16)}
+  .art h2{font-size:var(--t-xl);color:var(--c-ink);margin-top:var(--s12);margin-bottom:var(--s6);padding-top:var(--s8);border-top:1px solid var(--c-divider);display:flex;align-items:flex-start;gap:var(--s3);scroll-margin-top:90px;letter-spacing:-.02em}
+  .art h2 .h2-num{font-size:var(--t-2xs);font-weight:800;color:var(--c-brand);letter-spacing:.06em;background:var(--c-brand-light);padding:3px 9px;border-radius:var(--r-full);margin-top:9px;flex-shrink:0;white-space:nowrap}
+  .art h2:first-of-type{border-top:none;margin-top:0;padding-top:0}
+  .art p{margin-bottom:var(--s5);color:var(--c-ink-2);line-height:1.82}
+  .art ul{padding-left:var(--s6);margin-bottom:var(--s6)}
+  .art li{margin-bottom:var(--s3);color:var(--c-ink-2);line-height:1.78}
+  .art ul li::marker{color:var(--c-brand)}
+  .art li strong{color:var(--c-ink)}
+
+  /* BOX INFO/WARN */
+  .box{display:grid;grid-template-columns:4px 1fr;gap:0;border-radius:var(--r-lg);overflow:hidden;margin:var(--s6) 0;box-shadow:var(--sh-xs)}
+  .box-inner{padding:var(--s4) var(--s5) var(--s4) var(--s6);font-size:var(--t-sm);border-radius:0 var(--r-lg) var(--r-lg) 0;border:1px solid transparent;border-left:none;line-height:1.7}
+  .box-inner strong{display:block;margin-bottom:var(--s2);font-size:var(--t-base)}
+  .box.info .box-stripe{background:var(--c-brand)}.box.info .box-inner{background:var(--c-info-bg);border-color:color-mix(in oklch,var(--c-brand) 16%,transparent);color:var(--c-ink-2)}.box.info .box-inner strong{color:var(--c-brand)}
+  .box.warn .box-stripe{background:var(--c-warn)}.box.warn .box-inner{background:var(--c-warn-bg);border-color:color-mix(in oklch,var(--c-warn) 18%,transparent);color:var(--c-ink-2)}.box.warn .box-inner strong{color:var(--c-warn)}
+
+  /* QA BANNER */
+  .qa-banner{display:grid;grid-template-columns:4px 1fr;gap:0;border-radius:var(--r-2xl);overflow:hidden;box-shadow:var(--sh-md);margin-bottom:var(--s10)}
+  .qa-stripe{background:linear-gradient(180deg,var(--c-brand-mid),var(--c-brand))}
+  .qa-body{background:var(--c-brand-light);padding:var(--s6) var(--s8);border:1px solid color-mix(in oklch,var(--c-brand) 18%,transparent);border-left:none;border-radius:0 var(--r-2xl) var(--r-2xl) 0}
+  .qa-label{font-size:var(--t-2xs);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--c-brand);margin-bottom:var(--s3);display:flex;align-items:center;gap:var(--s2)}
+  .qa-label::before{content:'';display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--c-brand);opacity:.25;flex-shrink:0}
+  .qa-body p{max-width:none;font-size:var(--t-base);line-height:1.78;color:var(--c-ink-2)}
+  .qa-body strong{color:var(--c-brand-h);font-weight:700}
+
+  /* FAQ */
+  .faq{margin:var(--s8) 0;display:flex;flex-direction:column;gap:var(--s2)}
+  details{border:1px solid var(--c-border);border-radius:var(--r-xl);background:var(--c-surface);overflow:hidden;box-shadow:var(--sh-xs);transition:box-shadow var(--tr),border-color var(--tr)}
+  details[open]{box-shadow:var(--sh-md);border-color:color-mix(in oklch,var(--c-brand) 28%,transparent)}
+  summary{padding:var(--s4) var(--s6);cursor:pointer;font-family:var(--f-sans);font-weight:600;font-size:var(--t-sm);list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--c-ink);gap:var(--s4);line-height:1.45}
+  summary::-webkit-details-marker{display:none}
+  .faq-icon{font-size:1.1rem;flex-shrink:0;transition:transform var(--tr)}
+  details[open] .faq-icon{transform:rotate(45deg)}
+  .faq-body{padding:var(--s5) var(--s6) var(--s6);font-size:var(--t-sm);color:var(--c-ink-3);line-height:1.78}
+
+  /* CTA */
+  .cta{background:linear-gradient(135deg,var(--c-brand-a) 0%,var(--c-brand) 50%,var(--c-brand-mid) 100%);border-radius:var(--r-3xl);padding:var(--s12) var(--s8);text-align:center;margin:var(--s16) 0 0;position:relative;overflow:hidden;box-shadow:var(--sh-xl)}
+  .cta h3{font-size:var(--t-xl);color:#fff;margin-bottom:var(--s4);letter-spacing:-.02em}
+  .cta p{color:rgba(255,255,255,.62);margin-bottom:var(--s8);margin-inline:auto;font-size:var(--t-sm);max-width:52ch}
+  .btn-cta{display:inline-flex;align-items:center;gap:var(--s2);background:#fff;color:var(--c-brand);padding:14px var(--s10);border-radius:var(--r-full);font-size:var(--t-sm);font-weight:800;text-decoration:none;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.22);transition:transform var(--tr),box-shadow var(--tr)}
+  .btn-cta:hover{transform:translateY(-2px) scale(1.02);color:var(--c-brand-h)}
+
+  /* FOOTER */
+  .site-footer{text-align:center;padding:var(--s10) var(--s6) var(--s8);font-size:var(--t-xs);color:var(--c-ink-4);border-top:1px solid var(--c-divider);margin-top:var(--s16)}
+  .site-footer a{text-decoration:none;color:var(--c-ink-3)}
+  .footer-logo{display:inline-flex;align-items:center;gap:8px;margin-bottom:var(--s4);font-weight:700;color:var(--c-ink-2);font-size:var(--t-sm)}
+  .footer-logo-dot{width:8px;height:8px;background:var(--c-brand);border-radius:50%}
+
+  /* AVISO LEGAL */
+  .legal-notice{margin-top:var(--s8);padding:var(--s4) var(--s5);border-radius:var(--r-lg);background:var(--c-surface-deep);border:1px solid var(--c-border);font-size:var(--t-xs);color:var(--c-ink-4);line-height:1.6}
+
+  /* REVEAL */
+  .rev{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .rev.in{opacity:1;transform:none}
+
+  @media(max-width:900px){.main-grid{grid-template-columns:1fr}.result-stack{position:static}}
+  @media(max-width:768px){
+    .hdr-nav{display:none}
+    .page-wrap,.editorial{padding-left:var(--s4);padding-right:var(--s4)}
+    .hero-inner{padding:var(--s10) var(--s4) var(--s8)}
+    .form-grid,.switches{grid-template-columns:1fr}
+    .stat-strip{grid-template-columns:1fr 1fr}.stat-item:last-child{grid-column:1/-1}
+    .qa-banner{grid-template-columns:1fr}.qa-stripe{display:none}.qa-body{border-radius:var(--r-2xl);border:1px solid color-mix(in oklch,var(--c-brand) 18%,transparent)}
+    .cta{padding:var(--s8) var(--s5)}
+  }
+  ::selection{background:var(--c-brand-light);color:var(--c-brand-a)}
+  </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<div class="progress-bar" id="progressBar"></div>
-<nav id="mainNav">
-  <a href="../index.html" class="nav-logo"><img src="../Icono.png" alt="OpenLexIura" />OpenLex<span>Iura</span></a>
-  <div class="nav-links">
-    <a href="../index.html">Inicio</a>
-    <a href="portal.html">Trabajo</a>
-    <a href="finiquito.html">Artículo finiquito</a>
-    <a href="../consultas.html" class="nav-cta">Hacer consulta</a>
-  </div>
-</nav>
-<div class="breadcrumb">
-  <a href="../index.html">Inicio</a><span>›</span><a href="portal.html">Trabajo</a><span>›</span><a href="finiquito.html">Finiquito</a><span>›</span><span>Calculadora</span>
-</div>
-<header class="hero-single">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="cat-pill">Trabajo · Calculadora</div>
-      <h1>Calculadora de <em>finiquito</em></h1>
-      <p>Herramienta orientativa para estimar salario pendiente, vacaciones no disfrutadas, pagas extraordinarias y, si procede, indemnización por despido o fin de contrato.</p>
-      <div class="hero-meta">
-        <span class="hero-tag">#Art49ET</span>
-        <span class="hero-tag">#Art38ET</span>
-        <span class="hero-tag">#Plazo1Año</span>
-        <span class="hero-tag">#Indemnización</span>
-      </div>
-    </div>
-    <div class="hero-what">
-      <div class="side-kicker">Qué calcula</div>
-      <div class="side-list">
-        <div class="side-item"><span>•</span><span><strong>Salario pendiente</strong> del último mes hasta la fecha de baja.</span></div>
-        <div class="side-item"><span>•</span><span><strong>Vacaciones no disfrutadas</strong> con regla anual de 30 días naturales.</span></div>
-        <div class="side-item"><span>•</span><span><strong>Pagas extras</strong> si no están prorrateadas en nómina.</span></div>
-        <div class="side-item"><span>•</span><span><strong>Indemnización</strong> por objetivo, improcedente o fin de temporal.</span></div>
-      </div>
-    </div>
+
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4XH4J5K" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+<div id="pgbar-track" aria-hidden="true"><div id="pgbar"></div></div>
+
+<header class="site-header">
+  <a href="../index.html" class="site-logo">
+    <div class="logo-mark"><img src="../Icono.png" alt="OpenLexIura" width="32" height="32" loading="eager"></div>
+    OpenLexIura
+  </a>
+  <nav aria-label="Navegación principal">
+    <ul class="hdr-nav">
+      <li><a href="../jubilacion/portal.html">Jubilación</a></li>
+      <li><a href="portal.html" class="active">Trabajo</a></li>
+      <li><a href="../Vivienda/portal.html">Vivienda</a></li>
+      <li><a href="../Alquiler/portal.html">Alquiler</a></li>
+      <li><a href="../Consumo/portal.html">Consumo</a></li>
+    </ul>
+  </nav>
+  <div class="hdr-actions">
+    <button class="icon-btn" data-toggle-theme aria-label="Cambiar tema">
+      <svg id="ico-theme" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+    </button>
   </div>
 </header>
-<main class="layout">
-  <section class="panel">
-    <div class="section-kicker">Datos de cálculo</div>
-    <h2>Introduce tus <em>datos laborales</em></h2>
-    <div class="form-grid">
-      <div class="field">
-        <label for="salarioMensual">Salario bruto mensual (€)</label>
-        <input id="salarioMensual" type="number" min="0" step="0.01" value="1800">
-        <div class="helper">Importe bruto ordinario mensual.</div>
+
+<nav class="breadcrumb" aria-label="Ruta de navegación">
+  <a href="../index.html">Inicio</a>
+  <span class="bc-sep">›</span>
+  <a href="portal.html">Trabajo</a>
+  <span class="bc-sep">›</span>
+  <a href="finiquito.html">Finiquito</a>
+  <span class="bc-sep">›</span>
+  <span class="bc-cur" aria-current="page">Calculadora</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Encabezado">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Derecho laboral · Finiquito · Actualizado 2026
+    </div>
+    <h1 class="hero-title">
+      Calculadora de finiquito<br>
+      <em>cuánto te corresponde al irte</em>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-lead">
+      Calcula en segundos tu salario pendiente, las vacaciones que no has disfrutado,
+      las pagas extras proporcionales y la indemnización según el tipo de extinción.
+      Gratis, sin registro y con explicación de cada concepto.
+    </p>
+    <div class="hero-meta">
+      <span class="meta-pill">🕒 5 min</span>
+      <span class="meta-pill meta-pill-accent">💶 Cálculo orientativo</span>
+      <span class="meta-pill meta-pill-accent">⚖️ Actualizado 2026</span>
+    </div>
+    <div class="stat-strip" aria-label="Datos clave">
+      <div class="stat-item">
+        <div class="stat-num">33 d/año</div>
+        <div class="stat-desc">Despido improcedente</div>
       </div>
-      <div class="field">
-        <label for="numPagas">Número total de pagas al año</label>
-        <select id="numPagas">
-          <option value="12">12 pagas</option>
-          <option value="14" selected>14 pagas</option>
-          <option value="15">15 pagas</option>
-          <option value="16">16 pagas</option>
-        </select>
-        <div class="helper">Usualmente 12 o 14.</div>
+      <div class="stat-item">
+        <div class="stat-num">20 d/año</div>
+        <div class="stat-desc">Despido objetivo</div>
       </div>
-      <div class="field">
-        <label for="fechaInicio">Fecha de inicio del contrato</label>
-        <input id="fechaInicio" type="date" value="2023-02-01">
+      <div class="stat-item">
+        <div class="stat-num">1 año</div>
+        <div class="stat-desc">Plazo para reclamar</div>
       </div>
-      <div class="field">
-        <label for="fechaFin">Fecha de fin o despido</label>
-        <input id="fechaFin" type="date">
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<div class="page-wrap">
+  <div class="main-grid rev">
+
+    <!-- FORMULARIO -->
+    <section class="panel" aria-label="Formulario de cálculo">
+      <div class="panel-kicker">Datos de cálculo</div>
+      <h2>Introduce tus <em>datos laborales</em></h2>
+      <div class="form-grid">
+        <div class="field">
+          <label for="salarioMensual">Salario bruto mensual (€)</label>
+          <input id="salarioMensual" type="number" min="0" step="0.01" value="1800">
+          <div class="helper">Importe bruto ordinario mensual.</div>
+        </div>
+        <div class="field">
+          <label for="numPagas">Número total de pagas al año</label>
+          <select id="numPagas">
+            <option value="12">12 pagas</option>
+            <option value="14" selected>14 pagas</option>
+            <option value="15">15 pagas</option>
+            <option value="16">16 pagas</option>
+          </select>
+          <div class="helper">Usualmente 12 o 14.</div>
+        </div>
+        <div class="field">
+          <label for="fechaInicio">Fecha de inicio del contrato</label>
+          <input id="fechaInicio" type="date" value="2023-02-01">
+        </div>
+        <div class="field">
+          <label for="fechaFin">Fecha de fin o despido</label>
+          <input id="fechaFin" type="date">
+        </div>
+        <div class="field">
+          <label for="diasDisfrutados">Vacaciones ya disfrutadas este año (días)</label>
+          <input id="diasDisfrutados" type="number" min="0" step="0.01" value="0">
+          <div class="helper">La calculadora usa 30 días naturales por año salvo que tu convenio mejore esa cifra.</div>
+        </div>
+        <div class="field">
+          <label for="horasExtras">Horas extras pendientes (€)</label>
+          <input id="horasExtras" type="number" min="0" step="0.01" value="0">
+          <div class="helper">Importe bruto total ya cuantificado, si existe.</div>
+        </div>
+        <div class="field full">
+          <label for="tipoExtincion">Tipo de extinción del contrato</label>
+          <select id="tipoExtincion">
+            <option value="sin_indemnizacion">Baja voluntaria / dimisión / mutuo acuerdo sin indemnización</option>
+            <option value="objetivo">Despido objetivo — 20 días/año, máximo 12 mensualidades</option>
+            <option value="improcedente">Despido improcedente — 33 días/año, máximo 24 mensualidades</option>
+            <option value="temporal">Fin de contrato temporal — 12 días/año</option>
+          </select>
+        </div>
+        <div class="field full">
+          <div class="switches">
+            <label class="check">
+              <input id="extrasProrrateadas" type="checkbox">
+              <span>
+                <strong>Pagas extras ya prorrateadas</strong>
+                <span class="helper">Márcalo si las extras vienen incluidas en la nómina mensual.</span>
+              </span>
+            </label>
+            <label class="check">
+              <input id="incluirMesCurso" type="checkbox" checked>
+              <span>
+                <strong>Incluir salario del mes en curso</strong>
+                <span class="helper">Desmárcalo si ese salario ya fue abonado aparte.</span>
+              </span>
+            </label>
+          </div>
+        </div>
       </div>
-      <div class="field">
-        <label for="diasDisfrutados">Vacaciones ya disfrutadas este año</label>
-        <input id="diasDisfrutados" type="number" min="0" step="0.01" value="0">
-        <div class="helper">La calculadora usa 30 días naturales por año salvo que tu convenio mejore esa cifra.</div>
+      <div class="actions">
+        <button class="btn-primary" id="calcularBtn">Calcular finiquito</button>
+        <button class="btn-secondary" id="resetBtn" type="button">Restablecer ejemplo</button>
       </div>
-      <div class="field">
-        <label for="horasExtras">Horas extras pendientes (€)</label>
-        <input id="horasExtras" type="number" min="0" step="0.01" value="0">
-        <div class="helper">Importe bruto total ya cuantificado, si existe.</div>
+    </section>
+
+    <!-- RESULTADOS -->
+    <aside class="result-stack" aria-label="Resultado del cálculo">
+      <div class="panel">
+        <div class="panel-kicker">Resultado</div>
+        <h2>Estimación <em>orientativa</em></h2>
+
+        <div class="result-card">
+          <div class="result-card-title">Desglose</div>
+          <div class="result-line"><span class="result-label">Salario pendiente</span><span class="result-value" id="rSalario">—</span></div>
+          <div class="result-line"><span class="result-label">Vacaciones no disfrutadas</span><span class="result-value" id="rVacaciones">—</span></div>
+          <div class="result-line"><span class="result-label">Pagas extras proporcionales</span><span class="result-value" id="rExtras">—</span></div>
+          <div class="result-line"><span class="result-label">Horas extras pendientes</span><span class="result-value" id="rHoras">—</span></div>
+          <div class="result-line"><span class="result-label">Indemnización</span><span class="result-value" id="rIndemnizacion">—</span></div>
+        </div>
+
+        <div class="total-box">
+          <span class="total-label">Total bruto estimado</span>
+          <span class="total-amount" id="rTotal">—</span>
+        </div>
+
+        <div class="result-divider"></div>
+
+        <div class="result-card">
+          <div class="result-card-title">Detalle técnico</div>
+          <div class="result-line"><span class="result-label">Salario diario</span><span class="result-value" id="rSalarioDia">—</span></div>
+          <div class="result-line"><span class="result-label">Salario anual</span><span class="result-value" id="rSalarioAnual">—</span></div>
+          <div class="result-line"><span class="result-label">Antigüedad computable</span><span class="result-value" id="rAntiguedad">—</span></div>
+          <div class="result-line"><span class="result-label">Días vacaciones devengados</span><span class="result-value" id="rVacDev">—</span></div>
+          <div class="result-line"><span class="result-label">Días pendientes de pagar</span><span class="result-value" id="rVacPend">—</span></div>
+        </div>
+
+        <div class="result-divider"></div>
+        <div class="panel-kicker" style="margin-top:var(--s2)">Límites legales</div>
+        <div class="mini-table-wrap">
+          <table class="mini-table" aria-label="Resumen de reglas legales">
+            <thead><tr><th>Supuesto</th><th>Regla</th></tr></thead>
+            <tbody>
+              <tr><td>Vacaciones</td><td>30 días naturales/año como mínimo. Al extinguirse el contrato se compensan las no disfrutadas.</td></tr>
+              <tr><td>Despido objetivo</td><td>20 días de salario por año, máximo 12 mensualidades.</td></tr>
+              <tr><td>Despido improcedente</td><td>33 días por año, máximo 24 mensualidades. Tramo anterior al 12/02/2012: 45 días.</td></tr>
+              <tr><td>Fin de temporal</td><td>12 días por año, salvo modalidades excluidas.</td></tr>
+              <tr><td>Plazo para reclamar</td><td>1 año desde que nació el derecho (art. 59.1 ET).</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="legal-notice">
+          ⚠️ Esta herramienta es orientativa. El resultado puede variar según tu convenio colectivo, cláusulas contractuales y circunstancias específicas. Consulta con un profesional antes de firmar el finiquito.
+        </div>
       </div>
-      <div class="field full">
-        <label for="tipoExtincion">Tipo de extinción</label>
-        <select id="tipoExtincion">
-          <option value="sin_indemnizacion">Baja voluntaria / dimisión / mutuo acuerdo sin indemnización</option>
-          <option value="objetivo">Despido objetivo (20 días/año, máximo 12 mensualidades)</option>
-          <option value="improcedente">Despido improcedente (33 días/año, máximo 24 mensualidades; tramo antiguo 45 días antes del 12/02/2012)</option>
-          <option value="temporal">Fin de contrato temporal (12 días/año)</option>
-        </select>
-      </div>
-      <div class="field full">
-        <div class="switches">
-          <label class="check"><input id="extrasProrrateadas" type="checkbox"><span><strong>Las pagas extras ya están prorrateadas</strong><br><span class="helper">Si marcas esto, no se sumará parte proporcional de extras.</span></span></label>
-          <label class="check"><input id="incluirMesCurso" type="checkbox" checked><span><strong>Incluir salario del mes en curso</strong><br><span class="helper">Desmárcalo si ese salario ya fue abonado aparte.</span></span></label>
+    </aside>
+  </div>
+</div>
+
+<!-- CONTENIDO EDITORIAL -->
+<div class="editorial">
+  <div class="art">
+
+    <div class="rev">
+      <div class="qa-banner" role="note">
+        <div class="qa-stripe" aria-hidden="true"></div>
+        <div class="qa-body">
+          <div class="qa-label">En resumen</div>
+          <p>
+            El <strong>finiquito</strong> es la liquidación de todos los conceptos económicos pendientes
+            al extinguirse un contrato. Siempre incluye <strong>salario del mes en curso</strong>,
+            <strong>vacaciones no disfrutadas</strong> y <strong>pagas extras proporcionales</strong>.
+            La <strong>indemnización</strong> depende del motivo de la extinción: no hay indemnización
+            si te vas voluntariamente, salvo que sea por incumplimiento del empresario.
+            Tienes <strong>1 año</strong> para reclamar si el finiquito no es correcto (art. 59.1 ET).
+          </p>
         </div>
       </div>
     </div>
-    <div class="actions">
-      <button class="btn-primary" id="calcularBtn">Calcular finiquito</button>
-      <button class="btn-secondary" id="resetBtn" type="button">Restablecer ejemplo</button>
-    </div>
-    <div class="tags-strip" aria-label="Etiquetas de la herramienta">
-      <span>#Finiquito</span><span>#Vacaciones</span><span>#PagasExtras</span><span>#DespidoObjetivo</span><span>#Improcedente</span><span>#Temporal</span>
-    </div>
-  </section>
-  <aside class="stack">
-    <section class="panel panel-results">
-      <div class="section-kicker">Resultado</div>
-      <h2>Estimación <em>orientativa</em></h2>
-      <div class="result-card">
-        <div class="result-title">Desglose</div>
-        <div class="result-line"><span class="result-label">Salario pendiente</span><span class="result-value" id="rSalario">—</span></div>
-        <div class="result-line"><span class="result-label">Vacaciones no disfrutadas</span><span class="result-value" id="rVacaciones">—</span></div>
-        <div class="result-line"><span class="result-label">Pagas extras</span><span class="result-value" id="rExtras">—</span></div>
-        <div class="result-line"><span class="result-label">Horas extras pendientes</span><span class="result-value" id="rHoras">—</span></div>
-        <div class="result-line"><span class="result-label">Indemnización</span><span class="result-value" id="rIndemnizacion">—</span></div>
+
+    <div class="rev">
+      <h2><span class="h2-num">01</span> Qué incluye siempre el finiquito</h2>
+      <p>
+        Independientemente de si te despiden o te vas, el finiquito tiene tres conceptos
+        que la empresa está obligada a pagar en todos los casos:
+      </p>
+      <div class="box info">
+        <div class="box-stripe"></div>
+        <div class="box-inner">
+          <strong>Conceptos obligatorios en todo finiquito</strong>
+          <ul>
+            <li>
+              <strong>Salario pendiente</strong>: los días trabajados del último mes que aún no te han abonado.
+            </li>
+            <li>
+              <strong>Vacaciones no disfrutadas</strong>: tienes derecho a 30 días naturales por año trabajado
+              (art. 38 ET). Al terminar el contrato, los días devengados y no disfrutados se compensan en metálico.
+            </li>
+            <li>
+              <strong>Parte proporcional de pagas extras</strong>: si tu convenio tiene 14 o más pagas y no están
+              prorrateadas, la empresa debe pagarte la fracción de paga extra correspondiente a los meses trabajados
+              en el año en curso.
+            </li>
+            <li>
+              <strong>Otros devengos pendientes</strong>: comisiones, pluses, horas extras no abonadas o cualquier
+              otro concepto salarial que se haya generado y no cobrado.
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="total-box"><strong>Total bruto estimado</strong><span id="rTotal">—</span></div>
-      <div class="result-card">
-        <div class="result-title">Detalle técnico</div>
-        <div class="result-line"><span class="result-label">Salario diario</span><span class="result-value" id="rSalarioDia">—</span></div>
-        <div class="result-line"><span class="result-label">Salario anual</span><span class="result-value" id="rSalarioAnual">—</span></div>
-        <div class="result-line"><span class="result-label">Antigüedad computable</span><span class="result-value" id="rAntiguedad">—</span></div>
-        <div class="result-line"><span class="result-label">Días de vacaciones devengados</span><span class="result-value" id="rVacDev">—</span></div>
-        <div class="result-line"><span class="result-label">Días pendientes de pagar</span><span class="result-value" id="rVacPend">—</span></div>
+    </div>
+
+    <div class="rev">
+      <h2><span class="h2-num">02</span> Cuándo hay indemnización y cuánto</h2>
+      <p>
+        La indemnización no es automática: depende de <strong>cómo se extingue el contrato</strong>.
+        Si te vas voluntariamente, en general no hay indemnización. Si te despiden, el importe
+        varía según el tipo de despido:
+      </p>
+      <div class="box info">
+        <div class="box-stripe"></div>
+        <div class="box-inner">
+          <strong>Tabla de indemnizaciones según tipo de extinción</strong>
+          <ul>
+            <li>
+              <strong>Baja voluntaria o mutuo acuerdo</strong>: sin indemnización, salvo pacto distinto.
+            </li>
+            <li>
+              <strong>Despido objetivo</strong> (causas económicas, técnicas, organizativas o de producción):
+              <strong>20 días de salario por año</strong>, con un máximo de <strong>12 mensualidades</strong> (art. 53 ET).
+            </li>
+            <li>
+              <strong>Despido improcedente</strong>: <strong>33 días de salario por año</strong>,
+              con un máximo de <strong>24 mensualidades</strong>. Si parte del contrato es anterior al 12 de febrero
+              de 2012, ese tramo se calcula a 45 días por año (Disposición Transitoria 5.ª ET).
+            </li>
+            <li>
+              <strong>Fin de contrato temporal</strong>: <strong>12 días de salario por año</strong>,
+              salvo que la modalidad esté excluida legalmente.
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="result-divider"></div>
-      <div class="section-kicker" style="margin-top:.2rem">Límites legales</div>
-      <table class="mini-table" aria-label="Resumen de reglas">
-        <thead><tr><th>Supuesto</th><th>Regla</th></tr></thead>
-        <tbody>
-          <tr><td>Vacaciones</td><td>30 días naturales al año como mínimo legal; al extinguirse el contrato se compensan las no disfrutadas.</td></tr>
-          <tr><td>Objetivo</td><td>20 días de salario por año, con máximo de 12 mensualidades.</td></tr>
-          <tr><td>Improcedente</td><td>33 días por año, máximo 24 mensualidades; con contratos anteriores al 12/02/2012 puede haber tramo a 45 días.</td></tr>
-          <tr><td>Temporal</td><td>12 días por año, salvo modalidades excluidas o especialidades legales.</td></tr>
-          <tr><td>Reclamación cantidad</td><td>Plazo general de 1 año.</td></tr>
-        </tbody>
-      </table>
-    </section>
-  </aside>
-</main>
-<section class="cta-section">
-  <div class="cta-box">
-    <h3>¿Quieres revisar el resultado <em>con tu caso real</em>?</h3>
-    <p>Si hay convenio aplicable, pluses variables, contrato previo a 2012 o dudas sobre la indemnización correcta, conviene revisar el cálculo con documentación completa antes de firmar.</p>
-    <a href="../consultas.html" class="btn-cta">Realiza tu consulta GRATIS ahora</a>
+      <div class="box warn">
+        <div class="box-stripe"></div>
+        <div class="box-inner">
+          <strong>Antes de firmar, comprueba estos puntos</strong>
+          <ul>
+            <li>Verifica que el número de días de vacaciones calculados es correcto según tu convenio colectivo.</li>
+            <li>Comprueba que el salario diario usado para la indemnización incluye todos los conceptos fijos (pluses, antigüedad, etc.).</li>
+            <li>Si el contrato tiene tramo anterior a febrero de 2012, el cálculo de la indemnización es más complejo.</li>
+            <li>Puedes firmar el finiquito escribiendo <strong>"no conforme"</strong> para reservarte el derecho a reclamar.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev">
+      <h2><span class="h2-num">03</span> Cuándo y cómo te tienen que pagar</h2>
+      <p>
+        El finiquito debe abonarse <strong>en el momento de la extinción del contrato</strong> o,
+        como máximo, dentro del periodo de preaviso. Si la empresa no paga en plazo,
+        el trabajador tiene derecho a un <strong>recargo del 10 % anual</strong> sobre la cantidad
+        adeudada por mora salarial (art. 29.3 ET).
+      </p>
+      <p>
+        El plazo para reclamar cualquier cantidad pendiente es de <strong>1 año</strong> desde
+        que se generó el derecho (art. 59.1 ET). Una vez firmado el finiquito sin reservas,
+        reclamar más adelante es más difícil, aunque no imposible si se acredita que hubo
+        error o vicio en el consentimiento.
+      </p>
+    </div>
+
+    <div class="rev">
+      <h2><span class="h2-num">04</span> Preguntas frecuentes sobre el finiquito</h2>
+      <div class="faq">
+        <details>
+          <summary>¿Qué incluye el finiquito? <span class="faq-icon">+</span></summary>
+          <div class="faq-body">
+            Siempre incluye el salario pendiente del mes en curso, las vacaciones no disfrutadas
+            y la parte proporcional de las pagas extras. La indemnización solo se incluye si hay
+            despido y el tipo de extinción la genera.
+          </div>
+        </details>
+        <details>
+          <summary>¿Tengo derecho a indemnización si me voy voluntariamente? <span class="faq-icon">+</span></summary>
+          <div class="faq-body">
+            En general, no. La baja voluntaria no genera indemnización salvo que se deba a un
+            incumplimiento grave del empresario (art. 50 ET), en cuyo caso puedes reclamar la
+            misma indemnización que correspondería a un despido improcedente.
+          </div>
+        </details>
+        <details>
+          <summary>¿Puedo negarme a firmar el finiquito? <span class="faq-icon">+</span></summary>
+          <div class="faq-body">
+            Sí. Puedes firmar añadiendo la expresión <strong>"no conforme"</strong> o simplemente
+            no firmarlo. Firmar sin reservas puede interpretarse como aceptación del importe.
+            Si tienes dudas sobre si las cantidades son correctas, consulta antes de firmar.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuándo me tienen que pagar el finiquito? <span class="faq-icon">+</span></summary>
+          <div class="faq-body">
+            En el momento de la extinción o dentro del periodo de preaviso. Si la empresa
+            no paga, genera un recargo del 10 % anual. El plazo para reclamar cantidades
+            pendientes es de 1 año desde que se generó el derecho.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cómo se calcula el salario diario para la indemnización? <span class="faq-icon">+</span></summary>
+          <div class="faq-body">
+            Se divide el salario bruto anual (incluyendo todas las pagas) entre 365 días.
+            Deben incluirse todos los conceptos salariales fijos: salario base, antigüedad,
+            pluses fijos, etc. Los conceptos variables (horas extras eventuales, complementos
+            no garantizados) pueden excluirse en algunos casos.
+          </div>
+        </details>
+        <details>
+          <summary>¿Qué pasa si tengo contrato anterior al 12 de febrero de 2012? <span class="faq-icon">+</span></summary>
+          <div class="faq-body">
+            Si te despiden improcedentemente y parte de tu antigüedad es anterior al 12/02/2012,
+            ese tramo se calcula a <strong>45 días por año</strong> en lugar de 33, con un tope de
+            720 días solo para ese tramo. La calculadora aplica este cálculo automáticamente.
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="rev">
+      <div class="cta">
+        <h3>¿Las cifras no cuadran con lo que te ofrecen?</h3>
+        <p>
+          Si el finiquito de tu empresa no coincide con el resultado de esta calculadora,
+          puede haber un error o conceptos que no están siendo aplicados correctamente.
+          Revísalo antes de firmar.
+        </p>
+        <a href="../consultas.html" class="btn-cta">Revisar mi finiquito gratis</a>
+      </div>
+    </div>
+
   </div>
-</section>
-<footer>
-  <p>© 2026 OpenLexIura · Herramienta divulgativa orientativa. No constituye asesoramiento jurídico individualizado.</p>
-  <p style="margin-top:.5rem"><a href="../index.html">Inicio</a> · <a href="portal.html">Portal Laboral</a> · <a href="finiquito.html">Artículo del finiquito</a></p>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-logo">
+    <span class="footer-logo-dot"></span>
+    OpenLexIura
+  </div>
+  <p>Herramienta orientativa. No constituye asesoramiento jurídico individualizado.</p>
+  <p style="margin-top:.5rem">
+    <a href="../aviso-legal.html">Aviso legal</a> ·
+    <a href="../politica-privacidad.html">Privacidad</a> ·
+    <a href="../politica-cookies.html">Cookies</a> ·
+    <a href="portal.html">Portal Laboral</a>
+  </p>
 </footer>
+
 <script>
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-const bar = document.getElementById('progressBar');
+/* Barra de progreso */
+const pgbar = document.getElementById('pgbar');
 window.addEventListener('scroll', () => {
-  const doc = document.documentElement;
-  const scrolled = doc.scrollTop || document.body.scrollTop;
-  const height = doc.scrollHeight - doc.clientHeight;
-  bar.style.width = height > 0 ? ((scrolled / height) * 100) + '%' : '0%';
+  const h = document.documentElement;
+  pgbar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
 }, { passive: true });
-const eur = n => new Intl.NumberFormat('es-ES', {style:'currency', currency:'EUR'}).format(Number(n || 0));
+
+/* Modo oscuro */
+const themeBtn = document.querySelector('[data-toggle-theme]');
+const icoTheme = document.getElementById('ico-theme');
+const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>';
+const sunPath  = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  icoTheme.innerHTML = dark ? moonPath : sunPath;
+}
+themeBtn.addEventListener('click', () => {
+  applyTheme(document.documentElement.getAttribute('data-theme') !== 'dark');
+});
+
+/* Reveal */
+const revEls = document.querySelectorAll('.rev');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.08 });
+revEls.forEach(el => ro.observe(el));
+
+/* Calculadora */
+const eur = n => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(Number(n || 0));
 const num = id => parseFloat(document.getElementById(id).value || 0);
-const today = new Date();
 const fechaFinEl = document.getElementById('fechaFin');
-if(!fechaFinEl.value){ fechaFinEl.value = today.toISOString().slice(0,10); }
-function parseDate(id){ const v = document.getElementById(id).value; return v ? new Date(v + 'T00:00:00') : null; }
-function daysBetween(a,b){ return Math.max(0, Math.round((b-a)/(1000*60*60*24))); }
-function diffYMD(start,end){
+if (!fechaFinEl.value) { fechaFinEl.value = new Date().toISOString().slice(0, 10); }
+
+function parseDate(id) { const v = document.getElementById(id).value; return v ? new Date(v + 'T00:00:00') : null; }
+function daysBetween(a, b) { return Math.max(0, Math.round((b - a) / (1000 * 60 * 60 * 24))); }
+function diffYMD(start, end) {
   let y = end.getFullYear() - start.getFullYear();
   let m = end.getMonth() - start.getMonth();
   let d = end.getDate() - start.getDate();
-  if (d < 0) { m -= 1; const prevMonth = new Date(end.getFullYear(), end.getMonth(), 0).getDate(); d += prevMonth; }
+  if (d < 0) { m -= 1; d += new Date(end.getFullYear(), end.getMonth(), 0).getDate(); }
   if (m < 0) { y -= 1; m += 12; }
-  return {y,m,d};
+  return { y, m, d };
 }
-function yearsDecimal(start,end){ return Math.max(0, daysBetween(start,end) / 365); }
-function clamp(n,min,max){ return Math.max(min, Math.min(max, n)); }
-function calcular(){
-  const salarioMensual = num('salarioMensual');
-  const numPagas = parseInt(document.getElementById('numPagas').value,10);
-  const fechaInicio = parseDate('fechaInicio');
-  const fechaFin = parseDate('fechaFin');
-  const diasDisfrutados = num('diasDisfrutados');
-  const horasExtras = num('horasExtras');
+function yearsDecimal(start, end) { return Math.max(0, daysBetween(start, end) / 365); }
+
+function calcular() {
+  const salarioMensual   = num('salarioMensual');
+  const numPagas         = parseInt(document.getElementById('numPagas').value, 10);
+  const fechaInicio      = parseDate('fechaInicio');
+  const fechaFin         = parseDate('fechaFin');
+  const diasDisfrutados  = num('diasDisfrutados');
+  const horasExtras      = num('horasExtras');
   const extrasProrrateadas = document.getElementById('extrasProrrateadas').checked;
-  const incluirMesCurso = document.getElementById('incluirMesCurso').checked;
-  const tipoExt = document.getElementById('tipoExtincion').value;
-  if(!fechaInicio || !fechaFin || fechaFin < fechaInicio || salarioMensual < 0){ alert('Revisa fechas e importes.'); return; }
-  const salarioDiaNomina = salarioMensual / 30;
-  const salarioAnual = salarioMensual * numPagas;
-  const salarioDiaIndemnizacion = salarioAnual / 365;
-  const diasMesTrabajados = fechaFin.getDate();
-  const salarioPendiente = incluirMesCurso ? salarioDiaNomina * diasMesTrabajados : 0;
-  const inicioAnio = new Date(fechaFin.getFullYear(), 0, 1);
-  const inicioDevengoVac = fechaInicio > inicioAnio ? fechaInicio : inicioAnio;
-  const diasAnioTrabajados = daysBetween(inicioDevengoVac, fechaFin) + 1;
-  const vacDevengadas = (30 / 365) * diasAnioTrabajados;
-  const vacPendientes = Math.max(0, vacDevengadas - diasDisfrutados);
-  const importeVacaciones = vacPendientes * salarioDiaNomina;
-  let importeExtras = 0;
-  if(!extrasProrrateadas && numPagas > 12){
-    const extraUnit = salarioMensual;
-    const extrasAnuales = numPagas - 12;
-    importeExtras = extraUnit * extrasAnuales * (diasAnioTrabajados / 365);
+  const incluirMesCurso  = document.getElementById('incluirMesCurso').checked;
+  const tipoExt          = document.getElementById('tipoExtincion').value;
+
+  if (!fechaInicio || !fechaFin || fechaFin < fechaInicio || salarioMensual < 0) {
+    alert('Revisa las fechas y los importes antes de calcular.');
+    return;
   }
-  let indemnizacion = 0;
-  const antigYears = yearsDecimal(fechaInicio, fechaFin);
-  const tope12 = salarioMensual * 12;
-  const tope24 = salarioMensual * 24;
-  if(tipoExt === 'objetivo'){
-    indemnizacion = salarioDiaIndemnizacion * 20 * antigYears;
-    indemnizacion = Math.min(indemnizacion, tope12);
-  } else if(tipoExt === 'temporal'){
+
+  const salarioDiaNomina       = salarioMensual / 30;
+  const salarioAnual           = salarioMensual * numPagas;
+  const salarioDiaIndemnizacion = salarioAnual / 365;
+
+  /* Salario pendiente */
+  const diasMesTrabajados = fechaFin.getDate();
+  const salarioPendiente  = incluirMesCurso ? salarioDiaNomina * diasMesTrabajados : 0;
+
+  /* Vacaciones */
+  const inicioAnio        = new Date(fechaFin.getFullYear(), 0, 1);
+  const inicioDevengoVac  = fechaInicio > inicioAnio ? fechaInicio : inicioAnio;
+  const diasAnioTrabajados = daysBetween(inicioDevengoVac, fechaFin) + 1;
+  const vacDevengadas     = (30 / 365) * diasAnioTrabajados;
+  const vacPendientes     = Math.max(0, vacDevengadas - diasDisfrutados);
+  const importeVacaciones = vacPendientes * salarioDiaNomina;
+
+  /* Pagas extras */
+  let importeExtras = 0;
+  if (!extrasProrrateadas && numPagas > 12) {
+    const extrasAnuales = numPagas - 12;
+    importeExtras = salarioMensual * extrasAnuales * (diasAnioTrabajados / 365);
+  }
+
+  /* Indemnización */
+  let indemnizacion  = 0;
+  const antigYears   = yearsDecimal(fechaInicio, fechaFin);
+  const tope12       = salarioMensual * 12;
+  const tope24       = salarioMensual * 24;
+
+  if (tipoExt === 'objetivo') {
+    indemnizacion = Math.min(salarioDiaIndemnizacion * 20 * antigYears, tope12);
+  } else if (tipoExt === 'temporal') {
     indemnizacion = salarioDiaIndemnizacion * 12 * antigYears;
-  } else if(tipoExt === 'improcedente'){
+  } else if (tipoExt === 'improcedente') {
     const fechaCorte = new Date('2012-02-12T00:00:00');
-    if (fechaInicio < fechaCorte){
-      const finTramo1 = fechaFin < fechaCorte ? fechaFin : fechaCorte;
-      const years1 = yearsDecimal(fechaInicio, finTramo1);
-      const startTramo2 = fechaFin > fechaCorte ? fechaCorte : fechaFin;
-      const years2 = fechaFin > fechaCorte ? yearsDecimal(startTramo2, fechaFin) : 0;
-      indemnizacion = salarioDiaIndemnizacion * ((45 * years1) + (33 * years2));
-      const tope42 = salarioMensual * 42;
-      indemnizacion = Math.min(indemnizacion, Math.max(tope24, Math.min(tope42, indemnizacion)));
-      indemnizacion = Math.min(indemnizacion, tope42);
+    if (fechaInicio < fechaCorte) {
+      const finTramo1  = fechaFin < fechaCorte ? fechaFin : fechaCorte;
+      const years1     = yearsDecimal(fechaInicio, finTramo1);
+      const years2     = fechaFin > fechaCorte ? yearsDecimal(fechaCorte, fechaFin) : 0;
+      indemnizacion    = salarioDiaIndemnizacion * ((45 * years1) + (33 * years2));
+      indemnizacion    = Math.min(indemnizacion, salarioMensual * 42);
     } else {
-      indemnizacion = salarioDiaIndemnizacion * 33 * antigYears;
-      indemnizacion = Math.min(indemnizacion, tope24);
+      indemnizacion = Math.min(salarioDiaIndemnizacion * 33 * antigYears, tope24);
     }
   }
+
   const total = salarioPendiente + importeVacaciones + importeExtras + horasExtras + indemnizacion;
-  const edad = diffYMD(fechaInicio, fechaFin);
-  document.getElementById('rSalario').textContent = eur(salarioPendiente);
-  document.getElementById('rVacaciones').textContent = eur(importeVacaciones);
-  document.getElementById('rExtras').textContent = eur(importeExtras);
-  document.getElementById('rHoras').textContent = eur(horasExtras);
+  const edad  = diffYMD(fechaInicio, fechaFin);
+
+  document.getElementById('rSalario').textContent      = eur(salarioPendiente);
+  document.getElementById('rVacaciones').textContent   = eur(importeVacaciones);
+  document.getElementById('rExtras').textContent       = eur(importeExtras);
+  document.getElementById('rHoras').textContent        = eur(horasExtras);
   document.getElementById('rIndemnizacion').textContent = eur(indemnizacion);
-  document.getElementById('rTotal').textContent = eur(total);
-  document.getElementById('rSalarioDia').textContent = eur(salarioDiaIndemnizacion) + ' /día';
+  document.getElementById('rTotal').textContent        = eur(total);
+  document.getElementById('rSalarioDia').textContent   = eur(salarioDiaIndemnizacion) + ' /día';
   document.getElementById('rSalarioAnual').textContent = eur(salarioAnual);
-  document.getElementById('rAntiguedad').textContent = `${edad.y} años, ${edad.m} meses y ${edad.d} días`;
-  document.getElementById('rVacDev').textContent = vacDevengadas.toFixed(2).replace('.',',') + ' días';
-  document.getElementById('rVacPend').textContent = vacPendientes.toFixed(2).replace('.',',') + ' días';
+  document.getElementById('rAntiguedad').textContent   = `${edad.y} años, ${edad.m} meses y ${edad.d} días`;
+  document.getElementById('rVacDev').textContent       = vacDevengadas.toFixed(2).replace('.', ',') + ' días';
+  document.getElementById('rVacPend').textContent      = vacPendientes.toFixed(2).replace('.', ',') + ' días';
 }
+
 document.getElementById('calcularBtn').addEventListener('click', calcular);
 document.getElementById('resetBtn').addEventListener('click', () => {
-  document.getElementById('salarioMensual').value = 1800;
-  document.getElementById('numPagas').value = 14;
-  document.getElementById('fechaInicio').value = '2023-02-01';
-  document.getElementById('fechaFin').value = new Date().toISOString().slice(0,10);
-  document.getElementById('diasDisfrutados').value = 0;
-  document.getElementById('horasExtras').value = 0;
+  document.getElementById('salarioMensual').value    = 1800;
+  document.getElementById('numPagas').value          = 14;
+  document.getElementById('fechaInicio').value       = '2023-02-01';
+  document.getElementById('fechaFin').value          = new Date().toISOString().slice(0, 10);
+  document.getElementById('diasDisfrutados').value   = 0;
+  document.getElementById('horasExtras').value       = 0;
   document.getElementById('extrasProrrateadas').checked = false;
   document.getElementById('incluirMesCurso').checked = true;
-  document.getElementById('tipoExtincion').value = 'sin_indemnizacion';
+  document.getElementById('tipoExtincion').value     = 'sin_indemnizacion';
   calcular();
 });
+
+/* Calcular al cargar */
+calcular();
 </script>
 </body>
 </html>
